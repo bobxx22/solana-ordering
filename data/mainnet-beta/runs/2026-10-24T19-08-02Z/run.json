@@ -1,0 +1,74 @@
+{
+ "runId": "2026-10-24T19-08-02Z",
+ "live": true,
+ "cluster": "mainnet-beta",
+ "startedAt": "2026-10-24T19:08:05.686Z",
+ "options": {
+  "clients": [
+   "AgaveBam",
+   "JitoLabs",
+   "HarmonicAgave",
+   "HarmonicFiredancer",
+   "Firedancer",
+   "FireBAM",
+   "Rakurai",
+   "Agave"
+  ],
+  "perClient": 2,
+  "perValidator": 4,
+  "timings": [
+   "early",
+   "inwindow"
+  ],
+  "gapMs": 20,
+  "spacingMs": 4000,
+  "seed": 20261024,
+  "dryTrials": 3,
+  "maxMinutes": 30
+ },
+ "roles": [
+  {
+   "role": "A",
+   "cuLimit": 1000,
+   "cuPrice": "4000000"
+  },
+  {
+   "role": "B",
+   "cuLimit": 40000,
+   "cuPrice": "250000"
+  },
+  {
+   "role": "C",
+   "cuLimit": 1000,
+   "cuPrice": "0"
+  },
+  {
+   "role": "D",
+   "cuLimit": 6000,
+   "cuPrice": "1500000"
+  },
+  {
+   "role": "E",
+   "cuLimit": 1000,
+   "cuPrice": "4000000"
+  }
+ ],
+ "readRpc": "https://mainnet.helius-rpc.com/?api-key=***",
+ "sendRpc": "https://api.mainnet-beta.solana.com/",
+ "mainWallet": "6v8Wy9TEhfZXzdXVspXYs7bh42N7B7z9jALkz83yxKoC",
+ "subPayers": [
+  "EZhmEFzW4PsHnwQ4N4gyLGYG9ZK1bY3mceWDkoUEQpQG",
+  "7JFdhDtZzAdPTAY12g694ugYmg7LVw4UK7s9kfqvnnh3",
+  "CGVToEmtjk84tYvgRioKMaBvn81YcHT9UrEixs9nvQv5",
+  "37XgM5vWox1GwrSrePw6KCFvDCukgnX9dSPb4krvA6JT",
+  "DGHDojCzJNkvQmZt86G4DnR5My3awMiFeaTBzRbbvGq6",
+  "DPDaNcCg97334ZvvALfQMxXB7rkrm5jeBcoxEjDGQrE1",
+  "4K5MpzLMq86LZ9ea3AbF69pg12yE6eFnfEai8Zxr1cZo",
+  "DGCMZRMQq4kEZio82cVn9idxq45o8ZrGiU8RMLk8Ux2o",
+  "6oRNzfvC8hLkH1MAqgA3juppstP55paXptM8E2q7KT45",
+  "9sKgSdc39GxXcUXguzEoZsK9bvTkg3vZKn7GLhTa6SVc"
+ ],
+ "spendCap": "50000000",
+ "committedBefore": "10000",
+ "node": "v26.8.1"
+}

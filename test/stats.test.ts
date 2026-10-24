@@ -1,0 +1,32 @@
+import assert from 'node:assert/strict'
+import { test } from 'node:test'
+import { binomialP, kendallTau, signFlipP, spearman, wilson } from '../src/stats.ts'
+
+test('kendall tau-b', () => {
+  assert.equal(kendallTau([1, 2, 3, 4], [1, 2, 3, 4]), 1)
+  assert.equal(kendallTau([1, 2, 3, 4], [4, 3, 2, 1]), -1)
+  assert.equal(kendallTau([1, 1, 1], [1, 2, 3]), null)
+  // one tie in x: concordant 2, discordant 0, ties in x 1 -> 2 / sqrt(3 * 2)
+  assert.ok(Math.abs(kendallTau([1, 1, 2], [1, 2, 3])! - 2 / Math.sqrt(6)) < 1e-12)
+})
+
+test('spearman', () => {
+  assert.ok(Math.abs(spearman([1, 2, 3, 4], [10, 20, 30, 40])! - 1) < 1e-12)
+  assert.ok(Math.abs(spearman([1, 2, 3, 4], [4, 3, 2, 1])! + 1) < 1e-12)
+})
+
+test('wilson interval contains the estimate', () => {
+  const [lo, hi] = wilson(30, 40)
+  assert.ok(lo < 0.75 && 0.75 < hi && lo > 0.58 && hi < 0.87)
+})
+
+test('sign-flip p-values', () => {
+  assert.equal(signFlipP([1, 1, 1, 1]), 2 / 16)
+  assert.equal(signFlipP([1, -1]), 1)
+  assert.ok(signFlipP(new Array(40).fill(0.5)) < 0.001)
+})
+
+test('binomial p-values', () => {
+  assert.equal(binomialP(5, 10), 1)
+  assert.ok(Math.abs(binomialP(10, 10) - 2 / 1024) < 1e-12)
+})

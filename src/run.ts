@@ -36,6 +36,9 @@ const SLOT_MS = 200
 const EARLY_SLOTS = 2
 const INWINDOW_SLOTS = 1
 
+/** Time allowed for the clock to reach a slot `ahead` slots away: twice the nominal time plus half a minute. */
+const slotWaitMs = (ahead: number) => Math.max(0, ahead) * SLOT_MS * 2 + 30_000
+
 export const runsDir = (cfg: Config) => join(cfg.dataDir, cfg.cluster, 'runs')
 export const ledgerFile = (cfg: Config) => join(cfg.dataDir, cfg.cluster, 'ledger.jsonl')
 
@@ -154,8 +157,8 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
         random,
       ) as Role[]
 
-      // sign one slot ahead with the cached blockhash (at most ~2 s old; it stays valid for about a minute)
-      await clock.waitFor(target.fire - 1)
+      // sign a few slots ahead with the cached blockhash (at most ~2 s old; it stays valid for about a minute)
+      await clock.waitFor(target.fire - 3, slotWaitMs(target.fire - clock.slot))
       const blockhash = hashes.blockhash
       const { txs } = buildTrialTxs(cell.mode, order, payers, blockhash)
       if (live) {
@@ -169,13 +172,13 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
           throw e
         }
       }
-      if (clock.slot >= target.fire) {
+      if (clock.slot > target.fire) {
         log.info(`trial ${trial}: missed dispatch slot ${target.fire} (now ${clock.slot}), skipping`)
         if (live) for (const t of txs) ledger.settle(t.signature, 0n)
         continue
       }
 
-      await clock.waitFor(target.fire)
+      await clock.waitFor(target.fire, slotWaitMs(target.fire - clock.slot))
       const fireSeenAt = clock.seenAt
       const t0 = Date.now()
       const sent = await Promise.all(
@@ -234,12 +237,16 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
       trial++
       if (live && trial % 10 === 0) await fundSubPayers(cfg, rpc, rpc, ledger, log, main, subs, true)
     }
+  } catch (e) {
+    log.info(`run stopped by an error: ${(e as Error).message}`)
+    events('error', { message: (e as Error).message })
   } finally {
     clock.stop()
     hashes.stop()
     process.off('SIGINT', onSigint)
   }
   log.info(`run ${runId}: ${trial} trials; per client ${toJson(Object.fromEntries(perClient))}`)
+  // collect even after an error, so that no reservation is left open and no landed transaction goes unrecorded
   if (live && trial > 0) {
     log.info('waiting 30 s for the last transactions to settle, then collecting')
     await sleep(30_000)

@@ -1,15 +1,18 @@
 // Entry point: node src/cli.ts <command> [--flags]
 import { existsSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
+import { analyze } from './analyze.ts'
 import { collect } from './collect.ts'
 import { type Args, type Config, fmtSol, loadConfig, parseArgs } from './config.ts'
 import type { Timing } from './design.ts'
 import { discover } from './discover.ts'
 import { createKeypairFile, loadKeypair } from './keys.ts'
 import { Ledger } from './ledger.ts'
+import { probePaths } from './paths.ts'
 import { Log, stamp } from './log.ts'
 import { Rpc } from './rpc.ts'
 import { DEFAULT_CLIENTS, ledgerFile, run, runsDir } from './run.ts'
+import { verify } from './verify.ts'
 import { balances, fundSubPayers, loadSubPayers, sweepSubPayers } from './wallets.ts'
 
 const HELP = `usage: node src/cli.ts <command> [flags]
@@ -27,6 +30,11 @@ commands
                --seed N   --dry-trials 3   --minutes 240
   collect    landing slot and in-block position of a run's transactions; settles the ledger
                [run id, default: the latest run]
+  analyze    statistics of all live runs -> data/<cluster>/results/ (offline, from the committed raw data)
+  verify     check every recorded position against the chain (default: the public endpoint) -> data/<cluster>/verify.json
+               --verify-rpc URL
+  paths      delivery-path probe: one transaction per endpoint per round -> data/<cluster>/paths/
+               --endpoints URL,URL   --rounds 8
   status     spend ledger and wallet balances
   fund       top up the sub-payers (prints the plan unless --live)
   sweep      return all sub-payer balances to the main wallet (prints the plan unless --live)
@@ -102,6 +110,19 @@ async function main(): Promise<void> {
     case 'collect': {
       const dir = runDir(cfg, args)
       await collect(rpc, dir, new Ledger(ledgerFile(cfg), cfg.spendCapLamports), log)
+      return
+    }
+    case 'analyze':
+      console.log(analyze(cfg.dataDir, cfg.cluster))
+      return
+    case 'paths': {
+      const endpoints = typeof args.flags.get('endpoints') === 'string' ? (args.flags.get('endpoints') as string).split(',') : [cfg.sendRpcUrl]
+      await probePaths(cfg, rpc, endpoints, Number(args.flags.get('rounds') ?? 8), log)
+      return
+    }
+    case 'verify': {
+      const url = (args.flags.get('verify-rpc') as string) || cfg.sendRpcUrl
+      await verify(new Rpc(url, { minGapMs: 300 }), runsDir(cfg), log)
       return
     }
     case 'status': {

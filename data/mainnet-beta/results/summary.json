@@ -1,0 +1,385 @@
+{
+ "byClient": {
+  "HarmonicAgave": {
+   "trials": 4,
+   "validators": 4,
+   "rules": [
+    {
+     "rule": "rewardPerCost",
+     "trials": 4,
+     "meanTau": 0.3205041578459618,
+     "ci": [
+      0.10540925533894598,
+      0.5797509043642028
+     ],
+     "p": 0.125
+    },
+    {
+     "rule": "totalFee",
+     "trials": 4,
+     "meanTau": -0.4344661968431555,
+     "ci": [
+      -0.8290569415042095,
+      -0.15811388300841897
+     ],
+     "p": 0.125
+    },
+    {
+     "rule": "cuPrice",
+     "trials": 4,
+     "meanTau": 0.18446619684315546,
+     "ci": [
+      -0.10540925533894598,
+      0.6851601597031489
+     ],
+     "p": 1
+    },
+    {
+     "rule": "sentFirst",
+     "trials": 4,
+     "meanTau": 0,
+     "ci": [
+      -0.5,
+      0.65
+     ],
+     "p": 1
+    }
+   ]
+  },
+  "AgaveBam": {
+   "trials": 3,
+   "validators": 3,
+   "rules": [
+    {
+     "rule": "rewardPerCost",
+     "trials": 3,
+     "meanTau": -0.02151976997025773,
+     "ci": [
+      -0.5477225575051661,
+      0.8164965809277261
+     ],
+     "p": 1
+    },
+    {
+     "rule": "totalFee",
+     "trials": 3,
+     "meanTau": 0.10019635391977917,
+     "ci": [
+      -0.3333333333333333,
+      0.8164965809277261
+     ],
+     "p": 1
+    },
+    {
+     "rule": "cuPrice",
+     "trials": 3,
+     "meanTau": -0.36545811608251694,
+     "ci": [
+      -1,
+      0.8164965809277261
+     ],
+     "p": 0.5
+    },
+    {
+     "rule": "sentFirst",
+     "trials": 3,
+     "meanTau": -0.1111111111111111,
+     "ci": [
+      -1,
+      1
+     ],
+     "p": 1
+    }
+   ]
+  },
+  "JitoLabs": {
+   "trials": 3,
+   "validators": 3,
+   "rules": [
+    {
+     "rule": "rewardPerCost",
+     "trials": 3,
+     "meanTau": 0.22222222222222224,
+     "ci": [
+      -0.6666666666666666,
+      1
+     ],
+     "p": 0.75
+    },
+    {
+     "rule": "totalFee",
+     "trials": 3,
+     "meanTau": -0.6666666666666666,
+     "ci": [
+      -1,
+      0
+     ],
+     "p": 0.5
+    },
+    {
+     "rule": "cuPrice",
+     "trials": 3,
+     "meanTau": -0.1111111111111111,
+     "ci": [
+      -1,
+      1
+     ],
+     "p": 1
+    },
+    {
+     "rule": "sentFirst",
+     "trials": 3,
+     "meanTau": 0.4444444444444444,
+     "ci": [
+      0,
+      1
+     ],
+     "p": 0.5
+    }
+   ]
+  },
+  "Firedancer": {
+   "trials": 2,
+   "validators": 2,
+   "rules": [
+    {
+     "rule": "rewardPerCost",
+     "trials": 2,
+     "meanTau": 0.8689323936863109,
+     "ci": [
+      0.7378647873726218,
+      1
+     ],
+     "p": 0.5
+    },
+    {
+     "rule": "totalFee",
+     "trials": 2,
+     "meanTau": 0.11396203899719368,
+     "ci": [
+      -0.10540925533894598,
+      0.3333333333333333
+     ],
+     "p": 1
+    },
+    {
+     "rule": "cuPrice",
+     "trials": 2,
+     "meanTau": 0.763523138347365,
+     "ci": [
+      0.5270462766947299,
+      1
+     ],
+     "p": 0.5
+    },
+    {
+     "rule": "sentFirst",
+     "trials": 2,
+     "meanTau": 0.4,
+     "ci": [
+      -0.2,
+      1
+     ],
+     "p": 1
+    }
+   ]
+  },
+  "HarmonicFiredancer": {
+   "trials": 1,
+   "validators": 1,
+   "rules": [
+    {
+     "rule": "rewardPerCost",
+     "trials": 1,
+     "meanTau": 0.9128709291752769,
+     "ci": [
+      null,
+      null
+     ],
+     "p": 1
+    },
+    {
+     "rule": "totalFee",
+     "trials": 1,
+     "meanTau": 0.18257418583505536,
+     "ci": [
+      null,
+      null
+     ],
+     "p": 1
+    },
+    {
+     "rule": "cuPrice",
+     "trials": 1,
+     "meanTau": 0.9128709291752769,
+     "ci": [
+      null,
+      null
+     ],
+     "p": 1
+    },
+    {
+     "rule": "sentFirst",
+     "trials": 1,
+     "meanTau": 0.3333333333333333,
+     "ci": [
+      null,
+      null
+     ],
+     "p": 1
+    }
+   ]
+  },
+  "Agave": {
+   "trials": 1,
+   "validators": 1,
+   "rules": [
+    {
+     "rule": "rewardPerCost",
+     "trials": 1,
+     "meanTau": 0.3333333333333333,
+     "ci": [
+      null,
+      null
+     ],
+     "p": 1
+    },
+    {
+     "rule": "totalFee",
+     "trials": 1,
+     "meanTau": 0.3333333333333333,
+     "ci": [
+      null,
+      null
+     ],
+     "p": 1
+    },
+    {
+     "rule": "cuPrice",
+     "trials": 1,
+     "meanTau": 1,
+     "ci": [
+      null,
+      null
+     ],
+     "p": 1
+    },
+    {
+     "rule": "sentFirst",
+     "trials": 1,
+     "meanTau": 0.3333333333333333,
+     "ci": [
+      null,
+      null
+     ],
+     "p": 1
+    }
+   ]
+  },
+  "FireBAM": {
+   "trials": 1,
+   "validators": 1,
+   "rules": [
+    {
+     "rule": "rewardPerCost",
+     "trials": 1,
+     "meanTau": -0.5477225575051661,
+     "ci": [
+      null,
+      null
+     ],
+     "p": 1
+    },
+    {
+     "rule": "totalFee",
+     "trials": 1,
+     "meanTau": -0.5477225575051661,
+     "ci": [
+      null,
+      null
+     ],
+     "p": 1
+    },
+    {
+     "rule": "cuPrice",
+     "trials": 1,
+     "meanTau": -0.5477225575051661,
+     "ci": [
+      null,
+      null
+     ],
+     "p": 1
+    },
+    {
+     "rule": "sentFirst",
+     "trials": 1,
+     "meanTau": 0.3333333333333333,
+     "ci": [
+      null,
+      null
+     ],
+     "p": 1
+    }
+   ]
+  },
+  "ALL": {
+   "trials": 15,
+   "validators": 15,
+   "rules": [
+    {
+     "rule": "rewardPerCost",
+     "trials": 15,
+     "meanTau": 0.2880313653677204,
+     "ci": [
+      -0.0036396779721439656,
+      0.5745327629982601
+     ],
+     "p": 0.0810546875
+    },
+    {
+     "rule": "totalFee",
+     "trials": 15,
+     "meanTau": -0.21607777906371156,
+     "ci": [
+      -0.46838988190310815,
+      0.04199733854555252
+     ],
+     "p": 0.13525390625
+    },
+    {
+     "rule": "cuPrice",
+     "trials": 15,
+     "meanTau": 0.14669011694377188,
+     "ci": [
+      -0.22681409045941708,
+      0.5260672121930288
+     ],
+     "p": 0.480712890625
+    },
+    {
+     "rule": "sentFirst",
+     "trials": 15,
+     "meanTau": 0.18666666666666668,
+     "ci": [
+      -0.11555555555555556,
+      0.4933333333333333
+     ],
+     "p": 0.2744140625
+    }
+   ]
+  }
+ },
+ "twin": {
+  "pairs": 8,
+  "sentFirstCameFirst": 4,
+  "share": 0.5,
+  "ci": [
+   0.21521252682444186,
+   0.7847874731755582
+  ],
+  "p": 1
+ },
+ "sent": 75,
+ "landed": 75,
+ "units": 15
+}

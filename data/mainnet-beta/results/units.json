@@ -1,0 +1,390 @@
+[
+ {
+  "run": "2026-10-24T19-08-02Z",
+  "trial": 0,
+  "slot": 460963380,
+  "leader": "7EzbSahSfSjeRexHcNDLDpzHBAGBLjLKtjbmuoQnEtjE",
+  "client": "AgaveBam",
+  "version": "4.3.2",
+  "mode": "shared",
+  "timing": "early",
+  "hitTarget": false,
+  "slotsAfterTarget": 4,
+  "slotInWindow": 0,
+  "roles": [
+   "C",
+   "B",
+   "D"
+  ],
+  "observedOrder": "CBD",
+  "tau": {
+   "rewardPerCost": -0.3333333333333333,
+   "totalFee": -0.3333333333333333,
+   "cuPrice": -1,
+   "sentFirst": -1
+  }
+ },
+ {
+  "run": "2026-10-24T19-08-02Z",
+  "trial": 1,
+  "slot": 460963433,
+  "leader": "CAo1dCGYrB6NhHh5xb1cGjUiu86iyCfMTENxgHumSve4",
+  "client": "HarmonicAgave",
+  "version": "4.3.2",
+  "mode": "independent",
+  "timing": "early",
+  "hitTarget": false,
+  "slotsAfterTarget": 13,
+  "slotInWindow": 1,
+  "roles": [
+   "D",
+   "C",
+   "A",
+   "E",
+   "B"
+  ],
+  "observedOrder": "DCAEB",
+  "tau": {
+   "rewardPerCost": 0.10540925533894598,
+   "totalFee": -0.31622776601683794,
+   "cuPrice": -0.10540925533894598,
+   "sentFirst": -0.4
+  }
+ },
+ {
+  "run": "2026-10-24T19-08-02Z",
+  "trial": 2,
+  "slot": 460963444,
+  "leader": "FbYX2uN573G5WsgiPdHU6fS5PNUyjdXfGfpZNkYUuT4k",
+  "client": "JitoLabs",
+  "version": "4.3.2",
+  "mode": "shared",
+  "timing": "inwindow",
+  "hitTarget": false,
+  "slotsAfterTarget": 4,
+  "slotInWindow": 0,
+  "roles": [
+   "A",
+   "D",
+   "B"
+  ],
+  "observedOrder": "ADB",
+  "tau": {
+   "rewardPerCost": 1,
+   "totalFee": -1,
+   "cuPrice": 1,
+   "sentFirst": 1
+  }
+ },
+ {
+  "run": "2026-10-24T19-08-02Z",
+  "trial": 3,
+  "slot": 460963481,
+  "leader": "nymsGg7ZXcYBwGYKZL8qEHk9PQ8sAkKvnXgUNLPyGDV",
+  "client": "HarmonicFiredancer",
+  "version": "26.10.4",
+  "mode": "shared",
+  "timing": "early",
+  "hitTarget": false,
+  "slotsAfterTarget": 13,
+  "slotInWindow": 1,
+  "roles": [
+   "E",
+   "A",
+   "D",
+   "C"
+  ],
+  "observedOrder": "EADC",
+  "tau": {
+   "rewardPerCost": 0.9128709291752769,
+   "totalFee": 0.18257418583505536,
+   "cuPrice": 0.9128709291752769,
+   "sentFirst": 0.3333333333333333
+  }
+ },
+ {
+  "run": "2026-10-24T19-08-02Z",
+  "trial": 4,
+  "slot": 460963489,
+  "leader": "3RXKQBRv7xKTQeNdLSPhCiD4QcUfxEQ12rtgUkMf5LnS",
+  "client": "AgaveBam",
+  "version": "4.3.2",
+  "mode": "shared",
+  "timing": "early",
+  "hitTarget": true,
+  "slotsAfterTarget": 1,
+  "slotInWindow": 1,
+  "roles": [
+   "C",
+   "B",
+   "E",
+   "A"
+  ],
+  "observedOrder": "CBEA",
+  "tau": {
+   "rewardPerCost": -0.5477225575051661,
+   "totalFee": -0.18257418583505536,
+   "cuPrice": -0.9128709291752769,
+   "sentFirst": 1
+  }
+ },
+ {
+  "run": "2026-10-24T19-08-02Z",
+  "trial": 5,
+  "slot": 460963510,
+  "leader": "3psxMyr7rQzywVp1MXKd1XFmFz33NjydzCoJx9t2sMQW",
+  "client": "HarmonicAgave",
+  "version": "4.3.2",
+  "mode": "independent",
+  "timing": "inwindow",
+  "hitTarget": true,
+  "slotsAfterTarget": 2,
+  "slotInWindow": 2,
+  "roles": [
+   "C",
+   "A",
+   "D",
+   "B"
+  ],
+  "observedOrder": "CADB",
+  "tau": {
+   "rewardPerCost": 0.3333333333333333,
+   "totalFee": -1,
+   "cuPrice": 0,
+   "sentFirst": 1
+  }
+ },
+ {
+  "run": "2026-10-24T19-08-02Z",
+  "trial": 6,
+  "slot": 460963538,
+  "leader": "3SkE34PVeGck2ArEffFKjihrQgURsvnoTAhitsNXNzXd",
+  "client": "JitoLabs",
+  "version": "4.3.2",
+  "mode": "independent",
+  "timing": "early",
+  "hitTarget": false,
+  "slotsAfterTarget": 6,
+  "slotInWindow": 2,
+  "roles": [
+   "C",
+   "B",
+   "D",
+   "A"
+  ],
+  "observedOrder": "CBDA",
+  "tau": {
+   "rewardPerCost": -0.6666666666666666,
+   "totalFee": 0,
+   "cuPrice": -1,
+   "sentFirst": 0
+  }
+ },
+ {
+  "run": "2026-10-24T19-08-02Z",
+  "trial": 7,
+  "slot": 460963577,
+  "leader": "FzQqaDStQQHs52YKeCnDovwSqvyZBCgs2kJcmvoFZwaS",
+  "client": "HarmonicAgave",
+  "version": "4.3.2",
+  "mode": "shared",
+  "timing": "early",
+  "hitTarget": false,
+  "slotsAfterTarget": 5,
+  "slotInWindow": 1,
+  "roles": [
+   "A",
+   "E",
+   "D",
+   "B",
+   "C"
+  ],
+  "observedOrder": "AEDBC",
+  "tau": {
+   "rewardPerCost": 0.7378647873726218,
+   "totalFee": -0.10540925533894598,
+   "cuPrice": 0.9486832980505138,
+   "sentFirst": 0
+  }
+ },
+ {
+  "run": "2026-10-24T19-08-02Z",
+  "trial": 8,
+  "slot": 460963628,
+  "leader": "DNVZMSqeRH18Xa4MCTrb1MndNf3Npg4MEwqswo23eWkf",
+  "client": "Firedancer",
+  "version": "26.10.4",
+  "mode": "independent",
+  "timing": "early",
+  "hitTarget": true,
+  "slotsAfterTarget": 0,
+  "slotInWindow": 0,
+  "roles": [
+   "A",
+   "D",
+   "C"
+  ],
+  "observedOrder": "ADC",
+  "tau": {
+   "rewardPerCost": 1,
+   "totalFee": 0.3333333333333333,
+   "cuPrice": 1,
+   "sentFirst": 1
+  }
+ },
+ {
+  "run": "2026-10-24T19-08-02Z",
+  "trial": 9,
+  "slot": 460963709,
+  "leader": "rsbp8zMHbGCpLoRktmsjspYv77VcjxAzH1KxPCD9BiU",
+  "client": "Agave",
+  "version": "4.3.2",
+  "mode": "independent",
+  "timing": "early",
+  "hitTarget": false,
+  "slotsAfterTarget": 9,
+  "slotInWindow": 1,
+  "roles": [
+   "E",
+   "B",
+   "C"
+  ],
+  "observedOrder": "EBC",
+  "tau": {
+   "rewardPerCost": 0.3333333333333333,
+   "totalFee": 0.3333333333333333,
+   "cuPrice": 1,
+   "sentFirst": 0.3333333333333333
+  }
+ },
+ {
+  "run": "2026-10-24T19-08-02Z",
+  "trial": 10,
+  "slot": 460963776,
+  "leader": "4VRs6A9zBRXz6MLcmQGsBiSoWE2JjHrmw7LintC3T4Nv",
+  "client": "Firedancer",
+  "version": "26.10.4",
+  "mode": "independent",
+  "timing": "inwindow",
+  "hitTarget": false,
+  "slotsAfterTarget": 8,
+  "slotInWindow": 0,
+  "roles": [
+   "A",
+   "D",
+   "E",
+   "C",
+   "B"
+  ],
+  "observedOrder": "ADECB",
+  "tau": {
+   "rewardPerCost": 0.7378647873726218,
+   "totalFee": -0.10540925533894598,
+   "cuPrice": 0.5270462766947299,
+   "sentFirst": -0.2
+  }
+ },
+ {
+  "run": "2026-10-24T19-08-02Z",
+  "trial": 11,
+  "slot": 460964025,
+  "leader": "XkCriyrNwS3G4rzAXtG5B1nnvb5Ka1JtCku93VqeKAr",
+  "client": "HarmonicAgave",
+  "version": "4.3.2",
+  "mode": "independent",
+  "timing": "inwindow",
+  "hitTarget": false,
+  "slotsAfterTarget": 5,
+  "slotInWindow": 1,
+  "roles": [
+   "A",
+   "C",
+   "B",
+   "E",
+   "D"
+  ],
+  "observedOrder": "ACBED",
+  "tau": {
+   "rewardPerCost": 0.10540925533894598,
+   "totalFee": -0.31622776601683794,
+   "cuPrice": -0.10540925533894598,
+   "sentFirst": -0.6
+  }
+ },
+ {
+  "run": "2026-10-24T19-08-02Z",
+  "trial": 12,
+  "slot": 460964088,
+  "leader": "3tm92VTxwyZ5MDhGoYR4tVTkwWYkzfam6hwBjauUACCk",
+  "client": "AgaveBam",
+  "version": "4.3.2",
+  "mode": "shared",
+  "timing": "early",
+  "hitTarget": false,
+  "slotsAfterTarget": 4,
+  "slotInWindow": 0,
+  "roles": [
+   "A",
+   "E",
+   "C"
+  ],
+  "observedOrder": "AEC",
+  "tau": {
+   "rewardPerCost": 0.8164965809277261,
+   "totalFee": 0.8164965809277261,
+   "cuPrice": 0.8164965809277261,
+   "sentFirst": -0.3333333333333333
+  }
+ },
+ {
+  "run": "2026-10-24T19-08-02Z",
+  "trial": 13,
+  "slot": 460964119,
+  "leader": "11AMA4mnNbsrPQeuoNN7uiZVJZtqEzQHrTfa5vnbcjk",
+  "client": "FireBAM",
+  "version": "26.10.4",
+  "mode": "independent",
+  "timing": "early",
+  "hitTarget": true,
+  "slotsAfterTarget": 3,
+  "slotInWindow": 3,
+  "roles": [
+   "C",
+   "A",
+   "D",
+   "E"
+  ],
+  "observedOrder": "CADE",
+  "tau": {
+   "rewardPerCost": -0.5477225575051661,
+   "totalFee": -0.5477225575051661,
+   "cuPrice": -0.5477225575051661,
+   "sentFirst": 0.3333333333333333
+  }
+ },
+ {
+  "run": "2026-10-24T19-08-02Z",
+  "trial": 14,
+  "slot": 460964625,
+  "leader": "HH5dA42XF1HxNk1TRpG6LuKfLViMYNdAz5iWrFM4hWFi",
+  "client": "JitoLabs",
+  "version": "4.3.2",
+  "mode": "independent",
+  "timing": "inwindow",
+  "hitTarget": false,
+  "slotsAfterTarget": 5,
+  "slotInWindow": 1,
+  "roles": [
+   "C",
+   "D",
+   "B"
+  ],
+  "observedOrder": "CDB",
+  "tau": {
+   "rewardPerCost": 0.3333333333333333,
+   "totalFee": -1,
+   "cuPrice": -0.3333333333333333,
+   "sentFirst": 0.3333333333333333
+  }
+ }
+]
