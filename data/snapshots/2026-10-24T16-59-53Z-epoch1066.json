@@ -1,0 +1,6797 @@
+{
+ "takenAt": "2026-10-24T16:59:53.380Z",
+ "cluster": "mainnet-beta",
+ "rpcVersion": {
+  "feature-set": 3383571666,
+  "solana-core": "4.3.2"
+ },
+ "epoch": {
+  "epoch": 1066,
+  "slotIndex": 415061,
+  "slotsInEpoch": 432000,
+  "absoluteSlot": 460927061,
+  "firstSlot": 460512000
+ },
+ "validators": [
+  {
+   "identity": "Fd7btgySsrjuo25CJCj7oE7VPMyezDhnx7pZkj2v69Nk",
+   "vote": "CcaHc2L43ZWjwCHART3oZoJvHLAe9hzT2DJNUpBzoTN1",
+   "stake": 17096229984756250,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 16944
+  },
+  {
+   "identity": "HEL1USMZKAL2odpNBj2oCjffnFGaYwmbGmyewGv1e2TU",
+   "vote": "he1iusunGwqrNtafDtLdhsUQDFvo13z9sUa36PauBtk",
+   "stake": 16022777902436492,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 15664
+  },
+  {
+   "identity": "DRpbCBMxVnDK7maPM5tGv6MvB3v1sRMC86PZ8okm21hy",
+   "vote": "3N7s9zXMZ4QqvHQR15t5GNHyqc89KduzMP7423eWiD5g",
+   "stake": 12572396114967448,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 12136
+  },
+  {
+   "identity": "E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL",
+   "vote": "8GbwASqdpw4dVcwbWUxbHXMrjyQx2aKkoBR5H1GJF8iD",
+   "stake": 10882510649488416,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 10916
+  },
+  {
+   "identity": "JUPiTERrZqgf1jUyR7dSkhMx4Kn2qJyekWsg3LT1h4b",
+   "vote": "CatzoSMUkTRidT5DwBxAC2pEtnwMBTpkCepHkFgZDiqb",
+   "stake": 9724045661416186,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 9660
+  },
+  {
+   "identity": "CAo1dCGYrB6NhHh5xb1cGjUiu86iyCfMTENxgHumSve4",
+   "vote": "51JBzSTU5rAM8gLAVQKgp4WoZerQcSqWC7BitBzgUNAm",
+   "stake": 9478407185464352,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 9208
+  },
+  {
+   "identity": "C8Bey3LKVJHVqN6xPTeW8WJfUgFQAeGNBpT4Rp99JP1k",
+   "vote": "26pV97Ce83ZQ6Kz9XT4td8tdoUFPTng8Fb8gPyc53dJx",
+   "stake": 9213418487287036,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 9296
+  },
+  {
+   "identity": "EvnRmnMrd69kFdbLMxWkTn1icZ7DCceRhvmb2SJXqDo4",
+   "vote": "9QU2QSxhb24FUX3Tu2FpczXjpK3VYrvRudywSZaM29mF",
+   "stake": 7782538803998724,
+   "delinquent": false,
+   "client": "Firedancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 7796
+  },
+  {
+   "identity": "9eGrDohdNTAo61DRHyfMuqKWXqYnA3i254Wiszxe8FoY",
+   "vote": "CvSb7wdQAFpHuSpTYTJnX5SYH4hCfQ9VuGnqrKaKwycB",
+   "stake": 7037301090908213,
+   "delinquent": false,
+   "client": "Firedancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 6940
+  },
+  {
+   "identity": "Awes4Tr6TX8JDzEhCZY2QVNimT6iD1zWHzf1vNyGvpLM",
+   "vote": "DumiCKHVqoCQKD8roLApzR5Fit8qGV5fVQsJV9sTZk4a",
+   "stake": 7003144982092443,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 6852
+  },
+  {
+   "identity": "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB",
+   "vote": "3JD3jMmnR6g88qff2WZ3cMHJRjJMUk9yVZtmYTYeFrXf",
+   "stake": 6607875845254433,
+   "delinquent": false,
+   "client": "Firedancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 6592
+  },
+  {
+   "identity": "5pPRHniefFjkiaArbGX3Y8NUysJmQ9tMZg3FrFGwHzSm",
+   "vote": "DdCNGDpP7qMgoAy6paFzhhak2EeyCZcgjH7ak5u5v28m",
+   "stake": 5967787194475229,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 5980
+  },
+  {
+   "identity": "5Cchr1XGEg7dbBXByV5NY2ad8jfxAM7HA3x8D56rq9Ux",
+   "vote": "GHViLgbrJdZDPb6sphRbeuPNM9cmjsFuGWzrTF1sKF5n",
+   "stake": 5688479581092335,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 5748
+  },
+  {
+   "identity": "GnC339vkyXRm1jRX69dt9mapPPu2LbzXfSDoxc91qta6",
+   "vote": "FKsC411dik9ktS6xPADxs4Fk2SCENvAiuccQHLAPndvk",
+   "stake": 4860226782139946,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 4776
+  },
+  {
+   "identity": "9rkJMARqK6VBkcxGfKBAwnA44gPAfGxPbPsfsggFNDSQ",
+   "vote": "HimWQUK61d9wxhw7EYu9jUje7xQiDs4jKexaTSvuCmXE",
+   "stake": 4723673249360947,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 4632
+  },
+  {
+   "identity": "9jxgosAfHgHzwnxsHw4RAZYaLVokMbnYtmiZBreynGFP",
+   "vote": "HZKopZYvv8v6un2H6KUNVQCnK5zM9emKKezvqhTBSpEc",
+   "stake": 4477328987787841,
+   "delinquent": false,
+   "client": "FireBAM",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 4520
+  },
+  {
+   "identity": "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD",
+   "vote": "2tucttroqFNXsrYeMBQ8LfzKNfgwT2rHBzAF6RzbbHEp",
+   "stake": 4279522244052893,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 4544
+  },
+  {
+   "identity": "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f",
+   "vote": "3ZYJxzCeweSoh2Jj7oCgencFs9y27iKmXJeqYapje1cj",
+   "stake": 4120076636581583,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 4180
+  },
+  {
+   "identity": "FBKFWadXZJahGtFitAsBvbqh5968gLY7dMBBJUoUjeNi",
+   "vote": "AZoCYB4VgoM9DR9f1ZFcBn8xPSbtbqoxZnKJR7tkvEoX",
+   "stake": 4069699208289170,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 4176
+  },
+  {
+   "identity": "BtsmiEEvnSuUnKxqXj2PZRYpPJAc7C34mGz8gtJ1DAaH",
+   "vote": "G9x1mqewTeVnXLmv3FamYD5tq1AdS395RHH3MLQPj6TY",
+   "stake": 4069463049720092,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 4176
+  },
+  {
+   "identity": "5ZqveVffQPiUbkjBg4KD9kib1MKHLqiFno4ke9jSq9qk",
+   "vote": "EcEowA4GKDsdVBF9PNAZa6c9M4WgYG8y4GnpZSUaqioS",
+   "stake": 4042325863090566,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 3972
+  },
+  {
+   "identity": "A1vqhA2fS6K7CvHsJKX1ACcHJFEmyRg4KuR5pctHANy4",
+   "vote": "HkFuE9NJahP7uA8RooXtp64UQb7XNUMVisWsJTgx3far",
+   "stake": 3951573385794995,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 3712
+  },
+  {
+   "identity": "Hz5aLvpKScNWoe9YZWxBLrQA3qzHJivBGtfciMekk8m5",
+   "vote": "H74qox1GASBWd94FWMyy6GVAbRVLf9SAMgbJ1tzSUAst",
+   "stake": 3948471523489045,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 3780
+  },
+  {
+   "identity": "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5",
+   "vote": "8Pep3GmYiijRALqrMKpez92cxvF4YPTzoZg83uXh14pW",
+   "stake": 3832139436460256,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 3956
+  },
+  {
+   "identity": "9UM8wQ8F5oMiRcP5YdqD6Lr4krpBWCD8LtgQYoisJd9i",
+   "vote": "9jToNMWCLW1GeoLGPZNvEfuXE4AUwiRsrC1HMGmh3PTu",
+   "stake": 3700813583454441,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 3736
+  },
+  {
+   "identity": "FNKgX9dYUhYQFRTM9bkeKoRpsyEtZGNMxbdQLDzfqB8a",
+   "vote": "AaVsZUEnrHUZoXC2oVgTY3GF5GGhzCTBGrjpBtuUWy1H",
+   "stake": 3651308575941196,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 3608
+  },
+  {
+   "identity": "shftkxnsXmqAkmLgz9Mn7bNB5Fr6mKgFc58kFHfVikj",
+   "vote": "shft7Fry1js37Hm9wq4dfwcZSp2DyKszeWMvEpjYCQ1",
+   "stake": 3634025221452796,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 3540
+  },
+  {
+   "identity": "5EhGYUyQNrxgUbuYF4vbL2SZDT6RMfhq3yjeyevvULeC",
+   "vote": "iZADA4YKVRJZJaDUV3j79DzyK4VJkK3DGTfvvqvbC1K",
+   "stake": 3598006067995900,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 3540
+  },
+  {
+   "identity": "krakeNd6ednDPEXxHAmoBs1qKVM8kLg79PvWF2mhXV1",
+   "vote": "KRAKEnMdmT4EfM8ykTFH6yLoCd5vNLcQvJwF66Y2dag",
+   "stake": 3406795155390842,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 3348
+  },
+  {
+   "identity": "GBQ2GvTzmjXMu97dr7WUnLKYTNim1aoZsYS53KYXAAAA",
+   "vote": "AuGwcQWqWuNbnrkgERSp8VN6kZeJiM4AZuLMrwbkzg9m",
+   "stake": 3008745251495456,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 3012
+  },
+  {
+   "identity": "6y7V8dL673XFzm9QyC5vvh3itWkp7wztahBd2yDqsyrK",
+   "vote": "7xENfwKCajMB5aVTgmTB6h7d7Su91wTcnfMjoAQCMvKq",
+   "stake": 2916667655378480,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 3072
+  },
+  {
+   "identity": "DrifTrN923QaouP89UxkQzFGbumKPCnfkNYQRwmZxatz",
+   "vote": "DriFTm3wM9ugxhCA1K3wVQMSdC4Dv4LNmyZMmZiuHRpp",
+   "stake": 2817721264727607,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 2844
+  },
+  {
+   "identity": "GoeW4aFK4dGoekJySgUynWDxBZiQJqm8GDAF4H53tDK9",
+   "vote": "Ak5BJzQe2R8qFuyYmaAFPjXuD7XPux3ZNTv52D7rfiqR",
+   "stake": 2635374837899374,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 2376
+  },
+  {
+   "identity": "3psxMyr7rQzywVp1MXKd1XFmFz33NjydzCoJx9t2sMQW",
+   "vote": "23XqhxnRHt5gQWHowvyRHDX4Ky6BZyFdYxjTzxx2QEFr",
+   "stake": 2618547779750109,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 2380
+  },
+  {
+   "identity": "GSTampk6BJRKSDkzhaMM49R7qRx98MTPYYWvKbp83XKc",
+   "vote": "At2rZHk554qWrjcmdNkCQGp8i4hdKLf52EXMrDmng5ab",
+   "stake": 2502415693398342,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 2388
+  },
+  {
+   "identity": "5ejbTALcBsKQ7Cj1iSuu2mY5jqbYHqh9gF5ERXLiYj1z",
+   "vote": "72LbWsZFEyB7xrB9ggeoPUrSw2vzPEnsPJJHZo1svkM7",
+   "stake": 2502415680489477,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 2640
+  },
+  {
+   "identity": "GQzMeEMwAR44ugoNCifTb5NdRKos1GduDUPeNh6AgV46",
+   "vote": "oixpqSNX7CKWHw93ViA8u1CcLzZXDmacKJjV4AvxMZE",
+   "stake": 2502395555572177,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 2632
+  },
+  {
+   "identity": "BSVckjdW2f8kcXPGcrPPtV9kUDBZ8w8PjrrGVnxgEdwq",
+   "vote": "2uXzxR2EZVaHE3CuaDaUJ8C9Qr54LMfwkY5BtRPAzbPE",
+   "stake": 2502391141874190,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 2492
+  },
+  {
+   "identity": "76rcGHdPvgs8G1XrzCXUTWtwgT59AFDvpB4VbTS2TBBJ",
+   "vote": "8mHUDJjzPo2AwJp8SHKmG9rk9ftWTp7UysqYz36cMpJe",
+   "stake": 2502383460422850,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 2196
+  },
+  {
+   "identity": "3SkE34PVeGck2ArEffFKjihrQgURsvnoTAhitsNXNzXd",
+   "vote": "BhREyEsP3YAtQbTCrKcXgTNTeaq9gdjWji3Nz4d8Q1P2",
+   "stake": 2500000947676992,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 2480
+  },
+  {
+   "identity": "HpcB5Qg8Y9E73dUkot5e8HkgAJbExsYeUzniY4bCuKac",
+   "vote": "HDc84gs3CtqhebHycmoDpc5n2y3CFfd5GqYZkr2XiBMR",
+   "stake": 2500000937382560,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 2308
+  },
+  {
+   "identity": "DUND26mEDfFeaPsVof3YvbXDRvpuQX7HMUJrLgEWzYw4",
+   "vote": "JDMq8hxZnad2smKLGkFbfg8zVMZHKQcMugD4tMR9u2da",
+   "stake": 2499999992171680,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 2492
+  },
+  {
+   "identity": "2GUnfxZavKoPfS9s3VSEjaWDzB3vNf5RojUhprCS1rSx",
+   "vote": "BU3ZgGBXFJwNTrN6VUJ88k9SJ71SyWfBJTabYqRErm4F",
+   "stake": 2499999939665440,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 2500
+  },
+  {
+   "identity": "Aw5wEMXhbygFLR7jHtHpih8QvxVBGAMTqsQ2SjWPk1ex",
+   "vote": "33hurzEz6aEnzfESL6pnNyR6DCgcKzssT1pwSzDCBTRQ",
+   "stake": 2499999939665440,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 2468
+  },
+  {
+   "identity": "FbYX2uN573G5WsgiPdHU6fS5PNUyjdXfGfpZNkYUuT4k",
+   "vote": "E9W5kU2fnha9yp4RmFZgNNsRUvy6oKnB9ZyR9LC81WaE",
+   "stake": 2409417943075628,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 2240
+  },
+  {
+   "identity": "22rU5yUmdVThrkoPieVNphqEyAtMQKmZxjwcD8v4bJDU",
+   "vote": "HxYHGzR58gyf6c4JAX85eK8GVuaZU2zne4be82Lq9SBQ",
+   "stake": 2322629005990086,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 2292
+  },
+  {
+   "identity": "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY",
+   "vote": "4AUED4uj6nSTuANzaAUnGBPJQRmhpDYDwoWJNkoUUBBW",
+   "stake": 2264600760735918,
+   "delinquent": false,
+   "client": "Rakurai",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 2004
+  },
+  {
+   "identity": "6WgdYhhGE53WrZ7ywJA15hBVkw7CRbQ8yDBBTwmBtAHN",
+   "vote": "6aow5rTURdbhbeMDrFrbP2GR5vZjMEhktEy87iH1VGPs",
+   "stake": 2216420795653330,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 2356
+  },
+  {
+   "identity": "HnfPZDrbJFooiP9vvgWrjx3baXVNAZCgisT58gyMCgML",
+   "vote": "CxFH1pqJnEmyaE4wEwqdqMKpQMpkmdaMxhS7SzpHokA8",
+   "stake": 2182665921629860,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 2116
+  },
+  {
+   "identity": "CQdLgwkmmHF8DE6t4sguXMTXWDxq3oLh3xfekDTmow12",
+   "vote": "2iWXwF2Q5W6o7yntV2mkbxncB4rYHnX61y3NU8a8EFMJ",
+   "stake": 2132216497626396,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 2228
+  },
+  {
+   "identity": "AEHqTB2RtJjegsR2ePjvoJSm6AA5pnYKWVbcsn6kqTBD",
+   "vote": "FjkSLYmi6BJAJQn1iSLUGrPrBQjMaD4y1DVdnv3yaTsX",
+   "stake": 2083334280438320,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 2264
+  },
+  {
+   "identity": "AWcCdYG7Dy6GX45c6QMPbgGwgRZPKcBDT4bXGb3QrVRV",
+   "vote": "G2W5QfMSBYXT5NNWEG8jSN9ZMqvVoaon3DMHMQ3BV7Bj",
+   "stake": 2013800997122051,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 2112
+  },
+  {
+   "identity": "2m1A2WM1vte7RWz5xTTw4i1SiXmngVtXhqFERaUjoAAb",
+   "vote": "8wTSPukwTAzNzEYyUdc8UiKkTg1hNtZ1xLum7o1Ne6wr",
+   "stake": 2005488249610397,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 2000
+  },
+  {
+   "identity": "BUv44cVtsdvU9z2BfFGk6s5JZZWrmVnq5qCaii5ARyyB",
+   "vote": "6jzDwKeR21EFHwaRgZMefMxJ9D2vnQRqfYxkpUuJppPh",
+   "stake": 1937410077711701,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1956
+  },
+  {
+   "identity": "DNVZMSqeRH18Xa4MCTrb1MndNf3Npg4MEwqswo23eWkf",
+   "vote": "9Diao4uo6NpeMud7t5wvGnJ3WxDM7iaYxkGtJM36T4dy",
+   "stake": 1920191649840747,
+   "delinquent": false,
+   "client": "Firedancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 1928
+  },
+  {
+   "identity": "FBbqKvwLfKGZrKrfSbPJz4ymQ7zMarhRyZtu1RBkSe89",
+   "vote": "H43AYFsvhNuALQieHpLXefp1ECgEBT6oVnS4EcTsC25C",
+   "stake": 1917688398119177,
+   "delinquent": false,
+   "client": "Firedancer",
+   "version": "26.10.3",
+   "featureSet": 1766517360,
+   "leaderSlots": 1968
+  },
+  {
+   "identity": "FzQqaDStQQHs52YKeCnDovwSqvyZBCgs2kJcmvoFZwaS",
+   "vote": "BkSS8kGUNcQkTgEKMmBhHxGVLdzw43EAzDYpZqyyxFrT",
+   "stake": 1881605316350045,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1812
+  },
+  {
+   "identity": "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE",
+   "vote": "8BMMDVM8Tb88a2Hx1VSZ1TKmH1rMHbVU7xVafMk9JrEW",
+   "stake": 1875000953466200,
+   "delinquent": false,
+   "client": "Agave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1896
+  },
+  {
+   "identity": "7qGNnXKW1e3DsqEaSxwxMdBTFsrK73XtWTmkGitRyMQc",
+   "vote": "JEJzKYzyYJJjtn6Yb1P7r6YV75TdSNmmJT49sgDoHvmk",
+   "stake": 1842532999490346,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 2280
+  },
+  {
+   "identity": "3JotfSFPaod4KVK7nj7ULvcq5PjUBdZNVGracNkJNhrt",
+   "vote": "74pfDmYto6aAqCzFH1mNJ8NxF7A4LQ4cXkipGwgjY39u",
+   "stake": 1837000183558720,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1752
+  },
+  {
+   "identity": "HbidP4hpQdwhkzrxder3x3VNPt6DQnE25gFG46napD2p",
+   "vote": "HhYEE3dAShc3772wEiy73XDYnLjVxyBL8eAWKyRcF14y",
+   "stake": 1835664800728540,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1988
+  },
+  {
+   "identity": "8gDfqHXZ5ektqQQrLrCGtSzYRwkWQrm3ANnAvQCt2LoM",
+   "vote": "LSTmLs1DENX82ihc7jU134mydiV3NDEPXsRrekAY6Ys",
+   "stake": 1827559806607051,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1684
+  },
+  {
+   "identity": "HTeRsa3gm3CGrizMoCrtWj4uBZ1NKYcGqh8jfBu2u3Jo",
+   "vote": "G83jy4NB16A4mchfRjZvfH8SPH2TxwjSZYxh5fzg2Qys",
+   "stake": 1810360867543194,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1740
+  },
+  {
+   "identity": "722RdWmHC5TGXBjTejzNjbc8xEiduVDLqZvoUGz6Xzbp",
+   "vote": "EXhYxF25PJEHb3v5G1HY8Jn8Jm7bRjJtaxEghGrUuhQw",
+   "stake": 1694051944259647,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1672
+  },
+  {
+   "identity": "pSo1KZXgG1EGHch6pPmscfYhv3buXyaj2dR8WkVnkfc",
+   "vote": "34kE8AGJazhgrsovREiB2Uru1CuhN4gCznNAmVUxB9AB",
+   "stake": 1608462852104361,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 1552
+  },
+  {
+   "identity": "CW9C7HBwAMgqNdXkNgFg9Ujr3edR2Ab9ymEuQnVacd1A",
+   "vote": "6D2jqw9hyVCpppZexquxa74Fn33rJzzBx38T58VucHx9",
+   "stake": 1589100534115601,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1632
+  },
+  {
+   "identity": "ChorusmmK7i1AxXeiTtQgQZhQNiXYU84ULeaYF1EH15n",
+   "vote": "Chorus6Kis8tFHA7AowrPMcRJk3LbApHTYpgSNXzY5KE",
+   "stake": 1573425227007364,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1416
+  },
+  {
+   "identity": "Df16xM2XWzTXEGYxFBXtwXRhCdE6hwBbxS162TyS4r65",
+   "vote": "8hPk5CbKDoM7dN9LssTdVkFhDykeq7A8CZurA5AQSFJH",
+   "stake": 1564978876981020,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1688
+  },
+  {
+   "identity": "CoG8d9Fp2TFJRkAmrPMiPsGhQWHzdTTVoegEp9svRgmJ",
+   "vote": "2NxEEbhqqj1Qptq5LXLbDTP5tLa9f7PqkU8zNgxbGU9P",
+   "stake": 1560339996795994,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 2220
+  },
+  {
+   "identity": "EUcJwf7jXskRE6NZBtFPVH2EedNvNYko8LL2WT62XctB",
+   "vote": "Bwkz1ddKoGE8hgiSV6HZLXi9RBLqfBi3HZb2QujzVGgz",
+   "stake": 1540008088992886,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1640
+  },
+  {
+   "identity": "jzDsimGW1g8esbD1Kr2oRvr9X573XS2zQd7AsYJ1to5",
+   "vote": "J1to5o1Q7W7Y2Q7zpETTezv3DyzPMHKDg66X2nZPMr4X",
+   "stake": 1525170999537547,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1496
+  },
+  {
+   "identity": "9W3QTgBhkU4Bwg6cwnDJo6eGZ9BtZafSdu1Lo9JmWws7",
+   "vote": "GqcuMuWq4gKeCuCrD8iAjXTozCET2EP6qJXmZDFsSTWK",
+   "stake": 1477479702788961,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1440
+  },
+  {
+   "identity": "6aDs9tUm2gErcPn2c1TZnp5cu2bQV9BzyuwW4baWQYd4",
+   "vote": "ERut3CwqVeoa616QBaoHc5jL52RpkXjZZZ7MeaMaCtLi",
+   "stake": 1464459688168619,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1564
+  },
+  {
+   "identity": "GYx8kpp7SsRwtQEEsGQjAxb4hFMMmT91kFJuDeky3YGQ",
+   "vote": "7jPqpHuN5v59dtBom2tjmYEfi6WaM4sFtJeTD6fzhcdS",
+   "stake": 1443865072040883,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1296
+  },
+  {
+   "identity": "AMukCLCr52XxsEjXoDxKKxjNg4FpnsReXNaQx8aR6DJF",
+   "vote": "71nnaeTyVeA4pTozAPjRuQyMydQTZCrFUkz7Pzy5tiDJ",
+   "stake": 1428153374592594,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1416
+  },
+  {
+   "identity": "HSDTxfgrqY8ZK88Q5Fx2DdX7zxMDqXgxJKgErTBSLoQJ",
+   "vote": "hsdtGUwm6TeePfXWgHqLpiLEijvnz177fxHf61BfsLT",
+   "stake": 1425691857057790,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1408
+  },
+  {
+   "identity": "CMPSSdrTnRQBiBGTyFpdCc3VMNuLWYWaSkE8Zh5z6gbd",
+   "vote": "EARNynHRWg6GfyJCmrrizcZxARB3HVzcaasvNa8kBS72",
+   "stake": 1418541307949207,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1360
+  },
+  {
+   "identity": "CfgRXmp1LEYr97EaT2RyoL2cSvtWgJh52Bes89RxVSoW",
+   "vote": "g5kwi5sFXQTx26jwetYK97ytvx1WpA1RWuQ82Afdzyn",
+   "stake": 1395452860785243,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1356
+  },
+  {
+   "identity": "A9mvukTd77EbRoBX4ydSCFQHdu5bsRFkNXTTRstA8FAC",
+   "vote": "FsT844wGgZg7MLR9Uc9T9qHQxmSoFVanhfgAEQvS966r",
+   "stake": 1380783405109126,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1364
+  },
+  {
+   "identity": "Ninja1spj6n9t5hVYgF3PdnYz2PLnkt7rvaw3firmjs",
+   "vote": "BLADE1qNA1uNjRgER6DtUFf7FU3c1TWLLdpPeEcKatZ2",
+   "stake": 1376736416415576,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1264
+  },
+  {
+   "identity": "bitHUmbKSQDTGoyoiW3BeqaGWdyV5sS3nYt5SduUHfb",
+   "vote": "bithumBZcvBDmC3vhP6cvHGsmwrXLq7DEgPJtmSc2da",
+   "stake": 1352006002539592,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1292
+  },
+  {
+   "identity": "7y5VhV4fkz6r4zUmH2UiwPjLwXzPL1PcV28or5NWkWRL",
+   "vote": "HxRrsnbc6K8CdEo3LCTrSUkFaDDxv9BdJsTDzBKnUVWH",
+   "stake": 1340371073158893,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1280
+  },
+  {
+   "identity": "6TkKqq15wXjqEjNg9zqTKADwuVATR9dW3rkNnsYme1ea",
+   "vote": "GvZEwtCHZ7YtCkQCaLRVEXsyVvQkRDhJhQgB6akPme1e",
+   "stake": 1330086281028207,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1160
+  },
+  {
+   "identity": "G3a3iYZKNLbivothF3twqcaTCEvoPb9uJ2bFc9DNKkBQ",
+   "vote": "Eqwa3Jo6aa4ugEbPZNcDQyBfVU7dSz3VR8CcDYRrPyh4",
+   "stake": 1324631001000000,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1244
+  },
+  {
+   "identity": "privaEdSEmnMPGPoQACUkcDGkFBbTArVvsEGd7C5wUM",
+   "vote": "privSGy4XbFCjzEkdLXssV8xMWRWWiWbJeDzh1emUyL",
+   "stake": 1324631001000000,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1304
+  },
+  {
+   "identity": "6ptuwW4rg5A3wP9hNKxeymG3QhSagugPd3grnMTGJwWG",
+   "vote": "2e7PfK4w5QzYxNFJZYqpeXpZ6sx2CGC1BMpF76nzDoCC",
+   "stake": 1265524228603798,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 1176
+  },
+  {
+   "identity": "5DYpYgKgHV5aswMXBLp3UfJnbbzzFnGiJPpcxVAm56bG",
+   "vote": "FuvD3qqrVjuh355sBs1u8bUS3aU8NgknymLskPvtAc6N",
+   "stake": 1251434307766692,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1212
+  },
+  {
+   "identity": "EXckihF3qmguH5znjhfzLvHsbk2E3nEW2DqNh4MMnDMm",
+   "vote": "CMPxjQDTDyXKh3ZsKP7HLwi3tvgSVpFtLJYMxbeNZE68",
+   "stake": 1251331744033595,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 1164
+  },
+  {
+   "identity": "HLnodbYkL5PFA8hjAZDkm5pGzV7eLTvcs671AW2L6St9",
+   "vote": "7KVnUL45FH4N8Z7x1dnvJ7GzMx12cs81mS26mHzNjQPN",
+   "stake": 1235557357554117,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1252
+  },
+  {
+   "identity": "DcTPJqPNrTLv3te1c9ctA9H194x6DsaPA4ChuSEv7KPZ",
+   "vote": "Haz7b47sZBpxh9SwggGndN3fAyNQ1S949BPdxWXS3ab6",
+   "stake": 1231746551940000,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1252
+  },
+  {
+   "identity": "5Us18hLZPXJTS4QVuGSsUw137Dyd2tgBaem24Xsf5nBS",
+   "vote": "AzbQjKoLepbDS8C6hgkRY7UCRwbwZZ9HqdtnWyef9WjX",
+   "stake": 1207979324911175,
+   "delinquent": false,
+   "client": "Agave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1148
+  },
+  {
+   "identity": "6xWLi1TDSh65fWsSqE1zdvANTSuVDRMx4ghsGJwgunS8",
+   "vote": "BbM5kJgrwEj3tYFfBPnjcARB54wDUHkXmLUTkazUmt2x",
+   "stake": 1195013094466039,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1088
+  },
+  {
+   "identity": "6yFGGAgYpBxgYPuHW4rv7hJmhKrUiXKyHkpVGaYtKrwE",
+   "vote": "9jYFwBfbjYmvasFbJyES9apLJDTkwtbgSDRWanHEvcRw",
+   "stake": 1192708876068049,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 1272
+  },
+  {
+   "identity": "7cVfgArCheMR6Cs4t6vz5rfnqd56vZq4ndaBrY5xkxXy",
+   "vote": "FQwewNXahV7MiZcLpY6p1xhUs2acVGQ3U5Xxc7FzV571",
+   "stake": 1187036993303790,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1148
+  },
+  {
+   "identity": "FWwwP9tNttSy9dJFxwf6ebXWfc6VJXqFNMTccrMiLFTH",
+   "vote": "5orRi4tMEGneZ9U2y381JnBEnsqFJDBSNQLhBn98Bkcv",
+   "stake": 1147491755511359,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1148
+  },
+  {
+   "identity": "BkoS26vBuaXnSowACdChi4WKid8UwmuPNhEJWa8KsLHd",
+   "vote": "CKYFpKErmUn75nS3uNcNCPXUxWSpuBqbwMM3QnwPEFHX",
+   "stake": 1143919739954512,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1080
+  },
+  {
+   "identity": "HaLanfo94ezLc3JZ55qqxr7W3qbe1PprJyv2uEtriEqN",
+   "vote": "8zHJtME22tiY3UsSHtDJXo2J8hUfwikBxXNbVqQzA92r",
+   "stake": 1136805281204245,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1080
+  },
+  {
+   "identity": "58KprHKFNHgH1Cvo4QwxWkDeJNaSQVteCoAAFUWjtESn",
+   "vote": "3tUZu4CkwMLwYdosoGc85n48VgDMyxZVkL1VUJc7DrxW",
+   "stake": 1102450356473253,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1032
+  },
+  {
+   "identity": "ACvL73V4GNnxPVfZ7K89jCrYurLyzpEuE9qirjvh2Xmi",
+   "vote": "HCvnhbT3Sn5RsueDisWzzn5FkW8tAqoQK1dr7cvAVzin",
+   "stake": 1065055877381124,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1024
+  },
+  {
+   "identity": "CwyVpfmfSiMeCexi3JgUNvaiDfYN14cLDjzT99zcBuD2",
+   "vote": "8uEgdseqbUrDLfmHbUpTHoH1LLRxeViYDk7K6NdXKRYM",
+   "stake": 1061259417696923,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1072
+  },
+  {
+   "identity": "AicQr2zCWBLiBwt2r6o7iTemmtyE7q5pTKyuuupbXEQA",
+   "vote": "Bkskrv38Kn7zJR5mvmbCDGn2M4Jyhzt2ZqwQXV6rYnXa",
+   "stake": 1039473644011736,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 932
+  },
+  {
+   "identity": "5essVpBYvocZkQnkrWsMDfRPwtp4BeihJRaweKLR4dRn",
+   "vote": "A5ed2x2wEuHW8KsuhbSaTFU4CYT3WgHfQcwyQXz5SdDw",
+   "stake": 1038915214617981,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1028
+  },
+  {
+   "identity": "8tjFeSApQ85ThoQXT28acfF2KUfQr3TvTdirSkzNnYC7",
+   "vote": "AtvnDGvf7Dd4AUA7iihx3hV8598skHejZTn2YTNV6AMF",
+   "stake": 1009498927284237,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1048
+  },
+  {
+   "identity": "2DTXh3ruMU2SeWanqr4yeg5GR47V99Jq3wUdStQfda3V",
+   "vote": "HEYbDQwzZxSBSLaV7fpep3oUP8iCEch2265xzgWPW2pQ",
+   "stake": 1007863503469453,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1012
+  },
+  {
+   "identity": "3ytgyJXpm3teGLwkHqp9h2qqYNpY4Z1QpWAeVpz79gpJ",
+   "vote": "3RGSTMXnGoeXW1y7uWpcBmQvhBQU6Tc8stxY72SuhN8y",
+   "stake": 1006663136989848,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1024
+  },
+  {
+   "identity": "C1ocKDYMCm2ooWptMMnpd5VEB2Nx4UMJgRuYofysyzcA",
+   "vote": "AS3nKBQfKs8fJ8ncyHrdvo4FDT6S8HMRhD75JjCcyr1t",
+   "stake": 1004420190230275,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 976
+  },
+  {
+   "identity": "8uJiHDJ1b7UDQ4KFsQGJXK9nUCkokdKRJymg1Wy9nxvM",
+   "vote": "5sMmkL4BXjU6vZXQxE3RquH2CR8v8Zbfi1EAAFxLfxMx",
+   "stake": 1001931228326104,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1072
+  },
+  {
+   "identity": "PUmpKiNnSVAZ3w4KaFX6jKSjXUNHFShGkXbERo54xjb",
+   "vote": "DsiG71AvUHUEo9rMMHqM9NAWQ6ptguRAHyot6wGzLJjx",
+   "stake": 1001801700383815,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 1012
+  },
+  {
+   "identity": "Ex1AxFCipXGfSxgvXPPT3nPQUARddCduHwKR6jHiXAaT",
+   "vote": "8tjRQLzor4dP4qd1e7pVDdQmsdwdVv4kSeCVEHwWEiQW",
+   "stake": 922095664478051,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 980
+  },
+  {
+   "identity": "G2TBEh2ahNGS9tGnuBNyDduNjyfUtGhMcssgRb8b6KfH",
+   "vote": "F5b1wSUtpaYDnpjLQonCZC7iyFvizLcNqTactZbwSEXK",
+   "stake": 906786956618285,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 840
+  },
+  {
+   "identity": "Ha1iade1AH3B12K9SccfWoPdFtQKKQsj2ZyWwxcjqJJU",
+   "vote": "Ha1VoTEPWFQp1wZjbQhBNXJftuHvimu1ruzF3xKYRPDQ",
+   "stake": 906741271549287,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 948
+  },
+  {
+   "identity": "AiDoLWFKzNxSXKeZ4zym2TEPkg6F4kQ3YBA8WhANVPEq",
+   "vote": "AiDoLYTz5CVN3ZLzqDWRtaGUaHGzDnWMeC6KCNYJPqFX",
+   "stake": 897493133925526,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 928
+  },
+  {
+   "identity": "E3mDbFMr8yZcCAZx5wPUFCRmLX31u8Nnj4jPoPc54h3F",
+   "vote": "DierScgiTrz5AM7mddeJLHYNvafym3XhjjdM51AnKevU",
+   "stake": 887298052617446,
+   "delinquent": false,
+   "client": "Rakurai",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 716
+  },
+  {
+   "identity": "HH5dA42XF1HxNk1TRpG6LuKfLViMYNdAz5iWrFM4hWFi",
+   "vote": "FiijvR2ibXEHaFqB127CxrL3vSj19K2Kx1jf2RbK4BWS",
+   "stake": 844754429268738,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 816
+  },
+  {
+   "identity": "BFmqBsaGjeYA7gHpReKmnVkRyhqiMmHoR9ttv1crWmzy",
+   "vote": "2hK2uke7ssm7QuBzbrgxBs2aStmFmdKyC12yV2iwvvPm",
+   "stake": 831650069659602,
+   "delinquent": false,
+   "client": "Firedancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 732
+  },
+  {
+   "identity": "siidBVew9gpXxjM1y5spQiAyx1dyFrg9m6YjoxrYWbi",
+   "vote": "FKBPfTuoqdF9yTmMJowTukend68EnyWXQXdc5Cxd5rSa",
+   "stake": 821408532844530,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 788
+  },
+  {
+   "identity": "6YY2VS44RP1sBosdEsvSaiw7gETDNx3tmg5mM5wHpTqM",
+   "vote": "CooLbbZy5Xmdt7DiHPQ3ss2uRXawnTXXVgpMS8E8jDzr",
+   "stake": 819162500549686,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 868
+  },
+  {
+   "identity": "Gv9gguvrAkgQtB5g5a3Un7trcHCxLYsk8vSojLmQMsWV",
+   "vote": "67qytGR1YAkdGjpJZgkvyXu7zduBXK3Jri6heaU7mVTh",
+   "stake": 815604139420430,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 872
+  },
+  {
+   "identity": "5RvfTSowms7BTYaBj8SxVjj7ELAAKdQadKsuNpmBAwCs",
+   "vote": "C89gGyN6Q4N47bg5kZWGYVc3P1x3rYaHbpG3EjSLeEx3",
+   "stake": 809945780113225,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 720
+  },
+  {
+   "identity": "3iSQtPgkZBqKVK1CNxcxZoKggAkWiDrE22cXeT38bKsE",
+   "vote": "94qeNkhspb7DjuqNPcGUgVcnnsNuibGYuqNTvm9FnX9m",
+   "stake": 800876285675143,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 704
+  },
+  {
+   "identity": "GEM1N1UE3C8BB8EaaEPrcFvT3iLMVrurknjW5AYjUReR",
+   "vote": "GEM1N1pCDGKiTa547eckcwuHWYMsUQeXgnXHfEZLDvpB",
+   "stake": 797849509349340,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 692
+  },
+  {
+   "identity": "BXAxLMMMUNYfC1z166VjWHR3WjTmqzLxB837o5ghmRtH",
+   "vote": "J21SMPFJEY9ExCDPiSJQXN23PVSeoQe3LnKD7QcP3bgP",
+   "stake": 793913920067117,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 900
+  },
+  {
+   "identity": "GZ4U21pYmFkCk6ZNTHRzfVEZZXauyZLKDmuuuKGwvp5H",
+   "vote": "DqbRPQXbN8GDKWZkKiHnRjiSKPqE3rQaNgTPxdLGPDMK",
+   "stake": 775035397747089,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 840
+  },
+  {
+   "identity": "7PdKhpKz7T39vZHFL1UfcYNDsLvay6hp4KPQq1aUckFf",
+   "vote": "7opSZGmevWhRDyLt5Wu38FZFjUyredGmMki4DNmxDnjd",
+   "stake": 769998097873249,
+   "delinquent": false,
+   "client": "Rakurai",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 828
+  },
+  {
+   "identity": "vu1sGn2f1Xim6voHNLt4nLn38zNkYdLasU7hEr1TC2D",
+   "vote": "6F5xdRXh2W3B2vhte12VG79JVUkUSLYrHydGX1SAadfZ",
+   "stake": 767998932493978,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 764
+  },
+  {
+   "identity": "8o8wWCYNwPRSCAasp8rYvWuo3Ku1R1i6SEo9j9B6fe5i",
+   "vote": "BN6EvLCeuYdrTjGaHCyugF7sSH5uckoVoy3Kg2TkyuDW",
+   "stake": 751481980031904,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 756
+  },
+  {
+   "identity": "6XKqyUVUcpe3CNucjF6gk5zonJDqNGvob6kaTy4Ps1U",
+   "vote": "SKRuTecmFDZHjs2DxRTJNEK7m7hunKGTWJiaZ3tMVVA",
+   "stake": 743095590980600,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 768
+  },
+  {
+   "identity": "ANC1u9sY36q3mi2MyVhtz71un8yLgTsFBUuyLcSPzKsk",
+   "vote": "ANCVpxEySGWWLqqkVKw2xWYDE9UP4fmZWMCBr5t96jch",
+   "stake": 739786117117887,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 696
+  },
+  {
+   "identity": "HM19KBHDJy93DYEJv4iFayMmCbJ1QVAk2EDG6XDgmnJS",
+   "vote": "HMV14UAuULSwqmZhsKHzaVkYAd94iWpEeURgbUegfQLc",
+   "stake": 731615839206025,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 708
+  },
+  {
+   "identity": "7EzbSahSfSjeRexHcNDLDpzHBAGBLjLKtjbmuoQnEtjE",
+   "vote": "2HQ5YHuw8cR1erRYZmemDmQVpfEMCjAvwU7V4fgdemJB",
+   "stake": 695694828364827,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 720
+  },
+  {
+   "identity": "3cZSHGfNdaULpFAvGbWbxpVwzXB4gHdk8NFucPNR5pgA",
+   "vote": "HJmfKJjKiyuuxFUuXgecgD5gdD312apCpHwZt6ETuRMU",
+   "stake": 663989864231537,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 680
+  },
+  {
+   "identity": "XkCriyrNwS3G4rzAXtG5B1nnvb5Ka1JtCku93VqeKAr",
+   "vote": "beefKGBWeSpHzYBHZXwp5So7wdQGX6mu4ZHCsH3uTar",
+   "stake": 661009955178993,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 632
+  },
+  {
+   "identity": "4SsMncJdtKiUcDtukkX15mqei7WiuQ9yvRtQrQW4reWC",
+   "vote": "5s3vajJvaAbabQvxFdiMfg14y23b2jvK6K2Mw4PYcYK",
+   "stake": 649246990042085,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 624
+  },
+  {
+   "identity": "BeaCHioStqCEFDFxKwAEzyrUPYxqnBPhJ98gDKeEiTPb",
+   "vote": "BeachiopjxQxL7CaHNSZsynApiZCKx9QFVtcWNz3jDBo",
+   "stake": 633154294652923,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 680
+  },
+  {
+   "identity": "Va1idLRtYEtVFJFsvz8vtt1uCJgea4Q1zi2Rh3eraJh",
+   "vote": "Va1idkzkB6LEmVFmxWbWU8Ao9qehC62Tjmf68L3uYKj",
+   "stake": 630715684758891,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 652
+  },
+  {
+   "identity": "Frog1Fks1AVN8ywFH3HTFeYojq6LQqoEPzgQFx2Kz5Ch",
+   "vote": "Pond1QyT1sQtiru3fi9G5LGaLRGeUpJKR1a2gdbq2u4",
+   "stake": 615211451506163,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 636
+  },
+  {
+   "identity": "2Wf9V9rPeVRUTfmWdPedCJuWVr6MFfyLuigEq42DuMDc",
+   "vote": "528hi3StRe7uGjt99d35myh95JPc2MqBEHTPYcEhqMg5",
+   "stake": 613956481528359,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 472
+  },
+  {
+   "identity": "STKEsvUSpD38eDxkAJN6cENMYfjVxieajVpmVVkgd1t",
+   "vote": "oRAnGeU5h8h2UkvbfnE5cjXnnAa4rBoaxmS4kbFymSe",
+   "stake": 606156960094942,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 632
+  },
+  {
+   "identity": "LeDbQ99QT342j9S5YdyXLrsq2Gu3T3dMGajExdAuE3V",
+   "vote": "CpfvLiiPALdzZTP3fUrALg2TXwEDSAknRh1sn5JCt9Sr",
+   "stake": 597228938926055,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 568
+  },
+  {
+   "identity": "bkpk9KVsDRfrArzzmkJ9mPEvbXfQxczzQYR3QMGiR8Z",
+   "vote": "bkpkQKgJMQXqwZL5dRX9LMwnsz9zkZZqCtqWfnBcwDx",
+   "stake": 590028123552029,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 512
+  },
+  {
+   "identity": "7CR3Jq4ny2tsr3DX3DvyjoU8TYs776MGkU6nLMWjAqCT",
+   "vote": "EcLPNfLFgCkbcTuvdeQ85pnQMgAfBDqi2dkoNVPrSyr5",
+   "stake": 587933116136690,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 532
+  },
+  {
+   "identity": "mineL1YNwcRnxN93B2sX6q22R11WfRqxnY4NBV8KfFY",
+   "vote": "6q1VNp8Vy2Go12vb8CwbjUqqj2SXr2JYftJRWs71sW23",
+   "stake": 581382291441746,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 660
+  },
+  {
+   "identity": "EdFUcP2f6j9iBg5BqsgJn3WDr1JieiKCo41hZ5Zrsk6w",
+   "vote": "7tKWFaaLi2FJSqukHxUrnXph8M3ynrqn3kEkKPpgcNHZ",
+   "stake": 557163564353892,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 476
+  },
+  {
+   "identity": "GREEDkgav1ox1jYyd9Anv6exLqKV2vYnxMw5prGwmNKc",
+   "vote": "GREEDkpTvpKzcGvBu9qd36yk6BfjTWPShB67gLWuixMv",
+   "stake": 551315288050172,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 592
+  },
+  {
+   "identity": "2mMGsb5uy1Q4Dvezr8HK2E8SJoChcb2X7b61tJPaVHHd",
+   "vote": "CAf8jfgqhia5VNrEF4A7Y9VLD3numMq9DVSceq7cPhNY",
+   "stake": 548951674712262,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 572
+  },
+  {
+   "identity": "2Df1aLCRYi3J1X24GXmASL4hjrZLHnvEF32KFWGJfR9E",
+   "vote": "xBLpiTwufjcuFCjbk4aCmFy7HUY5D9xy8L1EX2rBwmC",
+   "stake": 543302740393332,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 556
+  },
+  {
+   "identity": "ALp2GdA1eJV8vZHMHazCtTxNXe3BLUSco9LDASgjDs8R",
+   "vote": "4tuMshQNpAFpy1YtEHnSsE5EPN1mAT8FevWvn2UPJHNM",
+   "stake": 537610140827325,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 412
+  },
+  {
+   "identity": "FLwV8tm3pL8pZj6d927VASzPrgW51Gf4nRJuTewrfega",
+   "vote": "HHLMTHR9YoyDNsWKVJBT5AKrX86iQjkiKRFRrnaFubgq",
+   "stake": 533547590843649,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 476
+  },
+  {
+   "identity": "G9vCpJUUSpEm4zPwzSNpDmZ8MGwLEbiSLV59EBzCGvzM",
+   "vote": "8UHnwrLihP4q1fZjAYGCZdGgtAkCaFiDLXa33r7niRjD",
+   "stake": 532035094706808,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 524
+  },
+  {
+   "identity": "EJsJx7Smt3jBheNF2ReTxq3HXh9Aczt6PHK12B5tkJk8",
+   "vote": "FpTQXdt7NjYsJWXaE9UgG2yPUshoFiW3nzXbXKz1CjKh",
+   "stake": 521346382771734,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 472
+  },
+  {
+   "identity": "2X5yarNUWGyyiJDtRoPATvJYeNecvWG7zCkBrY2J1to1",
+   "vote": "J1to1yufRnoWn81KYg1XkTWzmKjnYSnmE2VY8DGUJ9Qv",
+   "stake": 519751860654647,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 548
+  },
+  {
+   "identity": "RNXnAJV1DeBt6Lytjz4wYzvS3d6bhsfidS5Np4ovwZz",
+   "vote": "RNXpSdqrJL6eoLrbW69Q9qsFviEwRpfFfk3HiRRRohq",
+   "stake": 516586375856147,
+   "delinquent": false,
+   "client": "Firedancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 484
+  },
+  {
+   "identity": "4VRs6A9zBRXz6MLcmQGsBiSoWE2JjHrmw7LintC3T4Nv",
+   "vote": "GMeW3doRSeroW6e7gEMLb2Ne8MfmeLzKSBs4XcWtkdBP",
+   "stake": 510344145021344,
+   "delinquent": false,
+   "client": "Firedancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 516
+  },
+  {
+   "identity": "fishfishrD9BwrQQiAcG6YeYZVUYVJf3tb9QGQPMJqF",
+   "vote": "7VGU4ZwR1e1AFekqbqv2gvjeg47e1PwMPm4BfLt6rxNk",
+   "stake": 507287498836008,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 412
+  },
+  {
+   "identity": "Cogent51kHgGLHr7zpkpRjGYFXM57LgjHjDdqXd4ypdA",
+   "vote": "CogentC52e7kktFfWHwsqSmr8LiS1yAtfqhHcftCPcBJ",
+   "stake": 503300053821293,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 384
+  },
+  {
+   "identity": "VQwCCSfW3o5NDx7n5FBr9SoYiLXVgetstHvaWBvv2YH",
+   "vote": "6XtfZoG7P9Hjmecg4Da8pqd9A4TzU4QynbwY94Z1ZLcy",
+   "stake": 499787667717987,
+   "delinquent": false,
+   "client": "Firedancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 492
+  },
+  {
+   "identity": "3YVoK8UN62dyiPZnGBzBTkGdwsVmmK1MpRoLcxNRs9BE",
+   "vote": "FRTcwF2LHHLV2VxKB9nzNpqyBXjpKvkEs5aRuMXrrk8X",
+   "stake": 496118627683777,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 424
+  },
+  {
+   "identity": "7tqeaFKsg2K9xKnQWe61w71AtCZVMQvG4hbFAiFAngYw",
+   "vote": "4CjWMmjGtRAZH6unY8EAzDYHWKUoPKqkZoFNrgxSGnyc",
+   "stake": 488299361466803,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 424
+  },
+  {
+   "identity": "Cu9Ls6dsTL6cxFHZdStHwVSh1uy2ynXz8qPJMS5FRq86",
+   "vote": "5iJDEVRi1nMLwKAWhYbEokZnvBAe15rgFaHGkggVEP9z",
+   "stake": 486295530017865,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 492
+  },
+  {
+   "identity": "4k6wgP5WPBKQpsFGtzuXNrjcTE2fKWLj17nDvFeG5zSF",
+   "vote": "8zuMRTXThoPTTPLLvaiKiJshLLCqGMt9BdRjjCL19xBc",
+   "stake": 475558508678606,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 312
+  },
+  {
+   "identity": "HW4zorvt6xDwhU36RqjcWNwU8YMj9tiqnAafBKW4cqV",
+   "vote": "4jEHuQZTNTRYAhxRYEjV3HJ1b4wqdQjnBRdPzFWzkCft",
+   "stake": 474456595461584,
+   "delinquent": false,
+   "client": "Firedancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 392
+  },
+  {
+   "identity": "hy1oMaD3ViyJ8i6w1xjP79zAWBBaRd1zWdTW8zYXnwu",
+   "vote": "hy1oJTV2kX9acsqpwk7hbteqXFw9VDbWvbxoamFEufW",
+   "stake": 471424906309968,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 408
+  },
+  {
+   "identity": "HnrXmm65CyvmSyvwEMjmyHzYjAyhHiHEJ7s1pf6BxTYA",
+   "vote": "2WUCao1mdk4e7KbXUga6hQr2D9piZ1SFYK4KQt8Mdvzv",
+   "stake": 467893081945899,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 392
+  },
+  {
+   "identity": "4SNKY7GCp7ohY4AawND5Cc2D71sWMWN3Uifo854yvtks",
+   "vote": "HeQ9mBd2RA3JLkBUBcyJJTGhcFtRPeQuQKY2qx1VU3RA",
+   "stake": 450000012302570,
+   "delinquent": false,
+   "client": "Firedancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 412
+  },
+  {
+   "identity": "32ke3uf1qL3xLqbwzU76T2sbG2XaJrGuSCNdUnien3zm",
+   "vote": "AX6v1G9GH7FNcoX6ogNyoD2fZiLaNps7heL9RrGUYGC8",
+   "stake": 428539175378442,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 444
+  },
+  {
+   "identity": "LA1NEzryoih6CQW3gwQqJQffK2mKgnXcjSQZSRpM3wc",
+   "vote": "GE6atKoWiQ2pt3zL7N13pjNHjdLVys8LinG8qeJLcAiL",
+   "stake": 417970328538961,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 432
+  },
+  {
+   "identity": "RBFiUqjYuy4mupzZaU96ctXJBy23sRBRsL3KivDAsFM",
+   "vote": "RBFvvcGPBpgkBYmJGsphoDQJD8sszSuorM7TorWm12Y",
+   "stake": 415132729766027,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 448
+  },
+  {
+   "identity": "Bi9kKNxfW2XqgCmLcuhHt6A3x55GuAGmrVZxRHLyVoQ4",
+   "vote": "ADoJoWDcMS7HVW8cMu5GRvy3FBm3RG5bEWQi74YRnwKt",
+   "stake": 411091688460604,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 356
+  },
+  {
+   "identity": "EUDis6LJeJzDHTEBgfHGQyjHp63XZkGkx4E69xunC2Ej",
+   "vote": "steakxfubt37xYdvuXz7BV5Uhhhk1FyJx9zGHfDcTVr",
+   "stake": 402356226786427,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 412
+  },
+  {
+   "identity": "BbCQMWnfxo4eKTTTmBKuKYkbCDNf3ZpxtvwyN71ivCi4",
+   "vote": "6XPxXV2VZMNqSquPUF3bjnGt5u8R884A9UVYS6jv8g5f",
+   "stake": 399259443088534,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 408
+  },
+  {
+   "identity": "3RXKQBRv7xKTQeNdLSPhCiD4QcUfxEQ12rtgUkMf5LnS",
+   "vote": "BxFf75Vtzro2Hy3coFHKxFMZo5au8W7J8BmLC3gCMotU",
+   "stake": 398661617802962,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 416
+  },
+  {
+   "identity": "9iFPQbP1jGkj67sXg6YLLGRUBVEDMcapdS6jmCZSnz8R",
+   "vote": "7kqphS3JdqYsp4kGvLZAi4siKRZFiU4qBrKZfkGdht4N",
+   "stake": 396012980774262,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 408
+  },
+  {
+   "identity": "CVvaeDPR2o7P1eawG5c9TPFLzSXAewwPovPmREaEL4Cm",
+   "vote": "DMSuZcavta8L1w1tSiH8bALWjz6Q6KSryGG6m6Az4Qt5",
+   "stake": 390467283494590,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 448
+  },
+  {
+   "identity": "DF1owXYZ1fk5vWyHJ8s1cJeAozgkqsi1JUVqvktqrpwd",
+   "vote": "A9mzXPB6sRNUXcDF9L91oV1EvmeYQe7WzSfEL7fBdysh",
+   "stake": 389850613276480,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 376
+  },
+  {
+   "identity": "WUNoB9YQXmXXRcJsjY1G8PfVag5aAfnyGmFd6YwJVwp",
+   "vote": "BDn3HiXMTym7ZQofWFxDb7ZGQX6GomQzJYKfytTAqd5g",
+   "stake": 386095520596014,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 340
+  },
+  {
+   "identity": "23SUe5fzmLws1M58AnGnvnUBRUKJmzCpnFQwv4M4b9Er",
+   "vote": "4PsiLMyoUQ7QRn1FFiFCvej4hsUTFzfvJnyN4bj1tmSN",
+   "stake": 380939798889429,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 328
+  },
+  {
+   "identity": "Certusm1sa411sMpV9FPqU5dXAYhmmhygvxJ23S6hJ24",
+   "vote": "CertusDeBmqN8ZawdkxK5kFGMwBXdudvWHYwtNgNhvLu",
+   "stake": 376629272563140,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 392
+  },
+  {
+   "identity": "4NwpynvugnHvyLzr5h9Y7mw44saGJXDNoBjm6wgMiYDr",
+   "vote": "DgPHEon4S2ArZ5m1NaNNyCbhr8Gh2fsMN7vAjx71GGq9",
+   "stake": 376531924721609,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 472
+  },
+  {
+   "identity": "AurseT3W3tk1dATBWAXtWR6oubBgECqintfcvP74teU3",
+   "vote": "AursLzSguMy6DM3Vb6aoa4teC74hnujxq8LvN5Up4hHJ",
+   "stake": 373290276324166,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 468
+  },
+  {
+   "identity": "7GkMBmtrTZz8QbjSe1sXvAUtz7Pp42SQxfT5ymmJD4We",
+   "vote": "J2nUHEAgZFRyuJbFjdqPrAa9gyWDuc7hErtDQHPhsYRp",
+   "stake": 363517786710604,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 368
+  },
+  {
+   "identity": "5d9Mdc2Zk8as8GL1AxQeXxv5htBBvC5bjfmsXC7UUWwG",
+   "vote": "47hzyKgoz9Fu1HP4mR48tvAFj7akCFZKGzZqWo32sNqG",
+   "stake": 361490010402389,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 360
+  },
+  {
+   "identity": "juigBT2qetpYpf1iwgjaiWTjryKkY3uUTVAnRFKkqY6",
+   "vote": "juicQdAnksqZ5Yb8NQwCLjLWhykvXGktxnQCDvMe6Nx",
+   "stake": 359149782217146,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 376
+  },
+  {
+   "identity": "A4hyMd3FyvUJSRafDUSwtLLaQcxRP4r1BRC9w2AJ1to2",
+   "vote": "J1to2NAwajc8hD6E6kujdQiPn1Bbt2mGKKZLY9kSQKdB",
+   "stake": 354370904523977,
+   "delinquent": false,
+   "client": "FireBAM",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 296
+  },
+  {
+   "identity": "9WzPWqKSqbE5PT9hMsmCDFjzpurAXEYCE9qrpVWp28KR",
+   "vote": "AGJmwvFJmJqHsSCu4EPsZ4W5N2hpwWC3FNQJc8ZFJBsy",
+   "stake": 352767061399342,
+   "delinquent": false,
+   "client": "Firedancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 332
+  },
+  {
+   "identity": "74MzXStH8pLPZjbNxZKdtDGJehur2JgjZNeTPqSn37nE",
+   "vote": "8VXS59E5BGN2w9zpKy6b7qMvdet6X6xF8AWwMNQNFkE2",
+   "stake": 352202738045821,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 352
+  },
+  {
+   "identity": "9xcXe4WRAfbVoVgQmFD5xgFHioL9dD7c74pQZ7PeczT",
+   "vote": "AVD61fbwxDGuLGCanPWQPxRjdqYk3icssz5u7JH8kbta",
+   "stake": 351476994224152,
+   "delinquent": false,
+   "client": "Raiku",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 348
+  },
+  {
+   "identity": "2Mob8FJkb8chZY5pTBMpKfLwgZAQHE5i9jAC5zbASitD",
+   "vote": "3Gzmaw7NVNeaTzYBySzSwsU8ctTNy2DBRkxi46fumw3X",
+   "stake": 350609852378857,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 328
+  },
+  {
+   "identity": "Diman2GphWLwECE3swjrAEAJniezpYLxK1edUydiDZau",
+   "vote": "voteRnv6PBzmiGP8NicWtQiqEJTwKKq2SxtqtdLUJjd",
+   "stake": 345790724107780,
+   "delinquent": false,
+   "client": "Unknown(40677)",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 348
+  },
+  {
+   "identity": "mds4GEuiSgQRqveGyktWpETBFCb4AS2wDnhqwLHcT6Z",
+   "vote": "GLCrZmxWYcrGMA5uRa8mmNnQurGBL2p9zrKk9DKugSZX",
+   "stake": 342111907528528,
+   "delinquent": false,
+   "client": "Agave",
+   "version": "4.4.0-beta.1",
+   "featureSet": 3993424257,
+   "leaderSlots": 340
+  },
+  {
+   "identity": "BEsnodYCgiGB6MjzxGJoVM6iNhyM3ndEfNuSd7fRHUTG",
+   "vote": "oPaLTmyvoUhW26QCMwLA5JNUeBYy72PDpFoXQF8SeX4",
+   "stake": 338322541764389,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 360
+  },
+  {
+   "identity": "mint13XHZSSxtgHuTSM9qPDEJSbWktpmpM4CZxeLB8f",
+   "vote": "mintrNtxN3PhAB45Pt41XqyKghTTpqcoBkQTZqh96iR",
+   "stake": 334886843257311,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 392
+  },
+  {
+   "identity": "FyrwfMaomErzqrFUXMjCJ7mA4u81DsiDdrzC3MJD6d4j",
+   "vote": "1Dadio3JRvpEjY6iSmXmhbGy9RiU8Nxh2GmoVbNusbE",
+   "stake": 331336425530248,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 348
+  },
+  {
+   "identity": "HcZvwZ83PfjrQDiq3GLHxisTs17aGURs6bJ2LwtmL4qv",
+   "vote": "JnGGar3XbAN6J3cKGRbNajCuhqnc9XWrk6WWr6hDmuM",
+   "stake": 330439831565783,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 340
+  },
+  {
+   "identity": "D1Vbgkrhp1TmLGhfUD1urRMx5Ntz9AqQpgdX8DR8QMC1",
+   "vote": "gfR2VCrsVcm1gF2teasQpP6BdX99mVVFhEQck3UhTNC",
+   "stake": 327588585453089,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 300
+  },
+  {
+   "identity": "5VrW7YNBccVnhnZVmooCePdLFcs2UjfxRT3hoY9mN8Ec",
+   "vote": "78QvBqfkWbDbyo1DMb2ku42r1UfxecwptjbPWJqxkX6E",
+   "stake": 320686214398232,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 336
+  },
+  {
+   "identity": "D2RV1q6FgePVVjrMa7AMzVbvvAeg5oS7TAV7qdNKSDsX",
+   "vote": "CCxSNvJogH6LWyoiEbG7JfcWybw2FqqCExs5GuemChGr",
+   "stake": 312784749124854,
+   "delinquent": false,
+   "client": "Firedancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 324
+  },
+  {
+   "identity": "5tfcGyf3NQFcufDigvbRt9kWoVN2KPEkBRUY3UaC3Zwm",
+   "vote": "46mwXQRqWwj8Jp4ZR2tL1Yr3Snm99xDfKUs5jz7hLmEK",
+   "stake": 310401365689219,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 324
+  },
+  {
+   "identity": "PuRposE4utktenW49N8DCtVzdVEwYrmsrroboEUram4",
+   "vote": "purPoSEsip98bLpbh4K7GKZYSdRmEJJKdxSvL6sg3uX",
+   "stake": 308898504728194,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 292
+  },
+  {
+   "identity": "gUvo3g5LfH4Pd8qnG7T6MPEFa5bPr8LhDdxDahwYqis",
+   "vote": "685Njwvpn3t5a8cAfVj7R65AfCJ6XoBpca9qy15XFiTd",
+   "stake": 308697978592385,
+   "delinquent": false,
+   "client": "Rakurai",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 308
+  },
+  {
+   "identity": "DidkDYa64DEMx97P4iahDwsWtgUTnLiEhHSMUbQGihi5",
+   "vote": "DyjoG2US2XiVvL1MVzL2wjS5jCTmvo6aNwvqJfaPNx9u",
+   "stake": 308440459025809,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 332
+  },
+  {
+   "identity": "4XspXDcJy3DWZsVdaXrt8pE1xhcLpXDKkhj9XyjmWWNy",
+   "vote": "9sWYTuuR4s12Q4SuSfo5CfWaFggQwA6Z8pf8dWowN5rk",
+   "stake": 308358147873133,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 392
+  },
+  {
+   "identity": "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY",
+   "vote": "punK4RDD3pFbcum79ACHatYPLLE1hr5UNnQVUGNfeyP",
+   "stake": 303669652594504,
+   "delinquent": false,
+   "client": "FireBAM",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 236
+  },
+  {
+   "identity": "PRGNnb8DxVcP2WjSHfVRGgc8SkA5u6dbMwoTVV1BGKN",
+   "vote": "VotESBSkLKU8vebS6wTR2rzWWJsLc6YThYS6tebPxXq",
+   "stake": 303660232456138,
+   "delinquent": false,
+   "client": "FireBAM",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 308
+  },
+  {
+   "identity": "8vk6QpG93JSaQCSgnycBsv5qmfQBk4qC9FjNA35E5JhU",
+   "vote": "2ZP7DPXW6gwMRSY9PSXQ75fZLrk4gKWKnT85pK5sVPa5",
+   "stake": 302065116803826,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 280
+  },
+  {
+   "identity": "EfPYQ4BUMiKa6736qqrtnCBGkUSRDGSr1WvtyUgWHuyp",
+   "vote": "6x9uLhegx488uA3dPoq8DWHS488K4FsEqeeMXeW7kQPx",
+   "stake": 302019441793994,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 292
+  },
+  {
+   "identity": "HT41udB8mLZZf7tev9tUoHYJ41TP8GWZ6zFMbjiviXk5",
+   "vote": "FrtCZRajYfrdoZarPxCsUB6f66ga5DPSXGz4F7VKyfKP",
+   "stake": 301389360584077,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 316
+  },
+  {
+   "identity": "AoB1wTR7RYHMS6dEDzQ7UvHPNkNoDXbMjBhPBG5Vbu8v",
+   "vote": "538iREQi6JxNqDHsMJRAJJ1ZqDQ2tvYuS8tfhtb7BaGu",
+   "stake": 301049462724559,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 308
+  },
+  {
+   "identity": "9AW87WqARQonyJYhx1G25fKfvjURFYVmHs79z1NUXDPD",
+   "vote": "2NXwP6K1ityVnvK575SY7KdoEkvPHrfcRLY7BJRBk4ht",
+   "stake": 300639904445890,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 312
+  },
+  {
+   "identity": "7S22CYpfBRV1p8cTqWXFD4HwfqfNx3hAhfpdj8E2bYvJ",
+   "vote": "Dkj8XzgvjDuZzvAwiWYExt3rwLPqtVEQTpgK49tRirb5",
+   "stake": 300000997717120,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 308
+  },
+  {
+   "identity": "AHZxzLeRGRfNVFrCmP58iJgEwbcXyZeAkZ32CmbfEmYR",
+   "vote": "AF84u2vQvSyuSurDqJNSgLGKA8viTrHmeYwjKzisC6w1",
+   "stake": 299997996434260,
+   "delinquent": false,
+   "client": "Firedancer",
+   "version": "0.1.1",
+   "featureSet": 3069991853,
+   "leaderSlots": 268
+  },
+  {
+   "identity": "Raydiumm3w3a4nGanDBLkUtKxMFooSPmeg9qwUKMsMc",
+   "vote": "RaydiumNAMK9EbDEP5wab8XiRkHNz1897SBsGUKotrV",
+   "stake": 295567713325072,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 288
+  },
+  {
+   "identity": "9gFxqsXbFyrKXUkqpAatonn47uYZ7sEZSnMxhzQoXrUJ",
+   "vote": "48oxpSHQkM4sdXUY9NQ8KnEtebzZbyk8uUT7JRdVQNuf",
+   "stake": 295535051094070,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 244
+  },
+  {
+   "identity": "adramSYKBv1yHoZTub4kepcmF5LybPxwyJcsz4fpfi7",
+   "vote": "adraBKLNY3DL3pg6SJRDYiMA8BsznaWpUdE42X41gbP",
+   "stake": 294729179783798,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 284
+  },
+  {
+   "identity": "2dfgsiSaZ51QYPsECMYMG247PXxyKdwkV9wTHoQb8YEC",
+   "vote": "NDf9Pv6TAxTDPR6ud3djsd2Ux1WS2m2YfTw4qEmSnQH",
+   "stake": 292848982743515,
+   "delinquent": false,
+   "client": "Rakurai",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 204
+  },
+  {
+   "identity": "AfZTWYoFQbzqCMmUBTD7XwxFvjob1FVyCvkaXRryxtKc",
+   "vote": "86Sw9R6ynPmXnHfwUWinXtq1QoF2KHesfQQyZG5r8sXo",
+   "stake": 292583553845899,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 280
+  },
+  {
+   "identity": "radM7PKUpZwJ9bYPAJ7V8FXHeUmH1zim6iaXUKkftP9",
+   "vote": "radYEig9KGrMTMWbWRFV7LStotQbnLgPaEFHVDsudQz",
+   "stake": 290176924827389,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 312
+  },
+  {
+   "identity": "2oHUYyW2PU9VJh4XBs5TbGgzdernunvGqyKth3kxW4ns",
+   "vote": "6tgtejPHUHR1pECzXqQT8EHZqnKCWZFSqdZXDyBaKe3b",
+   "stake": 285745686842108,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 220
+  },
+  {
+   "identity": "FACb6bbTDRBHCK999V8ox8jga5JBnt1r3vvzmAYAMv2o",
+   "vote": "FACqsS19VScz8oo2YhdMg35EsAy6xsCZ9Y58eJXGv8QJ",
+   "stake": 284182644826226,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 244
+  },
+  {
+   "identity": "7RtC1QgiNVLANGRTEKxASz4bRiMYyf2hUVLs1XGuJ6Gr",
+   "vote": "HjQugFHAUm7XbaZhmjnGioNUccdMUnFmwFTJgepm5q3n",
+   "stake": 282574561523829,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 308
+  },
+  {
+   "identity": "EQhTjikb1L2jvxsCaSW2o2TuRXh4Do6HzBEWCxpeM44W",
+   "vote": "Eajfs6oXGGkvjYsxkQZZJcDCLLkUajaHizfgg2xTsqyd",
+   "stake": 279238272769139,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 240
+  },
+  {
+   "identity": "SLNDCSGTEsA6KHpgR32MBt9UAurZnVSJGUtW2tRpdU2",
+   "vote": "SLNDoinxE7cCgE5ga6FJZ19F4FiUaEmtzSatbY6cjWy",
+   "stake": 277888744745117,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 288
+  },
+  {
+   "identity": "qZMH9GWnnBkx7aM1h98iKSv2Lz5N78nwNSocAxDQrbP",
+   "vote": "6JfBwvcz5QUKQJ37BMKTLrf968DDJBtwoZLw19aHwFtQ",
+   "stake": 277481793692420,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 280
+  },
+  {
+   "identity": "grptonHnt7YSmJokGK9TJJTBXDT8ca4LSWMHCCfzzPa",
+   "vote": "mnvkHm47ZmRKoSWuQZAfXLRiDPiKCq8PWkMWrp1Wwqe",
+   "stake": 276192723467049,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 256
+  },
+  {
+   "identity": "FNTPSUuRpDoJx1hwFmB5ncNLLMX42aE83P4hsFYUfNRL",
+   "vote": "A9jRCzF4uxLVnVs8ihQECtZ5ZMbHUvoZusddxTQ1iRQc",
+   "stake": 275744122226224,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 304
+  },
+  {
+   "identity": "2mDrrmhSzpSyaF12izGk8hnFjtKCGeCFPwQHpRiJDby2",
+   "vote": "9wQQnnnkk5b5GkQWTW9L4kEA3CjFv6CqsQd5gt6tRsHK",
+   "stake": 275115368768214,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 256
+  },
+  {
+   "identity": "Tri1F8B6YtjkBztGCwBNSLEZib1EAqMUEUM7dTT7ZG3",
+   "vote": "tri1cHBy47fPyhCvrCf6FnR7Mz6XdSoSBah2FsZVQeT",
+   "stake": 274761457832775,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 320
+  },
+  {
+   "identity": "BULKzVM41WAyQZfL34vxqdsYwEYH9mJAJyzRS4xraf8b",
+   "vote": "BULKEEKf9Hjy4nwCthjzheEk4joH23LLXttAHjqEZmB2",
+   "stake": 272026369655991,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 284
+  },
+  {
+   "identity": "DP9SwUE9Wi4NijWxgKDmmVsqGtQ597AKKmDBwzpt8GgZ",
+   "vote": "2Bgb4T6Zdy9iy2S3xxDRpwdgQHpitoDnZt5aBnCwv3Ez",
+   "stake": 267272859466991,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 284
+  },
+  {
+   "identity": "3KiDz3wuZrJfsgKt5KEvRb1WPpbci1PWj78aPVF5ei3F",
+   "vote": "2s2K5hcECd67832EzrVMCiCtbb54CHsqXtewuwwNVqtA",
+   "stake": 266585769236245,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 300
+  },
+  {
+   "identity": "UPSCQNqdbiaqrQou9X9y8mr43ZHzvoNpKC26Mo7GubF",
+   "vote": "A9V5e8ZLwQ2ArKZnCcrmz9Q92pDCkUXE5tqJmJDZkCMo",
+   "stake": 265463306685257,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 260
+  },
+  {
+   "identity": "ALPHA6rdHZkx1om79xp47vX1iZXcbM3qfEwLyttZ1T7R",
+   "vote": "ALPHAthakWdoUxXJP6z8cjCkwrufcARXqi34EjShtFVT",
+   "stake": 265297033256651,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 240
+  },
+  {
+   "identity": "gridqZmeBcsUKT2Mv4M9YFHFN3tVLFb2TCtTcLD1cAd",
+   "vote": "gridZ5cMHjWGktAQt6o36NtF7XSv19nJBrW83zmo7BM",
+   "stake": 262993833029189,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 300
+  },
+  {
+   "identity": "3WDh9HgusCujDmXCVhophLrHvoKHQd1Sd4uFHz1Awo35",
+   "vote": "9G19HT8xqceG7mKQVSrTRS3DGnGqDHErPyQEaEfyWEuW",
+   "stake": 262733455363382,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 232
+  },
+  {
+   "identity": "43Am3PKFeo9cACpqYL5Sk95rpVdxLw3Mc22PqRqZXEW2",
+   "vote": "EBVj3uwSKZpqEb1K267JaPxDQhULVqCy6hYeQqjsPh81",
+   "stake": 262658691773518,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 216
+  },
+  {
+   "identity": "BGAjnivVWqLqByqCVT9dSyPUFicvyJrz7vRvrvui3SEk",
+   "vote": "8LMatbjxgUW1S7CyuBhGk89BC9vhRzCRLwtXbyJru4Qi",
+   "stake": 261141467712182,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 256
+  },
+  {
+   "identity": "BoNKmNCGvoHS4CkKvYRnF21iEpUP827pZjhFGdA4t5as",
+   "vote": "BoNKvwirX136zCjcnayEM4W82vn13RKkjm1Sy3UPBdim",
+   "stake": 260258129526050,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 252
+  },
+  {
+   "identity": "mD1afZhSisoXfJLT8nYwSFANqjr1KPoDUEpYTEfFX1e",
+   "vote": "4PL2ZFoZJHgkbZ54US4qNC58X69Fa1FKtY4CaVKeuQPg",
+   "stake": 259950220097160,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 232
+  },
+  {
+   "identity": "soLStaCk5TiGCpeLKa9Fvv6f5JQGMa6S3uhLh826e9N",
+   "vote": "soLStAckuvkHtNzHF1cwmeSRG1FzVxKxwsdWZ1yrHrz",
+   "stake": 259148846426281,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.5.0-alpha.2",
+   "featureSet": 3993424257,
+   "leaderSlots": 240
+  },
+  {
+   "identity": "G8kUFxhR7eSmSyAtVYEAyhvkBKdR49n7d8BKqpBo55kJ",
+   "vote": "8n9ZTVwH2ZMTmCNmAgT54TUUJbLRLCDDy77nBpVzGEcE",
+   "stake": 257793436453433,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 288
+  },
+  {
+   "identity": "ABC1U4cf9DZMwqy8ktEr4WJj8VHmVBQibbC57gEJthwY",
+   "vote": "abc1zP7ihWsgQW8z5YmfQNqMckJE5Dfx8fwUNMNVNkY",
+   "stake": 256898353465569,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 252
+  },
+  {
+   "identity": "icex1C6pnZxznQWiHZZANjGU8nZ8kNquFnjyY7XXrXE",
+   "vote": "votem3UdGx5xWFbY9EFbyZ1X2pBuswfR5yd2oB3JAaj",
+   "stake": 252544869048772,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 296
+  },
+  {
+   "identity": "9gMjDS6WPahWXBboJVoZA5DUVU4qTUdQY6acHbpQ38t6",
+   "vote": "EhFqitfsRp2iyL8dhm94a6APQvd5mT9AV7BTtGTCMSBM",
+   "stake": 250297994743335,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 216
+  },
+  {
+   "identity": "ETcW7iuVraMKLMJayNCCsr9bLvKrJPDczy1CMVMPmXTc",
+   "vote": "C616NHpqpaiYpqVAv619QL73vEqKJs1mjsJLtAuCzMX6",
+   "stake": 249993412355600,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 220
+  },
+  {
+   "identity": "7VZM7YHcX73TpGoXDeBu61g4QKC86GwAEnew8dA7Y2xn",
+   "vote": "HMk1qny4fvMnajErxjXG5kT89JKV4cx1PKa9zhQBF9ib",
+   "stake": 244807008373999,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 224
+  },
+  {
+   "identity": "2gDeeRa3mwPPtw1CMWPkEhRWo9v5izNBBfEXanr8uibX",
+   "vote": "3Xn3K5zeTzs4sURj1PCRaF6rvFg2hPgT49B4SiM998f7",
+   "stake": 243665827483205,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 276
+  },
+  {
+   "identity": "8NpDWRcKHkBjn8mbHMYgDm2Z2DRvXXuDiSScPsGSdSgr",
+   "vote": "7qTwituXJJ5dtUwBZXjMNgtAyXJbx3X8V4B9gXFRjK9d",
+   "stake": 243365041088708,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 276
+  },
+  {
+   "identity": "5MAGJ3zShtXMMVXjZRoFqtFF7XhP8iLSyZrxdL7KpjcB",
+   "vote": "9J7aJMntadsYJP7ZAyXgpRsXqrZQfRMob3pfkiB4sv8a",
+   "stake": 238941589244484,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 280
+  },
+  {
+   "identity": "sbidYi7fbif6qNsMpwBKvyF5DKcLCbjaegpADsKqNux",
+   "vote": "SBLZib4npE7svxFA7AsD3ytdQAfYNb39c8zsU82AA2E",
+   "stake": 236328662318014,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 256
+  },
+  {
+   "identity": "Fudp7uPDYNYQRxoq1Q4JiwJnzyxhVz37bGqRki3PBzS",
+   "vote": "4QhNoG3PN1FXXFhAEA2QWdor6xjXvM9pjq6MXAUV8Zg2",
+   "stake": 235259080851169,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 216
+  },
+  {
+   "identity": "4b1onMDEasBh4BuPekQWijx3BYR64hAE1z2jJyeZUkck",
+   "vote": "6anBvYWGwkkZPAaPF6BmzF6LUPfP2HFVhQUAWckKH9LZ",
+   "stake": 234475725452187,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 300
+  },
+  {
+   "identity": "9GHvMeJ4ZWuAX6sDGscFL1TBMszx2EehnrcTVUy4MZJQ",
+   "vote": "GVYt3tbokX7mH4i86AA6Nh5hPiHEekercNZyNevviotL",
+   "stake": 234442507703116,
+   "delinquent": false,
+   "client": "NotInGossip",
+   "version": null,
+   "featureSet": null,
+   "leaderSlots": 268
+  },
+  {
+   "identity": "8BwBBt23a6v8HgNsFybpLFiBKLV8vWko2Vft3D2DxGvR",
+   "vote": "H2tJNyMHnRF6ahCQLQ1sSycM4FGchymuzyYzUqKEuydk",
+   "stake": 234277286365549,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 208
+  },
+  {
+   "identity": "vALigXFg9wnnhVHN16vNxHxXtAXiBv5QjAE6udoniBY",
+   "vote": "gaToR246dheK1DGAMEqxMdBJZwU4qFyt7DzhSwAHFWF",
+   "stake": 233409870721354,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 192
+  },
+  {
+   "identity": "anza1rXDVhy1NfVNtsbT3kSBh2jgB1BGZUKuUibSAJd",
+   "vote": "anza1Vgz2kcN9Qo6ECvf43v8RxBzQ7UpvxFoxJtLmGz",
+   "stake": 232467616033470,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 240
+  },
+  {
+   "identity": "AHNX2YiD8Sb36yLA7bjx1bNs4jqCdDt3KKrwMZJMVedb",
+   "vote": "55L7AV93xRmx5F7rX1GCfsHxfYWNu4bKsG6f8tG6dFRo",
+   "stake": 232061828051120,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 184
+  },
+  {
+   "identity": "simpRo1FrQYGa1moicfgnPDp6KyE38d4gYrZzhjXYJb",
+   "vote": "Simpj3KyRQmpRkXuBvCQFS7DBBG6vqw93SkZb9UD1hp",
+   "stake": 228557589865252,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 272
+  },
+  {
+   "identity": "UNrgBLmc8JT6A3dxXY9DWeHvDezt2DZQbhg1KPQfqEL",
+   "vote": "unRgBLTLNXdBmenHXNPAg3AMn3KWcV3Mk4eoZBmTrdk",
+   "stake": 227431186379488,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 192
+  },
+  {
+   "identity": "Pid6HQnMCFb9izqX9i7X6ePdUPieGmjHoPxC1Jfooix",
+   "vote": "PineDoC593nrX16W8ZLWfF5Evb6otv7fRfZMLjPAHe3",
+   "stake": 225636924256785,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 220
+  },
+  {
+   "identity": "DViARWAWKkxAzp4UCgbw5B9pLSrBY3PaztFErcwgVUKX",
+   "vote": "HeTyhZdUKswQoonJJTXqAnDN48ceyVAeFaKfYKayGPNS",
+   "stake": 225219860341592,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 228
+  },
+  {
+   "identity": "spcti6GQVvinbtHU9UAkbXhjTcBJaba1NVx4tmK4M5F",
+   "vote": "49DJjUX3cwFvaZD5rCAwubiz7qdRWDez9xmB381XdHru",
+   "stake": 225197784215462,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 216
+  },
+  {
+   "identity": "61QB1Evn9E3noQtpJm4auFYyHSXS5FPgqKtPgwJJfEQk",
+   "vote": "5iZ5PQPy5Z9XDnkfoWPi6nvUgtxWnRFwZ36WaftPuaVM",
+   "stake": 222056790854914,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 240
+  },
+  {
+   "identity": "4DraK9wUrMSpzbGjUbSWTHAhJimMyB49HyKhvfwe6e51",
+   "vote": "D9BcS9Fasxj7zNv3kP5rHErv7aFxihi5EBZo9xUqaHeh",
+   "stake": 221904328846241,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 168
+  },
+  {
+   "identity": "TREEir31FswHK7JZBS5oFQteS72dobi6inpmQha88dA",
+   "vote": "TREEvcfDjQPEghHbisphwrvstkxCQNRH3E3jyosGagK",
+   "stake": 221736747687616,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 228
+  },
+  {
+   "identity": "zeroT6PTAEjipvZuACTh1mbGCqTHgA6i1ped9DcuidX",
+   "vote": "5BAi9YGCipHq4ZcXuen5vagRQqRTVTRszXNqBZC6uBPZ",
+   "stake": 221656333777552,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 224
+  },
+  {
+   "identity": "73hojLdq1vZDSxeVQEqVFJ4iwLngdvEJPEpEHkSdv6BZ",
+   "vote": "Ehdn9LdjTAURQSMoDPERXLehtvzy7QD762wwPkzGT7RS",
+   "stake": 221641933693278,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 256
+  },
+  {
+   "identity": "DnQBmTJyLbBMgJYQLJDqJz25AJModNkyexL5LdVRGnG4",
+   "vote": "6AAeoHYMUQfSdFGqubUmWVAasFkzJEq47oKpHNNTZxLN",
+   "stake": 221546708316485,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 256
+  },
+  {
+   "identity": "NordEHiwa6wT5TCjdeWJzpsA7DSmWQPqfSS7m2b6cv3",
+   "vote": "NoRDTy8jpkpjPR7yxahVdoEUPngbojPhFU5jb8TtY4m",
+   "stake": 220392774572118,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 276
+  },
+  {
+   "identity": "BTGPbq4KuFENn4CKuaKGqkaDd3TJD3TEgtMjSrsZnMLb",
+   "vote": "DFQjGLCKVydxt8yysCGz54mCEWn9kfFiWGuJV9n1fgyP",
+   "stake": 219770968733311,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 228
+  },
+  {
+   "identity": "8W8v28d1fBZE1fkaaHbowJM4hGZGnVHWNK1NyhUsob6Z",
+   "vote": "MkyLHecSHN7TBdWgnh2J8KCsEHnsqqbVYSxtGmsshrk",
+   "stake": 219376253897380,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 220
+  },
+  {
+   "identity": "8pyp3vfVPRziYdAYEyqkwytdBbdVbQmHqfQAVDcRV3w",
+   "vote": "GB44NXtM7zGm6QnzQjzHZcRKSswkJbox8aJsKiXGbFJr",
+   "stake": 218777391010348,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 216
+  },
+  {
+   "identity": "FwnWx7x99rGwLmipzz8ii15NqcHkKRo2oS1Y7j6LivgZ",
+   "vote": "9f7dqiYNBZbgPesAnLeWnKCtxYHSfMg5x1EMZCJwVwG7",
+   "stake": 217923357872733,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 164
+  },
+  {
+   "identity": "BeSovDCzhEAfgwDyXBuhmCFKsu5WQ3PaX61GEfteNzXM",
+   "vote": "BeSov1og3sEYyH9JY3ap7QcQDvVX8f4sugfNPf9YLkcV",
+   "stake": 217465897124843,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 188
+  },
+  {
+   "identity": "GiYSnFRrXrmkJMC54A1j3K4xT6ZMfx1NSThEe5X2WpDe",
+   "vote": "DfpdmTsSCBPxCDwZwgBMfjjV8mF8xHkGRcXP8dJBVmrq",
+   "stake": 216308713127437,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 268
+  },
+  {
+   "identity": "mXv18ov8qCiQGs3ieoen981LdgZzYJjJak6reK6fpNC",
+   "vote": "Mxv1Ubm71XoUvxrN3qjN8ii6Bh5b43NuuKywsWx6ox2",
+   "stake": 214720494021026,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 220
+  },
+  {
+   "identity": "puffinQSvKFriPbyE5atyx1ptfnyytovbzxybr1jsyy",
+   "vote": "PUFFiNkUHF2DMfbKeUcYTSQckDDtkswfxZCDv5WQqwp",
+   "stake": 213259358018445,
+   "delinquent": false,
+   "client": "Firedancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 128
+  },
+  {
+   "identity": "AsMpvJ3DZ2Ydu1WTRMAyMH4QjSLiUG39rKzfzvtE1bWr",
+   "vote": "B1w6SZcyvjyp6zEyStcc8u9AxXAh2AbYvNzMmP9rRKE9",
+   "stake": 210740713835168,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 244
+  },
+  {
+   "identity": "idCE5k2BtTpwXdwAC7Var1enT9reut9fWECcxQP7LY7",
+   "vote": "Cer1umMkC6cvRGKKLP3QwxsdxsgxmC1EhqMhB1mqVvYZ",
+   "stake": 210118639994162,
+   "delinquent": false,
+   "client": "FireBAM",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 232
+  },
+  {
+   "identity": "rsbp8zMHbGCpLoRktmsjspYv77VcjxAzH1KxPCD9BiU",
+   "vote": "R4spmF6oFW6wMQHv9L3PCEKumkspN3nveQihWyDAdRy",
+   "stake": 209351602022456,
+   "delinquent": false,
+   "client": "Agave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 276
+  },
+  {
+   "identity": "2Gfd4mkMqDVNFXxT6xvCSYUVdFPbuJLT6bhVsezdaRwe",
+   "vote": "G8hvpQDLe7hGgYtWYt4TJJEbGbgLFCBJYiMi9pMD9Kk2",
+   "stake": 208834046062088,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 204
+  },
+  {
+   "identity": "2T9NfUEDBcFUGGX3GgguMboJaGTe9eZMGemptqXMnvzR",
+   "vote": "242yMU95HFBsubQPoHc4yv4gcbmYSyUUHSFzbGDt6RYt",
+   "stake": 208554377818860,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 180
+  },
+  {
+   "identity": "PAWsME7oYbjt5TRNc11mBa33JhKnQr9AYherdr9YAZ6",
+   "vote": "3ZUQekqiZoybB57y49eqtvSaoonqDwuNbeqEGwN88JkQ",
+   "stake": 208515315759971,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 272
+  },
+  {
+   "identity": "sTEAKPk59EtPPbixCweyv6oRLNCDEE8pnnef6gUfbiW",
+   "vote": "STeaKrJdxdPMww27XJsjRBfrzqfjFT1BxotgQtFyDgx",
+   "stake": 208444103503944,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 180
+  },
+  {
+   "identity": "Ed9WjPnZfAXsPttcqxMwj94qsuXVRyBsyXnDkxFva2Zv",
+   "vote": "4YykTGwg94GgHZEPSsQfbaMaEE9HHAHqSuXT65L6C6wf",
+   "stake": 208143702792105,
+   "delinquent": false,
+   "client": "Rakurai",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 248
+  },
+  {
+   "identity": "3s97yjq2MhoPVPC3U9VeE3Z5S643Pweovg88ysvrQPw5",
+   "vote": "D3QPJm7BDzzPeRG51YZSEz3LfV7GvFNu9NkcibzURxuj",
+   "stake": 207296786693579,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 232
+  },
+  {
+   "identity": "11AMA4mnNbsrPQeuoNN7uiZVJZtqEzQHrTfa5vnbcjk",
+   "vote": "AAAAQwH5KManM6mbxGLc1m1XnWcRBFDmdUgpZ4Ww621j",
+   "stake": 206741192986426,
+   "delinquent": false,
+   "client": "FireBAM",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 200
+  },
+  {
+   "identity": "5pZvwjSpGYCxpJeySwSbSAji7kZe4YntL7rQvXM3YcNT",
+   "vote": "4vqwZsEEEsKtSqqEWbLyFAciWg66jGLP9zrbcZ1Hsrxb",
+   "stake": 206094017478711,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 200
+  },
+  {
+   "identity": "6XJ4aKjsKQsTfhajjXNycZ11HhkXzTCheKdpWt78doFu",
+   "vote": "Ec55BotYhWgC3xRmZ2UpuJvyySwxZeUrvEDPrxxG7r9B",
+   "stake": 203793532220434,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 204
+  },
+  {
+   "identity": "GHQsq6bAdgooi998uKhwdzFubsJ7R3SuhTE9gJ83gctU",
+   "vote": "Ha8d5UUJUmEVHh2mLitaihGxQJeU6GfGx5FwBenEJCxN",
+   "stake": 203750405712400,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 228
+  },
+  {
+   "identity": "97jbhVBYcSmwGXjrx5PPWXucDsVBqwyoQ6rzP3B6eeMt",
+   "vote": "57GUg9QH2LFMV11oaduuoqVJ5qHDEp7EGJ2xgkGiqAum",
+   "stake": 201804430472356,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 152
+  },
+  {
+   "identity": "H9ENbtmy2tWFtAJNmpC8xQtbcr1NTp4FXLdphRaG8L2T",
+   "vote": "BH2PMb9vuHxkVFMMHbH8iudCoBfUoX5tVaHfnEkKJ2gQ",
+   "stake": 201764238346833,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 196
+  },
+  {
+   "identity": "5marvipGzf98hxnoJFXsZbGHSXcEQ3yRGJ4ps7D3V4ou",
+   "vote": "i6PZjkPHGYmPfPE8LsJuLn5huZyusXhmysiDiHGPjxb",
+   "stake": 201700453267154,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 208
+  },
+  {
+   "identity": "HrpWeJSYnQVtZe3BKxFCBrAEr8GRCmYUbQev4hoGDBs6",
+   "vote": "EZCQcPkgsNS5rnfoAWRsVZNGEo3GoZSVV4qSdeWrXzhX",
+   "stake": 199797709598763,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 168
+  },
+  {
+   "identity": "Stakex4B2tpDHPWGvV1dninfiaYCGdakgTknpzPitLh",
+   "vote": "StakeyJXE1yJbEApBVswHN4JdZXcj7V5MHbzffa4dFp",
+   "stake": 198997785947234,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 212
+  },
+  {
+   "identity": "AwcMVMvmT1aCETVYV42WE1cSMCyNp4vZqVjLsvs6dM4o",
+   "vote": "57QggzHa8AEELBU3C8RG567oGmbG6VyoX5jsi6M3gaHp",
+   "stake": 198778497150920,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 184
+  },
+  {
+   "identity": "91oPXTs2oq8VvJpQ5TnvXakFGnnJSpEB6HFWDtSctwMt",
+   "vote": "Ac1beBKixfNdrTAac7GRaTsJTxLyvgGvJjvy4qQfvyfc",
+   "stake": 198004095014219,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 180
+  },
+  {
+   "identity": "4vcmYPfLztUckU3c3FvXDwSq8aDNDqwEpvEiqAv97LGJ",
+   "vote": "8xG2YekjpQYLZLr8iWa6ZtFo79jYEhgySk5Khxq2MYbN",
+   "stake": 197637995777821,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 160
+  },
+  {
+   "identity": "Hj2jzpAp57KyM3SmnYwJbDVrQ8tTWizMon2hhzYzwxet",
+   "vote": "686JcEJ98r8fMtUiVuKiz4WRoBpJ2Sm9zMhdc2b6H4bu",
+   "stake": 196793063308464,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 144
+  },
+  {
+   "identity": "dcntruDNP5SEcGV4RxnsqXFURdDZGT3DTQv68Q8H7Vu",
+   "vote": "dcntrKBwh8j5yL62Eg96Z5QjJWv3UXxMu4rqL82w6Cb",
+   "stake": 196609728894925,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 188
+  },
+  {
+   "identity": "4uH4G6YiD5G8rU3mtPg73C2Uqamrqedy3FboTZcZrh6x",
+   "vote": "EJHf5N9is5spAF5Kz384tTvTV3CwTka6qzUoZrYm53SV",
+   "stake": 196241898473962,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 188
+  },
+  {
+   "identity": "MARiKM3t7pDCyXtvLq24ErWDAvYu84yXqCthkR1GS33",
+   "vote": "MARvNLH6rCLroQEGr8fWNxygJ7fHJRCfykRk9DqzwVn",
+   "stake": 196204561266530,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 184
+  },
+  {
+   "identity": "JC7bH7HSZoDhwggBXtRF31cVt71WiizY2J6YDDQfG5er",
+   "vote": "6hkfqeNAbURk7CmAQsP4Qm6WwHVF4LxHupEvQf7Tkrf1",
+   "stake": 194013726114553,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 200
+  },
+  {
+   "identity": "AmhQFcGvH2hjkucP78rn6GMKSbstYwyFpCDVKZUwBGrG",
+   "vote": "BdM7KCd6ZYWcaCMmHVi8YeL4jFzDVM9cRLJUeRAGSvMS",
+   "stake": 193748188423870,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 164
+  },
+  {
+   "identity": "9pBHfuE19q7PRbupJf8CZAMwv6RHjasdyMN9U9du7Nx2",
+   "vote": "FCvNkHa4U3yh7AXWGGL2jWLWiSRouR8EtzY5WVTHKTHa",
+   "stake": 193531332536436,
+   "delinquent": false,
+   "client": "FireBAM",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 188
+  },
+  {
+   "identity": "fdzip81euDS8jEZHx5H1mn27zGVMLzkgpQuzYRBfBYG",
+   "vote": "fdvtuDvWJZ89Z7TmeLjCwxgoLcmoEWNxruV48DvJtfm",
+   "stake": 193440041141742,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 176
+  },
+  {
+   "identity": "sTepQGoReJq2tBKStL19DT6nnGHcGiAvFjyYaokLyuM",
+   "vote": "StepeLdhJ2znRjHcZdjwMWsC4nTRURNKQY8Nca82LJp",
+   "stake": 193123744587559,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 184
+  },
+  {
+   "identity": "7Zm1pE4FubFYZDyAQ5Labh3A4cxDcvve1s3WCRgEAZ84",
+   "vote": "XzMLju7T6BSSngmsPogeuryd6uswiimkPU87gB2chho",
+   "stake": 192998839132943,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 168
+  },
+  {
+   "identity": "ReFiqMfGnc7tW8WQtFFcJRPZSDAWDBnAsdoFYF2QnfR",
+   "vote": "ReFiSbuMcV8PMYcpvm9RmHDhF9HR3qyxsHZgf359NUx",
+   "stake": 191912768040884,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 232
+  },
+  {
+   "identity": "dxa6QFqLcByyHykLCAW5tv1VYNVQFV3v6oovM2h8inH",
+   "vote": "7MKUXUiiVeWFwLaNyw5exkujXnen5yB77hQa54KLD98h",
+   "stake": 191611600426104,
+   "delinquent": false,
+   "client": "Agave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 136
+  },
+  {
+   "identity": "9FXD1NXrK6xFU8i4gLAgjj2iMEWTqJhSuQN8tQuDfm2e",
+   "vote": "2g2QU1NDRax6i2mKzRwgRfdBFoDkMC6bj7Zp5Q3i8sCq",
+   "stake": 191262717239616,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 220
+  },
+  {
+   "identity": "3B2mGaZoFwzAnWCoZ4EAKdps4FbYbDKQ48jo8u1XWynU",
+   "vote": "edu1fZt5i82cFm6ujUoyXLMdujWxZyWYC8fkydWHRNT",
+   "stake": 190895718174585,
+   "delinquent": false,
+   "client": "Rakurai",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 216
+  },
+  {
+   "identity": "MCFmmmXdzTKjBEoMggi8JGFJmd856uYSowuH2sCU5kx",
+   "vote": "2het6nBRLq9LLZER8fqUEk7j5pbLxq2mVGqSse2nS3tf",
+   "stake": 190453373371631,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 236
+  },
+  {
+   "identity": "5aD6KB8g4MPt3xJafmMmun86hHMDnoFiGbd5gYiMFZw7",
+   "vote": "QWmexgr4teHa2ZF85tyf2hvEwBvJ6ioAEr1h8DRjoie",
+   "stake": 190350154856524,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 168
+  },
+  {
+   "identity": "popscoyTKVksa4TyTXw488b3vvFxM7qQEyTBeMQopKu",
+   "vote": "HLM6hyDWrEca9QMS92nDBa2AreU1qDkppttPVuJ7E2CU",
+   "stake": 189001009633369,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 148
+  },
+  {
+   "identity": "3tzpLMWRkWucvTRWU5PjgKzN1iwJuV69yCCjmuuo4gTk",
+   "vote": "GrefCNn5jSbcWv3uiervqZiCC87F8oX7PXz9LEBiog6s",
+   "stake": 188991686374063,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 192
+  },
+  {
+   "identity": "THWsLPufeq9LWs2H9vYPbtFwdxAHbQHvSbT6pztG8x1",
+   "vote": "THWfRpcJSC7oDrNMSCcixTZmCHVBTEVQL4qnd1UTD1x",
+   "stake": 188790060863538,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 196
+  },
+  {
+   "identity": "CLsFr1KZVbAyz16iFpwg2e4hiekR1unpwyxfNdjBMaoE",
+   "vote": "9bb63m29Xy1KiWqijLs3f8adTE4KcSmVkt1qPxGkbkna",
+   "stake": 188514457372940,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 204
+  },
+  {
+   "identity": "2N7v8pDKDYhtBUJBQUgxvysUjgM9s4ULPCmeEiPWTf6Z",
+   "vote": "F3scMRjzSvXUa7JoK2uwBjNsYGi5sM84sDzE7FfGBo6o",
+   "stake": 188381101463089,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 148
+  },
+  {
+   "identity": "5zm9g3zgAPWzX3wmUB2JtTkcwCqe74NWsTmt5wLFwCKK",
+   "vote": "4udPrmxccbP1NwDJ6vChFKs5qcqyjmQff6gsKXD1mdaj",
+   "stake": 188351237686222,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 180
+  },
+  {
+   "identity": "9ppJrpsbbuGNjiMhhD52Ueco4KXUzVfrtNQ6tAcDab4f",
+   "vote": "EcjtYtuxBuupjeyXNdttATwoQoNL5Ck7bmrqDCj3ALT4",
+   "stake": 188101095755059,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 208
+  },
+  {
+   "identity": "FCWkGAHDWK41ANjiaoPudkCZRkvTecaEkoZQugezUnpr",
+   "vote": "GptPXjYUBUjxpRmueH6F5JcqizvjPTRDShTJQ8Vp6uN1",
+   "stake": 187617736729217,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 196
+  },
+  {
+   "identity": "ByszyWdqC3rVMWy8f6jwK5cmwkpwYdwsr7UL58xS5vnm",
+   "vote": "DG6fVEB2Qy1jntvHVPui3R12CMqcwNNnjYPYdsbQ9ACP",
+   "stake": 186576596715357,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 172
+  },
+  {
+   "identity": "1KXvrkPXwkGF6NK1zyzVuJqbXfpenPVPP6hoiK9bsK3",
+   "vote": "1KXz4xKV2viJCGpxqnQqdf2J45vQr5USdmtcJLTaHkm",
+   "stake": 186231432623235,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 164
+  },
+  {
+   "identity": "Ey3DkEVbfBxfWmkTsG7Hqj7jshYf5Zx9H8462Zjjkykf",
+   "vote": "GA2t11gJcmuZ4y7pShTzgYDkxVaJaVQJqkVUqojhPPsT",
+   "stake": 186192260557742,
+   "delinquent": false,
+   "client": "FireBAM",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 176
+  },
+  {
+   "identity": "BitokuDHQiAhpUKrwx1VssAAoW5Rst8zB6gpfoaxM3Kh",
+   "vote": "6hZL2FZim27WkQccMfygvvXH2eow5u3wR6XUJHbMoeWP",
+   "stake": 185637911322961,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 184
+  },
+  {
+   "identity": "EdGevanA2MZsDpxDXK6b36FH7RCcTuDZZRcc6MEyE9hy",
+   "vote": "EdGevanAjM8a6Gg9KxBVrmVdZAUGAZ9xaVd7t9R4H2x",
+   "stake": 185343673122311,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 224
+  },
+  {
+   "identity": "AmjX7CerZbHrU814UeBp2gJC7gANNG3KrP4c3RyD7TSD",
+   "vote": "FzUNgBRnVxawDytN9GM7BFwxFfekuMs7BcAGybn4AmMk",
+   "stake": 185036843117022,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 168
+  },
+  {
+   "identity": "DDnAqxJVFo2GVTujibHt5cjevHMSE9bo8HJaydHoshdp",
+   "vote": "9GJmEHGom9eWo4np4L5vC6b6ri1Df2xN8KFoWixvD1Bs",
+   "stake": 184760561735357,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 156
+  },
+  {
+   "identity": "8GLRbAstsabZuZUx73AoyfGi1FRCWSUhRgMugFyofEz7",
+   "vote": "7PmWxxiTneGteGxEYvzj5pGDVMQ4nuN9DfUypEXmaA8o",
+   "stake": 184460190708387,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 208
+  },
+  {
+   "identity": "DeXsDvvZzKhVux4YfDFE6p4acJLGzr8yKt5pSTjzZB8t",
+   "vote": "H6rbcwuQtadcv9JvxLM7GEskF6xFXnrNT3iPkk4RfyBE",
+   "stake": 184388883497058,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 204
+  },
+  {
+   "identity": "BNtHBLo1L2vAG7PBQ6mJvWz7GqVPxBnioXsY2Gjtubrg",
+   "vote": "ErvMUdtMC7AX55zKdYSyy4DnWNCrTsWn5GwprSG7ocnx",
+   "stake": 184243452106402,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 224
+  },
+  {
+   "identity": "5XKJwdKB2Hs7pkEXzifAysjSk6q7Rt6k5KfHwmAMPtoQ",
+   "vote": "GMpKrAwQ9oa4sJqEYQezLr8Z2TUAU72tXD4iMyfoJjbh",
+   "stake": 184160557079768,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 172
+  },
+  {
+   "identity": "ECZx4Dfyn2o55KTYbM9r3Dt4VZRcrdfdrst7sUbWgrdU",
+   "vote": "3VZHxnkK1A3HYeWYaqgMebHnc2acgLzRiXYwTNm3ooYM",
+   "stake": 183668490480967,
+   "delinquent": false,
+   "client": "FireBAM",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 176
+  },
+  {
+   "identity": "MBVyz9s72WSfUmbr1S8fgHjDJQkPs1Q4Wxi6A2Mees9",
+   "vote": "3vwstewNgWAwN2uyuJduoZVVhmiwvAbwCxrjeJG6bASy",
+   "stake": 182738269069489,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 188
+  },
+  {
+   "identity": "6k1YkmTKwPRUhChnxA9ryJmbtuQMbro4xFTL6mL9jycB",
+   "vote": "91413b9eEvG6UofpSgwdUgH9Lz4QBF1G3J325Bw7JwGR",
+   "stake": 182587874487291,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 156
+  },
+  {
+   "identity": "1ggyZGbYtEo1WrV1kmXfnvhPeSPxrYAXoDBeApnszLT",
+   "vote": "1ggyFRMuSB33BM6oNiDTt9YovbJnYoVow6yEsHhkaFh",
+   "stake": 182100913504925,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 156
+  },
+  {
+   "identity": "SFundNVpuWk89g211WKUZGkuu4BsKSp7PbnmRsPZLos",
+   "vote": "SFund7s2YPS7iCu7W2TobbuQEpVEAv9ZU7zHKiN1Gow",
+   "stake": 181696943140767,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 192
+  },
+  {
+   "identity": "4VrjyXQT61WFSjuG3ehgqZUK1jqvYqB46veQbXLotq3n",
+   "vote": "FahWJg2PkphJaMUUCzdYhXkD5NngUuuFRFD3YCE3BSwb",
+   "stake": 181289915556646,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 176
+  },
+  {
+   "identity": "5zuNci3TV79w6zLoJZzbZujMvkVZb2FcSPhgv9aT24AK",
+   "vote": "76DafWkJ6pGK2hoD41HjrM4xTBhfKqrDYDazv13n5ir1",
+   "stake": 180784541386963,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 204
+  },
+  {
+   "identity": "5AsoSeQtLoN8eLsf3wKrR3LwxHME4sTBGR6dpTCP1k3H",
+   "vote": "uTnZDhnbiSV3TX2obj71nFPAm2aXy83mFTFYzaBRk34",
+   "stake": 180594991374835,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 212
+  },
+  {
+   "identity": "ciTyjzN9iyobidMycjyqRRM7vXAHXkFzH3m8vEr6cQj",
+   "vote": "CiTYUYPAPHdcri5yEfsmqVcs54J6j8X1QaiFLgYqMVe",
+   "stake": 180482193500050,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 184
+  },
+  {
+   "identity": "GwHH8ciFhR8vejWCqmg8FWZUCNtubPY2esALvy5tBvji",
+   "vote": "3iPuTgpWaaC6jYEY7kd993QBthGsQTK3yPCrNJyPMhCD",
+   "stake": 179954684011256,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 168
+  },
+  {
+   "identity": "8T8AJfUCXwPFwEMmjca8gCRSktPrqbUBVa6ggNyhLhFJ",
+   "vote": "DPsW8v7gkGUbPPRnraS5e163bDepd9tD537X9S231T2j",
+   "stake": 176464596857563,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 272
+  },
+  {
+   "identity": "8hAYbagNt7CMBooFfqVJhBgLqLffpjXTWJMk8yybjJsN",
+   "vote": "74y2qkCaJ5L17hTsz3E8jftNxTBCTvdz4P2L6qTHDW59",
+   "stake": 175567428762479,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 160
+  },
+  {
+   "identity": "BPKAfGkkzF5u1QRjjB1nWYYbPMUCMPJe1xZPmwEMNMCT",
+   "vote": "9Gko8QZBbV5SrEvHKtQHcMrGGSfgFP3KJUozEGifu25x",
+   "stake": 175300793127976,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 136
+  },
+  {
+   "identity": "Je6ckvDiPr7zKz49JVXFuhXRFLS3W57WnksbS2G8tbP",
+   "vote": "BBzWbWp6WzmoMMCKrHhcAnqSWYdFqVLyn6qNebcX44yo",
+   "stake": 175134895157107,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 192
+  },
+  {
+   "identity": "4Kbcyn7JVPAWLRLPsNGTPmcNMvCkLTw51ZLRhqsUC6jP",
+   "vote": "9gX9MV3nGHRs1R9E52Q3vMg1tNGe5NHvzdfo3AMHnr5t",
+   "stake": 174293109617578,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 132
+  },
+  {
+   "identity": "nymsGg7ZXcYBwGYKZL8qEHk9PQ8sAkKvnXgUNLPyGDV",
+   "vote": "nymsndUdAZyUPpWYz5VEg8Ghj9cFvwTRgciLogpmYaQ",
+   "stake": 173883931447871,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 140
+  },
+  {
+   "identity": "8AkVj5aAtJ27tYXeq89cnSf68V43NarFHMx2iSDjZv7c",
+   "vote": "CV7uvPY1Hk5Avb2NvkGJoUzGnipZrEZK27j5rQJoUae9",
+   "stake": 173658198555012,
+   "delinquent": false,
+   "client": "FireBAM",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 116
+  },
+  {
+   "identity": "GWJyUxzcVwRRtpLuLiu1mpiUQsZ4onYFAYfCjQnuLmz5",
+   "vote": "9KgZYnDzHhQANoJ43Z8czkgXYdTjtWLRrH9nDf42gqa",
+   "stake": 172704198538618,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 168
+  },
+  {
+   "identity": "CVRr5oHCAAooVbYze7CvXtRp4FUtkMCSqBZU7MVu8v8e",
+   "vote": "cover89z945JotsCRGdbjakJm4rnL5XspFSPgN1mVZj",
+   "stake": 171767437929311,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 148
+  },
+  {
+   "identity": "NdMV1C3XMCRqSBwBtNmoUNnKctYh95Ug4xb6FSTcAWr",
+   "vote": "NeodymeDFipD7eA1ShrLJAZTBdHWcFsDB9YkoHshZNk",
+   "stake": 170739485728639,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 176
+  },
+  {
+   "identity": "4QNekaDqrLmUENqkVhGCJrgHziPxkX9kridbKwunx9su",
+   "vote": "GNZ1PAAS33davY4Q1BMEpZEpVBtRtGvSpcTH5wYVkkVt",
+   "stake": 170013706692941,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 160
+  },
+  {
+   "identity": "74Xkp2iLXm315h69sFRiCFjmKnaWkMV8W2LgJwPRSgN5",
+   "vote": "FN2BJjzy7WMRAqMNwzZrv5iDmHaNwukyFMfWCc6FxZDw",
+   "stake": 169272872642894,
+   "delinquent": false,
+   "client": "FireBAM",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 136
+  },
+  {
+   "identity": "8yjHdsCgx3bp2zEwGiWSMgwpFaCSzfYAHT1vk7KJBqhN",
+   "vote": "DPmsofVJ1UMRZADgwYAHotJnazMwohHzRHSoomL6Qcao",
+   "stake": 168919347016202,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 212
+  },
+  {
+   "identity": "ChKZmewGBzbsxvoLNChDe9YDzzKJ3p1A6uLTECmR7g41",
+   "vote": "GFWtwTkSkgc9RcAUkUxs7LyZ124DsBtcSnWGWwbrA113",
+   "stake": 168670960585633,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 176
+  },
+  {
+   "identity": "GmCxjmjKZoaKN1DKunbYq8RCYib94Nm3sHyncFfofaF5",
+   "vote": "7S9dHgoeMYvtShTjEC3x5D3THRDQz123WVGPseZsm3hm",
+   "stake": 167976471995743,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 168
+  },
+  {
+   "identity": "AbvfvRfKHDpytbQqE8Y4jQrt262akV3RnA1RqMxQxg1x",
+   "vote": "GiJj4MFyM4sCQ1aYQRQA9tqwtZFoaBdSxgNitWjHc2o9",
+   "stake": 167620367736822,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 108
+  },
+  {
+   "identity": "3V2xaccDpFib4DbTksdiveNDmiwpXBqSWyjSof3w1Bg7",
+   "vote": "34yvUa2fxfm2tUqxFEj9PHrVNwCcdzd51eo9hntWpZRs",
+   "stake": 167191070903464,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 152
+  },
+  {
+   "identity": "8Nvaxzif1NrdvxNkRetjT8xJvd33EHkKVrfL8EDkgaNy",
+   "vote": "2DNGsVZ9rg6RvT8bY4SGmGvyiVJ4xt9RL3NDd6uhfN46",
+   "stake": 166524131667013,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 200
+  },
+  {
+   "identity": "capyS1jerxhFp1RehdWRG6kbWi8bnWF3fkEG2RGLsQf",
+   "vote": "capyZmRCkNE34ifDrRdfLtDB4Fi58rtLa94H9nU5z7n",
+   "stake": 165980244781353,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 164
+  },
+  {
+   "identity": "5HYjArGt81naevDdwMaEx8yeGNw9jYBSDJa8YavT9Mp4",
+   "vote": "4ibf8qJirtoBGg7gSD7V7CeCKoFB96PBYQ3J5QjSmAob",
+   "stake": 165957400668960,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 200
+  },
+  {
+   "identity": "Lake8NXDThihebhxS3Js7mFnj9fthmus93zEdsFNrsL",
+   "vote": "LAKEuKJQYVFpf4vyjX7iuf9ajHo3k9FiyewYKf6VxPV",
+   "stake": 165195516183764,
+   "delinquent": false,
+   "client": "Firedancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 112
+  },
+  {
+   "identity": "LimeA3gMLb2SjxrKbP7NsWk1UwTZrw4B6Ctc9dmVU6E",
+   "vote": "LimeNKYH66uR9BwnrPtxPbpqmkambxHVcutGoSaWPiq",
+   "stake": 164418326173794,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 152
+  },
+  {
+   "identity": "parafiUS6h6oLhCFwhjvEmQJKw8pF1iXsxMJdTq46dS",
+   "vote": "pt1LsjkNwqCKdYYfc35ToDkqtEG9pswLTJNaMo8inft",
+   "stake": 164360711485134,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 128
+  },
+  {
+   "identity": "GFXVa19rX6iwfs3sLS5UvX9Exu2usRsG4V5MRMDRo23V",
+   "vote": "GFXVa1g8zzAVDRnSuB6o9PnHuyH25ADvy2YJPZLpATuP",
+   "stake": 163672648354621,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 152
+  },
+  {
+   "identity": "E99w1XfS4UNM1xUKXWEuDmj8Mduy7u65jm2NCULTspSV",
+   "vote": "EfnywDKqArxK6N6FS9ctsuzNdxfx3pzfXEQE5EevQ1SV",
+   "stake": 163547711656776,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 128
+  },
+  {
+   "identity": "8LDyyeJQTjR2hNRpjEVYNT2WFMXDpiCs4r98EpWSTt8D",
+   "vote": "7emL18Bnve7wbYE9Az7vYJjikxN6YPU81igf6rVU5FN8",
+   "stake": 162213256420572,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 164
+  },
+  {
+   "identity": "yJeahQNRHNWtL9Z1SqPX3SBwTYXr5ECMYYVK4uYVwxt",
+   "vote": "J4pH3yiFrzFG1AQPRGBJXo3HP72MCZwsQamtp9ym4LwN",
+   "stake": 161947806412833,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 172
+  },
+  {
+   "identity": "7MTjmteQHhthwwTZhUzsc2dP4NBvGNRqj8jzdqNxHFGE",
+   "vote": "ENVaKoD7ytn58xJ8s5htFfQ8hqQt1G9dcPUDqbSwVcgB",
+   "stake": 161387824726469,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 192
+  },
+  {
+   "identity": "BVHwHvRNwt8eM1x7cmfrEdhrbZAdWiFe9FnEFGhGuUTR",
+   "vote": "GkwAKTia6y2PkYpfYF52PT7ux1g5H3BpfqptpyJcK3vG",
+   "stake": 161235771769833,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 176
+  },
+  {
+   "identity": "LunaowJnt875WWoqDkhHhE93SNYHa6tfFNVn1rqc57c",
+   "vote": "LunaFpQkZsZVJL2P2BUqNDJqyVYqrw9buQnjQtMLXdK",
+   "stake": 160849022740474,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 88
+  },
+  {
+   "identity": "HnwMGBAw5PxaX56eSYc969MorEy2NzEMPLkmBkdnJmeq",
+   "vote": "2wUhcnViyzstvWmk7NAboKtjbFbqJPo4BvFBV37dacLc",
+   "stake": 159744662132432,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 156
+  },
+  {
+   "identity": "Ste1115xFGdAYK5jaWA3dEFcUc1S5jEbVvD8e327zty",
+   "vote": "Ste11vRHQJyQjcTKrDbTWAYsTXkX6PCnoEw3mSH3u2k",
+   "stake": 158095155316742,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 132
+  },
+  {
+   "identity": "jagBNeXYncnn1hzwSq1JJ16XhWTgQ7DCFVqndSJZ6vT",
+   "vote": "jag77EXci8uf5uGmKE5izaYvxBCS5H9U2rxWYh8BUUf",
+   "stake": 156909165445514,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 140
+  },
+  {
+   "identity": "8uPW9msN75rfaKiwy8y8NxEX5zSk2WejtVv5YhZr3jCo",
+   "vote": "5daP6pZoPSak6UEKuRg2HHjvTPpqqwB113oNamGNKuuZ",
+   "stake": 156630591482332,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 136
+  },
+  {
+   "identity": "SyndicAgdEphcy5xhAKZAomTYhcF8xhC7za2UD9xeug",
+   "vote": "SyNdica7qx3njeVKNgXvV7KC1NjPYNS4fyb3NxgevLH",
+   "stake": 156384929854437,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 128
+  },
+  {
+   "identity": "2X7WoaXX9KPqNrNfvguhnwo3rjFPNsfw2t75fGjWRthz",
+   "vote": "BmMVRAVef2qmJ1tJpG3JwRUtnfEiTbvDw9ZeFEi4wE7D",
+   "stake": 156369730288028,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 156
+  },
+  {
+   "identity": "AiBEt9kE8yZ4CnaLfTCGMp7Fg2wCtqhPTfvJ8D3zrLfu",
+   "vote": "H9p8zGs56CnL4b7RrbwQ6htc6V4K8PUtKvqH2m7hYAtL",
+   "stake": 155983484783108,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 168
+  },
+  {
+   "identity": "PAD9aPiKJGcbGxuVLbc8o4Vf65GPq3fJQ7PkHWuX6a8",
+   "vote": "1234LB7uvDC23rdCQoK8C3jNwnovUNyeKxz8wC3dghJ5",
+   "stake": 154593413420051,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 128
+  },
+  {
+   "identity": "GGX3BEoZDqjxcw4AbCdu62ZTMrkpSgmPt81oP2mVuZNS",
+   "vote": "Cat8oWQiFfrR3c7BcceTYcpnYCzSWfCPjMXT7mfHXvEP",
+   "stake": 152885624452061,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.0",
+   "featureSet": 3383571666,
+   "leaderSlots": 132
+  },
+  {
+   "identity": "HwN6eoEe9N3kwHi66hpQDBMFPk6ASQGthWKPX5MZmisp",
+   "vote": "HwcVgFSgmfeeF7zGFUBLoVA8Hpx8rtwyfCrJ1npBaSVC",
+   "stake": 152709824324662,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 180
+  },
+  {
+   "identity": "9XhmwxwWtoR6oD4xpSHutoTXku8hXyq76XoTKFZb7ct7",
+   "vote": "Cu4GibmVNncBa4NWD8JpDcBKc29NnSWH9h8YHgTQn5f2",
+   "stake": 152693040947524,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 144
+  },
+  {
+   "identity": "novaeuhY2JH2WHhc9KVTHDx2cyJZdXJC6faf4CtARZn",
+   "vote": "novaoLcuVHSudkW3Cphuhiv82vspN5qzinGCtEbwQxz",
+   "stake": 152390409689803,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 144
+  },
+  {
+   "identity": "MagiCBYNPD9iTBXqiFybAFCREQzG6MSM4LmFLXQZxuV",
+   "vote": "magiCChVWbehZ1e3XqQfLh164yUfQ8LnRWgSP9i4oFp",
+   "stake": 152081744223429,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 144
+  },
+  {
+   "identity": "A23LfQn6khffj2hGhGfXr6P52W2pxrVcCaHVQLYQgiX2",
+   "vote": "53RJBy7aBGA7Aag6AryxEmBbsHDgwfBWagLrPbGHnfvR",
+   "stake": 151492216222753,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 100
+  },
+  {
+   "identity": "BRAZAtTTzR2Es8c98hJvcngerTEyRGSdgkHU59n4A6GT",
+   "vote": "STBRgoYTmMwukhcBVjGpg3A4R9HBsrWo82wJgiBukaW",
+   "stake": 151485993661512,
+   "delinquent": false,
+   "client": "Firedancer",
+   "version": "26.10.3",
+   "featureSet": 1766517360,
+   "leaderSlots": 116
+  },
+  {
+   "identity": "CTwsruptUccEtZGNxBDbuusHYxkBX3P6ndrxVjSG213y",
+   "vote": "Fhks5gukimP6vxKYbRY4V1aw888EgHhpdDSscD9V6bub",
+   "stake": 150233853270036,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 160
+  },
+  {
+   "identity": "pebb1eQXvcuQfXkeyYjdoBVufKHwdKGL3G37GUts8Db",
+   "vote": "PEBBLETUXFPdrwm5heff4x1VsrypGS1fNSRPEF6LiZL",
+   "stake": 149011397058451,
+   "delinquent": false,
+   "client": "Firedancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 172
+  },
+  {
+   "identity": "7nzTzRZzezmugqE5ZjHRMxarhXunpwZ2PUdjV7uYzt7A",
+   "vote": "so1arJJbp9sis5XpovLyjTZPk8bDjfs37Meghi5wXbu",
+   "stake": 148825523812304,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 108
+  },
+  {
+   "identity": "99rG5AhkVagxJ7y8NpMAmy1h1u9GhT3h1Cimu2X3cwaJ",
+   "vote": "HZDt9b6AVva1cgbuHBRKQczfA5FGGwLh4a6wLRM6FSvT",
+   "stake": 146818287053570,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 176
+  },
+  {
+   "identity": "8ebFZA8NPLBZD91CwsG1HWQsa2B5Ludgdyf5Hi3sYhhs",
+   "vote": "9tedbEYypEKXAMkHcg42rn3fXY1B8hB6cdE3ZTFouXLL",
+   "stake": 146714275135409,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 176
+  },
+  {
+   "identity": "4aRPyjsqqFsf5488a9QAaHJLQJMGwoL5P6wRtLmroe2d",
+   "vote": "8EVaZkBcoJAAyyRZfozNAnZiEopgPvnixx5Ja5PpVDae",
+   "stake": 146301723565678,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 168
+  },
+  {
+   "identity": "2VKu11f8zc3huqDQUN6WJTFpX32PgHpXXjf72P6YvYMd",
+   "vote": "EUiPhYZ8NoWX5ZzDh2cRR1fAS4su9jjV3YE7veyactzd",
+   "stake": 145819335889139,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 148
+  },
+  {
+   "identity": "BSGMRbK97DcgLe4u4kfNQnmTVZGVnwdtKQBJqWRBTZxU",
+   "vote": "BSGMtRHy9qvsPbUKtT8yqd7nNqn2urTcSMVUgzj9zJVd",
+   "stake": 145337969053616,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 136
+  },
+  {
+   "identity": "ppppoqHcHVzigV6SK4856BAsNxhTAi32hqQQWrziyHE",
+   "vote": "vvvvXsU6iG2enDVvs4KeVqS4YrZczTujSv5p3dSeNHx",
+   "stake": 144097885978989,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 112
+  },
+  {
+   "identity": "2Eq6YD8P8QXTeoz9h6JHjgZ55t8RSxNdx4waMDCoPmQU",
+   "vote": "C8MLmDCg3LReWoNCkFdHgsscFpHx2WdtcU9ZziNfXrhd",
+   "stake": 144054932916766,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 104
+  },
+  {
+   "identity": "vaoJKVZYPAsqc52T2nNQhABR1gU6Cy2koDKfCQaEiva",
+   "vote": "voEskim7SFWrPx1tV2PVisqyrJejxmDEARX11mtZ5vo",
+   "stake": 143235252989890,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 156
+  },
+  {
+   "identity": "gVALrRd3xq4D62KJNGDCpMMGz976w2x1Vo79mSNn4bh",
+   "vote": "gVot34jauJpexBL2YUSPBKsmZ4V2ffmDcRk4yfSEnx8",
+   "stake": 142703300995702,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 100
+  },
+  {
+   "identity": "HLXxkmjb47spcmbbKi3UCfZ2qmFY29t8MN562AEmh2Qh",
+   "vote": "HLXktVmNFeELB5uL5nrpP4WL7jyi3TMyekxASVjDhZ1t",
+   "stake": 142272526207361,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 112
+  },
+  {
+   "identity": "6gnbmed7kzwQVQ7ghsjgEuCoYmGeWciV2qCwni6WS6HU",
+   "vote": "DTwEEF6VSrmTBYkDcj3BKAc52qhvP8CEQUEAMMT1cG3",
+   "stake": 141322908470846,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 132
+  },
+  {
+   "identity": "Ee8dX3qtwrDRnxYK6NGQfmMeKT3Qpp2QZHpxiAiw23W9",
+   "vote": "5szskKdH8nfnUuHTvn9hnhH3Xuvo7RVmcDDvD5WD7yNh",
+   "stake": 141150249784120,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 92
+  },
+  {
+   "identity": "2P9ZYA4vBoBBr56hrEFTmrd5ctuz3r7wtvRYmbgk6jRL",
+   "vote": "FGtsnE1HB4bBi6g4xAt5mvWtuC3qBPWPBgWVrnRmUiVH",
+   "stake": 140578970526107,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 168
+  },
+  {
+   "identity": "h3ZXAE168mNxsszYYrUfkMVSCWx6DU2Uvrx97Kb1Nch",
+   "vote": "Ec37CQZjwRgGnuMmUi3BnEBXS5Xa3siakAPxPkHtahSf",
+   "stake": 139836409115855,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 152
+  },
+  {
+   "identity": "bookoVmqw4QjVj5BbkFacouadx9M7816wyRkfM7A5Lo",
+   "vote": "bookLxG3LkSmt4htJ1x9zPw6E34RRMAi7sUn5mM3CNN",
+   "stake": 139350909485804,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 128
+  },
+  {
+   "identity": "8augxYLUge2iWmitQMwbcBL5VQEpsM6aJdRofhwpnzyw",
+   "vote": "o27rnqfNHPwHsRp2xPXXwWzn2q2dGxn6UD4Rt5KMU5h",
+   "stake": 139256639485071,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 156
+  },
+  {
+   "identity": "2t53LvZfskcpXkdwLaBnfZLbNgyVHPu2BNFpcRBaEBhM",
+   "vote": "Gvt8s5Bwnhg4G27VbnT1Zkfh7Jsztq6CNvZcc5anPonS",
+   "stake": 138965934449665,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 136
+  },
+  {
+   "identity": "fhsM2sxME8cHrrk3qvtMsRRDv5AoLFja7NjNnHeYZxe",
+   "vote": "FH9xcL7Fqkreq1wSkn2Vf7AfnMEyo2KK7QX32LTFndt6",
+   "stake": 138430425429319,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 112
+  },
+  {
+   "identity": "GkFT5nmcFVmJiLwuE98PjdF3LReMeq4WbejFHfwrnsgw",
+   "vote": "9RXDftY5xyhtYyzk4z7U9ddvBF2Z8DMfXmV6P6du9dxS",
+   "stake": 137997880797081,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 128
+  },
+  {
+   "identity": "3rqEEEGjHRyndHuduBcjkf17rX3hgmGACpYTQYeZ5Ltk",
+   "vote": "8xV77wuFP5BkMDdb1845hRRWZNbDNAbcV75BjMuViWpf",
+   "stake": 136963024678026,
+   "delinquent": true,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 0
+  },
+  {
+   "identity": "avnujiRNoSRe9PcET42DPKznyfYnb2LRaZAsqv6REZo",
+   "vote": "avnu2RYyQbLL4LQnwi7ismwDNaegnXeUEzvZb2FUptF",
+   "stake": 136517170572354,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 128
+  },
+  {
+   "identity": "5fSQdv4zsAJNx6RKpGho6sL6rY6a8nziaqcmwaRJB9NE",
+   "vote": "89DXJe6XTDASsmyXJoPyRetLq1csRj9N2Bwn67fNvYGt",
+   "stake": 136215315230830,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 140
+  },
+  {
+   "identity": "RoYFUUD7QD9aQ34UCMcwfye8dC5YvJeXz2J3mmoy5S4",
+   "vote": "2ayMCC4aizr8RGg5ptXYqu8uoxW1whNek1hE1zaAd58z",
+   "stake": 135809100674653,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 160
+  },
+  {
+   "identity": "SLAY6uN1zZpXBTfbuDDCesNmM5D288xrz8uYvfS3n41",
+   "vote": "SLaYv7tCwetrFGbPCRnqpHswG5qqKino78EYpbGF7xY",
+   "stake": 135547124812732,
+   "delinquent": false,
+   "client": "Rakurai",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 104
+  },
+  {
+   "identity": "H4te9uzz1c74QeqfhyKeENoTvSseEPm4A3oFXBvqpF8Q",
+   "vote": "5StcxdmFy5TKeZZGV587H2Kz6jADJmQB5ihWsX97SNvf",
+   "stake": 134068960817422,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 144
+  },
+  {
+   "identity": "3Pfubj3ytkRxFAGwFb5vtacuZJUxko5Du39xie9MBXuC",
+   "vote": "94EhHE7MaKHq4p8oFADeyizDjwYwgFn1YBYGky8mR35z",
+   "stake": 133968860311978,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 120
+  },
+  {
+   "identity": "GvfaiJUhNCRZGVGumsEF1eHDb8JpAeFAyHSrTifyhrbt",
+   "vote": "6oscGUEkXE8fyWoC4czRKbM1cuLkJNtgRsX1Un6w88Vf",
+   "stake": 133433282519284,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 104
+  },
+  {
+   "identity": "revtecFsGSRCdF29atQvchSXrjwBesA9vSisD4fyH5K",
+   "vote": "B1rsc6jv3RsFpkak8qvJN3PfGYSg9E3Uw1joaV1EoiFj",
+   "stake": 132932802037648,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 84
+  },
+  {
+   "identity": "FjYEr2UCeFzNfAKiFrbhG34Zv8LxbmfHYAFhAfc7SLQL",
+   "vote": "21wUViiyG1g47VZ39ZZsSkFX9nu6bkyfy6jryHGD2TUB",
+   "stake": 132500102774355,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 108
+  },
+  {
+   "identity": "57i31UEyDg4koaZMZ1wAHbYuezXv3AVaHtvJgJarxt3f",
+   "vote": "Ev3gPXRo6TJeQ2QhxfqWFoasdoGbmDytYvJbUabEHfLf",
+   "stake": 131445274483530,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 116
+  },
+  {
+   "identity": "gotasRuLTuJNZDtLHmaDJpEUjCWZqkHcuwbLhkgCwCX",
+   "vote": "Gotas1PRPrkqqSNm1ZKcn8Tpx9qL8krSQzTZ5DPKzkFX",
+   "stake": 130499811421904,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 156
+  },
+  {
+   "identity": "YuRBAsy9Stw1u46A8dMp7WQVBFweLP1PKuYibzYAMmQ",
+   "vote": "9gANMngbGUmAaLXL1RC3JdiaLjRowJXNbzCTh53ht7mq",
+   "stake": 130415167378653,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 144
+  },
+  {
+   "identity": "CjmXSapt1ouz3CZzgkRJckBEwMSo5fVdVrizLeRscwYD",
+   "vote": "B6nDYYLc2iwYqY3zdmavMmU9GjUL2hf79MkufviM2bXv",
+   "stake": 130100572362939,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 120
+  },
+  {
+   "identity": "5ysfTZ42VT1TjnjzQShZSrix7wdVtjXwssocSeYKDs5d",
+   "vote": "ExYX8UKQTCf2VPtV9jbfqikeTV6tPfhzauJ896o91wtj",
+   "stake": 129747109970178,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 144
+  },
+  {
+   "identity": "38zm5bBgDaNRSQBDUAL72kMH3RsX4UKmZiNmmrjuTq8W",
+   "vote": "FnAPJkzf19s87sm24Qhv6bHZMZvZ43gjNUBRgjwXpD4v",
+   "stake": 129169570302387,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 128
+  },
+  {
+   "identity": "FGiEdzde7Fco2WLpNQMat299hUVoykJdaA5hxdmCzHiS",
+   "vote": "3r5ZXC1yFqMmk8VwDdUJbEdPmZ8KZvEkzd5ThEYRetTk",
+   "stake": 128602182661235,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 128
+  },
+  {
+   "identity": "SQDS9iwyWvT2mQbSZzuNKGoxuBug5jRHouF6SuMRBkA",
+   "vote": "SQDSVTDfE5HqL7D6RjZk1vvZhaheWoskrDdDHCki68w",
+   "stake": 128107677962535,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 136
+  },
+  {
+   "identity": "HE2REn7YRhFEghuctv3y1dUEK9aWhw8QQSUpRiHd819r",
+   "vote": "ARf5F66NrsQDQY4cmSCwyQJrYKhsiydgmeDNiHEWEmKT",
+   "stake": 127389363281438,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 112
+  },
+  {
+   "identity": "E9hD3ikumJx1GVswDjnpCt6Uu4WG5mz1PDWCqdE5uhmo",
+   "vote": "3a2onvgTpGynakAQwx6gigtSeL7itZewNxqb5JiAvWeA",
+   "stake": 126450505366000,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 156
+  },
+  {
+   "identity": "SWD1LwTcEtpCRL683CT4HYDaGgMyMZ9LpSa5Foarsq4",
+   "vote": "SWDV7HwnwKq2QtJtGzCUPDeswekexTYL9cRPYmjWqjY",
+   "stake": 126298673680865,
+   "delinquent": false,
+   "client": "Firedancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 160
+  },
+  {
+   "identity": "7Nu9ckgtjobZ3MkbadGFKEvRymYuah9HmcxiUJKMM9NB",
+   "vote": "DPhzpiNGU9C6576uLsNSHmdi2AxwxpjMsRdh2iVC4TPh",
+   "stake": 126237809448935,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 156
+  },
+  {
+   "identity": "CpNnGGhgVATJAbzHUXdrcGfpPiGuZyPka4QUmH7YgavX",
+   "vote": "4qvFxnUXYjBdcviCwVV7gKcGJMCENEBfS82hSLJUhyvu",
+   "stake": 125930992272695,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 124
+  },
+  {
+   "identity": "6xUK9Nbonr4eoJNtHGoUEMmYKoPz5mipKzyDBv6deX4d",
+   "vote": "8vyuJTHSDkx7k1zymea4TMsgvixf3rCYBXHPDQajePkE",
+   "stake": 125690390345861,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 140
+  },
+  {
+   "identity": "HVXXmNKkmDZbZwj74iL2Y9Wu4SyrchBoxAfFYVAktLrG",
+   "vote": "644K33yWfSzc32VvY5fRUfUqphw8LTaLQntCkyEpJ8h7",
+   "stake": 125653778203802,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 144
+  },
+  {
+   "identity": "6NDen7aDi65apHo8m1Vea4nuS6LyjQeM6pDNqcW4Q5Pg",
+   "vote": "6cvBCfFXugkTqgSFVPvzhoWaLbhHWvZfSsZadWP5rryR",
+   "stake": 125434221505407,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 188
+  },
+  {
+   "identity": "9PRr9k87HjjdLMRkxtxygidjxVta9VQ1kAsqgLBWXKdQ",
+   "vote": "7obieMdVPKKcwEhhKizSkpdLaW1HMZh2ENrUDUhdGvVr",
+   "stake": 125388337008109,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 112
+  },
+  {
+   "identity": "BuonuQoAR74GoMwCFhxKWVWWSGGt2wfbNmQ3cizaJ97G",
+   "vote": "9FZWpUMfXZ3993g2BfqSFg7xcx9iUCxQwKeYzr2WQCM1",
+   "stake": 124240313744031,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 92
+  },
+  {
+   "identity": "Av8EnYrPBnSJHK5e2wmTdnCpSy7nzmBgyFaUKSyLnBfe",
+   "vote": "3QPGLackJy5LKctYYoPGmA4P8ncyE197jdxr1zP2ho8K",
+   "stake": 123984689247277,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 116
+  },
+  {
+   "identity": "9q16BB7WGmBxf1nJTdxH5zPnBUhtHqdqXqRFjSjuM4k7",
+   "vote": "GK9MfwWEK7BvMS8eQDaiEPnKcqMJoS7SKUiEBQY2pfxC",
+   "stake": 123781158313541,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 128
+  },
+  {
+   "identity": "EydLxzdWfD434DDxZYXkTcajvK5VKH7p6CofEDCRUkJ4",
+   "vote": "7Eg46UwGgsufXdd9C9kF27UAyD2t4VdmCdVTtPFoqxCy",
+   "stake": 123669231164341,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 156
+  },
+  {
+   "identity": "3CKKAoVi94EnfX8QcVxEmk8CAvZTc6nAYzXp1WkSUofX",
+   "vote": "4MU64AyHBkRBUAYgAm91sP5vFgzUUgFHuS82CVhE8Q2Q",
+   "stake": 123316708520644,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 56
+  },
+  {
+   "identity": "nSGZ3tv2UhskkPqiB666yDVj7PTi9qKgDqvjHyw5JgM",
+   "vote": "AY271jdvcyo5VzBiWsMGLEjpZFFrarq8FDydJHLmYgCG",
+   "stake": 123283381128391,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 128
+  },
+  {
+   "identity": "NLMSHTjmSiRxGJPs3uaqtsFBC2dTGYwK41U18Nmw5kH",
+   "vote": "H4QVPxS7napq3NEYxqLhxbKi9nJ8s56dD2EQZGsyZ3sb",
+   "stake": 123233087703097,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 88
+  },
+  {
+   "identity": "c3rtoMCHSbFrLRTAdw4iRowKSn4BrDtvSPbuyJwkHwx",
+   "vote": "AuBB9st3RqhHBkzZgBSm6SVnHZNJQSHeBWCSkik4bzdA",
+   "stake": 123117947974319,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 164
+  },
+  {
+   "identity": "cybi55ebub37HZW9YmRaLh59Lh3kqaLTsEBQwW6vFkC",
+   "vote": "VaCdXKupamusfRsDf9Ai7e8Up36Z4f3MP6SqhnM7c76",
+   "stake": 121328224717172,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 116
+  },
+  {
+   "identity": "phz1CRbEsCtFCh2Ro5tjyu588VU1WPMwW9BJS9yFNn2",
+   "vote": "phz34EcgWRCT9otPzRS2JtSzVHxQJk4SovqJvV1TQk8",
+   "stake": 120973927001355,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 108
+  },
+  {
+   "identity": "R2D2imoV8nXk1ngT9v4dEK65We4uLNyUarTBdWbFruq",
+   "vote": "R2D2vs3bJwpNF2ejaB6UW1JdCZ5VstuAmuwxDuUUWNj",
+   "stake": 120378298661543,
+   "delinquent": false,
+   "client": "FireBAM",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 112
+  },
+  {
+   "identity": "D4r6Rcua2L7nHHhdaiZe2k2bTfPg2WQqcNYpG6bugvCG",
+   "vote": "8yPiZWMNYMhEqTmPSRc6LsWLFC8pewYEzmgc5kRCLTrZ",
+   "stake": 120009926996129,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 92
+  },
+  {
+   "identity": "9hQqNe3DQTiwhspatewA8EXhz12e6sq5UJVJ2qNRwnTf",
+   "vote": "2Y2opv8Kq8zFATg6ipqb2AjgCf18tkv1CLMLXQGif2NH",
+   "stake": 119776046493921,
+   "delinquent": false,
+   "client": "Agave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 100
+  },
+  {
+   "identity": "EPFZFVrXuveEQar9LaEkt5kDRPMnbvK54qu5FwCxpkcy",
+   "vote": "1oH9rfyrbKoP7ucJ1Zr2HLHmDU8N6G1G6dEuruFsSqy",
+   "stake": 118855112227298,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 104
+  },
+  {
+   "identity": "GQiWnDYrzHMALWG9avt5FCu1wisAQHjGY5ve7GMBiPEe",
+   "vote": "5XGMWvqZSBk1fktPtxbwaMF5dhkbrtchpwd4xiXG9q8u",
+   "stake": 118209818526215,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 108
+  },
+  {
+   "identity": "RAuSNo4DRjo83uGhdgg4fPqYBVszi1KsrQGpqcPHK1D",
+   "vote": "7K8DVxtNJGnMtUY1CQJT5jcs8sFGSZTDiG7kowvFpECh",
+   "stake": 118072459635706,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 168
+  },
+  {
+   "identity": "EN5F2BU5juUEWr9zRNNqKuQMi9zBUY1YLPHV5EyMrvnW",
+   "vote": "9ymU1ayh9mZVyDL4dUUtXKtX1wCaFNzZPGutLJgqzuC1",
+   "stake": 117965757819620,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 132
+  },
+  {
+   "identity": "93Q99nhdKjuSe6WNXgMBbC3s8QVQEAoHKt91PNRkUkMn",
+   "vote": "8D8XL6ovqx15RKwC1XtFyTz6H8JYF2fUsxTnsY4b123P",
+   "stake": 117812704035835,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 132
+  },
+  {
+   "identity": "EAW9vxqogvdPNapq7QTDpiVTHK6o7begUhPVnf854VTc",
+   "vote": "DyDjFYB6i51FMHQvB4eKSwGHmgMxVf1i3FWwANAngqyY",
+   "stake": 117662858879286,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 88
+  },
+  {
+   "identity": "2XmhZKHmfjku3T3nC9xKhgr5bm1CAmWXqNsNt49mo82C",
+   "vote": "Ebm1XKkMzaFg2L5rzLPBnFHMtpDPa6SWJ7nVUzZUmXmR",
+   "stake": 117378226110213,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 60
+  },
+  {
+   "identity": "chrtyETASKQhsndRM9pr6qC3gAHG5MuRwCgXSNVqnJL",
+   "vote": "chrtyiAw8suFRvS7rTcfgcDyNu49bGPNZ2fjSPzNPFr",
+   "stake": 116924931772665,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 112
+  },
+  {
+   "identity": "CtvdyHYt8cMuGVHFarV2RADfoCdnrbd8e9jAsB225uMW",
+   "vote": "FLCrbfbwEhFARa8nK9rnZw8BVtKNAuHujh9EhWy5A4U4",
+   "stake": 116650288957383,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 100
+  },
+  {
+   "identity": "peNgUgnzs1jGogUPW8SThXMvzNpzKSNf3om78xVPAYx",
+   "vote": "pENgUh4K9zNacyU3PXVE9KugW98XCqZsWpEvA8d8wzX",
+   "stake": 116205145864996,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 96
+  },
+  {
+   "identity": "8nbE53mcKhy74HLiGZ1q5HRocwiCvgh49csSaHSdtukr",
+   "vote": "HdQ1Ap8wm6Mz65FaP8jMNBVfCDv5T9NdS8UTSvHmcotn",
+   "stake": 115197394985536,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 96
+  },
+  {
+   "identity": "dmMwc4RazLHkvDZYrWAfbHQ6cViAvNa5szCJKaiun8S",
+   "vote": "dedxrPfNqPKBRmUyP9LDkaitpQzU6PD44jA6GP9Ndhk",
+   "stake": 115110508871389,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 108
+  },
+  {
+   "identity": "2AKKnirWVZMhnzuwqpizw9SwfZjGpRFLx2zCCNtPWpbc",
+   "vote": "CHiaohVV2SQCFhiYP73iQzWT6HxnZqnAZJJqAYTeLAo",
+   "stake": 114807409259647,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 104
+  },
+  {
+   "identity": "tapeQbu7YwpMuJNA2oSKBJkfBdic5QJ9bCZt27Q4PVf",
+   "vote": "TAPEtHVPxwEGgjZtEErkE4cSG7f2c22BZtdVvYGN5D3",
+   "stake": 113957445057847,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 120
+  },
+  {
+   "identity": "kyzzzgRymGpePUsLyr48kQHt53kh5CSfRH1qfvz1xgj",
+   "vote": "kyvvvkDpDCtSxQMPhzRhmv14DgUBVEGGzn8Dnb8ircP",
+   "stake": 112638977374566,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 104
+  },
+  {
+   "identity": "bay3wXfJsu9ds1zQBoQQ4DUwFGs3NP6q4gca9WM5G1z",
+   "vote": "bay3rQMjiLPy6Nvi7tfNeVK26inBCxf88hKYyeKy64H",
+   "stake": 112507445099583,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 96
+  },
+  {
+   "identity": "2zykwzzo1pd3H2oSj5j5SRLTvmpa9Nr2S2Bh8tTVd5Tq",
+   "vote": "Hmq1oALENff8DejgYhJxB4njb6pyCtuMKKxotdZicB4n",
+   "stake": 112507356337412,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 144
+  },
+  {
+   "identity": "PKdLMugp1Mf88Ji1GkdqRDBewaUh2cqg79CBEo6eJoQ",
+   "vote": "PKvGYwh4efgythYddWAqGaPVuoZt8ybk7eXEoUqWxuA",
+   "stake": 112375119200830,
+   "delinquent": false,
+   "client": "Firedancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 84
+  },
+  {
+   "identity": "CeJjdkRwfqYjrb7ZgKgqTurxx88H6kZyRadJwNJBcQwC",
+   "vote": "CSBiJLi8fo5R3oJ3CAhBi4zcFLWkiv2wbjBgWS9e4ueD",
+   "stake": 112095140561981,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 104
+  },
+  {
+   "identity": "mastWEbKEMjvBCd1uaUBpNjWcfSPhXMWnH9tTrgzn1g",
+   "vote": "masvNDXtxVVMrYSV84RMry97JyHXAFcdfTZJ5VzpSYR",
+   "stake": 112089358526130,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 120
+  },
+  {
+   "identity": "tkmaiSoZ3F8MofkQBVWG6JYSCzyN6ioe7ReYXohx3WJ",
+   "vote": "TKMA1fBGq4M7gF2CNnhphX6vNateFc2cm2FL2mYwq7e",
+   "stake": 111815071786636,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 132
+  },
+  {
+   "identity": "nebu15XQKGpxzhhckADBX9PgvGN5qk9RRJCFLKc118w",
+   "vote": "nebu1WnZBrFZz5X7sfPWuEqyb8LBSsrXpxaesnK9CRE",
+   "stake": 111090371151673,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 108
+  },
+  {
+   "identity": "eyeYaqg9e2L6xw7YwsSLm27eWJfhLNAm6ETQm8TXNoK",
+   "vote": "eyeVhGmVEoPSWmQU2wP5WZmMihPBTCk7kMMm4VhuAKS",
+   "stake": 110846731832097,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 84
+  },
+  {
+   "identity": "2UBhtRuyr9nvWsUnrbWrvJiYWEU8TVBD4PLYQJKiRa9H",
+   "vote": "Luna8BkZNpZ9DKmszrZYPvFpTr4eJJfxxTnGDwTrYkv",
+   "stake": 110627739760608,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 104
+  },
+  {
+   "identity": "bxrAptB5ZpZBhoLedJpoGWY5hBjjt3zvVBr2323Rrq6",
+   "vote": "bXr9MyoUAaGusQZ4gaUPmSZByHAV7RRGr1FhCW5tFh8",
+   "stake": 110185676686565,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 104
+  },
+  {
+   "identity": "omeg2wsojzB7tfyAxsFhp8npxHL8yxVnaf51poXCwSd",
+   "vote": "EMVmh5hF6LT1sZM9G7dEX1bykRYEymWY2vtE7QHBBAW6",
+   "stake": 109928402486318,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 132
+  },
+  {
+   "identity": "9dH6wfdJVgnDcbCUjT8rkmejAzTnGQaFarmLfvBYXANK",
+   "vote": "GakAanHMN4dYY8rMKL1e6uUKjNJj2nN2sENFaxzdMEBm",
+   "stake": 109340485226277,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 88
+  },
+  {
+   "identity": "chopskqnudaeCTENWzUjfFCBSLcxprqbdMoCAucAwfb",
+   "vote": "chopjqMvdGWRcrcuC1r8LmAzz9obXi1gSYPYM6zimWa",
+   "stake": 109310373090090,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 104
+  },
+  {
+   "identity": "mrgn2vUPsPynMcNh7cTbfrX8VAdgxEYwS7ZDHNYA9Ry",
+   "vote": "mrgn2vsZ5EJ8YEfAMNPXmRux7th9cNfBasQ1JJvVwPn",
+   "stake": 109166278541041,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 112
+  },
+  {
+   "identity": "huinBRP3muBuqZLMW8ARjdn4mBnEmFFcxiBzrkQz553",
+   "vote": "G1juWDqojmp5CWDhgRqtXrtpAFw9xqhjmEQAKr9faf4V",
+   "stake": 108985490385196,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 88
+  },
+  {
+   "identity": "DP9iBgK9c7tJYb83KhxQMFNc1LXYu7nE7EhWpEzQnjmg",
+   "vote": "EnRcbgr5r7EUS2P35szncy6TW6eWA9UQiU3yQRCDbh2P",
+   "stake": 108196287978822,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 124
+  },
+  {
+   "identity": "odcvDWH5wHVKz9XtmGGxTj5ZsmawTjCCty3nyBKDGzS",
+   "vote": "odc2aCE7yWTcV8ApP1cHmVqQZTkLNduqaYyKE1XhpE3",
+   "stake": 108005559993203,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 120
+  },
+  {
+   "identity": "LiFiDJwJjW98MB8wxcnXpafKYsuz1hwpUkuszkERiX6",
+   "vote": "LiFiDDUsf6GCRHwkHzW4YnR1QErj99MAU9diwb8TvWk",
+   "stake": 105503229792656,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 76
+  },
+  {
+   "identity": "MicoB9cA9R6jsicdhzWFjwd9HMkV8FA4o3WxYU6Z2yz",
+   "vote": "MicobSZgB9CZNvmnFSYbEtMjy7CUui5o6P3XoGTwZC5",
+   "stake": 105405297939295,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 128
+  },
+  {
+   "identity": "LodeuWMHPiPj2PUHUyca2bkpFv9HyzR3gaDBmGJ9TSS",
+   "vote": "LodezVTbz3v5GK6oULfWNFfcs7D4rtMZQkmRjnh65gq",
+   "stake": 103931357522144,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 112
+  },
+  {
+   "identity": "vahMVcSS3v6uwyFormV7FDAUbQSHwmy6vUedp1P7L42",
+   "vote": "vahVByZszdHguLa7U7GLz8UdUFN85mcwdkefiqVjtGt",
+   "stake": 103852026804086,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 104
+  },
+  {
+   "identity": "2jS8AX38m8F9C5juToW1FmTufEbb1DfDzZJj9HSJcWwo",
+   "vote": "D3DfFvmLBKkX9JJNEpJRXpM1pYTVPQ5dpPQRc9F49xk4",
+   "stake": 102923377909765,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 108
+  },
+  {
+   "identity": "rapXHroUoGG3KvZ3qwjvGMdA7siWXwXpiNC1bYarvSC",
+   "vote": "rapxbkwBSSvtqRFrsY83f51oUuZNuVXci74MuzYhiCy",
+   "stake": 102042211719234,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 108
+  },
+  {
+   "identity": "ExCHWgfeJyKRzpfryiQn4W6aYaWhbSAEnsoUnBGNqjWD",
+   "vote": "ExCHgw3CfdZTbsrDA2phe95jswV2bDr5oSJwyKJKzEdN",
+   "stake": 101868358168420,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 64
+  },
+  {
+   "identity": "sCANXAaS1a7yB8jz3USvGNLfd8DSc9r7TNzNSKKPkfY",
+   "vote": "21oUQzzytWh6y3G3SQ7ehktMh1RrbsJNA4R5pAMNyyrG",
+   "stake": 101649817291374,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 124
+  },
+  {
+   "identity": "6qwYjs5vCSEKaTMBbHinnW8fvdGj1r8cpzPoAV1EHKsw",
+   "vote": "Azc2uttGtHsRLorfQzd7tsMNtfaEg7LyvVEMVtckPCNN",
+   "stake": 101245229256108,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 84
+  },
+  {
+   "identity": "svsD6T44XJnuXQWB15sy1pBxxruzrFy8rR7gXy8Jsj3",
+   "vote": "9rwCwfL74J6AfgKbVK7s7jjMqngvHtiBcV1WTNXN8hLa",
+   "stake": 101203977454217,
+   "delinquent": false,
+   "client": "FireBAM",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 100
+  },
+  {
+   "identity": "EBk678aQvc3cUkfGyoehfw21JQfJXjmWuBeopYc89RSV",
+   "vote": "EtMSc3MvcDXUr6ChK5GxyFVwTxYA3zqP5XzjE9jwKvSV",
+   "stake": 100584842456611,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 92
+  },
+  {
+   "identity": "G4GT8z4AKWNoy3x6nuzxW83UfFXLXzrwn7DZQt4GvWdU",
+   "vote": "77i1Ryv5bLp45yNeJCwCU28f37fGYspvRtGbNyxsD6Qe",
+   "stake": 100349894000343,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 136
+  },
+  {
+   "identity": "F6kVwubXEfZZo6e4Kozrtg7WoWk5wTRmrC8pwoxSLa7S",
+   "vote": "E5Y8uSQ8SWHH7GynZqMGirckAybkWXH5QcxtZ6tLezbn",
+   "stake": 100137174404182,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 92
+  },
+  {
+   "identity": "AWZhUiQjrjtxL8MEMWsCFbMausFQKkdTnDsFW2i411hN",
+   "vote": "41HgiTYQ3qDWFW8jSDkecH2mEHUqZsmwFGDPndtmyLDR",
+   "stake": 99000493764593,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 84
+  },
+  {
+   "identity": "SWiz7QwnYPm61pWWUUkMhj4r5pZLP1SvYibdHcB2cov",
+   "vote": "SWiz8fJt7CV99Uv9VZTLGAkMP3vTpc6u7ZqNN5dsWXU",
+   "stake": 98928080238015,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 88
+  },
+  {
+   "identity": "mALL2W6DUgDDtcyurC9v5YTF2CMMeuRwPBkf6tEoG3y",
+   "vote": "mALLoAbdQrgsnm7kWJyPrhcQcmxfT73t8DaqEkpZNd6",
+   "stake": 98813072663827,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 92
+  },
+  {
+   "identity": "BJvrWSfonXnS2Km8iA9KLY6D6vS3GcsaUwUNPFBumTca",
+   "vote": "GdVBPczdFaPf1GXvx8ByHeA1ZHAHwwmdQEPihH74SXm9",
+   "stake": 98344582306502,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 80
+  },
+  {
+   "identity": "4JahMMrVRS1gimWoXpD5H6KwKc2MrsoTDFMaStMttL1E",
+   "vote": "4EsJD6cpaae8rh27U9pHsfxAheCLQnze1bDvXZfpjcUv",
+   "stake": 98132028493568,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 136
+  },
+  {
+   "identity": "5FbKKGdEaFcxGxxaLKVvBes2JxiKbreh8w2ZpMcSQ2a5",
+   "vote": "6n8taYki7RscA1XW7xGmevLcqj855oSgDgjPe1dZyHfW",
+   "stake": 97937431706377,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 84
+  },
+  {
+   "identity": "6gL3uHvuUjaPp9mTBf2VZ4tpKiYhbWyPrAPboGByzEHd",
+   "vote": "8mu3JHHF1Qkcrbqjo6KWxyWvTxarZjqptJTokR2jrDFo",
+   "stake": 97295177634759,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 80
+  },
+  {
+   "identity": "uEhHSnCXvWgtgvVaYscPHjG13G3peMmngQQ2ghC54i3",
+   "vote": "5K8qgC9nHzKHSSyo9fKLsMfYmavYdMgEaYx86cMmVKVv",
+   "stake": 96798818025989,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.0",
+   "featureSet": 3383571666,
+   "leaderSlots": 88
+  },
+  {
+   "identity": "HMWXfjaeSHhww1wvdBhqhHVP9v96mFB4LJ9xP2MXbDGH",
+   "vote": "FwLsjPJdnSiuCvs1NXyR1cV6Sw5GRE6Lj2s1gZ9NNTmv",
+   "stake": 96774091802010,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 124
+  },
+  {
+   "identity": "ADjyeNzWd8yhEjCVyAqT87eqoyGRbimERQsNhFQcXjop",
+   "vote": "26RGqX3mezgYDxJnGh94gnMM4L2k9grH1eWcTSCHnaxR",
+   "stake": 96494848738402,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 92
+  },
+  {
+   "identity": "pitch9cMruwjDtAnisNS4mwZUPhMsBztNEGu2weMg55",
+   "vote": "P1TCHYwYPsNaNUK6fGkZzwXPjnYAMYRnUUv4c1TREee",
+   "stake": 96382064302942,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 56
+  },
+  {
+   "identity": "3BeharBd3j4sKQp7Qze27JLQLd9AEEwGTX9TC7dXYSNw",
+   "vote": "CP6mfD4Qc5AYrboXBAQeHMYj5x1UnYksDXRjG7DMkHH7",
+   "stake": 96292908710000,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 104
+  },
+  {
+   "identity": "BCJN2vZFAHDYmufBDcbD5UAQHSyerXfc6UQkgX3mSWuh",
+   "vote": "647eBPzfDqmSVEg5cQofnjzeFr7PfwvHcDEcb22JWA5X",
+   "stake": 96290357122106,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 80
+  },
+  {
+   "identity": "hnhCMmnrmod4rcyc3QRKkLEC9XnPTvYJ2gBvjgFiV4o",
+   "vote": "hnhxfrndd827LET6jvnQV4aWqpS2EedaHcT4gj8ArSu",
+   "stake": 96191971555176,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 96
+  },
+  {
+   "identity": "DCKyEmMENQMtLXgbmUoHRmgP9XdJ9HsR5WxrKnSDCzKA",
+   "vote": "DCKYVqFDwUs5m2DhW9muK2EX86pootvWD8wXA4nSqDxU",
+   "stake": 95996871708584,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 100
+  },
+  {
+   "identity": "D8xKNftHzFcCekENuTEcFC1eoL9y8wNHEg4Q5z57KK4e",
+   "vote": "4269foF8CYyT8SynFSYHiKFzHva5YL6PoAQj9pH3mQmh",
+   "stake": 95564818205385,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 72
+  },
+  {
+   "identity": "7CR6whiYULVf1Knj4J5PxUS37opdk8UAx2WnDzBQKiVe",
+   "vote": "2ve7kgjvaDZhMPq2nXhvGLno8sPJ8BAEdCvza384PyC8",
+   "stake": 95418952042010,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 96
+  },
+  {
+   "identity": "3KNGMiXwhy2CAWVNpLoUt25sNngFnX1mZpaiEeVccBA6",
+   "vote": "BH7asDZbKkTmT3UWiNfmMVRgQEEpXoVThGPmQfgWwDhg",
+   "stake": 95173589542337,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 124
+  },
+  {
+   "identity": "dst2u7mXMyDvb14cSErRNA1mxH1d5VXbSXgZ3DKE9xH",
+   "vote": "dstqVmt3cDH43Ux2SeTY2Hza1eVW6pwGLwehWCLfuPd",
+   "stake": 95087790491412,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 68
+  },
+  {
+   "identity": "N43JWBg42ZoUFMkHsRUVbP7wGVdxaHKanqaF9BBNiFC",
+   "vote": "vanFfAkyFXFnj6TpmVwet6pJBnS4nBWNcJiE5GEsZ4K",
+   "stake": 94753559492729,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 88
+  },
+  {
+   "identity": "2uxEHizFmmnLekKG2LZJwxNabhpymEYfdVCpgDxjt87m",
+   "vote": "Dcoj98wWiKhA4iqxcSg7NtuR2miA7tZqtycMdkPo8XDw",
+   "stake": 93505017390932,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 84
+  },
+  {
+   "identity": "SaGAgdkowooXBrHihpmE8gsjf1dUG7n5SqnyJxYFnXJ",
+   "vote": "sagasJDjjAHND4hien3bbo5xXkzCT5Ss6nKjyUJ45aw",
+   "stake": 93309558433217,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 84
+  },
+  {
+   "identity": "By8MseMKtZQQaQjMHJiyetmc5AC8RZZv8C2ss33ktrHt",
+   "vote": "H1kyn75BFTXr8QRmToRRvuEEmYan5n6M5APyfhMLau3b",
+   "stake": 93210944956476,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 92
+  },
+  {
+   "identity": "BhNnboEZb3mKkVADMH11cYGWCqefAfmhzx5rU4eRTKGY",
+   "vote": "HYUU9pLdZRXsMSy3efikYHLKagtubP2UZYtmfwP9FXpu",
+   "stake": 93151763518993,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 76
+  },
+  {
+   "identity": "CpgSfd6QUoBw1267rTtJoZhELqC5q7isKLojBifSbNEE",
+   "vote": "7miZ2ZoXwS3YDzBRCbWcEtNVyuxk8WbbcyQwq7i5btvZ",
+   "stake": 92457706734531,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 108
+  },
+  {
+   "identity": "Lua1fxRRHCnjVAYdfGyv2GbUsRHGM2DN2wgpWuF2WSb",
+   "vote": "Lua298Woc4rgcswL64yfWAL4EW44FgBZeLsKforf6tJ",
+   "stake": 92187020920330,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 96
+  },
+  {
+   "identity": "BxkAkLR2W3agWtjMXBNvhxmB8vsn7zhjNQcyfost99KY",
+   "vote": "FSDKGroWxgBf7VmV6X1NLDhnncrWW2ekztwRWiJrPf3k",
+   "stake": 92170642922656,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 96
+  },
+  {
+   "identity": "3Rv6ZVGUuRczP76322LyhTTYw2iM4avV4B5xFJocQJer",
+   "vote": "GaxxAn5335dA4U3772MCFeqdyqCVEfmsQTQ47YXfC2Xi",
+   "stake": 91912308993041,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 96
+  },
+  {
+   "identity": "forb5u56XgvzxiKfRt4FVNFQKJrd2LWAfNCsCqL6P7q",
+   "vote": "76nwV8zz8tLz97SBRXH6uwHvgHXtqJDLQfF66jZhQ857",
+   "stake": 91609224664378,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 84
+  },
+  {
+   "identity": "6Rk694kh1QTyQkirdb1uDZmS5xqG9bNaYtxx8d311Mr7",
+   "vote": "AnodeNCzJGQ7QwheFqJr6EknKGa72m6XHiLtDQiXcmEc",
+   "stake": 91491579893654,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 64
+  },
+  {
+   "identity": "DefiihS7gLkj6xLjjhcr87bFuwpVVNYpeNBaBeFe56CY",
+   "vote": "Defi89YpAhk3Gst1Jpsi3Nhj7yCu5HropESh37SQ2v9g",
+   "stake": 91091697130932,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 88
+  },
+  {
+   "identity": "3x9nibnhgBHWKMRiGnsXJELRBjviQpKyigfrXtKW27KJ",
+   "vote": "5afRnmkFn1pRU9oussqwk1RRBVyoDgUkL16Jz4qNf574",
+   "stake": 90898417806590,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 100
+  },
+  {
+   "identity": "axy3tCRL3wmFMVG4c69rYurcf4fXhBo2RcuBj9ADnJ4",
+   "vote": "axyQeKp44XqUnvC1jVHoeuAJ3j8wVnGeWtddeAcNYcF",
+   "stake": 90179435909451,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 40
+  },
+  {
+   "identity": "6DTkuiey2RgMaBPC32dx2YpRKoNVfL19WdwBYih5SkVw",
+   "vote": "drXsaoxWGkvjEUveMpbS1RVQmtZ7y1kb9E4YERJxCFt",
+   "stake": 89154998333761,
+   "delinquent": false,
+   "client": "Firedancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 76
+  },
+  {
+   "identity": "9ueKvL3WiLM4mNUZrfWqPTYY2Np5YwzFTYvAiPibx1Zq",
+   "vote": "68Lq2AaLY1j4zVhzNc1R8sWWgfh5QdPMP1Fawx1iWEVV",
+   "stake": 88717202057036,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 108
+  },
+  {
+   "identity": "CARBN9PY1Qej1aCg4885pfoYH8EHfjWuMy59pVa48ky",
+   "vote": "CarbnAxSfvsBdp6otKtoUa8XmUaX9PcsGq6R2WqZMuw2",
+   "stake": 88482797928764,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 72
+  },
+  {
+   "identity": "EATpCzQNs8BzZh1mx1hXMAJm3o1MLXakTXr4UEmcsY7f",
+   "vote": "EATzgj3KL3NAkaSKv8JFXPJahGueMbvTdVZj4zD9nQiV",
+   "stake": 88106649884442,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 68
+  },
+  {
+   "identity": "hxMhrsuGPDmkLJ4mTxEjyeMST3VGhTiwJvS9XgHwePj",
+   "vote": "hxVjzDmta9TuN1gM981TRKnfwG2uZ9TQDGwSCs3uDow",
+   "stake": 87622093400338,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 72
+  },
+  {
+   "identity": "Hu7pi2Xg5Kav8vSAUUr5CCZaEmMCzT6FgCTpueu3oBtW",
+   "vote": "9YQXaP6VyiZepa1CCjGzBDZ1DZQ9rBSCfhKr5DLkUStz",
+   "stake": 85766908932648,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 96
+  },
+  {
+   "identity": "3DaPk6TdeGnEBwTR8fEyZSLkdayk6vZXrqGZhAgYK8BV",
+   "vote": "2ZiMfQaT59j86HVWCvspuMtBotnVBeTc3BKk3kKpwgKP",
+   "stake": 85270859470435,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 96
+  },
+  {
+   "identity": "6xFDLX751L7H9d5fQT9sf2SM5RWWE9LDgqz25pPDbWoJ",
+   "vote": "5CBkJdDPMWCmss3Y48B36w78Bgxur4mDib6tQ9yMKe1B",
+   "stake": 84536313474099,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 124
+  },
+  {
+   "identity": "AG1PsJMQcutNUX64RD3bAhW7NpxWeFkqkgGizBznYFKW",
+   "vote": "6TBdCtZjNYRoh97hJ3RHN992nwzC4oaj74hMnbnrJsE8",
+   "stake": 84479213565725,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 96
+  },
+  {
+   "identity": "FoXyHJXdQGK2eHoTjSAzHq4hzxWdJvpGgyzrtPS9eAk",
+   "vote": "FoXyNdpkiQBsWgrYER43PcZ5rcpzMk8jGxN3NyEx5dmB",
+   "stake": 84253508871707,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 64
+  },
+  {
+   "identity": "MFLKSo4XDfrBf4FByx76zYM2dXSWcigag7ec2bCHTR4",
+   "vote": "MFLKX9vSfWXa4ZcVVpp4GF64ZbNUiX9EjSqtqNMdFXB",
+   "stake": 83947689392838,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 108
+  },
+  {
+   "identity": "BR1aTt4ZZUCwWJDkSYf1hqkYJjo7Mb7Ar8iVTkeSwUB8",
+   "vote": "AbacusTT3yhEFEKkQKjGStDhKDnvSFGpg9EqBwz8FnDF",
+   "stake": 83900907438205,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 116
+  },
+  {
+   "identity": "777idJ8gG2cZXjc5Wvcq7RBtkvcU1TJ8WoLQSHaU8nN2",
+   "vote": "777VtXKGPmbpN2yGDAtHuAmDt2rQ7GKLnH6K8ViVv777",
+   "stake": 83287086372693,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 108
+  },
+  {
+   "identity": "gojir4WnhS7VS1JdbnanJMzaMfr4UD7KeX1ixWAHEmw",
+   "vote": "goJiRADNdmfnJ4iWEyft7KaYMPTVsRba2Ee1akDEBXb",
+   "stake": 83155857673380,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 112
+  },
+  {
+   "identity": "Mwz8VgAEnPtfqS62r3ixrFiMJwnNfEwR141CGnsTo5k",
+   "vote": "A11pGbZDE8fPNZgiqDjoST6v3QMdhzZ3r8W5YahCKtS5",
+   "stake": 83076712483766,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 108
+  },
+  {
+   "identity": "FphFJA451qptiGyCeCN3xvrDi8cApGAnyR5vw2KxxQ1q",
+   "vote": "5HScvYkTWL9iojhPv26xK7GqB7oBsj9A2qHCeNRFmdyG",
+   "stake": 82884149610159,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 64
+  },
+  {
+   "identity": "nodeEgRVkbYLAQePtMx2zCN7CGw7qRgzKMCBtjMfN1D",
+   "vote": "Node56Cr7y4Udym2vPt9DsRbWcBL29JivsGh2drpbKb",
+   "stake": 82851349069117,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 112
+  },
+  {
+   "identity": "2dxz129YxB1xtf7Mx6HUT5JspexArNNtQt84FYueWZV7",
+   "vote": "5RCD4pZcKH3NHN4XHxvsnVAawSaConLgsZbreSN5dXpZ",
+   "stake": 82751539711897,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 84
+  },
+  {
+   "identity": "7PpXQgDb9eCHN1Uudgi77Wm89cRz4T85YgDw83qvaJXd",
+   "vote": "B8Jud6Mqv1FSKpjBM2hPBqoPhGMAciX2UqR9WcepDF7F",
+   "stake": 82552989130968,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 52
+  },
+  {
+   "identity": "TopjgY7N1fJdnW89S9fX6t7LF61nspgXGL1NpgAKhDG",
+   "vote": "5DnWqsJceNamPNNUpMnVr1XQ8anSxcj9TXRD5Rn52prJ",
+   "stake": 81446129398491,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 72
+  },
+  {
+   "identity": "KAoSp3EudGqUBXv46tQoDwbZxSm3iXa9wM2aF4ySbJJ",
+   "vote": "kaosFcskhYZCQidKKmkUSQLAqwpz3vtPpyyZ67N5NwA",
+   "stake": 81420940665983,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 52
+  },
+  {
+   "identity": "sfvTq7ojrEc5WdXcHijz676eX1pc5MgoLxbkYSdRDAB",
+   "vote": "sfo5vA1fFdPRsvqd8qdePtTnK97Qj6Jj3GupEzmNPjJ",
+   "stake": 81054521957411,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 92
+  },
+  {
+   "identity": "Fy7RCjDdFLG8wLn7TBKbccaKwYX1FetdSoVDREdUHf5o",
+   "vote": "4Q1khZnsdtNyQjUCpYPBDYyogui8b9x1MWtKNdaPiJdv",
+   "stake": 80671998877210,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 84
+  },
+  {
+   "identity": "1Link6hB1NpkCwJt3ZtpQKZszKauhEcKgiWjaU8PRDG",
+   "vote": "1LinkCP4qUqGvUiNuAWhAxQyopdBxsh4vhfLBb4apyR",
+   "stake": 80453284124115,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 88
+  },
+  {
+   "identity": "CJFQNDPydtX4eL6TsgWS1hKxjh8xpJQXgkLTvkCBL4g2",
+   "vote": "EpicsoqLdDP8qRn3wQRKTSKAXbjK9dUgFfNPRQS77MQD",
+   "stake": 80285673483016,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 72
+  },
+  {
+   "identity": "7HMHSdQkjDwz9Q5zAhEy83uzW3XHJchjdpMYapKXcKt5",
+   "vote": "GZgVV7MMweKm11hh8z8Nui9kRo3VxUVr2qgmkDdtJesa",
+   "stake": 80281281930277,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 84
+  },
+  {
+   "identity": "DupN8puwoPdFo9EYm8AXemEn9cMsore1QmZzfPaxyUG4",
+   "vote": "B48pw5uXH7gkCibuCBPE6nezKsCmYfFFwveCeMHpq4iv",
+   "stake": 80180216842918,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 88
+  },
+  {
+   "identity": "ABREU5YkQcfpDZymoQ97iGUgQcfgjctWUUxEMfumiPdV",
+   "vote": "ABREUtpzkkMiPHrBebpsYDU3mubtSohjDKZbyRoTJLae",
+   "stake": 80008717281702,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 56
+  },
+  {
+   "identity": "CZanBzZHFzrGY5qKzaX3CNhJ5smHEMTWFFnoeUi4J6dr",
+   "vote": "GzjMbJQDVuBLFY69QwhhjDGDy2o5Q6nswXMuVTCWEFnp",
+   "stake": 79627706219939,
+   "delinquent": false,
+   "client": "HarmonicFiredancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 60
+  },
+  {
+   "identity": "D3htsc6iRQJLqCNWcC2xcZgUuvcd1JT8zoYNqraNcTQz",
+   "vote": "3xjfK9C9YNcta8MvK1US4sQ3bc6DEjoJoR3qLExGf9xE",
+   "stake": 79526150599968,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 92
+  },
+  {
+   "identity": "ArMBx6veRq33ffEP9sxHafiPRgrtzww4XvbwZbSMfXiM",
+   "vote": "GW8GgoeBpLM4TpeR2ePVcYYSoySBaKJgt2JiwoyjXRz3",
+   "stake": 79407605961028,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 92
+  },
+  {
+   "identity": "NoditgWLFbgnbPjfHP8QQrjxvuhCayTZWHw9pM4EJpu",
+   "vote": "NoditP9RMZTVKS71xDUEXUvoemvVxFnXVnXqEnSsbFB",
+   "stake": 77674296720702,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 68
+  },
+  {
+   "identity": "BaDhUB1eWfunwD21Tu3WywyYQ9wZx5hS9WXeHHNGZUPy",
+   "vote": "CBSrVMzHqnjb1td6diYaqy2Nq1GotkKQBB6i5eaR1ZyR",
+   "stake": 75000025475225,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 84
+  },
+  {
+   "identity": "3tm92VTxwyZ5MDhGoYR4tVTkwWYkzfam6hwBjauUACCk",
+   "vote": "4m1PbxzwLdUnEwog3T9UKxgjktgriHgE1CfAhMqDw7Xx",
+   "stake": 74771921229941,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 108
+  },
+  {
+   "identity": "FyLVPAKkgdAy8Gn9jnFYN5yjC1ubQWRkw2EHt2UnC8uA",
+   "vote": "DKeL7T5t7XXKSbWpM3i9mkV9hRhqrEDbVVyL63AJ7TqE",
+   "stake": 74415377729301,
+   "delinquent": true,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 0
+  },
+  {
+   "identity": "LitxAVo3RnYXD2sX1TyRJxfnKy48amXgyGiysPZjZwE",
+   "vote": "D7WodK26tETSqyWBW35vvMGfige9afLEyTsm1Pvvropd",
+   "stake": 73910483954998,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 40
+  },
+  {
+   "identity": "7knvB4bbqHCKuNp3ef2hJWdwqoH6WAUi55NQt6LdRfkx",
+   "vote": "D4mLBafAJjpRABT5Tyj6UhuwJ8DLRk74JzyuTMUdU9Fz",
+   "stake": 73062613377827,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 44
+  },
+  {
+   "identity": "SA1LFXr4os2P4VKGUyRv84uFfuUYgcQkFh2uA4SmRcr",
+   "vote": "Sa1HXZsn2u6p2dMLZGhfxtsRw7Jo32hF15yBghWJsCz",
+   "stake": 72740380639476,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 48
+  },
+  {
+   "identity": "mythxvB89eT3C1TKwwhsvdHfYq2aoCt2es8vLoDFYyk",
+   "vote": "mythxna3hpzXSbaseyR12vu5Vvym1HxS92eCgXLvY7w",
+   "stake": 72353050754436,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 56
+  },
+  {
+   "identity": "HDRqPft5ioWZnsV2XgNWpoyg9Js6Lnh6TxMSiDG843KD",
+   "vote": "54DYhq7YnjHgVw8fKTEtYbc7qAtctWo8bjj84BrK1199",
+   "stake": 71154675152718,
+   "delinquent": false,
+   "client": "Firedancer",
+   "version": "0.1.1",
+   "featureSet": 3069991853,
+   "leaderSlots": 36
+  },
+  {
+   "identity": "KAW1LjxH73tRBd1XsaqsRsgeERFkg4WpdXUSqR4QjkW",
+   "vote": "kawiL1oKtakS5xXsmeWKV9ubUJPtdgBrRU9EgHGDADf",
+   "stake": 71020305807335,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 64
+  },
+  {
+   "identity": "D1A4F2yh38JLQExKjDiCi4G2tCMwj93c3sikseSSePKe",
+   "vote": "5Syh63iLwvddy7HqhnQbLnQfJGF2wRtQ2AVay6oFQmYK",
+   "stake": 70229088817397,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 80
+  },
+  {
+   "identity": "vau1tt35joNg4WcuxxUfnojMg35kBmaLdiq5fcbfCZK",
+   "vote": "Vau1t2hwJfbZTMm1m7WetPc1azytdFPobVYbYpKHrW9",
+   "stake": 69281073062377,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 92
+  },
+  {
+   "identity": "CtzN7ysR5rX69qd168Aosbuc83mPozhi81bEHbG7ecNP",
+   "vote": "CtzNnqzSLwNtkzi2yEWvq4w3GYQ5gSpCagqFZ5TbdSKb",
+   "stake": 69200229284765,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 60
+  },
+  {
+   "identity": "pineXRUnbaLNFMxaM3zBmFfTiKgQMGqT9jYHXZWq2Fw",
+   "vote": "pine9rHVDS1pjwdhYkx3vRyaAyRd5KPDKXZEXAqvxcX",
+   "stake": 67158441209044,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 60
+  },
+  {
+   "identity": "NATsUSZGohWw8xtLdxG4yus21UCkaes4FLfM2eqKbRk",
+   "vote": "fuyugZxM5S4NyV3ZYoc6ebs3fmRTrZ3X27MKCFvHpVD",
+   "stake": 66919008787398,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 76
+  },
+  {
+   "identity": "YE11a5nVJtUNqsojkphYuWc7StqBzbCeFH6BjhAAUEV",
+   "vote": "YE111yizdzBA7JQKMXjy9VSx1shKAczUbs3b3e6vKQH",
+   "stake": 66475629969534,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 60
+  },
+  {
+   "identity": "FdH9QEQBxPQfaF2JpcjgdfcMnDb7rjZkCDRCWLRjTQwj",
+   "vote": "HcbE5huUVDgsf7SURsRfQqnFMp3Zz3i49eXMddugPyAP",
+   "stake": 65029720739462,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 36
+  },
+  {
+   "identity": "meshRrDTME9cL2FSQ9E56EncfkZ7vL8apwcCFsw3o6Y",
+   "vote": "mesh3Px7WMi7Dkxke4ZZBULoKHM6sp37wKtg4DwPqPY",
+   "stake": 64970271107925,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 72
+  },
+  {
+   "identity": "vtav4QSdUYDbCbFGczVv2YxxKsoJUiTwm5JoJUV5HRi",
+   "vote": "3jkJVgfz1zrHSy6YLK6g96eTj49kCnDj2i8AbbKLZhkk",
+   "stake": 64697091205445,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 68
+  },
+  {
+   "identity": "BLUEHGDihXD9CqqC5XFSQzDC3aS5jASohb2BAsXaJokR",
+   "vote": "SmithX2hngQMZXVN36C6TsyjthTU3YnsALAs1MaDghV",
+   "stake": 62521594329930,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 68
+  },
+  {
+   "identity": "MargusJeV9bkePFLWbbzRNsMVo3Re6h9wKB5Ago8Tfj",
+   "vote": "CzmqDuqEpfnkptuLAcikmJrhCnhFXo8aUBj6Rto1SPAc",
+   "stake": 62505659591610,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 64
+  },
+  {
+   "identity": "3YX7PQuESmR2h95FDgjahEQjyCBhmY1Ts2MsrM1Kg9DS",
+   "vote": "LNRmxHyXAzgBkgxDmb4ZefwLAnSv3fdsjPgjmThoa1T",
+   "stake": 61670080985828,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 56
+  },
+  {
+   "identity": "4MKi9PLRv4x6Ey2Sc7KmuPGNhGmLW4NCcDVZd1PBdNSR",
+   "vote": "DkZehyHr92C4wHYfoXJU6FpKFVeh64LRgkJmFKYub4UV",
+   "stake": 61006045836091,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 68
+  },
+  {
+   "identity": "FoigPJ6kL6Gth5Er6t9d1Nkh96Skadqw63Ciyjxc1f8H",
+   "vote": "irKsY8c3sQur1XaYuQ811hzsEQJ5Hq3Yu3AAoXYnp8W",
+   "stake": 60715651383006,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 64
+  },
+  {
+   "identity": "G1eAmANVWf6ZeoxG4aMbS1APauyEDHqLxHFytzk5hZqN",
+   "vote": "G1EAMrJcvzs5SwqAQRgDTjYBEGrxxJVwNS7qiUtB3akg",
+   "stake": 59867633148687,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 52
+  },
+  {
+   "identity": "9bkyxgYxRrysC1ijd6iByp9idn112CnYTw243fdH2Uvr",
+   "vote": "6W8yrMwtDU5G6ErazhZHfLjqZV8cMvajpSRGYgrZ3d4v",
+   "stake": 59540473788730,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 56
+  },
+  {
+   "identity": "nateKhsYkrVc992UuTfAhEEFQqr2zQfpGg9RafNkxdC",
+   "vote": "nateBZg7oHVPLB2samBLkKvfzedU3ALZBexMFPMKjn1",
+   "stake": 59521236369804,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 68
+  },
+  {
+   "identity": "adre1Xia7ekGsEqNgHeFc7MYwkfzTQNeJgQmZ2agAKZ",
+   "vote": "adrePWHJJQNNuMfK3QrBKXDZZuRFPRjhovMMeSr3Drz",
+   "stake": 59112733290846,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 108
+  },
+  {
+   "identity": "sce2zXNjLpPMcSCATTrLiQhAAvHNNMKypTFVtg2H37U",
+   "vote": "9BSZriSFS8Yb835exZwTLN19Dqy9B43yvuMAAdL3nBvz",
+   "stake": 59024397009422,
+   "delinquent": false,
+   "client": "Agave",
+   "version": "4.5.0-alpha.2",
+   "featureSet": 2239410603,
+   "leaderSlots": 68
+  },
+  {
+   "identity": "scb1Z7du8NVSaHFXsafSjRdXr6xBjWR3iugikL739Y1",
+   "vote": "95Kg9C27WjjrnQpgZ418hxWTeumPTyH1ENnBoimVN5PL",
+   "stake": 58996508028899,
+   "delinquent": false,
+   "client": "Agave",
+   "version": "4.4.0-beta.1",
+   "featureSet": 3993424257,
+   "leaderSlots": 40
+  },
+  {
+   "identity": "sce1oTWYVXv7a7Hy2skxREozs5nwkQ4wDT8XJSi5tgE",
+   "vote": "BRrgfW2AKKYYEGVU6j1mbnoQajHTRuUgXCAPPzFgcF9q",
+   "stake": 58977652005706,
+   "delinquent": false,
+   "client": "Agave",
+   "version": "4.5.0-alpha.2",
+   "featureSet": 2239410603,
+   "leaderSlots": 64
+  },
+  {
+   "identity": "scb2TYPmwHgKxXJaJNq6gHKwYkVyLKx58hz9RbCKZZR",
+   "vote": "FWwnxVb7Q59MoMraDN2k8gqkdJJVd2qu9o5iiQsxpoUp",
+   "stake": 58906910239443,
+   "delinquent": false,
+   "client": "Agave",
+   "version": "4.4.0-beta.1",
+   "featureSet": 3993424257,
+   "leaderSlots": 72
+  },
+  {
+   "identity": "scs2Ra91pMbvqFAP7uitrN5U25SoyBTqZgBbhpVMJko",
+   "vote": "BjREhubbyR597w8tK9NUCLY74Zct2VuhvrNhyLinVc2e",
+   "stake": 58887629778486,
+   "delinquent": false,
+   "client": "Agave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 80
+  },
+  {
+   "identity": "scs1NCSTafrUX6RBx113B9YDCepo1QdEzU8WwEkf25i",
+   "vote": "2zxo26eJJSryYa5fdMRoWWvPTx8aoeqZHe6L4767sCaN",
+   "stake": 58752740961436,
+   "delinquent": false,
+   "client": "Agave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 64
+  },
+  {
+   "identity": "sce3TfT81rxYYcdbP1kBFMcTK3ZBc8hvHVeXD6WLSzE",
+   "vote": "6CscV2sTXdurJKwuJ6RZnPKca6pNhqAhN57ygKga2T7G",
+   "stake": 58635765146753,
+   "delinquent": false,
+   "client": "Agave",
+   "version": "4.5.0-alpha.2",
+   "featureSet": 3777538720,
+   "leaderSlots": 32
+  },
+  {
+   "identity": "2icWF7TvxyycF7d1NHpMZYuJJqiRy2h7wmjFSbqUij1B",
+   "vote": "CzGLRXJXoDo9q86MpphPVNNsTgAxHvZfUfAiouWDH89M",
+   "stake": 58343391378830,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 56
+  },
+  {
+   "identity": "9U4WqNGVywKt3gG9HSt9tGVXBDXJvgid6BVweRysaJmg",
+   "vote": "6hTLQ5HSdWcpZkbXmZxXaGjCgTh7zh8UeWKWKgGE1BPp",
+   "stake": 58278022978337,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 72
+  },
+  {
+   "identity": "DeepM3FDWaAb7o53rvyZk5YvHLG3FvDiVXJLRY78z51p",
+   "vote": "DeEpSdaw8uBLQ5T2HQhDf8fBSVbm13jGqJwoSF3HTpL5",
+   "stake": 57906699577393,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 68
+  },
+  {
+   "identity": "mds2fZEpJP688PqJHvfLxGyf2VFrcNkvjuUxNYCwjrq",
+   "vote": "5cJyfCLBfghRtoCuVJNreJgNCStqXLrhHmRhSRYtbgtr",
+   "stake": 57895685282354,
+   "delinquent": false,
+   "client": "Agave",
+   "version": "4.5.0-alpha.2",
+   "featureSet": 3777538720,
+   "leaderSlots": 76
+  },
+  {
+   "identity": "mds1WWedpezW3qvgML4WgP341jZksYAy5SbMLwjP5KC",
+   "vote": "6zzAPhyFZgS6rdknHNZLcsoooZ744GtVmTDyfvRmN37Q",
+   "stake": 57793264330787,
+   "delinquent": false,
+   "client": "Agave",
+   "version": "4.5.0-alpha.2",
+   "featureSet": 2239410603,
+   "leaderSlots": 48
+  },
+  {
+   "identity": "BCeczqpTRPigndHVJu1KEzno1Uhb4hjrE7ttmAndrV1p",
+   "vote": "FdGcvmbpebUwYA3vSywnagsaC3Tq3pAVmcR6VoxVcdV9",
+   "stake": 57544933639868,
+   "delinquent": false,
+   "client": "Rakurai",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 56
+  },
+  {
+   "identity": "vnd1Ps8w3fsi54qUMJxBhUWARES34Qw7JQXDZxvbysd",
+   "vote": "vnd1jskPHR2gfMtgTtq6xCwANrAiNbQTKgVBAJHnMke",
+   "stake": 56868852547130,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 44
+  },
+  {
+   "identity": "mds3Df1ieBonG2qS8ZoKTqshq5MgTUNfZgc78cjiCdq",
+   "vote": "ASifxiwxht8FvsiV3VcLngsCBMw4E6zw3QMWoJTbM4Uf",
+   "stake": 56821356222032,
+   "delinquent": false,
+   "client": "Agave",
+   "version": "4.5.0-alpha.2",
+   "featureSet": 2239410603,
+   "leaderSlots": 36
+  },
+  {
+   "identity": "CVGwNaC1FaG95hRBHUuieDLyQU2hJuGhPduu2cMyHnw6",
+   "vote": "6frBSsexBMZNKAaQY9dMKhyCu83Px54aL9SZWtuJWeWV",
+   "stake": 56469561983561,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 72
+  },
+  {
+   "identity": "8aySXUFrqJz5kath6aVijrkBH8ZtxMWJGhYXwYBpKmHK",
+   "vote": "A7uqmajxP3NdzbYDXiGQRGTL8d3dZ5pjS4kR9NTZcxtg",
+   "stake": 55650781739291,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 64
+  },
+  {
+   "identity": "LFGGGJtnBLvq78DyMz1gTeedM6f8owck76qHThDABBC",
+   "vote": "fVotEjqpmpQYgyVyBCwYm62BKqqTQNE6SpYnRmdBazH",
+   "stake": 55629035033960,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 48
+  },
+  {
+   "identity": "2nhGaJvR17TeytzJVajPfABHQcAwinKoCG8F69gRdQot",
+   "vote": "mNyQrNRYAuL2CwNCGmCsmwj9EcG88Sf8hs5rCirZaUr",
+   "stake": 54813100491215,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 52
+  },
+  {
+   "identity": "b1ueZK9bWTywN2587zsScyLTaH18wfRfN5W15XnkiqF",
+   "vote": "b1uei1YN8YVb3qHy2JitBx4Fq9nAatLQFcNbnk6Ex8p",
+   "stake": 53592868906251,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 48
+  },
+  {
+   "identity": "5t4shVsKnUqgjmhK3fFNsvyju2E6Rd7cc4S5pmqqEVEW",
+   "vote": "sT34kbaqmHWbPwjhyeG1GnjoX82KpXawFsnzUkzJpYX",
+   "stake": 53166828741350,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 84
+  },
+  {
+   "identity": "te1ee9rGf369wxYQkuxkvuvMuTJ9cksgZySmNUF8rNY",
+   "vote": "te1exfYnykh2cFGCwGSLQu26Dpr8n2PozvBqH5Eoi3K",
+   "stake": 52785521421372,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 68
+  },
+  {
+   "identity": "5ghoFEVrsXeAPB6SUmBpZ2xq3KvHEjNMeSaBnxEBXkHV",
+   "vote": "J6KaKtLRj7eQGuVVL2CAz1AS9kDxsrmej9QbYkEtsiAD",
+   "stake": 52450412523873,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 52
+  },
+  {
+   "identity": "1i1yPyh843bTfi5qPgqozTbDcEX65rUNEFcUT2KAs2i",
+   "vote": "1i1yax3thZfiV8id5HTA61bjsxEi4pbjmhXsqy6JePP",
+   "stake": 52118338055493,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 36
+  },
+  {
+   "identity": "DaRKu4L3qAgXLpuUfk7k8mTB9VzXBEj5hxLVe2mQS1dE",
+   "vote": "DrKHZXtuGhuYbe5MfigvCXR7VFd3u2wxepXei8m2GsDE",
+   "stake": 51468652433301,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 32
+  },
+  {
+   "identity": "RoYLttggWwa2st3KAGEjnPhsq4NPD5QwaNVyyR8pTz4",
+   "vote": "roYL9AoyuGae7uEAErzZhPSSxnLLZU4TNx8wmwCk77r",
+   "stake": 51193304534808,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 36
+  },
+  {
+   "identity": "B94PGWcxE9iEDov8sZobTkqEY96Yb5gfcsYWSWpQxh6S",
+   "vote": "FgiteGaHbA22Wt4Quzv3muscQtvX7gzVwvUHbFnb3rTJ",
+   "stake": 50994410818100,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 52
+  },
+  {
+   "identity": "jntr1vkzvSujfckGR6ANmFmirVoPBMNr5XJGKP5uDQA",
+   "vote": "jntrMCSkeNagaMM437fhZxLYbFJh6pvj68bQDZx2pXf",
+   "stake": 50495477268691,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 56
+  },
+  {
+   "identity": "CTDGxTK789ZvhgyHZHtSnxTtysbyY1mrywXEJiYYqXxC",
+   "vote": "CTDGxxJBrZVqUUHdHopLn4k4gtc2PCpcM9TB7ZEC4Hu2",
+   "stake": 50425158534003,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 68
+  },
+  {
+   "identity": "chdvWr6T14nqGRFD37KY36dsvhkCtDaufW5rpu3AfHe",
+   "vote": "chdv8H9fPfk2zFqSVaxRjsEo2qEDmswbju3BVgAHPNb",
+   "stake": 50396587532929,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 48
+  },
+  {
+   "identity": "sTEVErNNwF2qPnV6DuNPkWpEyCt4UU6k2Y3Hyn7WUFu",
+   "vote": "STevE9xVb1QfBHU4GgEn28r9oikAf5yxKJddF7fufwb",
+   "stake": 49587054685024,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 52
+  },
+  {
+   "identity": "71F3mXrwguQ7euZkJAuSZ8o8N4EDAVnTsjMpffXEhaPy",
+   "vote": "VoUVynyfzZGQYopTXaND9o35Sbp5qphgHHibxm82i6K",
+   "stake": 49468044671068,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 44
+  },
+  {
+   "identity": "vxida39xd7rX96zC4deP9gBteuRXhp9BbioHCrqC8gp",
+   "vote": "vxvo76XgSgrEtT6iZ5LWc8zHTbe8Myn2nTo8p9yFiDD",
+   "stake": 49468020457144,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 40
+  },
+  {
+   "identity": "65pHd5P2VrehonT1cdJ2JUnq5wi3WUgfL3A8RhYH7Kg7",
+   "vote": "HjiwKP8UAYigpUJyKeBEWfKWvaRgKw9fZQRcSLzdhP2w",
+   "stake": 47772425429164,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 52
+  },
+  {
+   "identity": "dzBhD4wikyy7xqwiJvT49gdrKqWVjfs9M6cTssmRX8Y",
+   "vote": "dzufrE42PJjNNRBstdmunAdeDToDA3Cax6WDpFVj36Y",
+   "stake": 47589086900111,
+   "delinquent": false,
+   "client": "Agave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 44
+  },
+  {
+   "identity": "7pR7t5axFfkg2VZB1uAuFNUvpAeowq2v15J4gw5MmHTB",
+   "vote": "59k9CiZ7L1bpEivLrAtaMPMgw18syZ4RQsJUo3hbbj8x",
+   "stake": 43151768059697,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 64
+  },
+  {
+   "identity": "ssx2rHZNVy6J1mbFjBdmnF244kbKf46SDwokjuhb477",
+   "vote": "sShosKd6uA5c1ZpVMxdsE6do13TLRWSMYsXbSMmNC77",
+   "stake": 43045258580789,
+   "delinquent": true,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 0
+  },
+  {
+   "identity": "DEU4agzdUCA5oZ1QSLxCyZb1smvdu5j1NXXsK2r823Uu",
+   "vote": "Gmmjsfpr1cj66zqwaYzEiSPsA1Y438MKXVNPnGZ2zB9Q",
+   "stake": 42446394291013,
+   "delinquent": false,
+   "client": "FireBAM",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 48
+  },
+  {
+   "identity": "ark1hdnnfmusE24wGHkyVG1gdRCqfmXs9drasDAdABZ",
+   "vote": "reyYoUdFgtDLxAWW1hyn5xk2PHstA3j8zUrerQi9Ayq",
+   "stake": 42390241697884,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 36
+  },
+  {
+   "identity": "9D3o3EYeknhTrRvXS1PnD2euGXnMFa3HwpYBq5gPZJDA",
+   "vote": "6yg4Usyr8VkvY8m7wrbLHegKVnKaAQmEwS6cuGnwB6wT",
+   "stake": 37044509195672,
+   "delinquent": false,
+   "client": "Agave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 40
+  },
+  {
+   "identity": "AdSHK6vpQnwHRSw7jXUwjMEytmhFwnynZSENhvpAxL1y",
+   "vote": "9NZ18GkTnXZug6eXAzpBsmyCsYfAJ7mL9bgUfSJDSAKr",
+   "stake": 36618464353670,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 16
+  },
+  {
+   "identity": "suoHAQF4NJQd97mpot3A9cLDnHQ52r3wJEtjCXTsu5U",
+   "vote": "DhNXuhKQemndnvJrZ7qMYstszKwLN9vXDCUcTRG82ZWV",
+   "stake": 35555331804338,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 64
+  },
+  {
+   "identity": "7d7x84jiVtqpz9NK88ocLmu4L15uhdnzMEDmo8Py8oVi",
+   "vote": "4QQqaHgJfrpaS8aU47CkmgAMimGnxiphgwhqzQrotjQU",
+   "stake": 35417872457252,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.0",
+   "featureSet": 3383571666,
+   "leaderSlots": 36
+  },
+  {
+   "identity": "SANDCxXBbQhvbUqNtiLqKdFEY1uQhVo1UgUACaS4mXU",
+   "vote": "SANDhe6azby4EMLJd8N77QTk5K92n2tCi4NXba7iwuc",
+   "stake": 34563282594418,
+   "delinquent": true,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 48
+  },
+  {
+   "identity": "3DaifGfDESUzer5ggUeo6UDjqEKMkCpdNSrrvyuggHVe",
+   "vote": "H1SztaSNXFAYGRS7tL4APK7b6XmpXSx6L5C8h2YGtXnD",
+   "stake": 32786882085167,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 20
+  },
+  {
+   "identity": "49j9bnkdgVNxLwsZ9h88sPR5MYEmsUyKrrJ6ZW8ijBrb",
+   "vote": "9QFvZhLvpbcFJTPkKq5wTWR2DGTXqrsP8z9igPgjSsZ1",
+   "stake": 30985606182332,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 32
+  },
+  {
+   "identity": "2bpfa8JbFfZUGUsedDsemu6vQUxbhcEM8ALSH3PgXd2d",
+   "vote": "Gar9q7Ru2sKfVxFnR5xmV8GieJeUSTp7Uf3ixai9BQKS",
+   "stake": 29948084801123,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.0-rc.1",
+   "featureSet": 3383571666,
+   "leaderSlots": 20
+  },
+  {
+   "identity": "LandXx5ebB8Bo1hJXNoUJtju3SM25YJKHUoAmYQU6tJ",
+   "vote": "D4Em5FzPmCNTyawCYfk3zLeDTmefk7ZPfdhyJfdjLdcZ",
+   "stake": 28216209990529,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 32
+  },
+  {
+   "identity": "UZBmptMjMSQEPKm4WyUkJeAuvZSqTuNK3cQCKFqJcXT",
+   "vote": "QodirbUG8AZQBWpHhPJPfjj1xg4AaQUZCVVtwT8YfPi",
+   "stake": 24837221695581,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 36
+  },
+  {
+   "identity": "5P35CJVKU15Rrh5M6EVkre23EyA3K34kAut2GXhHKM7W",
+   "vote": "9hHEiSDTz9LeA4B4N2tJp6SPchwWZbV1X7zWN8hYoMhb",
+   "stake": 24002337691766,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.0-rc.1",
+   "featureSet": 3383571666,
+   "leaderSlots": 12
+  },
+  {
+   "identity": "Atom7LRkdXj6MBoWJPgjaetrCMrgB9nnkQBYXTWE8Z3S",
+   "vote": "QUANT7qKUEW4PS4eP9jq4K35rDHpgWkWcgjbW1CwnGJ",
+   "stake": 23872597707378,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 24
+  },
+  {
+   "identity": "EKgSCR3ahdypkxXcBY43ZNxdmyZqPkKNPey3rwKjqbz7",
+   "vote": "GAoCBDE9ABRYmhWUREDp4po4L8JgCPeQsPS77p1mx3WR",
+   "stake": 22154790675030,
+   "delinquent": false,
+   "client": "Firedancer",
+   "version": "26.10.4",
+   "featureSet": 1766517360,
+   "leaderSlots": 12
+  },
+  {
+   "identity": "2Le6TjeEescF87qDA8Ftdz6U8Kq6SNVwoLJLhzBCHUr5",
+   "vote": "Fe5zMqkmoYbwnXH9RHjFy7YMRnak9so2bzPBroPJ4iiX",
+   "stake": 20434748434687,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 28
+  },
+  {
+   "identity": "CRNyGD7xNPThLjNviGdxoAiHpQXZKx3UeyCfrxnmTi8r",
+   "vote": "8nshUCt7FvxGRphfmiqAr9wdkRMrktfuS7YMhaaP3oUV",
+   "stake": 20310031677662,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 20
+  },
+  {
+   "identity": "9Wmaz9VPpEnH67ZqrvYd9bcH66DtsGaEKcSQE1ac5wkf",
+   "vote": "3Z1N2Fkfha4ThNiRwN8RnU6U8dkFJ92DH2TFyLWJf8cj",
+   "stake": 18447297370514,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 16
+  },
+  {
+   "identity": "STaKesuXJH6UGRizuEVSWG1tyLu5ycKgWj3i1HUdvs5",
+   "vote": "2PEyBgsPYBQ8pMdXQtEaPGNqWQHE9GCnmV2tTVN4GMru",
+   "stake": 17928772622758,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 8
+  },
+  {
+   "identity": "2ooJ5UKSrpsuEzZV4DpDKvfHmXw3huZyqg8B6RSozdKy",
+   "vote": "EwgQDTsgriyM3AdjnBFMMPwPs9RUFxFoGfm24XaN1dUS",
+   "stake": 16600490907340,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 28
+  },
+  {
+   "identity": "DiFeTctQSaNczJNmZ5121kYqLaBe9wDpM9sjCzTELJLE",
+   "vote": "FXcZJuQwkcQpw2YrkTaxWJ6rnw4P12wvULttviMRn655",
+   "stake": 15854483738584,
+   "delinquent": false,
+   "client": "Agave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 16
+  },
+  {
+   "identity": "CuStTdKU5nWev5YKxMHyFjiHYG2CnjZ3rrPa8r1G2hTw",
+   "vote": "5ni6KoVM62cRJNfFFKGdiyDfYbKWWAGZ21cfGZcj1y66",
+   "stake": 15798122173853,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 12
+  },
+  {
+   "identity": "6bBw4LYVzXQoNs1TH4yVavtpCu5cdwYGvmuXVcZmNeKy",
+   "vote": "FrkdQrmL2Qn3bgYpzajQDK2k7gRNNmsQNBXvm4mWz9uk",
+   "stake": 15369128998781,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 20
+  },
+  {
+   "identity": "5yEnvhM4Ld3UZs2n173J2iR369E1ddcbQYeLSZxk4cYj",
+   "vote": "B38JgkTi7Fu2Uxk8JzNw4M7aMhVxzGu2fsRqHNScPkCQ",
+   "stake": 14326118553001,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 8
+  },
+  {
+   "identity": "CVgwMrWo9chKEuEPCe6Za9KJe8jamnAcoeWzaMeNubr6",
+   "vote": "F1wBgGku883aGGCQYMQFR4PmdJ7faej3qKSk8xGCycP7",
+   "stake": 12553419891853,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 20
+  },
+  {
+   "identity": "2abwQG3v2xRemFxRszVHSfnjJNe9zu5X8duKgxjyLeaK",
+   "vote": "EogKVYgic8LKAuV1kR9nRqJaS5zpwCvSMfqoehzmAMpK",
+   "stake": 12140027415306,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 12
+  },
+  {
+   "identity": "9fa5wcqnAQqHyn58U1vHHLuZW5GXLcoho7hKT17jGJfZ",
+   "vote": "BfxZj7ckfRGHxByn7aHgH2puyXhfjAUvULtRjJo4rd8C",
+   "stake": 11734921974919,
+   "delinquent": false,
+   "client": "Agave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 8
+  },
+  {
+   "identity": "7zAHbRxEQaNjKnQMjFm7j8LebHSGfzsQDdm2ZpUNPa7G",
+   "vote": "FXRu5NA4ouLGFuZNNWZFwwnvQz9zE7JCX3D23RJTc2NU",
+   "stake": 11700750490162,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 24
+  },
+  {
+   "identity": "Xoir1BnQX9TbEvon9HRbD8tkjcD9dorsxmNjZAV64Re",
+   "vote": "DzPT1ZWDeURdTj38QBSceWnrpYFxZRBLPRXmUgHVDAGR",
+   "stake": 10274279935629,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 8
+  },
+  {
+   "identity": "FWD1aVC1U1zVYpLde4buhGkcNzFTVZPikPFYizMc4RGh",
+   "vote": "FWDV5duuz84fTkTpfEjgLFKVVfKbDtqKL2Lx5qNyUyvm",
+   "stake": 10002476058703,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 16
+  },
+  {
+   "identity": "5429ouKuzSkH8TV5GULMLtqkEGnJ7H6RsfhDLyscqXoB",
+   "vote": "HwYTVzrz6oB5exDihSKaoYAMaicZ1nLv859AS71C16W7",
+   "stake": 9708844060187,
+   "delinquent": false,
+   "client": "HarmonicAgave",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 4
+  },
+  {
+   "identity": "AS4i8EXUZnPbmNT5ZXmoTEbrXQrbFoReiWwwFB43Ds5z",
+   "vote": "5AC692spnjbegP7ttCXJEzUe8S81sLYsqJd8Ae6Zv1xU",
+   "stake": 9561770939230,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.0",
+   "featureSet": 3383571666,
+   "leaderSlots": 8
+  },
+  {
+   "identity": "4W3jdXyqhLCjzA3Liu8ZNjViwrc6N9YjSB7obbxfjcKE",
+   "vote": "3hhEWRNAVzqRjmF9hW5nYkrmDMxKKzGziE11Sg7yk3iX",
+   "stake": 8025936221322,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 28
+  },
+  {
+   "identity": "D4KUs6wFY8qh7H1euCoCCpRMh6841cskzzfNcjmGBt6e",
+   "vote": "TRAMp1Z9EXyWQQNwNjjoNvVksMUHKioVU7ky61yNsEq",
+   "stake": 7658290118513,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 20
+  },
+  {
+   "identity": "7Nn8qBJey7vXtVFMNBbbuN8UkujU8Y6nWzbHVGuf49yV",
+   "vote": "6SF5cmEXFFEmnFd5BwM4J6NkZhh3WfPkgmqdoAGjLLPX",
+   "stake": 6151848790420,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 56
+  },
+  {
+   "identity": "KESTR4VhkALtPjwn4QLEErMB6vEmi8nyDo8JRqJ7KsH",
+   "vote": "KESTRiqRhTuQo1MqU8TPevgkbSkGKKDrkcg8R5aNje9",
+   "stake": 5061437801021,
+   "delinquent": false,
+   "client": "AgaveBam",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 12
+  },
+  {
+   "identity": "HzrEstnLfzsijhaD6z5frkSE2vWZEH5EUfn3bU9swo1f",
+   "vote": "DQ7D6ZRtKbBSxCcAunEkoTzQhCBKLPdzTjPRRnM6wo1f",
+   "stake": 2619444293821,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 0
+  },
+  {
+   "identity": "HPJ2KUVgRnG889NyfEcUyZkGD1abrZxjZVmsYAjLZU1N",
+   "vote": "6jf9Hwx4ChqUpi8skCqmh7bnfTWXHXsqbfqAPHmSzPYc",
+   "stake": 2375678999739,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 4
+  },
+  {
+   "identity": "FsEq1UFSucxyyYcHKYSt4RjaUzBVL4eG7vuCrGz9qY2W",
+   "vote": "BzgTDU98GGMaq5RWkWcDLsX7W31VqRcEyNiukXzYV2Jd",
+   "stake": 1510759167520,
+   "delinquent": false,
+   "client": "Unknown(16)",
+   "version": "0.1.0",
+   "featureSet": 3383571666,
+   "leaderSlots": 0
+  },
+  {
+   "identity": "DSRVdh9PQaqAcFtMCbJhyD4yMD5H2EeHNzdbqWctRY4E",
+   "vote": "2mxWiqtwdpE8zgkWxwFaJLn127dbuuHY4D32d8A6UnPL",
+   "stake": 750306982605,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 0
+  },
+  {
+   "identity": "GqDCbnafLmKkdqiqf278jDLXqjjZMB2sViZQtR82jPUf",
+   "vote": "4KfAqBj3Jvi9GGngFK1MbZkjHTcSFyvhFnVwc2QrNiEh",
+   "stake": 397558260005,
+   "delinquent": true,
+   "client": "JitoLabs",
+   "version": "4.3.0",
+   "featureSet": 3383571666,
+   "leaderSlots": 0
+  },
+  {
+   "identity": "BGD4V7L4aZF5D95WFXaaLmTxpiVU5nTamM6tDX59hQs7",
+   "vote": "D3wscqsBCJGFzzoB7dB7wQfJzSEFVzu8Rxugfnfk7rdm",
+   "stake": 374869902145,
+   "delinquent": true,
+   "client": "NotInGossip",
+   "version": null,
+   "featureSet": null,
+   "leaderSlots": 0
+  },
+  {
+   "identity": "3iQqh65Gby53aaYUF8ocoiEyhBs4aoe7BTYYWvy1c9dF",
+   "vote": "AEtdq4CwtuktCEUWLLpRTNPBZs6tr7BBqxkHJ1DjAttR",
+   "stake": 212881669277,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 0
+  },
+  {
+   "identity": "toshB4tPQTFfyd3VFz2tC3nmEFHVmiBMUpcxwWiexn2",
+   "vote": "MS1kjUoVPfy4AgyJLiJ3eC6Gv34Cwr839MryJgNKdwJ",
+   "stake": 160275979758,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 0
+  },
+  {
+   "identity": "FFevTkywysWf8PJvH4DZkEp4v9ks9HJPJhZWbhhJiYnr",
+   "vote": "5DutFKQ8qPmbjFEmp31QH9JDYJXvwh9pma8ap5Phxk6H",
+   "stake": 20109289800,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 0
+  },
+  {
+   "identity": "Eu6FQvMfaVavgUpkLjA2GbrA9r9VZYJKCLxavpMppVwa",
+   "vote": "29qPvStb2AxuhQBwyJfZRbnANrZRsUrQAGfyooAZbfKw",
+   "stake": 4492942497,
+   "delinquent": true,
+   "client": "NotInGossip",
+   "version": null,
+   "featureSet": null,
+   "leaderSlots": 0
+  },
+  {
+   "identity": "stacheBmGG5zMKuetUevAbc4m4dLbve1VPcpSur3voH",
+   "vote": "sTach38ebT8jnGH8i2D1g8NDAS6An19whVMnSSWPXt4",
+   "stake": 3004719870,
+   "delinquent": true,
+   "client": "NotInGossip",
+   "version": null,
+   "featureSet": null,
+   "leaderSlots": 0
+  },
+  {
+   "identity": "R1parD2CtxPBGPABB2m3JjuLpGgNLiJuLxyt7qvAJR3",
+   "vote": "R1vAoSPFQdCc6wsAEMtxWXjqptSeN1YUiq2Zni1of21",
+   "stake": 2874183724,
+   "delinquent": true,
+   "client": "NotInGossip",
+   "version": null,
+   "featureSet": null,
+   "leaderSlots": 0
+  },
+  {
+   "identity": "EdfKqTQBwHH4fnLQx2ewkkH2mGJR8tiYbjBd2GufKeWg",
+   "vote": "7pnDh3TaUHg21FMM5c9bzkhc8jiPpD3u1i2RwU1qmrWn",
+   "stake": 2001767621,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 0
+  },
+  {
+   "identity": "FdPyYztZ3DoKAiXxQKXzrbAXHH81kw6JWfG3JyiJy35E",
+   "vote": "F3Bv6jaD8dAK8UwTshyKbji58fUDWUP36oee8hu53pRP",
+   "stake": 1998333760,
+   "delinquent": true,
+   "client": "NotInGossip",
+   "version": null,
+   "featureSet": null,
+   "leaderSlots": 0
+  },
+  {
+   "identity": "4qJwZS4hw25jZw9cBocJMPdiyreSrvY5xtJSjbpxCSGy",
+   "vote": "7bmLD2uHPxbsdFg8F5Rqc7QtWE8XWeYVt58DAqWkhUtv",
+   "stake": 1008333761,
+   "delinquent": true,
+   "client": "NotInGossip",
+   "version": null,
+   "featureSet": null,
+   "leaderSlots": 0
+  },
+  {
+   "identity": "3o5C6JDYXF91zB1MjzTctfoqrKyXTa51fovSZ6JUBJiW",
+   "vote": "BaF2Jdpu1u2jzESHgLXqJKPeiRnZ7FkuakMao7eVgZjh",
+   "stake": 1001333760,
+   "delinquent": true,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 0
+  },
+  {
+   "identity": "8x5Tti54yDZ3PwqPTYHtDf8FWcuDWHApxsPk2bJ1to4",
+   "vote": "J1to4b3avELfpaCq5Mmta2MhALurRaMsZKnJ34FWJeqq",
+   "stake": 1000144382,
+   "delinquent": false,
+   "client": "JitoLabs",
+   "version": "4.3.2",
+   "featureSet": 3383571666,
+   "leaderSlots": 0
+  },
+  {
+   "identity": "JDY2ADULVm1uYT41fqwkyiAWc5bajSg2G51wN43qp8zo",
+   "vote": "9yHStS5u98Uu2ag1PQSwBhBwATprD1KsvtnvWAEu5k6J",
+   "stake": 1000000000,
+   "delinquent": true,
+   "client": "Unknown(42)",
+   "version": "4.2.1",
+   "featureSet": 0,
+   "leaderSlots": 0
+  },
+  {
+   "identity": "FhFB8MAj5Kzxo2aUKnnAXGWxQRhfe1Nfrf5gTReQ1evD",
+   "vote": "GdFaSCpPf9RqRjxkvXUCzLR62bEjmEPZMS9XRVFC3pDu",
+   "stake": 498717120,
+   "delinquent": false,
+   "client": "Firedancer",
+   "version": "0.1.1",
+   "featureSet": 3069991853,
+   "leaderSlots": 0
+  },
+  {
+   "identity": "spur5CDwBvTZszvy1ozGjRc1x2TuDWo3VF4jrq7zgvD",
+   "vote": "spuraUaJeFZfdbgXpJhgqEHFAXatfrMArARXhXioxKd",
+   "stake": 2129065,
+   "delinquent": true,
+   "client": "NotInGossip",
+   "version": null,
+   "featureSet": null,
+   "leaderSlots": 0
+  }
+ ]
+}
