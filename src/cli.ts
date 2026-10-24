@@ -34,7 +34,7 @@ commands
   verify     check every recorded position against the chain (default: the public endpoint) -> data/<cluster>/verify.json
                --verify-rpc URL
   paths      delivery-path probe: one transaction per endpoint per round -> data/<cluster>/paths/
-               --endpoints URL,URL   --rounds 8
+               --endpoints URL,URL   ('read' = the read RPC, keeping its key out of the command line)   --rounds 8
   status     spend ledger and wallet balances
   fund       top up the sub-payers (prints the plan unless --live)
   sweep      return all sub-payer balances to the main wallet (prints the plan unless --live)
@@ -116,7 +116,7 @@ async function main(): Promise<void> {
       console.log(analyze(cfg.dataDir, cfg.cluster))
       return
     case 'paths': {
-      const endpoints = typeof args.flags.get('endpoints') === 'string' ? (args.flags.get('endpoints') as string).split(',') : [cfg.sendRpcUrl]
+      const endpoints = typeof args.flags.get('endpoints') === 'string' ? (args.flags.get('endpoints') as string).split(',').map((u) => (u === 'read' ? cfg.rpcUrl : u)) : [cfg.sendRpcUrl]
       await probePaths(cfg, rpc, endpoints, Number(args.flags.get('rounds') ?? 8), log)
       return
     }
