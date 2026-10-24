@@ -109,10 +109,10 @@ export function formatSummary(rows: ClientSummary[]): string {
   return lines.join('\n')
 }
 
-/** discover command: writes data/snapshots/<time>.json and prints the client table. */
+/** discover command: writes data/<cluster>/snapshots/<time>.json and prints the client table. */
 export async function discover(cfg: Config, rpc: Rpc, log: Log): Promise<Snapshot> {
   const { snapshot } = await takeSnapshot(rpc, cfg.cluster, log)
-  const dir = join(cfg.dataDir, 'snapshots')
+  const dir = join(cfg.dataDir, cfg.cluster, 'snapshots')
   mkdirSync(dir, { recursive: true })
   const file = join(dir, `${stamp()}-epoch${snapshot.epoch.epoch}.json`)
   writeFileSync(file, JSON.stringify(snapshot, null, 1))

@@ -41,7 +41,7 @@ export interface Config {
   cluster: Cluster
   /** reads: slots, blocks, statuses, cluster info */
   rpcUrl: string
-  /** where transactions are submitted; defaults to rpcUrl */
+  /** where transactions are submitted */
   sendRpcUrl: string
   keypairPath: string
   dataDir: string
@@ -76,7 +76,8 @@ export function loadConfig(args: Args): Config {
   return {
     cluster,
     rpcUrl,
-    sendRpcUrl: get('send-rpc', 'SEND_RPC_URL') ?? rpcUrl,
+    // sends default to the public endpoint: free keyed plans allow about one sendTransaction per second
+    sendRpcUrl: get('send-rpc', 'SEND_RPC_URL') ?? DEFAULT_RPC[cluster],
     keypairPath: get('keypair', 'KEYPAIR') ?? 'keys/payer.json',
     dataDir: get('data', 'DATA_DIR') ?? 'data',
     spendCapLamports: cap,

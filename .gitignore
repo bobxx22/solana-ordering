@@ -2,3 +2,6 @@ keys/
 .env
 node_modules/
 dist/
+data/logs/
+data/devnet/
+data/localnet/
