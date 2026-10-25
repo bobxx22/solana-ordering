@@ -64,3 +64,15 @@ test('Holm adjustment is monotone and capped at 1', () => {
     [0.04, 0.09, 0.09, 0.5],
   )
 })
+
+test('contrast test: one-sided exact sign flip against chance', async () => {
+  const { contrastStat } = await import('../src/analyze.ts')
+  const units = Array.from({ length: 10 }, (_, i) => ({ run: 'r', trial: i }) as any)
+  const ordered = new Map(units.map((u) => [`r#${u.trial}`, [{ role: 'C' }, { role: 'B' }] as any]))
+  const s = contrastStat(units, ordered, { name: 'C before B', pairs: [['C', 'B']], meaning: '' })
+  assert.equal(s.n, 10)
+  assert.equal(s.share, 1)
+  assert.ok(Math.abs(s.p - 2 ** -10) < 1e-12)
+  const reversed = new Map(units.map((u) => [`r#${u.trial}`, [{ role: 'B' }, { role: 'C' }] as any]))
+  assert.ok(contrastStat(units, reversed, { name: 'C before B', pairs: [['C', 'B']], meaning: '' }).p > 0.99)
+})

@@ -2,6 +2,7 @@
  "runs": [
   {
    "id": "2026-10-24T19-08-02Z",
+   "campaign": "calibration",
    "startedAt": "2026-10-24T19:08:05.686Z",
    "path": "rpc",
    "trials": 15,
@@ -13,6 +14,7 @@
   },
   {
    "id": "2026-10-24T23-35-52Z",
+   "campaign": "calibration",
    "startedAt": "2026-10-24T23:35:53.829Z",
    "path": "tpu",
    "trials": 8,
@@ -24,6 +26,7 @@
   },
   {
    "id": "2026-10-25T15-38-55Z",
+   "campaign": "calibration",
    "startedAt": "2026-10-25T15:38:56.953Z",
    "path": "tpu",
    "trials": 13,

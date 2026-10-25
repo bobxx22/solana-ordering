@@ -16,8 +16,11 @@ import { chunk, sleep } from './util.ts'
 export const SUB_PAYERS = 2 * ROLES.length
 /** top up a sub-payer below this balance ... */
 export const SUB_LOW = 1_200_000n
-/** ... to this one (rent-exempt minimum for a 0-byte account is 890 880 lamports) */
-export const SUB_TARGET = 3_000_000n
+/**
+ * ... to this one (rent-exempt minimum for a 0-byte account is 890 880 lamports). It covers a whole main run without
+ * a mid-run top-up: 360 landed trials x 61 000 lamports over 12 payers is about 1.83 M each.
+ */
+export const SUB_TARGET = 3_300_000n
 export const TX_FEE = 5_000n
 
 export function subPayerPath(cfg: Config, i: number): string {
@@ -97,10 +100,10 @@ async function transferBatch(
   log.info(`${what}: confirmed ${tx.signature}`)
 }
 
-/** Brings every sub-payer below SUB_LOW back up to SUB_TARGET. Without `live` only prints the plan. */
-export async function fundSubPayers(rpc: Rpc, sendRpc: Rpc, ledger: Ledger, log: Log, main: Signer, subs: Signer[], live: boolean): Promise<void> {
+/** Brings every sub-payer below `low` (default SUB_LOW) up to SUB_TARGET. Without `live` only prints the plan. */
+export async function fundSubPayers(rpc: Rpc, sendRpc: Rpc, ledger: Ledger, log: Log, main: Signer, subs: Signer[], live: boolean, low = SUB_LOW): Promise<void> {
   const bal = await balances(rpc, subs.map((s) => s.address))
-  const moves = subs.flatMap((s, i) => (bal[i] < SUB_LOW ? [{ from: main, to: s.address, lamports: SUB_TARGET - bal[i] }] : []))
+  const moves = subs.flatMap((s, i) => (bal[i] < low ? [{ from: main, to: s.address, lamports: SUB_TARGET - bal[i] }] : []))
   if (moves.length === 0) return
   const total = moves.reduce((s, m) => s + m.lamports, 0n)
   log.info(`top-up: ${moves.length} sub-payers, ${fmtSol(total)} from the main wallet`)

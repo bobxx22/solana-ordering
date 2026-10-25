@@ -1,5 +1,5 @@
 // Live feasibility test of direct QUIC delivery: 6 single role-A transactions, each to one upcoming leader.
-// Kept as the record of how data/mainnet-beta/quic-test/2026-10-25*.jsonl was produced (run once from the
+// Kept as the record of how data/mainnet-beta/quic-test/2026-10-24T23-25Z*.jsonl was produced (run once from the
 // repository root on 2026-10-25, when a trial still had five roles and buildTrialTxs returned { txs }).
 // It spent through the same ledger as everything else. The experiment itself now uses `run --path tpu`.
 import { BlockhashCache, SlotClock } from '../src/clock.ts'
@@ -14,7 +14,7 @@ const rpc = new Rpc(process.env.RPC_URL || `https://mainnet.helius-rpc.com/?api-
 const cfg: any = { keypairPath: 'keys/payer.json' }
 const { signers: subs } = loadSubPayers(cfg, false)
 const ledger = new Ledger('data/mainnet-beta/ledger.jsonl', 50_000_000n)
-const out = 'data/mainnet-beta/quic-test/2026-10-25.jsonl'
+const out = 'data/mainnet-beta/quic-test/2026-10-24T23-25Z.jsonl'
 const nodes: any[] = await rpc.call('getClusterNodes')
 const byId = new Map(nodes.map((n) => [n.pubkey, n]))
 const clock = new SlotClock(rpc); await clock.start()

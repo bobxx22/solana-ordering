@@ -4,14 +4,22 @@ import { dirname } from 'node:path'
 
 export class Log {
   private file: string | undefined
+  private textFile: string | undefined
 
   constructor(file?: string) {
     this.file = file
     if (file) mkdirSync(dirname(file), { recursive: true })
   }
 
+  /** From now on, human-readable lines are also appended to this file (a run's run.log). */
+  tee(textFile: string): void {
+    mkdirSync(dirname(textFile), { recursive: true })
+    this.textFile = textFile
+  }
+
   info(message: string): void {
     process.stderr.write(`${new Date().toISOString().slice(11, 23)} ${message}\n`)
+    if (this.textFile) appendFileSync(this.textFile, `${new Date().toISOString()} ${message}\n`)
   }
 
   /** Records a structured event; bigint values are written as strings. */

@@ -12,6 +12,8 @@ export class SlotClock {
   /** Date.now() when `slot` was observed */
   seenAt = 0
   source: ClockSource = 'poll'
+  /** when each recent slot was first observed (Date.now()), for the arrival margin of buffered bursts */
+  readonly seen = new Map<number, number>()
   private rpc: Rpc
   private ws: WebSocket | undefined
   private stopped = false
@@ -26,6 +28,8 @@ export class SlotClock {
       this.slot = slot
       this.seenAt = Date.now()
       this.source = source
+      this.seen.set(slot, this.seenAt)
+      if (this.seen.size > 2000) this.seen.delete(this.seen.keys().next().value!)
     }
   }
 

@@ -21,6 +21,8 @@ export interface SendResult {
   /** the stream had to wait for stream credit, so it left later than sentNs */
   blocked?: boolean[]
   state?: string
+  /** set when a connection the peer had closed was reopened before sending: the close state and reason */
+  reconnected?: string | null
 }
 
 export class TpuSender {
@@ -29,6 +31,8 @@ export class TpuSender {
   private pending = new Map<number, (r: any) => void>()
   private closeTimers = new Map<string, ReturnType<typeof setTimeout>>()
   private stopped = false
+  /** the Python process exited (a run must not go on without its sender) */
+  exited = false
 
   constructor() {
     this.child = spawn(pythonPath(), [join('py', 'tpu_sender.py')], { stdio: ['pipe', 'pipe', 'pipe'] })
@@ -41,6 +45,7 @@ export class TpuSender {
     })
     this.child.stderr.on('data', (d) => process.stderr.write(`[tpu] ${d}`))
     this.child.on('exit', () => {
+      this.exited = true
       this.stopped = true
       for (const [id, done] of this.pending) done({ id, ok: false, error: 'QUIC sender exited' })
       this.pending.clear()

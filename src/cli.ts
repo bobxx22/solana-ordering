@@ -4,7 +4,7 @@ import { join } from 'node:path'
 import { analyze } from './analyze.ts'
 import { collect } from './collect.ts'
 import { type Args, checkCluster, type Config, fmtSol, loadConfig, parseArgs } from './config.ts'
-import { DELIVERIES, type Delivery } from './design.ts'
+import { CELL_BLOCK, DEFAULT_QUOTAS } from './design.ts'
 import { discover } from './discover.ts'
 import { createKeypairFile, loadKeypair } from './keys.ts'
 import { Ledger } from './ledger.ts'
@@ -12,7 +12,7 @@ import { probePaths } from './paths.ts'
 import { settleOpen } from './settle.ts'
 import { Log, stamp } from './log.ts'
 import { Rpc } from './rpc.ts'
-import { DEFAULT_CLIENTS, ledgerFile, run, runsDir, type SendPath } from './run.ts'
+import { ledgerFile, run, runsDir, type SendPath } from './run.ts'
 import { verify } from './verify.ts'
 import { balances, fundSubPayers, loadSubPayers, sweepSubPayers } from './wallets.ts'
 
@@ -28,16 +28,17 @@ commands
   discover   snapshot validators by client and stake into data/<cluster>/snapshots/
   run        the experiment; a dry run (simulation only, written to data/<cluster>/dry-runs/) unless --live
                --path tpu|rpc        direct QUIC to the leader (default) or sendTransaction via --send-rpc
-               --clients A,B,..      clients to target (default: the eight largest)
-               --per-client N        trials per client (default 50)
+               --campaign NAME       required with --live: runs of one campaign share quotas and exclusions, so a
+                                     stopped run is continued by running again with the same name
+               --quota Agave=60,...  landed trials per client (default: 60 per local scheduler, 30 per pipeline)
                --per-validator N     at least N trials allowed per validator (default 4; more for small clients)
-               --deliveries buffered,streamed   --spacing-ms 4000
-               --seed N   --dry-trials 3   --minutes 240
+               --spacing-ms 4000   --seed N   --dry-trials 3   --minutes 240
   collect    landing slot, in-block position and slot leader of a run's transactions; settles the ledger
                [run id | all, default: the latest run]   --refresh refetches every block
   analyze    statistics of all live runs -> data/<cluster>/results/ (offline, from the committed raw data)
-  verify     check the raw data against the chain (default endpoint: solana-rpc.publicnode.com); exit code 1 on problems
-               --verify-rpc URL   --sample 30 (whole transactions checked for role parameters)   --write (data/<cluster>/verify.json)
+  verify     check the raw data against the chain (default endpoints: api.mainnet-beta.solana.com, then PublicNode);
+             exit code 1 on mismatches (blocks no endpoint can serve are reported, not failed)
+               --verify-rpc URL,URL   --sample 60 (whole transactions checked)   --write (data/<cluster>/verify.json)
   paths      delivery-path probe: one transaction per endpoint per round -> data/<cluster>/paths/
                --endpoints URL,read,tpu   ('read' = the read RPC, keeping its key out of the command line;
                                            'tpu' = QUIC straight to the next leader)   --rounds 8
@@ -93,16 +94,21 @@ async function main(): Promise<void> {
       await discover(cfg, rpc, log)
       return
     case 'run': {
-      const list = (k: string, d: string[]) => (typeof args.flags.get(k) === 'string' ? (args.flags.get(k) as string).split(',') : d)
       const num = (k: string, d: number) => (args.flags.has(k) ? Number(args.flags.get(k)) : d)
+      const campaign = typeof args.flags.get('campaign') === 'string' ? (args.flags.get('campaign') as string) : null
+      if (cfg.live && !campaign) throw new Error('a live run needs --campaign NAME (the same name continues a stopped run)')
+      const quotas =
+        typeof args.flags.get('quota') === 'string'
+          ? Object.fromEntries((args.flags.get('quota') as string).split(',').map((kv) => [kv.split('=')[0], Number(kv.split('=')[1])]))
+          : DEFAULT_QUOTAS
       await run(
         cfg,
         rpc,
         {
-          clients: list('clients', DEFAULT_CLIENTS),
-          perClient: num('per-client', 50),
+          quotas,
           perValidator: num('per-validator', 4),
-          deliveries: list('deliveries', DELIVERIES) as Delivery[],
+          cells: CELL_BLOCK,
+          campaign: campaign ?? 'dry',
           path: (args.flags.get('path') as SendPath) || 'tpu',
           spacingMs: num('spacing-ms', 4000),
           seed: num('seed', Date.now() % 2 ** 31),
@@ -144,9 +150,10 @@ async function main(): Promise<void> {
         process.exitCode = 1
       }
       if (args.flags.has('offline')) return
-      const r = await verify(verifyRpc(cfg, args), runsDir(cfg), log)
+      // a seeded sample of 120 blocks keeps this within minutes on the public endpoint; `verify` checks every block
+      const r = await verify(verifyRpcs(cfg, args), runsDir(cfg), log, { maxBlocks: 120, sample: 30 })
       if (r.problems.length) process.exitCode = 1
-      await run({ ...cfg, live: false }, rpc, { clients: DEFAULT_CLIENTS, perClient: 1, perValidator: 4, deliveries: DELIVERIES, path: 'tpu', spacingMs: 4000, seed: 1, dryTrials: 1, maxMinutes: 5 }, log)
+      await run({ ...cfg, live: false }, rpc, { quotas: DEFAULT_QUOTAS, perValidator: 4, cells: CELL_BLOCK, campaign: 'dry', path: 'tpu', spacingMs: 4000, seed: 1, dryTrials: 1, maxMinutes: 5 }, log)
       return
     }
     case 'paths': {
@@ -155,7 +162,7 @@ async function main(): Promise<void> {
       return
     }
     case 'verify': {
-      const r = await verify(verifyRpc(cfg, args), runsDir(cfg), log, { write: args.flags.get('write') === true, sample: Number(args.flags.get('sample') ?? 30) })
+      const r = await verify(verifyRpcs(cfg, args), runsDir(cfg), log, { write: args.flags.get('write') === true, sample: Number(args.flags.get('sample') ?? 60) })
       if (r.problems.length) process.exitCode = 1
       return
     }
@@ -192,11 +199,15 @@ async function main(): Promise<void> {
   }
 }
 
-/** Verification defaults to a public endpoint independent of the one the data was collected with. */
-const VERIFY_RPC: Record<string, string> = { 'mainnet-beta': 'https://solana-rpc.publicnode.com' }
-function verifyRpc(cfg: Config, args: Args): Rpc {
-  const url = (args.flags.get('verify-rpc') as string) || VERIFY_RPC[cfg.cluster] || cfg.sendRpcUrl
-  return new Rpc(url, { minGapMs: 200, retries: 8 })
+/**
+ * Verification endpoints, tried in order: by default the public Solana endpoint, which keeps the whole history (most
+ * free endpoints keep only a day or two of blocks), then PublicNode. --verify-rpc takes a comma-separated list.
+ */
+const VERIFY_RPCS: Record<string, string[]> = { 'mainnet-beta': ['https://api.mainnet-beta.solana.com', 'https://solana-rpc.publicnode.com'] }
+function verifyRpcs(cfg: Config, args: Args): Rpc[] {
+  const given = args.flags.get('verify-rpc')
+  const urls = typeof given === 'string' ? given.split(',') : (VERIFY_RPCS[cfg.cluster] ?? [cfg.sendRpcUrl])
+  return urls.map((u) => new Rpc(u, { minGapMs: 200, retries: 6 }))
 }
 
 /** A run directory: the id given as the first argument, or the latest run. */

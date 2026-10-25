@@ -18,16 +18,22 @@ This runs `reproduce`, which needs no keys and sends nothing. It does three thin
 
 1. **Regenerates every table** from the committed raw data and checks that the result is byte-identical to the
    committed `results.md`.
-2. **Checks the raw data against the chain** (`verify`), through a public RPC other than the one used to collect:
-   - every landed transaction: its signature is at the recorded index of the recorded slot, with the recorded fee,
-     paid by one of the run's own wallets, writing the recorded anchor; the slot is after Alpenglow; the slot leader
-     is the recorded one, where the RPC still serves that epoch's leader schedule;
-   - a sample of whole transactions from every role: their ComputeBudget instructions match the recorded role
-     parameters (this is what tells A, E and F apart, since they pay the same fee);
-   - every transaction recorded as not landed is unknown to the chain;
-   - every sent transaction was planned before sending and reserved in the spend ledger.
+2. **Checks the raw data against the chain** (`verify`). It uses public endpoints other than the one used to
+   collect: `api.mainnet-beta.solana.com`, which keeps the whole history, then PublicNode.
+   - Every landed transaction: its signature is at the recorded index of the recorded slot, and the slot is after
+     Alpenglow.
+   - The slot leader: checked against the leader schedule where an endpoint still serves that epoch (public
+     endpoints keep only a few epochs), otherwise against the block's fee-reward recipient.
+   - A sample of whole transactions from every role: fee, fee payer (one of the run's own wallets), anchor, and the
+     ComputeBudget instructions against the recorded role parameters. This is what tells A, E and F apart, since
+     they pay the same fee.
+   - Every transaction recorded as not landed is unknown to the chain.
+   - Every sent transaction was planned before sending and reserved in the spend ledger.
 
-   It exits with an error if anything does not match.
+   It exits with an error on any mismatch. A block that no endpoint serves any more is reported, not failed. The
+   one-command check covers a seeded sample of 120 blocks, a few minutes on the rate-limited public endpoint.
+   `node src/cli.ts verify` checks every block, and the result of the last full check is committed as
+   `data/mainnet-beta/verify.json`.
 3. **Makes one dry-run trial** against mainnet. It opens the QUIC connection to the leader and simulates the six
    transactions with signature verification.
 
@@ -80,25 +86,36 @@ Each rule therefore predicts a different order of the six:
 
 `test/design.test.ts` checks these orders.
 
-Three contrasts settle the question directly:
+Contrasts that settle the question directly:
 
 - **A,E vs F.** F has A's price and fee but eight times its cost. Only the cost denominator can separate them.
-- **B vs C.** Only the base-fee share separates reward/cost from prio fee/cost and price.
+- **C vs B.** Only the base-fee share separates reward/cost from prio fee/cost and price.
+- **D vs C.** With half the base fee (what both clients' source uses) D goes first; with the whole base fee, or cost
+  alone, C would.
+- **A,E vs C.** Same cost, strictly higher fee: every fee-aware rule puts A and E first. This is the positive control.
 - **A vs E.** E is A's twin; between them only the send order differs.
+
+What the deployed schedulers actually compute is documented, with links to the exact source lines of Agave v4.3.2,
+Jito-Solana v4.3.2-jito and Firedancer v26.10.4, in [`docs/schedulers.md`](docs/schedulers.md). Both clients rank by
+exactly the reward/cost of the table above.
 
 Each trial gets a cell, dealt per client in shuffled blocks of ten:
 
-- **mode**:
-  - `shared`: all six write the same anchor, a write-lock conflict the scheduler must serialize;
-  - `independent`: each writes its own anchor.
-- **delivery** (buffered three times as often as each of the others):
-  - `buffered`: the whole burst at once two slots (~400 ms) before the window. All six wait in the leader's buffer
-    when its block starts, so the scheduler ranks six transactions available together. This is the main cell.
-  - `burst`: the whole burst at once one slot into the window, arriving while the block is being produced.
-  - `streamed`: one transaction every 30 ms from one slot into the window. This is a control for arrival order: a
-    leader that does not hold transactions back for 30 ms must include them in send order.
+| cell | per 10 trials | what it asks |
+|---|---:|---|
+| buffered / shared | 5 | **primary.** The whole burst arrives at once two slots (~400 ms) before the window, so the leader holds all six when its block starts. They conflict on one anchor, so they run on one thread in the order the scheduler picks: block order is scheduling order. |
+| buffered / independent | 2 | the same with separate anchors: parallel threads may record them in completion order |
+| burst / shared | 1 | the whole burst one slot into the window, while the block is being produced |
+| streamed / shared, streamed / independent | 1 + 1 | one transaction every 30 ms from one slot into the window: a control for arrival order, since a leader that does not hold transactions back for 30 ms must include them in send order |
 
 The send order is a fresh random permutation in every trial.
+
+**Quotas.** 60 landed trials per local-scheduler label (Agave, JitoLabs, Firedancer, Rakurai) and 30 per pipeline
+label (AgaveBam, FireBAM, HarmonicAgave, HarmonicFiredancer). That is 360 trials, at most 0.022 SOL.
+
+**Campaigns.** Runs belong to a campaign (`--campaign`). The main run is the campaign `main`; the calibration runs
+are kept apart and never enter a test. A run that stops is continued by starting it again with the same campaign
+name: the quotas, the per-validator counts and the excluded addresses carry over.
 
 ## How the design handles each consideration
 
@@ -123,7 +140,10 @@ The send order is a fresh random permutation in every trial.
   - In epoch 1067, the 364 AgaveBam validators advertised 17 addresses, one of them for 102 validators.
   - FireBAM had 94% of its slots behind shared addresses.
   - The 86 Harmonic validators sat on 6 hosts, with a separate port each.
-  - Every JitoLabs, Firedancer, Rakurai and Agave validator had its own address.
+  - Every JitoLabs, Firedancer, Rakurai and Agave validator had its own address. But 37 JitoLabs validators (about a
+    quarter of JitoLabs slots) advertise port 11228, and both JitoLabs bursts that landed nothing in calibration went
+    to that port. The run excludes such addresses once they have failed twice without ever landing, and the report
+    gives each label's reachable share.
 
   For BAM and Harmonic labels our timing control therefore ends at the gateway, and two labels behind one gateway
   are not two independent schedulers. The analysis records the ingress host of every trial and resamples hosts, not
@@ -142,8 +162,9 @@ The send order is a fresh random permutation in every trial.
   - Each transaction goes on its own stream in the chosen order.
   - We record the send time and the time the peer's QUIC stack acknowledged the whole stream. The acknowledgement
     is the proof of delivery, which separates "not delivered" from "delivered and dropped".
-  - Some addresses accept the handshake but drop unstaked traffic. A run stops targeting an address after two bursts
-    in a row that land nothing.
+  - Some addresses accept the handshake but drop unstaked traffic. A run stops targeting an address that has never
+    landed anything once it fails twice in a row (empty bursts or refused handshakes); an address that landed before
+    is never excluded.
 - **The probe.** `paths` measures the delay from dispatch to landing for single transactions: data in
   `data/mainnet-beta/paths/` and `quic-test/`.
 - **What stays unknown.** QUIC stream handling, signature verification and QoS inside the leader. Unstaked
@@ -152,8 +173,8 @@ The send order is a fresh random permutation in every trial.
 ### Interaction of our own transactions
 
 - **Separate payers.** Every transaction has its own fee payer, because the fee payer is always write-locked and a
-  shared one would itself be a conflict. Two sets of six sub-payers alternate between consecutive trials, and they
-  are topped up only while idle.
+  shared one would itself be a conflict. Two sets of six sub-payers alternate between consecutive trials. They are
+  funded for the whole run before it starts, and checked (and if needed topped up) before each use, while idle.
 - **Fresh anchors.** Every trial writes fresh, random anchor accounts, so trials never touch each other's accounts.
 - **Equal structure in both modes.** `shared` and `independent` differ only in whether the six anchors are the same
   account. The transactions have identical structure and cost (two write locks each).
@@ -174,27 +195,42 @@ The send order is a fresh random permutation in every trial.
 
 - **Randomized.** The send order is randomized per trial, independently of the fees, so arrival cannot masquerade
   as a fee rule.
-- **Twins.** A and E isolate arrival order.
+- **Twins.** A and E have identical priority. Neither deployed client breaks such ties by arrival: Agave v4.3.2
+  uses an internal container id and Firedancer its treap structure (`docs/schedulers.md`). The twin column therefore
+  measures ingress plus tie-breaking, not FIFO.
 - **Three deliveries.** `buffered` (all six at once, before the window) asks how the scheduler ranks transactions
   that are all available together. `burst` asks the same while the block is already being produced. `streamed`
   (30 ms apart) checks that arrival order is preserved when nothing is held back.
-- **Ingress order.** In shared/buffered trials the twins also show whether our six streams reached the scheduler in
-  the order we sent them: Agave breaks equal-priority ties by earlier arrival.
-
 ### Noise versus rule
 
-- **Unit.** One trial. Its transactions that landed in the targeted leader's window are ordered by (slot, index): a
-  transaction pushed to a later slot of the same window counts as later.
-- **Headline: decisive pairs.** Single pairs of roles that separate the rules (A before F, E before F, C before B,
-  A before B): one indicator per trial, reported as shares with Wilson intervals and exact binomial tests,
-  Holm-adjusted over each table, per delivery and mode. D before C, where all rules agree, is the positive control.
-  A null result is reported as such when the control works and the rules do not.
-- **Rule agreement.** Per trial: gamma = (pairs in the rule's order − pairs against it) / pairs the rule ranks
-  differently. Per client: the mean, a 95% bootstrap interval resampling *ingress hosts* (trials through one host
-  are not independent), and a sign-flip permutation test, Holm-adjusted.
-- **Power.** With about 30 buffered trials per label, a pair that holds 90% of the time is detected after
-  correction; a 70–80% tendency per label generally is not, though it can be when the local-scheduler labels are
-  pooled.
+The analysis is fixed before the main run (this section, and the header of `src/analyze.ts`):
+
+- **Unit.** One trial. Its transactions that landed in the targeted leader's 4-slot window are ordered by
+  (slot, index): a transaction pushed to a later slot of the window counts as later. Landings outside the window are
+  counted as spill-over and left out.
+- **Primary family: 12 tests.** Campaign `main`, cell buffered/shared, the four local-scheduler labels (Agave,
+  JitoLabs, Firedancer, Rakurai), three contrasts:
+  - A,E before F (per trial, the mean of the two indicators);
+  - C before B;
+  - D before C.
+
+  Each test is a one-sided exact sign-flip test against chance (0.5), Holm-adjusted over the twelve. Shares are
+  given with Wilson intervals.
+- **Control.** A,E before C, reported first and outside the family. A label that fails it is reported as "no fee
+  ordering detected", whatever its other contrasts say.
+- **Reading the outcome.** The outcome is read against the decision table in `docs/schedulers.md`. For example,
+  A,E before F with C before B and D before C means ranking by reward/cost as in the source. A,E before F failing
+  while C before B holds means the cost term is ignored.
+- **Secondary, descriptive.** Shares with intervals, no tests:
+  - buffered/independent per label;
+  - burst and streamed pooled over the local labels;
+  - the twins;
+  - the pipeline labels;
+  - rule agreement (gamma per trial, bootstrap over ingress hosts, sign-flip over host means);
+  - the calibration runs.
+- **Power.** With ~30 buffered/shared trials per local label, a contrast that holds 90% of the time passes the
+  Holm threshold with probability ~0.97; one that holds 80% of the time, ~0.6. Burst and streamed get about 6 trials
+  per label, which is why they are only pooled and described.
 
 ### What this design does not separate
 
@@ -255,7 +291,7 @@ The send order is a fresh random permutation in every trial.
 |---|---|
 | `reproduce` | the one-command check described above |
 | `discover` | snapshot validators by client |
-| `run [--live]` | the experiment. Options: `--path tpu\|rpc`, `--per-client`, `--per-validator`, `--deliveries`, `--seed`, `--minutes` |
+| `run [--live --campaign NAME]` | the experiment. Options: `--quota Agave=60,...`, `--path tpu\|rpc`, `--per-validator`, `--seed`, `--minutes` |
 | `collect [run\|all] [--refresh]` | landing slot, in-block position and slot leader; settles the ledger |
 | `analyze` | all tables, offline |
 | `verify [--verify-rpc URL]` | the check against the chain |

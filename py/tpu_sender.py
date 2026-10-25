@@ -74,7 +74,14 @@ class Sender:
         return {"handshakeMs": round((time.perf_counter() - t0) * 1000, 2)}
 
     async def send(self, addr, txs, gap_ms):
-        if addr not in self.conns:
+        reconnected = None
+        if addr in self.conns:
+            # the peer may have closed an idle (or unwanted) connection since the handshake: record why and redo it
+            stale = self.conns[addr][1]._quic
+            if stale._state.name != "CONNECTED":
+                ev = getattr(stale, "_close_event", None)
+                reconnected = f"{stale._state.name}: {getattr(ev, 'error_code', None)} {getattr(ev, 'reason_phrase', '')}".strip()
+        if addr not in self.conns or reconnected:
             await self.connect(addr)
         _, proto = self.conns[addr]
         quic = proto._quic
@@ -97,7 +104,7 @@ class Sender:
                 if acked[i] is None and st is not None and st.sender.is_finished:
                     acked[i] = str(time.time_ns())
             await asyncio.sleep(0.002)
-        return {"sentNs": sent, "ackNs": acked, "blocked": blocked, "state": state}
+        return {"sentNs": sent, "ackNs": acked, "blocked": blocked, "state": state, "reconnected": reconnected}
 
     async def close(self, addr):
         entry = self.conns.pop(addr, None)

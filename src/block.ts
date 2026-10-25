@@ -41,7 +41,7 @@ const MAX_CU_LIMIT = 1_400_000
 const DEFAULT_LOADED_LIMIT = 64 * 1024 * 1024
 /** signature-verification precompiles: cost per verified signature (the count is the instruction data's first byte) */
 const PRECOMPILES: Record<string, number> = {
-  Ed25519SigVerify111111111111111111111111111: 2_280,
+  Ed25519SigVerify111111111111111111111111111: 2_400,
   KeccakSecp256k11111111111111111111111111111: 6_690,
   Secp256r1SigVerify1111111111111111111111111: 4_800,
 }

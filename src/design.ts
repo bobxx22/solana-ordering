@@ -21,7 +21,8 @@
 //   burst     the whole burst at once one slot into the window, arriving while the block is being produced;
 //   streamed  one transaction every 30 ms from one slot into the window: a control for arrival order, since a
 //             leader that does not hold transactions back for 30 ms must include them in send order.
-// Cells are dealt in shuffled blocks with buffered three times as often as each of the others.
+// Cells are dealt per client in shuffled blocks of ten (CELL_BLOCK): half of all trials are buffered/shared, the
+// primary cell, where execution order equals scheduling order for every client (docs/schedulers.md).
 import { randomBytes } from 'node:crypto'
 import { encode } from './base58.ts'
 import type { Signer } from './keys.ts'
@@ -57,8 +58,6 @@ export const ROLES: RoleSpec[] = [
 export const BASE_FEE_PER_SIGNATURE = 5_000n
 /** measured on mainnet by simulation: the transaction consumes 600 CU and loads 235 bytes */
 export const MEASURED_CU = 600
-/** one block of cells per mode: buffered three times, burst and streamed once */
-export const DELIVERIES: Delivery[] = ['buffered', 'buffered', 'buffered', 'burst', 'streamed']
 export const STREAM_GAP_MS = 30
 export const GAP_MS: Record<Delivery, number> = { buffered: 0, burst: 0, streamed: STREAM_GAP_MS }
 /** dispatch slot relative to the first slot of the leader's window */
@@ -140,23 +139,44 @@ export interface Cell {
   delivery: Delivery
 }
 
-/** Factor cells are dealt per client in shuffled blocks (both modes × the delivery list), so every client gets a balanced design. */
+const cells = (n: number, mode: Mode, delivery: Delivery): Cell[] => Array.from({ length: n }, () => ({ mode, delivery }))
+
+/**
+ * One block of ten cells, pre-registered before the main run: 5 buffered/shared (primary), 2 buffered/independent,
+ * 1 burst/shared, and 1 streamed in each mode.
+ */
+export const CELL_BLOCK: Cell[] = [
+  ...cells(5, 'shared', 'buffered'),
+  ...cells(2, 'independent', 'buffered'),
+  ...cells(1, 'shared', 'burst'),
+  ...cells(1, 'shared', 'streamed'),
+  ...cells(1, 'independent', 'streamed'),
+]
+
+/**
+ * Landed trials wanted per client label, pre-registered: the client comparison rests on the four labels whose blocks
+ * are ordered by a local scheduler; BAM and Harmonic labels are reported as pipelines.
+ */
+export const LOCAL_CLIENTS = ['Agave', 'JitoLabs', 'Firedancer', 'Rakurai']
+export const PIPELINE_CLIENTS = ['AgaveBam', 'FireBAM', 'HarmonicAgave', 'HarmonicFiredancer']
+export const DEFAULT_QUOTAS: Record<string, number> = Object.fromEntries([...LOCAL_CLIENTS.map((c) => [c, 60]), ...PIPELINE_CLIENTS.map((c) => [c, 30])])
+
+/** Factor cells are dealt per client in shuffled blocks, so every client gets the same balanced design. */
 export class CellDealer {
   private queues = new Map<string, Cell[]>()
   private random: () => number
-  private deliveries: Delivery[]
+  private block: Cell[]
 
-  constructor(random: () => number, deliveries: Delivery[]) {
+  constructor(random: () => number, block: Cell[] = CELL_BLOCK) {
     this.random = random
-    this.deliveries = deliveries
+    this.block = block
   }
 
   /** The cell the client's next trial will get. */
   peek(client: string): Cell {
     let q = this.queues.get(client)
     if (!q || q.length === 0) {
-      const cells = (['shared', 'independent'] as Mode[]).flatMap((mode) => this.deliveries.map((delivery) => ({ mode, delivery })))
-      q = shuffle(cells, this.random)
+      q = shuffle(this.block, this.random)
       this.queues.set(client, q)
     }
     return q[0]

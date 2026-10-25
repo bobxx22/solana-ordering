@@ -2,6 +2,7 @@
  {
   "run": "2026-10-24T19-08-02Z",
   "trial": 0,
+  "campaign": "calibration",
   "client": "AgaveBam",
   "leader": "7EzbSahSfSjeRexHcNDLDpzHBAGBLjLKtjbmuoQnEtjE",
   "version": "4.3.2",
@@ -15,6 +16,7 @@
    460963380,
    460963381
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": -0.7777777777777778,
    "priorityPerCost": -1,
@@ -27,6 +29,7 @@
  {
   "run": "2026-10-24T19-08-02Z",
   "trial": 1,
+  "campaign": "calibration",
   "client": "HarmonicAgave",
   "leader": "CAo1dCGYrB6NhHh5xb1cGjUiu86iyCfMTENxgHumSve4",
   "version": "4.3.2",
@@ -39,6 +42,7 @@
   "slots": [
    460963433
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": 0.1111111111111111,
    "priorityPerCost": -0.1111111111111111,
@@ -51,6 +55,7 @@
  {
   "run": "2026-10-24T19-08-02Z",
   "trial": 2,
+  "campaign": "calibration",
   "client": "JitoLabs",
   "leader": "FbYX2uN573G5WsgiPdHU6fS5PNUyjdXfGfpZNkYUuT4k",
   "version": "4.3.2",
@@ -64,6 +69,7 @@
    460963444,
    460963445
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": 0.3333333333333333,
    "priorityPerCost": 0.5555555555555556,
@@ -76,6 +82,7 @@
  {
   "run": "2026-10-24T19-08-02Z",
   "trial": 3,
+  "campaign": "calibration",
   "client": "HarmonicFiredancer",
   "leader": "nymsGg7ZXcYBwGYKZL8qEHk9PQ8sAkKvnXgUNLPyGDV",
   "version": "26.10.4",
@@ -89,6 +96,7 @@
    460963481,
    460963482
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": 1,
    "priorityPerCost": 0.7777777777777778,
@@ -101,6 +109,7 @@
  {
   "run": "2026-10-24T19-08-02Z",
   "trial": 4,
+  "campaign": "calibration",
   "client": "AgaveBam",
   "leader": "3RXKQBRv7xKTQeNdLSPhCiD4QcUfxEQ12rtgUkMf5LnS",
   "version": "4.3.2",
@@ -114,6 +123,7 @@
    460963489,
    460963490
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": -0.3333333333333333,
    "priorityPerCost": -0.5555555555555556,
@@ -126,6 +136,7 @@
  {
   "run": "2026-10-24T19-08-02Z",
   "trial": 5,
+  "campaign": "calibration",
   "client": "HarmonicAgave",
   "leader": "3psxMyr7rQzywVp1MXKd1XFmFz33NjydzCoJx9t2sMQW",
   "version": "4.3.2",
@@ -139,6 +150,7 @@
    460963510,
    460963511
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": -0.1111111111111111,
    "priorityPerCost": -0.3333333333333333,
@@ -151,6 +163,7 @@
  {
   "run": "2026-10-24T19-08-02Z",
   "trial": 6,
+  "campaign": "calibration",
   "client": "JitoLabs",
   "leader": "3SkE34PVeGck2ArEffFKjihrQgURsvnoTAhitsNXNzXd",
   "version": "4.3.2",
@@ -164,6 +177,7 @@
    460963537,
    460963538
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": -0.1111111111111111,
    "priorityPerCost": -0.3333333333333333,
@@ -176,6 +190,7 @@
  {
   "run": "2026-10-24T19-08-02Z",
   "trial": 7,
+  "campaign": "calibration",
   "client": "HarmonicAgave",
   "leader": "FzQqaDStQQHs52YKeCnDovwSqvyZBCgs2kJcmvoFZwaS",
   "version": "4.3.2",
@@ -188,6 +203,7 @@
   "slots": [
    460963577
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": 0.7777777777777778,
    "priorityPerCost": 1,
@@ -200,6 +216,7 @@
  {
   "run": "2026-10-24T19-08-02Z",
   "trial": 8,
+  "campaign": "calibration",
   "client": "Firedancer",
   "leader": "DNVZMSqeRH18Xa4MCTrb1MndNf3Npg4MEwqswo23eWkf",
   "version": "26.10.4",
@@ -213,6 +230,7 @@
    460963628,
    460963629
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": 0.3333333333333333,
    "priorityPerCost": 0.1111111111111111,
@@ -225,6 +243,7 @@
  {
   "run": "2026-10-24T19-08-02Z",
   "trial": 9,
+  "campaign": "calibration",
   "client": "Agave",
   "leader": "rsbp8zMHbGCpLoRktmsjspYv77VcjxAzH1KxPCD9BiU",
   "version": "4.3.2",
@@ -238,6 +257,7 @@
    460963709,
    460963710
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": -0.1111111111111111,
    "priorityPerCost": 0.1111111111111111,
@@ -250,6 +270,7 @@
  {
   "run": "2026-10-24T19-08-02Z",
   "trial": 10,
+  "campaign": "calibration",
   "client": "Firedancer",
   "leader": "4VRs6A9zBRXz6MLcmQGsBiSoWE2JjHrmw7LintC3T4Nv",
   "version": "26.10.4",
@@ -262,6 +283,7 @@
   "slots": [
    460963776
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": 0.7777777777777778,
    "priorityPerCost": 0.5555555555555556,
@@ -274,6 +296,7 @@
  {
   "run": "2026-10-24T19-08-02Z",
   "trial": 11,
+  "campaign": "calibration",
   "client": "HarmonicAgave",
   "leader": "XkCriyrNwS3G4rzAXtG5B1nnvb5Ka1JtCku93VqeKAr",
   "version": "4.3.2",
@@ -286,6 +309,7 @@
   "slots": [
    460964025
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": 0.1111111111111111,
    "priorityPerCost": -0.1111111111111111,
@@ -298,6 +322,7 @@
  {
   "run": "2026-10-24T19-08-02Z",
   "trial": 12,
+  "campaign": "calibration",
   "client": "AgaveBam",
   "leader": "3tm92VTxwyZ5MDhGoYR4tVTkwWYkzfam6hwBjauUACCk",
   "version": "4.3.2",
@@ -311,6 +336,7 @@
    460964088,
    460964089
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": 0.5555555555555556,
    "priorityPerCost": 0.3333333333333333,
@@ -323,6 +349,7 @@
  {
   "run": "2026-10-24T19-08-02Z",
   "trial": 13,
+  "campaign": "calibration",
   "client": "FireBAM",
   "leader": "11AMA4mnNbsrPQeuoNN7uiZVJZtqEzQHrTfa5vnbcjk",
   "version": "26.10.4",
@@ -336,6 +363,7 @@
    460964119,
    460964120
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": 0.1111111111111111,
    "priorityPerCost": -0.1111111111111111,
@@ -348,6 +376,7 @@
  {
   "run": "2026-10-24T19-08-02Z",
   "trial": 14,
+  "campaign": "calibration",
   "client": "JitoLabs",
   "leader": "HH5dA42XF1HxNk1TRpG6LuKfLViMYNdAz5iWrFM4hWFi",
   "version": "4.3.2",
@@ -361,6 +390,7 @@
    460964624,
    460964625
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": 0.7777777777777778,
    "priorityPerCost": 0.5555555555555556,
@@ -373,6 +403,7 @@
  {
   "run": "2026-10-24T23-35-52Z",
   "trial": 0,
+  "campaign": "calibration",
   "client": "AgaveBam",
   "leader": "6k1YkmTKwPRUhChnxA9ryJmbtuQMbro4xFTL6mL9jycB",
   "version": "4.3.2",
@@ -386,6 +417,7 @@
    461039133,
    461039134
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": 0.42857142857142855,
    "priorityPerCost": 0,
@@ -398,6 +430,7 @@
  {
   "run": "2026-10-24T23-35-52Z",
   "trial": 2,
+  "campaign": "calibration",
   "client": "HarmonicFiredancer",
   "leader": "CQdLgwkmmHF8DE6t4sguXMTXWDxq3oLh3xfekDTmow12",
   "version": "26.10.4",
@@ -410,6 +443,7 @@
   "slots": [
    461039177
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": 0.2857142857142857,
    "priorityPerCost": 0.14285714285714285,
@@ -422,18 +456,20 @@
  {
   "run": "2026-10-24T23-35-52Z",
   "trial": 3,
+  "campaign": "calibration",
   "client": "HarmonicAgave",
   "leader": "HTeRsa3gm3CGrizMoCrtWj4uBZ1NKYcGqh8jfBu2u3Jo",
   "version": "4.3.2",
   "path": "tpu",
   "mode": "independent",
-  "delivery": "buffered",
+  "delivery": "buffered@-1",
   "ingress": "63.254.166.232",
   "ingressShared": 17,
   "observedOrder": "ADEFCB",
   "slots": [
    461039204
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": 0.7142857142857143,
    "priorityPerCost": 0.5714285714285714,
@@ -446,18 +482,20 @@
  {
   "run": "2026-10-24T23-35-52Z",
   "trial": 4,
+  "campaign": "calibration",
   "client": "Firedancer",
   "leader": "DNVZMSqeRH18Xa4MCTrb1MndNf3Npg4MEwqswo23eWkf",
   "version": "26.10.4",
   "path": "tpu",
   "mode": "independent",
-  "delivery": "buffered",
+  "delivery": "buffered@-1",
   "ingress": "23.109.46.35",
   "ingressShared": 1,
   "observedOrder": "EADCFB",
   "slots": [
    461039316
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": 1,
    "priorityPerCost": 0.5714285714285714,
@@ -470,6 +508,7 @@
  {
   "run": "2026-10-24T23-35-52Z",
   "trial": 5,
+  "campaign": "calibration",
   "client": "Rakurai",
   "leader": "2dfgsiSaZ51QYPsECMYMG247PXxyKdwkV9wTHoQb8YEC",
   "version": "4.3.2",
@@ -483,6 +522,7 @@
    461039341,
    461039342
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": 0,
    "priorityPerCost": -0.14285714285714285,
@@ -495,6 +535,7 @@
  {
   "run": "2026-10-24T23-35-52Z",
   "trial": 7,
+  "campaign": "calibration",
   "client": "Agave",
   "leader": "mds2fZEpJP688PqJHvfLxGyf2VFrcNkvjuUxNYCwjrq",
   "version": "4.5.0-alpha.2",
@@ -508,6 +549,7 @@
    461039485,
    461039486
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": -0.2857142857142857,
    "priorityPerCost": -0.14285714285714285,
@@ -520,6 +562,7 @@
  {
   "run": "2026-10-25T15-38-55Z",
   "trial": 1,
+  "campaign": "calibration",
   "client": "Firedancer",
   "leader": "EvnRmnMrd69kFdbLMxWkTn1icZ7DCceRhvmb2SJXqDo4",
   "version": "26.10.4",
@@ -532,6 +575,7 @@
   "slots": [
    461311213
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": 1,
    "priorityPerCost": 0.5714285714285714,
@@ -544,6 +588,7 @@
  {
   "run": "2026-10-25T15-38-55Z",
   "trial": 2,
+  "campaign": "calibration",
   "client": "HarmonicAgave",
   "leader": "A1vqhA2fS6K7CvHsJKX1ACcHJFEmyRg4KuR5pctHANy4",
   "version": "4.3.2",
@@ -556,6 +601,7 @@
   "slots": [
    461311236
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": 0.7142857142857143,
    "priorityPerCost": 0.8571428571428571,
@@ -568,6 +614,7 @@
  {
   "run": "2026-10-25T15-38-55Z",
   "trial": 3,
+  "campaign": "calibration",
   "client": "HarmonicAgave",
   "leader": "DrifTrN923QaouP89UxkQzFGbumKPCnfkNYQRwmZxatz",
   "version": "4.3.2",
@@ -581,6 +628,7 @@
    461311257,
    461311258
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": -0.42857142857142855,
    "priorityPerCost": -0.2857142857142857,
@@ -593,6 +641,7 @@
  {
   "run": "2026-10-25T15-38-55Z",
   "trial": 4,
+  "campaign": "calibration",
   "client": "AgaveBam",
   "leader": "gridqZmeBcsUKT2Mv4M9YFHFN3tVLFb2TCtTcLD1cAd",
   "version": "4.3.2",
@@ -605,6 +654,7 @@
   "slots": [
    461311280
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": 1,
    "priorityPerCost": 0.5714285714285714,
@@ -617,6 +667,7 @@
  {
   "run": "2026-10-25T15-38-55Z",
   "trial": 5,
+  "campaign": "calibration",
   "client": "AgaveBam",
   "leader": "5ejbTALcBsKQ7Cj1iSuu2mY5jqbYHqh9gF5ERXLiYj1z",
   "version": "4.3.2",
@@ -630,6 +681,7 @@
    461311301,
    461311302
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": -0.42857142857142855,
    "priorityPerCost": 0,
@@ -642,6 +694,7 @@
  {
   "run": "2026-10-25T15-38-55Z",
   "trial": 6,
+  "campaign": "calibration",
   "client": "JitoLabs",
   "leader": "9rkJMARqK6VBkcxGfKBAwnA44gPAfGxPbPsfsggFNDSQ",
   "version": "4.3.2",
@@ -654,6 +707,7 @@
   "slots": [
    461311324
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": 0,
    "priorityPerCost": -0.42857142857142855,
@@ -666,6 +720,7 @@
  {
   "run": "2026-10-25T15-38-55Z",
   "trial": 7,
+  "campaign": "calibration",
   "client": "JitoLabs",
   "leader": "E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL",
   "version": "4.3.2",
@@ -678,6 +733,7 @@
   "slots": [
    461311356
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": 0.14285714285714285,
    "priorityPerCost": 0.2857142857142857,
@@ -690,6 +746,7 @@
  {
   "run": "2026-10-25T15-38-55Z",
   "trial": 8,
+  "campaign": "calibration",
   "client": "Rakurai",
   "leader": "7PdKhpKz7T39vZHFL1UfcYNDsLvay6hp4KPQq1aUckFf",
   "version": "4.3.2",
@@ -702,6 +759,7 @@
   "slots": [
    461311384
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": 0.2857142857142857,
    "priorityPerCost": -0.14285714285714285,
@@ -714,6 +772,7 @@
  {
   "run": "2026-10-25T15-38-55Z",
   "trial": 9,
+  "campaign": "calibration",
   "client": "HarmonicFiredancer",
   "leader": "CQdLgwkmmHF8DE6t4sguXMTXWDxq3oLh3xfekDTmow12",
   "version": "26.10.4",
@@ -726,6 +785,7 @@
   "slots": [
    461311404
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": 0.8571428571428571,
    "priorityPerCost": 0.7142857142857143,
@@ -738,6 +798,7 @@
  {
   "run": "2026-10-25T15-38-55Z",
   "trial": 10,
+  "campaign": "calibration",
   "client": "FireBAM",
   "leader": "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY",
   "version": "26.10.4",
@@ -751,6 +812,7 @@
    461311465,
    461311466
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": -0.42857142857142855,
    "priorityPerCost": -0.2857142857142857,
@@ -763,6 +825,7 @@
  {
   "run": "2026-10-25T15-38-55Z",
   "trial": 11,
+  "campaign": "calibration",
   "client": "Agave",
   "leader": "mds4GEuiSgQRqveGyktWpETBFCb4AS2wDnhqwLHcT6Z",
   "version": "4.4.0-rc.0",
@@ -775,6 +838,7 @@
   "slots": [
    461311860
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": 0.42857142857142855,
    "priorityPerCost": 0.5714285714285714,
@@ -787,6 +851,7 @@
  {
   "run": "2026-10-25T15-38-55Z",
   "trial": 12,
+  "campaign": "calibration",
   "client": "Agave",
   "leader": "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE",
   "version": "4.3.2",
@@ -799,6 +864,7 @@
   "slots": [
    461311909
   ],
+  "spill": 0,
   "gamma": {
    "rewardPerCost": -0.14285714285714285,
    "priorityPerCost": 0,

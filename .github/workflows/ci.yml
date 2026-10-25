@@ -31,3 +31,13 @@ jobs:
         run: docker compose run --rm --entrypoint node ordering --test 'test/*.test.ts'
       - name: the QUIC sender starts in the container
         run: docker compose run --rm --entrypoint sh ordering -c 'echo "{\"id\":1,\"op\":\"ping\"}" | $PYTHON py/tpu_sender.py'
+
+  # the whole one-command check, network included: catches data that public endpoints no longer serve. Reported
+  # without failing the build, because public endpoints rate-limit shared CI runners.
+  reproduce-online:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v5
+      - run: docker compose build
+      - run: docker compose run --rm ordering reproduce
