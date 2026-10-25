@@ -1,0 +1,8 @@
+# never send wallets, secrets or local state to the Docker daemon
+keys/
+.env
+.git/
+.venv/
+node_modules/
+data/logs/
+data/*/dry-runs/

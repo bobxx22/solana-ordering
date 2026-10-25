@@ -32,12 +32,15 @@ export class Rpc {
     this.retries = opts.retries ?? 4
   }
 
-  /** The endpoint with any API key in the query string masked, for logs. */
+  /**
+   * The endpoint for logs and data files: scheme and host only. Providers put API keys in the query string, the path
+   * or the user-info part of the URL, so none of those is ever written anywhere.
+   */
   get label(): string {
     try {
       const u = new URL(this.url)
-      for (const k of [...u.searchParams.keys()]) u.searchParams.set(k, '***')
-      return u.toString()
+      const hidden = u.pathname.length > 1 || u.search || u.username ? ' (credentials hidden)' : ''
+      return `${u.protocol}//${u.host}/${hidden}`
     } catch {
       return '(invalid url)'
     }
@@ -76,6 +79,11 @@ export class Rpc {
         body = JSON.parse(text)
       } catch {
         throw new Error(`${method}: HTTP ${res.status}: ${text.slice(0, 200)}`)
+      }
+      // public endpoints also report rate limiting inside a 200 response
+      if (body.error && attempt < this.retries && (body.error.code === 429 || body.error.code === -32429 || /too many requests|rate limit/i.test(body.error.message ?? ''))) {
+        await backoff(attempt)
+        continue
       }
       if (body.error) throw new RpcError(body.error.code, `${method}: ${body.error.message}`, body.error.data)
       return body.result as T

@@ -17,11 +17,14 @@ const DEFAULT_RPC: Record<Cluster, string> = {
 export interface Args {
   command: string
   positional: string[]
-  flags: Map<string, string | true>
+  flags: Map<string, string | boolean>
 }
 
+/** Flags that never take a value, so `--live run` cannot swallow the command. */
+const BOOLEAN_FLAGS = new Set(['live', 'help', 'refresh', 'offline', 'write'])
+
 export function parseArgs(argv: string[]): Args {
-  const flags = new Map<string, string | true>()
+  const flags = new Map<string, string | boolean>()
   const positional: string[] = []
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i]
@@ -30,8 +33,11 @@ export function parseArgs(argv: string[]): Args {
       continue
     }
     const eq = a.indexOf('=')
-    if (eq > 0) flags.set(a.slice(2, eq), a.slice(eq + 1))
-    else if (i + 1 < argv.length && !argv[i + 1].startsWith('--')) flags.set(a.slice(2), argv[++i])
+    if (eq > 0) {
+      const [k, v] = [a.slice(2, eq), a.slice(eq + 1)]
+      flags.set(k, BOOLEAN_FLAGS.has(k) ? v === 'true' || v === '1' || v === '' : v)
+      if (BOOLEAN_FLAGS.has(k) && flags.get(k) === false) flags.delete(k)
+    } else if (!BOOLEAN_FLAGS.has(a.slice(2)) && i + 1 < argv.length && !argv[i + 1].startsWith('--')) flags.set(a.slice(2), argv[++i])
     else flags.set(a.slice(2), true)
   }
   return { command: positional.shift() ?? 'help', positional, flags }
@@ -83,6 +89,20 @@ export function loadConfig(args: Args): Config {
     spendCapLamports: cap,
     live: args.flags.get('live') === true,
   }
+}
+
+export const MAINNET_GENESIS = '5eykt4UsFv8P8NJdTREpY1vzqKqZKvdpKuc147dw2N9d'
+
+/**
+ * Before anything is sent: both endpoints must serve the same chain, and the cluster label must match it. The mainnet
+ * ceiling therefore follows the chain actually reached, not the --cluster flag.
+ */
+export async function checkCluster(cfg: Config, read: { call<T>(m: string, p?: unknown[]): Promise<T> }, send: { call<T>(m: string, p?: unknown[]): Promise<T> }): Promise<void> {
+  const [a, b] = [await read.call<string>('getGenesisHash'), await send.call<string>('getGenesisHash')]
+  if (a !== b) throw new Error('the read and send endpoints serve different chains')
+  const isMainnet = a === MAINNET_GENESIS
+  if (isMainnet !== (cfg.cluster === 'mainnet-beta')) throw new Error(`--cluster ${cfg.cluster} but the endpoints serve ${isMainnet ? 'mainnet' : 'another chain'}`)
+  if (isMainnet && cfg.spendCapLamports > MAINNET_CAP_CEILING) throw new Error('spend cap above the mainnet ceiling')
 }
 
 export const fmtSol = (lamports: bigint | number) => `${(Number(lamports) / 1e9).toFixed(6)} SOL`

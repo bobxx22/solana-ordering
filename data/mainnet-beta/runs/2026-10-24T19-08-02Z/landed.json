@@ -7,6 +7,7 @@
   "index": 188,
   "blockTxCount": 284,
   "leader": "7EzbSahSfSjeRexHcNDLDpzHBAGBLjLKtjbmuoQnEtjE",
+  "feeCollector": "7EzbSahSfSjeRexHcNDLDpzHBAGBLjLKtjbmuoQnEtjE",
   "fee": 9000,
   "costUnits": 1935,
   "err": null
@@ -19,6 +20,7 @@
   "index": 64,
   "blockTxCount": 296,
   "leader": "7EzbSahSfSjeRexHcNDLDpzHBAGBLjLKtjbmuoQnEtjE",
+  "feeCollector": "7EzbSahSfSjeRexHcNDLDpzHBAGBLjLKtjbmuoQnEtjE",
   "fee": 15000,
   "costUnits": 1935,
   "err": null
@@ -31,6 +33,7 @@
   "index": 47,
   "blockTxCount": 296,
   "leader": "7EzbSahSfSjeRexHcNDLDpzHBAGBLjLKtjbmuoQnEtjE",
+  "feeCollector": "7EzbSahSfSjeRexHcNDLDpzHBAGBLjLKtjbmuoQnEtjE",
   "fee": 5000,
   "costUnits": 1935,
   "err": null
@@ -43,6 +46,7 @@
   "index": 143,
   "blockTxCount": 296,
   "leader": "7EzbSahSfSjeRexHcNDLDpzHBAGBLjLKtjbmuoQnEtjE",
+  "feeCollector": "7EzbSahSfSjeRexHcNDLDpzHBAGBLjLKtjbmuoQnEtjE",
   "fee": 14000,
   "costUnits": 1935,
   "err": null
@@ -55,6 +59,7 @@
   "index": 78,
   "blockTxCount": 284,
   "leader": "7EzbSahSfSjeRexHcNDLDpzHBAGBLjLKtjbmuoQnEtjE",
+  "feeCollector": "7EzbSahSfSjeRexHcNDLDpzHBAGBLjLKtjbmuoQnEtjE",
   "fee": 9000,
   "costUnits": 1935,
   "err": null
@@ -67,6 +72,7 @@
   "index": 5,
   "blockTxCount": 609,
   "leader": "CAo1dCGYrB6NhHh5xb1cGjUiu86iyCfMTENxgHumSve4",
+  "feeCollector": "CAo1dCGYrB6NhHh5xb1cGjUiu86iyCfMTENxgHumSve4",
   "fee": 9000,
   "costUnits": 1935,
   "err": null
@@ -79,6 +85,7 @@
   "index": 26,
   "blockTxCount": 609,
   "leader": "CAo1dCGYrB6NhHh5xb1cGjUiu86iyCfMTENxgHumSve4",
+  "feeCollector": "CAo1dCGYrB6NhHh5xb1cGjUiu86iyCfMTENxgHumSve4",
   "fee": 15000,
   "costUnits": 1935,
   "err": null
@@ -91,6 +98,7 @@
   "index": 4,
   "blockTxCount": 609,
   "leader": "CAo1dCGYrB6NhHh5xb1cGjUiu86iyCfMTENxgHumSve4",
+  "feeCollector": "CAo1dCGYrB6NhHh5xb1cGjUiu86iyCfMTENxgHumSve4",
   "fee": 5000,
   "costUnits": 1935,
   "err": null
@@ -103,6 +111,7 @@
   "index": 3,
   "blockTxCount": 609,
   "leader": "CAo1dCGYrB6NhHh5xb1cGjUiu86iyCfMTENxgHumSve4",
+  "feeCollector": "CAo1dCGYrB6NhHh5xb1cGjUiu86iyCfMTENxgHumSve4",
   "fee": 14000,
   "costUnits": 1935,
   "err": null
@@ -115,6 +124,7 @@
   "index": 13,
   "blockTxCount": 609,
   "leader": "CAo1dCGYrB6NhHh5xb1cGjUiu86iyCfMTENxgHumSve4",
+  "feeCollector": "CAo1dCGYrB6NhHh5xb1cGjUiu86iyCfMTENxgHumSve4",
   "fee": 9000,
   "costUnits": 1935,
   "err": null
@@ -127,6 +137,7 @@
   "index": 179,
   "blockTxCount": 253,
   "leader": "FbYX2uN573G5WsgiPdHU6fS5PNUyjdXfGfpZNkYUuT4k",
+  "feeCollector": "FbYX2uN573G5WsgiPdHU6fS5PNUyjdXfGfpZNkYUuT4k",
   "fee": 9000,
   "costUnits": 1935,
   "err": null
@@ -139,6 +150,7 @@
   "index": 240,
   "blockTxCount": 253,
   "leader": "FbYX2uN573G5WsgiPdHU6fS5PNUyjdXfGfpZNkYUuT4k",
+  "feeCollector": "FbYX2uN573G5WsgiPdHU6fS5PNUyjdXfGfpZNkYUuT4k",
   "fee": 15000,
   "costUnits": 1935,
   "err": null
@@ -151,6 +163,7 @@
   "index": 56,
   "blockTxCount": 223,
   "leader": "FbYX2uN573G5WsgiPdHU6fS5PNUyjdXfGfpZNkYUuT4k",
+  "feeCollector": "FbYX2uN573G5WsgiPdHU6fS5PNUyjdXfGfpZNkYUuT4k",
   "fee": 5000,
   "costUnits": 1935,
   "err": null
@@ -163,6 +176,7 @@
   "index": 214,
   "blockTxCount": 253,
   "leader": "FbYX2uN573G5WsgiPdHU6fS5PNUyjdXfGfpZNkYUuT4k",
+  "feeCollector": "FbYX2uN573G5WsgiPdHU6fS5PNUyjdXfGfpZNkYUuT4k",
   "fee": 14000,
   "costUnits": 1935,
   "err": null
@@ -175,6 +189,7 @@
   "index": 18,
   "blockTxCount": 223,
   "leader": "FbYX2uN573G5WsgiPdHU6fS5PNUyjdXfGfpZNkYUuT4k",
+  "feeCollector": "FbYX2uN573G5WsgiPdHU6fS5PNUyjdXfGfpZNkYUuT4k",
   "fee": 9000,
   "costUnits": 1935,
   "err": null
@@ -187,6 +202,7 @@
   "index": 210,
   "blockTxCount": 415,
   "leader": "nymsGg7ZXcYBwGYKZL8qEHk9PQ8sAkKvnXgUNLPyGDV",
+  "feeCollector": "nymsGg7ZXcYBwGYKZL8qEHk9PQ8sAkKvnXgUNLPyGDV",
   "fee": 9000,
   "costUnits": 1935,
   "err": null
@@ -199,6 +215,7 @@
   "index": 152,
   "blockTxCount": 383,
   "leader": "nymsGg7ZXcYBwGYKZL8qEHk9PQ8sAkKvnXgUNLPyGDV",
+  "feeCollector": "nymsGg7ZXcYBwGYKZL8qEHk9PQ8sAkKvnXgUNLPyGDV",
   "fee": 15000,
   "costUnits": 1935,
   "err": null
@@ -211,6 +228,7 @@
   "index": 251,
   "blockTxCount": 415,
   "leader": "nymsGg7ZXcYBwGYKZL8qEHk9PQ8sAkKvnXgUNLPyGDV",
+  "feeCollector": "nymsGg7ZXcYBwGYKZL8qEHk9PQ8sAkKvnXgUNLPyGDV",
   "fee": 5000,
   "costUnits": 1935,
   "err": null
@@ -223,6 +241,7 @@
   "index": 213,
   "blockTxCount": 415,
   "leader": "nymsGg7ZXcYBwGYKZL8qEHk9PQ8sAkKvnXgUNLPyGDV",
+  "feeCollector": "nymsGg7ZXcYBwGYKZL8qEHk9PQ8sAkKvnXgUNLPyGDV",
   "fee": 14000,
   "costUnits": 1935,
   "err": null
@@ -235,6 +254,7 @@
   "index": 139,
   "blockTxCount": 415,
   "leader": "nymsGg7ZXcYBwGYKZL8qEHk9PQ8sAkKvnXgUNLPyGDV",
+  "feeCollector": "nymsGg7ZXcYBwGYKZL8qEHk9PQ8sAkKvnXgUNLPyGDV",
   "fee": 9000,
   "costUnits": 1935,
   "err": null
@@ -247,6 +267,7 @@
   "index": 390,
   "blockTxCount": 425,
   "leader": "3RXKQBRv7xKTQeNdLSPhCiD4QcUfxEQ12rtgUkMf5LnS",
+  "feeCollector": "3RXKQBRv7xKTQeNdLSPhCiD4QcUfxEQ12rtgUkMf5LnS",
   "fee": 9000,
   "costUnits": 1935,
   "err": null
@@ -259,6 +280,7 @@
   "index": 234,
   "blockTxCount": 425,
   "leader": "3RXKQBRv7xKTQeNdLSPhCiD4QcUfxEQ12rtgUkMf5LnS",
+  "feeCollector": "3RXKQBRv7xKTQeNdLSPhCiD4QcUfxEQ12rtgUkMf5LnS",
   "fee": 15000,
   "costUnits": 1935,
   "err": null
@@ -271,6 +293,7 @@
   "index": 189,
   "blockTxCount": 425,
   "leader": "3RXKQBRv7xKTQeNdLSPhCiD4QcUfxEQ12rtgUkMf5LnS",
+  "feeCollector": "3RXKQBRv7xKTQeNdLSPhCiD4QcUfxEQ12rtgUkMf5LnS",
   "fee": 5000,
   "costUnits": 1935,
   "err": null
@@ -283,6 +306,7 @@
   "index": 2,
   "blockTxCount": 377,
   "leader": "3RXKQBRv7xKTQeNdLSPhCiD4QcUfxEQ12rtgUkMf5LnS",
+  "feeCollector": "3RXKQBRv7xKTQeNdLSPhCiD4QcUfxEQ12rtgUkMf5LnS",
   "fee": 14000,
   "costUnits": 1935,
   "err": null
@@ -295,6 +319,7 @@
   "index": 288,
   "blockTxCount": 425,
   "leader": "3RXKQBRv7xKTQeNdLSPhCiD4QcUfxEQ12rtgUkMf5LnS",
+  "feeCollector": "3RXKQBRv7xKTQeNdLSPhCiD4QcUfxEQ12rtgUkMf5LnS",
   "fee": 9000,
   "costUnits": 1935,
   "err": null
@@ -307,6 +332,7 @@
   "index": 161,
   "blockTxCount": 276,
   "leader": "3psxMyr7rQzywVp1MXKd1XFmFz33NjydzCoJx9t2sMQW",
+  "feeCollector": "3psxMyr7rQzywVp1MXKd1XFmFz33NjydzCoJx9t2sMQW",
   "fee": 9000,
   "costUnits": 1935,
   "err": null
@@ -319,6 +345,7 @@
   "index": 215,
   "blockTxCount": 276,
   "leader": "3psxMyr7rQzywVp1MXKd1XFmFz33NjydzCoJx9t2sMQW",
+  "feeCollector": "3psxMyr7rQzywVp1MXKd1XFmFz33NjydzCoJx9t2sMQW",
   "fee": 15000,
   "costUnits": 1935,
   "err": null
@@ -331,6 +358,7 @@
   "index": 116,
   "blockTxCount": 276,
   "leader": "3psxMyr7rQzywVp1MXKd1XFmFz33NjydzCoJx9t2sMQW",
+  "feeCollector": "3psxMyr7rQzywVp1MXKd1XFmFz33NjydzCoJx9t2sMQW",
   "fee": 5000,
   "costUnits": 1935,
   "err": null
@@ -343,6 +371,7 @@
   "index": 213,
   "blockTxCount": 276,
   "leader": "3psxMyr7rQzywVp1MXKd1XFmFz33NjydzCoJx9t2sMQW",
+  "feeCollector": "3psxMyr7rQzywVp1MXKd1XFmFz33NjydzCoJx9t2sMQW",
   "fee": 14000,
   "costUnits": 1935,
   "err": null
@@ -355,6 +384,7 @@
   "index": 4,
   "blockTxCount": 393,
   "leader": "3psxMyr7rQzywVp1MXKd1XFmFz33NjydzCoJx9t2sMQW",
+  "feeCollector": "3psxMyr7rQzywVp1MXKd1XFmFz33NjydzCoJx9t2sMQW",
   "fee": 9000,
   "costUnits": 1935,
   "err": null
@@ -367,6 +397,7 @@
   "index": 243,
   "blockTxCount": 302,
   "leader": "3SkE34PVeGck2ArEffFKjihrQgURsvnoTAhitsNXNzXd",
+  "feeCollector": "3SkE34PVeGck2ArEffFKjihrQgURsvnoTAhitsNXNzXd",
   "fee": 9000,
   "costUnits": 1935,
   "err": null
@@ -379,6 +410,7 @@
   "index": 230,
   "blockTxCount": 302,
   "leader": "3SkE34PVeGck2ArEffFKjihrQgURsvnoTAhitsNXNzXd",
+  "feeCollector": "3SkE34PVeGck2ArEffFKjihrQgURsvnoTAhitsNXNzXd",
   "fee": 15000,
   "costUnits": 1935,
   "err": null
@@ -391,6 +423,7 @@
   "index": 169,
   "blockTxCount": 302,
   "leader": "3SkE34PVeGck2ArEffFKjihrQgURsvnoTAhitsNXNzXd",
+  "feeCollector": "3SkE34PVeGck2ArEffFKjihrQgURsvnoTAhitsNXNzXd",
   "fee": 5000,
   "costUnits": 1935,
   "err": null
@@ -403,6 +436,7 @@
   "index": 235,
   "blockTxCount": 302,
   "leader": "3SkE34PVeGck2ArEffFKjihrQgURsvnoTAhitsNXNzXd",
+  "feeCollector": "3SkE34PVeGck2ArEffFKjihrQgURsvnoTAhitsNXNzXd",
   "fee": 14000,
   "costUnits": 1935,
   "err": null
@@ -415,6 +449,7 @@
   "index": 271,
   "blockTxCount": 313,
   "leader": "3SkE34PVeGck2ArEffFKjihrQgURsvnoTAhitsNXNzXd",
+  "feeCollector": "3SkE34PVeGck2ArEffFKjihrQgURsvnoTAhitsNXNzXd",
   "fee": 9000,
   "costUnits": 1935,
   "err": null
@@ -427,6 +462,7 @@
   "index": 9,
   "blockTxCount": 386,
   "leader": "FzQqaDStQQHs52YKeCnDovwSqvyZBCgs2kJcmvoFZwaS",
+  "feeCollector": "FzQqaDStQQHs52YKeCnDovwSqvyZBCgs2kJcmvoFZwaS",
   "fee": 9000,
   "costUnits": 1935,
   "err": null
@@ -439,6 +475,7 @@
   "index": 59,
   "blockTxCount": 386,
   "leader": "FzQqaDStQQHs52YKeCnDovwSqvyZBCgs2kJcmvoFZwaS",
+  "feeCollector": "FzQqaDStQQHs52YKeCnDovwSqvyZBCgs2kJcmvoFZwaS",
   "fee": 15000,
   "costUnits": 1935,
   "err": null
@@ -451,6 +488,7 @@
   "index": 341,
   "blockTxCount": 386,
   "leader": "FzQqaDStQQHs52YKeCnDovwSqvyZBCgs2kJcmvoFZwaS",
+  "feeCollector": "FzQqaDStQQHs52YKeCnDovwSqvyZBCgs2kJcmvoFZwaS",
   "fee": 5000,
   "costUnits": 1935,
   "err": null
@@ -463,6 +501,7 @@
   "index": 58,
   "blockTxCount": 386,
   "leader": "FzQqaDStQQHs52YKeCnDovwSqvyZBCgs2kJcmvoFZwaS",
+  "feeCollector": "FzQqaDStQQHs52YKeCnDovwSqvyZBCgs2kJcmvoFZwaS",
   "fee": 14000,
   "costUnits": 1935,
   "err": null
@@ -475,6 +514,7 @@
   "index": 27,
   "blockTxCount": 386,
   "leader": "FzQqaDStQQHs52YKeCnDovwSqvyZBCgs2kJcmvoFZwaS",
+  "feeCollector": "FzQqaDStQQHs52YKeCnDovwSqvyZBCgs2kJcmvoFZwaS",
   "fee": 9000,
   "costUnits": 1935,
   "err": null
@@ -487,6 +527,7 @@
   "index": 482,
   "blockTxCount": 585,
   "leader": "DNVZMSqeRH18Xa4MCTrb1MndNf3Npg4MEwqswo23eWkf",
+  "feeCollector": "DNVZMSqeRH18Xa4MCTrb1MndNf3Npg4MEwqswo23eWkf",
   "fee": 9000,
   "costUnits": 1935,
   "err": null
@@ -499,6 +540,7 @@
   "index": 70,
   "blockTxCount": 608,
   "leader": "DNVZMSqeRH18Xa4MCTrb1MndNf3Npg4MEwqswo23eWkf",
+  "feeCollector": "DNVZMSqeRH18Xa4MCTrb1MndNf3Npg4MEwqswo23eWkf",
   "fee": 15000,
   "costUnits": 1935,
   "err": null
@@ -511,6 +553,7 @@
   "index": 576,
   "blockTxCount": 585,
   "leader": "DNVZMSqeRH18Xa4MCTrb1MndNf3Npg4MEwqswo23eWkf",
+  "feeCollector": "DNVZMSqeRH18Xa4MCTrb1MndNf3Npg4MEwqswo23eWkf",
   "fee": 5000,
   "costUnits": 1935,
   "err": null
@@ -523,6 +566,7 @@
   "index": 510,
   "blockTxCount": 585,
   "leader": "DNVZMSqeRH18Xa4MCTrb1MndNf3Npg4MEwqswo23eWkf",
+  "feeCollector": "DNVZMSqeRH18Xa4MCTrb1MndNf3Npg4MEwqswo23eWkf",
   "fee": 14000,
   "costUnits": 1935,
   "err": null
@@ -535,6 +579,7 @@
   "index": 76,
   "blockTxCount": 608,
   "leader": "DNVZMSqeRH18Xa4MCTrb1MndNf3Npg4MEwqswo23eWkf",
+  "feeCollector": "DNVZMSqeRH18Xa4MCTrb1MndNf3Npg4MEwqswo23eWkf",
   "fee": 9000,
   "costUnits": 1935,
   "err": null
@@ -547,6 +592,7 @@
   "index": 49,
   "blockTxCount": 243,
   "leader": "rsbp8zMHbGCpLoRktmsjspYv77VcjxAzH1KxPCD9BiU",
+  "feeCollector": "rsbp8zMHbGCpLoRktmsjspYv77VcjxAzH1KxPCD9BiU",
   "fee": 9000,
   "costUnits": 1935,
   "err": null
@@ -559,6 +605,7 @@
   "index": 119,
   "blockTxCount": 265,
   "leader": "rsbp8zMHbGCpLoRktmsjspYv77VcjxAzH1KxPCD9BiU",
+  "feeCollector": "rsbp8zMHbGCpLoRktmsjspYv77VcjxAzH1KxPCD9BiU",
   "fee": 15000,
   "costUnits": 1935,
   "err": null
@@ -571,6 +618,7 @@
   "index": 125,
   "blockTxCount": 265,
   "leader": "rsbp8zMHbGCpLoRktmsjspYv77VcjxAzH1KxPCD9BiU",
+  "feeCollector": "rsbp8zMHbGCpLoRktmsjspYv77VcjxAzH1KxPCD9BiU",
   "fee": 5000,
   "costUnits": 1935,
   "err": null
@@ -583,6 +631,7 @@
   "index": 118,
   "blockTxCount": 243,
   "leader": "rsbp8zMHbGCpLoRktmsjspYv77VcjxAzH1KxPCD9BiU",
+  "feeCollector": "rsbp8zMHbGCpLoRktmsjspYv77VcjxAzH1KxPCD9BiU",
   "fee": 14000,
   "costUnits": 1935,
   "err": null
@@ -595,6 +644,7 @@
   "index": 52,
   "blockTxCount": 265,
   "leader": "rsbp8zMHbGCpLoRktmsjspYv77VcjxAzH1KxPCD9BiU",
+  "feeCollector": "rsbp8zMHbGCpLoRktmsjspYv77VcjxAzH1KxPCD9BiU",
   "fee": 9000,
   "costUnits": 1935,
   "err": null
@@ -607,6 +657,7 @@
   "index": 2,
   "blockTxCount": 351,
   "leader": "4VRs6A9zBRXz6MLcmQGsBiSoWE2JjHrmw7LintC3T4Nv",
+  "feeCollector": "4VRs6A9zBRXz6MLcmQGsBiSoWE2JjHrmw7LintC3T4Nv",
   "fee": 9000,
   "costUnits": 1935,
   "err": null
@@ -619,6 +670,7 @@
   "index": 218,
   "blockTxCount": 351,
   "leader": "4VRs6A9zBRXz6MLcmQGsBiSoWE2JjHrmw7LintC3T4Nv",
+  "feeCollector": "4VRs6A9zBRXz6MLcmQGsBiSoWE2JjHrmw7LintC3T4Nv",
   "fee": 15000,
   "costUnits": 1935,
   "err": null
@@ -631,6 +683,7 @@
   "index": 196,
   "blockTxCount": 351,
   "leader": "4VRs6A9zBRXz6MLcmQGsBiSoWE2JjHrmw7LintC3T4Nv",
+  "feeCollector": "4VRs6A9zBRXz6MLcmQGsBiSoWE2JjHrmw7LintC3T4Nv",
   "fee": 5000,
   "costUnits": 1935,
   "err": null
@@ -643,6 +696,7 @@
   "index": 162,
   "blockTxCount": 351,
   "leader": "4VRs6A9zBRXz6MLcmQGsBiSoWE2JjHrmw7LintC3T4Nv",
+  "feeCollector": "4VRs6A9zBRXz6MLcmQGsBiSoWE2JjHrmw7LintC3T4Nv",
   "fee": 14000,
   "costUnits": 1935,
   "err": null
@@ -655,6 +709,7 @@
   "index": 174,
   "blockTxCount": 351,
   "leader": "4VRs6A9zBRXz6MLcmQGsBiSoWE2JjHrmw7LintC3T4Nv",
+  "feeCollector": "4VRs6A9zBRXz6MLcmQGsBiSoWE2JjHrmw7LintC3T4Nv",
   "fee": 9000,
   "costUnits": 1935,
   "err": null
@@ -667,6 +722,7 @@
   "index": 1,
   "blockTxCount": 298,
   "leader": "XkCriyrNwS3G4rzAXtG5B1nnvb5Ka1JtCku93VqeKAr",
+  "feeCollector": "XkCriyrNwS3G4rzAXtG5B1nnvb5Ka1JtCku93VqeKAr",
   "fee": 9000,
   "costUnits": 1935,
   "err": null
@@ -679,6 +735,7 @@
   "index": 168,
   "blockTxCount": 298,
   "leader": "XkCriyrNwS3G4rzAXtG5B1nnvb5Ka1JtCku93VqeKAr",
+  "feeCollector": "XkCriyrNwS3G4rzAXtG5B1nnvb5Ka1JtCku93VqeKAr",
   "fee": 15000,
   "costUnits": 1935,
   "err": null
@@ -691,6 +748,7 @@
   "index": 54,
   "blockTxCount": 298,
   "leader": "XkCriyrNwS3G4rzAXtG5B1nnvb5Ka1JtCku93VqeKAr",
+  "feeCollector": "XkCriyrNwS3G4rzAXtG5B1nnvb5Ka1JtCku93VqeKAr",
   "fee": 5000,
   "costUnits": 1935,
   "err": null
@@ -703,6 +761,7 @@
   "index": 219,
   "blockTxCount": 298,
   "leader": "XkCriyrNwS3G4rzAXtG5B1nnvb5Ka1JtCku93VqeKAr",
+  "feeCollector": "XkCriyrNwS3G4rzAXtG5B1nnvb5Ka1JtCku93VqeKAr",
   "fee": 14000,
   "costUnits": 1935,
   "err": null
@@ -715,6 +774,7 @@
   "index": 218,
   "blockTxCount": 298,
   "leader": "XkCriyrNwS3G4rzAXtG5B1nnvb5Ka1JtCku93VqeKAr",
+  "feeCollector": "XkCriyrNwS3G4rzAXtG5B1nnvb5Ka1JtCku93VqeKAr",
   "fee": 9000,
   "costUnits": 1935,
   "err": null
@@ -727,6 +787,7 @@
   "index": 32,
   "blockTxCount": 331,
   "leader": "3tm92VTxwyZ5MDhGoYR4tVTkwWYkzfam6hwBjauUACCk",
+  "feeCollector": "3tm92VTxwyZ5MDhGoYR4tVTkwWYkzfam6hwBjauUACCk",
   "fee": 9000,
   "costUnits": 1935,
   "err": null
@@ -739,6 +800,7 @@
   "index": 59,
   "blockTxCount": 323,
   "leader": "3tm92VTxwyZ5MDhGoYR4tVTkwWYkzfam6hwBjauUACCk",
+  "feeCollector": "3tm92VTxwyZ5MDhGoYR4tVTkwWYkzfam6hwBjauUACCk",
   "fee": 15000,
   "costUnits": 1935,
   "err": null
@@ -751,6 +813,7 @@
   "index": 49,
   "blockTxCount": 331,
   "leader": "3tm92VTxwyZ5MDhGoYR4tVTkwWYkzfam6hwBjauUACCk",
+  "feeCollector": "3tm92VTxwyZ5MDhGoYR4tVTkwWYkzfam6hwBjauUACCk",
   "fee": 5000,
   "costUnits": 1935,
   "err": null
@@ -763,6 +826,7 @@
   "index": 84,
   "blockTxCount": 323,
   "leader": "3tm92VTxwyZ5MDhGoYR4tVTkwWYkzfam6hwBjauUACCk",
+  "feeCollector": "3tm92VTxwyZ5MDhGoYR4tVTkwWYkzfam6hwBjauUACCk",
   "fee": 14000,
   "costUnits": 1935,
   "err": null
@@ -775,6 +839,7 @@
   "index": 40,
   "blockTxCount": 331,
   "leader": "3tm92VTxwyZ5MDhGoYR4tVTkwWYkzfam6hwBjauUACCk",
+  "feeCollector": "3tm92VTxwyZ5MDhGoYR4tVTkwWYkzfam6hwBjauUACCk",
   "fee": 9000,
   "costUnits": 1935,
   "err": null
@@ -787,6 +852,7 @@
   "index": 308,
   "blockTxCount": 377,
   "leader": "11AMA4mnNbsrPQeuoNN7uiZVJZtqEzQHrTfa5vnbcjk",
+  "feeCollector": "11AMA4mnNbsrPQeuoNN7uiZVJZtqEzQHrTfa5vnbcjk",
   "fee": 9000,
   "costUnits": 1935,
   "err": null
@@ -799,6 +865,7 @@
   "index": 295,
   "blockTxCount": 339,
   "leader": "GQzMeEMwAR44ugoNCifTb5NdRKos1GduDUPeNh6AgV46",
+  "feeCollector": "GQzMeEMwAR44ugoNCifTb5NdRKos1GduDUPeNh6AgV46",
   "fee": 15000,
   "costUnits": 1935,
   "err": null
@@ -811,6 +878,7 @@
   "index": 266,
   "blockTxCount": 377,
   "leader": "11AMA4mnNbsrPQeuoNN7uiZVJZtqEzQHrTfa5vnbcjk",
+  "feeCollector": "11AMA4mnNbsrPQeuoNN7uiZVJZtqEzQHrTfa5vnbcjk",
   "fee": 5000,
   "costUnits": 1935,
   "err": null
@@ -823,6 +891,7 @@
   "index": 310,
   "blockTxCount": 377,
   "leader": "11AMA4mnNbsrPQeuoNN7uiZVJZtqEzQHrTfa5vnbcjk",
+  "feeCollector": "11AMA4mnNbsrPQeuoNN7uiZVJZtqEzQHrTfa5vnbcjk",
   "fee": 14000,
   "costUnits": 1935,
   "err": null
@@ -835,6 +904,7 @@
   "index": 351,
   "blockTxCount": 377,
   "leader": "11AMA4mnNbsrPQeuoNN7uiZVJZtqEzQHrTfa5vnbcjk",
+  "feeCollector": "11AMA4mnNbsrPQeuoNN7uiZVJZtqEzQHrTfa5vnbcjk",
   "fee": 9000,
   "costUnits": 1935,
   "err": null
@@ -847,6 +917,7 @@
   "index": 276,
   "blockTxCount": 370,
   "leader": "HH5dA42XF1HxNk1TRpG6LuKfLViMYNdAz5iWrFM4hWFi",
+  "feeCollector": "HH5dA42XF1HxNk1TRpG6LuKfLViMYNdAz5iWrFM4hWFi",
   "fee": 9000,
   "costUnits": 1935,
   "err": null
@@ -859,6 +930,7 @@
   "index": 68,
   "blockTxCount": 515,
   "leader": "HH5dA42XF1HxNk1TRpG6LuKfLViMYNdAz5iWrFM4hWFi",
+  "feeCollector": "HH5dA42XF1HxNk1TRpG6LuKfLViMYNdAz5iWrFM4hWFi",
   "fee": 15000,
   "costUnits": 1935,
   "err": null
@@ -871,6 +943,7 @@
   "index": 31,
   "blockTxCount": 515,
   "leader": "HH5dA42XF1HxNk1TRpG6LuKfLViMYNdAz5iWrFM4hWFi",
+  "feeCollector": "HH5dA42XF1HxNk1TRpG6LuKfLViMYNdAz5iWrFM4hWFi",
   "fee": 5000,
   "costUnits": 1935,
   "err": null
@@ -883,6 +956,7 @@
   "index": 61,
   "blockTxCount": 515,
   "leader": "HH5dA42XF1HxNk1TRpG6LuKfLViMYNdAz5iWrFM4hWFi",
+  "feeCollector": "HH5dA42XF1HxNk1TRpG6LuKfLViMYNdAz5iWrFM4hWFi",
   "fee": 14000,
   "costUnits": 1935,
   "err": null
@@ -895,6 +969,7 @@
   "index": 343,
   "blockTxCount": 370,
   "leader": "HH5dA42XF1HxNk1TRpG6LuKfLViMYNdAz5iWrFM4hWFi",
+  "feeCollector": "HH5dA42XF1HxNk1TRpG6LuKfLViMYNdAz5iWrFM4hWFi",
   "fee": 9000,
   "costUnits": 1935,
   "err": null

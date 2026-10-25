@@ -1,5 +1,6 @@
-# Proves on a clean machine that the project builds and runs: unit tests on Node, then the Docker image
-# through docker compose. No keys and no network sends are involved.
+# Proves on a clean machine that the project builds and reproduces: unit tests on Node, the results regenerated from
+# the committed raw data must equal the committed results, and the Docker image runs the same check.
+# No keys and no network sends are involved.
 name: ci
 
 on:
@@ -16,13 +17,17 @@ jobs:
         with:
           node-version: '24.11.0'
       - run: npm test
+      - name: results regenerate byte for byte from the raw data
+        run: node src/cli.ts analyze > /dev/null && git diff --exit-code data/
 
   docker:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
       - run: docker compose build
-      - name: cli runs in the container
-        run: docker compose run --rm ordering help
-      - name: tests run in the container
+      - name: reproduce (offline part) in the container
+        run: docker compose run --rm ordering reproduce --offline
+      - name: tests in the container
         run: docker compose run --rm --entrypoint node ordering --test 'test/*.test.ts'
+      - name: the QUIC sender starts in the container
+        run: docker compose run --rm --entrypoint sh ordering -c 'echo "{\"id\":1,\"op\":\"ping\"}" | $PYTHON py/tpu_sender.py'

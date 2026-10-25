@@ -2,389 +2,810 @@
  {
   "run": "2026-10-24T19-08-02Z",
   "trial": 0,
-  "slot": 460963380,
-  "leader": "7EzbSahSfSjeRexHcNDLDpzHBAGBLjLKtjbmuoQnEtjE",
   "client": "AgaveBam",
+  "leader": "7EzbSahSfSjeRexHcNDLDpzHBAGBLjLKtjbmuoQnEtjE",
   "version": "4.3.2",
+  "path": "rpc",
   "mode": "shared",
-  "timing": "early",
-  "hitTarget": false,
-  "slotsAfterTarget": 4,
-  "slotInWindow": 0,
-  "roles": [
-   "C",
-   "B",
-   "D"
+  "delivery": "pilot-early",
+  "ingress": "7EzbSahSfSjeRexHcNDLDpzHBAGBLjLKtjbmuoQnEtjE",
+  "ingressShared": 1,
+  "observedOrder": "CBDEA",
+  "slots": [
+   460963380,
+   460963381
   ],
-  "observedOrder": "CBD",
-  "tau": {
-   "rewardPerCost": -0.3333333333333333,
-   "totalFee": -0.3333333333333333,
+  "gamma": {
+   "rewardPerCost": -0.7777777777777778,
+   "priorityPerCost": -1,
    "cuPrice": -1,
-   "sentFirst": -1
+   "totalFee": 0.1111111111111111,
+   "sentFirst": -1,
+   "rpcReleasedFirst": 0.6
   }
  },
  {
   "run": "2026-10-24T19-08-02Z",
   "trial": 1,
-  "slot": 460963433,
-  "leader": "CAo1dCGYrB6NhHh5xb1cGjUiu86iyCfMTENxgHumSve4",
   "client": "HarmonicAgave",
+  "leader": "CAo1dCGYrB6NhHh5xb1cGjUiu86iyCfMTENxgHumSve4",
   "version": "4.3.2",
+  "path": "rpc",
   "mode": "independent",
-  "timing": "early",
-  "hitTarget": false,
-  "slotsAfterTarget": 13,
-  "slotInWindow": 1,
-  "roles": [
-   "D",
-   "C",
-   "A",
-   "E",
-   "B"
-  ],
+  "delivery": "pilot-early",
+  "ingress": "CAo1dCGYrB6NhHh5xb1cGjUiu86iyCfMTENxgHumSve4",
+  "ingressShared": 1,
   "observedOrder": "DCAEB",
-  "tau": {
-   "rewardPerCost": 0.10540925533894598,
-   "totalFee": -0.31622776601683794,
-   "cuPrice": -0.10540925533894598,
-   "sentFirst": -0.4
+  "slots": [
+   460963433
+  ],
+  "gamma": {
+   "rewardPerCost": 0.1111111111111111,
+   "priorityPerCost": -0.1111111111111111,
+   "cuPrice": -0.1111111111111111,
+   "totalFee": -0.3333333333333333,
+   "sentFirst": -0.4,
+   "rpcReleasedFirst": 0
   }
  },
  {
   "run": "2026-10-24T19-08-02Z",
   "trial": 2,
-  "slot": 460963444,
-  "leader": "FbYX2uN573G5WsgiPdHU6fS5PNUyjdXfGfpZNkYUuT4k",
   "client": "JitoLabs",
+  "leader": "FbYX2uN573G5WsgiPdHU6fS5PNUyjdXfGfpZNkYUuT4k",
   "version": "4.3.2",
+  "path": "rpc",
   "mode": "shared",
-  "timing": "inwindow",
-  "hitTarget": false,
-  "slotsAfterTarget": 4,
-  "slotInWindow": 0,
-  "roles": [
-   "A",
-   "D",
-   "B"
+  "delivery": "pilot-inwindow",
+  "ingress": "FbYX2uN573G5WsgiPdHU6fS5PNUyjdXfGfpZNkYUuT4k",
+  "ingressShared": 1,
+  "observedOrder": "ADBEC",
+  "slots": [
+   460963444,
+   460963445
   ],
-  "observedOrder": "ADB",
-  "tau": {
-   "rewardPerCost": 1,
-   "totalFee": -1,
-   "cuPrice": 1,
-   "sentFirst": 1
+  "gamma": {
+   "rewardPerCost": 0.3333333333333333,
+   "priorityPerCost": 0.5555555555555556,
+   "cuPrice": 0.5555555555555556,
+   "totalFee": 0.3333333333333333,
+   "sentFirst": 1,
+   "rpcReleasedFirst": 1
   }
  },
  {
   "run": "2026-10-24T19-08-02Z",
   "trial": 3,
-  "slot": 460963481,
-  "leader": "nymsGg7ZXcYBwGYKZL8qEHk9PQ8sAkKvnXgUNLPyGDV",
   "client": "HarmonicFiredancer",
+  "leader": "nymsGg7ZXcYBwGYKZL8qEHk9PQ8sAkKvnXgUNLPyGDV",
   "version": "26.10.4",
+  "path": "rpc",
   "mode": "shared",
-  "timing": "early",
-  "hitTarget": false,
-  "slotsAfterTarget": 13,
-  "slotInWindow": 1,
-  "roles": [
-   "E",
-   "A",
-   "D",
-   "C"
+  "delivery": "pilot-early",
+  "ingress": "nymsGg7ZXcYBwGYKZL8qEHk9PQ8sAkKvnXgUNLPyGDV",
+  "ingressShared": 1,
+  "observedOrder": "EADCB",
+  "slots": [
+   460963481,
+   460963482
   ],
-  "observedOrder": "EADC",
-  "tau": {
-   "rewardPerCost": 0.9128709291752769,
-   "totalFee": 0.18257418583505536,
-   "cuPrice": 0.9128709291752769,
-   "sentFirst": 0.3333333333333333
+  "gamma": {
+   "rewardPerCost": 1,
+   "priorityPerCost": 0.7777777777777778,
+   "cuPrice": 0.7777777777777778,
+   "totalFee": -0.3333333333333333,
+   "sentFirst": 0.4,
+   "rpcReleasedFirst": 0.7777777777777778
   }
  },
  {
   "run": "2026-10-24T19-08-02Z",
   "trial": 4,
-  "slot": 460963489,
-  "leader": "3RXKQBRv7xKTQeNdLSPhCiD4QcUfxEQ12rtgUkMf5LnS",
   "client": "AgaveBam",
+  "leader": "3RXKQBRv7xKTQeNdLSPhCiD4QcUfxEQ12rtgUkMf5LnS",
   "version": "4.3.2",
+  "path": "rpc",
   "mode": "shared",
-  "timing": "early",
-  "hitTarget": true,
-  "slotsAfterTarget": 1,
-  "slotInWindow": 1,
-  "roles": [
-   "C",
-   "B",
-   "E",
-   "A"
+  "delivery": "pilot-early",
+  "ingress": "3RXKQBRv7xKTQeNdLSPhCiD4QcUfxEQ12rtgUkMf5LnS",
+  "ingressShared": 1,
+  "observedOrder": "CBEAD",
+  "slots": [
+   460963489,
+   460963490
   ],
-  "observedOrder": "CBEA",
-  "tau": {
-   "rewardPerCost": -0.5477225575051661,
-   "totalFee": -0.18257418583505536,
-   "cuPrice": -0.9128709291752769,
-   "sentFirst": 1
+  "gamma": {
+   "rewardPerCost": -0.3333333333333333,
+   "priorityPerCost": -0.5555555555555556,
+   "cuPrice": -0.5555555555555556,
+   "totalFee": -0.3333333333333333,
+   "sentFirst": 1,
+   "rpcReleasedFirst": 1
   }
  },
  {
   "run": "2026-10-24T19-08-02Z",
   "trial": 5,
-  "slot": 460963510,
-  "leader": "3psxMyr7rQzywVp1MXKd1XFmFz33NjydzCoJx9t2sMQW",
   "client": "HarmonicAgave",
+  "leader": "3psxMyr7rQzywVp1MXKd1XFmFz33NjydzCoJx9t2sMQW",
   "version": "4.3.2",
+  "path": "rpc",
   "mode": "independent",
-  "timing": "inwindow",
-  "hitTarget": true,
-  "slotsAfterTarget": 2,
-  "slotInWindow": 2,
-  "roles": [
-   "C",
-   "A",
-   "D",
-   "B"
+  "delivery": "pilot-inwindow",
+  "ingress": "3psxMyr7rQzywVp1MXKd1XFmFz33NjydzCoJx9t2sMQW",
+  "ingressShared": 1,
+  "observedOrder": "CADBE",
+  "slots": [
+   460963510,
+   460963511
   ],
-  "observedOrder": "CADB",
-  "tau": {
-   "rewardPerCost": 0.3333333333333333,
-   "totalFee": -1,
-   "cuPrice": 0,
-   "sentFirst": 1
+  "gamma": {
+   "rewardPerCost": -0.1111111111111111,
+   "priorityPerCost": -0.3333333333333333,
+   "cuPrice": -0.3333333333333333,
+   "totalFee": -0.5555555555555556,
+   "sentFirst": 1,
+   "rpcReleasedFirst": 1
   }
  },
  {
   "run": "2026-10-24T19-08-02Z",
   "trial": 6,
-  "slot": 460963538,
-  "leader": "3SkE34PVeGck2ArEffFKjihrQgURsvnoTAhitsNXNzXd",
   "client": "JitoLabs",
+  "leader": "3SkE34PVeGck2ArEffFKjihrQgURsvnoTAhitsNXNzXd",
   "version": "4.3.2",
+  "path": "rpc",
   "mode": "independent",
-  "timing": "early",
-  "hitTarget": false,
-  "slotsAfterTarget": 6,
-  "slotInWindow": 2,
-  "roles": [
-   "C",
-   "B",
-   "D",
-   "A"
+  "delivery": "pilot-early",
+  "ingress": "3SkE34PVeGck2ArEffFKjihrQgURsvnoTAhitsNXNzXd",
+  "ingressShared": 1,
+  "observedOrder": "ECBDA",
+  "slots": [
+   460963537,
+   460963538
   ],
-  "observedOrder": "CBDA",
-  "tau": {
-   "rewardPerCost": -0.6666666666666666,
-   "totalFee": 0,
-   "cuPrice": -1,
-   "sentFirst": 0
+  "gamma": {
+   "rewardPerCost": -0.1111111111111111,
+   "priorityPerCost": -0.3333333333333333,
+   "cuPrice": -0.3333333333333333,
+   "totalFee": -0.1111111111111111,
+   "sentFirst": 0,
+   "rpcReleasedFirst": 1
   }
  },
  {
   "run": "2026-10-24T19-08-02Z",
   "trial": 7,
-  "slot": 460963577,
-  "leader": "FzQqaDStQQHs52YKeCnDovwSqvyZBCgs2kJcmvoFZwaS",
   "client": "HarmonicAgave",
+  "leader": "FzQqaDStQQHs52YKeCnDovwSqvyZBCgs2kJcmvoFZwaS",
   "version": "4.3.2",
+  "path": "rpc",
   "mode": "shared",
-  "timing": "early",
-  "hitTarget": false,
-  "slotsAfterTarget": 5,
-  "slotInWindow": 1,
-  "roles": [
-   "A",
-   "E",
-   "D",
-   "B",
-   "C"
-  ],
+  "delivery": "pilot-early",
+  "ingress": "FzQqaDStQQHs52YKeCnDovwSqvyZBCgs2kJcmvoFZwaS",
+  "ingressShared": 1,
   "observedOrder": "AEDBC",
-  "tau": {
-   "rewardPerCost": 0.7378647873726218,
-   "totalFee": -0.10540925533894598,
-   "cuPrice": 0.9486832980505138,
-   "sentFirst": 0
+  "slots": [
+   460963577
+  ],
+  "gamma": {
+   "rewardPerCost": 0.7777777777777778,
+   "priorityPerCost": 1,
+   "cuPrice": 1,
+   "totalFee": -0.1111111111111111,
+   "sentFirst": 0,
+   "rpcReleasedFirst": 1
   }
  },
  {
   "run": "2026-10-24T19-08-02Z",
   "trial": 8,
-  "slot": 460963628,
-  "leader": "DNVZMSqeRH18Xa4MCTrb1MndNf3Npg4MEwqswo23eWkf",
   "client": "Firedancer",
+  "leader": "DNVZMSqeRH18Xa4MCTrb1MndNf3Npg4MEwqswo23eWkf",
   "version": "26.10.4",
+  "path": "rpc",
   "mode": "independent",
-  "timing": "early",
-  "hitTarget": true,
-  "slotsAfterTarget": 0,
-  "slotInWindow": 0,
-  "roles": [
-   "A",
-   "D",
-   "C"
+  "delivery": "pilot-early",
+  "ingress": "DNVZMSqeRH18Xa4MCTrb1MndNf3Npg4MEwqswo23eWkf",
+  "ingressShared": 1,
+  "observedOrder": "ADCBE",
+  "slots": [
+   460963628,
+   460963629
   ],
-  "observedOrder": "ADC",
-  "tau": {
-   "rewardPerCost": 1,
-   "totalFee": 0.3333333333333333,
-   "cuPrice": 1,
-   "sentFirst": 1
+  "gamma": {
+   "rewardPerCost": 0.3333333333333333,
+   "priorityPerCost": 0.1111111111111111,
+   "cuPrice": 0.1111111111111111,
+   "totalFee": -0.1111111111111111,
+   "sentFirst": 0.2,
+   "rpcReleasedFirst": 1
   }
  },
  {
   "run": "2026-10-24T19-08-02Z",
   "trial": 9,
-  "slot": 460963709,
-  "leader": "rsbp8zMHbGCpLoRktmsjspYv77VcjxAzH1KxPCD9BiU",
   "client": "Agave",
+  "leader": "rsbp8zMHbGCpLoRktmsjspYv77VcjxAzH1KxPCD9BiU",
   "version": "4.3.2",
+  "path": "rpc",
   "mode": "independent",
-  "timing": "early",
-  "hitTarget": false,
-  "slotsAfterTarget": 9,
-  "slotInWindow": 1,
-  "roles": [
-   "E",
-   "B",
-   "C"
+  "delivery": "pilot-early",
+  "ingress": "rsbp8zMHbGCpLoRktmsjspYv77VcjxAzH1KxPCD9BiU",
+  "ingressShared": 1,
+  "observedOrder": "EBCAD",
+  "slots": [
+   460963709,
+   460963710
   ],
-  "observedOrder": "EBC",
-  "tau": {
-   "rewardPerCost": 0.3333333333333333,
-   "totalFee": 0.3333333333333333,
-   "cuPrice": 1,
-   "sentFirst": 0.3333333333333333
+  "gamma": {
+   "rewardPerCost": -0.1111111111111111,
+   "priorityPerCost": 0.1111111111111111,
+   "cuPrice": 0.1111111111111111,
+   "totalFee": -0.1111111111111111,
+   "sentFirst": -0.4,
+   "rpcReleasedFirst": 1
   }
  },
  {
   "run": "2026-10-24T19-08-02Z",
   "trial": 10,
-  "slot": 460963776,
-  "leader": "4VRs6A9zBRXz6MLcmQGsBiSoWE2JjHrmw7LintC3T4Nv",
   "client": "Firedancer",
+  "leader": "4VRs6A9zBRXz6MLcmQGsBiSoWE2JjHrmw7LintC3T4Nv",
   "version": "26.10.4",
+  "path": "rpc",
   "mode": "independent",
-  "timing": "inwindow",
-  "hitTarget": false,
-  "slotsAfterTarget": 8,
-  "slotInWindow": 0,
-  "roles": [
-   "A",
-   "D",
-   "E",
-   "C",
-   "B"
-  ],
+  "delivery": "pilot-inwindow",
+  "ingress": "4VRs6A9zBRXz6MLcmQGsBiSoWE2JjHrmw7LintC3T4Nv",
+  "ingressShared": 1,
   "observedOrder": "ADECB",
-  "tau": {
-   "rewardPerCost": 0.7378647873726218,
-   "totalFee": -0.10540925533894598,
-   "cuPrice": 0.5270462766947299,
-   "sentFirst": -0.2
+  "slots": [
+   460963776
+  ],
+  "gamma": {
+   "rewardPerCost": 0.7777777777777778,
+   "priorityPerCost": 0.5555555555555556,
+   "cuPrice": 0.5555555555555556,
+   "totalFee": -0.1111111111111111,
+   "sentFirst": -0.2,
+   "rpcReleasedFirst": 1
   }
  },
  {
   "run": "2026-10-24T19-08-02Z",
   "trial": 11,
-  "slot": 460964025,
-  "leader": "XkCriyrNwS3G4rzAXtG5B1nnvb5Ka1JtCku93VqeKAr",
   "client": "HarmonicAgave",
+  "leader": "XkCriyrNwS3G4rzAXtG5B1nnvb5Ka1JtCku93VqeKAr",
   "version": "4.3.2",
+  "path": "rpc",
   "mode": "independent",
-  "timing": "inwindow",
-  "hitTarget": false,
-  "slotsAfterTarget": 5,
-  "slotInWindow": 1,
-  "roles": [
-   "A",
-   "C",
-   "B",
-   "E",
-   "D"
-  ],
+  "delivery": "pilot-inwindow",
+  "ingress": "XkCriyrNwS3G4rzAXtG5B1nnvb5Ka1JtCku93VqeKAr",
+  "ingressShared": 1,
   "observedOrder": "ACBED",
-  "tau": {
-   "rewardPerCost": 0.10540925533894598,
-   "totalFee": -0.31622776601683794,
-   "cuPrice": -0.10540925533894598,
-   "sentFirst": -0.6
+  "slots": [
+   460964025
+  ],
+  "gamma": {
+   "rewardPerCost": 0.1111111111111111,
+   "priorityPerCost": -0.1111111111111111,
+   "cuPrice": -0.1111111111111111,
+   "totalFee": -0.3333333333333333,
+   "sentFirst": -0.6,
+   "rpcReleasedFirst": 0.8
   }
  },
  {
   "run": "2026-10-24T19-08-02Z",
   "trial": 12,
-  "slot": 460964088,
-  "leader": "3tm92VTxwyZ5MDhGoYR4tVTkwWYkzfam6hwBjauUACCk",
   "client": "AgaveBam",
+  "leader": "3tm92VTxwyZ5MDhGoYR4tVTkwWYkzfam6hwBjauUACCk",
   "version": "4.3.2",
+  "path": "rpc",
   "mode": "shared",
-  "timing": "early",
-  "hitTarget": false,
-  "slotsAfterTarget": 4,
-  "slotInWindow": 0,
-  "roles": [
-   "A",
-   "E",
-   "C"
+  "delivery": "pilot-early",
+  "ingress": "3tm92VTxwyZ5MDhGoYR4tVTkwWYkzfam6hwBjauUACCk",
+  "ingressShared": 1,
+  "observedOrder": "AECBD",
+  "slots": [
+   460964088,
+   460964089
   ],
-  "observedOrder": "AEC",
-  "tau": {
-   "rewardPerCost": 0.8164965809277261,
-   "totalFee": 0.8164965809277261,
-   "cuPrice": 0.8164965809277261,
-   "sentFirst": -0.3333333333333333
+  "gamma": {
+   "rewardPerCost": 0.5555555555555556,
+   "priorityPerCost": 0.3333333333333333,
+   "cuPrice": 0.3333333333333333,
+   "totalFee": -0.3333333333333333,
+   "sentFirst": 0.2,
+   "rpcReleasedFirst": 0.8
   }
  },
  {
   "run": "2026-10-24T19-08-02Z",
   "trial": 13,
-  "slot": 460964119,
-  "leader": "11AMA4mnNbsrPQeuoNN7uiZVJZtqEzQHrTfa5vnbcjk",
   "client": "FireBAM",
+  "leader": "11AMA4mnNbsrPQeuoNN7uiZVJZtqEzQHrTfa5vnbcjk",
   "version": "26.10.4",
+  "path": "rpc",
   "mode": "independent",
-  "timing": "early",
-  "hitTarget": true,
-  "slotsAfterTarget": 3,
-  "slotInWindow": 3,
-  "roles": [
-   "C",
-   "A",
-   "D",
-   "E"
+  "delivery": "pilot-early",
+  "ingress": "11AMA4mnNbsrPQeuoNN7uiZVJZtqEzQHrTfa5vnbcjk",
+  "ingressShared": 1,
+  "observedOrder": "CADEB",
+  "slots": [
+   460964119,
+   460964120
   ],
-  "observedOrder": "CADE",
-  "tau": {
-   "rewardPerCost": -0.5477225575051661,
-   "totalFee": -0.5477225575051661,
-   "cuPrice": -0.5477225575051661,
-   "sentFirst": 0.3333333333333333
+  "gamma": {
+   "rewardPerCost": 0.1111111111111111,
+   "priorityPerCost": -0.1111111111111111,
+   "cuPrice": -0.1111111111111111,
+   "totalFee": -0.7777777777777778,
+   "sentFirst": -0.2,
+   "rpcReleasedFirst": 1
   }
  },
  {
   "run": "2026-10-24T19-08-02Z",
   "trial": 14,
-  "slot": 460964625,
-  "leader": "HH5dA42XF1HxNk1TRpG6LuKfLViMYNdAz5iWrFM4hWFi",
   "client": "JitoLabs",
+  "leader": "HH5dA42XF1HxNk1TRpG6LuKfLViMYNdAz5iWrFM4hWFi",
   "version": "4.3.2",
+  "path": "rpc",
   "mode": "independent",
-  "timing": "inwindow",
-  "hitTarget": false,
-  "slotsAfterTarget": 5,
-  "slotInWindow": 1,
-  "roles": [
-   "C",
-   "D",
-   "B"
+  "delivery": "pilot-inwindow",
+  "ingress": "HH5dA42XF1HxNk1TRpG6LuKfLViMYNdAz5iWrFM4hWFi",
+  "ingressShared": 1,
+  "observedOrder": "AECDB",
+  "slots": [
+   460964624,
+   460964625
   ],
-  "observedOrder": "CDB",
-  "tau": {
-   "rewardPerCost": 0.3333333333333333,
-   "totalFee": -1,
+  "gamma": {
+   "rewardPerCost": 0.7777777777777778,
+   "priorityPerCost": 0.5555555555555556,
+   "cuPrice": 0.5555555555555556,
+   "totalFee": -0.5555555555555556,
+   "sentFirst": 0.2,
+   "rpcReleasedFirst": 1
+  }
+ },
+ {
+  "run": "2026-10-24T23-35-52Z",
+  "trial": 0,
+  "client": "AgaveBam",
+  "leader": "6k1YkmTKwPRUhChnxA9ryJmbtuQMbro4xFTL6mL9jycB",
+  "version": "4.3.2",
+  "path": "tpu",
+  "mode": "independent",
+  "delivery": "streamed",
+  "ingress": "64.130.58.123",
+  "ingressShared": 13,
+  "observedOrder": "ECAFBD",
+  "slots": [
+   461039133,
+   461039134
+  ],
+  "gamma": {
+   "rewardPerCost": 0.42857142857142855,
+   "priorityPerCost": 0,
+   "cuPrice": 0.16666666666666666,
+   "totalFee": -0.6666666666666666,
+   "sentFirst": 1,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-24T23-35-52Z",
+  "trial": 2,
+  "client": "HarmonicFiredancer",
+  "leader": "CQdLgwkmmHF8DE6t4sguXMTXWDxq3oLh3xfekDTmow12",
+  "version": "26.10.4",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "streamed",
+  "ingress": "198.13.140.105",
+  "ingressShared": 38,
+  "observedOrder": "FEACDB",
+  "slots": [
+   461039177
+  ],
+  "gamma": {
+   "rewardPerCost": 0.2857142857142857,
+   "priorityPerCost": 0.14285714285714285,
+   "cuPrice": 0.6666666666666666,
+   "totalFee": -0.5,
+   "sentFirst": 1,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-24T23-35-52Z",
+  "trial": 3,
+  "client": "HarmonicAgave",
+  "leader": "HTeRsa3gm3CGrizMoCrtWj4uBZ1NKYcGqh8jfBu2u3Jo",
+  "version": "4.3.2",
+  "path": "tpu",
+  "mode": "independent",
+  "delivery": "buffered",
+  "ingress": "63.254.166.232",
+  "ingressShared": 17,
+  "observedOrder": "ADEFCB",
+  "slots": [
+   461039204
+  ],
+  "gamma": {
+   "rewardPerCost": 0.7142857142857143,
+   "priorityPerCost": 0.5714285714285714,
+   "cuPrice": 0.5,
+   "totalFee": 0,
+   "sentFirst": 0.06666666666666667,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-24T23-35-52Z",
+  "trial": 4,
+  "client": "Firedancer",
+  "leader": "DNVZMSqeRH18Xa4MCTrb1MndNf3Npg4MEwqswo23eWkf",
+  "version": "26.10.4",
+  "path": "tpu",
+  "mode": "independent",
+  "delivery": "buffered",
+  "ingress": "23.109.46.35",
+  "ingressShared": 1,
+  "observedOrder": "EADCFB",
+  "slots": [
+   461039316
+  ],
+  "gamma": {
+   "rewardPerCost": 1,
+   "priorityPerCost": 0.5714285714285714,
+   "cuPrice": 0.5,
+   "totalFee": -0.3333333333333333,
+   "sentFirst": 0.06666666666666667,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-24T23-35-52Z",
+  "trial": 5,
+  "client": "Rakurai",
+  "leader": "2dfgsiSaZ51QYPsECMYMG247PXxyKdwkV9wTHoQb8YEC",
+  "version": "4.3.2",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "streamed",
+  "ingress": "64.130.42.87",
+  "ingressShared": 1,
+  "observedOrder": "FACDEB",
+  "slots": [
+   461039341,
+   461039342
+  ],
+  "gamma": {
+   "rewardPerCost": 0,
+   "priorityPerCost": -0.14285714285714285,
+   "cuPrice": 0.3333333333333333,
+   "totalFee": -0.5,
+   "sentFirst": 1,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-24T23-35-52Z",
+  "trial": 7,
+  "client": "Agave",
+  "leader": "mds2fZEpJP688PqJHvfLxGyf2VFrcNkvjuUxNYCwjrq",
+  "version": "4.5.0-alpha.2",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "streamed",
+  "ingress": "64.130.33.190",
+  "ingressShared": 1,
+  "observedOrder": "DFBECA",
+  "slots": [
+   461039485,
+   461039486
+  ],
+  "gamma": {
+   "rewardPerCost": -0.2857142857142857,
+   "priorityPerCost": -0.14285714285714285,
+   "cuPrice": 0,
+   "totalFee": 0.5,
+   "sentFirst": 1,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-25T15-38-55Z",
+  "trial": 1,
+  "client": "Firedancer",
+  "leader": "EvnRmnMrd69kFdbLMxWkTn1icZ7DCceRhvmb2SJXqDo4",
+  "version": "26.10.4",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "burst",
+  "ingress": "104.204.143.114",
+  "ingressShared": 1,
+  "observedOrder": "EADCFB",
+  "slots": [
+   461311213
+  ],
+  "gamma": {
+   "rewardPerCost": 1,
+   "priorityPerCost": 0.5714285714285714,
+   "cuPrice": 0.5,
+   "totalFee": -0.3333333333333333,
+   "sentFirst": 0.06666666666666667,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-25T15-38-55Z",
+  "trial": 2,
+  "client": "HarmonicAgave",
+  "leader": "A1vqhA2fS6K7CvHsJKX1ACcHJFEmyRg4KuR5pctHANy4",
+  "version": "4.3.2",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "buffered",
+  "ingress": "63.254.166.232",
+  "ingressShared": 17,
+  "observedOrder": "AEDBCF",
+  "slots": [
+   461311236
+  ],
+  "gamma": {
+   "rewardPerCost": 0.7142857142857143,
+   "priorityPerCost": 0.8571428571428571,
+   "cuPrice": 0.5,
+   "totalFee": 0,
+   "sentFirst": -0.4666666666666667,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-25T15-38-55Z",
+  "trial": 3,
+  "client": "HarmonicAgave",
+  "leader": "DrifTrN923QaouP89UxkQzFGbumKPCnfkNYQRwmZxatz",
+  "version": "4.3.2",
+  "path": "tpu",
+  "mode": "independent",
+  "delivery": "streamed",
+  "ingress": "63.254.166.232",
+  "ingressShared": 17,
+  "observedOrder": "FEBCDA",
+  "slots": [
+   461311257,
+   461311258
+  ],
+  "gamma": {
+   "rewardPerCost": -0.42857142857142855,
+   "priorityPerCost": -0.2857142857142857,
+   "cuPrice": 0.16666666666666666,
+   "totalFee": 0,
+   "sentFirst": 0.8666666666666667,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-25T15-38-55Z",
+  "trial": 4,
+  "client": "AgaveBam",
+  "leader": "gridqZmeBcsUKT2Mv4M9YFHFN3tVLFb2TCtTcLD1cAd",
+  "version": "4.3.2",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "buffered",
+  "ingress": "198.13.130.9",
+  "ingressShared": 38,
+  "observedOrder": "EADCFB",
+  "slots": [
+   461311280
+  ],
+  "gamma": {
+   "rewardPerCost": 1,
+   "priorityPerCost": 0.5714285714285714,
+   "cuPrice": 0.5,
+   "totalFee": -0.3333333333333333,
+   "sentFirst": 0.06666666666666667,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-25T15-38-55Z",
+  "trial": 5,
+  "client": "AgaveBam",
+  "leader": "5ejbTALcBsKQ7Cj1iSuu2mY5jqbYHqh9gF5ERXLiYj1z",
+  "version": "4.3.2",
+  "path": "tpu",
+  "mode": "independent",
+  "delivery": "streamed",
+  "ingress": "88.216.192.50",
+  "ingressShared": 26,
+  "observedOrder": "BFEACD",
+  "slots": [
+   461311301,
+   461311302
+  ],
+  "gamma": {
+   "rewardPerCost": -0.42857142857142855,
+   "priorityPerCost": 0,
+   "cuPrice": 0.16666666666666666,
+   "totalFee": 0.3333333333333333,
+   "sentFirst": 0.8666666666666667,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-25T15-38-55Z",
+  "trial": 6,
+  "client": "JitoLabs",
+  "leader": "9rkJMARqK6VBkcxGfKBAwnA44gPAfGxPbPsfsggFNDSQ",
+  "version": "4.3.2",
+  "path": "tpu",
+  "mode": "independent",
+  "delivery": "buffered",
+  "ingress": "64.34.88.249",
+  "ingressShared": 1,
+  "observedOrder": "DCFEBA",
+  "slots": [
+   461311324
+  ],
+  "gamma": {
+   "rewardPerCost": 0,
+   "priorityPerCost": -0.42857142857142855,
    "cuPrice": -0.3333333333333333,
-   "sentFirst": 0.3333333333333333
+   "totalFee": -0.16666666666666666,
+   "sentFirst": -0.3333333333333333,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-25T15-38-55Z",
+  "trial": 7,
+  "client": "JitoLabs",
+  "leader": "E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL",
+  "version": "4.3.2",
+  "path": "tpu",
+  "mode": "independent",
+  "delivery": "buffered",
+  "ingress": "64.130.32.153",
+  "ingressShared": 1,
+  "observedOrder": "DBEACF",
+  "slots": [
+   461311356
+  ],
+  "gamma": {
+   "rewardPerCost": 0.14285714285714285,
+   "priorityPerCost": 0.2857142857142857,
+   "cuPrice": -0.16666666666666666,
+   "totalFee": 0.6666666666666666,
+   "sentFirst": 0.2,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-25T15-38-55Z",
+  "trial": 8,
+  "client": "Rakurai",
+  "leader": "7PdKhpKz7T39vZHFL1UfcYNDsLvay6hp4KPQq1aUckFf",
+  "version": "4.3.2",
+  "path": "tpu",
+  "mode": "independent",
+  "delivery": "buffered",
+  "ingress": "64.130.41.180",
+  "ingressShared": 1,
+  "observedOrder": "ECFDAB",
+  "slots": [
+   461311384
+  ],
+  "gamma": {
+   "rewardPerCost": 0.2857142857142857,
+   "priorityPerCost": -0.14285714285714285,
+   "cuPrice": 0.16666666666666666,
+   "totalFee": -0.6666666666666666,
+   "sentFirst": -0.3333333333333333,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-25T15-38-55Z",
+  "trial": 9,
+  "client": "HarmonicFiredancer",
+  "leader": "CQdLgwkmmHF8DE6t4sguXMTXWDxq3oLh3xfekDTmow12",
+  "version": "26.10.4",
+  "path": "tpu",
+  "mode": "independent",
+  "delivery": "buffered",
+  "ingress": "198.13.140.105",
+  "ingressShared": 38,
+  "observedOrder": "AEDCBF",
+  "slots": [
+   461311404
+  ],
+  "gamma": {
+   "rewardPerCost": 0.8571428571428571,
+   "priorityPerCost": 0.7142857142857143,
+   "cuPrice": 0.3333333333333333,
+   "totalFee": -0.16666666666666666,
+   "sentFirst": 0.2,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-25T15-38-55Z",
+  "trial": 10,
+  "client": "FireBAM",
+  "leader": "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY",
+  "version": "26.10.4",
+  "path": "tpu",
+  "mode": "independent",
+  "delivery": "streamed",
+  "ingress": "64.130.51.255",
+  "ingressShared": 19,
+  "observedOrder": "BDCEFA",
+  "slots": [
+   461311465,
+   461311466
+  ],
+  "gamma": {
+   "rewardPerCost": -0.42857142857142855,
+   "priorityPerCost": -0.2857142857142857,
+   "cuPrice": -0.6666666666666666,
+   "totalFee": 0.5,
+   "sentFirst": 1,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-25T15-38-55Z",
+  "trial": 11,
+  "client": "Agave",
+  "leader": "mds4GEuiSgQRqveGyktWpETBFCb4AS2wDnhqwLHcT6Z",
+  "version": "4.4.0-rc.0",
+  "path": "tpu",
+  "mode": "independent",
+  "delivery": "buffered",
+  "ingress": "189.1.164.35",
+  "ingressShared": 1,
+  "observedOrder": "EAFBDC",
+  "slots": [
+   461311860
+  ],
+  "gamma": {
+   "rewardPerCost": 0.42857142857142855,
+   "priorityPerCost": 0.5714285714285714,
+   "cuPrice": 0.8333333333333334,
+   "totalFee": 0,
+   "sentFirst": 0.06666666666666667,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-25T15-38-55Z",
+  "trial": 12,
+  "client": "Agave",
+  "leader": "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE",
+  "version": "4.3.2",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "burst",
+  "ingress": "5.199.172.176",
+  "ingressShared": 1,
+  "observedOrder": "EFBCAD",
+  "slots": [
+   461311909
+  ],
+  "gamma": {
+   "rewardPerCost": -0.14285714285714285,
+   "priorityPerCost": 0,
+   "cuPrice": 0.3333333333333333,
+   "totalFee": -0.16666666666666666,
+   "sentFirst": 0.7333333333333333,
+   "rpcReleasedFirst": null
   }
  }
 ]

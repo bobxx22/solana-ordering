@@ -3,9 +3,9 @@ import { mkdtempSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { test } from 'node:test'
-import { buildTrialTxs, CellDealer, expectedPriority, priorityFee, ROLES, type Role, type RoleSpec, trialCost } from '../src/design.ts'
+import { buildTrialTxs, CellDealer, expectedCost, expectedPriority, priorityFee, priorityPerCost, ROLES, type Role, type RoleSpec, trialCost } from '../src/design.ts'
 import { generateKeypairBytes, signerFromBytes } from '../src/keys.ts'
-import { CapExceeded, Ledger } from '../src/ledger.ts'
+import { CapExceeded, Ledger, SWEEP_ALLOWANCE } from '../src/ledger.ts'
 import { rng } from '../src/util.ts'
 
 const BLOCKHASH = '4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM'
@@ -14,54 +14,64 @@ const rank = (key: (s: RoleSpec) => number) =>
     .sort((a, b) => key(b) - key(a))
     .map((s) => s.role)
     .join('')
+const role = Object.fromEntries(ROLES.map((r) => [r.role, r])) as Record<Role, RoleSpec>
 
-test('the three candidate rules order the roles differently', () => {
-  const byPriority = rank(expectedPriority)
-  const byTotalFee = rank((s) => Number(priorityFee(s)))
-  const byPrice = rank((s) => Number(s.cuPrice))
-  assert.equal(byPriority, 'AEDCB')
-  assert.equal(byTotalFee, 'BDAEC')
-  assert.equal(byPrice, 'AEDBC')
-  // C vs B is the pair that separates reward/cost from price per CU
-  const p = Object.fromEntries(ROLES.map((r) => [r.role, r])) as Record<Role, RoleSpec>
-  assert.ok(expectedPriority(p.C) > expectedPriority(p.B) && p.B.cuPrice > p.C.cuPrice)
+test('the candidate rules order the roles differently', () => {
+  assert.equal(rank(expectedPriority), 'AEDCFB')
+  assert.equal(rank(priorityPerCost), 'AEDBFC')
+  assert.equal(rank((s) => Number(s.cuPrice)), 'AEFDBC')
+  assert.equal(rank((s) => Number(priorityFee(s))), 'BDAEFC')
 })
 
-test('a trial costs at most 52 000 lamports', () => {
-  assert.equal(trialCost(), 52_000n)
+test('F differs from A only in scheduling cost', () => {
+  assert.equal(role.F.cuPrice, role.A.cuPrice)
+  assert.equal(priorityFee(role.F), priorityFee(role.A))
+  assert.equal(expectedCost(role.A), 2_335)
+  assert.equal(expectedCost(role.F), 18_711)
+  assert.ok(expectedPriority(role.A) > 7 * expectedPriority(role.F))
 })
 
-test('shared trials write one anchor, independent trials five; signatures are unique', () => {
+test('a trial costs at most 61 000 lamports', () => {
+  assert.equal(trialCost(), 61_000n)
+})
+
+test('shared trials write one anchor, independent trials six; signatures are unique', () => {
   const payers = ROLES.map(() => signerFromBytes(generateKeypairBytes()))
-  const order: Role[] = ['C', 'A', 'E', 'B', 'D']
-  const shared = buildTrialTxs('shared', order, payers, BLOCKHASH).txs
-  const indep = buildTrialTxs('independent', order, payers, BLOCKHASH).txs
+  const order: Role[] = ['C', 'A', 'E', 'B', 'F', 'D']
+  const shared = buildTrialTxs('shared', order, payers, BLOCKHASH)
+  const indep = buildTrialTxs('independent', order, payers, BLOCKHASH)
   assert.equal(new Set(shared.map((t) => t.anchor)).size, 1)
-  assert.equal(new Set(indep.map((t) => t.anchor)).size, 5)
-  assert.equal(new Set([...shared, ...indep].map((t) => t.signature)).size, 10)
+  assert.equal(new Set(indep.map((t) => t.anchor)).size, 6)
+  assert.equal(new Set([...shared, ...indep].map((t) => t.signature)).size, 12)
   assert.deepEqual(
     shared.map((t) => t.sendIndex),
-    [1, 3, 0, 4, 2],
+    [1, 3, 0, 5, 2, 4],
   )
 })
 
 test('cells are dealt in balanced blocks per client', () => {
-  const dealer = new CellDealer(rng(1), ['early', 'inwindow'])
+  const dealer = new CellDealer(rng(1), ['buffered', 'streamed'])
   const seen = new Map<string, number>()
   for (let i = 0; i < 8; i++) {
     const c = dealer.take('X')
-    const k = `${c.mode}/${c.timing}`
+    const k = `${c.mode}/${c.delivery}`
     seen.set(k, (seen.get(k) ?? 0) + 1)
   }
   assert.deepEqual([...seen.values()], [2, 2, 2, 2])
 })
 
-test('ledger refuses to pass the cap and settles to actual fees', () => {
+test('ledger: lock required, cap enforced with the sweep allowance, settled to actual fees', () => {
   const file = join(mkdtempSync(join(tmpdir(), 'ledger-')), 'ledger.jsonl')
-  const l = new Ledger(file, 100_000n)
-  l.reserve([{ signature: 'a', lamports: 60_000n, what: 't' }])
-  assert.throws(() => l.reserve([{ signature: 'b', lamports: 50_000n, what: 't' }]), CapExceeded)
+  const cap = 500_000n
+  const l = new Ledger(file, cap)
+  assert.throws(() => l.reserve([{ signature: 'x', lamports: 1n, what: 't' }]), /locked/)
+  l.lock()
+  assert.throws(() => new Ledger(file, cap).lock(), /in use/)
+  l.reserve([{ signature: 'a', lamports: 300_000n, what: 't' }])
+  // ordinary spending must leave the sweep allowance
+  assert.throws(() => l.reserve([{ signature: 'b', lamports: cap - SWEEP_ALLOWANCE - 300_000n + 1n, what: 't' }]), CapExceeded)
+  l.reserve([{ signature: 's', lamports: SWEEP_ALLOWANCE, what: 'sweep' }], true)
   l.settle('a', 9_000n)
-  l.reserve([{ signature: 'b', lamports: 50_000n, what: 't' }])
-  assert.equal(new Ledger(file, 100_000n).committed(), 59_000n) // replayed from the file
+  l.unlock()
+  assert.equal(new Ledger(file, cap).committed(), 9_000n + SWEEP_ALLOWANCE) // replayed from the file
 })

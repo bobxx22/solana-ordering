@@ -1,40 +1,46 @@
 // Entry point: node src/cli.ts <command> [--flags]
-import { existsSync, readdirSync } from 'node:fs'
+import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { analyze } from './analyze.ts'
 import { collect } from './collect.ts'
-import { type Args, type Config, fmtSol, loadConfig, parseArgs } from './config.ts'
-import type { Timing } from './design.ts'
+import { type Args, checkCluster, type Config, fmtSol, loadConfig, parseArgs } from './config.ts'
+import { DELIVERIES, type Delivery } from './design.ts'
 import { discover } from './discover.ts'
 import { createKeypairFile, loadKeypair } from './keys.ts'
 import { Ledger } from './ledger.ts'
 import { probePaths } from './paths.ts'
+import { settleOpen } from './settle.ts'
 import { Log, stamp } from './log.ts'
 import { Rpc } from './rpc.ts'
-import { DEFAULT_CLIENTS, ledgerFile, run, runsDir } from './run.ts'
+import { DEFAULT_CLIENTS, ledgerFile, run, runsDir, type SendPath } from './run.ts'
 import { verify } from './verify.ts'
 import { balances, fundSubPayers, loadSubPayers, sweepSubPayers } from './wallets.ts'
 
 const HELP = `usage: node src/cli.ts <command> [flags]
 
 commands
+  reproduce  what a judge runs (the Docker Compose default): regenerate the results from the committed raw data and
+             compare them with the committed ones, verify every recorded transaction against the chain, and make
+             one dry-run trial over the direct path (no keys, nothing sent)   --offline: only the first step
   keygen     create a new wallet file (default keys/payer.json); prints only its address
   address    print the wallet address and balance
   airdrop    request test SOL (devnet / localnet only)
   discover   snapshot validators by client and stake into data/<cluster>/snapshots/
-  run        the experiment; a dry run (simulation only) unless --live
+  run        the experiment; a dry run (simulation only, written to data/<cluster>/dry-runs/) unless --live
+               --path tpu|rpc        direct QUIC to the leader (default) or sendTransaction via --send-rpc
                --clients A,B,..      clients to target (default: the eight largest)
                --per-client N        trials per client (default 50)
-               --per-validator N     at most N trials per validator (default 4)
-               --timings early,inwindow   --gap-ms 20   --spacing-ms 4000
+               --per-validator N     at least N trials allowed per validator (default 4; more for small clients)
+               --deliveries buffered,streamed   --spacing-ms 4000
                --seed N   --dry-trials 3   --minutes 240
-  collect    landing slot and in-block position of a run's transactions; settles the ledger
-               [run id, default: the latest run]
+  collect    landing slot, in-block position and slot leader of a run's transactions; settles the ledger
+               [run id | all, default: the latest run]   --refresh refetches every block
   analyze    statistics of all live runs -> data/<cluster>/results/ (offline, from the committed raw data)
-  verify     check every recorded position against the chain (default: the public endpoint) -> data/<cluster>/verify.json
-               --verify-rpc URL
+  verify     check the raw data against the chain (default endpoint: solana-rpc.publicnode.com); exit code 1 on problems
+               --verify-rpc URL   --sample 30 (whole transactions checked for role parameters)   --write (data/<cluster>/verify.json)
   paths      delivery-path probe: one transaction per endpoint per round -> data/<cluster>/paths/
-               --endpoints URL,URL   ('read' = the read RPC, keeping its key out of the command line)   --rounds 8
+               --endpoints URL,read,tpu   ('read' = the read RPC, keeping its key out of the command line;
+                                           'tpu' = QUIC straight to the next leader)   --rounds 8
   status     spend ledger and wallet balances
   fund       top up the sub-payers (prints the plan unless --live)
   sweep      return all sub-payer balances to the main wallet (prints the plan unless --live)
@@ -96,8 +102,8 @@ async function main(): Promise<void> {
           clients: list('clients', DEFAULT_CLIENTS),
           perClient: num('per-client', 50),
           perValidator: num('per-validator', 4),
-          timings: list('timings', ['early', 'inwindow']) as Timing[],
-          gapMs: num('gap-ms', 20),
+          deliveries: list('deliveries', DELIVERIES) as Delivery[],
+          path: (args.flags.get('path') as SendPath) || 'tpu',
           spacingMs: num('spacing-ms', 4000),
           seed: num('seed', Date.now() % 2 ** 31),
           dryTrials: num('dry-trials', 3),
@@ -108,21 +114,49 @@ async function main(): Promise<void> {
       return
     }
     case 'collect': {
-      const dir = runDir(cfg, args)
-      await collect(rpc, dir, new Ledger(ledgerFile(cfg), cfg.spendCapLamports), log)
+      // settling needs the ledger lock; while a live run holds it, collect only reads
+      let ledger: Ledger | null = new Ledger(ledgerFile(cfg), cfg.spendCapLamports)
+      try {
+        ledger.lock()
+      } catch (e) {
+        log.info(`${(e as Error).message}: collecting without settling`)
+        ledger = null
+      }
+      const dirs = args.positional[0] === 'all' ? readdirSync(runsDir(cfg)).sort().map((id) => join(runsDir(cfg), id)) : [runDir(cfg, args)]
+      for (const dir of dirs) await collect(rpc, dir, ledger, log, args.flags.get('refresh') === true)
+      // reservations no run knows about (an interrupted fund, sweep or path probe)
+      if (ledger) await settleOpen(rpc, ledger, ledger.openSignatures().map((signature) => ({ signature, sentAt: ledger!.reservedAt.get(signature) })))
+      ledger?.unlock()
       return
     }
     case 'analyze':
       console.log(analyze(cfg.dataDir, cfg.cluster))
       return
+    case 'reproduce': {
+      const resultsFile = join(cfg.dataDir, cfg.cluster, 'results', 'results.md')
+      const before = existsSync(resultsFile) ? readFileSync(resultsFile, 'utf8') : null
+      analyze(cfg.dataDir, cfg.cluster)
+      const after = readFileSync(resultsFile, 'utf8')
+      if (before === null) log.info('reproduce: results generated (none were committed to compare with)')
+      else if (before === after) log.info('reproduce: results regenerated from the raw data are identical to the committed ones')
+      else {
+        log.info('reproduce: regenerated results DIFFER from the committed ones (see git diff data/)')
+        process.exitCode = 1
+      }
+      if (args.flags.has('offline')) return
+      const r = await verify(verifyRpc(cfg, args), runsDir(cfg), log)
+      if (r.problems.length) process.exitCode = 1
+      await run({ ...cfg, live: false }, rpc, { clients: DEFAULT_CLIENTS, perClient: 1, perValidator: 4, deliveries: DELIVERIES, path: 'tpu', spacingMs: 4000, seed: 1, dryTrials: 1, maxMinutes: 5 }, log)
+      return
+    }
     case 'paths': {
       const endpoints = typeof args.flags.get('endpoints') === 'string' ? (args.flags.get('endpoints') as string).split(',').map((u) => (u === 'read' ? cfg.rpcUrl : u)) : [cfg.sendRpcUrl]
       await probePaths(cfg, rpc, endpoints, Number(args.flags.get('rounds') ?? 8), log)
       return
     }
     case 'verify': {
-      const url = (args.flags.get('verify-rpc') as string) || cfg.sendRpcUrl
-      await verify(new Rpc(url, { minGapMs: 300 }), runsDir(cfg), log)
+      const r = await verify(verifyRpc(cfg, args), runsDir(cfg), log, { write: args.flags.get('write') === true, sample: Number(args.flags.get('sample') ?? 30) })
+      if (r.problems.length) process.exitCode = 1
       return
     }
     case 'status': {
@@ -141,8 +175,13 @@ async function main(): Promise<void> {
       const main = loadKeypair(cfg.keypairPath)
       const { signers } = loadSubPayers(cfg, args.command === 'fund' && cfg.live)
       const ledger = new Ledger(ledgerFile(cfg), cfg.spendCapLamports)
+      if (cfg.live) {
+        await checkCluster(cfg, rpc, rpc)
+        ledger.lock()
+      }
       const f = args.command === 'fund' ? fundSubPayers : sweepSubPayers
-      await f(cfg, rpc, rpc, ledger, log, main, signers, cfg.live)
+      await f(rpc, rpc, ledger, log, main, signers, cfg.live)
+      ledger.unlock()
       if (!cfg.live) console.log('plan only; add --live to send')
       return
     }
@@ -151,6 +190,13 @@ async function main(): Promise<void> {
       console.log(HELP)
       process.exitCode = 2
   }
+}
+
+/** Verification defaults to a public endpoint independent of the one the data was collected with. */
+const VERIFY_RPC: Record<string, string> = { 'mainnet-beta': 'https://solana-rpc.publicnode.com' }
+function verifyRpc(cfg: Config, args: Args): Rpc {
+  const url = (args.flags.get('verify-rpc') as string) || VERIFY_RPC[cfg.cluster] || cfg.sendRpcUrl
+  return new Rpc(url, { minGapMs: 200, retries: 8 })
 }
 
 /** A run directory: the id given as the first argument, or the latest run. */

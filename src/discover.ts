@@ -18,6 +18,8 @@ export interface Validator {
   version: string | null
   featureSet: number | null
   leaderSlots: number
+  /** QUIC TPU address from gossip (public), where the direct path delivers transactions */
+  tpuQuic: string | null
 }
 
 export interface Snapshot {
@@ -63,6 +65,7 @@ export async function takeSnapshot(rpc: Rpc, cluster: string, log: Log): Promise
         version: g?.version ?? null,
         featureSet: g?.featureSet ?? null,
         leaderSlots: schedule[v.nodePubkey]?.length ?? 0,
+        tpuQuic: g?.tpuQuic ?? null,
       })
     }
   }

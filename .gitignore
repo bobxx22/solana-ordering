@@ -5,3 +5,6 @@ dist/
 data/logs/
 data/devnet/
 data/localnet/
+.venv/
+__pycache__/
+data/*/dry-runs/

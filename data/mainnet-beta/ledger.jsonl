@@ -270,3 +270,269 @@
 {"t":"2026-10-24T19:31:04.920Z","kind":"settle","signature":"1sp33oAayZrVDQDX5akjQmPexfUxT5f2uD4Dc7XBMXjpcCWqsaFQ36tPHym7fU8zoXemAPZgzhBW3uFqBrq28pb","lamports":"9000"}
 {"t":"2026-10-24T19:31:04.920Z","kind":"settle","signature":"A1PZBSDDUEse6JHQseeaiA93rVKZdyqDtM8x4tHJHQE1u7k4z9FKCCJQjsKdY5uqSe8HSbSCohYSY1E3StVrW2t","lamports":"9000"}
 {"t":"2026-10-24T19:31:04.920Z","kind":"settle","signature":"3bjkj2mbFPRw8H81N5Jg1Heehqg8XNwcPQW3nbDhoeDAqPdVCAXUn2YZ86ou5jzFiUqZ1RYssDJ3TVfiNVCCrijA","lamports":"9000"}
+{"t":"2026-10-24T23:25:04.221Z","kind":"reserve","signature":"2ugobkbm2fHaxYBVm43QiRHKsg3cP1n2W8iz1fZLfdLQnfNchhonMZ5h3VHBw1V1kZ7TWtMSXwqebdei2Kx9TwC5","lamports":"9000","what":"quic feasibility"}
+{"t":"2026-10-24T23:25:08.831Z","kind":"reserve","signature":"5RcKwh5RiUXyeCuNiRo68FJyqpYXBBPCwd7N9C8TWVAEnonYYZiWoUbkA8aPaMe3CcXTELxsbtg5vCTTRkobk2xG","lamports":"9000","what":"quic feasibility"}
+{"t":"2026-10-24T23:25:13.273Z","kind":"reserve","signature":"e8uHAyeeo4B9QhrFokEUFzJXTMtfxjDsrMBSfJ4E1nyFxwjszt1kbaPNXB3szWfgqJRiGVe1bGNQLo9RfC8hhnZ","lamports":"9000","what":"quic feasibility"}
+{"t":"2026-10-24T23:25:17.674Z","kind":"reserve","signature":"2HPR9dcHWv718EGSQ8H65DSekbvGhzEcLQY4MHQxFdi9sqb6rA57ZH74eF7kLJYokzwZ4Lv61uUXqfN8GUcTsDpT","lamports":"9000","what":"quic feasibility"}
+{"t":"2026-10-24T23:25:22.192Z","kind":"reserve","signature":"5zX79weiDXeKcHxGb3Po5CivpspfPwZTjEaFUUMEvNuy8j8uNuRn4ySedzdTPKA6a1MVFuEVTZSAfJv5i57GMcHr","lamports":"9000","what":"quic feasibility"}
+{"t":"2026-10-24T23:25:26.741Z","kind":"reserve","signature":"D6Dequ7KoFYWFTroUvkaF2XFjpAgRrLn3Qb3Qg3UFQfoXaJyrxfgsDv8AnCF8dW3s3GrMQH46KnmQJcD1AQwRU7","lamports":"9000","what":"quic feasibility"}
+{"t":"2026-10-24T23:25:45.251Z","kind":"settle","signature":"2ugobkbm2fHaxYBVm43QiRHKsg3cP1n2W8iz1fZLfdLQnfNchhonMZ5h3VHBw1V1kZ7TWtMSXwqebdei2Kx9TwC5","lamports":"9000"}
+{"t":"2026-10-24T23:25:45.405Z","kind":"settle","signature":"5RcKwh5RiUXyeCuNiRo68FJyqpYXBBPCwd7N9C8TWVAEnonYYZiWoUbkA8aPaMe3CcXTELxsbtg5vCTTRkobk2xG","lamports":"9000"}
+{"t":"2026-10-24T23:25:45.602Z","kind":"settle","signature":"e8uHAyeeo4B9QhrFokEUFzJXTMtfxjDsrMBSfJ4E1nyFxwjszt1kbaPNXB3szWfgqJRiGVe1bGNQLo9RfC8hhnZ","lamports":"9000"}
+{"t":"2026-10-24T23:25:45.751Z","kind":"settle","signature":"2HPR9dcHWv718EGSQ8H65DSekbvGhzEcLQY4MHQxFdi9sqb6rA57ZH74eF7kLJYokzwZ4Lv61uUXqfN8GUcTsDpT","lamports":"9000"}
+{"t":"2026-10-24T23:25:45.887Z","kind":"settle","signature":"5zX79weiDXeKcHxGb3Po5CivpspfPwZTjEaFUUMEvNuy8j8uNuRn4ySedzdTPKA6a1MVFuEVTZSAfJv5i57GMcHr","lamports":"9000"}
+{"t":"2026-10-24T23:25:46.045Z","kind":"settle","signature":"D6Dequ7KoFYWFTroUvkaF2XFjpAgRrLn3Qb3Qg3UFQfoXaJyrxfgsDv8AnCF8dW3s3GrMQH46KnmQJcD1AQwRU7","lamports":"9000"}
+{"t":"2026-10-24T23:35:54.226Z","kind":"reserve","signature":"JCtbw58W2uRwD6QpLHcDZMvgkZ5GBHLxtY8b6Sk4uJaEcVVHyNrPLLawUy7SCfySX9WCsmNnXHTgv23Q2KT7Sc4","lamports":"5000","what":"fund"}
+{"t":"2026-10-24T23:35:58.819Z","kind":"settle","signature":"JCtbw58W2uRwD6QpLHcDZMvgkZ5GBHLxtY8b6Sk4uJaEcVVHyNrPLLawUy7SCfySX9WCsmNnXHTgv23Q2KT7Sc4","lamports":"5000"}
+{"t":"2026-10-24T23:36:00.988Z","kind":"reserve","signature":"28iR4LYAmXByDve8T39BBEr4FiqG84s5ip5NU1YspXvaNJ6oKBJrkYSZkta4diV5zrqiEghjRc9m716ngjNj7kB5","lamports":"9000","what":"trial 0 A"}
+{"t":"2026-10-24T23:36:00.988Z","kind":"reserve","signature":"2wxswKTxwKtm7RDwfDhzZAdaA7XektLmwRsuafAuUduqSxbzud3LrRaVqkd9H34b16ZZueuWLmWqRmZGDfcjTai9","lamports":"15000","what":"trial 0 B"}
+{"t":"2026-10-24T23:36:00.988Z","kind":"reserve","signature":"3HZHZVokGQyhyQ1xm53XSk2J785naKg8pYq2tqmJ1X4pxiEjyNZj6RKW2t75EEyd1asN4nBaDHGzdHGP6u98FVm4","lamports":"5000","what":"trial 0 C"}
+{"t":"2026-10-24T23:36:00.988Z","kind":"reserve","signature":"3x3egHvL4hbDCSQKFRBWMNjShhHPFgSXE5UEJ9nSMSGvVuzLRNgxp5T1AEusufxk7BS7SvARipXVwq3xPfYSMJPM","lamports":"14000","what":"trial 0 D"}
+{"t":"2026-10-24T23:36:00.988Z","kind":"reserve","signature":"3bmerVEA98Q9KCZnj8DLgJXx5a9RXTVrhj2w9txgFNdR5DH3CRQTLGuR6MgomKdsHLNwtq6bZPvagu3zCVMNVHYB","lamports":"9000","what":"trial 0 E"}
+{"t":"2026-10-24T23:36:00.988Z","kind":"reserve","signature":"2u7JWddr4wJotUkKic3AAdNySt1UYcqhaJs3fwFLAZocuFedMyCPx4C7J4WFLH4VvzRuQ6wxT619VvM4zcWiqA2S","lamports":"9000","what":"trial 0 F"}
+{"t":"2026-10-24T23:36:05.338Z","kind":"reserve","signature":"5RZwgMAHcUeMJXe9fWzj74hMgKLYGhbWbERZC3nY3FEh9Bcw44xFUd95AXPLMd77HJKpi46FvzqQZabmri6zibLW","lamports":"9000","what":"trial 1 A"}
+{"t":"2026-10-24T23:36:05.339Z","kind":"reserve","signature":"5rp8PVtMooPFWLDMjs2W5QnB699mKpnin45a4fKNYJ2mCXm6rRpYHsVo6L9kqJUGs1qk7Z437NuLG7L4jLFrcKoG","lamports":"15000","what":"trial 1 B"}
+{"t":"2026-10-24T23:36:05.339Z","kind":"reserve","signature":"3A6uEAdnqHCdeAwdSV4G6KH3sfHXoj3BvDHfm931QWGozbveagMPXfZhsgnnPDCuQEXgZieWLqkvt7odhuZLQG1d","lamports":"5000","what":"trial 1 C"}
+{"t":"2026-10-24T23:36:05.339Z","kind":"reserve","signature":"4xxvPJiD3ojpiM1gFZAUzktEMkuqbEzAFF8ShZFnxwddQAY5aMa78gvoMEFfGRUvyfy7ZmFNJPJLUFvKv8WgKTHc","lamports":"14000","what":"trial 1 D"}
+{"t":"2026-10-24T23:36:05.339Z","kind":"reserve","signature":"5DhUrYdVXRQbwuEc7LhG9dT8djqMKPRHDPVcfnTAgfFkHgerUti5Ymrtm2hKyeB8ehmaL2tmtQzj5uUHnB9BL7eo","lamports":"9000","what":"trial 1 E"}
+{"t":"2026-10-24T23:36:05.339Z","kind":"reserve","signature":"2GzEGZgqNJvyLT9jDXVSvTorsPXGDeky38L7c7kJDQE74NG9KiKtnjPEbXzfzFeSWM6r3khiBh2iFMJZVsepHVgj","lamports":"9000","what":"trial 1 F"}
+{"t":"2026-10-24T23:36:10.637Z","kind":"reserve","signature":"FWpPKVg54WDU7x98WczRZLdMtvHW6SqEwLDqjh9h2t4mxgTFjPUqCp3AXZKz1jvGSMfccLsbhgnfuyFvq9BphE4","lamports":"9000","what":"trial 2 A"}
+{"t":"2026-10-24T23:36:10.637Z","kind":"reserve","signature":"3Lu4fpLRpMHhhriENuXqan8RZDD4CxUfpb72dmPQLbFResPV52z9tnw2Gq6RzUm1rnM3ZhkLE7DLTjG2swHcnumA","lamports":"15000","what":"trial 2 B"}
+{"t":"2026-10-24T23:36:10.637Z","kind":"reserve","signature":"3T91RGkBvrGmN5xRAGpm7VTQoPewMqU17QD9rRocu246T9dM9jqhzo4wNhzbnyJfrGrY8ZFLaLyKAByLHw11XSLA","lamports":"5000","what":"trial 2 C"}
+{"t":"2026-10-24T23:36:10.637Z","kind":"reserve","signature":"3snRCncmW76Dmer7sBkTcLMnrh8FV7zvtp7r6FbKE9zPbsjctVSceGfZYWH2q9w8XrgtLG1RygiWyAtk6tfHbeRK","lamports":"14000","what":"trial 2 D"}
+{"t":"2026-10-24T23:36:10.637Z","kind":"reserve","signature":"5RvcmqcDSagsQYX1gd9HsA1x5H3AESpt9Uwj2GVMeevBbaZwoYdhXkyNkjDYLXHdRzYo8Cp4WXuNs7dBLRP6fgTh","lamports":"9000","what":"trial 2 E"}
+{"t":"2026-10-24T23:36:10.637Z","kind":"reserve","signature":"4VFhEJB24efp5Pi3DnJed36krb2pTNusUmqXoHrXfbqx61jVUghbSXVtxTa34ZAmjeTzAi9xUXKwp4VnrDPQcivP","lamports":"9000","what":"trial 2 F"}
+{"t":"2026-10-24T23:36:16.348Z","kind":"reserve","signature":"2FkMip8TCq1DbDuSLit2p5E8mucqQu6jBLiF35PzpH8j9Hkz3poJSE5UfiQWSsBhCavqgywg9c3DowJD5mbWcsLp","lamports":"9000","what":"trial 3 A"}
+{"t":"2026-10-24T23:36:16.348Z","kind":"reserve","signature":"5fTxWsV32SMbwyzh7KHDby8CaWe87gW3SXnPDhYd86KbiVkDsS1JFb4eUeWY3YGyGGgLXHQM59y2pUkG65ZH8VxG","lamports":"15000","what":"trial 3 B"}
+{"t":"2026-10-24T23:36:16.348Z","kind":"reserve","signature":"2njB47P68ERmoeiqyYXjJww4Kcwuh8zKVa9c7BGqsommHeGq4pLWLs8wWBP8Uke3JbDdGVoaXbQKvbboPDfJjNtn","lamports":"5000","what":"trial 3 C"}
+{"t":"2026-10-24T23:36:16.348Z","kind":"reserve","signature":"4eB75Ev7B4JgSmxH2sHJjyC47pVg2FQDJopXJzb6C2AADWiTuNWf6MoJEqc2cHyfyGnXXozdAT9LfUzrcBA65JAJ","lamports":"14000","what":"trial 3 D"}
+{"t":"2026-10-24T23:36:16.348Z","kind":"reserve","signature":"ScG6jxn4iBRgANGD8RQ9aA1oex1xNrJQZpzbKfM21sbmp7CejTZuKgTE3iyTkFSbKQsj3G2Ghi3RL3MDcQBCCTY","lamports":"9000","what":"trial 3 E"}
+{"t":"2026-10-24T23:36:16.348Z","kind":"reserve","signature":"4z37tX6av9dhYJVdQnteHf7fPKY6PjKaZzZKwL2wx818npek9dpoG293CJCxD51CL8Mtm2ytPScLei2mbvwLKwZm","lamports":"9000","what":"trial 3 F"}
+{"t":"2026-10-24T23:36:40.320Z","kind":"reserve","signature":"mknZM1DemaX3gKxAAKkiR6gUCVeiTAWuDT7mqRuSuEesQUA6uj7WKNhXYYJbZyNjQEFUdYnFf1mLQ1WNt4EdA1s","lamports":"9000","what":"trial 4 A"}
+{"t":"2026-10-24T23:36:40.320Z","kind":"reserve","signature":"5edHUsDvG5VJeUQNcAtZWh9UX19Vpk2dFH2edHccyLnDHxFKsn4vvZmzHxAzGLab4jqG1C1sgEm9EXPbzgvQDf9q","lamports":"15000","what":"trial 4 B"}
+{"t":"2026-10-24T23:36:40.320Z","kind":"reserve","signature":"2y9E6Uc23b4res1pjAYSMYZBs1nNrvedNArx2CV3GDdXbPLVxAndtj8pwCfDQrMWqYewf7caSQ4rVTdujuso84nx","lamports":"5000","what":"trial 4 C"}
+{"t":"2026-10-24T23:36:40.320Z","kind":"reserve","signature":"2FAokVs3pDb67NWdBTxkwaoJVVjRgFBrAikhnD487gPhpwy5YnFvpCFyACwH4kS97j6TkG97vWAg459eiHmqfQXB","lamports":"14000","what":"trial 4 D"}
+{"t":"2026-10-24T23:36:40.320Z","kind":"reserve","signature":"2oW9d63dzucdg82ZBwgwkDLQzCakjuNLwbkQHg5Gbxab3fmwj4LMNSBsUzPHqwaY3W1L6p9bUUn3FBja4jSMuJHB","lamports":"9000","what":"trial 4 E"}
+{"t":"2026-10-24T23:36:40.320Z","kind":"reserve","signature":"554fb5bfRgHo75bC6Ba81dPhz6hEepZQpgfkKMkT5FtwG99f13bANQzzXd4m6fzTME2pbHWyz6wycdJk7T1Lw7mL","lamports":"9000","what":"trial 4 F"}
+{"t":"2026-10-24T23:36:45.666Z","kind":"reserve","signature":"3Aagux3bwWKpwrs4nbWFz2g9pP8vaudWNMUwdru6ULpJobds8DCHh6H1CPJLwrxuiD4fp5J3F1JEyvYRyGRqvwV9","lamports":"9000","what":"trial 5 A"}
+{"t":"2026-10-24T23:36:45.666Z","kind":"reserve","signature":"2XCdHvDnFUHtLVB64jjP5xJ5vxYvHNob5ABxryVGtj41hHNW1dcb91KcqUhea8d1bq8weeSiqFwHyBLakkydKY2Z","lamports":"15000","what":"trial 5 B"}
+{"t":"2026-10-24T23:36:45.667Z","kind":"reserve","signature":"5w1YuK5D4s71VuzGgeGo7Kwk7Aj6FPZBzJ8DiHfz4F2zLFAgkuwjytkhEM2iqQHog3U6V5fkc6E1VyjvYw5i3iJA","lamports":"5000","what":"trial 5 C"}
+{"t":"2026-10-24T23:36:45.667Z","kind":"reserve","signature":"4sbosgCuYmz4zcErjNyvtVHhi2zkvhcariq7gUkokmsvSi5qeATXeZdFLE9Z79T9NN3BSiZtCt3wvyJ2hPYPSmth","lamports":"14000","what":"trial 5 D"}
+{"t":"2026-10-24T23:36:45.667Z","kind":"reserve","signature":"4ZhBi4KZahPoLNTmTNNe8Jhuh6cxmd4Z7DUhLAdyv4ZUYUdPLwXQMHU6eemtrkiDHobRLMztjVFe1VRRGQnoS2bA","lamports":"9000","what":"trial 5 E"}
+{"t":"2026-10-24T23:36:45.667Z","kind":"reserve","signature":"XLu1p31Y5nV4XjrbVSfVt2gRehEuRafPqkrfjRf6Z6zKdJYcGgYAqEB2Nu1jMukqnNQhb9cLveta3uhCfxbDmLg","lamports":"9000","what":"trial 5 F"}
+{"t":"2026-10-24T23:37:11.291Z","kind":"reserve","signature":"V71fXB2PXe7Tn1HRz3QP4nfrKJvjVwqZwvTPPuBocJDaZbAGKUbZwazsyVsVzMzybRzzJkKizC5TTAqiqEpoKfc","lamports":"9000","what":"trial 6 A"}
+{"t":"2026-10-24T23:37:11.291Z","kind":"reserve","signature":"QCVk9cQ75FHJ7mtmLWYYKPwfcAyBQqyY3TWFDdB3JhBTF6tXqNj6VWiAMZct9dqqYkjBWKfy9KoU6r89rhf6n2C","lamports":"15000","what":"trial 6 B"}
+{"t":"2026-10-24T23:37:11.291Z","kind":"reserve","signature":"4nu1rCCpHDs3vBihc2jD18jf9AH15bsaZdACLMUxhJsGbenZTuRw8cVef1jBMRqNLFEMG42HosMkUCDEmGjVtz6i","lamports":"5000","what":"trial 6 C"}
+{"t":"2026-10-24T23:37:11.291Z","kind":"reserve","signature":"39hRoVtrgx2ExuLXvJry4g2avurZ6wTHhcd7VxkvpizLGHJN4CtWHPr129j1gUwEyZ4pHw4LWkHPcs4Zz5R4HFXE","lamports":"14000","what":"trial 6 D"}
+{"t":"2026-10-24T23:37:11.291Z","kind":"reserve","signature":"P26KoiSzJe63aBxwaDwE1SaCe9d7aUuqARknduyU8ThDvwHUvZGtbSVtoAxWoMMFYVoRuJrRzU3fACeugrQgwC6","lamports":"9000","what":"trial 6 E"}
+{"t":"2026-10-24T23:37:11.292Z","kind":"reserve","signature":"iD2YY7xBNLdN2NyEpzNtqfvfUXziaeBvNfw99UqTjhvLFkFMPDy2XHfxXhQTNLRFHe9yqZ9PA2hoyK8ZVQt4P9X","lamports":"9000","what":"trial 6 F"}
+{"t":"2026-10-24T23:37:16.187Z","kind":"reserve","signature":"4QjmKuMZUHUiwiWgFsag3SgEJFzTjirhv4QFPS4QeE6QhxrDKQZ8P8CfV8yvBuELzNrDfNxszdaHiRivzE7T3EHa","lamports":"9000","what":"trial 7 A"}
+{"t":"2026-10-24T23:37:16.187Z","kind":"reserve","signature":"3Mep13XMEeHZLLHoANUPqYYZGFLCRs6zt6QPXk5HFo9ZV83FYRdKU4XdhByBDHK2VeqMSWwQwhinjgNdHWuSwP1w","lamports":"15000","what":"trial 7 B"}
+{"t":"2026-10-24T23:37:16.187Z","kind":"reserve","signature":"3CT5BqYWJqvqeAVfJSqTWDaFtyJDyPdTXdpKWYhKg6Pst8QM5snsqjjezfVK94eTXJCkaLLpPjTXGt6GNB6CQnwJ","lamports":"5000","what":"trial 7 C"}
+{"t":"2026-10-24T23:37:16.188Z","kind":"reserve","signature":"b5Pr3HFkWBqRFUYpNSVyWgp7e3N1pM3aWVHKJ6aT5wnYiWb7KbHYUMpAQ6xnsrsCp7zetjTzBF9kpq2Fodt5VKs","lamports":"14000","what":"trial 7 D"}
+{"t":"2026-10-24T23:37:16.188Z","kind":"reserve","signature":"2FV3SoZsE1yDWqbpKMkprcobVzGjqFC2wH5BM71PYggc1s4RjhJivp7vF8KxMAubwCv9iqVfQ2gAczi2LAYvziue","lamports":"9000","what":"trial 7 E"}
+{"t":"2026-10-24T23:37:16.188Z","kind":"reserve","signature":"5WUrviLWtWkreysHbqgRyDrdZAxmKLwQTkX3UBuq8UXrjf1KPcy9D7poWfQu9SLYmk8PX1PFsUumFuJU4FVTruud","lamports":"9000","what":"trial 7 F"}
+{"t":"2026-10-24T23:37:39.876Z","kind":"settle","signature":"28iR4LYAmXByDve8T39BBEr4FiqG84s5ip5NU1YspXvaNJ6oKBJrkYSZkta4diV5zrqiEghjRc9m716ngjNj7kB5","lamports":"9000"}
+{"t":"2026-10-24T23:37:39.877Z","kind":"settle","signature":"2wxswKTxwKtm7RDwfDhzZAdaA7XektLmwRsuafAuUduqSxbzud3LrRaVqkd9H34b16ZZueuWLmWqRmZGDfcjTai9","lamports":"15000"}
+{"t":"2026-10-24T23:37:39.877Z","kind":"settle","signature":"3HZHZVokGQyhyQ1xm53XSk2J785naKg8pYq2tqmJ1X4pxiEjyNZj6RKW2t75EEyd1asN4nBaDHGzdHGP6u98FVm4","lamports":"5000"}
+{"t":"2026-10-24T23:37:39.877Z","kind":"settle","signature":"3x3egHvL4hbDCSQKFRBWMNjShhHPFgSXE5UEJ9nSMSGvVuzLRNgxp5T1AEusufxk7BS7SvARipXVwq3xPfYSMJPM","lamports":"14000"}
+{"t":"2026-10-24T23:37:39.877Z","kind":"settle","signature":"3bmerVEA98Q9KCZnj8DLgJXx5a9RXTVrhj2w9txgFNdR5DH3CRQTLGuR6MgomKdsHLNwtq6bZPvagu3zCVMNVHYB","lamports":"9000"}
+{"t":"2026-10-24T23:37:39.877Z","kind":"settle","signature":"2u7JWddr4wJotUkKic3AAdNySt1UYcqhaJs3fwFLAZocuFedMyCPx4C7J4WFLH4VvzRuQ6wxT619VvM4zcWiqA2S","lamports":"9000"}
+{"t":"2026-10-24T23:37:39.877Z","kind":"settle","signature":"5RZwgMAHcUeMJXe9fWzj74hMgKLYGhbWbERZC3nY3FEh9Bcw44xFUd95AXPLMd77HJKpi46FvzqQZabmri6zibLW","lamports":"0"}
+{"t":"2026-10-24T23:37:39.877Z","kind":"settle","signature":"5rp8PVtMooPFWLDMjs2W5QnB699mKpnin45a4fKNYJ2mCXm6rRpYHsVo6L9kqJUGs1qk7Z437NuLG7L4jLFrcKoG","lamports":"0"}
+{"t":"2026-10-24T23:37:39.877Z","kind":"settle","signature":"3A6uEAdnqHCdeAwdSV4G6KH3sfHXoj3BvDHfm931QWGozbveagMPXfZhsgnnPDCuQEXgZieWLqkvt7odhuZLQG1d","lamports":"0"}
+{"t":"2026-10-24T23:37:39.877Z","kind":"settle","signature":"4xxvPJiD3ojpiM1gFZAUzktEMkuqbEzAFF8ShZFnxwddQAY5aMa78gvoMEFfGRUvyfy7ZmFNJPJLUFvKv8WgKTHc","lamports":"0"}
+{"t":"2026-10-24T23:37:39.878Z","kind":"settle","signature":"5DhUrYdVXRQbwuEc7LhG9dT8djqMKPRHDPVcfnTAgfFkHgerUti5Ymrtm2hKyeB8ehmaL2tmtQzj5uUHnB9BL7eo","lamports":"0"}
+{"t":"2026-10-24T23:37:39.878Z","kind":"settle","signature":"2GzEGZgqNJvyLT9jDXVSvTorsPXGDeky38L7c7kJDQE74NG9KiKtnjPEbXzfzFeSWM6r3khiBh2iFMJZVsepHVgj","lamports":"0"}
+{"t":"2026-10-24T23:37:39.878Z","kind":"settle","signature":"FWpPKVg54WDU7x98WczRZLdMtvHW6SqEwLDqjh9h2t4mxgTFjPUqCp3AXZKz1jvGSMfccLsbhgnfuyFvq9BphE4","lamports":"9000"}
+{"t":"2026-10-24T23:37:39.878Z","kind":"settle","signature":"3Lu4fpLRpMHhhriENuXqan8RZDD4CxUfpb72dmPQLbFResPV52z9tnw2Gq6RzUm1rnM3ZhkLE7DLTjG2swHcnumA","lamports":"15000"}
+{"t":"2026-10-24T23:37:39.878Z","kind":"settle","signature":"3T91RGkBvrGmN5xRAGpm7VTQoPewMqU17QD9rRocu246T9dM9jqhzo4wNhzbnyJfrGrY8ZFLaLyKAByLHw11XSLA","lamports":"5000"}
+{"t":"2026-10-24T23:37:39.878Z","kind":"settle","signature":"3snRCncmW76Dmer7sBkTcLMnrh8FV7zvtp7r6FbKE9zPbsjctVSceGfZYWH2q9w8XrgtLG1RygiWyAtk6tfHbeRK","lamports":"14000"}
+{"t":"2026-10-24T23:37:39.878Z","kind":"settle","signature":"5RvcmqcDSagsQYX1gd9HsA1x5H3AESpt9Uwj2GVMeevBbaZwoYdhXkyNkjDYLXHdRzYo8Cp4WXuNs7dBLRP6fgTh","lamports":"9000"}
+{"t":"2026-10-24T23:37:39.878Z","kind":"settle","signature":"4VFhEJB24efp5Pi3DnJed36krb2pTNusUmqXoHrXfbqx61jVUghbSXVtxTa34ZAmjeTzAi9xUXKwp4VnrDPQcivP","lamports":"9000"}
+{"t":"2026-10-24T23:37:39.878Z","kind":"settle","signature":"2FkMip8TCq1DbDuSLit2p5E8mucqQu6jBLiF35PzpH8j9Hkz3poJSE5UfiQWSsBhCavqgywg9c3DowJD5mbWcsLp","lamports":"9000"}
+{"t":"2026-10-24T23:37:39.878Z","kind":"settle","signature":"5fTxWsV32SMbwyzh7KHDby8CaWe87gW3SXnPDhYd86KbiVkDsS1JFb4eUeWY3YGyGGgLXHQM59y2pUkG65ZH8VxG","lamports":"15000"}
+{"t":"2026-10-24T23:37:39.878Z","kind":"settle","signature":"2njB47P68ERmoeiqyYXjJww4Kcwuh8zKVa9c7BGqsommHeGq4pLWLs8wWBP8Uke3JbDdGVoaXbQKvbboPDfJjNtn","lamports":"5000"}
+{"t":"2026-10-24T23:37:39.878Z","kind":"settle","signature":"4eB75Ev7B4JgSmxH2sHJjyC47pVg2FQDJopXJzb6C2AADWiTuNWf6MoJEqc2cHyfyGnXXozdAT9LfUzrcBA65JAJ","lamports":"14000"}
+{"t":"2026-10-24T23:37:39.879Z","kind":"settle","signature":"ScG6jxn4iBRgANGD8RQ9aA1oex1xNrJQZpzbKfM21sbmp7CejTZuKgTE3iyTkFSbKQsj3G2Ghi3RL3MDcQBCCTY","lamports":"9000"}
+{"t":"2026-10-24T23:37:39.879Z","kind":"settle","signature":"4z37tX6av9dhYJVdQnteHf7fPKY6PjKaZzZKwL2wx818npek9dpoG293CJCxD51CL8Mtm2ytPScLei2mbvwLKwZm","lamports":"9000"}
+{"t":"2026-10-24T23:37:39.879Z","kind":"settle","signature":"mknZM1DemaX3gKxAAKkiR6gUCVeiTAWuDT7mqRuSuEesQUA6uj7WKNhXYYJbZyNjQEFUdYnFf1mLQ1WNt4EdA1s","lamports":"9000"}
+{"t":"2026-10-24T23:37:39.879Z","kind":"settle","signature":"5edHUsDvG5VJeUQNcAtZWh9UX19Vpk2dFH2edHccyLnDHxFKsn4vvZmzHxAzGLab4jqG1C1sgEm9EXPbzgvQDf9q","lamports":"15000"}
+{"t":"2026-10-24T23:37:39.879Z","kind":"settle","signature":"2y9E6Uc23b4res1pjAYSMYZBs1nNrvedNArx2CV3GDdXbPLVxAndtj8pwCfDQrMWqYewf7caSQ4rVTdujuso84nx","lamports":"5000"}
+{"t":"2026-10-24T23:37:39.879Z","kind":"settle","signature":"2FAokVs3pDb67NWdBTxkwaoJVVjRgFBrAikhnD487gPhpwy5YnFvpCFyACwH4kS97j6TkG97vWAg459eiHmqfQXB","lamports":"14000"}
+{"t":"2026-10-24T23:37:39.879Z","kind":"settle","signature":"2oW9d63dzucdg82ZBwgwkDLQzCakjuNLwbkQHg5Gbxab3fmwj4LMNSBsUzPHqwaY3W1L6p9bUUn3FBja4jSMuJHB","lamports":"9000"}
+{"t":"2026-10-24T23:37:39.879Z","kind":"settle","signature":"554fb5bfRgHo75bC6Ba81dPhz6hEepZQpgfkKMkT5FtwG99f13bANQzzXd4m6fzTME2pbHWyz6wycdJk7T1Lw7mL","lamports":"9000"}
+{"t":"2026-10-24T23:37:39.879Z","kind":"settle","signature":"3Aagux3bwWKpwrs4nbWFz2g9pP8vaudWNMUwdru6ULpJobds8DCHh6H1CPJLwrxuiD4fp5J3F1JEyvYRyGRqvwV9","lamports":"9000"}
+{"t":"2026-10-24T23:37:39.879Z","kind":"settle","signature":"2XCdHvDnFUHtLVB64jjP5xJ5vxYvHNob5ABxryVGtj41hHNW1dcb91KcqUhea8d1bq8weeSiqFwHyBLakkydKY2Z","lamports":"15000"}
+{"t":"2026-10-24T23:37:39.879Z","kind":"settle","signature":"5w1YuK5D4s71VuzGgeGo7Kwk7Aj6FPZBzJ8DiHfz4F2zLFAgkuwjytkhEM2iqQHog3U6V5fkc6E1VyjvYw5i3iJA","lamports":"5000"}
+{"t":"2026-10-24T23:37:39.879Z","kind":"settle","signature":"4sbosgCuYmz4zcErjNyvtVHhi2zkvhcariq7gUkokmsvSi5qeATXeZdFLE9Z79T9NN3BSiZtCt3wvyJ2hPYPSmth","lamports":"14000"}
+{"t":"2026-10-24T23:37:39.879Z","kind":"settle","signature":"4ZhBi4KZahPoLNTmTNNe8Jhuh6cxmd4Z7DUhLAdyv4ZUYUdPLwXQMHU6eemtrkiDHobRLMztjVFe1VRRGQnoS2bA","lamports":"9000"}
+{"t":"2026-10-24T23:37:39.879Z","kind":"settle","signature":"XLu1p31Y5nV4XjrbVSfVt2gRehEuRafPqkrfjRf6Z6zKdJYcGgYAqEB2Nu1jMukqnNQhb9cLveta3uhCfxbDmLg","lamports":"9000"}
+{"t":"2026-10-24T23:37:39.879Z","kind":"settle","signature":"4QjmKuMZUHUiwiWgFsag3SgEJFzTjirhv4QFPS4QeE6QhxrDKQZ8P8CfV8yvBuELzNrDfNxszdaHiRivzE7T3EHa","lamports":"9000"}
+{"t":"2026-10-24T23:37:39.880Z","kind":"settle","signature":"3Mep13XMEeHZLLHoANUPqYYZGFLCRs6zt6QPXk5HFo9ZV83FYRdKU4XdhByBDHK2VeqMSWwQwhinjgNdHWuSwP1w","lamports":"15000"}
+{"t":"2026-10-24T23:37:39.880Z","kind":"settle","signature":"3CT5BqYWJqvqeAVfJSqTWDaFtyJDyPdTXdpKWYhKg6Pst8QM5snsqjjezfVK94eTXJCkaLLpPjTXGt6GNB6CQnwJ","lamports":"5000"}
+{"t":"2026-10-24T23:37:39.880Z","kind":"settle","signature":"b5Pr3HFkWBqRFUYpNSVyWgp7e3N1pM3aWVHKJ6aT5wnYiWb7KbHYUMpAQ6xnsrsCp7zetjTzBF9kpq2Fodt5VKs","lamports":"14000"}
+{"t":"2026-10-24T23:37:39.880Z","kind":"settle","signature":"2FV3SoZsE1yDWqbpKMkprcobVzGjqFC2wH5BM71PYggc1s4RjhJivp7vF8KxMAubwCv9iqVfQ2gAczi2LAYvziue","lamports":"9000"}
+{"t":"2026-10-24T23:37:39.880Z","kind":"settle","signature":"5WUrviLWtWkreysHbqgRyDrdZAxmKLwQTkX3UBuq8UXrjf1KPcy9D7poWfQu9SLYmk8PX1PFsUumFuJU4FVTruud","lamports":"9000"}
+{"t":"2026-10-24T23:38:00.314Z","kind":"settle","signature":"V71fXB2PXe7Tn1HRz3QP4nfrKJvjVwqZwvTPPuBocJDaZbAGKUbZwazsyVsVzMzybRzzJkKizC5TTAqiqEpoKfc","lamports":"0"}
+{"t":"2026-10-24T23:38:00.314Z","kind":"settle","signature":"QCVk9cQ75FHJ7mtmLWYYKPwfcAyBQqyY3TWFDdB3JhBTF6tXqNj6VWiAMZct9dqqYkjBWKfy9KoU6r89rhf6n2C","lamports":"0"}
+{"t":"2026-10-24T23:38:00.314Z","kind":"settle","signature":"4nu1rCCpHDs3vBihc2jD18jf9AH15bsaZdACLMUxhJsGbenZTuRw8cVef1jBMRqNLFEMG42HosMkUCDEmGjVtz6i","lamports":"0"}
+{"t":"2026-10-24T23:38:00.315Z","kind":"settle","signature":"39hRoVtrgx2ExuLXvJry4g2avurZ6wTHhcd7VxkvpizLGHJN4CtWHPr129j1gUwEyZ4pHw4LWkHPcs4Zz5R4HFXE","lamports":"0"}
+{"t":"2026-10-24T23:38:00.315Z","kind":"settle","signature":"P26KoiSzJe63aBxwaDwE1SaCe9d7aUuqARknduyU8ThDvwHUvZGtbSVtoAxWoMMFYVoRuJrRzU3fACeugrQgwC6","lamports":"0"}
+{"t":"2026-10-24T23:38:00.315Z","kind":"settle","signature":"iD2YY7xBNLdN2NyEpzNtqfvfUXziaeBvNfw99UqTjhvLFkFMPDy2XHfxXhQTNLRFHe9yqZ9PA2hoyK8ZVQt4P9X","lamports":"0"}
+{"t":"2026-10-25T15:39:00.656Z","kind":"reserve","signature":"NfZ244Xx4BxoRsX8efcV2mebejc1DBNX9mfeqwY6b9mrAMj7X4D81WSv9wwGr5ZaS2JvWUV9iBPR5RWvL3Whtdi","lamports":"9000","what":"trial 0 A"}
+{"t":"2026-10-25T15:39:00.656Z","kind":"reserve","signature":"3rrRnMj7DNHsoRUt3ogWys59ff7Ur2rst3tN4GKzaAffiSNKdLZQHuNMHUTSJtvx7cYT7Jf411kYSrNhoerpY49Y","lamports":"15000","what":"trial 0 B"}
+{"t":"2026-10-25T15:39:00.657Z","kind":"reserve","signature":"w7ghoF2sHdiuZunwmfkDxNv8dwuPyg2PDgRunLbQdT8E2N3mdFzShEFLx2pQFi5r1iW678Mcn6nNENG762eCwiy","lamports":"5000","what":"trial 0 C"}
+{"t":"2026-10-25T15:39:00.657Z","kind":"reserve","signature":"4A6H2SCssQxRwhxDYi7uPz4qaiXQZX2ADowtwhKZgZyZEHYbWf9eqYJBP9aydfw8WSBZD3T8xL41b2mNUGyM6NyT","lamports":"14000","what":"trial 0 D"}
+{"t":"2026-10-25T15:39:00.657Z","kind":"reserve","signature":"5BzHkNvqjjH7wBxXt6uTLF9NLikhyHNkGCrNdys67R39HWfPSHVJxrbA4PfLy5CJywv6w9TQiK9kdvBuaUFYzdzo","lamports":"9000","what":"trial 0 E"}
+{"t":"2026-10-25T15:39:00.657Z","kind":"reserve","signature":"5WrVfNVD4wLAAjX7z7VMBzswXN3Lmskx1ghx7h2gNY6LRGTQRu9ziBsRNQXCbwNyqTDhfbVCEceJuUMoe6Y4NArJ","lamports":"9000","what":"trial 0 F"}
+{"t":"2026-10-25T15:39:05.433Z","kind":"reserve","signature":"53VZfYb3Za6WDGMZuhht8rqwFuyhsDgScZ4inQSnrQB3w11eETG8qP3HxLH4PEtcur2Xy3yTwKqGNd7TmFBYqbES","lamports":"9000","what":"trial 1 A"}
+{"t":"2026-10-25T15:39:05.433Z","kind":"reserve","signature":"4Ljy4KziEi9wz3EQjpAtNAL2H4PsnB1HDcpiEQ63Zh8bH94F7ffxwvKpzLGMiebSdsgxqtt4fE6qpk6kEXBMssfJ","lamports":"15000","what":"trial 1 B"}
+{"t":"2026-10-25T15:39:05.433Z","kind":"reserve","signature":"P7NjKtvCdACUZPtnLxTU3Xi8SAESQxLsqsiTNXYRv5qNz4TaSEDkUR5ujiDWGx6TdHdrjhVBbY42hiMXsd2cmrv","lamports":"5000","what":"trial 1 C"}
+{"t":"2026-10-25T15:39:05.433Z","kind":"reserve","signature":"2TWgzJWECix3FRW2JbK9wQgDpZHg2ZJdzQzqbFGigZhXrZEFua9n7MZAXjPdHAEAoLXg5Sb3mW1Wt5wTTKDsA9V2","lamports":"14000","what":"trial 1 D"}
+{"t":"2026-10-25T15:39:05.433Z","kind":"reserve","signature":"2oDciKZ5yZR22UA8mHu9FqHocp8aDbKpeMTcMKsDHwCPTC58imYwnChepMsJ2NFFqeMvFV5ygmDrkxp9f2nLLfmw","lamports":"9000","what":"trial 1 E"}
+{"t":"2026-10-25T15:39:05.433Z","kind":"reserve","signature":"2MzbZJa9C2amCn1jpg3eci6g9QurZgt95TDr7KftV2R6GVMxi85okLYuhrQikLziJSSixb7ssK16veLnGCp1bZGp","lamports":"9000","what":"trial 1 F"}
+{"t":"2026-10-25T15:39:09.724Z","kind":"reserve","signature":"52dYFn1CeGfmfhtA83prhK87EeDseo5Bsf512pBvnmr6yCZpU7Wq2JwJG7ryAt3PJhUVNMNtVgfP63gxhvxo7tVT","lamports":"9000","what":"trial 2 A"}
+{"t":"2026-10-25T15:39:09.724Z","kind":"reserve","signature":"4SS87FMUCyuTQKrKYcAQvPTXbzR21RvH7RAcaAoNyNHAtdUMDg51D951X21TLWVZtipsd9wwEGMp16893CQmnPPE","lamports":"15000","what":"trial 2 B"}
+{"t":"2026-10-25T15:39:09.725Z","kind":"reserve","signature":"5AHLhzXWQ4UCJ9NAV4PPQTbk4awZVdX9H8wPXB2hw6QeNcjozRXrvUGvZgfYKBfnunXxDn2sCBi1WCt7Yvk47nJP","lamports":"5000","what":"trial 2 C"}
+{"t":"2026-10-25T15:39:09.725Z","kind":"reserve","signature":"359F1LSexNQsEP3YQi76r7rT1nCpRLykpHuWtb3y6FhgjWzvKBkbuEi68CiwyenhrhWakyNU9ayuKXfAtrzYZX7h","lamports":"14000","what":"trial 2 D"}
+{"t":"2026-10-25T15:39:09.725Z","kind":"reserve","signature":"5ztFntSWmzJmVZn7oFQE1QDhn6uXKV31vDpo14soUjWiZ499z9g95M71tQeTpJh5dLEwdJCUD1eGcaHjxbzZWGyN","lamports":"9000","what":"trial 2 E"}
+{"t":"2026-10-25T15:39:09.725Z","kind":"reserve","signature":"rErRanB1c6qdBF2HRvE3cQzhfJswDFCZyZUMbqDA1a3AsiNoSCM1kCT5bdVw2r5aJQxzLDDSktsdXGj5JpZv1ma","lamports":"9000","what":"trial 2 F"}
+{"t":"2026-10-25T15:39:14.564Z","kind":"reserve","signature":"2w4C9ovZfcCiJG1SK1keXNNnegVVTwJgAvwXPZ3RTwFe6Cyx4pKLfe414H5AYkDydykBbnEWs46anyesnCgBpXKb","lamports":"9000","what":"trial 3 A"}
+{"t":"2026-10-25T15:39:14.564Z","kind":"reserve","signature":"5ZYV3GrZ9phJDcdpCDi6QYAFBfq8frhHBjZ8qimk3iBoMNkKrHBZWkNAUyXA81yoEVj8XJAwrTsuS6t5aCVf75Zh","lamports":"15000","what":"trial 3 B"}
+{"t":"2026-10-25T15:39:14.564Z","kind":"reserve","signature":"29bLFUnVzAq3XEL9D5U2HKwQjPHrr9sJvTGL2cPGELhWZSXbRBWunXUckpQHJFekQ8RdhYXxPPN7tBK5Dwj4d5Ds","lamports":"5000","what":"trial 3 C"}
+{"t":"2026-10-25T15:39:14.564Z","kind":"reserve","signature":"3itQkLkwVTWzKdQy4trvRotG2xr7u5B7CJmLSvgfBTqh9LeV9q57t1LgBV5aWdd87nZJBSzNJzhxjn5cGYxe7eXb","lamports":"14000","what":"trial 3 D"}
+{"t":"2026-10-25T15:39:14.564Z","kind":"reserve","signature":"3BEs8fSP6Fm85TpVnGSZSmvaG3Kwb6ggb15et6YMbvMNE8Rtp2fjKhff4AfAs1kUxBzRUN6XMUESUcwWAcayx5sd","lamports":"9000","what":"trial 3 E"}
+{"t":"2026-10-25T15:39:14.564Z","kind":"reserve","signature":"5YVXErD32LtuDonC5p3quoHbCMfXk4J4zLpVowSKRLe6h8L2SmXbu4sj5bNAioRseBoznCi3mRxYZ8zyR525vwhr","lamports":"9000","what":"trial 3 F"}
+{"t":"2026-10-25T15:39:14.903Z","kind":"settle","signature":"53VZfYb3Za6WDGMZuhht8rqwFuyhsDgScZ4inQSnrQB3w11eETG8qP3HxLH4PEtcur2Xy3yTwKqGNd7TmFBYqbES","lamports":"9000"}
+{"t":"2026-10-25T15:39:14.904Z","kind":"settle","signature":"4Ljy4KziEi9wz3EQjpAtNAL2H4PsnB1HDcpiEQ63Zh8bH94F7ffxwvKpzLGMiebSdsgxqtt4fE6qpk6kEXBMssfJ","lamports":"15000"}
+{"t":"2026-10-25T15:39:14.904Z","kind":"settle","signature":"P7NjKtvCdACUZPtnLxTU3Xi8SAESQxLsqsiTNXYRv5qNz4TaSEDkUR5ujiDWGx6TdHdrjhVBbY42hiMXsd2cmrv","lamports":"5000"}
+{"t":"2026-10-25T15:39:14.904Z","kind":"settle","signature":"2TWgzJWECix3FRW2JbK9wQgDpZHg2ZJdzQzqbFGigZhXrZEFua9n7MZAXjPdHAEAoLXg5Sb3mW1Wt5wTTKDsA9V2","lamports":"14000"}
+{"t":"2026-10-25T15:39:14.904Z","kind":"settle","signature":"2oDciKZ5yZR22UA8mHu9FqHocp8aDbKpeMTcMKsDHwCPTC58imYwnChepMsJ2NFFqeMvFV5ygmDrkxp9f2nLLfmw","lamports":"9000"}
+{"t":"2026-10-25T15:39:14.904Z","kind":"settle","signature":"2MzbZJa9C2amCn1jpg3eci6g9QurZgt95TDr7KftV2R6GVMxi85okLYuhrQikLziJSSixb7ssK16veLnGCp1bZGp","lamports":"9000"}
+{"t":"2026-10-25T15:39:14.979Z","kind":"settle","signature":"52dYFn1CeGfmfhtA83prhK87EeDseo5Bsf512pBvnmr6yCZpU7Wq2JwJG7ryAt3PJhUVNMNtVgfP63gxhvxo7tVT","lamports":"9000"}
+{"t":"2026-10-25T15:39:14.979Z","kind":"settle","signature":"4SS87FMUCyuTQKrKYcAQvPTXbzR21RvH7RAcaAoNyNHAtdUMDg51D951X21TLWVZtipsd9wwEGMp16893CQmnPPE","lamports":"15000"}
+{"t":"2026-10-25T15:39:14.979Z","kind":"settle","signature":"5AHLhzXWQ4UCJ9NAV4PPQTbk4awZVdX9H8wPXB2hw6QeNcjozRXrvUGvZgfYKBfnunXxDn2sCBi1WCt7Yvk47nJP","lamports":"5000"}
+{"t":"2026-10-25T15:39:14.979Z","kind":"settle","signature":"359F1LSexNQsEP3YQi76r7rT1nCpRLykpHuWtb3y6FhgjWzvKBkbuEi68CiwyenhrhWakyNU9ayuKXfAtrzYZX7h","lamports":"14000"}
+{"t":"2026-10-25T15:39:14.979Z","kind":"settle","signature":"5ztFntSWmzJmVZn7oFQE1QDhn6uXKV31vDpo14soUjWiZ499z9g95M71tQeTpJh5dLEwdJCUD1eGcaHjxbzZWGyN","lamports":"9000"}
+{"t":"2026-10-25T15:39:14.979Z","kind":"settle","signature":"rErRanB1c6qdBF2HRvE3cQzhfJswDFCZyZUMbqDA1a3AsiNoSCM1kCT5bdVw2r5aJQxzLDDSktsdXGj5JpZv1ma","lamports":"9000"}
+{"t":"2026-10-25T15:39:18.936Z","kind":"reserve","signature":"3h1CB1mBAU5ewfo3hETxCQYZ8ZZtkcPuNDAL7xSRqLquinrk4a5KzTVgWEdreTM7Xsavmu78QBipZoHmnCiScscd","lamports":"9000","what":"trial 4 A"}
+{"t":"2026-10-25T15:39:18.936Z","kind":"reserve","signature":"3XrTdEZLuNgPFD8eZfBNveXq3EuL2bCPgoxRvFddoZsdJBYRr45B5dGsruXc6kLDQteCYnGx9x4fDpH2tHNwmXqD","lamports":"15000","what":"trial 4 B"}
+{"t":"2026-10-25T15:39:18.936Z","kind":"reserve","signature":"3ZKA7tj3CVE9RJ7ckDVKXYysysfTTmXKnL35dKZysSMgxjtZJ4rMjGTjsUpRNNWNm8gszAkDrc1aKesrK9SQQptv","lamports":"5000","what":"trial 4 C"}
+{"t":"2026-10-25T15:39:18.936Z","kind":"reserve","signature":"5a9zujsS33wtPFvGYso7Ln9cyboQYVkVECTqJN4JNTDjs8hUFrCSVgvKxCFQJkzmJBNTkAGRuLTZCh7Jf5BRtLMQ","lamports":"14000","what":"trial 4 D"}
+{"t":"2026-10-25T15:39:18.936Z","kind":"reserve","signature":"2feTZ54X1XeiKB79gSCDwSCzyCtBNzkh4E8powXXEnQAzdoCvU2tV74gnvWjqJTYGANBmFoRzK2S63u4we544EDS","lamports":"9000","what":"trial 4 E"}
+{"t":"2026-10-25T15:39:18.936Z","kind":"reserve","signature":"5rqGZ3rgg2QrmnADWRvtwbZZzUyvyoJkZnX8MYhs35w6CedrxZ5nMUeyYdNZDq5Gu1FWkrdeEerNLc3kDZsowBPG","lamports":"9000","what":"trial 4 F"}
+{"t":"2026-10-25T15:39:23.964Z","kind":"reserve","signature":"JimbWxhpfaxfuwc6qqJKZjyAwuwWZdDGcKeWHoSSS5DnDQ5kR7ghBrwnCC3Rs3bZfFPAWuGpfufhgUM2rJWhFjQ","lamports":"9000","what":"trial 5 A"}
+{"t":"2026-10-25T15:39:23.964Z","kind":"reserve","signature":"37x69Ki3Ke9KgvTU3JzKepR5XUzfBuB3Xb65isKsFDNJjs19TSiCzqK9kzcr6f8R7UFSuhmykAzrduPbCCk8qT2M","lamports":"15000","what":"trial 5 B"}
+{"t":"2026-10-25T15:39:23.964Z","kind":"reserve","signature":"5R3JgiNCKb4KeKSypYqN5LKY42ATpPhyqa5Zo2iqqCqTQYP54Bvng7nwUQq3nceff6c6yoZaSDYqmtr1AR4Mj7m5","lamports":"5000","what":"trial 5 C"}
+{"t":"2026-10-25T15:39:23.964Z","kind":"reserve","signature":"2yQkQmphEgahtoEB7ez5f7FaacXcFAYX5sZh8Qkju3vgctXACTxeNiLSN496XcqjFshQ243Fbzdwg5WER3XxXiSy","lamports":"14000","what":"trial 5 D"}
+{"t":"2026-10-25T15:39:23.965Z","kind":"reserve","signature":"58xxid4iStqzaxAAcJpuKTfHo3GSWWWS1ipiSJdQXiURETzAJ5uBysnUgVQyXyG82ozBao72XMrk4wFGZqT9Quwh","lamports":"9000","what":"trial 5 E"}
+{"t":"2026-10-25T15:39:23.965Z","kind":"reserve","signature":"4FBKBQtKmxYKFi4SxDsetW9MvGoVH8uqLJrsbCcRMyFAkCCUKAAJoYfLtZYKS6uZvVEfzF94idAAGdByWcSCZVRW","lamports":"9000","what":"trial 5 F"}
+{"t":"2026-10-25T15:39:24.320Z","kind":"settle","signature":"2w4C9ovZfcCiJG1SK1keXNNnegVVTwJgAvwXPZ3RTwFe6Cyx4pKLfe414H5AYkDydykBbnEWs46anyesnCgBpXKb","lamports":"9000"}
+{"t":"2026-10-25T15:39:24.320Z","kind":"settle","signature":"5ZYV3GrZ9phJDcdpCDi6QYAFBfq8frhHBjZ8qimk3iBoMNkKrHBZWkNAUyXA81yoEVj8XJAwrTsuS6t5aCVf75Zh","lamports":"15000"}
+{"t":"2026-10-25T15:39:24.320Z","kind":"settle","signature":"29bLFUnVzAq3XEL9D5U2HKwQjPHrr9sJvTGL2cPGELhWZSXbRBWunXUckpQHJFekQ8RdhYXxPPN7tBK5Dwj4d5Ds","lamports":"5000"}
+{"t":"2026-10-25T15:39:24.320Z","kind":"settle","signature":"3itQkLkwVTWzKdQy4trvRotG2xr7u5B7CJmLSvgfBTqh9LeV9q57t1LgBV5aWdd87nZJBSzNJzhxjn5cGYxe7eXb","lamports":"14000"}
+{"t":"2026-10-25T15:39:24.320Z","kind":"settle","signature":"3BEs8fSP6Fm85TpVnGSZSmvaG3Kwb6ggb15et6YMbvMNE8Rtp2fjKhff4AfAs1kUxBzRUN6XMUESUcwWAcayx5sd","lamports":"9000"}
+{"t":"2026-10-25T15:39:24.321Z","kind":"settle","signature":"5YVXErD32LtuDonC5p3quoHbCMfXk4J4zLpVowSKRLe6h8L2SmXbu4sj5bNAioRseBoznCi3mRxYZ8zyR525vwhr","lamports":"9000"}
+{"t":"2026-10-25T15:39:24.457Z","kind":"settle","signature":"3h1CB1mBAU5ewfo3hETxCQYZ8ZZtkcPuNDAL7xSRqLquinrk4a5KzTVgWEdreTM7Xsavmu78QBipZoHmnCiScscd","lamports":"9000"}
+{"t":"2026-10-25T15:39:24.457Z","kind":"settle","signature":"3XrTdEZLuNgPFD8eZfBNveXq3EuL2bCPgoxRvFddoZsdJBYRr45B5dGsruXc6kLDQteCYnGx9x4fDpH2tHNwmXqD","lamports":"15000"}
+{"t":"2026-10-25T15:39:24.457Z","kind":"settle","signature":"3ZKA7tj3CVE9RJ7ckDVKXYysysfTTmXKnL35dKZysSMgxjtZJ4rMjGTjsUpRNNWNm8gszAkDrc1aKesrK9SQQptv","lamports":"5000"}
+{"t":"2026-10-25T15:39:24.457Z","kind":"settle","signature":"5a9zujsS33wtPFvGYso7Ln9cyboQYVkVECTqJN4JNTDjs8hUFrCSVgvKxCFQJkzmJBNTkAGRuLTZCh7Jf5BRtLMQ","lamports":"14000"}
+{"t":"2026-10-25T15:39:24.457Z","kind":"settle","signature":"2feTZ54X1XeiKB79gSCDwSCzyCtBNzkh4E8powXXEnQAzdoCvU2tV74gnvWjqJTYGANBmFoRzK2S63u4we544EDS","lamports":"9000"}
+{"t":"2026-10-25T15:39:24.457Z","kind":"settle","signature":"5rqGZ3rgg2QrmnADWRvtwbZZzUyvyoJkZnX8MYhs35w6CedrxZ5nMUeyYdNZDq5Gu1FWkrdeEerNLc3kDZsowBPG","lamports":"9000"}
+{"t":"2026-10-25T15:39:28.340Z","kind":"reserve","signature":"bGMoksugEVeQczXeMtkvZEwFzyzu2ko7a3XHegZ9f3fCLPq67wTGpcLHGSjBkMrvsT8e3W7GpVPLP6yWybteUiv","lamports":"9000","what":"trial 6 A"}
+{"t":"2026-10-25T15:39:28.340Z","kind":"reserve","signature":"2QKd8C76VzvQgZqnNuV8cC3i5tj635bKMFu3PW2stNS457m1mphV3q4HC7CEys4oXJH52uyx2C6uMA9MFXC75xTD","lamports":"15000","what":"trial 6 B"}
+{"t":"2026-10-25T15:39:28.340Z","kind":"reserve","signature":"4o6TLrbyVVxJBUsRG4txSvuQGwvwepKgxUza23qbwzhQR9r5vcBSRp3JHPzXUyRyq3jyLhDVULv7EMwFjQZdBSE2","lamports":"5000","what":"trial 6 C"}
+{"t":"2026-10-25T15:39:28.341Z","kind":"reserve","signature":"xc9TXRm6TEwxgFJgU65Kkm9BCPkmXchbcYxeiAz9pQvwwRsx8wgJimuWCC9FqeVJtxX8zhJPf1BwsNcBXvzVCkt","lamports":"14000","what":"trial 6 D"}
+{"t":"2026-10-25T15:39:28.341Z","kind":"reserve","signature":"p8Hppe65MW5bFdXHWH9XNWFVtYPGYjUxa8YWmoJUGG7mz8HTkNejwFZoe9P7yKN87nX55SgqmDfnW3KYRU8oe95","lamports":"9000","what":"trial 6 E"}
+{"t":"2026-10-25T15:39:28.341Z","kind":"reserve","signature":"ECescYhPB1RvNMLjTamHeV5UDjzX3KFFLK4EVkFwgBxV5znFy4UJPG17BDehU8y3RfUzfq4Cb9kiUH1wWDwoAww","lamports":"9000","what":"trial 6 F"}
+{"t":"2026-10-25T15:39:35.166Z","kind":"reserve","signature":"2J9VtFVYGzs1pQcpYpDWuM4vyrxpSuRG9eHSEGpfRVRWjvNn13WXzoGo1myQuoACk4AJa3eGB2oTC2xaaZbkXAtQ","lamports":"9000","what":"trial 7 A"}
+{"t":"2026-10-25T15:39:35.166Z","kind":"reserve","signature":"5Bu3yH89YWqZY62VHVyNJBM2iQEaDvHNVojkLYdtWovFDjqgoZNTsSSDuCPoe476LGfsZsQu6ttqFiaEY5n4pJsm","lamports":"15000","what":"trial 7 B"}
+{"t":"2026-10-25T15:39:35.166Z","kind":"reserve","signature":"22DkJEqWMpWziUFsvBP9kNGwc43SdKQfmdcQ9AkRKWz4PFPL95bndUsGGFH84HGR77KNaqpSLNqAfYdd3kGWmVQE","lamports":"5000","what":"trial 7 C"}
+{"t":"2026-10-25T15:39:35.166Z","kind":"reserve","signature":"38oRZJGJmUvoEHhXPstuxCGUMFTqsauzR7822zidYBXRXeqXaKgMBoAddQCc2Xnj6bJTPWXaHNNNVeS4X3xqc9W4","lamports":"14000","what":"trial 7 D"}
+{"t":"2026-10-25T15:39:35.166Z","kind":"reserve","signature":"2hUx7cVMzvLxe7wsChrTz14CZoL9s6TiJi6256hU4mfX8NWF6jG52URShF5miEStTkQY8uHBSM1DtjosN7xgnAbw","lamports":"9000","what":"trial 7 E"}
+{"t":"2026-10-25T15:39:35.166Z","kind":"reserve","signature":"2MNAE6SwYtGETGuxMitNwBveuiKMrVzcmb221H92Hx4onbQcpnqQnQZP1tUoFDo7FSa26MuwtkdBSYAm6TWevSyR","lamports":"9000","what":"trial 7 F"}
+{"t":"2026-10-25T15:39:35.426Z","kind":"settle","signature":"JimbWxhpfaxfuwc6qqJKZjyAwuwWZdDGcKeWHoSSS5DnDQ5kR7ghBrwnCC3Rs3bZfFPAWuGpfufhgUM2rJWhFjQ","lamports":"9000"}
+{"t":"2026-10-25T15:39:35.426Z","kind":"settle","signature":"37x69Ki3Ke9KgvTU3JzKepR5XUzfBuB3Xb65isKsFDNJjs19TSiCzqK9kzcr6f8R7UFSuhmykAzrduPbCCk8qT2M","lamports":"15000"}
+{"t":"2026-10-25T15:39:35.426Z","kind":"settle","signature":"5R3JgiNCKb4KeKSypYqN5LKY42ATpPhyqa5Zo2iqqCqTQYP54Bvng7nwUQq3nceff6c6yoZaSDYqmtr1AR4Mj7m5","lamports":"5000"}
+{"t":"2026-10-25T15:39:35.426Z","kind":"settle","signature":"2yQkQmphEgahtoEB7ez5f7FaacXcFAYX5sZh8Qkju3vgctXACTxeNiLSN496XcqjFshQ243Fbzdwg5WER3XxXiSy","lamports":"14000"}
+{"t":"2026-10-25T15:39:35.426Z","kind":"settle","signature":"58xxid4iStqzaxAAcJpuKTfHo3GSWWWS1ipiSJdQXiURETzAJ5uBysnUgVQyXyG82ozBao72XMrk4wFGZqT9Quwh","lamports":"9000"}
+{"t":"2026-10-25T15:39:35.426Z","kind":"settle","signature":"4FBKBQtKmxYKFi4SxDsetW9MvGoVH8uqLJrsbCcRMyFAkCCUKAAJoYfLtZYKS6uZvVEfzF94idAAGdByWcSCZVRW","lamports":"9000"}
+{"t":"2026-10-25T15:39:35.628Z","kind":"settle","signature":"bGMoksugEVeQczXeMtkvZEwFzyzu2ko7a3XHegZ9f3fCLPq67wTGpcLHGSjBkMrvsT8e3W7GpVPLP6yWybteUiv","lamports":"9000"}
+{"t":"2026-10-25T15:39:35.628Z","kind":"settle","signature":"2QKd8C76VzvQgZqnNuV8cC3i5tj635bKMFu3PW2stNS457m1mphV3q4HC7CEys4oXJH52uyx2C6uMA9MFXC75xTD","lamports":"15000"}
+{"t":"2026-10-25T15:39:35.628Z","kind":"settle","signature":"4o6TLrbyVVxJBUsRG4txSvuQGwvwepKgxUza23qbwzhQR9r5vcBSRp3JHPzXUyRyq3jyLhDVULv7EMwFjQZdBSE2","lamports":"5000"}
+{"t":"2026-10-25T15:39:35.628Z","kind":"settle","signature":"xc9TXRm6TEwxgFJgU65Kkm9BCPkmXchbcYxeiAz9pQvwwRsx8wgJimuWCC9FqeVJtxX8zhJPf1BwsNcBXvzVCkt","lamports":"14000"}
+{"t":"2026-10-25T15:39:35.628Z","kind":"settle","signature":"p8Hppe65MW5bFdXHWH9XNWFVtYPGYjUxa8YWmoJUGG7mz8HTkNejwFZoe9P7yKN87nX55SgqmDfnW3KYRU8oe95","lamports":"9000"}
+{"t":"2026-10-25T15:39:35.628Z","kind":"settle","signature":"ECescYhPB1RvNMLjTamHeV5UDjzX3KFFLK4EVkFwgBxV5znFy4UJPG17BDehU8y3RfUzfq4Cb9kiUH1wWDwoAww","lamports":"9000"}
+{"t":"2026-10-25T15:39:41.153Z","kind":"reserve","signature":"5BgKzgH5WV8SacL6s8DwHiDdVunQ4VD7d9uqaZgu1N92eN9dV48xpHsxzuPa38oxBFq1zt27FRKPCqzsQgUuA3Nv","lamports":"9000","what":"trial 8 A"}
+{"t":"2026-10-25T15:39:41.154Z","kind":"reserve","signature":"52MBjki83TiyAhHcvg3BqoziXXJSJvLuJfafe1ZYiMZgKefueKhnso1YskjUqo82ZSqFXSxjEvEpoxQxh1fhNwz4","lamports":"15000","what":"trial 8 B"}
+{"t":"2026-10-25T15:39:41.154Z","kind":"reserve","signature":"jCge7HwJWxCVfPGj9FNsw4rnu885HN3TgapBAWrVXUcB5k8ZYPegHLFwxxycDLxm56m8C9mg1jnzTBB4Uj22DjU","lamports":"5000","what":"trial 8 C"}
+{"t":"2026-10-25T15:39:41.154Z","kind":"reserve","signature":"5QFFF5zubgE7GZrA8wP3VZys4LSKRZmsse8Tq6YZCHWBCiMgW84XN1N1rZssFWtWv918x5FUmhR4ZtnB2R6cHTA1","lamports":"14000","what":"trial 8 D"}
+{"t":"2026-10-25T15:39:41.154Z","kind":"reserve","signature":"bmeLNyvEBw9fBGcT95fwJpuSaCHJMdDZsV8bgjiTKdG3un7sUqAmu7MoyfAv7AuG5UWggH4NCpKgoWCzsiXCw6G","lamports":"9000","what":"trial 8 E"}
+{"t":"2026-10-25T15:39:41.154Z","kind":"reserve","signature":"258rM5Kfr5888JWHx3Hm7KN6JWeandzJRuXbcR3pDmR4gwkpxHMDQQLnwjYibK2w2STuQCFT9conizwGaE1KKjVH","lamports":"9000","what":"trial 8 F"}
+{"t":"2026-10-25T15:39:41.263Z","kind":"settle","signature":"2J9VtFVYGzs1pQcpYpDWuM4vyrxpSuRG9eHSEGpfRVRWjvNn13WXzoGo1myQuoACk4AJa3eGB2oTC2xaaZbkXAtQ","lamports":"9000"}
+{"t":"2026-10-25T15:39:41.263Z","kind":"settle","signature":"5Bu3yH89YWqZY62VHVyNJBM2iQEaDvHNVojkLYdtWovFDjqgoZNTsSSDuCPoe476LGfsZsQu6ttqFiaEY5n4pJsm","lamports":"15000"}
+{"t":"2026-10-25T15:39:41.263Z","kind":"settle","signature":"22DkJEqWMpWziUFsvBP9kNGwc43SdKQfmdcQ9AkRKWz4PFPL95bndUsGGFH84HGR77KNaqpSLNqAfYdd3kGWmVQE","lamports":"5000"}
+{"t":"2026-10-25T15:39:41.263Z","kind":"settle","signature":"38oRZJGJmUvoEHhXPstuxCGUMFTqsauzR7822zidYBXRXeqXaKgMBoAddQCc2Xnj6bJTPWXaHNNNVeS4X3xqc9W4","lamports":"14000"}
+{"t":"2026-10-25T15:39:41.263Z","kind":"settle","signature":"2hUx7cVMzvLxe7wsChrTz14CZoL9s6TiJi6256hU4mfX8NWF6jG52URShF5miEStTkQY8uHBSM1DtjosN7xgnAbw","lamports":"9000"}
+{"t":"2026-10-25T15:39:41.263Z","kind":"settle","signature":"2MNAE6SwYtGETGuxMitNwBveuiKMrVzcmb221H92Hx4onbQcpnqQnQZP1tUoFDo7FSa26MuwtkdBSYAm6TWevSyR","lamports":"9000"}
+{"t":"2026-10-25T15:39:45.236Z","kind":"reserve","signature":"3m5t2aqS2AszPRcDetvEcvMPBTf4wg7P2C3YhmgfhZ2jgpveG7hao3TqLADpthxJuKVSPXvogFnBpoJZgQrqex3m","lamports":"9000","what":"trial 9 A"}
+{"t":"2026-10-25T15:39:45.236Z","kind":"reserve","signature":"5DKAPzuQBPWii1aRpL297GXmXfTjZmZXq6Nt3XG4B5rzqsuMWAk7chNruYuHkKGL4fiLRy7fCMMqiBa6jtDenM3k","lamports":"15000","what":"trial 9 B"}
+{"t":"2026-10-25T15:39:45.236Z","kind":"reserve","signature":"2RYFn5q7Ysm8db5UUrhbjQbt7Ti2aVxpS9kVwKXvRQbHtA5xwhLotBJ1zw8G1xz2nXbgtQaZtKTADcjs8EEbHxbY","lamports":"5000","what":"trial 9 C"}
+{"t":"2026-10-25T15:39:45.236Z","kind":"reserve","signature":"5cCghdpim11ze4SvCToR9LUyj1Z8m3pfCcoJ2oNCvGQux74kQEsYg29KgqV96VfRjsasPEoY5jNotXBXLjtFVCQm","lamports":"14000","what":"trial 9 D"}
+{"t":"2026-10-25T15:39:45.236Z","kind":"reserve","signature":"4JuAmoBh5YRWHrEHy4tWiPvoKy6B7ccCXDR1o4etKXdEbr3cYHjDNsBneJ6iWYAQkLhGNAVJBDUYLRqtf228utsL","lamports":"9000","what":"trial 9 E"}
+{"t":"2026-10-25T15:39:45.236Z","kind":"reserve","signature":"3s9aUjdJdaKwvXiWd6TGVRGUXWchcTgvicYQrdnACfnuvdGkTQ4VWe8VbkdmwnZVUK7K8uwQ6QcfiN71TpoRWb8g","lamports":"9000","what":"trial 9 F"}
+{"t":"2026-10-25T15:39:45.805Z","kind":"settle","signature":"NfZ244Xx4BxoRsX8efcV2mebejc1DBNX9mfeqwY6b9mrAMj7X4D81WSv9wwGr5ZaS2JvWUV9iBPR5RWvL3Whtdi","lamports":"0"}
+{"t":"2026-10-25T15:39:46.068Z","kind":"settle","signature":"3rrRnMj7DNHsoRUt3ogWys59ff7Ur2rst3tN4GKzaAffiSNKdLZQHuNMHUTSJtvx7cYT7Jf411kYSrNhoerpY49Y","lamports":"0"}
+{"t":"2026-10-25T15:39:46.206Z","kind":"settle","signature":"w7ghoF2sHdiuZunwmfkDxNv8dwuPyg2PDgRunLbQdT8E2N3mdFzShEFLx2pQFi5r1iW678Mcn6nNENG762eCwiy","lamports":"0"}
+{"t":"2026-10-25T15:39:46.311Z","kind":"settle","signature":"4A6H2SCssQxRwhxDYi7uPz4qaiXQZX2ADowtwhKZgZyZEHYbWf9eqYJBP9aydfw8WSBZD3T8xL41b2mNUGyM6NyT","lamports":"0"}
+{"t":"2026-10-25T15:39:46.380Z","kind":"settle","signature":"5BzHkNvqjjH7wBxXt6uTLF9NLikhyHNkGCrNdys67R39HWfPSHVJxrbA4PfLy5CJywv6w9TQiK9kdvBuaUFYzdzo","lamports":"0"}
+{"t":"2026-10-25T15:39:46.564Z","kind":"settle","signature":"5WrVfNVD4wLAAjX7z7VMBzswXN3Lmskx1ghx7h2gNY6LRGTQRu9ziBsRNQXCbwNyqTDhfbVCEceJuUMoe6Y4NArJ","lamports":"0"}
+{"t":"2026-10-25T15:39:46.642Z","kind":"settle","signature":"5BgKzgH5WV8SacL6s8DwHiDdVunQ4VD7d9uqaZgu1N92eN9dV48xpHsxzuPa38oxBFq1zt27FRKPCqzsQgUuA3Nv","lamports":"9000"}
+{"t":"2026-10-25T15:39:46.746Z","kind":"settle","signature":"52MBjki83TiyAhHcvg3BqoziXXJSJvLuJfafe1ZYiMZgKefueKhnso1YskjUqo82ZSqFXSxjEvEpoxQxh1fhNwz4","lamports":"15000"}
+{"t":"2026-10-25T15:39:46.941Z","kind":"settle","signature":"jCge7HwJWxCVfPGj9FNsw4rnu885HN3TgapBAWrVXUcB5k8ZYPegHLFwxxycDLxm56m8C9mg1jnzTBB4Uj22DjU","lamports":"5000"}
+{"t":"2026-10-25T15:39:47.056Z","kind":"settle","signature":"5QFFF5zubgE7GZrA8wP3VZys4LSKRZmsse8Tq6YZCHWBCiMgW84XN1N1rZssFWtWv918x5FUmhR4ZtnB2R6cHTA1","lamports":"14000"}
+{"t":"2026-10-25T15:39:47.126Z","kind":"settle","signature":"bmeLNyvEBw9fBGcT95fwJpuSaCHJMdDZsV8bgjiTKdG3un7sUqAmu7MoyfAv7AuG5UWggH4NCpKgoWCzsiXCw6G","lamports":"9000"}
+{"t":"2026-10-25T15:39:47.336Z","kind":"settle","signature":"258rM5Kfr5888JWHx3Hm7KN6JWeandzJRuXbcR3pDmR4gwkpxHMDQQLnwjYibK2w2STuQCFT9conizwGaE1KKjVH","lamports":"9000"}
+{"t":"2026-10-25T15:39:58.892Z","kind":"reserve","signature":"Ss6Zbw36EAcjcj9rHBgbiD5B6hCZQgxMS5uS2M3fp666psYH3pjDhtqimZ6Evj1AeYjSk6knCFFZn84ifrRUsfD","lamports":"9000","what":"trial 10 A"}
+{"t":"2026-10-25T15:39:58.892Z","kind":"reserve","signature":"5ZTUYWv9o2v8u4AQBGB3wrK7UDbBN1Ngx3dha2Cq25AuSeit4mZpyWKfAN1VpA99DMKizg2WdbaEZaXmLQ1aH7Zg","lamports":"15000","what":"trial 10 B"}
+{"t":"2026-10-25T15:39:58.892Z","kind":"reserve","signature":"62A5YWKRrELd1rL9soQXd7bjmbjDdA774n1yvX4ZAmq1v1sPnmpVQS3hgZyD3k2h8jJjvxujVEzCwYVW4Apoom8B","lamports":"5000","what":"trial 10 C"}
+{"t":"2026-10-25T15:39:58.892Z","kind":"reserve","signature":"4zsCPyhdxa2CnxigiVH5gnr4dRmtF4MNgeMnsqoBhf6FbZ8YPLSY3SLBAqekEejAyVGuu26oDFnYFqNXP1Eyhm9j","lamports":"14000","what":"trial 10 D"}
+{"t":"2026-10-25T15:39:58.892Z","kind":"reserve","signature":"5G6V4pQvYubWi9Ka6vgR463iJoHWt3GSiPmqAgg1Yx7rMmTP7vPUDRQRh6EuyAtWGMqAfyHnhLLc6cxDewnquK2E","lamports":"9000","what":"trial 10 E"}
+{"t":"2026-10-25T15:39:58.892Z","kind":"reserve","signature":"5kor4erk5fEaQ5Gqdk8vSGF7DZ567jMGSBqi5AzxEdGEq1QgYEdxE8rWiTQRTuhy3JHd1ih1CLRjCf7Yr1ibUfAq","lamports":"9000","what":"trial 10 F"}
+{"t":"2026-10-25T15:39:59.430Z","kind":"settle","signature":"3m5t2aqS2AszPRcDetvEcvMPBTf4wg7P2C3YhmgfhZ2jgpveG7hao3TqLADpthxJuKVSPXvogFnBpoJZgQrqex3m","lamports":"9000"}
+{"t":"2026-10-25T15:39:59.430Z","kind":"settle","signature":"5DKAPzuQBPWii1aRpL297GXmXfTjZmZXq6Nt3XG4B5rzqsuMWAk7chNruYuHkKGL4fiLRy7fCMMqiBa6jtDenM3k","lamports":"15000"}
+{"t":"2026-10-25T15:39:59.430Z","kind":"settle","signature":"2RYFn5q7Ysm8db5UUrhbjQbt7Ti2aVxpS9kVwKXvRQbHtA5xwhLotBJ1zw8G1xz2nXbgtQaZtKTADcjs8EEbHxbY","lamports":"5000"}
+{"t":"2026-10-25T15:39:59.430Z","kind":"settle","signature":"5cCghdpim11ze4SvCToR9LUyj1Z8m3pfCcoJ2oNCvGQux74kQEsYg29KgqV96VfRjsasPEoY5jNotXBXLjtFVCQm","lamports":"14000"}
+{"t":"2026-10-25T15:39:59.430Z","kind":"settle","signature":"4JuAmoBh5YRWHrEHy4tWiPvoKy6B7ccCXDR1o4etKXdEbr3cYHjDNsBneJ6iWYAQkLhGNAVJBDUYLRqtf228utsL","lamports":"9000"}
+{"t":"2026-10-25T15:39:59.430Z","kind":"settle","signature":"3s9aUjdJdaKwvXiWd6TGVRGUXWchcTgvicYQrdnACfnuvdGkTQ4VWe8VbkdmwnZVUK7K8uwQ6QcfiN71TpoRWb8g","lamports":"9000"}
+{"t":"2026-10-25T15:40:05.080Z","kind":"settle","signature":"Ss6Zbw36EAcjcj9rHBgbiD5B6hCZQgxMS5uS2M3fp666psYH3pjDhtqimZ6Evj1AeYjSk6knCFFZn84ifrRUsfD","lamports":"9000"}
+{"t":"2026-10-25T15:40:05.080Z","kind":"settle","signature":"5ZTUYWv9o2v8u4AQBGB3wrK7UDbBN1Ngx3dha2Cq25AuSeit4mZpyWKfAN1VpA99DMKizg2WdbaEZaXmLQ1aH7Zg","lamports":"15000"}
+{"t":"2026-10-25T15:40:05.080Z","kind":"settle","signature":"62A5YWKRrELd1rL9soQXd7bjmbjDdA774n1yvX4ZAmq1v1sPnmpVQS3hgZyD3k2h8jJjvxujVEzCwYVW4Apoom8B","lamports":"5000"}
+{"t":"2026-10-25T15:40:05.080Z","kind":"settle","signature":"4zsCPyhdxa2CnxigiVH5gnr4dRmtF4MNgeMnsqoBhf6FbZ8YPLSY3SLBAqekEejAyVGuu26oDFnYFqNXP1Eyhm9j","lamports":"14000"}
+{"t":"2026-10-25T15:40:05.080Z","kind":"settle","signature":"5G6V4pQvYubWi9Ka6vgR463iJoHWt3GSiPmqAgg1Yx7rMmTP7vPUDRQRh6EuyAtWGMqAfyHnhLLc6cxDewnquK2E","lamports":"9000"}
+{"t":"2026-10-25T15:40:05.080Z","kind":"settle","signature":"5kor4erk5fEaQ5Gqdk8vSGF7DZ567jMGSBqi5AzxEdGEq1QgYEdxE8rWiTQRTuhy3JHd1ih1CLRjCf7Yr1ibUfAq","lamports":"9000"}
+{"t":"2026-10-25T15:41:22.185Z","kind":"reserve","signature":"5FWgq1irNW1TDMbMxonuoVVVJk9QKFqHGk5iMUqQiTHb8GzkC3vt5LMWRnLb6Hqx6u4gGt2eAB55cRFCTuRzAWzF","lamports":"9000","what":"trial 11 A"}
+{"t":"2026-10-25T15:41:22.185Z","kind":"reserve","signature":"4hTAqMiVBtytQiNKJ89CAVSm88qT2trGzNAFzDRNbDvAdPzk2aWTLY9TWrGP5CVdBsnvrVgghoJGcwpzuRr3AGu3","lamports":"15000","what":"trial 11 B"}
+{"t":"2026-10-25T15:41:22.185Z","kind":"reserve","signature":"5eyG66jvcBVbD5WtohDhKxgaxSrANZ27JkQnFQkteqorBmqMHkKmtqVLg8SpQghST1fmR67yGKNqjSkmXctjhFGq","lamports":"5000","what":"trial 11 C"}
+{"t":"2026-10-25T15:41:22.185Z","kind":"reserve","signature":"3V9eZcREjAHhDggqGBg4pHhbM4fPbz1hio5y7FJSWz8yzmnPSNTRnfZP6hmWf2jVimWguGrrRuGbF29uW26CFzYw","lamports":"14000","what":"trial 11 D"}
+{"t":"2026-10-25T15:41:22.185Z","kind":"reserve","signature":"9irmPjghHPVeyG7yA59JumKkL7m2jes1HS3GLjZJSDpzvgUtL8yWVo6hSU5HWknbASiJPwK6AAb5Xtq3ZyPDXGn","lamports":"9000","what":"trial 11 E"}
+{"t":"2026-10-25T15:41:22.185Z","kind":"reserve","signature":"2b1CFSfwniv6CZDtYTSknyoUmtruzmad7kBwwxzFMj1Bc22zd6dJ1kWfzXcjbagsLA6js51FyDL3sf1bF1JDY5rf","lamports":"9000","what":"trial 11 F"}
+{"t":"2026-10-25T15:41:32.868Z","kind":"reserve","signature":"RgisFw74ZHzm8rNgdFbKND3eH3akTvqSjH3x2ncoR7vcNDf2SXoVidDiMySbFJdqYMtpxUM8zcUjkdaubX52AEd","lamports":"9000","what":"trial 12 A"}
+{"t":"2026-10-25T15:41:32.868Z","kind":"reserve","signature":"21ZrHvoF7M86uhL43xfZjAXeD4K6nUZQ62nipyn3DmpkRkg9dfrdLhxjn4QigoTFx8hfnxo1rNDsxGVYt4saiq2U","lamports":"15000","what":"trial 12 B"}
+{"t":"2026-10-25T15:41:32.868Z","kind":"reserve","signature":"3dMiCymH4BgJseNxq21medDHPqM6cYzn7nxdbs7um3HVDEQXE1fvfs9thXvpdqVKktDrS46jrGwxTbWpa2FUeymu","lamports":"5000","what":"trial 12 C"}
+{"t":"2026-10-25T15:41:32.868Z","kind":"reserve","signature":"2VXGi74wEBTeZ6gTdCZLQ7dz42uqkEAMS99bG83VvtkS7C2AqRYTfHQQw2V7XftnfaBMNt5DMmF2v199u3axjWkH","lamports":"14000","what":"trial 12 D"}
+{"t":"2026-10-25T15:41:32.868Z","kind":"reserve","signature":"2j1WX4AdvtkUesai2yKPvnKwiagp4X8uRd9hPoYcoDEA3TKQMBh1wGbr6MhdNBj5kAqZxa4skX4WUTqdY5uwbz2X","lamports":"9000","what":"trial 12 E"}
+{"t":"2026-10-25T15:41:32.868Z","kind":"reserve","signature":"2mkCewGvTaJdzn4JoPrtcFSUdS2pCwHCNXTJQVXgn1hLsvTdfU41BYiVtHKcFvyBoGTrRoWyrRwByfPhWPgNpnCo","lamports":"9000","what":"trial 12 F"}
+{"t":"2026-10-25T15:41:33.035Z","kind":"settle","signature":"5FWgq1irNW1TDMbMxonuoVVVJk9QKFqHGk5iMUqQiTHb8GzkC3vt5LMWRnLb6Hqx6u4gGt2eAB55cRFCTuRzAWzF","lamports":"9000"}
+{"t":"2026-10-25T15:41:33.036Z","kind":"settle","signature":"4hTAqMiVBtytQiNKJ89CAVSm88qT2trGzNAFzDRNbDvAdPzk2aWTLY9TWrGP5CVdBsnvrVgghoJGcwpzuRr3AGu3","lamports":"15000"}
+{"t":"2026-10-25T15:41:33.036Z","kind":"settle","signature":"5eyG66jvcBVbD5WtohDhKxgaxSrANZ27JkQnFQkteqorBmqMHkKmtqVLg8SpQghST1fmR67yGKNqjSkmXctjhFGq","lamports":"5000"}
+{"t":"2026-10-25T15:41:33.036Z","kind":"settle","signature":"3V9eZcREjAHhDggqGBg4pHhbM4fPbz1hio5y7FJSWz8yzmnPSNTRnfZP6hmWf2jVimWguGrrRuGbF29uW26CFzYw","lamports":"14000"}
+{"t":"2026-10-25T15:41:33.036Z","kind":"settle","signature":"9irmPjghHPVeyG7yA59JumKkL7m2jes1HS3GLjZJSDpzvgUtL8yWVo6hSU5HWknbASiJPwK6AAb5Xtq3ZyPDXGn","lamports":"9000"}
+{"t":"2026-10-25T15:41:33.036Z","kind":"settle","signature":"2b1CFSfwniv6CZDtYTSknyoUmtruzmad7kBwwxzFMj1Bc22zd6dJ1kWfzXcjbagsLA6js51FyDL3sf1bF1JDY5rf","lamports":"9000"}
+{"t":"2026-10-25T15:41:38.672Z","kind":"settle","signature":"RgisFw74ZHzm8rNgdFbKND3eH3akTvqSjH3x2ncoR7vcNDf2SXoVidDiMySbFJdqYMtpxUM8zcUjkdaubX52AEd","lamports":"9000"}
+{"t":"2026-10-25T15:41:38.672Z","kind":"settle","signature":"21ZrHvoF7M86uhL43xfZjAXeD4K6nUZQ62nipyn3DmpkRkg9dfrdLhxjn4QigoTFx8hfnxo1rNDsxGVYt4saiq2U","lamports":"15000"}
+{"t":"2026-10-25T15:41:38.672Z","kind":"settle","signature":"3dMiCymH4BgJseNxq21medDHPqM6cYzn7nxdbs7um3HVDEQXE1fvfs9thXvpdqVKktDrS46jrGwxTbWpa2FUeymu","lamports":"5000"}
+{"t":"2026-10-25T15:41:38.672Z","kind":"settle","signature":"2VXGi74wEBTeZ6gTdCZLQ7dz42uqkEAMS99bG83VvtkS7C2AqRYTfHQQw2V7XftnfaBMNt5DMmF2v199u3axjWkH","lamports":"14000"}
+{"t":"2026-10-25T15:41:38.672Z","kind":"settle","signature":"2j1WX4AdvtkUesai2yKPvnKwiagp4X8uRd9hPoYcoDEA3TKQMBh1wGbr6MhdNBj5kAqZxa4skX4WUTqdY5uwbz2X","lamports":"9000"}
+{"t":"2026-10-25T15:41:38.672Z","kind":"settle","signature":"2mkCewGvTaJdzn4JoPrtcFSUdS2pCwHCNXTJQVXgn1hLsvTdfU41BYiVtHKcFvyBoGTrRoWyrRwByfPhWPgNpnCo","lamports":"9000"}

@@ -1,0 +1,92 @@
+{
+ "runId": "2026-10-24T23-35-52Z",
+ "live": true,
+ "cluster": "mainnet-beta",
+ "startedAt": "2026-10-24T23:35:53.829Z",
+ "options": {
+  "clients": [
+   "AgaveBam",
+   "JitoLabs",
+   "HarmonicAgave",
+   "HarmonicFiredancer",
+   "Firedancer",
+   "FireBAM",
+   "Rakurai",
+   "Agave"
+  ],
+  "perClient": 1,
+  "perValidator": 4,
+  "deliveries": [
+   "buffered",
+   "streamed"
+  ],
+  "path": "tpu",
+  "spacingMs": 4000,
+  "seed": 20261025,
+  "dryTrials": 3,
+  "maxMinutes": 25
+ },
+ "roles": [
+  {
+   "role": "A",
+   "cuLimit": 1000,
+   "cuPrice": "4000000",
+   "loadedLimit": 16384
+  },
+  {
+   "role": "B",
+   "cuLimit": 40000,
+   "cuPrice": "250000",
+   "loadedLimit": 16384
+  },
+  {
+   "role": "C",
+   "cuLimit": 1000,
+   "cuPrice": "0",
+   "loadedLimit": 16384
+  },
+  {
+   "role": "D",
+   "cuLimit": 6000,
+   "cuPrice": "1500000",
+   "loadedLimit": 16384
+  },
+  {
+   "role": "E",
+   "cuLimit": 1000,
+   "cuPrice": "4000000",
+   "loadedLimit": 16384
+  },
+  {
+   "role": "F",
+   "cuLimit": 1000,
+   "cuPrice": "4000000",
+   "loadedLimit": 67108864
+  }
+ ],
+ "streamGapMs": 30,
+ "fireOffset": {
+  "buffered": -1,
+  "streamed": 1
+ },
+ "readRpc": "https://mainnet.helius-rpc.com/ (credentials hidden)",
+ "sendRpc": "direct QUIC to the leader TPU",
+ "mainWallet": "6v8Wy9TEhfZXzdXVspXYs7bh42N7B7z9jALkz83yxKoC",
+ "subPayers": [
+  "EZhmEFzW4PsHnwQ4N4gyLGYG9ZK1bY3mceWDkoUEQpQG",
+  "7JFdhDtZzAdPTAY12g694ugYmg7LVw4UK7s9kfqvnnh3",
+  "CGVToEmtjk84tYvgRioKMaBvn81YcHT9UrEixs9nvQv5",
+  "37XgM5vWox1GwrSrePw6KCFvDCukgnX9dSPb4krvA6JT",
+  "DGHDojCzJNkvQmZt86G4DnR5My3awMiFeaTBzRbbvGq6",
+  "DPDaNcCg97334ZvvALfQMxXB7rkrm5jeBcoxEjDGQrE1",
+  "4K5MpzLMq86LZ9ea3AbF69pg12yE6eFnfEai8Zxr1cZo",
+  "DGCMZRMQq4kEZio82cVn9idxq45o8ZrGiU8RMLk8Ux2o",
+  "6oRNzfvC8hLkH1MAqgA3juppstP55paXptM8E2q7KT45",
+  "9sKgSdc39GxXcUXguzEoZsK9bvTkg3vZKn7GLhTa6SVc",
+  "Hd86WLFrWLGrXqLt6JEhvQn2v99VTLV359TxczyRufnw",
+  "8pBs7fErPfPET9rX1uve4zpyuXY6tnTP4fyGHzJ2LhZY"
+ ],
+ "spendCap": "50000000",
+ "committedBefore": "1051000",
+ "node": "v26.8.1"
+}

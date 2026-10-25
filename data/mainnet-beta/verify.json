@@ -1,0 +1,10 @@
+{
+ "verifiedAt": "2026-10-25T15:43:32.671Z",
+ "rpc": "https://solana-rpc.publicnode.com/",
+ "blocks": 50,
+ "transactions": 183,
+ "blocksWithLeaderSchedule": 50,
+ "instructionsChecked": 30,
+ "unlandedChecked": 18,
+ "problems": []
+}

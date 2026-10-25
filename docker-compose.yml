@@ -8,6 +8,8 @@ services:
     volumes:
       # raw data and results live in the repository so they can be verified
       - ./data:/app/data
-      # wallet files never enter the image; mounted only from the host
+      # wallet files never enter the image; mounted only from the host (not needed to reproduce)
       - ./keys:/app/keys
-    command: ['help']
+    # `docker compose up` = reproduce: regenerate the results from the raw data and compare them with the
+    # committed ones, check every recorded transaction against the chain, and make one dry-run trial
+    command: ['reproduce']

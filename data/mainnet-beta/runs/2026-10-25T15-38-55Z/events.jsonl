@@ -1,0 +1,13 @@
+{"t":"2026-10-25T15:39:09.839Z","type":"landing-check","trial":0,"client":"JitoLabs","ingress":"23.111.240.231:11228","landed":0}
+{"t":"2026-10-25T15:39:14.904Z","type":"landing-check","trial":1,"client":"Firedancer","ingress":"104.204.143.114:9007","landed":6}
+{"t":"2026-10-25T15:39:14.979Z","type":"landing-check","trial":2,"client":"HarmonicAgave","ingress":"63.254.166.232:12313","landed":6}
+{"t":"2026-10-25T15:39:24.321Z","type":"landing-check","trial":3,"client":"HarmonicAgave","ingress":"63.254.166.232:9007","landed":6}
+{"t":"2026-10-25T15:39:24.457Z","type":"landing-check","trial":4,"client":"AgaveBam","ingress":"198.13.130.9:5010","landed":6}
+{"t":"2026-10-25T15:39:35.426Z","type":"landing-check","trial":5,"client":"AgaveBam","ingress":"88.216.192.50:5010","landed":6}
+{"t":"2026-10-25T15:39:35.628Z","type":"landing-check","trial":6,"client":"JitoLabs","ingress":"64.34.88.249:8002","landed":6}
+{"t":"2026-10-25T15:39:41.263Z","type":"landing-check","trial":7,"client":"JitoLabs","ingress":"64.130.32.153:8002","landed":6}
+{"t":"2026-10-25T15:39:59.321Z","type":"landing-check","trial":8,"client":"Rakurai","ingress":"64.130.41.180:8002","landed":6}
+{"t":"2026-10-25T15:39:59.430Z","type":"landing-check","trial":9,"client":"HarmonicFiredancer","ingress":"198.13.140.105:9007","landed":6}
+{"t":"2026-10-25T15:40:05.081Z","type":"landing-check","trial":10,"client":"FireBAM","ingress":"64.130.51.255:5010","landed":6}
+{"t":"2026-10-25T15:41:33.036Z","type":"landing-check","trial":11,"client":"Agave","ingress":"189.1.164.35:8003","landed":6}
+{"t":"2026-10-25T15:41:38.672Z","type":"landing-check","trial":12,"client":"Agave","ingress":"5.199.172.176:12002","landed":6}

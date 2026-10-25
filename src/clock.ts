@@ -2,7 +2,7 @@
 // `firstShredReceived` event of slotsUpdatesSubscribe: the node has begun receiving that slot's block, so its leader
 // is producing it. Plain slotSubscribe reports a slot only after the node has processed it (about a slot later),
 // so it is the fallback, and getSlot polling the last resort.
-import type { Rpc } from './rpc.ts'
+import { Rpc } from './rpc.ts'
 import { sleep } from './util.ts'
 
 export type ClockSource = 'firstShred' | 'slotNotification' | 'poll'
@@ -17,7 +17,8 @@ export class SlotClock {
   private stopped = false
 
   constructor(rpc: Rpc) {
-    this.rpc = rpc
+    // a private client, so that polling never queues behind other requests
+    this.rpc = new Rpc(rpc.url, { minGapMs: 0, retries: 1, timeoutMs: 5_000 })
   }
 
   private observe(slot: number, source: ClockSource): void {
@@ -30,6 +31,13 @@ export class SlotClock {
 
   async start(): Promise<void> {
     this.observe(await this.rpc.call<number>('getSlot', [{ commitment: 'processed' }]), 'poll')
+    this.subscribe()
+    void this.pollWhenQuiet()
+  }
+
+  /** Opens the websocket; reconnects a second after it closes for any reason. */
+  private subscribe(): void {
+    if (this.stopped) return
     try {
       const ws = new WebSocket(this.rpc.url.replace(/^http/, 'ws'))
       this.ws = ws
@@ -43,15 +51,19 @@ export class SlotClock {
         } catch {}
       }
       ws.onerror = () => {}
-    } catch {}
-    void this.pollWhenQuiet()
+      ws.onclose = () => {
+        if (!this.stopped) setTimeout(() => this.subscribe(), 1000)
+      }
+    } catch {
+      if (!this.stopped) setTimeout(() => this.subscribe(), 1000)
+    }
   }
 
-  /** Polls only while the websocket has been silent for more than a second. */
+  /** Polls only while the websocket has been silent for more than 600 ms (three slots). */
   private async pollWhenQuiet(): Promise<void> {
     while (!this.stopped) {
-      await sleep(400)
-      if (Date.now() - this.seenAt > 1000) {
+      await sleep(200)
+      if (Date.now() - this.seenAt > 600) {
         try {
           this.observe(await this.rpc.call<number>('getSlot', [{ commitment: 'processed' }]), 'poll')
         } catch {}
@@ -76,6 +88,8 @@ export class SlotClock {
 /** Keeps a recent blockhash at hand so that signing right before dispatch needs no round trip. */
 export class BlockhashCache {
   blockhash = ''
+  /** last block height at which a transaction with this blockhash can still land */
+  lastValidBlockHeight = 0
   fetchedAt = 0
   private rpc: Rpc
   private stopped = false
@@ -99,6 +113,7 @@ export class BlockhashCache {
   private async refresh(): Promise<void> {
     const { value } = await this.rpc.call('getLatestBlockhash', [{ commitment: 'confirmed' }])
     this.blockhash = value.blockhash
+    this.lastValidBlockHeight = value.lastValidBlockHeight
     this.fetchedAt = Date.now()
   }
 
