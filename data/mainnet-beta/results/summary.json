@@ -35,7 +35,31 @@
    "epochs": [
     1067
    ]
+  },
+  {
+   "id": "2026-10-25T22-02-17Z",
+   "campaign": "rehearsal",
+   "startedAt": "2026-10-25T22:02:18.877Z",
+   "path": "tpu",
+   "trials": 16,
+   "minSlot": 461419536,
+   "maxSlot": 461420295,
+   "epochs": [
+    1068
+   ]
+  },
+  {
+   "id": "2026-10-25T22-05-59Z",
+   "campaign": "rehearsal",
+   "startedAt": "2026-10-25T22:06:01.269Z",
+   "path": "tpu",
+   "trials": 1,
+   "minSlot": 461420912,
+   "maxSlot": 461420912,
+   "epochs": [
+    1068
+   ]
   }
  ],
- "units": 33
+ "units": 49
 }

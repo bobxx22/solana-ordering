@@ -9,6 +9,8 @@ The analysis plan is pre-registered in README ("Noise versus rule") and in the h
 | 2026-10-24T19:08:05.686Z | calibration | rpc | 15 | 460963380–460964625 | 1067 | yes |
 | 2026-10-24T23:35:53.829Z | calibration | tpu | 8 | 461039133–461039486 | 1067 | yes |
 | 2026-10-25T15:38:56.953Z | calibration | tpu | 13 | 461311213–461311909 | 1067 | yes |
+| 2026-10-25T22:02:18.877Z | rehearsal | tpu | 16 | 461419536–461420295 | 1068 | yes |
+| 2026-10-25T22:06:01.269Z | rehearsal | tpu | 1 | 461420912–461420912 | 1068 | yes |
 
 ## Primary: buffered/shared, local schedulers (campaign "main")
 
@@ -26,12 +28,12 @@ Descriptive: shares with 95% Wilson intervals, no test.
 
 | group | trials | A,E before C | A,E before F | C before B | D before C | A before B | twins: sent first landed first |
 |---|---:|---|---|---|---|---|---|
-| buffered/independent | 5 | 70% of 5 [40%–89%] | 70% of 5 [40%–89%] | 60% of 5 [23%–88%] | 80% of 5 [38%–96%] | 60% of 5 [23%–88%] | 40% of 5 [12%–77%] |
-| buffered/shared | 2 | 100% of 2 [51%–100%] | 100% of 2 [51%–100%] | 50% of 2 [9%–91%] | 100% of 2 [34%–100%] | 100% of 2 [34%–100%] | 0% of 2 [0%–66%] |
+| buffered/independent | 7 | 79% of 7 [52%–92%] | 79% of 7 [52%–92%] | 57% of 7 [25%–84%] | 86% of 7 [49%–97%] | 71% of 7 [36%–92%] | 43% of 7 [16%–75%] |
+| buffered/shared | 9 | 100% of 9 [82%–100%] | 100% of 9 [82%–100%] | 78% of 9 [45%–94%] | 100% of 9 [70%–100%] | 100% of 9 [70%–100%] | 11% of 9 [2%–44%] |
 | buffered@-1/independent | 2 | 100% of 2 [51%–100%] | 100% of 2 [51%–100%] | 100% of 2 [34%–100%] | 100% of 2 [34%–100%] | 100% of 2 [34%–100%] | 0% of 2 [0%–66%] |
-| burst/shared | 2 | 75% of 2 [30%–95%] | 75% of 2 [30%–95%] | 50% of 2 [9%–91%] | 50% of 2 [9%–91%] | 50% of 2 [9%–91%] | 50% of 2 [9%–91%] |
-| streamed/independent | 4 | 50% of 4 [22%–78%] | 38% of 4 [14%–69%] | 25% of 4 [5%–70%] | 25% of 4 [5%–70%] | 25% of 4 [5%–70%] | 75% of 4 [30%–95%] |
-| streamed/shared | 3 | 67% of 3 [30%–90%] | 0% of 3 [0%–39%] | 67% of 3 [21%–94%] | 33% of 3 [6%–79%] | 67% of 3 [21%–94%] | 100% of 3 [44%–100%] |
+| burst/shared | 4 | 88% of 4 [53%–98%] | 88% of 4 [53%–98%] | 75% of 4 [30%–95%] | 75% of 4 [30%–95%] | 75% of 4 [30%–95%] | 50% of 4 [15%–85%] |
+| streamed/independent | 7 | 57% of 7 [33%–79%] | 43% of 7 [21%–67%] | 29% of 7 [8%–64%] | 43% of 7 [16%–75%] | 43% of 7 [16%–75%] | 86% of 7 [49%–97%] |
+| streamed/shared | 5 | 50% of 5 [24%–76%] | 10% of 5 [2%–40%] | 80% of 5 [38%–96%] | 40% of 5 [12%–77%] | 40% of 5 [12%–77%] | 100% of 5 [57%–100%] |
 
 ## Rule agreement: pilot through the public RPC (for comparison)
 
@@ -58,6 +60,9 @@ Mean gamma per trial (+1: every pair the rule ranks differently landed in its or
 | calibration / tpu / buffered@-1 | 2 | 12 | – | 12 (100%) | 12 | 2 | 0 | 1 | 0 | – |
 | calibration / tpu / buffered | 8 | 48 | 42 (88%) | 42 (88%) | 42 | 7 | 0 | 2 | 0 | – |
 | calibration / tpu / burst | 2 | 12 | 12 (100%) | 12 (100%) | 12 | 2 | 0 | 0 | 0 | – |
+| rehearsal / tpu / buffered | 10 | 60 | 60 (100%) | 54 (90%) | 54 | 9 | 0 | 2 | 0 | 381, 134 |
+| rehearsal / tpu / streamed | 5 | 30 | 30 (100%) | 30 (100%) | 30 | 5 | 0 | 0.5 | 31 | -385, -712 |
+| rehearsal / tpu / burst | 2 | 12 | 12 (100%) | 12 (100%) | 12 | 2 | 0 | 0 | 0 | -246, -275 |
 
 ## Ingress: where the direct path delivered
 
@@ -65,14 +70,14 @@ BAM and Harmonic validators advertise QUIC addresses on shared gateway hosts; fo
 
 | client | trials used | validators | distinct ingress hosts | trials via a shared host | most validators behind one used host |
 |---|---:|---:|---:|---:|---:|
-| Agave | 3 | 3 | 3 | 0 | 1 |
-| AgaveBam | 3 | 3 | 3 | 3 | 38 |
-| FireBAM | 1 | 1 | 1 | 1 | 19 |
-| Firedancer | 2 | 2 | 2 | 0 | 1 |
-| HarmonicAgave | 3 | 3 | 1 | 3 | 17 |
-| HarmonicFiredancer | 2 | 1 | 1 | 2 | 38 |
-| JitoLabs | 2 | 2 | 2 | 0 | 1 |
-| Rakurai | 2 | 2 | 2 | 0 | 1 |
+| Agave | 5 | 4 | 4 | 0 | 1 |
+| AgaveBam | 5 | 5 | 4 | 5 | 65 |
+| FireBAM | 3 | 2 | 2 | 3 | 100 |
+| Firedancer | 4 | 4 | 4 | 0 | 1 |
+| HarmonicAgave | 5 | 5 | 2 | 5 | 38 |
+| HarmonicFiredancer | 4 | 3 | 1 | 4 | 38 |
+| JitoLabs | 4 | 4 | 4 | 0 | 1 |
+| Rakurai | 4 | 3 | 3 | 0 | 1 |
 
 ## Where our transactions stand in their blocks (direct path)
 
@@ -80,12 +85,12 @@ Median share of the block's other transactions (our own six excluded) with a low
 
 | role | landed | out-ranks (reward/cost) | position, buffered | position, burst | position, streamed |
 |---|---:|---:|---:|---:|---:|
-| A | 18 | 98% | 4% | 29% | 53% |
-| B | 18 | 77% | 6% | 31% | 49% |
-| C | 18 | 84% | 5% | 30% | 50% |
-| D | 18 | 94% | 4% | 30% | 57% |
-| E | 18 | 98% | 3% | 28% | 38% |
-| F | 18 | 79% | 5% | 31% | 43% |
+| A | 34 | 98% | 2% | 19% | 55% |
+| B | 34 | 74% | 8% | 23% | 45% |
+| C | 34 | 81% | 5% | 22% | 31% |
+| D | 34 | 93% | 3% | 21% | 61% |
+| E | 34 | 98% | 2% | 20% | 41% |
+| F | 34 | 75% | 5% | 22% | 43% |
 
 ## Background: everyone else in the same blocks
 
@@ -93,14 +98,14 @@ Spearman rho between position and reward per scheduled cost unit over the other 
 
 | client | blocks | median rho, whole block | median rho, first 10% | blocks with rho < 0 |
 |---|---:|---|---|---|
-| Agave | 4 | -0.04 | -0.36 | 100% |
-| AgaveBam | 5 | -0.02 | -0.57 | 100% |
-| FireBAM | 2 | -0.04 | -0.56 | 50% |
-| Firedancer | 2 | -0.35 | -0.17 | 100% |
-| HarmonicAgave | 4 | 0.01 | -0.32 | 50% |
-| HarmonicFiredancer | 2 | -0.14 | -0.38 | 50% |
-| JitoLabs | 2 | -0.21 | -0.20 | 100% |
-| Rakurai | 3 | -0.09 | -0.03 | 67% |
+| Agave | 7 | -0.05 | -0.33 | 86% |
+| AgaveBam | 8 | -0.09 | -0.27 | 100% |
+| FireBAM | 4 | -0.08 | -0.56 | 75% |
+| Firedancer | 4 | -0.21 | -0.30 | 100% |
+| HarmonicAgave | 6 | -0.13 | -0.36 | 67% |
+| HarmonicFiredancer | 5 | 0.00 | -0.44 | 40% |
+| JitoLabs | 5 | -0.05 | -0.48 | 60% |
+| Rakurai | 5 | -0.20 | -0.03 | 80% |
 
 ## Exact orders (buffered/shared, campaign "main")
 

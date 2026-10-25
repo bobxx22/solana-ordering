@@ -1,0 +1,16 @@
+2026-10-25T22:06:01.264Z epoch 1068, 3930 gossip nodes, 665 current + 25 delinquent vote accounts
+2026-10-25T22:06:01.268Z LIVE on mainnet-beta via tpu, campaign "rehearsal": up to 1 more landed trials, at most 0.000061 SOL each (0.000061 SOL)
+2026-10-25T22:06:01.268Z continuing from 1 earlier run(s): landed {"Firedancer":2,"JitoLabs":2,"HarmonicFiredancer":2,"AgaveBam":2,"HarmonicAgave":2,"FireBAM":2,"Agave":2,"Rakurai":1}, 0 excluded addresses
+2026-10-25T22:06:01.269Z spend cap 0.050000 SOL (of which 0.000100 SOL kept for sweeping), committed 0.003079 SOL; reads via https://mainnet.helius-rpc.com/ (credentials hidden)
+2026-10-25T22:06:01.269Z   role A: limit 1000 CU, price 4000000 µL/CU, loaded-data limit 16384 B, reward/cost 2.783
+2026-10-25T22:06:01.269Z   role B: limit 40000 CU, price 250000 µL/CU, loaded-data limit 16384 B, reward/cost 0.302
+2026-10-25T22:06:01.269Z   role C: limit 1000 CU, price 0 µL/CU, loaded-data limit 16384 B, reward/cost 1.070
+2026-10-25T22:06:01.269Z   role D: limit 6000 CU, price 1500000 µL/CU, loaded-data limit 16384 B, reward/cost 1.568
+2026-10-25T22:06:01.269Z   role E: limit 1000 CU, price 4000000 µL/CU, loaded-data limit 16384 B, reward/cost 2.783
+2026-10-25T22:06:01.269Z   role F: limit 1000 CU, price 4000000 µL/CU, loaded-data limit 67108864 B, reward/cost 0.347
+2026-10-25T22:06:01.383Z main wallet 6v8Wy9TEhfZXzdXVspXYs7bh42N7B7z9jALkz83yxKoC: 0.017128 SOL
+2026-10-25T22:07:18.805Z trial 0: Rakurai ana2y2Yv window 461420912 shared/buffered order FEDBCA
+2026-10-25T22:07:24.590Z run 2026-10-25T22-05-59Z: 1 trials in 1 attempts; landed in the campaign {"Firedancer":2,"JitoLabs":2,"HarmonicFiredancer":2,"AgaveBam":2,"HarmonicAgave":2,"FireBAM":2,"Agave":2,"Rakurai":2}; dispatched {"Firedancer":2,"JitoLabs":3,"HarmonicFiredancer":2,"AgaveBam":2,"HarmonicAgave":2,"FireBAM":2,"Agave":2,"Rakurai":2}
+2026-10-25T22:07:45.252Z block 461420912: 244 transactions
+2026-10-25T22:07:45.352Z data\mainnet-beta\runs\2026-10-25T22-05-59Z: 6/6 transactions landed in 1 blocks
+2026-10-25T22:07:45.352Z spend committed so far: 0.003140 SOL of 0.050000 SOL

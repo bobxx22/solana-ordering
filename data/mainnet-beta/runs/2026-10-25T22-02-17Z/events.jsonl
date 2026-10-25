@@ -1,0 +1,16 @@
+{"t":"2026-10-25T22:02:35.591Z","type":"landing-check","trial":0,"client":"Firedancer","ingress":"170.23.224.5:9007","landed":6,"marginMs":395}
+{"t":"2026-10-25T22:02:35.717Z","type":"landing-check","trial":1,"client":"JitoLabs","ingress":"67.213.121.155:8002","landed":6,"marginMs":-385}
+{"t":"2026-10-25T22:02:44.680Z","type":"landing-check","trial":2,"client":"HarmonicFiredancer","ingress":"198.13.140.105:12349","landed":6,"marginMs":-372}
+{"t":"2026-10-25T22:02:50.541Z","type":"landing-check","trial":3,"client":"AgaveBam","ingress":"88.216.192.50:5010","landed":6,"marginMs":134}
+{"t":"2026-10-25T22:02:50.650Z","type":"landing-check","trial":4,"client":"AgaveBam","ingress":"63.254.167.199:5010","landed":6,"marginMs":-342}
+{"t":"2026-10-25T22:02:55.533Z","type":"landing-check","trial":5,"client":"HarmonicAgave","ingress":"198.13.140.105:12341","landed":6,"marginMs":410}
+{"t":"2026-10-25T22:03:00.878Z","type":"landing-check","trial":6,"client":"HarmonicAgave","ingress":"198.13.140.105:9007","landed":6,"marginMs":353}
+{"t":"2026-10-25T22:03:09.623Z","type":"landing-check","trial":7,"client":"JitoLabs","ingress":"198.244.253.130:8003","landed":0,"marginMs":357}
+{"t":"2026-10-25T22:03:19.515Z","type":"landing-check","trial":8,"client":"HarmonicFiredancer","ingress":"198.13.140.105:12351","landed":6,"marginMs":456}
+{"t":"2026-10-25T22:03:24.822Z","type":"landing-check","trial":9,"client":"FireBAM","ingress":"198.13.141.173:5010","landed":6,"marginMs":-217}
+{"t":"2026-10-25T22:03:30.417Z","type":"landing-check","trial":10,"client":"Firedancer","ingress":"86.54.152.246:9007","landed":6,"marginMs":-275}
+{"t":"2026-10-25T22:03:35.029Z","type":"landing-check","trial":11,"client":"JitoLabs","ingress":"185.189.44.170:12002","landed":6,"marginMs":440}
+{"t":"2026-10-25T22:04:09.288Z","type":"landing-check","trial":12,"client":"Agave","ingress":"209.250.251.15:8002","landed":6,"marginMs":-385}
+{"t":"2026-10-25T22:04:31.423Z","type":"landing-check","trial":13,"client":"Rakurai","ingress":"64.130.41.180:8002","landed":6,"marginMs":367}
+{"t":"2026-10-25T22:05:08.217Z","type":"landing-check","trial":14,"client":"Agave","ingress":"5.199.172.176:12002","landed":6,"marginMs":367}
+{"t":"2026-10-25T22:05:14.017Z","type":"landing-check","trial":15,"client":"FireBAM","ingress":"198.13.141.173:5010","landed":6,"marginMs":-712}

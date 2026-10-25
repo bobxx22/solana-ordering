@@ -873,5 +873,425 @@
    "sentFirst": 0.7333333333333333,
    "rpcReleasedFirst": null
   }
+ },
+ {
+  "run": "2026-10-25T22-02-17Z",
+  "trial": 0,
+  "campaign": "rehearsal",
+  "client": "Firedancer",
+  "leader": "FBbqKvwLfKGZrKrfSbPJz4ymQ7zMarhRyZtu1RBkSe89",
+  "version": "26.10.3",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "buffered",
+  "ingress": "170.23.224.5",
+  "ingressShared": 1,
+  "observedOrder": "EADCFB",
+  "slots": [
+   461419536
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 1,
+   "priorityPerCost": 0.5714285714285714,
+   "cuPrice": 0.5,
+   "totalFee": -0.3333333333333333,
+   "sentFirst": 0.3333333333333333,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-25T22-02-17Z",
+  "trial": 1,
+  "campaign": "rehearsal",
+  "client": "JitoLabs",
+  "leader": "8gDfqHXZ5ektqQQrLrCGtSzYRwkWQrm3ANnAvQCt2LoM",
+  "version": "4.3.2",
+  "path": "tpu",
+  "mode": "independent",
+  "delivery": "streamed",
+  "ingress": "67.213.121.155",
+  "ingressShared": 1,
+  "observedOrder": "EDFABC",
+  "slots": [
+   461419557,
+   461419558
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 0.42857142857142855,
+   "priorityPerCost": 0.5714285714285714,
+   "cuPrice": 0.6666666666666666,
+   "totalFee": 0.16666666666666666,
+   "sentFirst": 1,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-25T22-02-17Z",
+  "trial": 2,
+  "campaign": "rehearsal",
+  "client": "HarmonicFiredancer",
+  "leader": "JUPiTERrZqgf1jUyR7dSkhMx4Kn2qJyekWsg3LT1h4b",
+  "version": "26.10.4",
+  "path": "tpu",
+  "mode": "independent",
+  "delivery": "streamed",
+  "ingress": "198.13.140.105",
+  "ingressShared": 38,
+  "observedOrder": "FDCBEA",
+  "slots": [
+   461419581,
+   461419582
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": -0.42857142857142855,
+   "priorityPerCost": -0.5714285714285714,
+   "cuPrice": -0.16666666666666666,
+   "totalFee": 0,
+   "sentFirst": 1,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-25T22-02-17Z",
+  "trial": 3,
+  "campaign": "rehearsal",
+  "client": "AgaveBam",
+  "leader": "BSVckjdW2f8kcXPGcrPPtV9kUDBZ8w8PjrrGVnxgEdwq",
+  "version": "4.3.2",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "buffered",
+  "ingress": "88.216.192.50",
+  "ingressShared": 26,
+  "observedOrder": "EADCFB",
+  "slots": [
+   461419604
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 1,
+   "priorityPerCost": 0.5714285714285714,
+   "cuPrice": 0.5,
+   "totalFee": -0.3333333333333333,
+   "sentFirst": 0.2,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-25T22-02-17Z",
+  "trial": 4,
+  "campaign": "rehearsal",
+  "client": "AgaveBam",
+  "leader": "722RdWmHC5TGXBjTejzNjbc8xEiduVDLqZvoUGz6Xzbp",
+  "version": "4.3.2",
+  "path": "tpu",
+  "mode": "independent",
+  "delivery": "streamed",
+  "ingress": "63.254.167.199",
+  "ingressShared": 65,
+  "observedOrder": "ABECFD",
+  "slots": [
+   461419625,
+   461419626
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 0.14285714285714285,
+   "priorityPerCost": 0.2857142857142857,
+   "cuPrice": 0.16666666666666666,
+   "totalFee": 0,
+   "sentFirst": 0.8666666666666667,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-25T22-02-17Z",
+  "trial": 5,
+  "campaign": "rehearsal",
+  "client": "HarmonicAgave",
+  "leader": "Fd7btgySsrjuo25CJCj7oE7VPMyezDhnx7pZkj2v69Nk",
+  "version": "4.3.2",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "buffered",
+  "ingress": "198.13.140.105",
+  "ingressShared": 38,
+  "observedOrder": "AEDBCF",
+  "slots": [
+   461419656
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 0.7142857142857143,
+   "priorityPerCost": 0.8571428571428571,
+   "cuPrice": 0.5,
+   "totalFee": 0,
+   "sentFirst": -0.2,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-25T22-02-17Z",
+  "trial": 6,
+  "campaign": "rehearsal",
+  "client": "HarmonicAgave",
+  "leader": "shftkxnsXmqAkmLgz9Mn7bNB5Fr6mKgFc58kFHfVikj",
+  "version": "4.3.2",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "buffered",
+  "ingress": "198.13.140.105",
+  "ingressShared": 38,
+  "observedOrder": "AEDCBF",
+  "slots": [
+   461419680
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 0.8571428571428571,
+   "priorityPerCost": 0.7142857142857143,
+   "cuPrice": 0.3333333333333333,
+   "totalFee": -0.16666666666666666,
+   "sentFirst": 0.06666666666666667,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-25T22-02-17Z",
+  "trial": 8,
+  "campaign": "rehearsal",
+  "client": "HarmonicFiredancer",
+  "leader": "Awes4Tr6TX8JDzEhCZY2QVNimT6iD1zWHzf1vNyGvpLM",
+  "version": "26.10.4",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "buffered",
+  "ingress": "198.13.140.105",
+  "ingressShared": 38,
+  "observedOrder": "AEDCBF",
+  "slots": [
+   461419744
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 0.8571428571428571,
+   "priorityPerCost": 0.7142857142857143,
+   "cuPrice": 0.3333333333333333,
+   "totalFee": -0.16666666666666666,
+   "sentFirst": -0.3333333333333333,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-25T22-02-17Z",
+  "trial": 9,
+  "campaign": "rehearsal",
+  "client": "FireBAM",
+  "leader": "9jxgosAfHgHzwnxsHw4RAZYaLVokMbnYtmiZBreynGFP",
+  "version": "26.10.4",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "burst",
+  "ingress": "198.13.141.173",
+  "ingressShared": 100,
+  "observedOrder": "EADCFB",
+  "slots": [
+   461419789
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 1,
+   "priorityPerCost": 0.5714285714285714,
+   "cuPrice": 0.5,
+   "totalFee": -0.3333333333333333,
+   "sentFirst": -0.6,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-25T22-02-17Z",
+  "trial": 10,
+  "campaign": "rehearsal",
+  "client": "Firedancer",
+  "leader": "9eGrDohdNTAo61DRHyfMuqKWXqYnA3i254Wiszxe8FoY",
+  "version": "26.10.4",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "burst",
+  "ingress": "86.54.152.246",
+  "ingressShared": 1,
+  "observedOrder": "AEDCFB",
+  "slots": [
+   461419813
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 1,
+   "priorityPerCost": 0.5714285714285714,
+   "cuPrice": 0.5,
+   "totalFee": -0.3333333333333333,
+   "sentFirst": 0.2,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-25T22-02-17Z",
+  "trial": 11,
+  "campaign": "rehearsal",
+  "client": "JitoLabs",
+  "leader": "3SkE34PVeGck2ArEffFKjihrQgURsvnoTAhitsNXNzXd",
+  "version": "4.3.2",
+  "path": "tpu",
+  "mode": "independent",
+  "delivery": "buffered",
+  "ingress": "185.189.44.170",
+  "ingressShared": 1,
+  "observedOrder": "AEDFBC",
+  "slots": [
+   461419836
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 0.7142857142857143,
+   "priorityPerCost": 0.8571428571428571,
+   "cuPrice": 0.8333333333333334,
+   "totalFee": 0,
+   "sentFirst": -0.06666666666666667,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-25T22-02-17Z",
+  "trial": 12,
+  "campaign": "rehearsal",
+  "client": "Agave",
+  "leader": "rsbp8zMHbGCpLoRktmsjspYv77VcjxAzH1KxPCD9BiU",
+  "version": "4.3.2",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "streamed",
+  "ingress": "209.250.251.15",
+  "ingressShared": 1,
+  "observedOrder": "EFDCBA",
+  "slots": [
+   461419997,
+   461419998
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 0.14285714285714285,
+   "priorityPerCost": 0,
+   "cuPrice": 0.3333333333333333,
+   "totalFee": -0.16666666666666666,
+   "sentFirst": 1,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-25T22-02-17Z",
+  "trial": 13,
+  "campaign": "rehearsal",
+  "client": "Rakurai",
+  "leader": "7PdKhpKz7T39vZHFL1UfcYNDsLvay6hp4KPQq1aUckFf",
+  "version": "4.3.2",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "buffered",
+  "ingress": "64.130.41.180",
+  "ingressShared": 1,
+  "observedOrder": "EADCFB",
+  "slots": [
+   461420104
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 1,
+   "priorityPerCost": 0.5714285714285714,
+   "cuPrice": 0.5,
+   "totalFee": -0.3333333333333333,
+   "sentFirst": -0.3333333333333333,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-25T22-02-17Z",
+  "trial": 14,
+  "campaign": "rehearsal",
+  "client": "Agave",
+  "leader": "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE",
+  "version": "4.3.2",
+  "path": "tpu",
+  "mode": "independent",
+  "delivery": "buffered",
+  "ingress": "5.199.172.176",
+  "ingressShared": 1,
+  "observedOrder": "EADCFB",
+  "slots": [
+   461420264
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 1,
+   "priorityPerCost": 0.5714285714285714,
+   "cuPrice": 0.5,
+   "totalFee": -0.3333333333333333,
+   "sentFirst": -0.2,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-25T22-02-17Z",
+  "trial": 15,
+  "campaign": "rehearsal",
+  "client": "FireBAM",
+  "leader": "9jxgosAfHgHzwnxsHw4RAZYaLVokMbnYtmiZBreynGFP",
+  "version": "26.10.4",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "streamed",
+  "ingress": "198.13.141.173",
+  "ingressShared": 100,
+  "observedOrder": "CFBEDA",
+  "slots": [
+   461420295
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": -0.42857142857142855,
+   "priorityPerCost": -0.8571428571428571,
+   "cuPrice": -0.5,
+   "totalFee": -0.3333333333333333,
+   "sentFirst": 1,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-25T22-05-59Z",
+  "trial": 0,
+  "campaign": "rehearsal",
+  "client": "Rakurai",
+  "leader": "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY",
+  "version": "4.3.2",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "buffered",
+  "ingress": "45.32.145.112",
+  "ingressShared": 1,
+  "observedOrder": "EADCFB",
+  "slots": [
+   461420912
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 1,
+   "priorityPerCost": 0.5714285714285714,
+   "cuPrice": 0.5,
+   "totalFee": -0.3333333333333333,
+   "sentFirst": -0.06666666666666667,
+   "rpcReleasedFirst": null
+  }
  }
 ]

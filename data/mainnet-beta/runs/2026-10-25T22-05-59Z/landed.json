@@ -1,0 +1,80 @@
+[
+ {
+  "trial": 0,
+  "role": "A",
+  "signature": "5SXgnJPNivDS5TzF4gDkYoySbiHG9C1KeDBkD4qTK8Chb1okPGA5GTsjqLAzWX9KD4AArMdMF5PtPaemQF2LJZvH",
+  "slot": 461420912,
+  "index": 13,
+  "blockTxCount": 244,
+  "leader": "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY",
+  "feeCollector": "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY",
+  "fee": 9000,
+  "costUnits": 1935,
+  "err": null
+ },
+ {
+  "trial": 0,
+  "role": "B",
+  "signature": "42D5UTszSL1W42uUxTr1Y7pzJqEgRsRERktD1svzAWfZ8cd8LaBX71QKeSqWeN2QHUUAxgwBHDa4HxKcyYhyTDPG",
+  "slot": 461420912,
+  "index": 49,
+  "blockTxCount": 244,
+  "leader": "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY",
+  "feeCollector": "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY",
+  "fee": 15000,
+  "costUnits": 1935,
+  "err": null
+ },
+ {
+  "trial": 0,
+  "role": "C",
+  "signature": "2wXXXZ2SvHsEB2GQeDZfAersnmq18Yud4pFZsZ8gsvozR7cD9n4RvZpspW9TNzY82wxqTkhYMTmN3e8Fj8eotDp2",
+  "slot": 461420912,
+  "index": 47,
+  "blockTxCount": 244,
+  "leader": "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY",
+  "feeCollector": "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY",
+  "fee": 5000,
+  "costUnits": 1935,
+  "err": null
+ },
+ {
+  "trial": 0,
+  "role": "D",
+  "signature": "4CJYhRjUREd2E11AvetLQSNpZL4BeKEYQH7qDPsvKBa9yosV8AGc9NAHDr4o4J5FptXrmwbVgRmANAuofgeRycqT",
+  "slot": 461420912,
+  "index": 39,
+  "blockTxCount": 244,
+  "leader": "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY",
+  "feeCollector": "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY",
+  "fee": 14000,
+  "costUnits": 1935,
+  "err": null
+ },
+ {
+  "trial": 0,
+  "role": "E",
+  "signature": "3snU2TeyHijNbLahvdpPjpeDXRAvv5ZSZo5SYVCUrF4jVmvEZGq9FnNbs549f58jtin5Vgjzfr4MCqfcLrY47CdT",
+  "slot": 461420912,
+  "index": 12,
+  "blockTxCount": 244,
+  "leader": "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY",
+  "feeCollector": "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY",
+  "fee": 9000,
+  "costUnits": 1935,
+  "err": null
+ },
+ {
+  "trial": 0,
+  "role": "F",
+  "signature": "3GSbpL5PXS3KVFmNGY8pewwarXmscf7m3v8qKN59xr2D7v7Eu1zfVr4H1UStqoWkpSYBWGqZGiRMjrqPTAZamY3A",
+  "slot": 461420912,
+  "index": 48,
+  "blockTxCount": 244,
+  "leader": "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY",
+  "feeCollector": "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY",
+  "fee": 9000,
+  "costUnits": 1935,
+  "err": null
+ }
+]

@@ -1,0 +1,51 @@
+2026-10-25T22:02:18.872Z epoch 1068, 3936 gossip nodes, 665 current + 25 delinquent vote accounts
+2026-10-25T22:02:18.876Z LIVE on mainnet-beta via tpu, campaign "rehearsal": up to 16 more landed trials, at most 0.000061 SOL each (0.000976 SOL)
+2026-10-25T22:02:18.877Z spend cap 0.050000 SOL (of which 0.000100 SOL kept for sweeping), committed 0.002154 SOL; reads via https://mainnet.helius-rpc.com/ (credentials hidden)
+2026-10-25T22:02:18.877Z   role A: limit 1000 CU, price 4000000 µL/CU, loaded-data limit 16384 B, reward/cost 2.783
+2026-10-25T22:02:18.877Z   role B: limit 40000 CU, price 250000 µL/CU, loaded-data limit 16384 B, reward/cost 0.302
+2026-10-25T22:02:18.877Z   role C: limit 1000 CU, price 0 µL/CU, loaded-data limit 16384 B, reward/cost 1.070
+2026-10-25T22:02:18.877Z   role D: limit 6000 CU, price 1500000 µL/CU, loaded-data limit 16384 B, reward/cost 1.568
+2026-10-25T22:02:18.877Z   role E: limit 1000 CU, price 4000000 µL/CU, loaded-data limit 16384 B, reward/cost 2.783
+2026-10-25T22:02:18.877Z   role F: limit 1000 CU, price 4000000 µL/CU, loaded-data limit 67108864 B, reward/cost 0.347
+2026-10-25T22:02:18.921Z main wallet 6v8Wy9TEhfZXzdXVspXYs7bh42N7B7z9jALkz83yxKoC: 0.032877 SOL
+2026-10-25T22:02:19.119Z top-up: 12 sub-payers, 0.015739 SOL from the main wallet
+2026-10-25T22:02:21.415Z fund: confirmed 2yXRyAyJZJkJcRScuTuSkwFWSKwVuNVqYUBAfiMouLsKF8oDDZDSg5yahCcm9Cko6J9WDdMXhFmkR4E3bSEuiTiB
+2026-10-25T22:02:23.781Z fund: confirmed emFNLhXL9rqJnAsio1kirXUdwXQGfzFwW5TUabJfiUZw99xtuURHgrTH7Z3mJ1uMRcBwTkaDnQHWPh4CH6eGQaF
+2026-10-25T22:02:25.681Z trial 0: Firedancer FBbqKvwL window 461419536 shared/buffered order AEFCBD
+2026-10-25T22:02:30.517Z trial 1: JitoLabs 8gDfqHXZ window 461419556 independent/streamed order EDFABC
+2026-10-25T22:02:35.485Z trial 2: HarmonicFiredancer JUPiTERr window 461419580 independent/streamed order FDCBEA
+2026-10-25T22:02:40.200Z trial 3: AgaveBam BSVckjdW window 461419604 shared/buffered order CAFEDB
+2026-10-25T22:02:44.572Z trial 4: AgaveBam 722RdWmH window 461419624 independent/streamed order BAECFD
+2026-10-25T22:02:50.418Z trial 5: HarmonicAgave Fd7btgyS window 461419656 shared/buffered order CEBFAD
+2026-10-25T22:02:55.425Z trial 6: HarmonicAgave shftkxns window 461419680 shared/buffered order DEFABC
+2026-10-25T22:03:00.824Z trial 7: JitoLabs SyndicAg window 461419704 independent/buffered order EDCFBA
+2026-10-25T22:03:09.500Z trial 8: HarmonicFiredancer Awes4Tr6 window 461419744 shared/buffered order CDFEBA
+2026-10-25T22:03:19.407Z trial 9: FireBAM 9jxgosAf window 461419788 shared/burst order BCDFEA
+2026-10-25T22:03:24.774Z trial 10: Firedancer 9eGrDohd window 461419812 shared/burst order CDEAFB
+2026-10-25T22:03:29.260Z trial 11: JitoLabs 3SkE34PV window 461419836 independent/buffered order BACDEF
+2026-10-25T22:04:03.688Z trial 12: Agave rsbp8zMH window 461419996 shared/streamed order EFDCBA
+2026-10-25T22:04:25.952Z trial 13: Rakurai 7PdKhpKz window 461420104 shared/buffered order BFAEDC
+2026-10-25T22:05:00.988Z trial 14: Agave 7QQGNm3p window 461420264 independent/buffered order FADBCE
+2026-10-25T22:05:08.108Z trial 15: FireBAM 9jxgosAf window 461420292 shared/streamed order CFBEDA
+2026-10-25T22:05:25.149Z run 2026-10-25T22-02-17Z: 16 trials in 16 attempts; landed in the campaign {"Firedancer":2,"JitoLabs":2,"HarmonicFiredancer":2,"AgaveBam":2,"HarmonicAgave":2,"FireBAM":2,"Agave":2,"Rakurai":1}; dispatched {"Firedancer":2,"JitoLabs":3,"HarmonicFiredancer":2,"AgaveBam":2,"HarmonicAgave":2,"FireBAM":2,"Agave":2,"Rakurai":1}
+2026-10-25T22:05:45.947Z block 461419536: 748 transactions
+2026-10-25T22:05:46.229Z block 461419557: 541 transactions
+2026-10-25T22:05:46.583Z block 461419558: 415 transactions
+2026-10-25T22:05:47.232Z block 461419581: 1011 transactions
+2026-10-25T22:05:47.624Z block 461419582: 1083 transactions
+2026-10-25T22:05:47.947Z block 461419604: 867 transactions
+2026-10-25T22:05:48.236Z block 461419625: 533 transactions
+2026-10-25T22:05:48.575Z block 461419626: 683 transactions
+2026-10-25T22:05:49.632Z block 461419656: 812 transactions
+2026-10-25T22:05:50.287Z block 461419680: 870 transactions
+2026-10-25T22:05:50.558Z block 461419744: 680 transactions
+2026-10-25T22:05:51.107Z block 461419789: 679 transactions
+2026-10-25T22:05:51.353Z block 461419813: 499 transactions
+2026-10-25T22:05:52.291Z block 461419836: 654 transactions
+2026-10-25T22:05:52.843Z block 461419997: 407 transactions
+2026-10-25T22:05:53.129Z block 461419998: 589 transactions
+2026-10-25T22:05:53.289Z block 461420104: 154 transactions
+2026-10-25T22:05:53.758Z block 461420264: 618 transactions
+2026-10-25T22:05:54.039Z block 461420295: 433 transactions
+2026-10-25T22:05:54.109Z data\mainnet-beta\runs\2026-10-25T22-02-17Z: 90/96 transactions landed in 19 blocks
+2026-10-25T22:05:54.109Z spend committed so far: 0.003079 SOL of 0.050000 SOL
