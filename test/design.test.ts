@@ -49,25 +49,28 @@ test('shared trials write one anchor, independent trials six; signatures are uni
   )
 })
 
-test('cells are dealt in balanced blocks of ten per client; a returned cell comes back first', () => {
+test('cells are dealt by deficit: exact target shares, kept across a continuation and after failed trials', () => {
+  const want = { 'buffered/independent': 4, 'buffered/shared': 10, 'burst/shared': 2, 'streamed/independent': 2, 'streamed/shared': 2 }
   const dealer = new CellDealer(rng(1))
-  const seen = new Map<string, number>()
   for (let i = 0; i < 20; i++) {
-    const c = dealer.take('X')
-    const k = `${c.mode}/${c.delivery}`
-    seen.set(k, (seen.get(k) ?? 0) + 1)
+    const c = dealer.peek('X')
+    assert.deepEqual(dealer.peek('X'), c) // stable until counted
+    dealer.add('X', c)
   }
-  assert.deepEqual(Object.fromEntries([...seen].sort()), {
-    'independent/buffered': 4,
-    'independent/streamed': 2,
-    'shared/buffered': 10,
-    'shared/burst': 2,
-    'shared/streamed': 2,
-  })
-  const next = dealer.peek('X')
-  dealer.giveBack('X', { mode: 'independent', delivery: 'streamed' })
-  assert.deepEqual(dealer.take('X'), { mode: 'independent', delivery: 'streamed' })
-  assert.deepEqual(dealer.peek('X'), next)
+  assert.deepEqual(Object.fromEntries(Object.entries(dealer.countsFor('X')).sort()), want)
+  // a failed trial is removed again and its cell is the next one dealt
+  dealer.add('X', { mode: 'independent', delivery: 'streamed' }, -1)
+  assert.deepEqual(dealer.peek('X'), { mode: 'independent', delivery: 'streamed' })
+  // a continuation seeded with 7 landed cells completes the same 20-trial design
+  const seeded = new CellDealer(rng(2))
+  const first = new CellDealer(rng(3))
+  for (let i = 0; i < 7; i++) {
+    const c = first.peek('Y')
+    first.add('Y', c)
+    seeded.add('Y', c)
+  }
+  for (let i = 7; i < 20; i++) seeded.add('Y', seeded.peek('Y'))
+  assert.deepEqual(Object.fromEntries(Object.entries(seeded.countsFor('Y')).sort()), want)
 })
 
 test('ledger: lock required, cap enforced with the sweep allowance, settled to actual fees', () => {

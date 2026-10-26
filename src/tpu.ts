@@ -23,6 +23,8 @@ export interface SendResult {
   state?: string
   /** set when a connection the peer had closed was reopened before sending: the close state and reason */
   reconnected?: string | null
+  /** handshake time of that reconnect, which delayed the burst */
+  reconnectMs?: number | null
 }
 
 export class TpuSender {

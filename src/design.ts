@@ -161,38 +161,65 @@ export const LOCAL_CLIENTS = ['Agave', 'JitoLabs', 'Firedancer', 'Rakurai']
 export const PIPELINE_CLIENTS = ['AgaveBam', 'FireBAM', 'HarmonicAgave', 'HarmonicFiredancer']
 export const DEFAULT_QUOTAS: Record<string, number> = Object.fromEntries([...LOCAL_CLIENTS.map((c) => [c, 60]), ...PIPELINE_CLIENTS.map((c) => [c, 30])])
 
-/** Factor cells are dealt per client in shuffled blocks, so every client gets the same balanced design. */
+export const cellKey = (c: Cell) => `${c.delivery}/${c.mode}`
+
+/**
+ * Deals cells by deficit. A client's next cell is the one furthest below its target share (CELL_BLOCK), given the
+ * cells the client already has: landed trials of the campaign (seeded at start, so a continuation run keeps the
+ * balance) plus trials dispatched and awaiting their landing check. Ties are broken at random. A trial that does not
+ * land is removed again, so the landed design stays balanced whatever happens to individual trials.
+ */
 export class CellDealer {
-  private queues = new Map<string, Cell[]>()
+  private counts = new Map<string, Map<string, number>>()
+  private chosen = new Map<string, Cell>()
   private random: () => number
-  private block: Cell[]
+  private targets: { cell: Cell; weight: number }[]
 
   constructor(random: () => number, block: Cell[] = CELL_BLOCK) {
     this.random = random
-    this.block = block
-  }
-
-  /** The cell the client's next trial will get. */
-  peek(client: string): Cell {
-    let q = this.queues.get(client)
-    if (!q || q.length === 0) {
-      q = shuffle(this.block, this.random)
-      this.queues.set(client, q)
+    const w = new Map<string, { cell: Cell; weight: number }>()
+    for (const c of block) {
+      const k = cellKey(c)
+      w.set(k, { cell: c, weight: (w.get(k)?.weight ?? 0) + 1 / block.length })
     }
-    return q[0]
+    this.targets = [...w.values()]
   }
 
-  /** Consumes the cell; called only once the trial has actually been dispatched. */
-  take(client: string): Cell {
-    const cell = this.peek(client)
-    this.queues.get(client)!.shift()
+  private countsOf(client: string): Map<string, number> {
+    let m = this.counts.get(client)
+    if (!m) this.counts.set(client, (m = new Map()))
+    return m
+  }
+
+  /** The cell the client's next trial will get (stable until the client's counts change). */
+  peek(client: string): Cell {
+    const cached = this.chosen.get(client)
+    if (cached) return cached
+    const m = this.countsOf(client)
+    const total = [...m.values()].reduce((a, b) => a + b, 0)
+    let best: Cell[] = []
+    let bestDeficit = -Infinity
+    for (const t of this.targets) {
+      const deficit = t.weight * (total + 1) - (m.get(cellKey(t.cell)) ?? 0)
+      if (deficit > bestDeficit + 1e-9) {
+        best = [t.cell]
+        bestDeficit = deficit
+      } else if (Math.abs(deficit - bestDeficit) <= 1e-9) best.push(t.cell)
+    }
+    const cell = shuffle(best, this.random)[0]
+    this.chosen.set(client, cell)
     return cell
   }
 
-  /** Returns the cell of a trial that landed nothing, so the landed design stays balanced. */
-  giveBack(client: string, cell: Cell): void {
-    this.peek(client)
-    this.queues.get(client)!.unshift(cell)
+  /** Counts a cell for the client: +1 when dispatched (or seeded from a landed trial), -1 when a trial did not land. */
+  add(client: string, cell: Cell, delta = 1): void {
+    const m = this.countsOf(client)
+    m.set(cellKey(cell), Math.max(0, (m.get(cellKey(cell)) ?? 0) + delta))
+    this.chosen.delete(client)
+  }
+
+  countsFor(client: string): Record<string, number> {
+    return Object.fromEntries(this.countsOf(client))
   }
 }
 

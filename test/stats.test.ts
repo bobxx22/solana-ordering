@@ -30,3 +30,12 @@ test('binomial p-values', () => {
   assert.equal(binomialP(5, 10), 1)
   assert.ok(Math.abs(binomialP(10, 10) - 2 / 1024) < 1e-12)
 })
+
+test('exact upper tail of a sum', async () => {
+  const { exactUpperTail } = await import('../src/stats.ts')
+  // ten single pairs all in order: 2^-10
+  assert.ok(Math.abs(exactUpperTail(Array(10).fill([0.5, 0, 0.5]), 20) - 2 ** -10) < 1e-15)
+  // three two-pair trials (0/1/2 with 1/3 each), all 2: (1/3)^3
+  assert.ok(Math.abs(exactUpperTail(Array(3).fill([1 / 3, 1 / 3, 1 / 3]), 6) - 1 / 27) < 1e-15)
+  assert.equal(exactUpperTail([[0.5, 0, 0.5]], 0), 1)
+})

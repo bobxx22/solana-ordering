@@ -74,32 +74,52 @@ export const ledgerFile = (cfg: Config) => join(cfg.dataDir, cfg.cluster, 'ledge
 
 class Fatal extends Error {}
 
-/** Counters carried over from the earlier live runs of a campaign. */
+/**
+ * Counters carried over from the earlier live runs of a campaign: landed trials and their cells, dispatches,
+ * per-validator counts (refused handshakes included) and excluded addresses. Whether an address takes unstaked
+ * traffic is a fact about the address, not the campaign, so `everLanded` is built from every live run.
+ */
 function campaignState(cfg: Config, campaign: string) {
   const perClient = new Map<string, number>()
   const perValidator = new Map<string, number>()
   const dispatched = new Map<string, number>()
   const excluded = new Set<string>()
   const everLanded = new Set<string>()
+  const cells: { client: string; cell: Cell }[] = []
   const root = runsDir(cfg)
   const runs: string[] = []
   for (const id of existsSync(root) ? readdirSync(root).sort() : []) {
     const f = join(root, id, 'run.json')
     if (!existsSync(f)) continue
     const meta = JSON.parse(readFileSync(f, 'utf8'))
-    if (!meta.live || meta.campaign !== campaign) continue
+    if (!meta.live) continue
+    const trials = readJsonl(join(root, id, 'trials.jsonl'))
+    const events = readJsonl(join(root, id, 'events.jsonl'))
+    // any live run: addresses through which something landed
+    const landedFile = join(root, id, 'landed.json')
+    if (existsSync(landedFile)) {
+      const landedTrials = new Set((JSON.parse(readFileSync(landedFile, 'utf8')) as { trial: number; slot: number | null }[]).filter((l) => l.slot !== null).map((l) => l.trial))
+      for (const t of trials) if (t.tpuQuic && landedTrials.has(t.trial)) everLanded.add(t.tpuQuic)
+    }
+    for (const e of events) if (e.type === 'landing-check' && e.landed > 0) everLanded.add(e.ingress)
+    if (meta.campaign !== campaign) continue
     runs.push(id)
-    for (const t of readJsonl(join(root, id, 'trials.jsonl'))) {
+    const byTrial = new Map(trials.map((t) => [t.trial, t]))
+    for (const t of trials) {
       dispatched.set(t.client, (dispatched.get(t.client) ?? 0) + 1)
       perValidator.set(t.leader, (perValidator.get(t.leader) ?? 0) + 1)
     }
-    for (const e of readJsonl(join(root, id, 'events.jsonl'))) {
-      if (e.type === 'landing-check' && e.landed >= 2) perClient.set(e.client, (perClient.get(e.client) ?? 0) + 1)
-      if (e.type === 'landing-check' && e.landed > 0) everLanded.add(e.ingress)
+    for (const e of events) {
+      if (e.type === 'landing-check' && e.landed >= 2) {
+        perClient.set(e.client, (perClient.get(e.client) ?? 0) + 1)
+        const t = byTrial.get(e.trial)
+        if (t) cells.push({ client: e.client, cell: { mode: t.mode, delivery: t.delivery } })
+      }
+      if (e.type === 'refused') perValidator.set(e.leader, (perValidator.get(e.leader) ?? 0) + 1)
       if (e.type === 'exclude') excluded.add(e.ingress)
     }
   }
-  return { runs, perClient, perValidator, dispatched, excluded, everLanded }
+  return { runs, perClient, perValidator, dispatched, excluded, everLanded, cells }
 }
 
 export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Promise<string> {
@@ -188,6 +208,7 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
   if (tpu && !(await tpu.ready())) throw new Error('the QUIC sender (py/tpu_sender.py) did not start; install py/requirements.txt')
   const random = rng(opts.seed)
   const dealer = new CellDealer(random, opts.cells)
+  for (const { client, cell } of carried.cells) dealer.add(client, cell)
   const clock = new SlotClock(rpc)
   await clock.start()
   const hashes = new BlockhashCache(rpc)
@@ -207,6 +228,8 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
     stopping = true
   }
   process.on('SIGINT', onSigint)
+  // `docker compose stop` sends SIGTERM: stop the same graceful way (landing checks and collection still run)
+  process.on('SIGTERM', onSigint)
 
   const deadline = Date.now() + opts.maxMinutes * 60_000
   // A trial counts towards its client's quota once at least two of its transactions are confirmed. An address
@@ -245,10 +268,9 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
       }
       if (landed >= 2) perClient.set(c.client, (perClient.get(c.client) ?? 0) + 1)
       else {
-        if (landed === 0) {
-          dealer.giveBack(c.client, c.cell)
-          failed(c.ingress, c.client, 'empty burst')
-        }
+        // the cell was counted at dispatch; a trial that does not count towards the quota gives it back
+        dealer.add(c.client, c.cell, -1)
+        if (landed === 0) failed(c.ingress, c.client, 'empty burst')
       }
     }
   }
@@ -339,8 +361,9 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
         if (!c.ok) {
           if (tpu.exited) throw new Fatal('the QUIC sender exited')
           skip(`QUIC connect to ${target.client} failed: ${c.error}`)
-          // a refusing address is not retried at every one of its windows
+          // a refusing address is not retried at every one of its windows, in this run or a continuation
           perValidator.set(target.leader, (perValidator.get(target.leader) ?? 0) + 1)
+          events('refused', { leader: target.leader, client: target.client, ingress: target.tpuQuic })
           failed(target.tpuQuic!, target.client, 'handshake refused')
           continue
         }
@@ -384,12 +407,14 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
       let sent: Sent[]
       let connState: string | null = null
       let reconnected: string | null = null
+      let reconnectMs: number | null = null
       if (!live) {
         sent = inOrder.map((t) => ({ role: t.role, sentAt: new Date().toISOString(), ackAt: null, ackMs: null, blocked: null, ok: true, error: null }))
       } else if (tpu) {
         const r = await tpu.send(target.tpuQuic!, inOrder.map((t) => t.wire), gapMs)
         connState = r.state ?? null
         reconnected = r.reconnected ?? null
+        reconnectMs = r.reconnectMs ?? null
         const iso = (ns: string | null | undefined) => (ns ? new Date(Number(BigInt(ns) / 1_000_000n)).toISOString() : null)
         sent = inOrder.map((t, k) => ({
           role: t.role,
@@ -417,7 +442,7 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
         )
       }
       if (tpu) tpu.closeLater(target.tpuQuic!)
-      dealer.take(target.client)
+      dealer.add(target.client, cell)
       lastFire = target.fire
       dispatched.set(target.client, (dispatched.get(target.client) ?? 0) + 1)
       perValidator.set(target.leader, (perValidator.get(target.leader) ?? 0) + 1)
@@ -443,6 +468,7 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
         handshakeMs,
         connState,
         reconnected,
+        reconnectMs,
         mode: cell.mode,
         delivery: cell.delivery,
         sendOrder: order,
@@ -510,6 +536,7 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
     log.info(`spend committed so far: ${fmtSol(ledger.committed())} of ${fmtSol(ledger.cap)}`)
   }
   process.off('SIGINT', onSigint)
+  process.off('SIGTERM', onSigint)
   ledger.unlock()
   return dir
 }

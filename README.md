@@ -141,7 +141,8 @@ name: the quotas, the per-validator counts and the excluded addresses carry over
   - FireBAM had 94% of its slots behind shared addresses.
   - The 86 Harmonic validators sat on 6 hosts, with a separate port each.
   - Every JitoLabs, Firedancer, Rakurai and Agave validator had its own address. But 37 JitoLabs validators (about a
-    quarter of JitoLabs slots) advertise port 11228, and both JitoLabs bursts that landed nothing in calibration went
+    quarter of JitoLabs slots) advertise port 11228, most likely a Jito relayer in front of the validator, and both
+    JitoLabs bursts that landed nothing in calibration went
     to that port. The run excludes such addresses once they have failed twice without ever landing, and the report
     gives each label's reachable share.
 
@@ -181,7 +182,7 @@ name: the quotas, the per-validator counts and the excluded addresses carry over
 
 ### Competition inside the block
 
-- **The market around us.** Our six transactions land among 200–600 others per block. We cannot control those.
+- **The market around us.** Our six transactions land among 150–1 100 others per block (`results.md`). We cannot control those.
 - **Where we stand.** In lamports our priority fees are small (0 to 10 000), but per scheduled compute unit even our
   weakest roles out-rank most of the block: the typical transaction requests far more compute than it pays for.
   The experiment therefore measures how a scheduler ranks transactions **near the head of its queue**. It does not
@@ -203,7 +204,8 @@ name: the quotas, the per-validator counts and the excluded addresses carry over
   (30 ms apart) checks that arrival order is preserved when nothing is held back.
 ### Noise versus rule
 
-The analysis is fixed before the main run (this section, and the header of `src/analyze.ts`):
+The analysis is fixed before the first trial of the main run. This section and the header of `src/analyze.ts` are
+the plan; the commit that introduced them predates every trial of campaign `main`.
 
 - **Unit.** One trial. Its transactions that landed in the targeted leader's 4-slot window are ordered by
   (slot, index): a transaction pushed to a later slot of the window counts as later. Landings outside the window are
@@ -214,23 +216,44 @@ The analysis is fixed before the main run (this section, and the header of `src/
   - C before B;
   - D before C.
 
-  Each test is a one-sided exact sign-flip test against chance (0.5), Holm-adjusted over the twelve. Shares are
-  given with Wilson intervals.
-- **Control.** A,E before C, reported first and outside the family. A label that fails it is reported as "no fee
-  ordering detected", whatever its other contrasts say.
-- **Reading the outcome.** The outcome is read against the decision table in `docs/schedulers.md`. For example,
-  A,E before F with C before B and D before C means ranking by reward/cost as in the source. A,E before F failing
-  while C before B holds means the cost term is ignored.
+  The Agave label includes its 4.4/4.5 pre-release validators: their priority formula is byte-identical
+  (`docs/schedulers.md`). Each test is one-sided against chance, using the exact null distribution of the sum of
+  per-trial values. A single pair is 0 or 1 with probability 1/2; A,E vs F is 0, 1/2 or 1 with probability 1/3 each.
+  The twelve are Holm-adjusted together, and a test without data enters with p = 1. Shares are given with 95%
+  bootstrap intervals over trials.
+- **Verdicts.**
+  - **holds**: Holm-adjusted p < 0.05;
+  - **contradicted**: the interval's upper end is below 0.75, that is, not the near-deterministic order the source
+    predicts;
+  - **inconclusive**: anything else.
+
+  An inconclusive contrast is reported as such, never as its opposite. `analyze` prints the verdict column and the
+  reading of each label from the decision table in `docs/schedulers.md`.
+- **Control.** A,E before C (same cost, strictly higher fee), outside the family. A label whose control has
+  unadjusted p ≥ 0.05 is reported as "no fee ordering detected", whatever its other contrasts say.
+- **What the contrasts identify.** C before B and D before C bracket the base-fee share counted as reward between 0.12
+  and 0.84; the source's 0.5 lies inside. A,E before F shows that the *requested loaded-data limit* enters the cost.
+- **Shortfall.** A label that misses its quota by the end of the measurement period stays in the family with the
+  number of trials it has.
+- **Robustness**, reported, not tested:
+  - each test rerun without each validator in turn (leave one out), with the worst p and any change of verdict;
+  - per-validator shares for validators with at least 5 primary trials, since each local label rests on two or three
+    large operators;
+  - a sensitivity run without trials that reconnected before sending, had an arrival margin under 100 ms, or ran on
+    a clock other than `firstShred`.
 - **Secondary, descriptive.** Shares with intervals, no tests:
   - buffered/independent per label;
-  - burst and streamed pooled over the local labels;
-  - the twins;
+  - burst per label;
+  - streamed pooled over the local labels;
+  - the twins by version family (Agave ≤ 4.3 container-id ties, Agave ≥ 4.4 oldest-first ties, Firedancer treap ties);
   - the pipeline labels;
+  - exact-order rates;
   - rule agreement (gamma per trial, bootstrap over ingress hosts, sign-flip over host means);
-  - the calibration runs.
-- **Power.** With ~30 buffered/shared trials per local label, a contrast that holds 90% of the time passes the
-  Holm threshold with probability ~0.97; one that holds 80% of the time, ~0.6. Burst and streamed get about 6 trials
-  per label, which is why they are only pooled and described.
+  - the calibration and rehearsal runs.
+
+  `results/orders.md` lists every trial's send order and observed order.
+- **Power.** With 30 buffered/shared trials per local label, a contrast that holds 90% of the time passes the Holm
+  threshold with probability about 0.99; 80% of the time, about 0.76 (exact binomial computation, review round 4).
 
 ### What this design does not separate
 
@@ -284,6 +307,8 @@ The analysis is fixed before the main run (this section, and the header of `src/
 - `results/`: generated by `analyze`.
 
 ## Commands
+
+The main run follows [`docs/RUNBOOK.md`](docs/RUNBOOK.md).
 
 `node src/cli.ts help` lists them all.
 

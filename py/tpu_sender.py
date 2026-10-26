@@ -81,8 +81,9 @@ class Sender:
             if stale._state.name != "CONNECTED":
                 ev = getattr(stale, "_close_event", None)
                 reconnected = f"{stale._state.name}: {getattr(ev, 'error_code', None)} {getattr(ev, 'reason_phrase', '')}".strip()
+        reconnect_ms = None
         if addr not in self.conns or reconnected:
-            await self.connect(addr)
+            reconnect_ms = (await self.connect(addr))["handshakeMs"]
         _, proto = self.conns[addr]
         quic = proto._quic
         sent, streams = [], []
@@ -104,7 +105,7 @@ class Sender:
                 if acked[i] is None and st is not None and st.sender.is_finished:
                     acked[i] = str(time.time_ns())
             await asyncio.sleep(0.002)
-        return {"sentNs": sent, "ackNs": acked, "blocked": blocked, "state": state, "reconnected": reconnected}
+        return {"sentNs": sent, "ackNs": acked, "blocked": blocked, "state": state, "reconnected": reconnected, "reconnectMs": reconnect_ms}
 
     async def close(self, addr):
         entry = self.conns.pop(addr, None)

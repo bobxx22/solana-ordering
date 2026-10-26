@@ -1,18 +1,24 @@
 # How the schedulers we measure rank transactions (source reference)
 
-Every statement below is read from the source of the exact versions mainnet ran during our measurements, as reported
-in gossip. Each one links to the tagged line:
+Every statement below is read from the source of the versions mainnet runs. Each one links to the tagged line.
 
-- **Agave v4.3.2**: the Agave, AgaveBam, HarmonicAgave and Rakurai labels report this version string.
-- **Jito-Solana v4.3.2-jito**: the JitoLabs label.
-- **Firedancer v26.10.4**: Firedancer, FireBAM and HarmonicFiredancer.
+## Versions
 
-Statements about `master` are marked as such: several earlier claims (ours and the reviewers') came from `master`,
-and they do not hold for the deployed versions. The sources were read on 2026-10-26, through the Helius `svm` skill
-(`readSolanaSourceFile`) and raw GitHub files.
+The version strings come from gossip (snapshot of epoch 1068, by share of each label's leader slots; the `Versions`
+table of `results.md` is generated from the main run's own snapshots).
 
-BAM sequencing (AgaveBam, FireBAM), Harmonic block building and Rakurai's scheduler are not covered: their ordering
-components are outside these repositories. For those labels our results describe the whole pipeline (see README).
+| label | versions | source read |
+|---|---|---|
+| Agave | 4.3.2 80%, 4.4.0-rc.0 9%, 4.5.0-alpha.2 8%, 4.4.0-beta.1 2% | `anza-xyz/agave` tags v4.3.2, v4.4.0-rc.0, v4.5.0-alpha.2 |
+| JitoLabs | 4.3.2 (100% of slots) | `jito-foundation/jito-solana` tag v4.3.2-jito |
+| AgaveBam, HarmonicAgave, Rakurai | report 4.3.2 | Agave v4.3.2 for the base scheduler; the BAM sequencer, Harmonic block building and Rakurai's scheduler are not in these repositories |
+| Firedancer | 26.10.4 92%, 26.10.3 6%, "0.1.1" 1% | `firedancer-io/firedancer` tag v26.10.4 |
+| FireBAM, HarmonicFiredancer | report 26.10.4 | Firedancer v26.10.4 for pack |
+
+Sources were read on 2026-10-26, through the Helius `svm` skill (`readSolanaSourceFile`) and raw GitHub files.
+Statements about `master` are marked as such: earlier claims (ours and reviewers') that came from `master` do not all
+hold for the deployed versions. "0.1.1" is reported by two small Firedancer-label validators; we did not identify that
+build, and it is kept in the label.
 
 ## What both clients sort by
 
@@ -28,8 +34,8 @@ components are outside these repositories. For those labels our results describe
   - With no limit set, the loaded-data limit is 64 MiB, which costs 16 384 CU.
 - **Reward** is `get_deposit()`: the whole priority fee plus the base fee minus a 50% burn (L52, and
   [runtime/src/bank/fee_distribution.rs:97-106](https://github.com/anza-xyz/agave/blob/v4.3.2/runtime/src/bank/fee_distribution.rs#L97-L106)).
-
-**Jito-Solana v4.3.2-jito.** `core/src/transaction_priority.rs` is byte-identical to Agave's.
+- `core/src/transaction_priority.rs` is byte-identical in **v4.4.0-rc.0 and v4.5.0-alpha.2**, and in
+  **Jito-Solana v4.3.2-jito**.
 
 **Firedancer v26.10.4**
 - Pack keeps pending transactions in a treap ordered by `rewards / compute_est`
@@ -41,36 +47,42 @@ components are outside these repositories. For those labels our results describe
   [fd_pack.h:42](https://github.com/firedancer-io/firedancer/blob/v26.10.4/src/disco/pack/fd_pack.h#L42)
   `FD_PACK_TXN_FEE_BURN_PCT 50`).
 
-**Consequences for the design**
-
-- The two production clients compute **the same ratio**. It is the one our design calls *reward/cost*
+**What this means for the design**
+- Every deployed version computes **the same ratio**. It is the one our design calls *reward/cost*
   (`src/design.ts`, `expectedPriority`), with the same half base fee and the same requested-limit cost.
   `test/misc.test.ts` checks that our reconstruction of that cost equals the design cost for every role.
-- **F really is 8× more expensive** to both clients' schedulers: 18 711 vs 2 335 CU, because the loaded-data limit
-  enters the cost before execution. That is why A,E before F is a direct test of the cost denominator.
-- **D before C** holds under both clients' actual reward (half the base fee): D 11 500 / 7 336 = 1.57 against
-  C 2 500 / 2 336 = 1.07. It is not rule-agnostic, though: counting the whole base fee would reverse it. The
-  rule-agnostic control is A,E before C (same cost, strictly higher fee).
+- **F really is 8× more expensive** to both clients' schedulers: 18 711 vs 2 335 CU, because the requested loaded-data
+  limit enters the cost before execution. A and F have the same CU limit, so A,E before F shows specifically that the
+  *requested loaded-data limit* enters the ranking.
+
+## What the contrasts identify
+
+Let the leader count a share *k* of the base fee as reward (both clients' source: *k* = 0.5). From the design's
+numbers (priority fees A 4 000, B 10 000, C 0, D 9 000 lamports; costs 2 335, 41 335, 2 335, 7 335):
+- **C before B** holds for *k* > 0.12 (C 5 000*k*/2 336 against B (10 000 + 5 000*k*)/41 336).
+- **D before C** holds for *k* < 0.84 (D (9 000 + 5 000*k*)/7 336 against C 5 000*k*/2 336).
+- **Together** they bracket *k* in (0.12, 0.84), which contains the source's 0.5, rather than proving exactly 0.5.
+- **A,E before C** holds for every fee-aware rule (same cost, strictly higher fee): it is the positive control.
 
 ## Ties
 
-**Agave v4.3.2 and Jito v4.3.2-jito**
-- `TransactionPriorityId` is `{ priority, id }`, with derived ordering
-  ([transaction_priority_id.rs:4-8](https://github.com/anza-xyz/agave/blob/v4.3.2/core/src/banking_stage/transaction_scheduler/transaction_priority_id.rs#L4-L8)).
-- Equal priorities are broken by the internal `id`, the slot index of the transaction in the container's slab
-  ([transaction_state_container.rs:278-294](https://github.com/anza-xyz/agave/blob/v4.3.2/core/src/banking_stage/transaction_scheduler/transaction_state_container.rs#L278-L294)).
-  Slab slots are reused, so the tie order is **not** arrival order.
-- `master` has since added an `arrival_order` field that breaks ties oldest-first. That is not what mainnet runs.
+| deployed version | equal priorities are broken by | source |
+|---|---|---|
+| Agave v4.3.2, Jito v4.3.2-jito | the internal `id`: the transaction's key in the container's slab, assigned at insertion and reused after removal (not arrival order) | `TransactionPriorityId { priority, id }` with derived ordering, [transaction_priority_id.rs:4-8](https://github.com/anza-xyz/agave/blob/v4.3.2/core/src/banking_stage/transaction_scheduler/transaction_priority_id.rs#L4-L8); `insert_map_only` takes the slab's vacant key, [transaction_state_container.rs:268-273, 292-295](https://github.com/anza-xyz/agave/blob/v4.3.2/core/src/banking_stage/transaction_scheduler/transaction_state_container.rs#L268-L295) |
+| Agave v4.4.0-rc.0, v4.5.0-alpha.2 | **arrival order, oldest first**, then `id` | `TransactionPriorityId { priority, arrival_order, id }` ([v4.5.0-alpha.2](https://github.com/anza-xyz/agave/blob/v4.5.0-alpha.2/core/src/banking_stage/transaction_scheduler/transaction_priority_id.rs)) |
+| Firedancer v26.10.4 | the treap's structure; `COMPARE_WORSE` defines no secondary key | fd_pack.c:227-249 |
 
-**Firedancer.** `COMPARE_WORSE` defines no secondary key; equal ratios are ordered by the treap's structure.
+**What this means for the design**
+- Our twins A and E have identical priority. Only the Agave pre-releases (about a fifth of the Agave label's slots) are
+  designed to keep them in arrival order.
+- The twin column is therefore reported **by version family** (Agave ≤ 4.3, Agave ≥ 4.4, Firedancer). It measures
+  ingress plus tie-breaking, and FIFO only for Agave ≥ 4.4.
+- Agave's primary includes the pre-releases: their priority formula is identical, so the three primary contrasts
+  mean the same for every Agave version.
 
-**Consequence for the design.** Our twins A and E have identical priority. Neither client is designed to keep them
-in send order, so the twin column measures ingress plus tie-breaking, not FIFO. In the buffered calibration trials,
-the twin sent first landed first in 2 of 9.
+## When a leader holds transactions
 
-## When a leader holds transactions (Agave v4.3.2 after Alpenglow)
-
-Before its slot starts, the decision maker
+**Agave v4.3.2 after Alpenglow.** Before its slot starts, the decision maker
 ([decision_maker.rs:74-101](https://github.com/anza-xyz/agave/blob/v4.3.2/core/src/banking_stage/decision_maker.rs#L74-L101))
 holds a received transaction when the leader is fewer than 20 slots away (`HOLD_TRANSACTIONS_SLOT_OFFSET`):
 - under 2 slots it is `Hold`;
@@ -79,8 +91,17 @@ holds a received transaction when the leader is fewer than 20 slots away (`HOLD_
 - 20 slots or more, or no upcoming leader slot, it is `Forward`, and the buffer is **cleared**
   (`clear_container`, L327-328).
 
-**Consequence:** a burst arriving two slots before the window is kept and ranked when the window opens. Our buffered
-delivery fires at −2 slots, and we measure its arrival margin.
+**Firedancer v26.10.4.** Pack inserts resolved transactions whether or not the validator is leader, and starts
+scheduling when its leader slot begins.
+
+**Consequence.** A burst arriving two slots before the window is kept and ranked when the window opens. Our buffered
+delivery fires at −2 slots; `results.md` reports the measured arrival margin.
+
+**Ingress floor (Agave v4.3.2).** When the scheduler's buffer is saturated, it publishes a priority floor, and
+signature verification then drops arriving packets at or below it
+([scheduler_controller.rs:69-113, 281](https://github.com/anza-xyz/agave/blob/v4.3.2/core/src/banking_stage/transaction_scheduler/scheduler_controller.rs#L69-L113)).
+Our lowest roles, B and F, out-rank about three quarters of their blocks, so this should rarely touch them. If it did,
+B and F would go missing more often than other roles: `results.md` reports landing per role.
 
 ## How a block is filled (Agave v4.3.2)
 
@@ -90,8 +111,8 @@ delivery fires at −2 slots, and we measure its arrival margin.
   ([greedy_scheduler.rs:132-137](https://github.com/anza-xyz/agave/blob/v4.3.2/core/src/banking_stage/transaction_scheduler/greedy_scheduler.rs#L132-L137)).
   It then tries to take its account locks, assigning a thread through thread-aware account locks
   (`try_schedule_transaction`, from L245).
-  - A transaction whose write lock is held by an in-flight batch goes to that same thread, behind the earlier one.
-    This is our `shared` mode, where block order follows scheduling order.
+  - A transaction whose write lock is held by an in-flight batch is scheduled on that same thread, behind the earlier
+    one. This is our `shared` mode, where block order follows scheduling order.
   - Non-conflicting transactions go to the least loaded threads, and their order in the block is the order in which
     the threads' batches complete. This is our `independent` mode.
 - **Pacing.** The schedulable budget grows linearly over `slot time − 50 ms` (150 ms at 200 ms slots)
@@ -103,14 +124,23 @@ conflicting lock
 ([jito-solana greedy_scheduler.rs](https://github.com/jito-foundation/jito-solana/blob/v4.3.2-jito/core/src/banking_stage/transaction_scheduler/greedy_scheduler.rs)).
 Our fresh anchors never appear in bundles.
 
-## Reading the results against this
+## Reading the results against this (pre-registered)
 
-| outcome in buffered/shared | what it means |
-|---|---|
-| A,E before F and C before B and D before C, consistently | the client ranks by reward/cost as in its source |
-| A,E before F fails, C before B holds | the cost term is ignored (price or fee per unit without the loaded-data cost) |
-| C before B fails, A,E before F holds | the base-fee share is ignored (priority fee / cost) |
-| A,E before C fails | no fee ordering detected (arrival or parallel execution dominates) |
+Verdicts per contrast and label (`src/analyze.ts`):
+- **holds**: Holm-adjusted one-sided p < 0.05;
+- **contradicted**: the upper end of the 95% interval of the per-trial share is below 0.75;
+- **inconclusive**: anything else.
+
+A label whose control (A,E before C) has unadjusted p ≥ 0.05 is "no fee ordering detected", whatever else it shows.
+
+| A,E before F | C before B | D before C | reading |
+|---|---|---|---|
+| holds | holds | holds | ranks by reward per requested cost, the requested loaded-data limit included, with a base-fee share between 0.12 and 0.84 (the source: 0.5) |
+| contradicted | holds | holds | the requested loaded-data limit does not enter the ranking |
+| holds | contradicted | holds | the base fee does not count (priority fee per cost) |
+| contradicted | contradicted | holds | price per CU or total fee ranks; A before B tells them apart (descriptive) |
+| holds | holds | contradicted | the whole base fee counts, or cost alone ranks |
+| any inconclusive | | | that contrast is not settled at this sample size: it is stated as such, never as the opposite |
 
 Independent mode adds parallel execution on top: a weaker pattern there than in shared mode is what the source
 predicts, not a different rule.

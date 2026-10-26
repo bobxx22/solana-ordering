@@ -58,8 +58,13 @@ export async function verify(rpcs: Rpc[], runsRoot: string, log: Log, opts: { sa
   const problems: unknown[] = []
   for (const run of existsSync(runsRoot) ? readdirSync(runsRoot).sort() : []) {
     const f = join(runsRoot, run, 'landed.json')
-    if (!existsSync(f)) continue
+    if (!existsSync(join(runsRoot, run, 'run.json'))) continue
     const meta = JSON.parse(readFileSync(join(runsRoot, run, 'run.json'), 'utf8'))
+    if (!existsSync(f)) {
+      // a live run that sent but was never collected is invisible to the analysis: run `collect all`
+      if (meta.live && readJsonl(join(runsRoot, run, 'trials.jsonl')).length) problems.push({ run, problem: 'live run without collected results (landed.json)' })
+      continue
+    }
     wallets.set(run, new Set([meta.mainWallet, ...meta.subPayers]))
     for (const b of readJsonl<BlockSummary>(join(runsRoot, run, 'blocks.jsonl'))) recordedBlocks.set(b.slot, b)
     const sent = readJsonl(join(runsRoot, run, 'txs.jsonl')).filter((t) => t.live)

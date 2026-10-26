@@ -2,6 +2,9 @@
 // Kept as the record of how data/mainnet-beta/quic-test/2026-10-24T23-25Z*.jsonl was produced (run once from the
 // repository root on 2026-10-25, when a trial still had five roles and buildTrialTxs returned { txs }).
 // It spent through the same ledger as everything else. The experiment itself now uses `run --path tpu`.
+// Edited after the run only to rename its output file (from the local date to the UTC time). It does not run
+// against the current code, and it must not: it would send live without --live.
+throw new Error('historical record of the 2026-10-24 QUIC feasibility test; it does not run')
 import { BlockhashCache, SlotClock } from '../src/clock.ts'
 import { buildTrialTxs } from '../src/design.ts'
 import { Ledger } from '../src/ledger.ts'

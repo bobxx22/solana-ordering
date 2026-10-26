@@ -132,3 +132,36 @@ function lnChoose(n: number, k: number): number {
   for (let i = 1; i <= k; i++) s += Math.log((n - k + i) / i)
   return s
 }
+
+/**
+ * Exact upper tail P(S >= observed) of a sum of independent integer-valued variables, each given by its probability
+ * table (index = value). Used for contrasts whose per-trial null distribution is known exactly: a single pair is 0 or
+ * 2 (half units) with probability 1/2 each; "A and E both before F" is 0, 1 or 2 with probability 1/3 each.
+ */
+export function exactUpperTail(tables: number[][], observed: number): number {
+  let dist = [1]
+  for (const t of tables) {
+    const next = new Array<number>(dist.length + t.length - 1).fill(0)
+    for (let i = 0; i < dist.length; i++) for (let j = 0; j < t.length; j++) next[i + j] += dist[i] * t[j]
+    dist = next
+  }
+  let p = 0
+  for (let s = Math.max(0, Math.ceil(observed - 1e-9)); s < dist.length; s++) p += dist[s]
+  return Math.min(1, p)
+}
+
+/** Pearson correlation; null for fewer than 3 points or a constant series. */
+export function pearson(x: number[], y: number[]): number | null {
+  if (x.length < 3) return null
+  const mx = mean(x)
+  const my = mean(y)
+  let sxy = 0
+  let sxx = 0
+  let syy = 0
+  for (let i = 0; i < x.length; i++) {
+    sxy += (x[i] - mx) * (y[i] - my)
+    sxx += (x[i] - mx) ** 2
+    syy += (y[i] - my) ** 2
+  }
+  return sxx === 0 || syy === 0 ? null : sxy / Math.sqrt(sxx * syy)
+}
