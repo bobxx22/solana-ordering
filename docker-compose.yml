@@ -1,4 +1,7 @@
 services:
+  # `docker compose up` = reproduce: regenerate the results from the raw data and compare them with the committed
+  # ones, check the recorded transactions against the chain, and make one dry-run trial. It needs no keys and gets
+  # none.
   ordering:
     build: .
     image: solana-ordering:local
@@ -8,8 +11,19 @@ services:
     volumes:
       # raw data and results live in the repository so they can be verified
       - ./data:/app/data
-      # wallet files never enter the image; mounted only from the host (not needed to reproduce)
-      - ./keys:/app/keys
-    # `docker compose up` = reproduce: regenerate the results from the raw data and compare them with the
-    # committed ones, check every recorded transaction against the chain, and make one dry-run trial
     command: ['reproduce']
+
+  # the only service that sees the wallet files, and only when asked for by name:
+  #   docker compose run --rm live run --live --campaign main
+  # wallet files never enter the image; they are mounted from the host
+  live:
+    profiles: ['live']
+    build: .
+    image: solana-ordering:local
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - ./data:/app/data
+      - ./keys:/app/keys
+    command: ['help']

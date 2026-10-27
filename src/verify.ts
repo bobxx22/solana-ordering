@@ -2,19 +2,24 @@
 //   - every landed transaction: the block at the recorded slot lists its signature at the recorded index, and the
 //     block's transaction count matches; the slot is after Alpenglow;
 //   - the slot leader: against the leader schedule where an endpoint still serves that epoch (public RPCs keep only
-//     a few epochs), otherwise against the block's fee-reward recipient, which equals the leader unless the validator
-//     collects revenue in a separate account; such blocks are listed as unverifiable, not as problems;
+//     a few epochs, so the main run is verified session by session, see docs/RUNBOOK.md), otherwise against the
+//     block's fee-reward recipient, which equals the leader unless the validator collects revenue in a separate
+//     account; such blocks are listed as unverifiable, not as problems;
 //   - a sample of whole transactions, every role represented: fee, fee payer (one of the run's own wallets), the
 //     written anchor, and the ComputeBudget instructions against the recorded role parameters (this is what tells A,
 //     E and F apart: they pay the same fee);
-//   - every transaction recorded as not landed is unknown to the chain;
+//   - a sample of whole blocks: every row the background analysis uses (fees, requested limits, scheduled cost of
+//     everyone else's transactions) rebuilt from the chain and compared with the recorded one;
+//   - every transaction recorded as not landed is unknown to the chain, asked only of endpoints whose history
+//     reaches back to its send slot (anything else is not evidence of absence, and is counted as unchecked);
+//   - the delivery-path probes (paths/, quic-test/): each recorded landing slot, and each recorded non-landing;
 //   - every sent transaction was planned before sending and reserved in the spend ledger.
 // Endpoints are tried in order for each request; a block no endpoint can serve is reported as unavailable.
-import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
-import { join } from 'node:path'
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { dirname, join } from 'node:path'
 import { ALPENGLOW_SLOT } from './analyze.ts'
 import { decode } from './base58.ts'
-import type { BlockSummary } from './block.ts'
+import { BLOCK_REQUEST, type BlockSummary, parseBlock } from './block.ts'
 import { type Landed, scheduledLeaders } from './collect.ts'
 import type { Log } from './log.ts'
 import type { Rpc } from './rpc.ts'
@@ -24,6 +29,8 @@ import { chunk, readJsonl, rng, shuffle, toJson } from './util.ts'
 export interface VerifyReport {
   verifiedAt: string
   endpoints: string[]
+  /** the live runs checked (all of them unless a run was named) */
+  runs: string[]
   blocks: number
   blocksInData: number
   transactions: number
@@ -32,16 +39,41 @@ export interface VerifyReport {
   leadersUnverifiable: { slot: number; leader: string; feeCollector: string | null }[]
   unavailableBlocks: number[]
   sampleChecked: number
+  /** whole blocks whose rows were rebuilt from the chain, and the rows compared */
+  rowBlocksChecked: number
+  rowsChecked: number
   unlandedChecked: number
+  /** recorded as not landed, but no endpoint with history back to the send slot answered */
+  unlandedUnchecked: number
+  probesChecked: number
+  probesUnchecked: number
   problems: unknown[]
 }
 
-/** The first endpoint that answers wins; null when none can (e.g. the block is past every node's retention). */
+export interface VerifyOptions {
+  /** whole transactions checked */
+  sample?: number
+  /** whole blocks whose rows are rebuilt */
+  rowBlocks?: number
+  /** at most this many blocks, a seeded sample */
+  maxBlocks?: number
+  /** only this live run (the per-session check of the runbook); default every run */
+  run?: string
+  /** where to write the report, if anywhere */
+  writeTo?: string
+}
+
+/**
+ * The first endpoint that answers with a value wins; an error or an empty answer passes the request on to the next.
+ * Null when none can (e.g. the block is past every node's retention).
+ */
 async function first<T>(rpcs: Rpc[], method: string, params: unknown[]): Promise<{ value: T | null; error: string | null }> {
   let error: string | null = null
   for (const r of rpcs) {
     try {
-      return { value: await r.call<T>(method, params), error: null }
+      const value = await r.call<T>(method, params)
+      if (value !== null && value !== undefined) return { value, error: null }
+      error = `${r.label}: empty answer`
     } catch (e) {
       error = `${r.label}: ${(e as Error).message}`
     }
@@ -49,14 +81,41 @@ async function first<T>(rpcs: Rpc[], method: string, params: unknown[]): Promise
   return { value: null, error }
 }
 
-export async function verify(rpcs: Rpc[], runsRoot: string, log: Log, opts: { sample?: number; write?: boolean; maxBlocks?: number } = {}): Promise<VerifyReport> {
+/**
+ * Statuses of signatures, each sent at a known slot. Only an endpoint whose history (getFirstAvailableBlock) reaches
+ * back to a signature's send slot is asked about it, so that "unknown" means absent from the chain.
+ */
+async function statusesWithHistory(rpcs: Rpc[], items: { signature: string; sentSlot: number }[]): Promise<Map<string, { slot: number } | null>> {
+  const out = new Map<string, { slot: number } | null>()
+  const firstBlock: (number | null)[] = []
+  for (const r of rpcs) firstBlock.push(await r.call<number>('getFirstAvailableBlock').catch(() => null))
+  let pending = items
+  for (let i = 0; i < rpcs.length && pending.length; i++) {
+    const fb = firstBlock[i]
+    if (fb === null) continue
+    const askable = pending.filter((x) => x.sentSlot >= fb)
+    for (const part of chunk(askable, 256)) {
+      const res = await rpcs[i].call<any>('getSignatureStatuses', [part.map((x) => x.signature), { searchTransactionHistory: true }]).catch(() => null)
+      if (!res) continue
+      part.forEach((x, k) => out.set(x.signature, res.value[k] ? { slot: res.value[k].slot } : null))
+    }
+    pending = pending.filter((x) => !out.has(x.signature))
+  }
+  return out
+}
+
+export async function verify(rpcs: Rpc[], runsRoot: string, log: Log, opts: VerifyOptions = {}): Promise<VerifyReport> {
   const landed: (Landed & { run: string })[] = []
-  const unlanded: { run: string; signature: string }[] = []
+  const unlanded: { run: string; signature: string; sentSlot: number }[] = []
   const wallets = new Map<string, Set<string>>()
   const recorded = new Map<string, any>()
   const recordedBlocks = new Map<number, BlockSummary>()
   const problems: unknown[] = []
-  for (const run of existsSync(runsRoot) ? readdirSync(runsRoot).sort() : []) {
+  const runs: string[] = []
+  const ids = existsSync(runsRoot) ? readdirSync(runsRoot).sort() : []
+  if (opts.run && !ids.includes(opts.run)) throw new Error(`no run ${opts.run} in ${runsRoot}`)
+  for (const run of ids) {
+    if (opts.run && run !== opts.run) continue
     const f = join(runsRoot, run, 'landed.json')
     if (!existsSync(join(runsRoot, run, 'run.json'))) continue
     const meta = JSON.parse(readFileSync(join(runsRoot, run, 'run.json'), 'utf8'))
@@ -65,13 +124,14 @@ export async function verify(rpcs: Rpc[], runsRoot: string, log: Log, opts: { sa
       if (meta.live && readJsonl(join(runsRoot, run, 'trials.jsonl')).length) problems.push({ run, problem: 'live run without collected results (landed.json)' })
       continue
     }
+    runs.push(run)
     wallets.set(run, new Set([meta.mainWallet, ...meta.subPayers]))
     for (const b of readJsonl<BlockSummary>(join(runsRoot, run, 'blocks.jsonl'))) recordedBlocks.set(b.slot, b)
     const sent = readJsonl(join(runsRoot, run, 'txs.jsonl')).filter((t) => t.live)
     for (const t of sent) recorded.set(t.signature, t)
     for (const l of JSON.parse(readFileSync(f, 'utf8')) as Landed[]) {
       if (l.slot !== null && l.index !== null) landed.push({ ...l, run })
-      else unlanded.push({ run, signature: l.signature })
+      else unlanded.push({ run, signature: l.signature, sentSlot: recorded.get(l.signature)?.slotAtSend ?? 0 })
     }
     // planned before sent (runs that write planned.jsonl)
     const plannedFile = join(runsRoot, run, 'planned.jsonl')
@@ -158,16 +218,55 @@ export async function verify(rpcs: Rpc[], runsRoot: string, log: Log, opts: { sa
     if (found.cuLimit !== want.cuLimit || found.cuPrice !== want.cuPrice || found.loadedLimit !== want.loadedLimit) fail('role parameters', { recorded: want, chain: found })
   }
 
-  // recorded as not landed: the chain must not know them
-  for (const part of chunk(unlanded, 256)) {
-    const { value } = await first<any>(rpcs, 'getSignatureStatuses', [part.map((u) => u.signature), { searchTransactionHistory: true }])
-    if (!value) continue
-    part.forEach((u, i) => value.value[i] && problems.push({ run: u.run, signature: u.signature, problem: 'recorded as not landed but found on chain', slot: value.value[i].slot }))
+  // a sample of whole blocks: the rows of everyone else's transactions, rebuilt from the chain
+  let rowBlocksChecked = 0
+  let rowsChecked = 0
+  const rowSlots = shuffle(
+    slots.filter((s) => recordedBlocks.has(s)),
+    rng(13),
+  ).slice(0, opts.rowBlocks ?? 3)
+  for (const slot of rowSlots) {
+    const { value: b } = await first<any>(rpcs, 'getBlock', [slot, { ...BLOCK_REQUEST, commitment: 'finalized' }])
+    if (!b) {
+      unavailable.push(slot)
+      continue
+    }
+    const rows = parseBlock(slot, b).summary.rows
+    const rec = recordedBlocks.get(slot)!.rows
+    rowBlocksChecked++
+    rowsChecked += rec.length
+    const bad = rec.findIndex((r, i) => toJson(r) !== toJson(rows[i]))
+    if (bad >= 0 || rows.length !== rec.length) problems.push({ slot, problem: 'block rows', index: bad, recorded: rec[bad] ?? null, chain: rows[bad] ?? null })
   }
+
+  // recorded as not landed: the chain must not know them (asked only where history reaches back to the send slot)
+  const unlandedStatus = await statusesWithHistory(rpcs, unlanded)
+  for (const u of unlanded) {
+    const st = unlandedStatus.get(u.signature)
+    if (st) problems.push({ run: u.run, signature: u.signature, problem: 'recorded as not landed but found on chain', slot: st.slot })
+  }
+  const unlandedChecked = unlanded.filter((u) => unlandedStatus.has(u.signature)).length
+
+  // the delivery-path probes: recorded landing slots, and recorded non-landings
+  const probes: { file: string; signature: string; slot: number | null; sentSlot: number }[] = []
+  if (!opts.run)
+    for (const dir of ['paths', 'quic-test'].map((d) => join(runsRoot, '..', d)).filter(existsSync))
+      for (const f of readdirSync(dir).filter((x) => x.endsWith('-landed.jsonl'))) {
+        const sentSlot = new Map(readJsonl(join(dir, f.replace('-landed', ''))).map((x) => [x.signature, x.slotAtSend ?? 0]))
+        for (const l of readJsonl(join(dir, f))) probes.push({ file: f, signature: l.signature, slot: l.slot ?? null, sentSlot: sentSlot.get(l.signature) ?? 0 })
+      }
+  const probeStatus = await statusesWithHistory(rpcs, probes)
+  for (const p of probes) {
+    if (!probeStatus.has(p.signature)) continue
+    const st = probeStatus.get(p.signature)
+    if ((st?.slot ?? null) !== p.slot) problems.push({ file: p.file, signature: p.signature, problem: 'probe landing slot', recorded: p.slot, chain: st?.slot ?? null })
+  }
+  const probesChecked = probes.filter((p) => probeStatus.has(p.signature)).length
 
   const report: VerifyReport = {
     verifiedAt: new Date().toISOString(),
     endpoints: rpcs.map((r) => r.label),
+    runs,
     blocks: slots.length,
     blocksInData: allSlots.length,
     transactions: checked,
@@ -176,12 +275,20 @@ export async function verify(rpcs: Rpc[], runsRoot: string, log: Log, opts: { sa
     leadersUnverifiable: unverifiable,
     unavailableBlocks: [...new Set(unavailable)],
     sampleChecked,
-    unlandedChecked: unlanded.length,
+    rowBlocksChecked,
+    rowsChecked,
+    unlandedChecked,
+    unlandedUnchecked: unlanded.length - unlandedChecked,
+    probesChecked,
+    probesUnchecked: probes.length - probesChecked,
     problems,
   }
-  if (opts.write) writeFileSync(join(runsRoot, '..', 'verify.json'), toJson(report, 1))
+  if (opts.writeTo) {
+    mkdirSync(dirname(opts.writeTo), { recursive: true })
+    writeFileSync(opts.writeTo, toJson(report, 1))
+  }
   log.info(
-    `verify: ${checked} landed transactions in ${slots.length} blocks (${report.unavailableBlocks.length} unavailable), ${sampleChecked} whole transactions, ${unlanded.length} unlanded; leaders: ${bySchedule} by schedule, ${byCollector} by fee collector, ${unverifiable.length} unverifiable; ${problems.length} problems`,
+    `verify: ${runs.length} runs; ${checked} landed transactions in ${slots.length} blocks (${report.unavailableBlocks.length} unavailable), ${sampleChecked} whole transactions, ${rowsChecked} rows of ${rowBlocksChecked} whole blocks, ${unlandedChecked} of ${unlanded.length} unlanded checked, ${probesChecked} of ${probes.length} probe transactions; leaders: ${bySchedule} by schedule, ${byCollector} by fee collector, ${unverifiable.length} unverifiable; ${problems.length} problems`,
   )
   for (const p of problems.slice(0, 10)) log.info(`  ${toJson(p)}`)
   return report

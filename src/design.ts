@@ -161,6 +161,17 @@ export const LOCAL_CLIENTS = ['Agave', 'JitoLabs', 'Firedancer', 'Rakurai']
 export const PIPELINE_CLIENTS = ['AgaveBam', 'FireBAM', 'HarmonicAgave', 'HarmonicFiredancer']
 export const DEFAULT_QUOTAS: Record<string, number> = Object.fromEntries([...LOCAL_CLIENTS.map((c) => [c, 60]), ...PIPELINE_CLIENTS.map((c) => [c, 30])])
 
+/** a leader's window: consecutive slots of one leader */
+export const WINDOW_SLOTS = 4
+
+/**
+ * A trial counts towards its label's quota only when every primary contrast can be read from it: B, C, D, F and at
+ * least one of the twins A, E landed in the targeted window. Counting trials with any two landed would leave the
+ * contrasts with fewer pairs than the quota promises (pre-registered with the power statement in README).
+ */
+export const countsTowardsQuota = (rolesInWindow: string[]): boolean =>
+  ['B', 'C', 'D', 'F'].every((r) => rolesInWindow.includes(r)) && (rolesInWindow.includes('A') || rolesInWindow.includes('E'))
+
 export const cellKey = (c: Cell) => `${c.delivery}/${c.mode}`
 
 /**

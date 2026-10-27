@@ -1,12 +1,40 @@
 # Inside the block: how Solana validators order transactions
 
 This repository measures, on Solana mainnet after Alpenglow, how block producers order transactions inside a block,
-and whether the rule differs between validator clients. The primary evidence is our own transactions: bursts of six
-transactions with fee parameters chosen so that the candidate ordering rules disagree. Each burst is delivered over
-QUIC straight to the address the targeted leader advertises (the validator itself for most clients, a shared gateway
-for BAM and Harmonic validators), and the transactions' positions are read back from the chain.
+and whether the rule differs between validator clients.
 
-Results: [`REPORT.md`](REPORT.md). Generated tables: [`data/mainnet-beta/results/results.md`](data/mainnet-beta/results/results.md).
+## In short
+
+- **Evidence.** Our own transactions: bursts of six, with fees chosen so that the candidate ordering rules (reward per
+  cost, priority fee per cost, price per compute unit, total fee, arrival order) predict different orders.
+- **Delivery.** Each burst goes over QUIC straight to the address the targeted leader advertises, two slots before
+  its window, in a random send order. Positions are read back from the chain.
+- **Tests.**
+  - Three contrasts per client label, each isolating one term of the rule, plus a positive control.
+  - Twelve exact one-sided tests with Holm adjustment for the four local-scheduler labels, and the same twelve for
+    the four BAM and Harmonic pipelines.
+  - Verdicts fixed before the main run (git tag `prereg-main`).
+- **So far** (calibration and rehearsal runs, descriptive, no test):
+  - bursts that wait in the leader's buffer land in the order the deployed source code predicts, by reward per
+    requested cost unit;
+  - transactions streamed 30 ms apart keep their send order.
+- **Results.** The main run's results are in [`REPORT.md`](REPORT.md); the generated tables are in
+  [`data/mainnet-beta/results/results.md`](data/mainnet-beta/results/results.md).
+- **Check it.** `docker compose up` needs no keys and sends nothing.
+
+### Terms
+
+| term | meaning |
+|---|---|
+| trial | one burst of six transactions (roles A–F) aimed at one leader window |
+| window | the 4 consecutive slots (about 0.8 s) of one leader |
+| role | a transaction's fee parameters (table below); A and E are identical twins |
+| contrast | a pair of roles whose order tells two rules apart, e.g. C before B |
+| cell | how a trial is delivered: `buffered` (all six two slots before the window), `burst` (all six one slot into it), `streamed` (30 ms apart); and whether the six write one account (`shared`) or six (`independent`) |
+| label | the validator client a leader reports in gossip (`clientId`): Agave, JitoLabs, Firedancer, Rakurai, and the pipelines AgaveBam, FireBAM, HarmonicAgave, HarmonicFiredancer |
+| ingress host | the host of the QUIC address a leader advertises: the validator itself, or a gateway shared by many |
+| campaign | a named set of runs sharing quotas; the main run is campaign `main`, calibration runs are kept apart |
+| gamma | per trial, the share of pairs in a rule's order minus the share against it (+1: all pairs in the rule's order) |
 
 ## Reproduce (one command)
 
@@ -16,26 +44,34 @@ docker compose up
 
 This runs `reproduce`, which needs no keys and sends nothing. It does three things:
 
-1. **Regenerates every table** from the committed raw data and checks that the result is byte-identical to the
-   committed `results.md`.
+1. **Regenerates every table** from the committed raw data, and checks that the four result files are byte-identical
+   to the committed ones.
 2. **Checks the raw data against the chain** (`verify`). It uses public endpoints other than the one used to
    collect: `api.mainnet-beta.solana.com`, which keeps the whole history, then PublicNode.
    - Every landed transaction: its signature is at the recorded index of the recorded slot, and the slot is after
      Alpenglow.
    - The slot leader: checked against the leader schedule where an endpoint still serves that epoch (public
-     endpoints keep only a few epochs), otherwise against the block's fee-reward recipient.
+     endpoints keep only a few epochs, so the main run is also checked session by session, see below), otherwise
+     against the block's fee-reward recipient.
    - A sample of whole transactions from every role: fee, fee payer (one of the run's own wallets), anchor, and the
      ComputeBudget instructions against the recorded role parameters. This is what tells A, E and F apart, since
      they pay the same fee.
-   - Every transaction recorded as not landed is unknown to the chain.
+   - A sample of whole blocks: every recorded row of everyone else's transactions (fees, requested limits,
+     scheduled cost), rebuilt from the chain.
+   - Every transaction recorded as not landed is unknown to the chain. It is asked only of an endpoint whose history
+     reaches back to the slot it was sent in; otherwise it is counted as unchecked, not as absent.
+   - The delivery-path probes (`paths/`, `quic-test/`): every recorded landing slot and non-landing.
    - Every sent transaction was planned before sending and reserved in the spend ledger.
 
    It exits with an error on any mismatch. A block that no endpoint serves any more is reported, not failed. The
    one-command check covers a seeded sample of 120 blocks, a few minutes on the rate-limited public endpoint.
-   `node src/cli.ts verify` checks every block, and the result of the last full check is committed as
-   `data/mainnet-beta/verify.json`.
-3. **Makes one dry-run trial** against mainnet. It opens the QUIC connection to the leader and simulates the six
-   transactions with signature verification.
+   `node src/cli.ts verify` checks every block. The committed checks are `data/mainnet-beta/verify.json` (all runs)
+   and `data/mainnet-beta/verify/<run>.json` (each main-run session, made while its leader schedule was served).
+3. **Makes one dry-run trial** against mainnet.
+   - It opens the QUIC connection to the leader and simulates the six transactions with signature verification.
+   - It then simulates unsigned copies paid by a public wallet of the last live run, with signature verification
+     off. This shows that every role executes (600 CU each, F's 64 MiB loaded-data limit accepted). Such copies can
+     never be valid on chain.
 
 `docker compose run --rm ordering reproduce --offline` does only step 1.
 
@@ -110,12 +146,32 @@ Each trial gets a cell, dealt per client in shuffled blocks of ten:
 
 The send order is a fresh random permutation in every trial.
 
-**Quotas.** 60 landed trials per local-scheduler label (Agave, JitoLabs, Firedancer, Rakurai) and 30 per pipeline
-label (AgaveBam, FireBAM, HarmonicAgave, HarmonicFiredancer). That is 360 trials, at most 0.022 SOL.
+**Quotas.**
+- 60 trials per local-scheduler label (Agave, JitoLabs, Firedancer, Rakurai) and 30 per pipeline label (AgaveBam,
+  FireBAM, HarmonicAgave, HarmonicFiredancer): 360 trials.
+- A trial counts towards its quota only when B, C, D, F and at least one of A and E landed in the targeted window, so
+  every counted trial carries every primary contrast.
+- **Spend.** A trial costs at most 61 000 lamports. With trials that land only in part, the main run is expected to
+  cost about 0.025 SOL. A label may be dispatched up to three times its quota, so the bound is not an estimate: it is
+  the spend cap in code, 0.05 SOL for everything this repository ever sends to mainnet.
 
 **Campaigns.** Runs belong to a campaign (`--campaign`). The main run is the campaign `main`; the calibration runs
 are kept apart and never enter a test. A run that stops is continued by starting it again with the same campaign
 name: the quotas, the per-validator counts and the excluded addresses carry over.
+
+### What Alpenglow changes for this experiment
+
+- **When.** Alpenglow replaced TowerBFT at slot 459 653 000 on 2026-10-21. That is the slot announced for the switch
+  ([Solana Compass](https://solanacompass.com/news/alpenglow-is-pending-activation-on-solana-mainnet-with-towerbft-set-to-retire-at-slot-459653000)).
+  On chain, the last block before it, slot 459 652 996, has block time 13:53:59 UTC. `analyze` and `verify` check that
+  every measured slot is at or after the switch.
+- **No vote transactions.** Consensus votes no longer travel as transactions in blocks, so every transaction in a
+  block is a user transaction competing for position.
+- **Timing.** Slots are about 200 ms, so a leader's 4-slot window lasts about 0.8 s, and "two slots ahead" is about
+  400 ms.
+- **When a leader holds transactions.** Agave's decision maker has a separate Alpenglow path. It decides when a
+  validator holds, forwards or drops received transactions before its slot (`docs/schedulers.md`, "When a leader
+  holds transactions"). The buffered delivery is timed against it.
 
 ## How the design handles each consideration
 
@@ -136,20 +192,26 @@ name: the quotas, the per-validator counts and the excluded addresses carry over
 
   A result for a label describes that whole pipeline as it treats ordinary transactions, not a scheduler in
   isolation.
+- **Few operators per label.** Some labels rest on very few validators. By leader slots in epoch 1068, Agave and
+  Rakurai each have about four effective validators, and Firedancer about six. A verdict is therefore stated for the
+  validators of the label that we reached. `results.md` gives each label's validators, slot share, effective number,
+  reachable share and validators reached ("Coverage per label").
 - **Shared gateways.** BAM and Harmonic validators advertise QUIC addresses on shared gateway hosts.
   - In epoch 1067, the 364 AgaveBam validators advertised 17 addresses, one of them for 102 validators.
   - FireBAM had 94% of its slots behind shared addresses.
   - The 86 Harmonic validators sat on 6 hosts, with a separate port each.
   - Every JitoLabs, Firedancer, Rakurai and Agave validator had its own address. But 37 JitoLabs validators (about a
-    quarter of JitoLabs slots) advertise port 11228, most likely a Jito relayer in front of the validator, and both
-    JitoLabs bursts that landed nothing in calibration went
-    to that port. The run excludes such addresses once they have failed twice without ever landing, and the report
-    gives each label's reachable share.
+    quarter of JitoLabs slots) advertise port 11228, most likely a Jito relayer in front of the validator. Both
+    JitoLabs bursts that landed nothing in calibration went to that port. The run excludes such addresses once they
+    have failed twice without ever landing; the reachable share in `results.md` shows what that leaves.
 
   For BAM and Harmonic labels our timing control therefore ends at the gateway, and two labels behind one gateway
-  are not two independent schedulers. The analysis records the ingress host of every trial and resamples hosts, not
-  validators. The comparison of clients rests on the four local-scheduler labels, with BAM and Harmonic reported as
-  pipelines.
+  are not two independent schedulers. The analysis records the ingress host of every trial:
+  - the pipelines' group-level check groups trials by host;
+  - rule-agreement intervals resample hosts.
+
+  The comparison of clients rests on the four local-scheduler labels. BAM and Harmonic get their own family of tests,
+  read as statements about the pipeline.
 
 ### Path from our backend to the node
 
@@ -182,7 +244,8 @@ name: the quotas, the per-validator counts and the excluded addresses carry over
 
 ### Competition inside the block
 
-- **The market around us.** Our six transactions land among 150–1 100 others per block (`results.md`). We cannot control those.
+- **The market around us.** Our six transactions land among 150–1 100 others per block (`results.md`). We cannot
+  control those.
 - **Where we stand.** In lamports our priority fees are small (0 to 10 000), but per scheduled compute unit even our
   weakest roles out-rank most of the block: the typical transaction requests far more compute than it pays for.
   The experiment therefore measures how a scheduler ranks transactions **near the head of its queue**. It does not
@@ -196,20 +259,31 @@ name: the quotas, the per-validator counts and the excluded addresses carry over
 
 - **Randomized.** The send order is randomized per trial, independently of the fees, so arrival cannot masquerade
   as a fee rule.
-- **Twins.** A and E have identical priority. Neither deployed client breaks such ties by arrival: Agave v4.3.2
-  uses an internal container id and Firedancer its treap structure (`docs/schedulers.md`). The twin column therefore
-  measures ingress plus tie-breaking, not FIFO.
-- **Three deliveries.** `buffered` (all six at once, before the window) asks how the scheduler ranks transactions
-  that are all available together. `burst` asks the same while the block is already being produced. `streamed`
-  (30 ms apart) checks that arrival order is preserved when nothing is held back.
+- **Twins.** A and E have identical priority. The deployed versions break such ties differently
+  (`docs/schedulers.md`):
+  - Agave and Jito 4.3.2 use an internal container id;
+  - the Agave 4.4/4.5 pre-releases use arrival order;
+  - Firedancer uses its treap structure.
+
+  The twin column is therefore reported by version family. It measures ingress plus tie-breaking, and FIFO only for
+  the pre-releases.
+- **Three deliveries.**
+  - `buffered` (all six at once, before the window) asks how the scheduler ranks transactions that are all
+    available together.
+  - `burst` asks the same while the block is already being produced.
+  - `streamed` (30 ms apart) checks that arrival order is preserved when nothing is held back.
+
 ### Noise versus rule
 
-The analysis is fixed before the first trial of the main run. This section and the header of `src/analyze.ts` are
-the plan; the commit that introduced them predates every trial of campaign `main`.
+The analysis is fixed before the first trial of the main run. This section, the header of `src/analyze.ts`, the quota
+rule in `src/design.ts` and [`docs/RUNBOOK.md`](docs/RUNBOOK.md) are the plan. They are frozen at the git tag
+`prereg-main`, which is older than every trial of campaign `main` (the run directories are named by their UTC start).
 
-- **Unit.** One trial. Its transactions that landed in the targeted leader's 4-slot window are ordered by
-  (slot, index): a transaction pushed to a later slot of the window counts as later. Landings outside the window are
-  counted as spill-over and left out.
+- **Unit.** One trial.
+  - Its transactions that landed in the targeted leader's 4-slot window are ordered by (slot, index): a
+    transaction pushed to a later slot of the window counts as later.
+  - Landings outside the window are counted as spill-over and left out.
+  - A contrast uses every trial in which both of its roles landed in the window.
 - **Primary family: 12 tests.** Campaign `main`, cell buffered/shared, the four local-scheduler labels (Agave,
   JitoLabs, Firedancer, Rakurai), three contrasts:
   - A,E before F (per trial, the mean of the two indicators);
@@ -217,43 +291,64 @@ the plan; the commit that introduced them predates every trial of campaign `main
   - D before C.
 
   The Agave label includes its 4.4/4.5 pre-release validators: their priority formula is byte-identical
-  (`docs/schedulers.md`). Each test is one-sided against chance, using the exact null distribution of the sum of
-  per-trial values. A single pair is 0 or 1 with probability 1/2; A,E vs F is 0, 1/2 or 1 with probability 1/3 each.
-  The twelve are Holm-adjusted together, and a test without data enters with p = 1. Shares are given with 95%
-  bootstrap intervals over trials.
-- **Verdicts.**
-  - **holds**: Holm-adjusted p < 0.05;
-  - **contradicted**: the interval's upper end is below 0.75, that is, not the near-deterministic order the source
-    predicts;
+  (`docs/schedulers.md`).
+  - Each test is one-sided against chance, using the exact null distribution of the sum of per-trial values.
+  - A single pair is 0 or 1 with probability 1/2; A,E vs F is 0, 1/2 or 1 with probability 1/3 each. The send order
+    and the payers are randomized in every trial. So when the order does not depend on the roles' fee parameters,
+    this null is exact, whatever else (arrival, payer, signature) the validator orders by.
+  - The twelve are Holm-adjusted together, and a test without data enters with p = 1.
+  - Shares are given with 95% bootstrap intervals over trials.
+- **Verdicts**, per contrast and label.
+  - **insufficient data**: fewer than 10 trials. Below 8, even unanimous trials cannot pass the strictest Holm step.
+  - **holds**: Holm-adjusted p < 0.05.
+  - **reversed**: the interval's upper end is below 0.5, so the opposite order dominates.
+  - **no stable order**: the upper end is below 0.75 but not below 0.5. This is neither the near-deterministic
+    order the source predicts nor the opposite.
   - **inconclusive**: anything else.
 
-  An inconclusive contrast is reported as such, never as its opposite. `analyze` prints the verdict column and the
-  reading of each label from the decision table in `docs/schedulers.md`.
-- **Control.** A,E before C (same cost, strictly higher fee), outside the family. A label whose control has
-  unadjusted p ≥ 0.05 is reported as "no fee ordering detected", whatever its other contrasts say.
-- **What the contrasts identify.** C before B and D before C bracket the base-fee share counted as reward between 0.12
-  and 0.84; the source's 0.5 lies inside. A,E before F shows that the *requested loaded-data limit* enters the cost.
+  Only "reversed" is read as evidence for an alternative rule. Chance-level order (a share near 0.5) is "no stable
+  order", never "the base fee does not count". For A,E vs F, chance level is what "the loaded-data limit does not
+  count" predicts, because A, E and F would then tie, and the reading says so. An inconclusive contrast is reported
+  as such, never as its opposite. `analyze` prints the verdicts and the reading of each label from the decision
+  table in `docs/schedulers.md`.
+- **Control.** A,E before C (same cost, strictly higher fee), outside the family.
+  - A label with fewer than 10 control trials is "insufficient data".
+  - A label whose control has unadjusted p ≥ 0.05 is "no fee ordering detected", whatever its other contrasts say.
+- **Pipelines: a second family of 12 tests.** The same control, contrasts and verdicts for AgaveBam, FireBAM,
+  HarmonicAgave and HarmonicFiredancer (buffered/shared, campaign `main`), Holm-adjusted within these twelve. A
+  verdict describes the whole pipeline behind the gateway, not a client's scheduler.
+- **What the contrasts identify.**
+  - C before B and D before C bracket the base-fee share counted as reward between 0.12 and 0.84; the source's 0.5
+    lies inside.
+  - A,E before F shows that the *requested loaded-data limit* enters the cost.
+- **Quota and power.**
+  - A trial counts towards its label's quota only with B, C, D, F and A or E in the window, so 30 primary trials per
+    local label give every primary contrast at least 30 pairs.
+  - At the strictest Holm threshold (0.05/12), with 30 pairs, a contrast that holds 90% of the time passes with
+    probability 0.99, and 80% of the time with 0.76. With 25 pairs: 0.97 and 0.62. These are exact binomial
+    computations.
 - **Shortfall.** A label that misses its quota by the end of the measurement period stays in the family with the
   number of trials it has.
+- **Scope of a conclusion.** The exact test is valid trial by trial, so a verdict is a statement about the validators
+  of the label that we reached. How far it extends beyond them is what the robustness checks show.
 - **Robustness**, reported, not tested:
   - each test rerun without each validator in turn (leave one out), with the worst p and any change of verdict;
-  - per-validator shares for validators with at least 5 primary trials, since each local label rests on two or three
-    large operators;
-  - a sensitivity run without trials that reconnected before sending, had an arrival margin under 100 ms, or ran on
-    a clock other than `firstShred`.
+  - a group-level check: per validator (for pipelines, per ingress host) the mean share minus 0.5, with a one-sided
+    sign-flip test over the groups; with k groups its p cannot go below 2^-k;
+  - per-validator shares for validators with at least 5 primary trials;
+  - each label's coverage: validators, slot share, effective number, reachable share, validators reached;
+  - a sensitivity run without trials that reconnected before sending, had an unknown or under-100 ms arrival margin,
+    or ran on a clock other than `firstShred`.
 - **Secondary, descriptive.** Shares with intervals, no tests:
   - buffered/independent per label;
   - burst per label;
   - streamed pooled over the local labels;
-  - the twins by version family (Agave ≤ 4.3 container-id ties, Agave ≥ 4.4 oldest-first ties, Firedancer treap ties);
-  - the pipeline labels;
+  - the twins by version family, only for versions whose source was read;
   - exact-order rates;
   - rule agreement (gamma per trial, bootstrap over ingress hosts, sign-flip over host means);
   - the calibration and rehearsal runs.
 
   `results/orders.md` lists every trial's send order and observed order.
-- **Power.** With 30 buffered/shared trials per local label, a contrast that holds 90% of the time passes the Holm
-  threshold with probability about 0.99; 80% of the time, about 0.76 (exact binomial computation, review round 4).
 
 ### What this design does not separate
 
@@ -268,15 +363,19 @@ the plan; the commit that introduced them predates every trial of campaign `main
   transactions in completion order. The `shared` vs `independent` contrast shows the combined effect.
 - **External sequencers and builders vs the client scheduler.** For BAM and Harmonic, the label covers the whole
   pipeline.
-- **Operator configuration within a client label.**
+- **Operator configuration within a client label**, and the label itself: the client id and version are what the
+  validator reports in gossip, and the chain cannot confirm them.
 - **Staked vs unstaked delivery.** We are unstaked; a staked sender may be treated differently.
 - **Bundles.** Jito bundles and tips are out of scope; they occupy positions in the same blocks.
 
 ## Safety and engineering
 
-- **Dry run by default.** Without `--live` nothing is sent and no wallet key is read. A dry run signs with throwaway
-  keys, simulates every transaction with signature verification, and writes to `data/<cluster>/dry-runs/`, which is
-  git-ignored.
+- **Dry run by default.**
+  - `run` without `--live` sends nothing and reads no wallet key. It signs with throwaway keys, simulates the
+    transactions (above, step 3) and writes to `data/<cluster>/dry-runs/`, which is git-ignored.
+  - `fund` and `sweep` read the wallet files to print their plan, and `status` reads them to show balances; all
+    three send only with `--live`.
+  - `--live` accepts no value other than true or false.
 - **Spend cap in code.**
   - Every send first reserves its maximum fee in an append-only ledger (`data/mainnet-beta/ledger.jsonl`).
   - A reservation closes at the fee actually charged, or at zero only once the transaction's blockhash has
@@ -284,15 +383,28 @@ the plan; the commit that introduced them predates every trial of campaign `main
   - Mainnet never exceeds 0.05 SOL, and 0.0001 SOL of that is kept for returning the sub-payers' balances.
   - A live process holds an exclusive lock on the ledger.
   - The chain is identified by its genesis hash, not by a flag.
-- **Keys.** Wallets are files mounted from the host (`keys/`, git-ignored and Docker-ignored). `keygen` prints only
-  the address. The QUIC sender receives only signed transactions. Logged RPC URLs keep only scheme and host.
+- **Keys.**
+  - Wallets are files mounted from the host: `keys/`, git-ignored and Docker-ignored.
+  - In Docker only the `live` service mounts them (`docker compose run --rm live run --live --campaign main`). The
+    default service, which reproduces, never sees them.
+  - `keygen` prints only the address.
+  - The QUIC sender receives only signed transactions.
+  - Logged RPC URLs keep only scheme and host.
 - **Logging.** Every run writes `run.json` (options, roles, wallets, cap) and JSONL files:
   - `planned`: signatures, written before reserving;
   - `trials`, `txs`: dispatch slot and time, send results;
-  - `events`: skips, simulations, errors;
+  - `events`: landing checks, skips, simulations, errors;
   - `blocks`, `positions`, `landed.json`.
-- **CI.** Tests, plus a check that the results regenerate byte for byte, plus the Docker image running the same
-  check and starting the QUIC sender.
+
+  A line torn by a killed process is skipped with a warning, so analysis and a continued campaign still start.
+- **CI** ([workflow](.github/workflows/ci.yml)), on every push:
+  - a type check (`tsconfig.json`; TypeScript is fetched for that step only);
+  - the unit tests, including the QUIC sender against a local QUIC server (`py/loopback_server.py`);
+  - the results regenerated byte for byte;
+  - the same checks inside the Docker image.
+
+  The full online `reproduce` runs as a separate job that does not fail the build, because public endpoints
+  rate-limit shared runners. REPORT links its latest result.
 
 ## Data
 
@@ -301,9 +413,10 @@ the plan; the commit that introduced them predates every trial of campaign `main
 - `snapshots/`: validators by client.
 - `runs/<UTC start>/`: one live run, with the raw files listed above.
 - `paths/`, `quic-test/`: delivery-path measurements. The QUIC feasibility data was produced once by
-  `scripts/quic-feasibility.ts`, which is kept as a record and was written against an earlier API.
+  `archive/quic-feasibility.ts`, which is kept as a record, was written against an earlier API and does not run.
 - `ledger.jsonl`: every reservation and settlement.
-- `verify.json`: the last check against the chain.
+- `verify.json`: the last check of all runs against the chain; `verify/<run>.json`: the check of each main-run
+  session, made while its leader schedule was still served.
 - `results/`: generated by `analyze`.
 
 ## Commands
@@ -319,6 +432,6 @@ The main run follows [`docs/RUNBOOK.md`](docs/RUNBOOK.md).
 | `run [--live --campaign NAME]` | the experiment. Options: `--quota Agave=60,...`, `--path tpu\|rpc`, `--per-validator`, `--seed`, `--minutes` |
 | `collect [run\|all] [--refresh]` | landing slot, in-block position and slot leader; settles the ledger |
 | `analyze` | all tables, offline |
-| `verify [--verify-rpc URL]` | the check against the chain |
+| `verify [run\|all] [--write] [--verify-rpc URL]` | the check against the chain |
 | `paths [--live]` | delivery-path probe |
 | `keygen`, `address`, `status`, `fund`, `sweep` | wallet and budget |

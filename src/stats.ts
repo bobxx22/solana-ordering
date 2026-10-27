@@ -117,6 +117,36 @@ export function signFlipP(v: number[], seed = 1, iterations = 20_000): number {
   return extreme / total
 }
 
+/**
+ * One-sided sign-flip test of mean(v) > 0: the share of sign assignments whose sum is at least the observed one.
+ * Used on cluster means (validators, hosts) of a per-trial share minus 0.5. Exact for up to 16 values, seeded Monte
+ * Carlo above that; with k values the smallest possible p is 2^-k.
+ */
+export function signFlipUpperP(v: number[], seed = 1, iterations = 20_000): number {
+  if (v.length === 0) return NaN
+  const observed = v.reduce((a, b) => a + b, 0)
+  const eps = 1e-12
+  let extreme = 0
+  let total = 0
+  if (v.length <= 16) {
+    for (let mask = 0; mask < 1 << v.length; mask++) {
+      let s = 0
+      for (let i = 0; i < v.length; i++) s += mask & (1 << i) ? -v[i] : v[i]
+      if (s >= observed - eps) extreme++
+      total++
+    }
+    return extreme / total
+  }
+  const random = rng(seed)
+  for (let b = 0; b < iterations; b++) {
+    let s = 0
+    for (const x of v) s += random() < 0.5 ? -x : x
+    if (s >= observed - eps) extreme++
+    total++
+  }
+  return (extreme + 1) / (total + 1)
+}
+
 /** Two-sided exact binomial test of p = 0.5. */
 export function binomialP(k: number, n: number): number {
   if (n === 0) return NaN

@@ -1,7 +1,8 @@
 # Report: how Solana validators order transactions inside a block
 
 Status: **draft before the main run**. The main run (campaign `main`) follows [`docs/RUNBOOK.md`](docs/RUNBOOK.md)
-and the analysis plan pre-registered in README ("Noise versus rule").
+and the analysis plan pre-registered in README ("Noise versus rule"). The plan is frozen at the git tag `prereg-main`,
+created before the first trial of campaign `main`; "Plan amendments" below lists what changed before that.
 
 Every number below is copied from [`data/mainnet-beta/results/results.md`](data/mainnet-beta/results/results.md),
 which `node src/cli.ts analyze` regenerates from the committed raw data, and the section it comes from is named.
@@ -28,9 +29,14 @@ All times UTC. Every slot is after Alpenglow's activation (slot 459 653 000, 202
 The ledger and the wallet balances agree to the lamport. The twelve sub-payers hold 0.038624 SOL, the float for the
 main run, which `sweep` returns to the main wallet (0.017128 SOL) at the end.
 
-**Chain check** (`verify.json`, 2026-10-25 22:12 UTC, through `api.mainnet-beta.solana.com`): 279 landed transactions
-in 70 blocks, the leader confirmed by the schedule in all 70, 60 whole transactions checked for payer, fee, anchor and
-role parameters, all 24 unlanded transactions absent from the chain: 0 problems.
+**Chain check** (`verify.json`, 2026-10-26 12:47 UTC, through `api.mainnet-beta.solana.com`, which keeps the whole
+history), 0 problems:
+- 279 landed transactions in 70 blocks, each at its recorded index;
+- the leader confirmed by the schedule in all 70 blocks;
+- 60 whole transactions checked for payer, fee, anchor and role parameters;
+- 1 213 rows of 3 whole blocks rebuilt from the chain;
+- all 24 unlanded transactions absent from the chain;
+- all 30 probe transactions (`paths/`, `quic-test/`) as recorded.
 
 ## What we see so far (calibration and rehearsal; no test)
 
@@ -73,7 +79,7 @@ role parameters, all 24 unlanded transactions absent from the chain: 0 problems.
 | 7 of 22 pilot dispatch attempts were skipped as "missed slot": a `>=` instead of `>`, and signing too late. | Pilot log and ledger. | Fixed; skips are logged in `events.jsonl`. |
 | The pilot run crashed waiting 160 s for a rare client's window (fixed 120 s timeout), so the automatic collection did not run. | Pilot log. | Timeout proportional to the distance; collection runs after any error. |
 | The block's fee-reward recipient is not always the leader: some validators collect block revenue in a separate account. | QUIC feasibility test. | The leader is the slot's scheduled leader (`getSlotLeaders`); the fee recipient is stored separately. |
-| BAM and Harmonic validators advertise shared gateways, so "direct to the leader" is direct to a gateway for them. | Round-2 reviews; confirmed from the snapshot. | Ingress host recorded per trial; statistics resample hosts; BAM and Harmonic are reported as pipelines. |
+| BAM and Harmonic validators advertise shared gateways, so "direct to the leader" is direct to a gateway for them. | Round-2 reviews; confirmed from the snapshot. | Ingress host recorded per trial; BAM and Harmonic get their own family of tests, read as pipelines, with a check grouped by host. |
 | reward/cost and price per CU disagreed on one pair only. | Round-1 reviews. | Role F (A with a 64 MiB loaded-data limit). |
 | The rebuilt cost of other transactions ignored the requested loaded-data limit. | Round-2 reviews. | Cost rebuilt from first principles; a test checks it equals the design cost for all six roles. |
 | Spend-cap gaps (reservations released on a send error or after 20 s; sweep could be refused; two processes could spend). | Round-1 reviews (no overspend happened). | Reservations close only on landing or proven expiry; sweep allowance; exclusive, host-aware ledger lock; genesis-hash check. |
@@ -83,24 +89,55 @@ role parameters, all 24 unlanded transactions absent from the chain: 0 problems.
 | The live loop stopped on any transient error, could not be continued, and exclusion memory was per campaign, so one unlucky start could exclude a 100-validator gateway. | Round-3 and round-4 reviews. | Per-iteration recovery; campaigns that continue a stopped run; address history from every live run. |
 | REPORT quoted pilot numbers that `analyze` did not produce. | Round-4 review. | `analyze` emits them; this report copies `results.md` only. |
 | Free Helius plan: 1 sendTransaction/s, no staked connections; free dRPC does not serve mainnet. | Provider documentation; probe. | Helius is used for reads only. |
-| Docker Desktop cannot run on the author's Windows build. | Installer error. | The image is built and run in GitHub Actions on every push, including the full online `reproduce`. |
+| Docker Desktop cannot run on the author's Windows build. | Installer error. | The image is built in GitHub Actions on every push, and the tests and the offline `reproduce` run in it. The full online `reproduce` runs in a separate job that does not fail the build, because public endpoints rate-limit shared runners; it last passed in [this run](https://github.com/bobxx22/solana-ordering/actions/runs/40304512073). |
+| The recorded rows of other transactions in 18 blocks of the pilot and calibration runs had a stale scheduled cost: 2 280 CU per Ed25519 precompile signature instead of the deployed 2 400. The code had been corrected, but those blocks were collected before the fix. | The new comparison of whole blocks with the chain (the round-5 review asked for it). | The three runs recollected (`collect --refresh`): 24 rows changed, only in that field; no table that REPORT quotes changed. |
+| `verify` reported unlanded transactions as checked when no endpoint answered. It took an empty answer from the first endpoint as final, and would have accepted "unknown" from an endpoint whose history does not reach the send slot. | Round-5 review; one block came back empty from the public endpoint while re-checking. | Unlanded transactions are asked only of endpoints whose history reaches their send slot, and count as checked only when one answered. An empty answer passes the request on to the next endpoint. |
+| `results.md` gave the pilot 75 transactions "in the targeted window" in one table and 19 in the next line. | Round-5 review. | The window is now the targeted leader's window for every path; the pilot rows show 19 and a spill-over of 56. |
+| Four statements in README and REPORT did not match the code: a spend "at most 0.022 SOL" (the bound is the 0.05 SOL cap), "no wallet key is read" (true of `run`, not of `fund`, `sweep` or `status`), the online `reproduce` in CI (it does not block the build), and "statistics resample hosts". | Round-5 review. | Corrected. |
+
+## Plan amendments before the main run
+
+The analysis plan was first committed at `d86fc31`. An independent full review (round 5) found that parts of it would
+have misread the data. It was amended before any trial of campaign `main`, and the amended plan is the one tagged
+`prereg-main`:
+
+- **Verdicts.** "Contradicted" (interval below 0.75) would have read chance-level order (share near 0.5) as an
+  alternative rule, for example "the base fee does not count". It is split:
+  - "reversed" (interval below 0.5) is the only verdict read as an alternative rule;
+  - "no stable order" (below 0.75) names none.
+- **Minimum.** Fewer than 10 trials is "insufficient data", not "no fee ordering detected".
+- **Quota.** A trial counted when any two of its transactions landed, so 30 primary trials could leave a contrast with
+  about 24 pairs (power 0.62 instead of 0.76 at an 80% share). It now counts only with B, C, D, F and A or E in the
+  targeted window. In the rehearsal 9 of 10 buffered trials met this ("Delivery", complete trials).
+- **Pipelines.** The four BAM and Harmonic labels hold about two thirds of mainnet's leader slots ("Coverage per
+  label"). They get their own family of twelve tests, read as statements about the pipeline.
+- **Validators.** Agave and Rakurai each rest on about four effective validators ("Coverage per label"). Added:
+  - a group-level sign-flip check per label;
+  - each label's coverage (validators, slot share, effective number, reachable share, validators reached);
+  - conclusions stated for the validators reached.
+- **Sensitivity.** Trials with an unknown arrival margin are left out, not kept.
+- **Twins.** Only versions whose source was read enter a version family. Agave 4.4.0-beta.1 and Firedancer 26.10.3
+  were read and joined their families; Firedancer "0.1.1" was not identified.
 
 ## Main run (to come)
 
 Campaign `main`, run by [`docs/RUNBOOK.md`](docs/RUNBOOK.md).
-- **Quotas:** 60 landed trials per local-scheduler label (Agave, JitoLabs, Firedancer, Rakurai) and 30 per pipeline
-  label.
+- **Quotas:** 60 trials per local-scheduler label (Agave, JitoLabs, Firedancer, Rakurai) and 30 per pipeline label.
+  A trial counts only with B, C, D, F and A or E landed in the targeted window.
 - **Cells per 10 trials:** 5 buffered/shared, 2 buffered/independent, 1 burst/shared, 2 streamed.
-- **Budget:** at most 360 × 61 000 lamports = 0.022 SOL, under the 0.05 SOL cap.
+- **Budget.**
+  - Expected about 0.025 SOL: a trial costs at most 61 000 lamports, and some trials land only in part.
+  - The bound is the 0.05 SOL cap in code, of which 0.003140 SOL is spent.
+- **Verification** after every session, while that epoch's leader schedule is still served (`verify/<run>.json`).
 
 The results section will be:
-1. Runs and dates; versions per label.
+1. Runs and dates; versions and coverage per label.
 2. Delivery and attrition per label.
 3. Control per label.
-4. The twelve primary tests with verdicts and their reading.
+4. The twelve primary tests with verdicts and their reading; the twelve pipeline tests.
 5. Exact orders.
 6. Secondary cells and twins by version family.
-7. Per-validator robustness and the sensitivity run.
+7. Robustness: leave one validator out, the group-level check, per-validator shares, the sensitivity run.
 8. Context in the block.
 9. What the results do not show.
 10. What went wrong in the main run.

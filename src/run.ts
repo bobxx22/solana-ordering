@@ -9,7 +9,9 @@
 //   rpc:           through sendTransaction of an RPC endpoint, which decides when to forward (the pilot showed the
 //                  public endpoint holding bursts for ~1.3 s and releasing them in its own order).
 // Without --live nothing is sent and no wallet key is used: the burst is signed by throwaway keys and simulated
-// with signature verification, and on the tpu path the QUIC handshake with the leader is still made.
+// with signature verification, and on the tpu path the QUIC handshake with the leader is still made. The same six
+// transactions are simulated once more paid by a funded public wallet of the latest live run, unsigned (signature
+// verification off, so they could never be valid on chain), which shows they execute: no error, 600 CU each.
 //
 // Runs belong to a campaign (`--campaign`). Quotas, per-validator counts and excluded addresses are seeded from the
 // earlier live runs of the same campaign, so a run that stopped can be continued instead of started over.
@@ -18,8 +20,9 @@ import { join } from 'node:path'
 import { BlockhashCache, SlotClock } from './clock.ts'
 import { collect } from './collect.ts'
 import { checkCluster, type Config, fmtSol } from './config.ts'
-import { type Cell, CELL_BLOCK, CellDealer, DEFAULT_QUOTAS, FIRE_OFFSET, GAP_MS, ROLES, type Role, buildTrialTxs, expectedPriority, maxFee, trialCost } from './design.ts'
+import { type Cell, CELL_BLOCK, CellDealer, countsTowardsQuota, DEFAULT_QUOTAS, FIRE_OFFSET, GAP_MS, MEASURED_CU, ROLES, type Role, buildTrialTxs, expectedPriority, maxFee, trialCost, WINDOW_SLOTS } from './design.ts'
 import { takeSnapshot } from './discover.ts'
+import { decode32 } from './base58.ts'
 import { generateKeypairBytes, loadKeypair, type Signer, signerFromBytes } from './keys.ts'
 import { CapExceeded, Ledger, SWEEP_ALLOWANCE } from './ledger.ts'
 import type { Log } from './log.ts'
@@ -33,7 +36,7 @@ import { balances, fundSubPayers, loadSubPayers, SUB_PAYERS, SUB_TARGET } from '
 export type SendPath = 'tpu' | 'rpc'
 
 export interface RunOptions {
-  /** landed trials wanted per client label (the labels not listed are not targeted) */
+  /** counted trials wanted per client label (countsTowardsQuota; the labels not listed are not targeted) */
   quotas: Record<string, number>
   /** trials per validator; raised for clients whose leader slots sit with few validators */
   perValidator: number
@@ -75,6 +78,26 @@ export const ledgerFile = (cfg: Config) => join(cfg.dataDir, cfg.cluster, 'ledge
 class Fatal extends Error {}
 
 /**
+ * For a dry run's execution check: the best-funded public wallet (main or sub-payer) of the latest live run. Only its
+ * address is used, never a key; null when there is none with a balance.
+ */
+async function executionPayer(cfg: Config, rpc: Rpc): Promise<Signer | null> {
+  const root = runsDir(cfg)
+  const metas = (existsSync(root) ? readdirSync(root).sort() : [])
+    .map((id) => join(root, id, 'run.json'))
+    .filter(existsSync)
+    .map((f) => JSON.parse(readFileSync(f, 'utf8')))
+    .filter((m) => m.live)
+  const last = metas.at(-1)
+  if (!last) return null
+  const wallets: string[] = [last.mainWallet, ...last.subPayers]
+  const bal = await balances(rpc, wallets)
+  const best = bal.indexOf(bal.reduce((a, b) => (b > a ? b : a), 0n))
+  if (bal[best] < 1_000_000n) return null
+  return { address: wallets[best], publicKey: decode32(wallets[best]), sign: () => new Uint8Array(64) }
+}
+
+/**
  * Counters carried over from the earlier live runs of a campaign: landed trials and their cells, dispatches,
  * per-validator counts (refused handshakes included) and excluded addresses. Whether an address takes unstaked
  * traffic is a fact about the address, not the campaign, so `everLanded` is built from every live run.
@@ -110,7 +133,8 @@ function campaignState(cfg: Config, campaign: string) {
       perValidator.set(t.leader, (perValidator.get(t.leader) ?? 0) + 1)
     }
     for (const e of events) {
-      if (e.type === 'landing-check' && e.landed >= 2) {
+      // runs before the quota rule of countsTowardsQuota recorded only how many landed
+      if (e.type === 'landing-check' && (e.counts ?? e.landed >= 2)) {
         perClient.set(e.client, (perClient.get(e.client) ?? 0) + 1)
         const t = byTrial.get(e.trial)
         if (t) cells.push({ client: e.client, cell: { mode: t.mode, delivery: t.delivery } })
@@ -139,6 +163,8 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
   const main: Signer = live ? loadKeypair(cfg.keypairPath) : throwaway()
   const subs: Signer[] = live ? loadSubPayers(cfg, true).signers : Array.from({ length: SUB_PAYERS }, throwaway)
   if (!live) log.info('dry run: throwaway keys, so simulations report AccountNotFound, which still proves the signatures')
+  const unsignedPayer = live ? null : await executionPayer(cfg, rpc)
+  if (!live) log.info(unsignedPayer ? `execution check: unsigned copies paid by ${unsignedPayer.address} (a public wallet of the latest live run)` : 'execution check skipped: no funded wallet of a live run')
   const ledger = new Ledger(ledgerFile(cfg), cfg.spendCapLamports)
   if (live) {
     await checkCluster(cfg, rpc, sendRpc)
@@ -232,12 +258,12 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
   process.on('SIGTERM', onSigint)
 
   const deadline = Date.now() + opts.maxMinutes * 60_000
-  // A trial counts towards its client's quota once at least two of its transactions are confirmed. An address
-  // (validator or shared gateway) that has never landed anything and fails twice in a row (two empty bursts, or
-  // refused handshakes) is no longer targeted; an address that landed before is never excluded. A client stops being
-  // targeted after three times its quota of dispatches.
+  // A trial counts towards its client's quota once B, C, D, F and A or E are confirmed in the targeted window
+  // (countsTowardsQuota). An address (validator or shared gateway) that has never landed anything and fails twice in
+  // a row (two empty bursts, or refused handshakes) is no longer targeted; an address that landed before is never
+  // excluded. A client stops being targeted after three times its quota of dispatches.
   const dropped = new Map<string, number>()
-  type Check = { trial: number; client: string; ingress: string; cell: Cell; txs: { signature: string; maxFee: bigint }[]; at: number; windowStart: number; lastAckMs: number | null }
+  type Check = { trial: number; client: string; ingress: string; cell: Cell; txs: { signature: string; role: Role; maxFee: bigint }[]; at: number; windowStart: number; lastAckMs: number | null }
   const checks: Check[] = []
   const failed = (ingress: string, client: string, why: string) => {
     dropped.set(ingress, (dropped.get(ingress) ?? 0) + 1)
@@ -255,18 +281,21 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
       checks.shift()
       const ok = value.map((st: any) => !!st && (st.confirmationStatus === 'confirmed' || st.confirmationStatus === 'finalized'))
       const landed = ok.filter(Boolean).length
+      // the window's slots all belong to the targeted leader, so the slot alone places a transaction in the window
+      const inWindow = c.txs.filter((t, i) => ok[i] && value[i].slot >= c.windowStart && value[i].slot < c.windowStart + WINDOW_SLOTS).map((t) => t.role)
+      const counts = countsTowardsQuota(inWindow)
       // our fee is exactly base + priority (verify checks it against the chain); settling now frees the reservation
       c.txs.forEach((t, i) => ok[i] && ledger.settle(t.signature, t.maxFee))
       // arrival margin: how long before our clock saw the window's first slot the leader had acknowledged the burst
       // (our clock lags the leader, so the true margin is smaller by that lag)
       const windowSeen = clock.seen.get(c.windowStart) ?? null
       const marginMs = windowSeen !== null && c.lastAckMs !== null ? windowSeen - c.lastAckMs : null
-      events('landing-check', { trial: c.trial, client: c.client, ingress: c.ingress, landed, marginMs })
+      events('landing-check', { trial: c.trial, client: c.client, ingress: c.ingress, landed, inWindow: inWindow.sort().join(''), counts, marginMs })
       if (landed > 0) {
         everLanded.add(c.ingress)
         dropped.set(c.ingress, 0)
       }
-      if (landed >= 2) perClient.set(c.client, (perClient.get(c.client) ?? 0) + 1)
+      if (counts) perClient.set(c.client, (perClient.get(c.client) ?? 0) + 1)
       else {
         // the cell was counted at dispatch; a trial that does not count towards the quota gives it back
         dealer.add(c.client, c.cell, -1)
@@ -449,7 +478,7 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
       const ingress = target.tpuQuic ?? target.leader
       const acks = sent.map((s) => (s.ackAt ? Date.parse(s.ackAt) : NaN)).filter(Number.isFinite)
       const lastAckMs = acks.length === sent.length ? Math.max(...acks) : null
-      if (live) checks.push({ trial, client: target.client, ingress, cell, txs: txs.map((t) => ({ signature: t.signature, maxFee: t.maxFee })), at: Date.now() + CHECK_AFTER_MS, windowStart: target.start, lastAckMs })
+      if (live) checks.push({ trial, client: target.client, ingress, cell, txs: txs.map((t) => ({ signature: t.signature, role: t.role, maxFee: t.maxFee })), at: Date.now() + CHECK_AFTER_MS, windowStart: target.start, lastAckMs })
       else perClient.set(target.client, (perClient.get(target.client) ?? 0) + 1)
       const v = byIdentity.get(target.leader)
       appendJsonl(join(dir, 'trials.jsonl'), {
@@ -494,6 +523,16 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
           events('simulation', { trial, role: t.role, signature: t.signature, err: r.value.err, unitsConsumed: r.value.unitsConsumed })
           log.info(`  simulated ${t.role}: ${r.value.err ? JSON.stringify(r.value.err) : 'ok'}, ${r.value.unitsConsumed} CU`)
         }
+        if (unsignedPayer) {
+          const copies = buildTrialTxs(cell.mode, order, Array(ROLES.length).fill(unsignedPayer), blockhash)
+          for (const t of copies) {
+            const r = await rpc.call('simulateTransaction', [t.wire, { encoding: 'base64', sigVerify: false, replaceRecentBlockhash: true, commitment: 'confirmed' }])
+            const fine = !r.value.err && r.value.unitsConsumed === MEASURED_CU
+            events('execution', { trial, role: t.role, err: r.value.err, unitsConsumed: r.value.unitsConsumed, expected: MEASURED_CU })
+            log.info(`  executed ${t.role} (unsigned copy): ${r.value.err ? JSON.stringify(r.value.err) : 'ok'}, ${r.value.unitsConsumed} CU${fine ? '' : ` (UNEXPECTED: the design assumes no error and ${MEASURED_CU} CU)`}`)
+            if (r.value.err) process.exitCode = 1
+          }
+        }
       }
       trial++
       failingSince = 0
@@ -519,7 +558,11 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
   hashes.stop()
   tpu?.stop()
   if (live) await processChecks(true).catch((e) => log.info(`final landing checks failed: ${(e as Error).message}`))
-  log.info(`run ${runId}: ${trial} trials in ${attempt} attempts; landed in the campaign ${toJson(Object.fromEntries(perClient))}; dispatched ${toJson(Object.fromEntries(dispatched))}`)
+  log.info(
+    live
+      ? `run ${runId}: ${trial} trials in ${attempt} attempts; trials counting towards the quotas in the campaign ${toJson(Object.fromEntries(perClient))}; dispatched ${toJson(Object.fromEntries(dispatched))}`
+      : `dry run ${runId}: ${trial} trials simulated in ${attempt} attempts, nothing sent`,
+  )
   // collect even after an error, and keep collecting until no reservation of this run is open (blockhashes expire in ~1 min)
   if (live && trial > 0) {
     const mine = new Set(readJsonl(join(dir, 'planned.jsonl')).map((p) => p.signature as string))

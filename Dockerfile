@@ -10,6 +10,5 @@ COPY package.json ./
 COPY src ./src
 COPY py ./py
 COPY test ./test
-COPY scripts ./scripts
 ENTRYPOINT ["node", "src/cli.ts"]
 CMD ["reproduce"]

@@ -11,12 +11,24 @@ export function appendJsonl(file: string, row: unknown): void {
   appendFileSync(file, toJson(row) + '\n')
 }
 
+/**
+ * Reads a JSON-lines file. A process killed mid-write can leave the last line torn: that line is skipped with a
+ * warning, so analysis and a continued campaign still start. A bad line anywhere else is an error.
+ */
 export function readJsonl<T = any>(file: string): T[] {
   if (!existsSync(file)) return []
-  return readFileSync(file, 'utf8')
+  const lines = readFileSync(file, 'utf8')
     .split('\n')
     .filter((l) => l.trim())
-    .map((l) => JSON.parse(l))
+  return lines.flatMap((l, i) => {
+    try {
+      return [JSON.parse(l)]
+    } catch (e) {
+      if (i < lines.length - 1) throw new Error(`${file}, line ${i + 1}: ${(e as Error).message}`)
+      console.warn(`${file}: skipping a torn last line`)
+      return []
+    }
+  })
 }
 
 export function chunk<T>(items: T[], size: number): T[][] {

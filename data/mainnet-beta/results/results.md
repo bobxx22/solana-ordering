@@ -22,6 +22,10 @@ No trials of the main campaign yet.
 - D before C: reward/cost with k < 0.84 puts D first; the whole base fee (k = 1) or cost alone would put C first.
 - A before B: every per-unit rule puts A first; total fee puts B first.
 
+## Pipelines: BAM and Harmonic labels, buffered/shared (campaign "main"; secondary family)
+
+No trials of the main campaign yet.
+
 ## Calibration and rehearsal runs (all labels; not part of any test)
 
 Descriptive: per-trial shares with 95% intervals, no test.
@@ -66,17 +70,19 @@ Pilot path: median RPC response to sendTransaction 1302 ms (range 176–3340); P
 
 ## Delivery
 
-| campaign / path / delivery | trials | sent | acknowledged by the leader's QUIC (of those with acknowledgement data) | landed | in the targeted window | trials used | spill-over | median slots from dispatch to landing | median gap between sends, ms | arrival margin before the window, ms (median, min) | reconnected before sending |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|---:|
-| calibration / rpc / pilot-early | 10 | 50 | – | 50 (100%) | 50 | 10 | 0 | 7 | 16 | – | 0 |
-| calibration / rpc / pilot-inwindow | 5 | 25 | – | 25 (100%) | 25 | 5 | 0 | 4 | 15 | – | 0 |
-| calibration / tpu / streamed | 9 | 54 | 18/18 | 42 (78%) | 42 | 7 | 0 | 1 | 31 | – | 0 |
-| calibration / tpu / buffered@-1 | 2 | 12 | – | 12 (100%) | 12 | 2 | 0 | 1 | 0 | – | 0 |
-| calibration / tpu / buffered | 8 | 48 | 42/48 | 42 (88%) | 42 | 7 | 0 | 2 | 0 | – | 0 |
-| calibration / tpu / burst | 2 | 12 | 12/12 | 12 (100%) | 12 | 2 | 0 | 0 | 0 | – | 0 |
-| rehearsal / tpu / buffered | 10 | 60 | 60/60 | 54 (90%) | 54 | 9 | 0 | 2 | 0 | 381, 134 | 1 |
-| rehearsal / tpu / streamed | 5 | 30 | 30/30 | 30 (100%) | 30 | 5 | 0 | 0.5 | 31 | -385, -712 | 2 |
-| rehearsal / tpu / burst | 2 | 12 | 12/12 | 12 (100%) | 12 | 2 | 0 | 0 | 0 | -246, -275 | 0 |
+In the targeted window: landed in a slot of the targeted leader's window. Complete: trials with B, C, D, F and A or E in the window (what the quota counts). Trials used: trials with two or more transactions in the ordered group, which for the pilot (rpc) is everything that landed, wherever: the public RPC rarely hit the targeted window.
+
+| campaign / path / delivery | trials | sent | acknowledged by the leader's QUIC (of those with acknowledgement data) | landed | in the targeted window | spill-over | complete trials | trials used | median slots from dispatch to landing | median gap between sends, ms | arrival margin before the window, ms (median, min) | reconnected before sending |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|---:|
+| calibration / rpc / pilot-early | 10 | 50 | – | 50 (100%) | 14 | 36 | – | 10 | 7 | 16 | – | 0 |
+| calibration / rpc / pilot-inwindow | 5 | 25 | – | 25 (100%) | 5 | 20 | – | 5 | 4 | 15 | – | 0 |
+| calibration / tpu / streamed | 9 | 54 | 18/18 | 42 (78%) | 42 | 0 | 7 | 7 | 1 | 31 | – | 0 |
+| calibration / tpu / buffered@-1 | 2 | 12 | – | 12 (100%) | 12 | 0 | 2 | 2 | 1 | 0 | – | 0 |
+| calibration / tpu / buffered | 8 | 48 | 42/48 | 42 (88%) | 42 | 0 | 7 | 7 | 2 | 0 | – | 0 |
+| calibration / tpu / burst | 2 | 12 | 12/12 | 12 (100%) | 12 | 0 | 2 | 2 | 0 | 0 | – | 0 |
+| rehearsal / tpu / buffered | 10 | 60 | 60/60 | 54 (90%) | 54 | 0 | 9 | 9 | 2 | 0 | 381, 134 | 1 |
+| rehearsal / tpu / streamed | 5 | 30 | 30/30 | 30 (100%) | 30 | 0 | 5 | 5 | 0.5 | 31 | -385, -712 | 2 |
+| rehearsal / tpu / burst | 2 | 12 | 12/12 | 12 (100%) | 12 | 0 | 2 | 2 | 0 | 0 | -246, -275 | 0 |
 
 ## Versions
 
@@ -93,9 +99,24 @@ Share of each label's leader slots by version string, from the snapshots of the 
 | HarmonicAgave | 4.3.2 100% | – |
 | HarmonicFiredancer | 26.10.4 100% | – |
 
+## Coverage per label
+
+From the latest snapshot of the main campaign (of all runs while there is none). Effective number: (sum of slots)^2 / sum of squares, over the label's validators by leader slots, and over the validators reached by trials. Reachable: share of the label's slots whose validator advertises a QUIC address that no run of the main campaign excluded. Reached: validators in buffered/shared trials of the main campaign.
+
+| client | validators | share of all leader slots | effective number | reachable share of its slots | validators reached | effective number reached |
+|---|---:|---:|---:|---:|---:|---:|
+| Agave | 20 | 1.0% | 4.1 | 100% | – | – |
+| JitoLabs | 133 | 23.3% | 16.4 | 100% | – | – |
+| Firedancer | 23 | 7.0% | 5.7 | 100% | – | – |
+| Rakurai | 9 | 1.1% | 4.0 | 100% | – | – |
+| AgaveBam | 362 | 35.5% | 63.2 | 100% | – | – |
+| FireBAM | 14 | 1.6% | 2.4 | 100% | – | – |
+| HarmonicAgave | 49 | 21.7% | 15.8 | 100% | – | – |
+| HarmonicFiredancer | 38 | 8.6% | 8.4 | 100% | – | – |
+
 ## Ingress: where the direct path delivered
 
-BAM and Harmonic validators advertise QUIC addresses on shared gateway hosts; for them the measurement starts at the gateway, not at the validator. Statistics resample these hosts.
+BAM and Harmonic validators advertise QUIC addresses on shared gateway hosts; for them the measurement starts at the gateway, not at the validator. The pipeline family's group-level test groups their trials by these hosts, and rule-agreement intervals resample hosts.
 
 | client | trials used | validators | distinct ingress hosts | trials via a shared host | most validators behind one used host |
 |---|---:|---:|---:|---:|---:|

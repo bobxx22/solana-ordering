@@ -1,6 +1,6 @@
-# Proves on a clean machine that the project builds and reproduces: unit tests on Node, the results regenerated from
-# the committed raw data must equal the committed results, and the Docker image runs the same check.
-# No keys and no network sends are involved.
+# Proves on a clean machine that the project builds and reproduces: type checks, unit tests on Node (the QUIC sender
+# included, over loopback), the results regenerated from the committed raw data must equal the committed results,
+# and the Docker image runs the same checks. No keys and no network sends are involved.
 name: ci
 
 on:
@@ -16,7 +16,14 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: '24.11.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: aioquic for the QUIC sender and its loopback test
+        run: pip install -r py/requirements.txt
       - run: npm test
+      - name: type check (TypeScript is fetched for this step only; the project has no dependencies)
+        run: npm install --no-save --no-package-lock typescript@5.9.3 @types/node@24 && npx tsc -p tsconfig.json
       - name: results regenerate byte for byte from the raw data
         run: node src/cli.ts analyze > /dev/null && git diff --exit-code data/
 
@@ -27,10 +34,8 @@ jobs:
       - run: docker compose build
       - name: reproduce (offline part) in the container
         run: docker compose run --rm ordering reproduce --offline
-      - name: tests in the container
+      - name: tests in the container, the QUIC loopback test included
         run: docker compose run --rm --entrypoint node ordering --test 'test/*.test.ts'
-      - name: the QUIC sender starts in the container
-        run: docker compose run --rm --entrypoint sh ordering -c 'echo "{\"id\":1,\"op\":\"ping\"}" | $PYTHON py/tpu_sender.py'
 
   # the whole one-command check, network included: catches data that public endpoints no longer serve. Reported
   # without failing the build, because public endpoints rate-limit shared CI runners.

@@ -9,16 +9,17 @@ table of `results.md` is generated from the main run's own snapshots).
 
 | label | versions | source read |
 |---|---|---|
-| Agave | 4.3.2 80%, 4.4.0-rc.0 9%, 4.5.0-alpha.2 8%, 4.4.0-beta.1 2% | `anza-xyz/agave` tags v4.3.2, v4.4.0-rc.0, v4.5.0-alpha.2 |
-| JitoLabs | 4.3.2 (100% of slots) | `jito-foundation/jito-solana` tag v4.3.2-jito |
+| Agave | 4.3.2 80%, 4.4.0-rc.0 9%, 4.5.0-alpha.2 8%, 4.4.0-beta.1 2% | `anza-xyz/agave` tags v4.3.2, v4.4.0-beta.1, v4.4.0-rc.0, v4.5.0-alpha.2 |
+| JitoLabs | 4.3.2 99.9%; 4.3.0 and 4.3.0-rc.1 under 0.1% | `jito-foundation/jito-solana` tag v4.3.2-jito |
 | AgaveBam, HarmonicAgave, Rakurai | report 4.3.2 | Agave v4.3.2 for the base scheduler; the BAM sequencer, Harmonic block building and Rakurai's scheduler are not in these repositories |
-| Firedancer | 26.10.4 92%, 26.10.3 6%, "0.1.1" 1% | `firedancer-io/firedancer` tag v26.10.4 |
+| Firedancer | 26.10.4 92%, 26.10.3 6%, "0.1.1" 1% | `firedancer-io/firedancer` tags v26.10.4, v26.10.3 (pack's cost header and comparison identical to v26.10.4) |
 | FireBAM, HarmonicFiredancer | report 26.10.4 | Firedancer v26.10.4 for pack |
 
 Sources were read on 2026-10-26, through the Helius `svm` skill (`readSolanaSourceFile`) and raw GitHub files.
 Statements about `master` are marked as such: earlier claims (ours and reviewers') that came from `master` do not all
 hold for the deployed versions. "0.1.1" is reported by two small Firedancer-label validators; we did not identify that
-build, and it is kept in the label.
+build. It is kept in the label, but the twins table, which depends on the version, puts it, like any version whose
+source was not read, under "other versions".
 
 ## What both clients sort by
 
@@ -34,7 +35,7 @@ build, and it is kept in the label.
   - With no limit set, the loaded-data limit is 64 MiB, which costs 16 384 CU.
 - **Reward** is `get_deposit()`: the whole priority fee plus the base fee minus a 50% burn (L52, and
   [runtime/src/bank/fee_distribution.rs:97-106](https://github.com/anza-xyz/agave/blob/v4.3.2/runtime/src/bank/fee_distribution.rs#L97-L106)).
-- `core/src/transaction_priority.rs` is byte-identical in **v4.4.0-rc.0 and v4.5.0-alpha.2**, and in
+- `core/src/transaction_priority.rs` is byte-identical in **v4.4.0-beta.1, v4.4.0-rc.0 and v4.5.0-alpha.2**, and in
   **Jito-Solana v4.3.2-jito**.
 
 **Firedancer v26.10.4**
@@ -69,14 +70,15 @@ numbers (priority fees A 4 000, B 10 000, C 0, D 9 000 lamports; costs 2 335, 41
 | deployed version | equal priorities are broken by | source |
 |---|---|---|
 | Agave v4.3.2, Jito v4.3.2-jito | the internal `id`: the transaction's key in the container's slab, assigned at insertion and reused after removal (not arrival order) | `TransactionPriorityId { priority, id }` with derived ordering, [transaction_priority_id.rs:4-8](https://github.com/anza-xyz/agave/blob/v4.3.2/core/src/banking_stage/transaction_scheduler/transaction_priority_id.rs#L4-L8); `insert_map_only` takes the slab's vacant key, [transaction_state_container.rs:268-273, 292-295](https://github.com/anza-xyz/agave/blob/v4.3.2/core/src/banking_stage/transaction_scheduler/transaction_state_container.rs#L268-L295) |
-| Agave v4.4.0-rc.0, v4.5.0-alpha.2 | **arrival order, oldest first**, then `id` | `TransactionPriorityId { priority, arrival_order, id }` ([v4.5.0-alpha.2](https://github.com/anza-xyz/agave/blob/v4.5.0-alpha.2/core/src/banking_stage/transaction_scheduler/transaction_priority_id.rs)) |
-| Firedancer v26.10.4 | the treap's structure; `COMPARE_WORSE` defines no secondary key | fd_pack.c:227-249 |
+| Agave v4.4.0-beta.1, v4.4.0-rc.0, v4.5.0-alpha.2 | **arrival order, oldest first**, then `id` | `TransactionPriorityId { priority, arrival_order, id }` ([v4.5.0-alpha.2](https://github.com/anza-xyz/agave/blob/v4.5.0-alpha.2/core/src/banking_stage/transaction_scheduler/transaction_priority_id.rs)) |
+| Firedancer v26.10.4, v26.10.3 | the treap's structure; `COMPARE_WORSE` defines no secondary key | fd_pack.c:227-249 (the same lines in both tags) |
 
 **What this means for the design**
 - Our twins A and E have identical priority. Only the Agave pre-releases (about a fifth of the Agave label's slots) are
   designed to keep them in arrival order.
-- The twin column is therefore reported **by version family** (Agave ≤ 4.3, Agave ≥ 4.4, Firedancer). It measures
-  ingress plus tie-breaking, and FIFO only for Agave ≥ 4.4.
+- The twin column is therefore reported **by version family**: Agave 4.3.2 (Jito included), the Agave 4.4/4.5
+  pre-releases, Firedancer 26.10.3-4. Versions whose source was not read, Rakurai's own scheduler and the pipelines
+  are kept apart. It measures ingress plus tie-breaking, and FIFO only for the pre-releases.
 - Agave's primary includes the pre-releases: their priority formula is identical, so the three primary contrasts
   mean the same for every Agave version.
 
@@ -127,20 +129,29 @@ Our fresh anchors never appear in bundles.
 ## Reading the results against this (pre-registered)
 
 Verdicts per contrast and label (`src/analyze.ts`):
+- **insufficient data**: fewer than 10 trials;
 - **holds**: Holm-adjusted one-sided p < 0.05;
-- **contradicted**: the upper end of the 95% interval of the per-trial share is below 0.75;
+- **reversed**: the upper end of the 95% interval of the per-trial share is below 0.5;
+- **no stable order**: that upper end is below 0.75 but not below 0.5;
 - **inconclusive**: anything else.
 
-A label whose control (A,E before C) has unadjusted p ≥ 0.05 is "no fee ordering detected", whatever else it shows.
+A label with fewer than 10 control trials (A,E before C) is "insufficient data"; one whose control has unadjusted
+p ≥ 0.05 is "no fee ordering detected", whatever else it shows.
 
-| A,E before F | C before B | D before C | reading |
+The alternative rules predict the opposite order, not chance, so only "reversed" is read as one of them. Each verdict
+is read on its own:
+
+| contrast | holds | reversed | no stable order |
 |---|---|---|---|
-| holds | holds | holds | ranks by reward per requested cost, the requested loaded-data limit included, with a base-fee share between 0.12 and 0.84 (the source: 0.5) |
-| contradicted | holds | holds | the requested loaded-data limit does not enter the ranking |
-| holds | contradicted | holds | the base fee does not count (priority fee per cost) |
-| contradicted | contradicted | holds | price per CU or total fee ranks; A before B tells them apart (descriptive) |
-| holds | holds | contradicted | the whole base fee counts, or cost alone ranks |
-| any inconclusive | | | that contrast is not settled at this sample size: it is stated as such, never as the opposite |
+| A,E before F | the requested loaded-data limit enters the ranking | F before A and E: no candidate rule predicts this | consistent with the requested loaded-data limit not entering the ranking, since A, E and F would then tie |
+| C before B | a base-fee share above 0.12 counts | the base fee does not count: priority fee per cost, price or total fee ranks | no stable order between C and B; no rule is named |
+| D before C | the base-fee share is below 0.84 | the whole base fee counts, or cost alone ranks | no stable order between D and C; no rule is named |
+
+All three hold: the label ranks by reward per requested cost, the requested loaded-data limit included, with a
+base-fee share between 0.12 and 0.84 (the source: 0.5). Inconclusive and insufficient data are stated as such, never
+as the opposite. Between price per CU and total fee, A before B tells them apart (descriptive).
+
+The pipelines (BAM, Harmonic) are read the same way, as statements about the whole pipeline.
 
 Independent mode adds parallel execution on top: a weaker pattern there than in shared mode is what the source
 predicts, not a different rule.

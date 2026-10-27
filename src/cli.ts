@@ -30,7 +30,8 @@ commands
                --path tpu|rpc        direct QUIC to the leader (default) or sendTransaction via --send-rpc
                --campaign NAME       required with --live: runs of one campaign share quotas and exclusions, so a
                                      stopped run is continued by running again with the same name
-               --quota Agave=60,...  landed trials per client (default: 60 per local scheduler, 30 per pipeline)
+               --quota Agave=60,...  trials per client that count: B, C, D, F and A or E landed in the window
+                                     (default: 60 per local scheduler, 30 per pipeline)
                --per-validator N     at least N trials allowed per validator (default 4; more for small clients)
                --spacing-ms 4000   --seed N   --dry-trials 3   --minutes 240
   collect    landing slot, in-block position and slot leader of a run's transactions; settles the ledger
@@ -38,7 +39,9 @@ commands
   analyze    statistics of all live runs -> data/<cluster>/results/ (offline, from the committed raw data)
   verify     check the raw data against the chain (default endpoints: api.mainnet-beta.solana.com, then PublicNode);
              exit code 1 on mismatches (blocks no endpoint can serve are reported, not failed)
-               --verify-rpc URL,URL   --sample 60 (whole transactions checked)   --write (data/<cluster>/verify.json)
+               [run id | all, default all]   --verify-rpc URL,URL   --sample 60 (whole transactions checked)
+               --row-blocks 3 (whole blocks whose rows are rebuilt)
+               --write (all: data/<cluster>/verify.json; one run: data/<cluster>/verify/<run id>.json)
   paths      delivery-path probe: one transaction per endpoint per round -> data/<cluster>/paths/
                --endpoints URL,read,tpu   ('read' = the read RPC, keeping its key out of the command line;
                                            'tpu' = QUIC straight to the next leader)   --rounds 8
@@ -139,19 +142,20 @@ async function main(): Promise<void> {
       console.log(analyze(cfg.dataDir, cfg.cluster))
       return
     case 'reproduce': {
-      const resultsFile = join(cfg.dataDir, cfg.cluster, 'results', 'results.md')
-      const before = existsSync(resultsFile) ? readFileSync(resultsFile, 'utf8') : null
+      // every file analyze writes is compared with the committed one
+      const files = ['results.md', 'orders.md', 'units.json', 'summary.json'].map((f) => join(cfg.dataDir, cfg.cluster, 'results', f))
+      const before = files.map((f) => (existsSync(f) ? readFileSync(f, 'utf8') : null))
       analyze(cfg.dataDir, cfg.cluster)
-      const after = readFileSync(resultsFile, 'utf8')
-      if (before === null) log.info('reproduce: results generated (none were committed to compare with)')
-      else if (before === after) log.info('reproduce: results regenerated from the raw data are identical to the committed ones')
+      const differ = files.filter((f, i) => before[i] !== null && before[i] !== readFileSync(f, 'utf8'))
+      if (before.every((b) => b === null)) log.info('reproduce: results generated (none were committed to compare with)')
+      else if (!differ.length) log.info(`reproduce: the ${files.length} result files regenerated from the raw data are identical to the committed ones`)
       else {
-        log.info('reproduce: regenerated results DIFFER from the committed ones (see git diff data/)')
+        log.info(`reproduce: regenerated results DIFFER from the committed ones: ${differ.join(', ')} (see git diff data/)`)
         process.exitCode = 1
       }
       if (args.flags.has('offline')) return
       // a seeded sample of 120 blocks keeps this within minutes on the public endpoint; `verify` checks every block
-      const r = await verify(verifyRpcs(cfg, args), runsDir(cfg), log, { maxBlocks: 120, sample: 30 })
+      const r = await verify(verifyRpcs(cfg, args), runsDir(cfg), log, { maxBlocks: 120, sample: 30, rowBlocks: 2 })
       if (r.problems.length) process.exitCode = 1
       await run({ ...cfg, live: false }, rpc, { quotas: DEFAULT_QUOTAS, perValidator: 4, cells: CELL_BLOCK, campaign: 'dry', path: 'tpu', spacingMs: 4000, seed: 1, dryTrials: 1, maxMinutes: 5 }, log)
       return
@@ -162,7 +166,10 @@ async function main(): Promise<void> {
       return
     }
     case 'verify': {
-      const r = await verify(verifyRpcs(cfg, args), runsDir(cfg), log, { write: args.flags.get('write') === true, sample: Number(args.flags.get('sample') ?? 60) })
+      // one run: the per-session check of the runbook, written next to the others; all runs: verify.json
+      const one = args.positional[0] && args.positional[0] !== 'all' ? args.positional[0] : undefined
+      const writeTo = args.flags.get('write') === true ? join(cfg.dataDir, cfg.cluster, ...(one ? ['verify', `${one}.json`] : ['verify.json'])) : undefined
+      const r = await verify(verifyRpcs(cfg, args), runsDir(cfg), log, { run: one, writeTo, sample: Number(args.flags.get('sample') ?? 60), rowBlocks: Number(args.flags.get('row-blocks') ?? 3) })
       if (r.problems.length) process.exitCode = 1
       return
     }

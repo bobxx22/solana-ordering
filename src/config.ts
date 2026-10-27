@@ -35,8 +35,11 @@ export function parseArgs(argv: string[]): Args {
     const eq = a.indexOf('=')
     if (eq > 0) {
       const [k, v] = [a.slice(2, eq), a.slice(eq + 1)]
-      flags.set(k, BOOLEAN_FLAGS.has(k) ? v === 'true' || v === '1' || v === '' : v)
-      if (BOOLEAN_FLAGS.has(k) && flags.get(k) === false) flags.delete(k)
+      if (BOOLEAN_FLAGS.has(k)) {
+        // a safety flag takes only an unambiguous value: --live, --live=true or --live=1
+        if (!['true', '1', 'false', '0'].includes(v)) throw new Error(`--${k} takes no value other than true or false, got "${v}"`)
+        if (v === 'true' || v === '1') flags.set(k, true)
+      } else flags.set(k, v)
     } else if (!BOOLEAN_FLAGS.has(a.slice(2)) && i + 1 < argv.length && !argv[i + 1].startsWith('--')) flags.set(a.slice(2), argv[++i])
     else flags.set(a.slice(2), true)
   }

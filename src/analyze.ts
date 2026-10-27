@@ -1,40 +1,60 @@
 // Turns the raw run files into the numbers of the report. Reads only committed data (no network), so anyone can
 // rerun it; `verify` separately checks the raw data against the chain. Every number REPORT.md quotes comes from here.
 //
-// Pre-registered analysis (README, "Noise versus rule"; frozen before the first trial of campaign "main"):
+// Pre-registered analysis (README, "Noise versus rule"; frozen before the first trial of campaign "main", git tag
+// prereg-main):
 //   unit       one trial: its transactions that landed in the targeted leader's 4-slot window, ordered by (slot,
 //              index); a transaction pushed to a later slot of the window counts as later. Landings outside the
-//              window are counted as spill-over and left out.
+//              window are counted as spill-over and left out. A contrast uses every trial in which both of its roles
+//              landed in the window. (A trial counts towards the run's quota only with B, C, D, F and A or E in the
+//              window: design.ts, countsTowardsQuota.)
 //   primary    campaign "main", buffered/shared cell, the four local-scheduler labels (Agave, JitoLabs, Firedancer,
 //              Rakurai; Agave pre-releases included, their priority formula is identical), three contrasts: A,E before
 //              F (per trial the mean of the two indicators), C before B, D before C. Twelve tests, each one-sided
 //              against chance by its exact null distribution, Holm-adjusted together; a test without data has p = 1.
-//   verdict    holds: Holm p < 0.05. contradicted: the upper end of the 95% interval of the per-trial share < 0.75.
-//              inconclusive: anything else.
-//   control    A,E before C (same cost, strictly higher fee), outside the family. A label whose control has
-//              unadjusted p >= 0.05 is reported as "no fee ordering detected", whatever its other contrasts say.
-//   secondary  descriptive: independent mode, burst per label, streamed, the twins by version family, the pipelines
-//              (BAM, Harmonic), per-validator shares, leave-one-validator-out, a sensitivity analysis without
-//              reconnects, small arrival margins or a non-firstShred clock, rule agreement (gamma), calibration runs.
+//   verdict    insufficient data: fewer than 10 trials (below 8, even unanimous trials cannot pass the strictest
+//              Holm step). Otherwise: holds: Holm p < 0.05. reversed: the upper end of the 95% interval of the
+//              per-trial share < 0.5 (the opposite order dominates). no stable order: that upper end < 0.75 but not
+//              < 0.5 (neither the near-deterministic order the source predicts nor the opposite). inconclusive:
+//              anything else. Only "reversed" is read as evidence for an alternative rule.
+//   control    A,E before C (same cost, strictly higher fee), outside the family. A label with fewer than 10 control
+//              trials is "insufficient data"; one whose control has unadjusted p >= 0.05 is "no fee ordering
+//              detected", whatever its other contrasts say.
+//   pipelines  a secondary family, tested the same way: the four BAM and Harmonic labels, buffered/shared, control
+//              and three contrasts, Holm within these twelve. A verdict describes the whole pipeline behind the
+//              gateway, not a client's scheduler.
+//   robustness reported, not tested: leave one validator out; per-validator shares; a one-sided sign-flip test over
+//              validator means (pipelines: over ingress hosts), whose smallest possible p is 2^-k with k validators;
+//              each label's coverage (validators, slot share, effective number, reachable share, validators
+//              reached); a sensitivity analysis without reconnects, unknown or under-100 ms arrival margins or a
+//              clock other than firstShred.
+//   secondary  descriptive: independent mode, burst per label, streamed, the twins by version family, rule agreement
+//              (gamma), calibration runs.
 // The block producer is the scheduled leader of the landing slot; the client is that leader's gossip client id in
 // the run's snapshot.
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import type { BlockRow, BlockSummary } from './block.ts'
 import type { Landed } from './collect.ts'
-import { BASE_FEE_PER_SIGNATURE, FIRE_OFFSET, LOCAL_CLIENTS, loadedDataCost, PIPELINE_CLIENTS } from './design.ts'
+import { BASE_FEE_PER_SIGNATURE, countsTowardsQuota, FIRE_OFFSET, LOCAL_CLIENTS, loadedDataCost, PIPELINE_CLIENTS, WINDOW_SLOTS } from './design.ts'
 import type { Snapshot } from './discover.ts'
-import { bootstrapMeanCi, exactUpperTail, mean, median, pearson, signFlipP, spearman, wilson } from './stats.ts'
+import { bootstrapMeanCi, exactUpperTail, mean, median, pearson, signFlipP, signFlipUpperP, spearman, wilson } from './stats.ts'
 import { readJsonl, rng, toJson } from './util.ts'
 
-/** First slot with Alpenglow active on mainnet; every measurement must be at or after it. */
+/**
+ * First slot with Alpenglow active on mainnet; every measurement must be at or after it. It is the slot announced for
+ * the switch from TowerBFT (https://solanacompass.com/news/alpenglow-is-pending-activation-on-solana-mainnet-with-
+ * towerbft-set-to-retire-at-slot-459653000); on chain, the last block before it, slot 459 652 996, has block time
+ * 2026-10-21 13:53:59 UTC.
+ */
 export const ALPENGLOW_SLOT = 459_653_000
 /** the campaign whose buffered/shared trials carry the confirmatory tests */
 export const MAIN_CAMPAIGN = 'main'
-const WINDOW_SLOTS = 4
 const ALPHA = 0.05
-/** below this upper bound a contrast is "contradicted": it is not the near-deterministic order the source predicts */
-const CONTRADICTED_BELOW = 0.75
+/** fewer trials than this give no verdict */
+export const MIN_TRIALS = 10
+/** below this upper bound a contrast is not the near-deterministic order the source predicts */
+const NEAR_DETERMINISTIC = 0.75
 
 export const RULES = ['rewardPerCost', 'priorityPerCost', 'cuPrice', 'totalFee', 'sentFirst', 'rpcReleasedFirst'] as const
 export type Rule = (typeof RULES)[number]
@@ -113,13 +133,17 @@ export interface Unit {
   gamma: Record<Rule, number | null>
 }
 
-const FIREDANCER_FAMILY = ['Firedancer', 'FireBAM', 'HarmonicFiredancer']
-/** How equal priorities are broken in the client's deployed source (docs/schedulers.md). */
+/**
+ * How equal priorities are broken in the deployed source of the client's version (docs/schedulers.md). Only the tags
+ * that were read are placed in a family; pipelines and Rakurai order outside the sources we read.
+ */
 export function versionFamily(client: string, version: string | null): string {
-  if (FIREDANCER_FAMILY.includes(client)) return 'Firedancer (treap ties)'
-  const m = /^(\d+)\.(\d+)/.exec(version ?? '')
-  if (m && (Number(m[1]) > 4 || (Number(m[1]) === 4 && Number(m[2]) >= 4))) return 'Agave >= 4.4 (oldest-first ties)'
-  return 'Agave <= 4.3 (container-id ties)'
+  if (PIPELINE_CLIENTS.includes(client)) return 'pipelines (order set outside the client)'
+  if (client === 'Rakurai') return 'Rakurai (own scheduler, source not read)'
+  if (client === 'Firedancer') return /^26\.10\.[34]$/.test(version ?? '') ? 'Firedancer 26.10.3-4 (treap ties)' : 'other versions (source not read)'
+  if (version === '4.3.2') return 'Agave 4.3.2 (container-id ties)'
+  if (['4.4.0-beta.1', '4.4.0-rc.0', '4.5.0-alpha.2'].includes(version ?? '')) return 'Agave 4.4/4.5 pre-releases (oldest-first ties)'
+  return 'other versions (source not read)'
 }
 
 /** The scheduler's view of one of our transactions (cost as in design.ts, for any stored role parameters). */
@@ -170,10 +194,14 @@ export interface Loaded {
   /** live runs whose results were never collected (no landed.json): a problem to fix with `collect` */
   uncollected: string[]
   snapshots: { campaign: string; snapshot: Snapshot }[]
+  /** per trial key, the roles that landed in the targeted leader's window (the pilot's ordered group is wider) */
+  onTarget: Map<string, string[]>
+  /** addresses a run of the campaign stopped targeting */
+  excluded: { campaign: string; ingress: string }[]
 }
 
 export function loadRuns(runsRoot: string): Loaded {
-  const out: Loaded = { units: [], txs: [], trials: [], blocks: new Map(), ordered: new Map(), runs: [], uncollected: [], snapshots: [] }
+  const out: Loaded = { units: [], txs: [], trials: [], blocks: new Map(), ordered: new Map(), runs: [], uncollected: [], snapshots: [], onTarget: new Map(), excluded: [] }
   if (!existsSync(runsRoot)) return out
   for (const run of readdirSync(runsRoot).sort()) {
     const dir = join(runsRoot, run)
@@ -195,7 +223,9 @@ export function loadRuns(runsRoot: string): Loaded {
     for (const b of readJsonl<BlockSummary>(join(dir, 'blocks.jsonl'))) out.blocks.set(b.slot, b)
     const landed = new Map((JSON.parse(readFileSync(join(dir, 'landed.json'), 'utf8')) as Landed[]).map((l) => [l.signature, l]))
     const offsets: Record<string, number> = meta.fireOffset ?? {}
-    const margin = new Map<number, number | null>(readJsonl(join(dir, 'events.jsonl')).filter((e) => e.type === 'landing-check').map((e) => [e.trial, e.marginMs ?? null]))
+    const events = readJsonl(join(dir, 'events.jsonl'))
+    const margin = new Map<number, number | null>(events.filter((e) => e.type === 'landing-check').map((e) => [e.trial, e.marginMs ?? null]))
+    for (const e of events) if (e.type === 'exclude') out.excluded.push({ campaign, ingress: e.ingress })
     const trials: Trial[] = readJsonl(join(dir, 'trials.jsonl'))
       .filter((t) => t.live)
       .map((t) => {
@@ -262,9 +292,10 @@ export function loadRuns(runsRoot: string): Loaded {
 
     for (const t of trials) {
       const mine = txs.filter((x) => x.trial === t.trial && x.slot !== null && x.index !== null)
+      const onTarget = (x: Tx) => x.leader === t.targetLeader && x.slot! >= t.windowStart && x.slot! < t.windowStart + WINDOW_SLOTS
+      out.onTarget.set(key(t), mine.filter(onTarget).map((x) => x.role))
       // direct path: only what landed in the targeted leader's window; rpc pilot: everything (it rarely hit its target)
-      const inWindow = (x: Tx) => t.path === 'rpc' || (x.leader === t.targetLeader && x.slot! >= t.windowStart && x.slot! < t.windowStart + WINDOW_SLOTS)
-      const group = mine.filter(inWindow).sort(earlier)
+      const group = mine.filter((x) => t.path === 'rpc' || onTarget(x)).sort(earlier)
       out.ordered.set(key(t), group)
       if (group.length < 2) continue
       const leader = t.path === 'rpc' ? (group[0].leader ?? 'unknown') : t.targetLeader
@@ -378,18 +409,9 @@ export interface ContrastStat {
  * one-sided p is the exact upper tail of the sum under that null; the interval bootstraps trials.
  */
 export function contrastStat(units: Unit[], ordered: Map<string, Tx[]>, c: Contrast, seed = 1): ContrastStat {
-  const values: number[] = []
-  const tables: number[][] = []
-  for (const u of units) {
-    const g = ordered.get(key(u)) ?? []
-    const ind = c.pairs
-      .map(([a, b]) => [g.findIndex((t) => t.role === a), g.findIndex((t) => t.role === b)])
-      .filter(([i, j]) => i >= 0 && j >= 0)
-      .map(([i, j]) => (i < j ? 1 : 0))
-    if (!ind.length) continue
-    values.push(ind.reduce((s, x) => s + x, 0) / ind.length)
-    tables.push(ind.length === 1 ? [0.5, 0, 0.5] : [1 / 3, 1 / 3, 1 / 3])
-  }
+  const tv = trialValues(units, ordered, c)
+  const values = tv.map((x) => x.value)
+  const tables = tv.map((x) => (x.pairs === 1 ? [0.5, 0, 0.5] : [1 / 3, 1 / 3, 1 / 3]))
   const n = values.length
   if (!n) return { n, share: NaN, ci: [NaN, NaN], p: NaN }
   const p = exactUpperTail(tables, Math.round(values.reduce((s, x) => s + 2 * x, 0)))
@@ -404,11 +426,38 @@ export function contrastStat(units: Unit[], ordered: Map<string, Tx[]>, c: Contr
   return { n, share, ci, p }
 }
 
-export type Verdict = 'holds' | 'contradicted' | 'inconclusive' | 'no data'
+/** Trials in which at least one of the contrast's pairs landed in the window: the share of those pairs in order. */
+function trialValues(units: Unit[], ordered: Map<string, Tx[]>, c: Contrast): { u: Unit; value: number; pairs: number }[] {
+  const out: { u: Unit; value: number; pairs: number }[] = []
+  for (const u of units) {
+    const g = ordered.get(key(u)) ?? []
+    const ind = c.pairs
+      .map(([a, b]) => [g.findIndex((t) => t.role === a), g.findIndex((t) => t.role === b)])
+      .filter(([i, j]) => i >= 0 && j >= 0)
+      .map(([i, j]) => (i < j ? 1 : 0))
+    if (ind.length) out.push({ u, value: ind.reduce((s: number, x) => s + x, 0) / ind.length, pairs: ind.length })
+  }
+  return out
+}
+
+/**
+ * The same contrast one level up: per cluster (validator, or ingress host for pipelines) the mean per-trial share
+ * minus 0.5, and a one-sided sign-flip test over the clusters. It asks whether the order holds across the validators
+ * reached rather than for the trials; with k clusters its p cannot go below 2^-k.
+ */
+export function clusterStat(units: Unit[], ordered: Map<string, Tx[]>, c: Contrast, clusterOf: (u: Unit) => string): { k: number; p: number } {
+  const by = new Map<string, number[]>()
+  for (const { u, value } of trialValues(units, ordered, c)) by.set(clusterOf(u), [...(by.get(clusterOf(u)) ?? []), value])
+  const means = [...by.values()].map((v) => mean(v) - 0.5)
+  return { k: means.length, p: signFlipUpperP(means) }
+}
+
+export type Verdict = 'holds' | 'reversed' | 'no stable order' | 'inconclusive' | 'insufficient data'
 export function verdict(s: ContrastStat): Verdict {
-  if (!s.n) return 'no data'
+  if (s.n < MIN_TRIALS) return 'insufficient data'
   if ((s.pHolm ?? s.p) < ALPHA) return 'holds'
-  if (s.ci[1] < CONTRADICTED_BELOW) return 'contradicted'
+  if (s.ci[1] < 0.5) return 'reversed'
+  if (s.ci[1] < NEAR_DETERMINISTIC) return 'no stable order'
   return 'inconclusive'
 }
 
@@ -448,32 +497,49 @@ export function backgroundRho(b: BlockSummary, ours: Set<number>): { all: number
   return { all: spearman(pos, prio), head: spearman(pos.slice(0, head), prio.slice(0, head)) }
 }
 
-/** Reading of a label's primary verdicts (docs/schedulers.md, "Reading the results"). */
+/** What each verdict of each primary contrast says (docs/schedulers.md, "Reading the results"). */
+const READING: Partial<Record<Verdict, string>>[] = [
+  {
+    holds: 'the requested loaded-data limit enters the ranking',
+    reversed: 'F before A and E, which no candidate rule predicts',
+    'no stable order': 'A, E and F in no stable order: consistent with the requested loaded-data limit not entering the ranking (the three would then tie)',
+  },
+  {
+    holds: 'a base-fee share above 0.12 counts',
+    reversed: 'B before C: the base fee does not count (prio fee/cost, price or total fee ranks)',
+    'no stable order': 'no stable order between C and B',
+  },
+  {
+    holds: 'the base-fee share is below 0.84',
+    reversed: 'C before D: the whole base fee counts, or cost alone ranks',
+    'no stable order': 'no stable order between D and C',
+  },
+]
+
+/** Reading of a label's verdicts. Only "reversed" is read as an alternative rule; "no stable order" is not. */
 export function interpret(control: ContrastStat, v: Verdict[]): string {
-  if (!control.n) return 'no data'
+  if (control.n < MIN_TRIALS) return 'insufficient data'
   if (control.p >= ALPHA) return 'no fee ordering detected'
-  const [aef, cb, dc] = v
-  if (aef === 'holds' && cb === 'holds' && dc === 'holds')
+  if (v.every((x) => x === 'holds'))
     return 'consistent with reward per requested cost, the requested loaded-data limit included, with a base-fee share between 0.12 and 0.84 (the deployed source uses 0.5)'
-  const parts: string[] = []
-  if (aef === 'contradicted') parts.push('the requested loaded-data limit does not enter the ranking')
-  if (aef === 'holds') parts.push('the requested loaded-data limit enters the ranking')
-  if (cb === 'holds') parts.push('a base-fee share above 0.12 counts')
-  if (cb === 'contradicted') parts.push('the base fee does not count (or price / total fee rank)')
-  if (dc === 'holds') parts.push('the base-fee share is below 0.84')
-  if (dc === 'contradicted') parts.push('the whole base fee counts, or cost alone ranks')
-  const open = PRIMARY.filter((_, i) => v[i] === 'inconclusive' || v[i] === 'no data').map((c) => c.name)
-  return `${parts.join('; ') || 'fee ordering detected'}${open.length ? `; inconclusive: ${open.join(', ')}` : ''}`
+  const parts = v.map((x, i) => READING[i][x]).filter((x): x is string => !!x)
+  for (const open of ['inconclusive', 'insufficient data'] as Verdict[]) {
+    const names = PRIMARY.filter((_, i) => v[i] === open).map((c) => c.name)
+    if (names.length) parts.push(`${open}: ${names.join(', ')}`)
+  }
+  return parts.join('; ')
 }
 
 const pct = (x: number) => (Number.isFinite(x) ? `${(100 * x).toFixed(0)}%` : '–')
+const pct1 = (x: number) => (Number.isFinite(x) ? `${(100 * x).toFixed(1)}%` : '–')
 const f2 = (x: number) => (Number.isFinite(x) ? x.toFixed(2) : '–')
+const f1 = (x: number) => (Number.isFinite(x) ? x.toFixed(1) : '–')
 const fp = (p: number | undefined) => (p === undefined || !Number.isFinite(p) ? '–' : p < 0.001 ? '<0.001' : p.toFixed(3))
 const cellText = (s: ContrastStat, withP = true) => (s.n ? `${pct(s.share)} of ${s.n} [${pct(s.ci[0])}–${pct(s.ci[1])}]${withP ? ` p=${fp(s.pHolm ?? s.p)}` : ''}` : '–')
 
-/** The twelve primary tests on a set of trials, Holm-adjusted together. */
-function primaryFamily(us: Unit[], ordered: Map<string, Tx[]>) {
-  const rows = LOCAL_CLIENTS.map((c) => {
+/** A family of twelve tests (four labels, three contrasts) on a set of trials, Holm-adjusted together. */
+function testFamily(us: Unit[], ordered: Map<string, Tx[]>, labels: string[] = LOCAL_CLIENTS) {
+  const rows = labels.map((c) => {
     const cu = us.filter((u) => u.client === c)
     return { c, cu, control: contrastStat(cu, ordered, CONTROL), stats: PRIMARY.map((p) => contrastStat(cu, ordered, p)) }
   })
@@ -482,7 +548,7 @@ function primaryFamily(us: Unit[], ordered: Map<string, Tx[]>) {
 }
 
 export function analyze(dataDir: string, cluster: string): string {
-  const { units, txs, trials, blocks, ordered, runs, uncollected, snapshots } = loadRuns(join(dataDir, cluster, 'runs'))
+  const { units, txs, trials, blocks, ordered, runs, uncollected, snapshots, onTarget, excluded } = loadRuns(join(dataDir, cluster, 'runs'))
   const out: string[] = []
   const orders: string[] = []
   out.push('# Results (generated by `analyze` from the committed raw data; do not edit by hand)', '')
@@ -501,14 +567,19 @@ export function analyze(dataDir: string, cluster: string): string {
   const local = (us: Unit[]) => us.filter((u) => LOCAL_CLIENTS.includes(u.client))
   const bufShared = (us: Unit[]) => us.filter((u) => u.delivery === 'buffered' && u.mode === 'shared')
 
-  // ---------- primary ----------
-  out.push('## Primary: buffered/shared, local schedulers (campaign "main")', '')
-  const primaryUnits = local(bufShared(main))
-  const rows = primaryFamily(primaryUnits, ordered)
-  if (!primaryUnits.length) out.push('No trials of the main campaign yet.', '')
-  else {
-    out.push(`Per-trial share of pairs in the named order; 95% bootstrap interval over trials; one-sided exact p against 0.5, Holm-adjusted over the twelve tests; verdict: holds (Holm p < ${ALPHA}), contradicted (upper bound < ${CONTRADICTED_BELOW}), inconclusive. The control is outside the family: unadjusted p.`, '')
-    out.push(`| client | trials | validators | top validator's share | hosts | control: ${CONTROL.name} | ${PRIMARY.map((c) => c.name).join(' | ')} |`)
+  // ---------- primary, and the pipelines tested the same way ----------
+  const family = (title: string, us: Unit[], labels: string[], subject: string) => {
+    out.push(`## ${title}`, '')
+    const rows = testFamily(us, ordered, labels)
+    if (!us.length) {
+      out.push('No trials of the main campaign yet.', '')
+      return rows
+    }
+    out.push(
+      `Per-trial share of pairs in the named order; 95% bootstrap interval over trials; one-sided exact p against 0.5, Holm-adjusted over the twelve tests of this table. Verdicts: insufficient data (fewer than ${MIN_TRIALS} trials), holds (Holm p < ${ALPHA}), reversed (upper bound < 0.5), no stable order (upper bound < ${NEAR_DETERMINISTIC}), inconclusive. The control is outside the family: unadjusted p.`,
+      '',
+    )
+    out.push(`| ${subject} | trials | validators | top validator's share | hosts | control: ${CONTROL.name} | ${PRIMARY.map((c) => c.name).join(' | ')} |`)
     out.push(`|---|---:|---:|---:|---:|---|${PRIMARY.map(() => '---').join('|')}|`)
     for (const r of rows) {
       const perValidator = new Map<string, number>()
@@ -518,11 +589,16 @@ export function analyze(dataDir: string, cluster: string): string {
         `| ${r.c} | ${r.cu.length} | ${perValidator.size} | ${pct(top)} | ${new Set(r.cu.map((u) => u.ingress)).size} | ${cellText(r.control)} | ${r.stats.map((s) => `${cellText(s)} **${verdict(s)}**`).join(' | ')} |`,
       )
     }
-    out.push('', '**Reading, per label** (from the verdicts, by the rule in docs/schedulers.md):', '')
+    out.push('', `**Reading, per ${subject}** (from the verdicts, by the rule in docs/schedulers.md; it describes the validators of the label that we reached):`, '')
     for (const r of rows) out.push(`- ${r.c}: ${interpret(r.control, r.stats.map(verdict))}.`)
     out.push('')
+    return rows
   }
+  const primaryUnits = local(bufShared(main))
+  const rows = family('Primary: buffered/shared, local schedulers (campaign "main")', primaryUnits, LOCAL_CLIENTS, 'label')
   out.push(...[CONTROL, ...PRIMARY, ...SECONDARY].map((c) => `- ${c.name}: ${c.meaning}.`), '')
+  const pipelineUnits = bufShared(main).filter((u) => PIPELINE_CLIENTS.includes(u.client))
+  family('Pipelines: BAM and Harmonic labels, buffered/shared (campaign "main"; secondary family)', pipelineUnits, PIPELINE_CLIENTS, 'pipeline')
 
   // ---------- robustness of the primary ----------
   if (primaryUnits.length) {
@@ -533,7 +609,7 @@ export function analyze(dataDir: string, cluster: string): string {
     const base = rows.map((r) => r.stats.map(verdict))
     const worst = rows.map((r) => r.stats.map(() => ({ p: 0, changed: false })))
     for (const v of new Set(primaryUnits.map((u) => u.leader))) {
-      const rerun = primaryFamily(
+      const rerun = testFamily(
         primaryUnits.filter((u) => u.leader !== v),
         ordered,
       )
@@ -556,15 +632,32 @@ export function analyze(dataDir: string, cluster: string): string {
         out.push(`| ${c} | ${v.slice(0, 8)} | ${vu[0].version ?? '?'} | ${vu.length} | ${[CONTROL, ...PRIMARY].map((k) => cellText(contrastStat(vu, ordered, k), false)).join(' | ')} |`)
       }
     out.push('')
-    out.push('Sensitivity: the same contrasts without trials that reconnected before sending, had an arrival margin under 100 ms, or ran on a clock other than firstShred (unadjusted p).', '')
+    out.push('Sensitivity: the same contrasts without trials that reconnected before sending, had an unknown arrival margin (not all six acknowledged) or one under 100 ms, or ran on a clock other than firstShred (unadjusted p).', '')
     out.push(`| client | trials kept | ${CONTROL.name} | ${PRIMARY.map((c) => c.name).join(' | ')} |`)
     out.push(`|---|---:|---|${PRIMARY.map(() => '---').join('|')}|`)
-    const clean = primaryUnits.filter((u) => !u.reconnected && (u.marginMs ?? Infinity) >= 100 && (u.clockSource ?? 'firstShred') === 'firstShred')
+    const clean = primaryUnits.filter((u) => !u.reconnected && u.marginMs !== null && u.marginMs >= 100 && (u.clockSource ?? 'firstShred') === 'firstShred')
     for (const c of LOCAL_CLIENTS) {
       const cu = clean.filter((u) => u.client === c)
       out.push(`| ${c} | ${cu.length} | ${[CONTROL, ...PRIMARY].map((k) => cellText(contrastStat(cu, ordered, k))).join(' | ')} |`)
     }
     out.push('')
+  }
+  const clusterTable = (us: Unit[], labels: string[], by: string, clusterOf: (u: Unit) => string) => {
+    out.push(`| client | ${by} | ${[CONTROL, ...PRIMARY].map((c) => c.name).join(' | ')} |`)
+    out.push(`|---|---:|${[CONTROL, ...PRIMARY].map(() => '---').join('|')}|`)
+    for (const c of labels) {
+      const cu = us.filter((u) => u.client === c)
+      if (!cu.length) continue
+      const st = [CONTROL, ...PRIMARY].map((k) => clusterStat(cu, ordered, k, clusterOf))
+      out.push(`| ${c} | ${new Set(cu.map(clusterOf)).size} | ${st.map((x) => (x.k ? `p=${fp(x.p)} (k=${x.k}, smallest possible ${fp(2 ** -x.k)})` : '–')).join(' | ')} |`)
+    }
+    out.push('')
+  }
+  if (primaryUnits.length || pipelineUnits.length) {
+    out.push('## Validator level', '')
+    out.push('Each label\'s trials grouped by validator (pipelines: by ingress host); per group the mean share minus 0.5; one-sided sign-flip test over the groups (unadjusted). It asks whether the order holds across the validators reached, not only across trials; with k groups p cannot go below 2^-k.', '')
+    if (primaryUnits.length) clusterTable(primaryUnits, LOCAL_CLIENTS, 'validators', (u) => u.leader)
+    if (pipelineUnits.length) clusterTable(pipelineUnits, PIPELINE_CLIENTS, 'hosts', (u) => u.ingress)
   }
 
   // ---------- secondary, descriptive ----------
@@ -587,7 +680,6 @@ export function analyze(dataDir: string, cluster: string): string {
     { label: 'streamed/shared', units: local(main.filter((u) => u.delivery === 'streamed' && u.mode === 'shared')) },
     { label: 'streamed/independent', units: local(main.filter((u) => u.delivery === 'streamed' && u.mode === 'independent')) },
   ])
-  describe('Pipelines: BAM and Harmonic labels, buffered/shared (campaign "main")', PIPELINE_CLIENTS.map((c) => ({ label: c, units: bufShared(main).filter((u) => u.client === c) })))
   const families = [...new Set(tpu.map((u) => u.family))].sort()
   describe(
     'Twins by how the deployed version breaks ties (buffered/shared, all labels, campaign "main")',
@@ -656,8 +748,9 @@ export function analyze(dataDir: string, cluster: string): string {
 
   // ---------- delivery and context ----------
   out.push('## Delivery', '')
-  out.push("| campaign / path / delivery | trials | sent | acknowledged by the leader's QUIC (of those with acknowledgement data) | landed | in the targeted window | trials used | spill-over | median slots from dispatch to landing | median gap between sends, ms | arrival margin before the window, ms (median, min) | reconnected before sending |")
-  out.push('|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|---:|')
+  out.push("In the targeted window: landed in a slot of the targeted leader's window. Complete: trials with B, C, D, F and A or E in the window (what the quota counts). Trials used: trials with two or more transactions in the ordered group, which for the pilot (rpc) is everything that landed, wherever: the public RPC rarely hit the targeted window.", '')
+  out.push("| campaign / path / delivery | trials | sent | acknowledged by the leader's QUIC (of those with acknowledgement data) | landed | in the targeted window | spill-over | complete trials | trials used | median slots from dispatch to landing | median gap between sends, ms | arrival margin before the window, ms (median, min) | reconnected before sending |")
+  out.push('|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|---:|')
   const margins = (ts: Trial[]) => {
     const m = ts.map((t) => t.marginMs).filter((x): x is number => typeof x === 'number')
     return m.length ? `${Math.round(median(m))}, ${Math.round(Math.min(...m))}` : '–'
@@ -667,7 +760,8 @@ export function analyze(dataDir: string, cluster: string): string {
     const keys = new Set(ts.map(key))
     const xs = txs.filter((t) => keys.has(key(t)))
     const landed = xs.filter((t) => t.slot !== null)
-    const inWindow = [...keys].reduce((s, k) => s + (ordered.get(k)?.length ?? 0), 0)
+    const inWindow = [...keys].reduce((s, k) => s + (onTarget.get(k)?.length ?? 0), 0)
+    const complete = [...keys].filter((k) => countsTowardsQuota(onTarget.get(k) ?? [])).length
     const withAck = xs.filter((x) => x.acked !== null)
     const used = units.filter((u) => keys.has(key(u)))
     const target = (x: Tx) => ts.find((y) => y.run === x.run && y.trial === x.trial)!
@@ -678,7 +772,7 @@ export function analyze(dataDir: string, cluster: string): string {
       for (let i = 1; i < g.length; i++) gaps.push(g[i].sentMs - g[i - 1].sentMs)
     }
     out.push(
-      `| ${c} | ${ts.length} | ${xs.length} | ${withAck.length ? `${withAck.filter((x) => x.acked).length}/${withAck.length}` : '–'} | ${landed.length} (${pct(landed.length / xs.length)}) | ${inWindow} | ${used.length} | ${used.reduce((s, u) => s + u.spill, 0)} | ${median(delays)} | ${median(gaps)} | ${margins(ts)} | ${ts.filter((t) => t.reconnected).length} |`,
+      `| ${c} | ${ts.length} | ${xs.length} | ${withAck.length ? `${withAck.filter((x) => x.acked).length}/${withAck.length}` : '–'} | ${landed.length} (${pct(landed.length / xs.length)}) | ${inWindow} | ${landed.length - inWindow} | ${ts[0].path === 'tpu' ? complete : '–'} | ${used.length} | ${median(delays)} | ${median(gaps)} | ${margins(ts)} | ${ts.filter((t) => t.reconnected).length} |`,
     )
   }
   out.push('')
@@ -702,8 +796,26 @@ export function analyze(dataDir: string, cluster: string): string {
   }
   out.push('')
 
+  out.push('## Coverage per label', '')
+  out.push("From the latest snapshot of the main campaign (of all runs while there is none). Effective number: (sum of slots)^2 / sum of squares, over the label's validators by leader slots, and over the validators reached by trials. Reachable: share of the label's slots whose validator advertises a QUIC address that no run of the main campaign excluded. Reached: validators in buffered/shared trials of the main campaign.", '')
+  out.push('| client | validators | share of all leader slots | effective number | reachable share of its slots | validators reached | effective number reached |')
+  out.push('|---|---:|---:|---:|---:|---:|---:|')
+  const effective = (xs: number[]) => (xs.length ? xs.reduce((a, b) => a + b, 0) ** 2 / xs.reduce((a, b) => a + b * b, 0) : NaN)
+  const active = (latest?.validators ?? []).filter((v) => !v.delinquent && v.leaderSlots > 0)
+  const allSlots = active.reduce((s, v) => s + v.leaderSlots, 0)
+  const blocked = new Set(excluded.filter((e) => e.campaign === MAIN_CAMPAIGN).map((e) => e.ingress))
+  for (const c of [...LOCAL_CLIENTS, ...PIPELINE_CLIENTS]) {
+    const vs = active.filter((v) => v.client === c)
+    const slots = vs.reduce((s, v) => s + v.leaderSlots, 0)
+    const reachable = vs.filter((v) => v.tpuQuic && !blocked.has(v.tpuQuic)).reduce((s, v) => s + v.leaderSlots, 0)
+    const perValidator = new Map<string, number>()
+    for (const u of bufShared(main).filter((u) => u.client === c)) perValidator.set(u.leader, (perValidator.get(u.leader) ?? 0) + 1)
+    out.push(`| ${c} | ${vs.length} | ${pct1(slots / allSlots)} | ${f1(effective(vs.map((v) => v.leaderSlots)))} | ${pct(reachable / slots)} | ${perValidator.size || '–'} | ${f1(effective([...perValidator.values()]))} |`)
+  }
+  out.push('')
+
   out.push('## Ingress: where the direct path delivered', '')
-  out.push('BAM and Harmonic validators advertise QUIC addresses on shared gateway hosts; for them the measurement starts at the gateway, not at the validator. Statistics resample these hosts.', '')
+  out.push('BAM and Harmonic validators advertise QUIC addresses on shared gateway hosts; for them the measurement starts at the gateway, not at the validator. The pipeline family\'s group-level test groups their trials by these hosts, and rule-agreement intervals resample hosts.', '')
   out.push('| client | trials used | validators | distinct ingress hosts | trials via a shared host | most validators behind one used host |')
   out.push('|---|---:|---:|---:|---:|---:|')
   for (const c of [...new Set(tpu.map((u) => u.client))].sort()) {
