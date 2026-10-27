@@ -12,6 +12,7 @@ The analysis plan is pre-registered in README ("Noise versus rule") and in the h
 | 2026-10-25T22:02:18.877Z | rehearsal | tpu | 16 | 461419536–461420295 | 1068 | yes |
 | 2026-10-25T22:06:01.269Z | rehearsal | tpu | 1 | 461420912–461420912 | 1068 | yes |
 | 2026-10-27T14:39:06.569Z | main | tpu | 30 | 462107436–462108452 | 1069 | yes |
+| 2026-10-27T15:32:52.637Z | main | tpu | 373 | 462122629–462154412 | 1069 | yes |
 
 ## Primary: buffered/shared, local schedulers (campaign "main")
 
@@ -19,17 +20,17 @@ Per-trial share of pairs in the named order; 95% bootstrap interval over trials;
 
 | label | trials | validators | top validator's share | hosts | control: A,E before C | A,E before F | C before B | D before C |
 |---|---:|---:|---:|---:|---|---|---|---|
-| Agave | 2 | 2 | 50% | 2 | 100% of 2 [34%–100%] p=0.111 | 100% of 2 [34%–100%] p=1.000 **insufficient data** | 100% of 2 [34%–100%] p=1.000 **insufficient data** | 100% of 2 [34%–100%] p=1.000 **insufficient data** |
-| JitoLabs | 3 | 3 | 33% | 3 | 100% of 3 [44%–100%] p=0.037 | 67% of 3 [0%–100%] p=1.000 **insufficient data** | 67% of 3 [0%–100%] p=1.000 **insufficient data** | 100% of 3 [44%–100%] p=1.000 **insufficient data** |
-| Firedancer | 2 | 2 | 50% | 2 | 100% of 2 [34%–100%] p=0.111 | 100% of 2 [34%–100%] p=1.000 **insufficient data** | 100% of 2 [34%–100%] p=1.000 **insufficient data** | 100% of 2 [34%–100%] p=1.000 **insufficient data** |
-| Rakurai | 2 | 2 | 50% | 2 | 100% of 2 [34%–100%] p=0.111 | 100% of 2 [34%–100%] p=1.000 **insufficient data** | 100% of 2 [34%–100%] p=1.000 **insufficient data** | 100% of 2 [34%–100%] p=1.000 **insufficient data** |
+| Agave | 30 | 10 | 33% | 10 | 100% of 30 [89%–100%] p=<0.001 | 100% of 30 [89%–100%] p=<0.001 **holds** | 100% of 30 [89%–100%] p=<0.001 **holds** | 100% of 30 [89%–100%] p=<0.001 **holds** |
+| JitoLabs | 30 | 16 | 17% | 16 | 100% of 30 [89%–100%] p=<0.001 | 87% of 30 [75%–97%] p=<0.001 **holds** | 77% of 30 [60%–90%] p=0.003 **holds** | 100% of 30 [89%–100%] p=<0.001 **holds** |
+| Firedancer | 30 | 10 | 33% | 9 | 100% of 30 [89%–100%] p=<0.001 | 100% of 30 [89%–100%] p=<0.001 **holds** | 90% of 30 [77%–100%] p=<0.001 **holds** | 100% of 30 [89%–100%] p=<0.001 **holds** |
+| Rakurai | 30 | 7 | 40% | 7 | 100% of 30 [89%–100%] p=<0.001 | 100% of 30 [89%–100%] p=<0.001 **holds** | 100% of 30 [89%–100%] p=<0.001 **holds** | 100% of 30 [89%–100%] p=<0.001 **holds** |
 
 **Reading, per label** (from the verdicts, by the rule in docs/schedulers.md; it describes the validators of the label that we reached):
 
-- Agave: insufficient data.
-- JitoLabs: insufficient data.
-- Firedancer: insufficient data.
-- Rakurai: insufficient data.
+- Agave: consistent with reward per requested cost, the requested loaded-data limit included, with a base-fee share between 0.12 and 0.84 (the deployed source uses 0.5).
+- JitoLabs: consistent with reward per requested cost, the requested loaded-data limit included, with a base-fee share between 0.12 and 0.84 (the deployed source uses 0.5).
+- Firedancer: consistent with reward per requested cost, the requested loaded-data limit included, with a base-fee share between 0.12 and 0.84 (the deployed source uses 0.5).
+- Rakurai: consistent with reward per requested cost, the requested loaded-data limit included, with a base-fee share between 0.12 and 0.84 (the deployed source uses 0.5).
 
 - A,E before C: same cost, strictly higher fee: every fee-aware rule agrees (positive control).
 - A,E before F: same price, fee and CU limit; F requests a 64 MiB loaded-data limit: only a cost that includes the requested loaded-data limit puts A and E first.
@@ -43,17 +44,17 @@ Per-trial share of pairs in the named order; 95% bootstrap interval over trials;
 
 | pipeline | trials | validators | top validator's share | hosts | control: A,E before C | A,E before F | C before B | D before C |
 |---|---:|---:|---:|---:|---|---|---|---|
-| AgaveBam | 2 | 2 | 50% | 2 | 100% of 2 [34%–100%] p=0.111 | 100% of 2 [34%–100%] p=1.000 **insufficient data** | 100% of 2 [34%–100%] p=1.000 **insufficient data** | 100% of 2 [34%–100%] p=1.000 **insufficient data** |
-| FireBAM | 2 | 2 | 50% | 2 | 100% of 2 [34%–100%] p=0.111 | 100% of 2 [34%–100%] p=1.000 **insufficient data** | 100% of 2 [34%–100%] p=1.000 **insufficient data** | 100% of 2 [34%–100%] p=1.000 **insufficient data** |
-| HarmonicAgave | 2 | 2 | 50% | 2 | 100% of 2 [34%–100%] p=0.111 | 100% of 2 [34%–100%] p=1.000 **insufficient data** | 0% of 2 [0%–66%] p=1.000 **insufficient data** | 100% of 2 [34%–100%] p=1.000 **insufficient data** |
-| HarmonicFiredancer | 2 | 1 | 100% | 1 | 100% of 2 [34%–100%] p=0.111 | 100% of 2 [34%–100%] p=1.000 **insufficient data** | 0% of 2 [0%–66%] p=1.000 **insufficient data** | 100% of 2 [34%–100%] p=1.000 **insufficient data** |
+| AgaveBam | 15 | 13 | 13% | 8 | 100% of 15 [80%–100%] p=<0.001 | 100% of 15 [80%–100%] p=<0.001 **holds** | 100% of 15 [80%–100%] p=<0.001 **holds** | 100% of 15 [80%–100%] p=<0.001 **holds** |
+| FireBAM | 16 | 10 | 44% | 6 | 100% of 16 [81%–100%] p=<0.001 | 100% of 16 [81%–100%] p=<0.001 **holds** | 100% of 16 [81%–100%] p=<0.001 **holds** | 100% of 16 [81%–100%] p=<0.001 **holds** |
+| HarmonicAgave | 15 | 11 | 13% | 4 | 100% of 15 [80%–100%] p=<0.001 | 100% of 15 [80%–100%] p=<0.001 **holds** | 33% of 15 [13%–53%] p=1.000 **no stable order** | 100% of 15 [80%–100%] p=<0.001 **holds** |
+| HarmonicFiredancer | 15 | 8 | 27% | 4 | 100% of 15 [80%–100%] p=<0.001 | 100% of 15 [80%–100%] p=<0.001 **holds** | 40% of 15 [13%–67%] p=1.000 **no stable order** | 100% of 15 [80%–100%] p=<0.001 **holds** |
 
 **Reading, per pipeline** (from the verdicts, by the rule in docs/schedulers.md; it describes the validators of the label that we reached):
 
-- AgaveBam: insufficient data.
-- FireBAM: insufficient data.
-- HarmonicAgave: insufficient data.
-- HarmonicFiredancer: insufficient data.
+- AgaveBam: consistent with reward per requested cost, the requested loaded-data limit included, with a base-fee share between 0.12 and 0.84 (the deployed source uses 0.5).
+- FireBAM: consistent with reward per requested cost, the requested loaded-data limit included, with a base-fee share between 0.12 and 0.84 (the deployed source uses 0.5).
+- HarmonicAgave: the requested loaded-data limit enters the ranking; no stable order between C and B; the base-fee share is below 0.84.
+- HarmonicFiredancer: the requested loaded-data limit enters the ranking; no stable order between C and B; the base-fee share is below 0.84.
 
 ## Robustness of the primary
 
@@ -61,24 +62,31 @@ Leave one validator out: the twelve tests rerun without each validator in turn. 
 
 | client | A,E before F | C before B | D before C |
 |---|---|---|---|
-| Agave | insufficient data; worst p=1.000 | insufficient data; worst p=1.000 | insufficient data; worst p=1.000 |
-| JitoLabs | insufficient data; worst p=1.000 | insufficient data; worst p=1.000 | insufficient data; worst p=1.000 |
-| Firedancer | insufficient data; worst p=1.000 | insufficient data; worst p=1.000 | insufficient data; worst p=1.000 |
-| Rakurai | insufficient data; worst p=1.000 | insufficient data; worst p=1.000 | insufficient data; worst p=1.000 |
+| Agave | holds; worst p=<0.001 | holds; worst p=<0.001 | holds; worst p=<0.001 |
+| JitoLabs | holds; worst p=<0.001 | holds; worst p=0.022 | holds; worst p=<0.001 |
+| Firedancer | holds; worst p=<0.001 | holds; worst p=<0.001 | holds; worst p=<0.001 |
+| Rakurai | holds; worst p=<0.001 | holds; worst p=<0.001 | holds; worst p=<0.001 |
 
 Per validator (at least 5 primary trials), descriptive:
 
 | client | validator | version | trials | A,E before C | A,E before F | C before B | D before C |
 |---|---|---|---:|---|---|---|---|
+| Agave | 5Us18hLZ | 4.3.2 | 10 | 100% of 10 [72%–100%] | 100% of 10 [72%–100%] | 100% of 10 [72%–100%] | 100% of 10 [72%–100%] |
+| Agave | 7QQGNm3p | 4.3.2 | 10 | 100% of 10 [72%–100%] | 100% of 10 [72%–100%] | 100% of 10 [72%–100%] | 100% of 10 [72%–100%] |
+| JitoLabs | HEL1USMZ | 4.3.2 | 5 | 100% of 5 [57%–100%] | 100% of 5 [57%–100%] | 100% of 5 [57%–100%] | 100% of 5 [57%–100%] |
+| Firedancer | JD549Hsb | 26.10.4 | 10 | 100% of 10 [72%–100%] | 100% of 10 [72%–100%] | 70% of 10 [40%–100%] | 100% of 10 [72%–100%] |
+| Rakurai | ana2y2Yv | 4.3.2 | 12 | 100% of 12 [76%–100%] | 100% of 12 [76%–100%] | 100% of 12 [76%–100%] | 100% of 12 [76%–100%] |
+| Rakurai | 7PdKhpKz | 4.3.2 | 9 | 100% of 9 [70%–100%] | 100% of 9 [70%–100%] | 100% of 9 [70%–100%] | 100% of 9 [70%–100%] |
+| Rakurai | E3mDbFMr | 4.3.2 | 5 | 100% of 5 [57%–100%] | 100% of 5 [57%–100%] | 100% of 5 [57%–100%] | 100% of 5 [57%–100%] |
 
 Sensitivity: the same contrasts without trials that reconnected before sending, had an unknown arrival margin (not all six acknowledged) or one under 100 ms, or ran on a clock other than firstShred (unadjusted p).
 
 | client | trials kept | A,E before C | A,E before F | C before B | D before C |
 |---|---:|---|---|---|---|
-| Agave | 2 | 100% of 2 [34%–100%] p=0.111 | 100% of 2 [34%–100%] p=0.111 | 100% of 2 [34%–100%] p=0.250 | 100% of 2 [34%–100%] p=0.250 |
-| JitoLabs | 3 | 100% of 3 [44%–100%] p=0.037 | 67% of 3 [0%–100%] p=0.370 | 67% of 3 [0%–100%] p=0.500 | 100% of 3 [44%–100%] p=0.125 |
-| Firedancer | 2 | 100% of 2 [34%–100%] p=0.111 | 100% of 2 [34%–100%] p=0.111 | 100% of 2 [34%–100%] p=0.250 | 100% of 2 [34%–100%] p=0.250 |
-| Rakurai | 2 | 100% of 2 [34%–100%] p=0.111 | 100% of 2 [34%–100%] p=0.111 | 100% of 2 [34%–100%] p=0.250 | 100% of 2 [34%–100%] p=0.250 |
+| Agave | 29 | 100% of 29 [88%–100%] p=<0.001 | 100% of 29 [88%–100%] p=<0.001 | 100% of 29 [88%–100%] p=<0.001 | 100% of 29 [88%–100%] p=<0.001 |
+| JitoLabs | 20 | 100% of 20 [84%–100%] p=<0.001 | 88% of 20 [73%–100%] p=<0.001 | 85% of 20 [70%–100%] p=0.001 | 100% of 20 [84%–100%] p=<0.001 |
+| Firedancer | 30 | 100% of 30 [89%–100%] p=<0.001 | 100% of 30 [89%–100%] p=<0.001 | 90% of 30 [77%–100%] p=<0.001 | 100% of 30 [89%–100%] p=<0.001 |
+| Rakurai | 30 | 100% of 30 [89%–100%] p=<0.001 | 100% of 30 [89%–100%] p=<0.001 | 100% of 30 [89%–100%] p=<0.001 | 100% of 30 [89%–100%] p=<0.001 |
 
 ## Validator level
 
@@ -86,17 +94,17 @@ Each label's trials grouped by validator (pipelines: by ingress host); per group
 
 | client | validators | A,E before C | A,E before F | C before B | D before C |
 |---|---:|---|---|---|---|
-| Agave | 2 | p=0.250 (k=2, smallest possible 0.250) | p=0.250 (k=2, smallest possible 0.250) | p=0.250 (k=2, smallest possible 0.250) | p=0.250 (k=2, smallest possible 0.250) |
-| JitoLabs | 3 | p=0.125 (k=3, smallest possible 0.125) | p=0.500 (k=3, smallest possible 0.125) | p=0.500 (k=3, smallest possible 0.125) | p=0.125 (k=3, smallest possible 0.125) |
-| Firedancer | 2 | p=0.250 (k=2, smallest possible 0.250) | p=0.250 (k=2, smallest possible 0.250) | p=0.250 (k=2, smallest possible 0.250) | p=0.250 (k=2, smallest possible 0.250) |
-| Rakurai | 2 | p=0.250 (k=2, smallest possible 0.250) | p=0.250 (k=2, smallest possible 0.250) | p=0.250 (k=2, smallest possible 0.250) | p=0.250 (k=2, smallest possible 0.250) |
+| Agave | 10 | p=<0.001 (k=10, smallest possible <0.001) | p=<0.001 (k=10, smallest possible <0.001) | p=<0.001 (k=10, smallest possible <0.001) | p=<0.001 (k=10, smallest possible <0.001) |
+| JitoLabs | 16 | p=<0.001 (k=16, smallest possible <0.001) | p=<0.001 (k=16, smallest possible <0.001) | p=0.011 (k=16, smallest possible <0.001) | p=<0.001 (k=16, smallest possible <0.001) |
+| Firedancer | 10 | p=<0.001 (k=10, smallest possible <0.001) | p=<0.001 (k=10, smallest possible <0.001) | p=<0.001 (k=10, smallest possible <0.001) | p=<0.001 (k=10, smallest possible <0.001) |
+| Rakurai | 7 | p=0.008 (k=7, smallest possible 0.008) | p=0.008 (k=7, smallest possible 0.008) | p=0.008 (k=7, smallest possible 0.008) | p=0.008 (k=7, smallest possible 0.008) |
 
 | client | hosts | A,E before C | A,E before F | C before B | D before C |
 |---|---:|---|---|---|---|
-| AgaveBam | 2 | p=0.250 (k=2, smallest possible 0.250) | p=0.250 (k=2, smallest possible 0.250) | p=0.250 (k=2, smallest possible 0.250) | p=0.250 (k=2, smallest possible 0.250) |
-| FireBAM | 2 | p=0.250 (k=2, smallest possible 0.250) | p=0.250 (k=2, smallest possible 0.250) | p=0.250 (k=2, smallest possible 0.250) | p=0.250 (k=2, smallest possible 0.250) |
-| HarmonicAgave | 2 | p=0.250 (k=2, smallest possible 0.250) | p=0.250 (k=2, smallest possible 0.250) | p=1.000 (k=2, smallest possible 0.250) | p=0.250 (k=2, smallest possible 0.250) |
-| HarmonicFiredancer | 1 | p=0.500 (k=1, smallest possible 0.500) | p=0.500 (k=1, smallest possible 0.500) | p=1.000 (k=1, smallest possible 0.500) | p=0.500 (k=1, smallest possible 0.500) |
+| AgaveBam | 8 | p=0.004 (k=8, smallest possible 0.004) | p=0.004 (k=8, smallest possible 0.004) | p=0.004 (k=8, smallest possible 0.004) | p=0.004 (k=8, smallest possible 0.004) |
+| FireBAM | 6 | p=0.016 (k=6, smallest possible 0.016) | p=0.016 (k=6, smallest possible 0.016) | p=0.016 (k=6, smallest possible 0.016) | p=0.016 (k=6, smallest possible 0.016) |
+| HarmonicAgave | 4 | p=0.063 (k=4, smallest possible 0.063) | p=0.063 (k=4, smallest possible 0.063) | p=0.500 (k=4, smallest possible 0.063) | p=0.063 (k=4, smallest possible 0.063) |
+| HarmonicFiredancer | 4 | p=0.063 (k=4, smallest possible 0.063) | p=0.063 (k=4, smallest possible 0.063) | p=0.875 (k=4, smallest possible 0.063) | p=0.063 (k=4, smallest possible 0.063) |
 
 ## Secondary: buffered/independent (campaign "main")
 
@@ -104,11 +112,11 @@ Descriptive: per-trial shares with 95% intervals, no test.
 
 | group | trials | A,E before C | A,E before F | C before B | D before C | A before B | twins: sent first landed first |
 |---|---:|---|---|---|---|---|---|
-| Agave | 1 | 100% of 1 [–––] | 0% of 1 [–––] | 100% of 1 [–––] | 100% of 1 [–––] | 100% of 1 [–––] | 0% of 1 [0%–79%] |
-| JitoLabs | 1 | 0% of 1 [–––] | 100% of 1 [–––] | 100% of 1 [–––] | 100% of 1 [–––] | 100% of 1 [–––] | 0% of 1 [0%–79%] |
-| Firedancer | 1 | 100% of 1 [–––] | 100% of 1 [–––] | 100% of 1 [–––] | 100% of 1 [–––] | 100% of 1 [–––] | 0% of 1 [0%–79%] |
-| Rakurai | 1 | 100% of 1 [–––] | 100% of 1 [–––] | 100% of 1 [–––] | 100% of 1 [–––] | 100% of 1 [–––] | 100% of 1 [21%–100%] |
-| local schedulers | 4 | 75% of 4 [25%–100%] | 75% of 4 [25%–100%] | 100% of 4 [51%–100%] | 100% of 4 [51%–100%] | 100% of 4 [51%–100%] | 25% of 4 [5%–70%] |
+| Agave | 12 | 96% of 12 [88%–100%] | 92% of 12 [75%–100%] | 83% of 12 [58%–100%] | 92% of 12 [75%–100%] | 92% of 12 [75%–100%] | 58% of 12 [32%–81%] |
+| JitoLabs | 12 | 50% of 12 [29%–75%] | 79% of 12 [58%–96%] | 83% of 12 [58%–100%] | 67% of 12 [42%–92%] | 83% of 12 [58%–100%] | 42% of 12 [19%–68%] |
+| Firedancer | 12 | 100% of 12 [76%–100%] | 100% of 12 [76%–100%] | 100% of 12 [76%–100%] | 100% of 12 [76%–100%] | 100% of 12 [76%–100%] | 8% of 12 [1%–35%] |
+| Rakurai | 12 | 75% of 12 [50%–100%] | 100% of 12 [76%–100%] | 83% of 12 [58%–100%] | 75% of 12 [50%–100%] | 100% of 12 [76%–100%] | 58% of 12 [32%–81%] |
+| local schedulers | 48 | 80% of 48 [70%–90%] | 93% of 48 [85%–98%] | 88% of 48 [77%–96%] | 83% of 48 [73%–94%] | 94% of 48 [85%–100%] | 42% of 48 [29%–56%] |
 
 ## Secondary: burst inside the window, per label (campaign "main")
 
@@ -116,8 +124,11 @@ Descriptive: per-trial shares with 95% intervals, no test.
 
 | group | trials | A,E before C | A,E before F | C before B | D before C | A before B | twins: sent first landed first |
 |---|---:|---|---|---|---|---|---|
-| Firedancer | 1 | 100% of 1 [–––] | 0% of 1 [–––] | 0% of 1 [–––] | 100% of 1 [–––] | 0% of 1 [–––] | 100% of 1 [21%–100%] |
-| local schedulers | 1 | 100% of 1 [–––] | 0% of 1 [–––] | 0% of 1 [–––] | 100% of 1 [–––] | 0% of 1 [–––] | 100% of 1 [21%–100%] |
+| Agave | 6 | 50% of 6 [17%–83%] | 58% of 6 [33%–83%] | 67% of 6 [33%–100%] | 67% of 6 [33%–100%] | 67% of 6 [33%–100%] | 83% of 6 [44%–97%] |
+| JitoLabs | 6 | 75% of 6 [42%–100%] | 67% of 6 [50%–83%] | 50% of 6 [17%–83%] | 67% of 6 [33%–100%] | 67% of 6 [33%–100%] | 83% of 6 [44%–97%] |
+| Firedancer | 6 | 83% of 6 [50%–100%] | 67% of 6 [33%–100%] | 50% of 6 [17%–83%] | 100% of 6 [61%–100%] | 67% of 6 [33%–100%] | 83% of 6 [44%–97%] |
+| Rakurai | 6 | 83% of 6 [50%–100%] | 33% of 6 [0%–67%] | 67% of 6 [33%–100%] | 50% of 6 [17%–83%] | 67% of 6 [33%–100%] | 83% of 6 [44%–97%] |
+| local schedulers | 24 | 73% of 24 [54%–88%] | 56% of 24 [40%–73%] | 58% of 24 [38%–79%] | 71% of 24 [54%–88%] | 67% of 24 [46%–83%] | 83% of 24 [64%–93%] |
 
 ## Secondary: streamed 30 ms apart, local schedulers (campaign "main")
 
@@ -125,8 +136,8 @@ Descriptive: per-trial shares with 95% intervals, no test.
 
 | group | trials | A,E before C | A,E before F | C before B | D before C | A before B | twins: sent first landed first |
 |---|---:|---|---|---|---|---|---|
-| streamed/shared | 1 | 100% of 1 [–––] | 100% of 1 [–––] | 0% of 1 [–––] | 100% of 1 [–––] | 100% of 1 [–––] | 100% of 1 [21%–100%] |
-| streamed/independent | 1 | 50% of 1 [–––] | 100% of 1 [–––] | 0% of 1 [–––] | 100% of 1 [–––] | 100% of 1 [–––] | 100% of 1 [21%–100%] |
+| streamed/shared | 25 | 58% of 24 [44%–73%] | 48% of 24 [31%–65%] | 32% of 25 [16%–52%] | 42% of 24 [21%–63%] | 46% of 24 [25%–67%] | 96% of 24 [80%–99%] |
+| streamed/independent | 24 | 52% of 24 [35%–67%] | 42% of 24 [25%–58%] | 46% of 24 [25%–67%] | 71% of 24 [54%–88%] | 38% of 24 [17%–58%] | 96% of 24 [80%–99%] |
 
 ## Twins by how the deployed version breaks ties (buffered/shared, all labels, campaign "main")
 
@@ -134,10 +145,12 @@ Descriptive: per-trial shares with 95% intervals, no test.
 
 | group | trials | A,E before C | A,E before F | C before B | D before C | A before B | twins: sent first landed first |
 |---|---:|---|---|---|---|---|---|
-| Agave 4.3.2 (container-id ties) | 5 | 100% of 5 [57%–100%] | 80% of 5 [40%–100%] | 80% of 5 [40%–100%] | 100% of 5 [57%–100%] | 80% of 5 [40%–100%] | 40% of 5 [12%–77%] |
-| Firedancer 26.10.3-4 (treap ties) | 2 | 100% of 2 [34%–100%] | 100% of 2 [34%–100%] | 100% of 2 [34%–100%] | 100% of 2 [34%–100%] | 100% of 2 [34%–100%] | 0% of 2 [0%–66%] |
-| Rakurai (own scheduler, source not read) | 2 | 100% of 2 [34%–100%] | 100% of 2 [34%–100%] | 100% of 2 [34%–100%] | 100% of 2 [34%–100%] | 100% of 2 [34%–100%] | 50% of 2 [9%–91%] |
-| pipelines (order set outside the client) | 8 | 100% of 8 [68%–100%] | 100% of 8 [68%–100%] | 50% of 8 [13%–88%] | 100% of 8 [68%–100%] | 100% of 8 [68%–100%] | 13% of 8 [2%–47%] |
+| Agave 4.3.2 (container-id ties) | 53 | 100% of 53 [93%–100%] | 92% of 53 [86%–98%] | 87% of 53 [77%–96%] | 100% of 53 [93%–100%] | 87% of 53 [77%–96%] | 42% of 53 [29%–55%] |
+| Agave 4.4/4.5 pre-releases (oldest-first ties) | 5 | 100% of 5 [57%–100%] | 100% of 5 [57%–100%] | 100% of 5 [57%–100%] | 100% of 5 [57%–100%] | 100% of 5 [57%–100%] | 80% of 5 [38%–96%] |
+| Firedancer 26.10.3-4 (treap ties) | 27 | 100% of 27 [88%–100%] | 100% of 27 [88%–100%] | 89% of 27 [78%–100%] | 100% of 27 [88%–100%] | 100% of 27 [88%–100%] | 15% of 27 [6%–32%] |
+| Rakurai (own scheduler, source not read) | 30 | 100% of 30 [89%–100%] | 100% of 30 [89%–100%] | 100% of 30 [89%–100%] | 100% of 30 [89%–100%] | 100% of 30 [89%–100%] | 53% of 30 [36%–70%] |
+| other versions (source not read) | 5 | 100% of 5 [57%–100%] | 100% of 5 [57%–100%] | 100% of 5 [57%–100%] | 100% of 5 [57%–100%] | 100% of 5 [57%–100%] | 40% of 5 [12%–77%] |
+| pipelines (order set outside the client) | 61 | 100% of 61 [94%–100%] | 100% of 61 [94%–100%] | 69% of 61 [57%–80%] | 100% of 61 [94%–100%] | 100% of 61 [94%–100%] | 43% of 61 [31%–55%] |
 
 ## Calibration and rehearsal runs (all labels; not part of any test)
 
@@ -163,14 +176,14 @@ Share of trials with all six in the window in exact reward/cost order (A/E eithe
 
 | client | trials with all six | exact | most often reversed |
 |---|---:|---:|---|
-| Agave | 2 | 2 (100%) | – |
-| JitoLabs | 3 | 2 (67%) | A<D reversed in 1 |
-| Firedancer | 2 | 1 (50%) | F<B reversed in 1 |
-| Rakurai | 2 | 2 (100%) | – |
-| AgaveBam | 2 | 2 (100%) | – |
-| FireBAM | 2 | 2 (100%) | – |
-| HarmonicAgave | 2 | 0 (0%) | C<B reversed in 2 |
-| HarmonicFiredancer | 2 | 0 (0%) | C<B reversed in 2 |
+| Agave | 30 | 30 (100%) | – |
+| JitoLabs | 30 | 23 (77%) | A<D reversed in 7 |
+| Firedancer | 30 | 24 (80%) | F<B reversed in 6 |
+| Rakurai | 30 | 30 (100%) | – |
+| AgaveBam | 15 | 15 (100%) | – |
+| FireBAM | 16 | 16 (100%) | – |
+| HarmonicAgave | 15 | 0 (0%) | F<B reversed in 15 |
+| HarmonicFiredancer | 15 | 0 (0%) | F<B reversed in 15 |
 
 ## Rule agreement: buffered/shared (campaign "main")
 
@@ -178,15 +191,15 @@ Mean gamma per trial (+1: every pair the rule ranks differently landed in its or
 
 | group | trials | hosts | reward/cost | prio fee/cost | CU price | total fee | sent first |
 |---|---:|---:|---|---|---|---|---|
-| Agave | 2 | 2 | 1.00 [–, –] p=1.000 | 0.57 [–, –] p=1.000 | 0.50 [–, –] p=1.000 | -0.33 [–, –] p=1.000 | 0.00 [–, –] p=1.000 |
-| JitoLabs | 3 | 3 | 0.52 [-0.43, 1.00] p=1.000 | 0.38 [0.00, 0.57] p=1.000 | 0.28 [-0.17, 0.50] p=1.000 | 0.11 [-0.33, 1.00] p=1.000 | -0.38 [-0.87, 0.07] p=1.000 |
-| Firedancer | 2 | 2 | 0.93 [–, –] p=1.000 | 0.64 [–, –] p=1.000 | 0.42 [–, –] p=1.000 | -0.25 [–, –] p=1.000 | -0.53 [–, –] p=1.000 |
-| Rakurai | 2 | 2 | 1.00 [–, –] p=1.000 | 0.57 [–, –] p=1.000 | 0.50 [–, –] p=1.000 | -0.33 [–, –] p=1.000 | -0.40 [–, –] p=1.000 |
-| AgaveBam | 2 | 2 | 1.00 [–, –] p=1.000 | 0.57 [–, –] p=1.000 | 0.50 [–, –] p=1.000 | -0.33 [–, –] p=1.000 | 0.27 [–, –] p=1.000 |
-| FireBAM | 2 | 2 | 1.00 [–, –] p=1.000 | 0.57 [–, –] p=1.000 | 0.50 [–, –] p=1.000 | -0.33 [–, –] p=1.000 | -0.07 [–, –] p=1.000 |
-| HarmonicAgave | 2 | 2 | 0.71 [–, –] p=1.000 | 0.86 [–, –] p=1.000 | 0.50 [–, –] p=1.000 | 0.00 [–, –] p=1.000 | 0.07 [–, –] p=1.000 |
-| HarmonicFiredancer | 2 | 1 | 0.71 [–, –] p=1.000 | 0.86 [–, –] p=1.000 | 0.50 [–, –] p=1.000 | 0.00 [–, –] p=1.000 | 0.27 [–, –] p=1.000 |
-| local schedulers | 9 | 9 | 0.83 [0.51, 1.00] p=0.352 | 0.52 [0.38, 0.62] p=0.352 | 0.41 [0.26, 0.50] p=0.352 | -0.17 [-0.33, 0.13] p=1.000 | -0.33 [-0.54, -0.11] p=1.000 |
+| Agave | 30 | 10 | 1.00 [1.00, 1.00] p=0.074 | 0.57 [0.57, 0.57] p=0.074 | 0.50 [0.50, 0.50] p=0.074 | -0.33 [-0.33, -0.33] p=0.074 | 0.00 [-0.16, 0.11] p=1.000 |
+| JitoLabs | 30 | 16 | 0.70 [0.35, 1.00] p=0.026 | 0.47 [0.35, 0.57] p=0.003 | 0.34 [0.17, 0.50] p=0.026 | -0.02 [-0.33, 0.33] p=1.000 | -0.03 [-0.18, 0.11] p=1.000 |
+| Firedancer | 30 | 9 | 0.95 [0.90, 1.00] p=0.133 | 0.62 [0.57, 0.67] p=0.133 | 0.49 [0.48, 0.50] p=0.133 | -0.28 [-0.33, -0.22] p=0.133 | -0.03 [-0.11, 0.08] p=1.000 |
+| Rakurai | 30 | 7 | 1.00 [1.00, 1.00] p=0.406 | 0.57 [0.57, 0.57] p=0.406 | 0.50 [0.50, 0.50] p=0.406 | -0.33 [-0.33, -0.33] p=0.406 | 0.01 [-0.05, 0.07] p=1.000 |
+| AgaveBam | 15 | 8 | 1.00 [1.00, 1.00] p=0.234 | 0.57 [0.57, 0.57] p=0.234 | 0.50 [0.50, 0.50] p=0.234 | -0.33 [-0.33, -0.33] p=0.234 | -0.08 [-0.22, 0.01] p=1.000 |
+| FireBAM | 16 | 6 | 1.00 [1.00, 1.00] p=0.688 | 0.57 [0.57, 0.57] p=0.688 | 0.50 [0.50, 0.50] p=0.688 | -0.33 [-0.33, -0.33] p=0.688 | -0.10 [-0.21, 0.10] p=1.000 |
+| HarmonicAgave | 15 | 4 | 0.76 [0.75, 0.83] p=1.000 | 0.81 [0.74, 0.83] p=1.000 | 0.44 [0.37, 0.46] p=1.000 | -0.06 [-0.13, -0.04] p=1.000 | -0.14 [-0.24, 0.11] p=1.000 |
+| HarmonicFiredancer | 15 | 4 | 0.77 [0.75, 0.80] p=1.000 | 0.80 [0.77, 0.82] p=1.000 | 0.43 [0.40, 0.46] p=1.000 | -0.07 [-0.10, -0.04] p=1.000 | 0.04 [-0.13, 0.09] p=1.000 |
+| local schedulers | 120 | 42 | 0.91 [0.79, 0.99] p=0.002 | 0.56 [0.51, 0.59] p=0.002 | 0.46 [0.39, 0.50] p=0.002 | -0.24 [-0.32, -0.11] p=0.008 | -0.01 [-0.07, 0.04] p=1.000 |
 
 ## Rule agreement: pilot through the public RPC (for comparison)
 
@@ -220,9 +233,9 @@ In the targeted window: landed in a slot of the targeted leader's window. Comple
 | rehearsal / tpu / buffered | 10 | 60 | 60/60 | 54 (90%) | 54 | 0 | 9 | 9 | 2 | 0 | 381, 134 | 1 |
 | rehearsal / tpu / streamed | 5 | 30 | 30/30 | 30 (100%) | 30 | 0 | 5 | 5 | 0.5 | 31 | -385, -712 | 2 |
 | rehearsal / tpu / burst | 2 | 12 | 12/12 | 12 (100%) | 12 | 0 | 2 | 2 | 0 | 0 | -246, -275 | 0 |
-| main / tpu / buffered | 25 | 150 | 150/150 | 150 (100%) | 150 | 0 | 25 | 25 | 2 | 0 | 425, 334 | 1 |
-| main / tpu / burst | 2 | 12 | 6/12 | 6 (50%) | 6 | 0 | 1 | 1 | 0 | 0 | -224, -224 | 0 |
-| main / tpu / streamed | 3 | 18 | 18/18 | 18 (100%) | 18 | 0 | 3 | 3 | 0 | 34 | -418, -591 | 0 |
+| main / tpu / buffered | 288 | 1728 | 1679/1728 | 1566 (91%) | 1518 | 48 | 253 | 253 | 2 | 0 | 403, -1111 | 41 |
+| main / tpu / burst | 38 | 228 | 216/228 | 216 (95%) | 216 | 0 | 36 | 36 | 0 | 0 | -221, -569 | 6 |
+| main / tpu / streamed | 77 | 462 | 462/462 | 440 (95%) | 434 | 6 | 72 | 73 | 0 | 32 | -418, -1342 | 8 |
 
 ## Versions
 
@@ -230,14 +243,14 @@ Share of each label's leader slots by version string, from the snapshots of the 
 
 | client | versions by leader slots | versions in primary trials |
 |---|---|---|
-| Agave | 4.3.2 83%, 4.5.0-alpha.2 8%, 4.4.0-rc.1 7%, 4.4.0-rc.0 1%, 4.4.0-beta.1 1% | 4.3.2 ×2 |
-| JitoLabs | 4.3.2 100%, 4.4.0-rc.0 0%, 4.3.0-rc.1 0%, 4.3.0 0% | 4.3.2 ×3 |
-| Firedancer | 26.10.4 91%, 0.1.1 9% | 26.10.4 ×2 |
-| Rakurai | 4.3.2 100% | 4.3.2 ×2 |
-| AgaveBam | 4.3.2 100%, 4.5.0-alpha.2 0%, 4.3.0 0% | 4.3.2 ×2 |
-| FireBAM | 26.10.4 100% | 26.10.4 ×2 |
-| HarmonicAgave | 4.3.2 100% | 4.3.2 ×2 |
-| HarmonicFiredancer | 26.10.4 100% | 26.10.4 ×2 |
+| Agave | 4.3.2 83%, 4.5.0-alpha.2 8%, 4.4.0-rc.1 7%, 4.4.0-rc.0 1%, 4.4.0-beta.1 1% | 4.3.2 ×23, 4.5.0-alpha.2 ×5, 4.4.0-rc.1 ×2 |
+| JitoLabs | 4.3.2 100%, 4.4.0-rc.0 0%, 4.3.0-rc.1 0%, 4.3.0 0% | 4.3.2 ×30 |
+| Firedancer | 26.10.4 91%, 0.1.1 9% | 26.10.4 ×27, 0.1.1 ×3 |
+| Rakurai | 4.3.2 100% | 4.3.2 ×30 |
+| AgaveBam | 4.3.2 100%, 4.5.0-alpha.2 0%, 4.3.0 0% | 4.3.2 ×15 |
+| FireBAM | 26.10.4 100% | 26.10.4 ×16 |
+| HarmonicAgave | 4.3.2 100% | 4.3.2 ×15 |
+| HarmonicFiredancer | 26.10.4 100% | 26.10.4 ×15 |
 
 ## Coverage per label
 
@@ -245,14 +258,14 @@ From the latest snapshot of the main campaign (of all runs while there is none).
 
 | client | validators | share of all leader slots | effective number | reachable share of its slots | validators reached | effective number reached |
 |---|---:|---:|---:|---:|---:|---:|
-| Agave | 20 | 1.1% | 4.4 | 100% | 2 | 2.0 |
-| JitoLabs | 135 | 24.9% | 17.8 | 100% | 3 | 3.0 |
-| Firedancer | 25 | 5.5% | 5.1 | 100% | 2 | 2.0 |
-| Rakurai | 9 | 1.2% | 4.0 | 100% | 2 | 2.0 |
-| AgaveBam | 353 | 34.6% | 60.3 | 100% | 2 | 2.0 |
-| FireBAM | 20 | 1.9% | 3.3 | 100% | 2 | 2.0 |
-| HarmonicAgave | 48 | 21.9% | 15.5 | 100% | 2 | 2.0 |
-| HarmonicFiredancer | 38 | 8.7% | 8.4 | 100% | 1 | 1.0 |
+| Agave | 20 | 1.1% | 4.4 | 96% | 10 | 4.2 |
+| JitoLabs | 134 | 24.9% | 17.8 | 95% | 16 | 11.5 |
+| Firedancer | 26 | 5.5% | 5.2 | 100% | 10 | 6.0 |
+| Rakurai | 9 | 1.2% | 4.0 | 94% | 7 | 3.5 |
+| AgaveBam | 353 | 34.6% | 60.3 | 100% | 13 | 11.8 |
+| FireBAM | 20 | 1.9% | 3.3 | 100% | 10 | 4.4 |
+| HarmonicAgave | 48 | 21.9% | 15.5 | 100% | 11 | 9.8 |
+| HarmonicFiredancer | 38 | 8.7% | 8.4 | 100% | 8 | 6.1 |
 
 ## Ingress: where the direct path delivered
 
@@ -260,14 +273,14 @@ BAM and Harmonic validators advertise QUIC addresses on shared gateway hosts; fo
 
 | client | trials used | validators | distinct ingress hosts | trials via a shared host | most validators behind one used host |
 |---|---:|---:|---:|---:|---:|
-| Agave | 8 | 5 | 5 | 0 | 1 |
-| AgaveBam | 8 | 8 | 7 | 8 | 99 |
-| FireBAM | 6 | 4 | 4 | 6 | 100 |
-| Firedancer | 9 | 8 | 8 | 0 | 1 |
-| HarmonicAgave | 8 | 7 | 3 | 8 | 38 |
-| HarmonicFiredancer | 8 | 4 | 1 | 8 | 38 |
-| JitoLabs | 9 | 8 | 8 | 0 | 1 |
-| Rakurai | 7 | 3 | 3 | 0 | 1 |
+| Agave | 66 | 16 | 16 | 0 | 1 |
+| AgaveBam | 35 | 28 | 13 | 35 | 99 |
+| FireBAM | 34 | 14 | 7 | 33 | 100 |
+| Firedancer | 64 | 15 | 14 | 7 | 5 |
+| HarmonicAgave | 35 | 19 | 5 | 35 | 38 |
+| HarmonicFiredancer | 34 | 16 | 4 | 34 | 38 |
+| JitoLabs | 64 | 24 | 24 | 0 | 1 |
+| Rakurai | 64 | 8 | 8 | 0 | 1 |
 
 ## Where our transactions stand in their blocks (direct path)
 
@@ -275,14 +288,14 @@ Median share of the block's other transactions (our own six excluded) with a low
 
 | role | landed | out-ranks (reward/cost) | position, buffered | position, burst | position, streamed |
 |---|---:|---:|---:|---:|---:|
-| A | 63 | 98% | 2% | 19% | 53% |
-| B | 63 | 77% | 8% | 25% | 49% |
-| C | 63 | 83% | 6% | 24% | 50% |
-| D | 63 | 94% | 3% | 23% | 58% |
-| E | 63 | 98% | 1% | 22% | 49% |
-| F | 63 | 78% | 7% | 24% | 43% |
+| A | 404 | 99% | 1% | 35% | 39% |
+| B | 405 | 79% | 9% | 36% | 39% |
+| C | 405 | 86% | 6% | 36% | 43% |
+| D | 404 | 95% | 2% | 35% | 48% |
+| E | 404 | 99% | 1% | 36% | 39% |
+| F | 404 | 80% | 8% | 36% | 58% |
 
-Blocks holding our direct-path transactions: 75, with 149–1083 transactions (median 511).
+Blocks holding our direct-path transactions: 472, with 110–1429 transactions (median 458.5).
 
 ## Background: everyone else in the same blocks
 
@@ -290,12 +303,12 @@ Spearman rho between position and reward per scheduled cost unit over the other 
 
 | client | blocks | median rho, whole block | median rho, first 10% | blocks with rho < 0 |
 |---|---:|---|---|---|
-| Agave | 10 | -0.05 | -0.36 | 80% |
-| AgaveBam | 11 | -0.17 | -0.04 | 100% |
-| FireBAM | 7 | -0.10 | -0.05 | 86% |
-| Firedancer | 9 | -0.22 | -0.54 | 100% |
-| HarmonicAgave | 9 | -0.16 | -0.35 | 78% |
-| HarmonicFiredancer | 10 | -0.08 | -0.42 | 70% |
-| JitoLabs | 11 | -0.16 | -0.66 | 82% |
-| Rakurai | 8 | -0.17 | -0.14 | 88% |
+| Agave | 79 | -0.10 | -0.58 | 78% |
+| AgaveBam | 44 | -0.22 | -0.21 | 95% |
+| FireBAM | 41 | -0.12 | -0.29 | 95% |
+| Firedancer | 73 | -0.36 | -0.43 | 96% |
+| HarmonicAgave | 42 | -0.10 | -0.30 | 76% |
+| HarmonicFiredancer | 41 | -0.06 | -0.25 | 68% |
+| JitoLabs | 75 | -0.11 | -0.47 | 80% |
+| Rakurai | 77 | -0.12 | -0.27 | 91% |
 

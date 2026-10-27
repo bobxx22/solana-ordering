@@ -1,0 +1,799 @@
+2026-10-27T15:32:52.629Z epoch 1069, 3906 gossip nodes, 664 current + 21 delinquent vote accounts
+2026-10-27T15:32:52.635Z LIVE on mainnet-beta via tpu, campaign "main": up to 332 more landed trials, at most 0.000061 SOL each (0.020252 SOL)
+2026-10-27T15:32:52.635Z continuing from 1 earlier run(s): landed {"HarmonicAgave":3,"JitoLabs":5,"AgaveBam":3,"FireBAM":2,"Firedancer":5,"Agave":3,"HarmonicFiredancer":4,"Rakurai":3}, 0 excluded addresses
+2026-10-27T15:32:52.635Z spend cap 0.050000 SOL (of which 0.000100 SOL kept for sweeping), committed 0.004909 SOL; reads via https://mainnet.helius-rpc.com/ (credentials hidden)
+2026-10-27T15:32:52.635Z   role A: limit 1000 CU, price 4000000 µL/CU, loaded-data limit 16384 B, reward/cost 2.783
+2026-10-27T15:32:52.636Z   role B: limit 40000 CU, price 250000 µL/CU, loaded-data limit 16384 B, reward/cost 0.302
+2026-10-27T15:32:52.637Z   role C: limit 1000 CU, price 0 µL/CU, loaded-data limit 16384 B, reward/cost 1.070
+2026-10-27T15:32:52.637Z   role D: limit 6000 CU, price 1500000 µL/CU, loaded-data limit 16384 B, reward/cost 1.568
+2026-10-27T15:32:52.637Z   role E: limit 1000 CU, price 4000000 µL/CU, loaded-data limit 16384 B, reward/cost 2.783
+2026-10-27T15:32:52.637Z   role F: limit 1000 CU, price 4000000 µL/CU, loaded-data limit 67108864 B, reward/cost 0.347
+2026-10-27T15:32:52.686Z main wallet 6v8Wy9TEhfZXzdXVspXYs7bh42N7B7z9jALkz83yxKoC: 0.017128 SOL
+2026-10-27T15:32:59.048Z trial 0: Agave 7QQGNm3p window 462122628 shared/streamed order ECFDAB
+2026-10-27T15:33:05.099Z trial 1: FireBAM 9jxgosAf window 462122660 shared/buffered order BEFDCA
+2026-10-27T15:33:11.540Z trial 2: JitoLabs mXv18ov8 window 462122688 shared/streamed order CBFDAE
+2026-10-27T15:33:15.967Z trial 3: JitoLabs 5pPRHnie window 462122708 shared/burst order DEABCF
+2026-10-27T15:33:21.911Z trial 4: JitoLabs EUcJwf7j window 462122740 shared/buffered order BCFAED
+2026-10-27T15:33:30.133Z trial 5: Firedancer JD549Hsb window 462122780 shared/buffered order EAFDBC
+2026-10-27T15:33:35.647Z trial 6: HarmonicAgave Hz5aLvpK window 462122800 independent/streamed order FCBDAE
+2026-10-27T15:33:39.944Z trial 7: AgaveBam GEM1N1UE window 462122820 shared/streamed order EDCBAF
+2026-10-27T15:33:54.314Z trial 8: Rakurai ana2y2Yv window 462122888 independent/streamed order DFAEBC
+2026-10-27T15:34:07.851Z trial 9: Agave 7QQGNm3p window 462122956 shared/buffered order BDEAFC
+2026-10-27T15:34:12.986Z trial 10: Firedancer JD549Hsb window 462122976 independent/streamed order DACEFB
+2026-10-27T15:34:22.982Z trial 11: FireBAM LA1NEzry window 462123024 shared/burst order BAFDEC
+2026-10-27T15:34:33.819Z trial 12: FireBAM 9jxgosAf window 462123072 independent/streamed order EFCBAD
+2026-10-27T15:34:43.805Z trial 13: Firedancer 9eGrDohd window 462123124 shared/buffered order DFCEBA
+2026-10-27T15:34:55.768Z trial 14: Firedancer 9eGrDohd window 462123180 independent/buffered order BFDACE
+2026-10-27T15:35:01.161Z trial 15: HarmonicAgave 5ZqveVff window 462123200 shared/streamed order DFBACE
+2026-10-27T15:35:05.311Z trial 16: AgaveBam CMPSSdrT window 462123224 shared/buffered order DABECF
+2026-10-27T15:35:09.516Z trial 17: JitoLabs 2oHUYyW2 window 462123244 independent/buffered order CFABED
+2026-10-27T15:35:14.519Z trial 18: AgaveBam 2GUnfxZa window 462123264 shared/burst order CBFEDA
+2026-10-27T15:35:25.649Z trial 19: HarmonicFiredancer 87CcUxpy window 462123316 independent/streamed order FBAECD
+2026-10-27T15:35:29.735Z trial 20: HarmonicFiredancer ALp2GdA1 window 462123340 shared/buffered order CBDEFA
+2026-10-27T15:35:40.765Z trial 21: HarmonicFiredancer 6yFGGAgY window 462123388 shared/burst order CBAEFD
+2026-10-27T15:35:46.220Z trial 22: JitoLabs bitHUmbK window 462123416 shared/buffered order FABCED
+2026-10-27T15:35:58.997Z trial 23: Rakurai BCeczqpT window 462123472 shared/burst order FBDACE
+2026-10-27T15:36:12.064Z trial 24: Agave 7QQGNm3p window 462123532 independent/streamed order EDCBFA
+2026-10-27T15:36:16.246Z trial 25: Agave dzBhD4wi window 462123552 shared/burst order BCEAFD
+2026-10-27T15:36:23.878Z trial 26: Rakurai 7PdKhpKz window 462123592 shared/buffered order BECFDA
+2026-10-27T15:36:37.531Z trial 27: Firedancer JD549Hsb window 462123656 shared/buffered order DCFEAB
+2026-10-27T15:36:49.594Z trial 28: Firedancer 9eGrDohd window 462123712 shared/buffered order FECBDA
+2026-10-27T15:36:59.927Z trial 29: Rakurai 7PdKhpKz window 462123756 shared/streamed order ABDFCE
+2026-10-27T15:37:04.173Z trial 30: HarmonicAgave 9W3QTgBh window 462123780 shared/buffered order FEBDCA
+2026-10-27T15:37:10.202Z trial 31: JitoLabs EvnRmnMr window 462123808 shared/buffered order FEBCDA
+2026-10-27T15:37:15.229Z trial 32: JitoLabs bitHUmbK window 462123832 independent/buffered order DCEFBA
+2026-10-27T15:37:26.247Z trial 33: FireBAM 9jxgosAf window 462123884 shared/buffered order DFEABC
+2026-10-27T15:37:40.262Z trial 34: Agave 5Us18hLZ window 462123948 shared/buffered order DFEABC
+2026-10-27T15:37:45.034Z trial 35: HarmonicAgave Hz5aLvpK window 462123968 shared/burst order FDBACE
+2026-10-27T15:37:51.395Z trial 36: AgaveBam 5zuNci3T window 462123996 independent/streamed order DCABEF
+2026-10-27T15:37:55.567Z trial 37: AgaveBam GBQ2GvTz window 462124020 shared/buffered order CBDAEF
+2026-10-27T15:38:12.331Z attempt 39: QUIC connect to Rakurai failed: TimeoutError: ; skipping
+2026-10-27T15:38:14.789Z trial 38: JitoLabs 5FbKKGdE window 462124112 shared/buffered order EBFDAC
+2026-10-27T15:38:19.770Z trial 39: JitoLabs FbYX2uN5 window 462124132 shared/streamed order ECABDF
+2026-10-27T15:38:27.346Z trial 40: JitoLabs C8Bey3LK window 462124168 independent/streamed order DCEFBA
+2026-10-27T15:38:37.530Z trial 41: Rakurai SLAY6uN1 window 462124220 shared/buffered order EBCDFA
+2026-10-27T15:38:42.771Z trial 42: Firedancer 9eGrDohd window 462124244 independent/buffered order CBFEDA
+2026-10-27T15:38:47.161Z trial 43: JitoLabs HEL1USMZ window 462124264 shared/buffered order EBDCAF
+2026-10-27T15:39:04.074Z trial 44: FireBAM peNgUgnz window 462124336 shared/streamed order BDAFCE
+2026-10-27T15:39:18.460Z trial 45: Agave 9hQqNe3D window 462124412 independent/buffered order BFAEDC
+2026-10-27T15:39:34.741Z trial 46: Firedancer 4SNKY7GC window 462124488 independent/buffered order DFACBE
+2026-10-27T15:39:41.791Z trial 47: Agave sce3TfT8 window 462124520 shared/buffered order BCADFE
+2026-10-27T15:39:45.989Z trial 48: Firedancer 9eGrDohd window 462124540 shared/buffered order DBAEFC
+2026-10-27T15:39:57.841Z trial 49: FireBAM 9pBHfuE1 window 462124592 shared/streamed order ADFBEC
+2026-10-27T15:40:06.998Z trial 50: Firedancer BbCQMWnf window 462124640 shared/buffered order AFCBDE
+2026-10-27T15:40:13.169Z trial 51: Firedancer JD549Hsb window 462124664 shared/streamed order CBFDEA
+2026-10-27T15:40:18.132Z trial 52: HarmonicAgave BtsmiEEv window 462124688 shared/buffered order BFCDAE
+2026-10-27T15:40:31.480Z trial 53: Agave 7QQGNm3p window 462124752 shared/buffered order AFBCED
+2026-10-27T15:40:36.380Z trial 54: Firedancer 9eGrDohd window 462124776 shared/buffered order EBADFC
+2026-10-27T15:40:45.887Z trial 55: Firedancer 9eGrDohd window 462124816 independent/streamed order BCEDAF
+2026-10-27T15:40:53.349Z trial 56: HarmonicFiredancer 3iSQtPgk window 462124852 shared/buffered order DEFABC
+2026-10-27T15:40:58.339Z trial 57: HarmonicFiredancer 8vk6QpG9 window 462124876 independent/buffered order BDACEF
+2026-10-27T15:41:13.360Z trial 58: HarmonicFiredancer GZ4U21pY window 462124944 shared/buffered order EFBDCA
+2026-10-27T15:41:25.572Z trial 59: JitoLabs EUcJwf7j window 462124996 shared/buffered order ABFECD
+2026-10-27T15:41:31.447Z trial 60: FireBAM 9jxgosAf window 462125032 shared/buffered order FCABED
+2026-10-27T15:41:43.811Z trial 61: Agave scb1Z7du window 462125092 independent/buffered order DEACFB
+2026-10-27T15:41:55.586Z trial 62: JitoLabs EvnRmnMr window 462125148 shared/buffered order DBAFCE
+2026-10-27T15:42:12.331Z trial 63: Firedancer JD549Hsb window 462125224 independent/streamed order CEAFDB
+2026-10-27T15:42:17.633Z trial 64: Firedancer JD549Hsb window 462125252 shared/buffered order EACFDB
+2026-10-27T15:42:22.558Z trial 65: Firedancer HW4zorvt window 462125272 shared/burst order ABEDCF
+2026-10-27T15:42:36.464Z trial 66: Agave 9hQqNe3D window 462125340 shared/buffered order DFABCE
+2026-10-27T15:42:41.269Z trial 67: JitoLabs AEHqTB2R window 462125360 shared/burst order DAFECB
+2026-10-27T15:42:56.572Z trial 68: Agave 5Us18hLZ window 462125432 shared/burst order BCAFDE
+2026-10-27T15:43:00.914Z trial 69: AgaveBam BUv44cVt window 462125456 independent/buffered order AEBFCD
+2026-10-27T15:43:04.831Z trial 70: HarmonicAgave DrifTrN9 window 462125476 independent/buffered order CAEBDF
+2026-10-27T15:43:08.918Z trial 71: HarmonicAgave 5RvfTSow window 462125496 shared/buffered order EFBCDA
+2026-10-27T15:43:13.356Z trial 72: AgaveBam WUNoB9YQ window 462125516 independent/buffered order EFABCD
+2026-10-27T15:43:17.642Z trial 73: HarmonicAgave DrifTrN9 window 462125536 independent/buffered order CABDFE
+2026-10-27T15:43:23.081Z trial 74: AgaveBam DRpbCBMx window 462125560 shared/buffered order FECBAD
+2026-10-27T15:43:27.272Z trial 75: JitoLabs HEL1USMZ window 462125580 shared/buffered order ACBFDE
+2026-10-27T15:43:41.748Z trial 76: Agave 5Us18hLZ window 462125644 independent/streamed order BFADEC
+2026-10-27T15:43:56.627Z trial 77: Firedancer 9eGrDohd window 462125720 shared/buffered order DFBCAE
+2026-10-27T15:44:12.817Z trial 78: Firedancer 9eGrDohd window 462125796 independent/buffered order ECBDAF
+2026-10-27T15:44:25.087Z trial 79: Rakurai 3B2mGaZo window 462125852 independent/buffered order EBCFAD
+2026-10-27T15:44:32.673Z trial 80: FireBAM LA1NEzry window 462125888 independent/buffered order FCBDEA
+2026-10-27T15:44:48.282Z trial 81: FireBAM ECZx4Dfy window 462125964 shared/buffered order AFCBDE
+2026-10-27T15:45:02.916Z trial 82: Agave mds4GEui window 462126028 shared/buffered order DCEBAF
+2026-10-27T15:45:09.496Z trial 83: Firedancer 9WzPWqKS window 462126060 shared/buffered order EAFBCD
+2026-10-27T15:45:15.636Z trial 84: JitoLabs 5pPRHnie window 462126088 independent/buffered order BDFCAE
+2026-10-27T15:45:24.820Z trial 85: JitoLabs EvnRmnMr window 462126132 shared/buffered order CFDBAE
+2026-10-27T15:45:30.407Z trial 86: Firedancer DNVZMSqe window 462126160 independent/buffered order EDBCFA
+2026-10-27T15:45:37.121Z trial 87: Firedancer FBbqKvwL window 462126192 shared/buffered order FCDEAB
+2026-10-27T15:45:53.063Z trial 88: Firedancer DNVZMSqe window 462126268 shared/buffered order EBDFCA
+2026-10-27T15:46:09.224Z trial 89: Agave 7QQGNm3p window 462126340 shared/streamed order ECADBF
+2026-10-27T15:46:13.688Z trial 90: AgaveBam 2Mob8FJk window 462126364 shared/buffered order DEBCFA
+2026-10-27T15:46:26.610Z trial 91: Agave 5Us18hLZ window 462126428 shared/buffered order EAFDCB
+2026-10-27T15:46:36.675Z trial 92: Rakurai ana2y2Yv window 462126476 shared/buffered order BDAECF
+2026-10-27T15:46:42.303Z trial 93: Agave mds4GEui window 462126500 independent/buffered order ECFADB
+2026-10-27T15:46:48.278Z trial 94: JitoLabs GnC339vk window 462126524 shared/buffered order AFEBCD, 6 not acknowledged
+2026-10-27T15:46:51.181Z trial 95: JitoLabs Df16xM2X window 462126544 independent/buffered order CDFBAE
+2026-10-27T15:46:56.248Z trial 96: HarmonicAgave G3a3iYZK window 462126568 shared/buffered order EABCDF
+2026-10-27T15:47:01.924Z trial 97: HarmonicAgave CAo1dCGY window 462126596 independent/buffered order FEDBAC
+2026-10-27T15:47:14.774Z trial 98: FireBAM A4hyMd3F window 462126656 shared/buffered order BCDFAE
+2026-10-27T15:47:18.791Z trial 99: HarmonicFiredancer EJsJx7Sm window 462126676 shared/buffered order CEDBAF
+2026-10-27T15:47:29.577Z trial 100: HarmonicFiredancer 87CcUxpy window 462126728 independent/buffered order FDECAB
+2026-10-27T15:47:41.377Z trial 101: Agave mds3Df1i window 462126784 shared/buffered order CBAFED
+2026-10-27T15:47:47.709Z trial 102: JitoLabs GnC339vk window 462126808 shared/buffered order DCEFAB, 6 not acknowledged
+2026-10-27T15:47:52.755Z trial 103: JitoLabs HEL1USMZ window 462126840 shared/buffered order CAEDBF
+2026-10-27T15:47:52.871Z 23.109.158.124:11228 (1 validators, last JitoLabs) never landed and failed twice in a row (empty burst); no longer targeted
+2026-10-27T15:48:01.291Z trial 104: JitoLabs E1r4Psq8 window 462126880 shared/buffered order CBDEAF
+2026-10-27T15:48:14.366Z trial 105: Rakurai ana2y2Yv window 462126940 shared/buffered order CBAEFD
+2026-10-27T15:48:19.474Z trial 106: AgaveBam 93Q99nhd window 462126964 independent/buffered order ACEBFD
+2026-10-27T15:48:31.213Z trial 107: Firedancer JD549Hsb window 462127020 independent/buffered order DBEFCA
+2026-10-27T15:48:40.027Z trial 108: FireBAM Ey3DkEVb window 462127060 independent/buffered order EFDABC
+2026-10-27T15:48:46.362Z trial 109: JitoLabs C8Bey3LK window 462127088 independent/streamed order DCBFEA
+2026-10-27T15:48:57.926Z trial 110: Firedancer JD549Hsb window 462127148 shared/buffered order CABDEF
+2026-10-27T15:49:02.418Z trial 111: AgaveBam HLnodbYk window 462127168 shared/buffered order FDECAB
+2026-10-27T15:49:07.398Z trial 112: AgaveBam HLnodbYk window 462127188 shared/burst order FDAEBC
+2026-10-27T15:49:21.363Z trial 113: Firedancer RNXnAJV1 window 462127252 shared/burst order DCBFAE
+2026-10-27T15:49:25.738Z trial 114: JitoLabs HEL1USMZ window 462127272 shared/streamed order BFAECD
+2026-10-27T15:49:41.034Z trial 115: Firedancer 9eGrDohd window 462127344 shared/streamed order CBEAFD
+2026-10-27T15:49:49.687Z trial 116: FireBAM idCE5k2B window 462127384 shared/buffered order DCFEAB
+2026-10-27T15:50:01.276Z trial 117: Agave 5Us18hLZ window 462127444 shared/buffered order DABEFC
+2026-10-27T15:50:05.461Z trial 118: HarmonicFiredancer JUPiTERr window 462127464 shared/buffered order ABCEDF
+2026-10-27T15:50:11.382Z trial 119: Firedancer 9eGrDohd window 462127492 shared/buffered order EFCBDA
+2026-10-27T15:50:27.335Z trial 120: Agave 7QQGNm3p window 462127564 independent/buffered order ECADFB
+2026-10-27T15:50:40.073Z trial 121: Rakurai E3mDbFMr window 462127624 independent/buffered order FDCBEA
+2026-10-27T15:50:44.227Z trial 122: HarmonicAgave 5ZqveVff window 462127644 shared/buffered order BDCFEA
+2026-10-27T15:50:50.975Z trial 123: HarmonicAgave 9W3QTgBh window 462127672 independent/streamed order DFACEB
+2026-10-27T15:51:02.097Z trial 124: HarmonicAgave GoeW4aFK window 462127728 shared/buffered order CFEBAD
+2026-10-27T15:51:08.107Z trial 125: Firedancer JD549Hsb window 462127752 shared/streamed order EBAFCD
+2026-10-27T15:51:22.103Z trial 126: Firedancer 9eGrDohd window 462127820 shared/buffered order FEBADC
+2026-10-27T15:51:27.179Z trial 127: JitoLabs HEL1USMZ window 462127844 shared/buffered order BADEFC
+2026-10-27T15:51:39.925Z trial 128: Agave 7QQGNm3p window 462127904 shared/buffered order EACFBD
+2026-10-27T15:51:50.685Z trial 129: Agave 7QQGNm3p window 462127952 shared/burst order FDCEAB
+2026-10-27T15:52:06.581Z trial 130: Firedancer 9eGrDohd window 462128028 shared/buffered order FBECDA
+2026-10-27T15:52:19.014Z trial 131: Rakurai 7PdKhpKz window 462128088 shared/buffered order BEACDF
+2026-10-27T15:52:23.765Z trial 132: JitoLabs C8Bey3LK window 462128108 shared/burst order CADFBE
+2026-10-27T15:52:29.045Z trial 133: JitoLabs 5pPRHnie window 462128136 shared/buffered order BCDEAF
+2026-10-27T15:52:45.178Z trial 134: Firedancer JD549Hsb window 462128212 shared/buffered order BEAFDC
+2026-10-27T15:52:50.888Z trial 135: Firedancer FBbqKvwL window 462128232 independent/streamed order FECBDA
+2026-10-27T15:52:56.211Z trial 136: AgaveBam 6XKqyUVU window 462128256 independent/streamed order AEBDFC
+2026-10-27T15:53:11.219Z trial 137: Firedancer BFmqBsaG window 462128332 shared/buffered order DACFBE
+2026-10-27T15:53:18.968Z trial 138: Firedancer JD549Hsb window 462128368 independent/buffered order BCEDAF
+2026-10-27T15:53:33.397Z trial 139: Rakurai 2dfgsiSa window 462128432 independent/streamed order BADEFC
+2026-10-27T15:53:50.190Z trial 140: HarmonicFiredancer pSo1KZXg window 462128508 independent/streamed order AFCBED
+2026-10-27T15:54:05.631Z trial 141: Agave 5Us18hLZ window 462128584 shared/buffered order EADBCF
+2026-10-27T15:54:10.499Z trial 142: HarmonicAgave DcTPJqPN window 462128604 shared/burst order BAFDCE
+2026-10-27T15:54:27.999Z trial 143: Agave 9hQqNe3D window 462128684 independent/streamed order BEFADC
+2026-10-27T15:54:31.924Z trial 144: HarmonicFiredancer grptonHn window 462128704 shared/burst order DFACEB
+2026-10-27T15:54:47.679Z trial 145: FireBAM 9jxgosAf window 462128776 shared/streamed order FDABEC
+2026-10-27T15:54:56.567Z trial 146: JitoLabs ANC1u9sY window 462128824 independent/buffered order BCEAFD
+2026-10-27T15:55:03.709Z trial 147: JitoLabs 8gDfqHXZ window 462128856 shared/buffered order EBDACF
+2026-10-27T15:55:10.284Z trial 148: JitoLabs Df16xM2X window 462128880 shared/buffered order CADFEB, 6 not acknowledged
+2026-10-27T15:55:13.092Z trial 149: JitoLabs 5pPRHnie window 462128900 independent/buffered order ACEBDF
+2026-10-27T15:55:17.618Z trial 150: JitoLabs 5pPRHnie window 462128920 shared/buffered order ACEFBD
+2026-10-27T15:55:23.499Z trial 151: JitoLabs HLXxkmjb window 462128940 shared/buffered order CDEAFB, 6 not acknowledged
+2026-10-27T15:55:26.227Z trial 152: HarmonicAgave Fd7btgyS window 462128960 shared/buffered order BFCDAE
+2026-10-27T15:55:31.201Z trial 153: HarmonicAgave 9W3QTgBh window 462128980 shared/streamed order EFABCD
+2026-10-27T15:55:44.602Z trial 154: Firedancer 9eGrDohd window 462129048 shared/buffered order DEBFCA
+2026-10-27T15:55:49.232Z trial 155: AgaveBam RBFiUqjY window 462129068 shared/buffered order DFBCAE
+2026-10-27T15:56:03.056Z trial 156: Firedancer 9eGrDohd window 462129136 shared/buffered order AEFDBC
+2026-10-27T15:56:18.019Z trial 157: Firedancer 9eGrDohd window 462129208 shared/buffered order CBEDFA
+2026-10-27T15:56:30.147Z trial 158: HarmonicFiredancer nymsGg7Z window 462129264 shared/buffered order CFBAED
+2026-10-27T15:56:42.286Z trial 159: FireBAM 9pBHfuE1 window 462129316 independent/streamed order DEFCAB
+2026-10-27T15:56:51.319Z trial 160: Rakurai ana2y2Yv window 462129364 shared/buffered order FCBDAE
+2026-10-27T15:57:06.508Z trial 161: Firedancer JD549Hsb window 462129436 shared/buffered order FDBAEC
+2026-10-27T15:57:20.374Z trial 162: Rakurai ana2y2Yv window 462129496 shared/streamed order EABCDF
+2026-10-27T15:57:35.779Z trial 163: Rakurai E3mDbFMr window 462129568 shared/burst order FAECBD
+2026-10-27T15:57:47.242Z trial 164: FireBAM 9jxgosAf window 462129624 shared/buffered order AFCDBE
+2026-10-27T15:57:52.933Z trial 165: AgaveBam 5ejbTALc window 462129648 shared/streamed order AEDCBF
+2026-10-27T15:58:08.906Z trial 166: Agave 7QQGNm3p window 462129724 shared/streamed order EADFBC
+2026-10-27T15:58:21.237Z trial 167: Rakurai 7PdKhpKz window 462129788 shared/buffered order DCBFEA
+2026-10-27T15:58:29.992Z trial 168: HarmonicFiredancer 87CcUxpy window 462129828 shared/buffered order BCADEF
+2026-10-27T15:58:35.585Z trial 169: JitoLabs HEL1USMZ window 462129856 shared/buffered order EABCFD
+2026-10-27T15:58:50.799Z trial 170: Firedancer 9eGrDohd window 462129928 shared/buffered order DCABEF
+2026-10-27T15:58:59.018Z trial 171: Firedancer JD549Hsb window 462129964 independent/buffered order ADFBCE
+2026-10-27T15:59:03.728Z trial 172: Firedancer DNVZMSqe window 462129984 shared/buffered order EFACDB
+2026-10-27T15:59:17.240Z trial 173: Agave dxa6QFqL window 462130048 shared/buffered order FEDABC
+2026-10-27T15:59:32.571Z trial 174: HarmonicFiredancer pSo1KZXg window 462130116 shared/streamed order DAECFB
+2026-10-27T15:59:45.761Z trial 175: Rakurai ana2y2Yv window 462130184 independent/buffered order ACFEBD
+2026-10-27T15:59:55.166Z trial 176: Rakurai ana2y2Yv window 462130228 shared/buffered order FBCADE
+2026-10-27T16:00:03.879Z trial 177: JitoLabs C8Bey3LK window 462130264 shared/streamed order FDCBEA
+2026-10-27T16:00:09.079Z trial 178: JitoLabs 9rkJMARq window 462130288 independent/streamed order FCEDBA
+2026-10-27T16:00:13.270Z trial 179: JitoLabs 9rkJMARq window 462130312 shared/buffered order EBADCF
+2026-10-27T16:00:17.394Z trial 180: HarmonicAgave Fd7btgyS window 462130332 shared/buffered order DEFBAC
+2026-10-27T16:00:22.268Z trial 181: AgaveBam 58KprHKF window 462130352 shared/buffered order CBEFAD
+2026-10-27T16:00:27.133Z trial 182: AgaveBam Fc6NNdS2 window 462130376 independent/buffered order FEBADC
+2026-10-27T16:00:42.569Z trial 183: Firedancer JD549Hsb window 462130452 shared/buffered order DAECBF
+2026-10-27T16:00:47.222Z trial 184: HarmonicFiredancer 87CcUxpy window 462130472 shared/buffered order EDFCAB
+2026-10-27T16:01:04.017Z trial 185: Firedancer BbCQMWnf window 462130548 shared/burst order BFACDE
+2026-10-27T16:01:17.793Z trial 186: Rakurai ana2y2Yv window 462130616 shared/buffered order AECDBF
+2026-10-27T16:01:22.072Z trial 187: HarmonicAgave 9W3QTgBh window 462130636 shared/buffered order FDBCAE
+2026-10-27T16:01:27.422Z trial 188: Firedancer JD549Hsb window 462130656 shared/streamed order CFBDEA
+2026-10-27T16:01:31.929Z trial 189: HarmonicAgave Fd7btgyS window 462130680 independent/buffered order CEBFAD
+2026-10-27T16:01:44.615Z trial 190: Firedancer JD549Hsb window 462130740 shared/buffered order BDFAEC
+2026-10-27T16:01:49.197Z trial 191: HarmonicFiredancer ALp2GdA1 window 462130760 independent/buffered order EABCDF
+2026-10-27T16:01:55.631Z trial 192: JitoLabs 8o8wWCYN window 462130780 shared/burst order CBDAEF, 6 not acknowledged
+2026-10-27T16:01:59.314Z trial 193: HarmonicAgave CAo1dCGY window 462130808 independent/buffered order DCBEFA
+2026-10-27T16:02:04.417Z trial 194: HarmonicAgave GYx8kpp7 window 462130832 shared/buffered order EDFABC
+2026-10-27T16:02:18.672Z trial 195: FireBAM 9jxgosAf window 462130896 shared/burst order BEFACD
+2026-10-27T16:02:36.537Z trial 196: JitoLabs ANC1u9sY window 462130980 shared/burst order ABDCEF
+2026-10-27T16:02:41.689Z trial 197: JitoLabs 7cVfgArC window 462131008 shared/buffered order FBDCEA
+2026-10-27T16:02:49.107Z trial 198: JitoLabs C8Bey3LK window 462131044 independent/buffered order EDFCBA
+2026-10-27T16:03:01.748Z trial 199: Firedancer DNVZMSqe window 462131096 independent/streamed order EDCBFA
+2026-10-27T16:03:12.087Z trial 200: Firedancer VQwCCSfW window 462131148 shared/buffered order DCBAFE
+2026-10-27T16:03:16.800Z trial 201: AgaveBam 7EzbSahS window 462131168 shared/buffered order AEBFCD
+2026-10-27T16:03:29.317Z trial 202: FireBAM 9jxgosAf window 462131228 shared/buffered order BEFCAD
+2026-10-27T16:03:38.614Z trial 203: FireBAM 9jxgosAf window 462131272 independent/buffered order EDFBAC
+2026-10-27T16:03:46.266Z trial 204: Rakurai ana2y2Yv window 462131308 independent/buffered order FCBADE
+2026-10-27T16:03:54.206Z trial 205: Rakurai 7PdKhpKz window 462131344 shared/buffered order CEDAFB
+2026-10-27T16:04:00.088Z trial 206: Firedancer VQwCCSfW window 462131372 independent/buffered order ABEDFC
+2026-10-27T16:04:05.953Z trial 207: Firedancer JD549Hsb window 462131400 shared/buffered order FEDCBA
+2026-10-27T16:04:20.788Z trial 208: Agave 7QQGNm3p window 462131468 shared/buffered order EBFADC
+2026-10-27T16:04:26.540Z trial 209: JitoLabs C8Bey3LK window 462131496 shared/buffered order ECFBDA
+2026-10-27T16:04:31.447Z trial 210: JitoLabs 3SkE34PV window 462131520 shared/buffered order ABFEDC
+2026-10-27T16:04:37.489Z trial 211: JitoLabs ANC1u9sY window 462131548 independent/buffered order DFABCE
+2026-10-27T16:04:42.317Z trial 212: HarmonicAgave 5ZqveVff window 462131572 shared/buffered order ABEFCD
+2026-10-27T16:04:54.774Z trial 213: HarmonicFiredancer 87CcUxpy window 462131628 shared/buffered order EFDCBA
+2026-10-27T16:05:07.658Z trial 214: Rakurai ana2y2Yv window 462131684 shared/streamed order FCBAED
+2026-10-27T16:05:12.500Z trial 215: AgaveBam 76rcGHdP window 462131708 shared/buffered order BCEAFD
+2026-10-27T16:05:17.775Z trial 216: AgaveBam 22rU5yUm window 462131732 independent/buffered order EDCFBA
+2026-10-27T16:05:22.606Z trial 217: HarmonicFiredancer GZ4U21pY window 462131756 shared/buffered order AFDECB
+2026-10-27T16:05:36.474Z attempt 220: dispatch slot 462131806 already passed (now 462131817); skipping
+2026-10-27T16:05:40.111Z trial 218: FireBAM Ey3DkEVb window 462131836 shared/buffered order ABFDEC
+2026-10-27T16:05:48.185Z trial 219: Firedancer 4VRs6A9z window 462131876 shared/buffered order DCBAEF
+2026-10-27T16:06:01.494Z trial 220: FireBAM Tri1F8B6 window 462131936 shared/buffered order DFEACB
+2026-10-27T16:06:10.560Z trial 221: Firedancer FBbqKvwL window 462131980 independent/buffered order DBECFA
+2026-10-27T16:06:15.725Z trial 222: HarmonicFiredancer 87CcUxpy window 462132004 independent/buffered order BDAFEC
+2026-10-27T16:06:20.745Z trial 223: FireBAM 9jxgosAf window 462132028 independent/buffered order EDABFC
+2026-10-27T16:06:24.932Z trial 224: HarmonicAgave AMukCLCr window 462132048 independent/buffered order FDACBE
+2026-10-27T16:06:31.630Z trial 225: JitoLabs ANC1u9sY window 462132080 shared/buffered order AEDBCF
+2026-10-27T16:06:45.803Z trial 226: Rakurai ana2y2Yv window 462132144 shared/burst order FBCAED
+2026-10-27T16:07:02.257Z attempt 230: QUIC connect to Rakurai failed: TimeoutError: ; skipping
+2026-10-27T16:07:02.258Z 162.19.94.48:11228 (1 validators, last Rakurai) never landed and failed twice in a row (handshake refused); no longer targeted
+2026-10-27T16:07:11.244Z trial 227: JitoLabs 7cVfgArC window 462132264 shared/streamed order FEABCD
+2026-10-27T16:07:26.112Z trial 228: Firedancer FBbqKvwL window 462132336 shared/buffered order FAEBCD
+2026-10-27T16:07:33.934Z trial 229: Agave 7QQGNm3p window 462132372 independent/buffered order CDEFAB
+2026-10-27T16:07:46.518Z trial 230: Firedancer 5ghoFEVr window 462132428 shared/streamed order ABDCFE
+2026-10-27T16:07:57.206Z trial 231: Rakurai ana2y2Yv window 462132480 shared/buffered order CDAEFB
+2026-10-27T16:08:01.393Z trial 232: HarmonicFiredancer Awes4Tr6 window 462132500 shared/buffered order CFBDAE
+2026-10-27T16:08:05.578Z trial 233: AgaveBam 7HMHSdQk window 462132520 shared/buffered order CEBDAF
+2026-10-27T16:08:09.519Z trial 234: HarmonicAgave Fd7btgyS window 462132540 shared/buffered order BADCEF
+2026-10-27T16:08:13.521Z trial 235: HarmonicFiredancer JUPiTERr window 462132560 shared/buffered order BDCAEF
+2026-10-27T16:08:18.365Z trial 236: HarmonicAgave GoeW4aFK window 462132580 shared/streamed order DEFCAB
+2026-10-27T16:08:28.082Z trial 237: Firedancer FBbqKvwL window 462132624 independent/streamed order DBFECA
+2026-10-27T16:08:34.926Z trial 238: JitoLabs Chorusmm window 462132656 independent/streamed order BDCFEA
+2026-10-27T16:08:41.163Z trial 239: JitoLabs 9rkJMARq window 462132688 shared/buffered order AFBECD
+2026-10-27T16:08:48.739Z trial 240: FireBAM 9jxgosAf window 462132724 shared/buffered order BCEDFA
+2026-10-27T16:09:04.850Z trial 241: Agave 7QQGNm3p window 462132800 shared/buffered order EDFBCA
+2026-10-27T16:09:10.503Z trial 242: HarmonicFiredancer 2mMGsb5u window 462132824 independent/streamed order DFABCE
+2026-10-27T16:09:14.334Z trial 243: JitoLabs E1r4Psq8 window 462132844 shared/burst order CFABDE
+2026-10-27T16:09:18.666Z trial 244: AgaveBam HbidP4hp window 462132864 independent/streamed order FDECBA
+2026-10-27T16:09:23.352Z trial 245: AgaveBam dcntruDN window 462132884 shared/streamed order EDACBF
+2026-10-27T16:09:27.602Z trial 246: AgaveBam Aw5wEMXh window 462132908 shared/buffered order FBCAED
+2026-10-27T16:09:42.479Z trial 247: Firedancer HW4zorvt window 462132980 shared/buffered order FDBAEC
+2026-10-27T16:09:50.662Z trial 248: Firedancer 9WzPWqKS window 462133012 shared/burst order ABDFEC
+2026-10-27T16:10:02.557Z trial 249: Agave 5Us18hLZ window 462133072 shared/buffered order DAECBF
+2026-10-27T16:10:11.838Z trial 250: JitoLabs E1r4Psq8 window 462133116 shared/buffered order FDBECA
+2026-10-27T16:10:27.896Z trial 251: FireBAM 9jxgosAf window 462133188 shared/streamed order ECDBFA
+2026-10-27T16:10:32.055Z trial 252: Agave 5Us18hLZ window 462133212 independent/buffered order DEABCF
+2026-10-27T16:10:48.751Z trial 253: Agave mds4GEui window 462133284 shared/buffered order BCFDAE, 1 not acknowledged
+2026-10-27T16:10:53.593Z trial 254: HarmonicAgave FNKgX9dY window 462133312 shared/buffered order EFDCBA
+2026-10-27T16:10:57.971Z trial 255: JitoLabs BkoS26vB window 462133332 independent/buffered order CBDEFA
+2026-10-27T16:11:12.681Z trial 256: Firedancer DNVZMSqe window 462133400 shared/buffered order CEDAFB
+2026-10-27T16:11:22.670Z trial 257: Firedancer BFmqBsaG window 462133448 independent/buffered order FCABDE
+2026-10-27T16:11:28.234Z trial 258: FireBAM 9jxgosAf window 462133472 shared/burst order EAFDBC
+2026-10-27T16:11:40.630Z trial 259: FireBAM 9jxgosAf window 462133532 shared/buffered order CBADEF
+2026-10-27T16:11:51.974Z trial 260: HarmonicFiredancer 73hojLdq window 462133584 shared/streamed order CFDEAB
+2026-10-27T16:12:02.983Z trial 261: HarmonicFiredancer 3iSQtPgk window 462133640 shared/buffered order BFCDAE
+2026-10-27T16:12:07.003Z trial 262: JitoLabs AEHqTB2R window 462133660 shared/buffered order AEDBCF
+2026-10-27T16:12:11.106Z trial 263: JitoLabs EUcJwf7j window 462133680 shared/buffered order BCDFAE
+2026-10-27T16:12:17.475Z trial 264: JitoLabs Chorusmm window 462133704 independent/buffered order AFBECD, 6 not acknowledged
+2026-10-27T16:12:20.149Z trial 265: Firedancer BFmqBsaG window 462133724 shared/buffered order EAFDBC
+2026-10-27T16:12:31.319Z trial 266: Firedancer FBbqKvwL window 462133776 shared/buffered order DEFABC
+2026-10-27T16:12:35.418Z trial 267: AgaveBam 722RdWmH window 462133796 shared/buffered order EFADBC
+2026-10-27T16:12:50.425Z trial 268: Agave mds4GEui window 462133860 independent/streamed order CFEDBA
+2026-10-27T16:13:05.394Z trial 269: Agave 5Us18hLZ window 462133932 shared/burst order ADCFEB
+2026-10-27T16:13:09.798Z trial 270: AgaveBam RBFiUqjY window 462133956 shared/buffered order FACDEB
+2026-10-27T16:13:14.631Z trial 271: AgaveBam 2Mob8FJk window 462133976 shared/burst order ECBAFD
+2026-10-27T16:13:19.046Z trial 272: AgaveBam 5EhGYUyQ window 462134000 shared/buffered order DBEFAC
+2026-10-27T16:13:34.398Z trial 273: Rakurai ana2y2Yv window 462134068 independent/streamed order DEBFCA
+2026-10-27T16:13:38.384Z trial 274: HarmonicAgave CAo1dCGY window 462134088 shared/burst order FEADCB
+2026-10-27T16:13:46.191Z trial 275: HarmonicAgave CAo1dCGY window 462134124 independent/streamed order BAFDCE
+2026-10-27T16:13:51.003Z trial 276: JitoLabs E1r4Psq8 window 462134148 independent/buffered order ECAFBD
+2026-10-27T16:14:00.166Z trial 277: JitoLabs 74MzXStH window 462134184 shared/buffered order BFCEDA, 6 not acknowledged
+2026-10-27T16:14:05.155Z trial 278: HarmonicFiredancer Awes4Tr6 window 462134212 shared/burst order FACBDE
+2026-10-27T16:14:09.945Z trial 279: JitoLabs 9rkJMARq window 462134232 shared/streamed order FBDECA
+2026-10-27T16:14:15.582Z trial 280: JitoLabs GkFT5nmc window 462134256 shared/buffered order AEDBCF, 6 not acknowledged
+2026-10-27T16:14:21.989Z trial 281: JitoLabs 5pPRHnie window 462134288 independent/streamed order DFABEC
+2026-10-27T16:14:28.177Z trial 282: JitoLabs E1r4Psq8 window 462134320 shared/buffered order FECDAB
+2026-10-27T16:14:32.346Z trial 283: HarmonicAgave GoeW4aFK window 462134340 shared/buffered order DEBCAF
+2026-10-27T16:14:47.798Z trial 284: Firedancer D2RV1q6F window 462134412 independent/buffered order BEDFCA
+2026-10-27T16:15:00.153Z trial 285: FireBAM LA1NEzry window 462134464 independent/streamed order CADBEF
+2026-10-27T16:15:05.326Z trial 286: Agave sce1oTWY window 462134492 shared/buffered order DABCFE
+2026-10-27T16:15:18.627Z trial 287: HarmonicFiredancer EXckihF3 window 462134556 shared/buffered order EBCDAF
+2026-10-27T16:15:23.630Z trial 288: HarmonicFiredancer Awes4Tr6 window 462134580 independent/buffered order BACEDF
+2026-10-27T16:15:30.038Z trial 289: JitoLabs vu1sGn2f window 462134608 shared/buffered order EDCFAB
+2026-10-27T16:15:37.913Z trial 290: JitoLabs HLXxkmjb window 462134644 shared/burst order CADBFE
+2026-10-27T16:15:43.728Z trial 291: AgaveBam 58KprHKF window 462134672 independent/buffered order FDAECB
+2026-10-27T16:15:47.990Z trial 292: AgaveBam tkmaiSoZ window 462134692 shared/buffered order CFBEDA
+2026-10-27T16:16:02.147Z trial 293: Firedancer BbCQMWnf window 462134756 shared/buffered order DFBAEC
+2026-10-27T16:16:16.827Z trial 294: Rakurai 7PdKhpKz window 462134820 shared/buffered order DABEFC
+2026-10-27T16:16:27.586Z trial 295: Rakurai BCeczqpT window 462134868 independent/buffered order ACFBED
+2026-10-27T16:16:31.735Z trial 296: HarmonicAgave 3psxMyr7 window 462134888 independent/buffered order DFECAB
+2026-10-27T16:16:36.781Z trial 297: HarmonicAgave 5ZqveVff window 462134912 shared/buffered order CFBDEA
+2026-10-27T16:16:41.356Z trial 298: JitoLabs EvnRmnMr window 462134932 shared/buffered order BCAFED
+2026-10-27T16:16:46.409Z trial 299: JitoLabs 7zAHbRxE window 462134956 independent/buffered order ADCBFE
+2026-10-27T16:17:04.072Z trial 300: Agave scs1NCST window 462135032 shared/streamed order BCFADE
+2026-10-27T16:17:12.840Z trial 301: Rakurai ana2y2Yv window 462135080 shared/buffered order FEBDAC
+2026-10-27T16:17:21.199Z trial 302: JitoLabs E1r4Psq8 window 462135120 independent/buffered order CEABDF
+2026-10-27T16:17:27.498Z trial 303: JitoLabs 8NpDWRcK window 462135148 shared/buffered order ABFDCE
+2026-10-27T16:17:38.550Z trial 304: Rakurai ana2y2Yv window 462135200 shared/buffered order DCFEAB
+2026-10-27T16:17:44.225Z trial 305: Agave 9D3o3EYe window 462135220 shared/streamed order CBFDEA
+2026-10-27T16:17:52.677Z trial 306: Firedancer HW4zorvt window 462135260 independent/streamed order EADFBC
+2026-10-27T16:18:05.254Z trial 307: Rakurai E3mDbFMr window 462135320 independent/buffered order FDEACB
+2026-10-27T16:18:21.249Z trial 308: Firedancer VQwCCSfW window 462135396 shared/buffered order ECDBAF
+2026-10-27T16:18:33.810Z trial 309: HarmonicFiredancer Awes4Tr6 window 462135456 shared/buffered order ABECFD
+2026-10-27T16:18:49.261Z trial 310: FireBAM 8AkVj5aA window 462135524 shared/buffered order CDABFE, 6 not acknowledged
+2026-10-27T16:19:04.846Z trial 311: Rakurai E3mDbFMr window 462135600 independent/buffered order ABFDEC
+2026-10-27T16:19:15.935Z trial 312: Firedancer FBbqKvwL window 462135648 shared/streamed order DABCFE
+2026-10-27T16:19:21.573Z trial 313: Firedancer FBbqKvwL window 462135676 shared/burst order AEBDCF
+2026-10-27T16:19:57.433Z trial 314: Agave DiFeTctQ window 462135844 shared/buffered order ECDAFB
+2026-10-27T16:21:09.965Z trial 315: Firedancer 4VRs6A9z window 462136184 shared/buffered order ACDFBE
+2026-10-27T16:21:31.909Z trial 316: Agave rsbp8zMH window 462136288 independent/buffered order DFEACB
+2026-10-27T16:21:51.181Z trial 317: Agave mds2fZEp window 462136380 shared/buffered order CAEBDF
+2026-10-27T16:22:19.613Z trial 318: Firedancer FBbqKvwL window 462136516 independent/buffered order ECABFD
+2026-10-27T16:22:43.541Z trial 319: Firedancer VQwCCSfW window 462136632 shared/buffered order BECFAD
+2026-10-27T16:23:27.957Z trial 320: Rakurai E3mDbFMr window 462136840 independent/buffered order AECFDB
+2026-10-27T16:23:43.820Z trial 321: Agave 5Us18hLZ window 462136916 shared/buffered order FCDBAE
+2026-10-27T16:24:01.649Z trial 322: FireBAM peNgUgnz window 462137000 shared/buffered order CADBEF
+2026-10-27T16:25:05.411Z trial 323: Rakurai 7PdKhpKz window 462137300 shared/buffered order ADEFBC
+2026-10-27T16:25:48.482Z trial 324: Agave 7QQGNm3p window 462137500 independent/buffered order BCDAEF
+2026-10-27T16:26:04.339Z trial 325: Agave 7QQGNm3p window 462137576 shared/buffered order DFABCE
+2026-10-27T16:26:09.232Z trial 326: Rakurai E3mDbFMr window 462137596 shared/burst order FBCADE
+2026-10-27T16:26:34.479Z trial 327: Rakurai E3mDbFMr window 462137716 shared/streamed order EDBAFC
+2026-10-27T16:26:56.193Z trial 328: Rakurai ana2y2Yv window 462137820 shared/buffered order BCEDAF
+2026-10-27T16:27:27.839Z trial 329: Rakurai ana2y2Yv window 462137964 independent/streamed order ACFBDE
+2026-10-27T16:27:41.367Z trial 330: Rakurai Ed9WjPnZ window 462138032 shared/buffered order CEDFBA
+2026-10-27T16:28:03.397Z trial 331: Rakurai ana2y2Yv window 462138136 independent/buffered order FDCBAE
+2026-10-27T16:29:42.361Z trial 332: Agave 7QQGNm3p window 462138592 independent/streamed order DBEFAC
+2026-10-27T16:30:39.036Z trial 333: Agave mds1WWed window 462138856 shared/burst order DBCEAF
+2026-10-27T16:30:59.979Z trial 334: Agave 7QQGNm3p window 462138960 shared/buffered order ABECDF
+2026-10-27T16:31:07.542Z trial 335: Agave 5Us18hLZ window 462138992 shared/streamed order DBCFEA
+2026-10-27T16:31:24.376Z trial 336: FireBAM 11AMA4mn window 462139072 independent/buffered order BAFCED
+2026-10-27T16:31:42.962Z trial 337: FireBAM nodeEgRV window 462139156 shared/buffered order ACDFBE
+2026-10-27T16:32:37.259Z trial 338: Rakurai E3mDbFMr window 462139412 shared/buffered order FABECD
+2026-10-27T16:36:02.942Z trial 339: Agave 7QQGNm3p window 462140388 shared/buffered order AEDBCF
+2026-10-27T16:36:09.854Z trial 340: Agave 7QQGNm3p window 462140420 independent/buffered order FCDEAB
+2026-10-27T16:36:34.663Z trial 341: Rakurai ana2y2Yv window 462140536 shared/buffered order AECFBD
+2026-10-27T16:38:25.845Z trial 342: Agave 7QQGNm3p window 462141056 shared/buffered order CBEADF
+2026-10-27T16:38:41.699Z trial 343: Rakurai E3mDbFMr window 462141132 independent/buffered order BADFCE
+2026-10-27T16:40:55.594Z trial 344: Agave 9hQqNe3D window 462141768 shared/buffered order CDBAFE
+2026-10-27T16:41:51.441Z trial 345: Rakurai ana2y2Yv window 462142032 shared/buffered order CEDFAB
+2026-10-27T16:42:11.503Z trial 346: Rakurai E3mDbFMr window 462142124 independent/streamed order ABCEDF
+2026-10-27T16:43:03.192Z trial 347: Rakurai ana2y2Yv window 462142372 shared/burst order BAFDCE
+2026-10-27T16:43:42.022Z trial 348: Rakurai 7PdKhpKz window 462142560 shared/buffered order DBAFEC
+2026-10-27T16:44:40.552Z trial 349: Agave mds4GEui window 462142832 independent/buffered order BCEADF
+2026-10-27T16:45:24.595Z trial 350: Agave 5Us18hLZ window 462143040 shared/buffered order CABFDE
+2026-10-27T16:47:12.456Z trial 351: Agave dxa6QFqL window 462143548 shared/streamed order BCDAEF
+2026-10-27T16:47:18.176Z 67.213.112.229:8002 (1 validators, last Agave) never landed and failed twice in a row (empty burst); no longer targeted
+2026-10-27T16:47:59.199Z trial 352: Agave 5Us18hLZ window 462143772 shared/streamed order AEBCDF
+2026-10-27T16:48:34.567Z trial 353: Agave mds2fZEp window 462143936 shared/burst order DBAEFC
+2026-10-27T16:49:28.559Z trial 354: Rakurai E3mDbFMr window 462144196 shared/streamed order BACDFE
+2026-10-27T16:51:00.750Z trial 355: Agave 5Us18hLZ window 462144636 shared/buffered order BCFADE
+2026-10-27T16:52:14.302Z trial 356: Agave 5Us18hLZ window 462144980 independent/streamed order BDEFAC
+2026-10-27T16:52:33.295Z trial 357: Agave sce2zXNj window 462145076 shared/buffered order BCEFAD
+2026-10-27T16:54:02.985Z trial 358: Rakurai E3mDbFMr window 462145492 shared/buffered order DBEAFC
+2026-10-27T16:55:26.524Z trial 359: Rakurai 7PdKhpKz window 462145888 independent/buffered order ABCFDE
+2026-10-27T16:56:11.196Z trial 360: Rakurai E3mDbFMr window 462146096 shared/buffered order DFEACB
+2026-10-27T16:56:20.572Z trial 361: Rakurai 7PdKhpKz window 462146140 shared/buffered order CBEADF
+2026-10-27T16:56:49.866Z trial 362: Rakurai 7PdKhpKz window 462146280 independent/buffered order DFEABC
+2026-10-27T16:59:35.862Z trial 363: Rakurai E3mDbFMr window 462147048 shared/buffered order ECBAFD
+2026-10-27T17:00:35.789Z trial 364: Agave mds2fZEp window 462147328 independent/buffered order CFEABD
+2026-10-27T17:02:10.820Z trial 365: Rakurai E3mDbFMr window 462147768 shared/streamed order ECFBAD
+2026-10-27T17:02:42.951Z trial 366: Rakurai 7PdKhpKz window 462147924 independent/streamed order CEFBAD
+2026-10-27T17:05:43.942Z trial 367: Rakurai 3B2mGaZo window 462148772 shared/buffered order EDBAFC
+2026-10-27T17:05:57.402Z trial 368: Agave 5Us18hLZ window 462148836 shared/buffered order BAFCDE
+2026-10-27T17:09:01.088Z trial 369: Rakurai E3mDbFMr window 462149700 shared/burst order DFEACB
+2026-10-27T17:11:36.402Z trial 370: Rakurai E3mDbFMr window 462150436 shared/buffered order AEFBDC
+2026-10-27T17:22:06.190Z trial 371: Rakurai 7PdKhpKz window 462153396 independent/buffered order BAEDCF
+2026-10-27T17:25:42.479Z trial 372: Rakurai 7PdKhpKz window 462154412 shared/buffered order CBAFED
+2026-10-27T17:25:47.910Z run 2026-10-27T15-32-51Z: 373 trials in 376 attempts; trials counting towards the quotas in the campaign {"HarmonicAgave":30,"JitoLabs":60,"AgaveBam":30,"FireBAM":30,"Firedancer":60,"Agave":60,"HarmonicFiredancer":30,"Rakurai":60}; dispatched {"HarmonicAgave":34,"JitoLabs":71,"AgaveBam":34,"FireBAM":33,"Firedancer":74,"Agave":63,"HarmonicFiredancer":32,"Rakurai":62}
+2026-10-27T17:26:09.311Z block 462122629: 391 transactions
+2026-10-27T17:26:09.586Z block 462122630: 368 transactions
+2026-10-27T17:26:09.885Z block 462122660: 472 transactions
+2026-10-27T17:26:10.163Z block 462122689: 381 transactions
+2026-10-27T17:26:10.448Z block 462122690: 339 transactions
+2026-10-27T17:26:10.862Z block 462122710: 399 transactions
+2026-10-27T17:26:11.032Z block 462122740: 203 transactions
+2026-10-27T17:26:11.568Z block 462122780: 567 transactions
+2026-10-27T17:26:11.866Z block 462122801: 331 transactions
+2026-10-27T17:26:12.307Z block 462122802: 357 transactions
+2026-10-27T17:26:12.532Z block 462122821: 417 transactions
+2026-10-27T17:26:12.937Z block 462122822: 320 transactions
+2026-10-27T17:26:13.220Z block 462122889: 371 transactions
+2026-10-27T17:26:13.525Z block 462122890: 404 transactions
+2026-10-27T17:26:13.796Z block 462122956: 365 transactions
+2026-10-27T17:26:14.219Z block 462122977: 504 transactions
+2026-10-27T17:26:14.745Z block 462122978: 520 transactions
+2026-10-27T17:26:15.057Z block 462123025: 345 transactions
+2026-10-27T17:26:15.561Z block 462123074: 500 transactions
+2026-10-27T17:26:15.817Z block 462123075: 376 transactions
+2026-10-27T17:26:16.089Z block 462123124: 456 transactions
+2026-10-27T17:26:16.484Z block 462123180: 608 transactions
+2026-10-27T17:26:16.717Z block 462123201: 528 transactions
+2026-10-27T17:26:17.010Z block 462123202: 494 transactions
+2026-10-27T17:26:17.254Z block 462123224: 416 transactions
+2026-10-27T17:26:17.617Z block 462123244: 793 transactions
+2026-10-27T17:26:17.831Z block 462123266: 395 transactions
+2026-10-27T17:26:18.140Z block 462123317: 443 transactions
+2026-10-27T17:26:18.346Z block 462123318: 442 transactions
+2026-10-27T17:26:18.660Z block 462123340: 451 transactions
+2026-10-27T17:26:19.152Z block 462123389: 345 transactions
+2026-10-27T17:26:19.365Z block 462123416: 466 transactions
+2026-10-27T17:26:19.715Z block 462123475: 531 transactions
+2026-10-27T17:26:19.913Z block 462123533: 307 transactions
+2026-10-27T17:26:20.190Z block 462123534: 275 transactions
+2026-10-27T17:26:20.623Z block 462123553: 336 transactions
+2026-10-27T17:26:20.801Z block 462123592: 136 transactions
+2026-10-27T17:26:21.107Z block 462123656: 587 transactions
+2026-10-27T17:26:21.461Z block 462123712: 291 transactions
+2026-10-27T17:26:21.755Z block 462123757: 700 transactions
+2026-10-27T17:26:22.070Z block 462123758: 663 transactions
+2026-10-27T17:26:22.725Z block 462123780: 1272 transactions
+2026-10-27T17:26:22.936Z block 462123808: 165 transactions
+2026-10-27T17:26:23.398Z block 462123832: 391 transactions
+2026-10-27T17:26:23.628Z block 462123884: 420 transactions
+2026-10-27T17:26:23.852Z block 462123948: 472 transactions
+2026-10-27T17:26:24.313Z block 462123969: 329 transactions
+2026-10-27T17:26:24.580Z block 462123997: 492 transactions
+2026-10-27T17:26:24.973Z block 462123998: 413 transactions
+2026-10-27T17:26:25.343Z block 462124020: 741 transactions
+2026-10-27T17:26:25.578Z block 462124133: 342 transactions
+2026-10-27T17:26:25.834Z block 462124134: 336 transactions
+2026-10-27T17:26:26.343Z block 462124169: 401 transactions
+2026-10-27T17:26:26.589Z block 462124170: 350 transactions
+2026-10-27T17:26:26.938Z block 462124220: 292 transactions
+2026-10-27T17:26:27.221Z block 462124264: 376 transactions
+2026-10-27T17:26:27.497Z block 462124344: 498 transactions
+2026-10-27T17:26:27.776Z block 462124412: 475 transactions
+2026-10-27T17:26:28.038Z block 462124488: 323 transactions
+2026-10-27T17:26:28.355Z block 462124520: 639 transactions
+2026-10-27T17:26:28.883Z block 462124593: 463 transactions
+2026-10-27T17:26:29.413Z block 462124594: 384 transactions
+2026-10-27T17:26:29.966Z block 462124640: 521 transactions
+2026-10-27T17:26:30.203Z block 462124665: 431 transactions
+2026-10-27T17:26:30.527Z block 462124666: 417 transactions
+2026-10-27T17:26:30.846Z block 462124688: 637 transactions
+2026-10-27T17:26:31.161Z block 462124752: 415 transactions
+2026-10-27T17:26:31.435Z block 462124852: 305 transactions
+2026-10-27T17:26:31.750Z block 462124876: 426 transactions
+2026-10-27T17:26:31.963Z block 462124944: 408 transactions
+2026-10-27T17:26:32.293Z block 462125032: 533 transactions
+2026-10-27T17:26:32.502Z block 462125092: 422 transactions
+2026-10-27T17:26:32.713Z block 462125148: 170 transactions
+2026-10-27T17:26:32.994Z block 462125225: 494 transactions
+2026-10-27T17:26:33.313Z block 462125226: 575 transactions
+2026-10-27T17:26:33.603Z block 462125252: 503 transactions
+2026-10-27T17:26:33.875Z block 462125273: 417 transactions
+2026-10-27T17:26:34.161Z block 462125340: 443 transactions
+2026-10-27T17:26:34.376Z block 462125361: 427 transactions
+2026-10-27T17:26:34.927Z block 462125433: 523 transactions
+2026-10-27T17:26:35.218Z block 462125454: 560 transactions
+2026-10-27T17:26:35.596Z block 462125474: 610 transactions
+2026-10-27T17:26:36.057Z block 462125496: 480 transactions
+2026-10-27T17:26:36.486Z block 462125516: 446 transactions
+2026-10-27T17:26:36.782Z block 462125536: 753 transactions
+2026-10-27T17:26:37.336Z block 462125560: 719 transactions
+2026-10-27T17:26:37.631Z block 462125580: 335 transactions
+2026-10-27T17:26:37.919Z block 462125645: 537 transactions
+2026-10-27T17:26:38.221Z block 462125646: 495 transactions
+2026-10-27T17:26:38.455Z block 462125852: 327 transactions
+2026-10-27T17:26:38.687Z block 462125888: 453 transactions
+2026-10-27T17:26:39.213Z block 462125964: 561 transactions
+2026-10-27T17:26:39.461Z block 462126028: 701 transactions
+2026-10-27T17:26:39.680Z block 462126060: 376 transactions
+2026-10-27T17:26:39.993Z block 462126088: 279 transactions
+2026-10-27T17:26:40.248Z block 462126132: 392 transactions
+2026-10-27T17:26:40.513Z block 462126160: 627 transactions
+2026-10-27T17:26:40.849Z block 462126192: 580 transactions
+2026-10-27T17:26:41.190Z block 462126268: 793 transactions
+2026-10-27T17:26:41.519Z block 462126341: 782 transactions
+2026-10-27T17:26:42.120Z block 462126342: 875 transactions
+2026-10-27T17:26:42.686Z block 462126364: 743 transactions
+2026-10-27T17:26:43.111Z block 462126428: 676 transactions
+2026-10-27T17:26:43.389Z block 462126476: 451 transactions
+2026-10-27T17:26:43.758Z block 462126500: 656 transactions
+2026-10-27T17:26:43.940Z block 462126544: 213 transactions
+2026-10-27T17:26:44.498Z block 462126568: 522 transactions
+2026-10-27T17:26:44.793Z block 462126596: 462 transactions
+2026-10-27T17:26:45.156Z block 462126656: 409 transactions
+2026-10-27T17:26:45.434Z block 462126676: 423 transactions
+2026-10-27T17:26:45.762Z block 462126728: 414 transactions
+2026-10-27T17:26:46.068Z block 462126784: 787 transactions
+2026-10-27T17:26:46.509Z block 462126840: 329 transactions
+2026-10-27T17:26:46.740Z block 462126880: 246 transactions
+2026-10-27T17:26:47.163Z block 462126940: 651 transactions
+2026-10-27T17:26:47.429Z block 462126964: 483 transactions
+2026-10-27T17:26:47.934Z block 462127020: 570 transactions
+2026-10-27T17:26:48.494Z block 462127060: 581 transactions
+2026-10-27T17:26:48.770Z block 462127089: 429 transactions
+2026-10-27T17:26:49.210Z block 462127090: 493 transactions
+2026-10-27T17:26:49.537Z block 462127148: 731 transactions
+2026-10-27T17:26:49.900Z block 462127168: 604 transactions
+2026-10-27T17:26:50.362Z block 462127189: 367 transactions
+2026-10-27T17:26:50.829Z block 462127253: 458 transactions
+2026-10-27T17:26:51.075Z block 462127273: 347 transactions
+2026-10-27T17:26:51.317Z block 462127274: 349 transactions
+2026-10-27T17:26:51.848Z block 462127385: 492 transactions
+2026-10-27T17:26:52.165Z block 462127444: 462 transactions
+2026-10-27T17:26:52.478Z block 462127464: 729 transactions
+2026-10-27T17:26:52.733Z block 462127564: 376 transactions
+2026-10-27T17:26:52.963Z block 462127624: 197 transactions
+2026-10-27T17:26:53.340Z block 462127642: 304 transactions
+2026-10-27T17:26:53.567Z block 462127673: 277 transactions
+2026-10-27T17:26:53.850Z block 462127674: 361 transactions
+2026-10-27T17:26:54.151Z block 462127728: 654 transactions
+2026-10-27T17:26:54.387Z block 462127753: 533 transactions
+2026-10-27T17:26:54.837Z block 462127754: 592 transactions
+2026-10-27T17:26:55.194Z block 462127844: 260 transactions
+2026-10-27T17:26:55.517Z block 462127904: 599 transactions
+2026-10-27T17:26:55.752Z block 462127953: 407 transactions
+2026-10-27T17:26:55.930Z block 462128088: 115 transactions
+2026-10-27T17:26:56.238Z block 462128109: 490 transactions
+2026-10-27T17:26:56.666Z block 462128136: 250 transactions
+2026-10-27T17:26:57.279Z block 462128212: 857 transactions
+2026-10-27T17:26:57.793Z block 462128233: 444 transactions
+2026-10-27T17:26:58.082Z block 462128234: 547 transactions
+2026-10-27T17:26:58.375Z block 462128257: 433 transactions
+2026-10-27T17:26:58.587Z block 462128258: 377 transactions
+2026-10-27T17:26:58.851Z block 462128332: 413 transactions
+2026-10-27T17:26:59.541Z block 462128368: 711 transactions
+2026-10-27T17:26:59.875Z block 462128433: 483 transactions
+2026-10-27T17:27:00.381Z block 462128434: 413 transactions
+2026-10-27T17:27:00.696Z block 462128509: 585 transactions
+2026-10-27T17:27:01.069Z block 462128510: 277 transactions
+2026-10-27T17:27:01.279Z block 462128584: 375 transactions
+2026-10-27T17:27:01.770Z block 462128605: 415 transactions
+2026-10-27T17:27:02.006Z block 462128685: 481 transactions
+2026-10-27T17:27:02.346Z block 462128686: 442 transactions
+2026-10-27T17:27:02.757Z block 462128705: 396 transactions
+2026-10-27T17:27:03.182Z block 462128777: 320 transactions
+2026-10-27T17:27:03.457Z block 462128778: 387 transactions
+2026-10-27T17:27:03.687Z block 462128824: 239 transactions
+2026-10-27T17:27:04.120Z block 462128856: 724 transactions
+2026-10-27T17:27:04.368Z block 462128900: 347 transactions
+2026-10-27T17:27:04.607Z block 462128920: 450 transactions
+2026-10-27T17:27:04.965Z block 462128960: 813 transactions
+2026-10-27T17:27:05.306Z block 462128981: 406 transactions
+2026-10-27T17:27:05.560Z block 462128982: 371 transactions
+2026-10-27T17:27:05.859Z block 462129068: 475 transactions
+2026-10-27T17:27:06.113Z block 462129262: 318 transactions
+2026-10-27T17:27:06.412Z block 462129317: 477 transactions
+2026-10-27T17:27:06.821Z block 462129318: 379 transactions
+2026-10-27T17:27:07.114Z block 462129364: 432 transactions
+2026-10-27T17:27:07.726Z block 462129436: 945 transactions
+2026-10-27T17:27:07.979Z block 462129497: 328 transactions
+2026-10-27T17:27:08.246Z block 462129498: 452 transactions
+2026-10-27T17:27:08.442Z block 462129569: 351 transactions
+2026-10-27T17:27:08.658Z block 462129624: 530 transactions
+2026-10-27T17:27:08.984Z block 462129649: 402 transactions
+2026-10-27T17:27:09.479Z block 462129650: 506 transactions
+2026-10-27T17:27:09.917Z block 462129725: 422 transactions
+2026-10-27T17:27:10.120Z block 462129726: 359 transactions
+2026-10-27T17:27:10.268Z block 462129788: 138 transactions
+2026-10-27T17:27:10.502Z block 462129828: 399 transactions
+2026-10-27T17:27:10.747Z block 462129856: 337 transactions
+2026-10-27T17:27:11.200Z block 462129964: 1022 transactions
+2026-10-27T17:27:11.696Z block 462129984: 414 transactions
+2026-10-27T17:27:11.990Z block 462130117: 298 transactions
+2026-10-27T17:27:12.279Z block 462130118: 297 transactions
+2026-10-27T17:27:12.722Z block 462130184: 415 transactions
+2026-10-27T17:27:13.029Z block 462130228: 402 transactions
+2026-10-27T17:27:13.308Z block 462130265: 523 transactions
+2026-10-27T17:27:13.576Z block 462130266: 380 transactions
+2026-10-27T17:27:13.851Z block 462130289: 396 transactions
+2026-10-27T17:27:14.152Z block 462130290: 467 transactions
+2026-10-27T17:27:14.359Z block 462130312: 348 transactions
+2026-10-27T17:27:14.675Z block 462130330: 647 transactions
+2026-10-27T17:27:14.949Z block 462130352: 519 transactions
+2026-10-27T17:27:15.245Z block 462130376: 361 transactions
+2026-10-27T17:27:15.561Z block 462130452: 460 transactions
+2026-10-27T17:27:15.879Z block 462130472: 578 transactions
+2026-10-27T17:27:16.185Z block 462130549: 332 transactions
+2026-10-27T17:27:16.542Z block 462130616: 379 transactions
+2026-10-27T17:27:16.856Z block 462130636: 654 transactions
+2026-10-27T17:27:17.108Z block 462130657: 506 transactions
+2026-10-27T17:27:17.623Z block 462130658: 491 transactions
+2026-10-27T17:27:18.131Z block 462130678: 478 transactions
+2026-10-27T17:27:18.431Z block 462130740: 507 transactions
+2026-10-27T17:27:18.766Z block 462130760: 583 transactions
+2026-10-27T17:27:18.979Z block 462130808: 343 transactions
+2026-10-27T17:27:19.552Z block 462130832: 607 transactions
+2026-10-27T17:27:19.788Z block 462130897: 344 transactions
+2026-10-27T17:27:20.061Z block 462130981: 428 transactions
+2026-10-27T17:27:20.595Z block 462131008: 399 transactions
+2026-10-27T17:27:20.821Z block 462131044: 175 transactions
+2026-10-27T17:27:21.222Z block 462131097: 909 transactions
+2026-10-27T17:27:21.536Z block 462131098: 441 transactions
+2026-10-27T17:27:21.955Z block 462131148: 597 transactions
+2026-10-27T17:27:22.464Z block 462131168: 447 transactions
+2026-10-27T17:27:22.667Z block 462131228: 454 transactions
+2026-10-27T17:27:23.039Z block 462131272: 930 transactions
+2026-10-27T17:27:23.357Z block 462131308: 757 transactions
+2026-10-27T17:27:23.703Z block 462131344: 159 transactions
+2026-10-27T17:27:24.096Z block 462131372: 457 transactions
+2026-10-27T17:27:24.496Z block 462131400: 560 transactions
+2026-10-27T17:27:25.024Z block 462131468: 559 transactions
+2026-10-27T17:27:25.213Z block 462131496: 110 transactions
+2026-10-27T17:27:25.497Z block 462131520: 604 transactions
+2026-10-27T17:27:25.720Z block 462131548: 211 transactions
+2026-10-27T17:27:25.912Z block 462131572: 396 transactions
+2026-10-27T17:27:26.136Z block 462131628: 563 transactions
+2026-10-27T17:27:26.384Z block 462131685: 396 transactions
+2026-10-27T17:27:26.918Z block 462131686: 385 transactions
+2026-10-27T17:27:27.453Z block 462131708: 377 transactions
+2026-10-27T17:27:27.748Z block 462131732: 596 transactions
+2026-10-27T17:27:28.043Z block 462131756: 441 transactions
+2026-10-27T17:27:28.481Z block 462131836: 797 transactions
+2026-10-27T17:27:28.785Z block 462131876: 465 transactions
+2026-10-27T17:27:29.215Z block 462131936: 1320 transactions
+2026-10-27T17:27:29.497Z block 462131980: 913 transactions
+2026-10-27T17:27:29.925Z block 462132004: 503 transactions
+2026-10-27T17:27:30.201Z block 462132028: 431 transactions
+2026-10-27T17:27:30.504Z block 462132048: 602 transactions
+2026-10-27T17:27:30.811Z block 462132080: 558 transactions
+2026-10-27T17:27:31.417Z block 462132145: 723 transactions
+2026-10-27T17:27:31.736Z block 462132265: 461 transactions
+2026-10-27T17:27:32.248Z block 462132266: 435 transactions
+2026-10-27T17:27:32.563Z block 462132336: 411 transactions
+2026-10-27T17:27:32.821Z block 462132372: 389 transactions
+2026-10-27T17:27:33.027Z block 462132429: 356 transactions
+2026-10-27T17:27:33.345Z block 462132480: 610 transactions
+2026-10-27T17:27:33.922Z block 462132499: 796 transactions
+2026-10-27T17:27:34.277Z block 462132520: 695 transactions
+2026-10-27T17:27:34.582Z block 462132540: 648 transactions
+2026-10-27T17:27:34.850Z block 462132560: 404 transactions
+2026-10-27T17:27:35.126Z block 462132581: 451 transactions
+2026-10-27T17:27:35.649Z block 462132582: 399 transactions
+2026-10-27T17:27:36.018Z block 462132625: 454 transactions
+2026-10-27T17:27:36.444Z block 462132626: 479 transactions
+2026-10-27T17:27:36.697Z block 462132658: 477 transactions
+2026-10-27T17:27:36.930Z block 462132688: 656 transactions
+2026-10-27T17:27:37.241Z block 462132724: 689 transactions
+2026-10-27T17:27:37.529Z block 462132800: 544 transactions
+2026-10-27T17:27:38.060Z block 462132825: 378 transactions
+2026-10-27T17:27:38.292Z block 462132826: 425 transactions
+2026-10-27T17:27:38.784Z block 462132845: 369 transactions
+2026-10-27T17:27:39.039Z block 462132865: 403 transactions
+2026-10-27T17:27:39.248Z block 462132866: 330 transactions
+2026-10-27T17:27:39.502Z block 462132886: 391 transactions
+2026-10-27T17:27:39.861Z block 462132887: 409 transactions
+2026-10-27T17:27:40.183Z block 462132906: 453 transactions
+2026-10-27T17:27:40.721Z block 462132980: 1077 transactions
+2026-10-27T17:27:41.146Z block 462133013: 873 transactions
+2026-10-27T17:27:41.705Z block 462133072: 459 transactions
+2026-10-27T17:27:41.935Z block 462133116: 280 transactions
+2026-10-27T17:27:42.442Z block 462133189: 396 transactions
+2026-10-27T17:27:42.993Z block 462133190: 467 transactions
+2026-10-27T17:27:43.261Z block 462133212: 580 transactions
+2026-10-27T17:27:43.608Z block 462133284: 558 transactions
+2026-10-27T17:27:43.966Z block 462133312: 433 transactions
+2026-10-27T17:27:44.326Z block 462133332: 373 transactions
+2026-10-27T17:27:44.625Z block 462133400: 661 transactions
+2026-10-27T17:27:44.983Z block 462133448: 621 transactions
+2026-10-27T17:27:45.214Z block 462133473: 621 transactions
+2026-10-27T17:27:45.524Z block 462133532: 462 transactions
+2026-10-27T17:27:45.903Z block 462133585: 432 transactions
+2026-10-27T17:27:46.355Z block 462133586: 468 transactions
+2026-10-27T17:27:46.651Z block 462133640: 610 transactions
+2026-10-27T17:27:47.268Z block 462133660: 829 transactions
+2026-10-27T17:27:47.803Z block 462133680: 569 transactions
+2026-10-27T17:27:48.322Z block 462133724: 596 transactions
+2026-10-27T17:27:48.610Z block 462133776: 434 transactions
+2026-10-27T17:27:49.237Z block 462133862: 453 transactions
+2026-10-27T17:27:49.509Z block 462133863: 427 transactions
+2026-10-27T17:27:49.826Z block 462133933: 465 transactions
+2026-10-27T17:27:50.148Z block 462133956: 696 transactions
+2026-10-27T17:27:50.375Z block 462133978: 498 transactions
+2026-10-27T17:27:50.640Z block 462134000: 436 transactions
+2026-10-27T17:27:50.976Z block 462134069: 455 transactions
+2026-10-27T17:27:51.320Z block 462134070: 623 transactions
+2026-10-27T17:27:51.568Z block 462134089: 332 transactions
+2026-10-27T17:27:51.856Z block 462134125: 642 transactions
+2026-10-27T17:27:52.147Z block 462134126: 587 transactions
+2026-10-27T17:27:52.420Z block 462134148: 410 transactions
+2026-10-27T17:27:52.695Z block 462134213: 436 transactions
+2026-10-27T17:27:52.961Z block 462134233: 494 transactions
+2026-10-27T17:27:53.271Z block 462134234: 480 transactions
+2026-10-27T17:27:53.573Z block 462134290: 463 transactions
+2026-10-27T17:27:53.909Z block 462134320: 576 transactions
+2026-10-27T17:27:54.200Z block 462134340: 589 transactions
+2026-10-27T17:27:54.520Z block 462134412: 450 transactions
+2026-10-27T17:27:55.079Z block 462134465: 515 transactions
+2026-10-27T17:27:55.439Z block 462134466: 448 transactions
+2026-10-27T17:27:55.740Z block 462134492: 470 transactions
+2026-10-27T17:27:56.039Z block 462134556: 248 transactions
+2026-10-27T17:27:56.404Z block 462134580: 645 transactions
+2026-10-27T17:27:56.927Z block 462134608: 349 transactions
+2026-10-27T17:27:57.248Z block 462134645: 601 transactions
+2026-10-27T17:27:57.739Z block 462134672: 884 transactions
+2026-10-27T17:27:58.012Z block 462134692: 471 transactions
+2026-10-27T17:27:58.685Z block 462134756: 761 transactions
+2026-10-27T17:27:58.989Z block 462134820: 507 transactions
+2026-10-27T17:27:59.543Z block 462134868: 699 transactions
+2026-10-27T17:28:00.088Z block 462134888: 1429 transactions
+2026-10-27T17:28:00.658Z block 462134912: 1118 transactions
+2026-10-27T17:28:00.910Z block 462134932: 384 transactions
+2026-10-27T17:28:01.343Z block 462135034: 949 transactions
+2026-10-27T17:28:01.782Z block 462135080: 1192 transactions
+2026-10-27T17:28:02.188Z block 462135120: 817 transactions
+2026-10-27T17:28:02.505Z block 462135148: 679 transactions
+2026-10-27T17:28:02.960Z block 462135200: 1285 transactions
+2026-10-27T17:28:03.363Z block 462135222: 888 transactions
+2026-10-27T17:28:03.671Z block 462135261: 669 transactions
+2026-10-27T17:28:04.009Z block 462135396: 1315 transactions
+2026-10-27T17:28:04.638Z block 462135456: 1158 transactions
+2026-10-27T17:28:04.906Z block 462135649: 718 transactions
+2026-10-27T17:28:05.363Z block 462135650: 841 transactions
+2026-10-27T17:28:06.104Z block 462135677: 656 transactions
+2026-10-27T17:28:06.627Z block 462135844: 691 transactions
+2026-10-27T17:28:07.188Z block 462136184: 1244 transactions
+2026-10-27T17:28:07.498Z block 462136288: 635 transactions
+2026-10-27T17:28:07.983Z block 462136380: 897 transactions
+2026-10-27T17:28:08.381Z block 462136516: 429 transactions
+2026-10-27T17:28:08.687Z block 462136632: 542 transactions
+2026-10-27T17:28:09.043Z block 462136840: 208 transactions
+2026-10-27T17:28:09.599Z block 462136916: 491 transactions
+2026-10-27T17:28:09.893Z block 462137000: 520 transactions
+2026-10-27T17:28:10.163Z block 462137300: 445 transactions
+2026-10-27T17:28:10.509Z block 462137500: 843 transactions
+2026-10-27T17:28:11.082Z block 462137576: 582 transactions
+2026-10-27T17:28:11.392Z block 462137597: 493 transactions
+2026-10-27T17:28:11.783Z block 462137717: 455 transactions
+2026-10-27T17:28:12.099Z block 462137718: 544 transactions
+2026-10-27T17:28:12.637Z block 462137820: 713 transactions
+2026-10-27T17:28:12.934Z block 462137965: 671 transactions
+2026-10-27T17:28:13.235Z block 462137966: 656 transactions
+2026-10-27T17:28:13.591Z block 462138032: 750 transactions
+2026-10-27T17:28:14.207Z block 462138136: 1100 transactions
+2026-10-27T17:28:14.481Z block 462138593: 607 transactions
+2026-10-27T17:28:14.743Z block 462138594: 746 transactions
+2026-10-27T17:28:15.301Z block 462138857: 441 transactions
+2026-10-27T17:28:15.679Z block 462138960: 419 transactions
+2026-10-27T17:28:16.177Z block 462138993: 416 transactions
+2026-10-27T17:28:16.534Z block 462138994: 417 transactions
+2026-10-27T17:28:16.998Z block 462139072: 435 transactions
+2026-10-27T17:28:17.323Z block 462139156: 392 transactions
+2026-10-27T17:28:17.546Z block 462139412: 234 transactions
+2026-10-27T17:28:17.783Z block 462140388: 438 transactions
+2026-10-27T17:28:18.321Z block 462140420: 630 transactions
+2026-10-27T17:28:18.825Z block 462140536: 489 transactions
+2026-10-27T17:28:19.350Z block 462141056: 317 transactions
+2026-10-27T17:28:19.815Z block 462141132: 256 transactions
+2026-10-27T17:28:20.118Z block 462141768: 366 transactions
+2026-10-27T17:28:20.511Z block 462142032: 714 transactions
+2026-10-27T17:28:20.818Z block 462142125: 384 transactions
+2026-10-27T17:28:21.099Z block 462142126: 455 transactions
+2026-10-27T17:28:21.346Z block 462142373: 488 transactions
+2026-10-27T17:28:21.566Z block 462142560: 166 transactions
+2026-10-27T17:28:21.859Z block 462142832: 646 transactions
+2026-10-27T17:28:22.381Z block 462143040: 452 transactions
+2026-10-27T17:28:22.618Z block 462143773: 387 transactions
+2026-10-27T17:28:22.826Z block 462143774: 354 transactions
+2026-10-27T17:28:23.084Z block 462143937: 466 transactions
+2026-10-27T17:28:23.590Z block 462144197: 357 transactions
+2026-10-27T17:28:23.908Z block 462144198: 443 transactions
+2026-10-27T17:28:24.439Z block 462144636: 360 transactions
+2026-10-27T17:28:24.715Z block 462144981: 537 transactions
+2026-10-27T17:28:24.931Z block 462144982: 494 transactions
+2026-10-27T17:28:25.252Z block 462145076: 528 transactions
+2026-10-27T17:28:25.401Z block 462145492: 124 transactions
+2026-10-27T17:28:25.651Z block 462145888: 372 transactions
+2026-10-27T17:28:26.001Z block 462146096: 136 transactions
+2026-10-27T17:28:26.356Z block 462146140: 174 transactions
+2026-10-27T17:28:26.491Z block 462146280: 114 transactions
+2026-10-27T17:28:26.963Z block 462147048: 314 transactions
+2026-10-27T17:28:27.226Z block 462147328: 635 transactions
+2026-10-27T17:28:27.509Z block 462147769: 455 transactions
+2026-10-27T17:28:27.954Z block 462147770: 521 transactions
+2026-10-27T17:28:28.475Z block 462147925: 551 transactions
+2026-10-27T17:28:28.945Z block 462147926: 597 transactions
+2026-10-27T17:28:29.114Z block 462148772: 212 transactions
+2026-10-27T17:28:29.666Z block 462148836: 896 transactions
+2026-10-27T17:28:29.939Z block 462149701: 395 transactions
+2026-10-27T17:28:30.112Z block 462150436: 264 transactions
+2026-10-27T17:28:30.488Z block 462153396: 243 transactions
+2026-10-27T17:28:30.939Z block 462154412: 353 transactions
+2026-10-27T17:28:31.847Z data\mainnet-beta\runs\2026-10-27T15-32-51Z: 2048/2238 transactions landed in 406 blocks
+2026-10-27T17:28:31.848Z spend committed so far: 0.025730 SOL of 0.050000 SOL

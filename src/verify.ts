@@ -94,7 +94,9 @@ async function statusesWithHistory(rpcs: Rpc[], items: { signature: string; sent
     const fb = firstBlock[i]
     if (fb === null) continue
     const askable = pending.filter((x) => x.sentSlot >= fb)
-    for (const part of chunk(askable, 256)) {
+    // a history search for a signature the chain does not know takes ~1.6 s on the public endpoint: small requests
+    // stay within the client's timeout
+    for (const part of chunk(askable, 10)) {
       const res = await rpcs[i].call<any>('getSignatureStatuses', [part.map((x) => x.signature), { searchTransactionHistory: true }]).catch(() => null)
       if (!res) continue
       part.forEach((x, k) => out.set(x.signature, res.value[k] ? { slot: res.value[k].slot } : null))

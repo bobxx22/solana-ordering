@@ -71,8 +71,20 @@
    "epochs": [
     1069
    ]
+  },
+  {
+   "id": "2026-10-27T15-32-51Z",
+   "campaign": "main",
+   "startedAt": "2026-10-27T15:32:52.637Z",
+   "path": "tpu",
+   "trials": 373,
+   "minSlot": 462122629,
+   "maxSlot": 462154412,
+   "epochs": [
+    1069
+   ]
   }
  ],
- "units": 78,
+ "units": 411,
  "uncollected": []
 }
