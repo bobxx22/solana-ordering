@@ -1489,5 +1489,877 @@
    "sentFirst": -0.06666666666666667,
    "rpcReleasedFirst": null
   }
+ },
+ {
+  "run": "2026-10-27T14-39-05Z",
+  "trial": 0,
+  "campaign": "main",
+  "client": "HarmonicAgave",
+  "leader": "Hz5aLvpKScNWoe9YZWxBLrQA3qzHJivBGtfciMekk8m5",
+  "version": "4.3.2",
+  "family": "pipelines (order set outside the client)",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "buffered",
+  "ingress": "64.130.46.242",
+  "ingressShared": 9,
+  "clockSource": "firstShred",
+  "reconnected": false,
+  "marginMs": 390,
+  "observedOrder": "EADBCF",
+  "slots": [
+   462107436
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 0.7142857142857143,
+   "priorityPerCost": 0.8571428571428571,
+   "cuPrice": 0.5,
+   "totalFee": 0,
+   "sentFirst": 0.06666666666666667,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-27T14-39-05Z",
+  "trial": 1,
+  "campaign": "main",
+  "client": "JitoLabs",
+  "leader": "99rG5AhkVagxJ7y8NpMAmy1h1u9GhT3h1Cimu2X3cwaJ",
+  "version": "4.3.2",
+  "family": "Agave 4.3.2 (container-id ties)",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "buffered",
+  "ingress": "67.213.127.81",
+  "ingressShared": 1,
+  "clockSource": "firstShred",
+  "reconnected": false,
+  "marginMs": 427,
+  "observedOrder": "AEDCFB",
+  "slots": [
+   462107456
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 1,
+   "priorityPerCost": 0.5714285714285714,
+   "cuPrice": 0.5,
+   "totalFee": -0.3333333333333333,
+   "sentFirst": -0.8666666666666667,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-27T14-39-05Z",
+  "trial": 2,
+  "campaign": "main",
+  "client": "HarmonicAgave",
+  "leader": "DrifTrN923QaouP89UxkQzFGbumKPCnfkNYQRwmZxatz",
+  "version": "4.3.2",
+  "family": "pipelines (order set outside the client)",
+  "path": "tpu",
+  "mode": "independent",
+  "delivery": "buffered",
+  "ingress": "63.254.166.232",
+  "ingressShared": 15,
+  "clockSource": "firstShred",
+  "reconnected": false,
+  "marginMs": 412,
+  "observedOrder": "FEDCBA",
+  "slots": [
+   462107476
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 0,
+   "priorityPerCost": -0.14285714285714285,
+   "cuPrice": 0.3333333333333333,
+   "totalFee": -0.16666666666666666,
+   "sentFirst": 0.06666666666666667,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-27T14-39-05Z",
+  "trial": 3,
+  "campaign": "main",
+  "client": "AgaveBam",
+  "leader": "DRpbCBMxVnDK7maPM5tGv6MvB3v1sRMC86PZ8okm21hy",
+  "version": "4.3.2",
+  "family": "pipelines (order set outside the client)",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "buffered",
+  "ingress": "208.91.105.55",
+  "ingressShared": 8,
+  "clockSource": "firstShred",
+  "reconnected": false,
+  "marginMs": 430,
+  "observedOrder": "AEDCFB",
+  "slots": [
+   462107496
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 1,
+   "priorityPerCost": 0.5714285714285714,
+   "cuPrice": 0.5,
+   "totalFee": -0.3333333333333333,
+   "sentFirst": 0.06666666666666667,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-27T14-39-05Z",
+  "trial": 4,
+  "campaign": "main",
+  "client": "FireBAM",
+  "leader": "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY",
+  "version": "26.10.4",
+  "family": "pipelines (order set outside the client)",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "buffered",
+  "ingress": "64.130.51.255",
+  "ingressShared": 22,
+  "clockSource": "firstShred",
+  "reconnected": false,
+  "marginMs": 362,
+  "observedOrder": "EADCFB",
+  "slots": [
+   462107520
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 1,
+   "priorityPerCost": 0.5714285714285714,
+   "cuPrice": 0.5,
+   "totalFee": -0.3333333333333333,
+   "sentFirst": -0.2,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-27T14-39-05Z",
+  "trial": 5,
+  "campaign": "main",
+  "client": "Firedancer",
+  "leader": "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB",
+  "version": "26.10.4",
+  "family": "Firedancer 26.10.3-4 (treap ties)",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "buffered",
+  "ingress": "86.54.153.246",
+  "ingressShared": 1,
+  "clockSource": "firstShred",
+  "reconnected": false,
+  "marginMs": 384,
+  "observedOrder": "EADCBF",
+  "slots": [
+   462107592
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 0.8571428571428571,
+   "priorityPerCost": 0.7142857142857143,
+   "cuPrice": 0.3333333333333333,
+   "totalFee": -0.16666666666666666,
+   "sentFirst": -0.7333333333333333,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-27T14-39-05Z",
+  "trial": 6,
+  "campaign": "main",
+  "client": "Agave",
+  "leader": "5Us18hLZPXJTS4QVuGSsUw137Dyd2tgBaem24Xsf5nBS",
+  "version": "4.3.2",
+  "family": "Agave 4.3.2 (container-id ties)",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "buffered",
+  "ingress": "185.189.44.172",
+  "ingressShared": 1,
+  "clockSource": "firstShred",
+  "reconnected": false,
+  "marginMs": 411,
+  "observedOrder": "EADCFB",
+  "slots": [
+   462107616
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 1,
+   "priorityPerCost": 0.5714285714285714,
+   "cuPrice": 0.5,
+   "totalFee": -0.3333333333333333,
+   "sentFirst": -0.3333333333333333,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-27T14-39-05Z",
+  "trial": 7,
+  "campaign": "main",
+  "client": "Agave",
+  "leader": "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE",
+  "version": "4.3.2",
+  "family": "Agave 4.3.2 (container-id ties)",
+  "path": "tpu",
+  "mode": "independent",
+  "delivery": "buffered",
+  "ingress": "5.199.172.176",
+  "ingressShared": 1,
+  "clockSource": "firstShred",
+  "reconnected": false,
+  "marginMs": 420,
+  "observedOrder": "DFAECB",
+  "slots": [
+   462107664
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 0.2857142857142857,
+   "priorityPerCost": 0.14285714285714285,
+   "cuPrice": 0.3333333333333333,
+   "totalFee": 0.16666666666666666,
+   "sentFirst": -0.06666666666666667,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-27T14-39-05Z",
+  "trial": 8,
+  "campaign": "main",
+  "client": "HarmonicFiredancer",
+  "leader": "JUPiTERrZqgf1jUyR7dSkhMx4Kn2qJyekWsg3LT1h4b",
+  "version": "26.10.4",
+  "family": "pipelines (order set outside the client)",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "buffered",
+  "ingress": "198.13.140.105",
+  "ingressShared": 38,
+  "clockSource": "firstShred",
+  "reconnected": false,
+  "marginMs": 526,
+  "observedOrder": "EADBCF",
+  "slots": [
+   462107696
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 0.7142857142857143,
+   "priorityPerCost": 0.8571428571428571,
+   "cuPrice": 0.5,
+   "totalFee": 0,
+   "sentFirst": 0.06666666666666667,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-27T14-39-05Z",
+  "trial": 9,
+  "campaign": "main",
+  "client": "HarmonicFiredancer",
+  "leader": "JUPiTERrZqgf1jUyR7dSkhMx4Kn2qJyekWsg3LT1h4b",
+  "version": "26.10.4",
+  "family": "pipelines (order set outside the client)",
+  "path": "tpu",
+  "mode": "independent",
+  "delivery": "buffered",
+  "ingress": "198.13.140.105",
+  "ingressShared": 38,
+  "clockSource": "firstShred",
+  "reconnected": false,
+  "marginMs": 456,
+  "observedOrder": "EADBCF",
+  "slots": [
+   462107724
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 0.7142857142857143,
+   "priorityPerCost": 0.8571428571428571,
+   "cuPrice": 0.5,
+   "totalFee": 0,
+   "sentFirst": 0.06666666666666667,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-27T14-39-05Z",
+  "trial": 10,
+  "campaign": "main",
+  "client": "JitoLabs",
+  "leader": "privaEdSEmnMPGPoQACUkcDGkFBbTArVvsEGd7C5wUM",
+  "version": "4.3.2",
+  "family": "Agave 4.3.2 (container-id ties)",
+  "path": "tpu",
+  "mode": "independent",
+  "delivery": "buffered",
+  "ingress": "64.130.40.170",
+  "ingressShared": 1,
+  "clockSource": "firstShred",
+  "reconnected": false,
+  "marginMs": 429,
+  "observedOrder": "DCEAFB",
+  "slots": [
+   462107744
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 0.42857142857142855,
+   "priorityPerCost": 0,
+   "cuPrice": -0.16666666666666666,
+   "totalFee": -0.3333333333333333,
+   "sentFirst": -0.4666666666666667,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-27T14-39-05Z",
+  "trial": 11,
+  "campaign": "main",
+  "client": "JitoLabs",
+  "leader": "3SkE34PVeGck2ArEffFKjihrQgURsvnoTAhitsNXNzXd",
+  "version": "4.3.2",
+  "family": "Agave 4.3.2 (container-id ties)",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "buffered",
+  "ingress": "185.189.44.170",
+  "ingressShared": 1,
+  "clockSource": "firstShred",
+  "reconnected": false,
+  "marginMs": 436,
+  "observedOrder": "EADCFB",
+  "slots": [
+   462107768
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 1,
+   "priorityPerCost": 0.5714285714285714,
+   "cuPrice": 0.5,
+   "totalFee": -0.3333333333333333,
+   "sentFirst": 0.06666666666666667,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-27T14-39-05Z",
+  "trial": 12,
+  "campaign": "main",
+  "client": "Firedancer",
+  "leader": "VQwCCSfW3o5NDx7n5FBr9SoYiLXVgetstHvaWBvv2YH",
+  "version": "26.10.4",
+  "family": "Firedancer 26.10.3-4 (treap ties)",
+  "path": "tpu",
+  "mode": "independent",
+  "delivery": "buffered",
+  "ingress": "86.54.153.251",
+  "ingressShared": 1,
+  "clockSource": "firstShred",
+  "reconnected": false,
+  "marginMs": 376,
+  "observedOrder": "EADCFB",
+  "slots": [
+   462107844
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 1,
+   "priorityPerCost": 0.5714285714285714,
+   "cuPrice": 0.5,
+   "totalFee": -0.3333333333333333,
+   "sentFirst": 0.2,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-27T14-39-05Z",
+  "trial": 13,
+  "campaign": "main",
+  "client": "Rakurai",
+  "leader": "2dfgsiSaZ51QYPsECMYMG247PXxyKdwkV9wTHoQb8YEC",
+  "version": "4.3.2",
+  "family": "Rakurai (own scheduler, source not read)",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "buffered",
+  "ingress": "64.130.42.87",
+  "ingressShared": 1,
+  "clockSource": "firstShred",
+  "reconnected": false,
+  "marginMs": 426,
+  "observedOrder": "EADCFB",
+  "slots": [
+   462107892
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 1,
+   "priorityPerCost": 0.5714285714285714,
+   "cuPrice": 0.5,
+   "totalFee": -0.3333333333333333,
+   "sentFirst": -0.3333333333333333,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-27T14-39-05Z",
+  "trial": 14,
+  "campaign": "main",
+  "client": "AgaveBam",
+  "leader": "5EhGYUyQNrxgUbuYF4vbL2SZDT6RMfhq3yjeyevvULeC",
+  "version": "4.3.2",
+  "family": "pipelines (order set outside the client)",
+  "path": "tpu",
+  "mode": "independent",
+  "delivery": "buffered",
+  "ingress": "208.91.109.115",
+  "ingressShared": 39,
+  "clockSource": "firstShred",
+  "reconnected": false,
+  "marginMs": 334,
+  "observedOrder": "EADCFB",
+  "slots": [
+   462107912
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 1,
+   "priorityPerCost": 0.5714285714285714,
+   "cuPrice": 0.5,
+   "totalFee": -0.3333333333333333,
+   "sentFirst": 0.06666666666666667,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-27T14-39-05Z",
+  "trial": 15,
+  "campaign": "main",
+  "client": "AgaveBam",
+  "leader": "CfgRXmp1LEYr97EaT2RyoL2cSvtWgJh52Bes89RxVSoW",
+  "version": "4.3.2",
+  "family": "pipelines (order set outside the client)",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "buffered",
+  "ingress": "198.13.141.173",
+  "ingressShared": 99,
+  "clockSource": "firstShred",
+  "reconnected": false,
+  "marginMs": 435,
+  "observedOrder": "AEDCFB",
+  "slots": [
+   462107932
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 1,
+   "priorityPerCost": 0.5714285714285714,
+   "cuPrice": 0.5,
+   "totalFee": -0.3333333333333333,
+   "sentFirst": 0.4666666666666667,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-27T14-39-05Z",
+  "trial": 17,
+  "campaign": "main",
+  "client": "FireBAM",
+  "leader": "PRGNnb8DxVcP2WjSHfVRGgc8SkA5u6dbMwoTVV1BGKN",
+  "version": "26.10.4",
+  "family": "pipelines (order set outside the client)",
+  "path": "tpu",
+  "mode": "independent",
+  "delivery": "buffered",
+  "ingress": "103.70.2.244",
+  "ingressShared": 16,
+  "clockSource": "firstShred",
+  "reconnected": false,
+  "marginMs": 396,
+  "observedOrder": "AEDCFB",
+  "slots": [
+   462108024
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 1,
+   "priorityPerCost": 0.5714285714285714,
+   "cuPrice": 0.5,
+   "totalFee": -0.3333333333333333,
+   "sentFirst": -0.7333333333333333,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-27T14-39-05Z",
+  "trial": 18,
+  "campaign": "main",
+  "client": "Firedancer",
+  "leader": "4VRs6A9zBRXz6MLcmQGsBiSoWE2JjHrmw7LintC3T4Nv",
+  "version": "26.10.4",
+  "family": "Firedancer 26.10.3-4 (treap ties)",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "buffered",
+  "ingress": "64.130.63.145",
+  "ingressShared": 1,
+  "clockSource": "firstShred",
+  "reconnected": false,
+  "marginMs": 393,
+  "observedOrder": "EADCFB",
+  "slots": [
+   462108048
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 1,
+   "priorityPerCost": 0.5714285714285714,
+   "cuPrice": 0.5,
+   "totalFee": -0.3333333333333333,
+   "sentFirst": -0.3333333333333333,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-27T14-39-05Z",
+  "trial": 19,
+  "campaign": "main",
+  "client": "JitoLabs",
+  "leader": "bitHUmbKSQDTGoyoiW3BeqaGWdyV5sS3nYt5SduUHfb",
+  "version": "4.3.2",
+  "family": "Agave 4.3.2 (container-id ties)",
+  "path": "tpu",
+  "mode": "independent",
+  "delivery": "streamed",
+  "ingress": "116.126.141.28",
+  "ingressShared": 1,
+  "clockSource": "firstShred",
+  "reconnected": false,
+  "marginMs": -591,
+  "observedOrder": "ADBCEF",
+  "slots": [
+   462108078,
+   462108079
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 0.2857142857142857,
+   "priorityPerCost": 0.42857142857142855,
+   "cuPrice": 0,
+   "totalFee": 0.16666666666666666,
+   "sentFirst": 1,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-27T14-39-05Z",
+  "trial": 20,
+  "campaign": "main",
+  "client": "JitoLabs",
+  "leader": "7cVfgArCheMR6Cs4t6vz5rfnqd56vZq4ndaBrY5xkxXy",
+  "version": "4.3.2",
+  "family": "Agave 4.3.2 (container-id ties)",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "buffered",
+  "ingress": "64.130.42.70",
+  "ingressShared": 1,
+  "clockSource": "firstShred",
+  "reconnected": false,
+  "marginMs": 423,
+  "observedOrder": "BDFEAC",
+  "slots": [
+   462108112
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": -0.42857142857142855,
+   "priorityPerCost": 0,
+   "cuPrice": -0.16666666666666666,
+   "totalFee": 1,
+   "sentFirst": -0.3333333333333333,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-27T14-39-05Z",
+  "trial": 21,
+  "campaign": "main",
+  "client": "Rakurai",
+  "leader": "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY",
+  "version": "4.3.2",
+  "family": "Rakurai (own scheduler, source not read)",
+  "path": "tpu",
+  "mode": "independent",
+  "delivery": "buffered",
+  "ingress": "45.32.145.112",
+  "ingressShared": 1,
+  "clockSource": "firstShred",
+  "reconnected": false,
+  "marginMs": 409,
+  "observedOrder": "AEDCBF",
+  "slots": [
+   462108188
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 0.8571428571428571,
+   "priorityPerCost": 0.7142857142857143,
+   "cuPrice": 0.3333333333333333,
+   "totalFee": -0.16666666666666666,
+   "sentFirst": -0.06666666666666667,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-27T14-39-05Z",
+  "trial": 22,
+  "campaign": "main",
+  "client": "Rakurai",
+  "leader": "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY",
+  "version": "4.3.2",
+  "family": "Rakurai (own scheduler, source not read)",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "buffered",
+  "ingress": "45.32.145.112",
+  "ingressShared": 1,
+  "clockSource": "firstShred",
+  "reconnected": false,
+  "marginMs": 449,
+  "observedOrder": "EADCFB",
+  "slots": [
+   462108212
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 1,
+   "priorityPerCost": 0.5714285714285714,
+   "cuPrice": 0.5,
+   "totalFee": -0.3333333333333333,
+   "sentFirst": -0.4666666666666667,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-27T14-39-05Z",
+  "trial": 23,
+  "campaign": "main",
+  "client": "Agave",
+  "leader": "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE",
+  "version": "4.3.2",
+  "family": "Agave 4.3.2 (container-id ties)",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "buffered",
+  "ingress": "5.199.172.176",
+  "ingressShared": 1,
+  "clockSource": "firstShred",
+  "reconnected": false,
+  "marginMs": 459,
+  "observedOrder": "EADCFB",
+  "slots": [
+   462108260
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 1,
+   "priorityPerCost": 0.5714285714285714,
+   "cuPrice": 0.5,
+   "totalFee": -0.3333333333333333,
+   "sentFirst": 0.3333333333333333,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-27T14-39-05Z",
+  "trial": 24,
+  "campaign": "main",
+  "client": "Firedancer",
+  "leader": "BFmqBsaGjeYA7gHpReKmnVkRyhqiMmHoR9ttv1crWmzy",
+  "version": "26.10.4",
+  "family": "Firedancer 26.10.3-4 (treap ties)",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "burst",
+  "ingress": "137.239.202.126",
+  "ingressShared": 1,
+  "clockSource": "firstShred",
+  "reconnected": false,
+  "marginMs": -224,
+  "observedOrder": "FBEADC",
+  "slots": [
+   462108281
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": -0.14285714285714285,
+   "priorityPerCost": 0,
+   "cuPrice": 0.5,
+   "totalFee": 0.3333333333333333,
+   "sentFirst": 0.8666666666666667,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-27T14-39-05Z",
+  "trial": 25,
+  "campaign": "main",
+  "client": "Firedancer",
+  "leader": "9eGrDohdNTAo61DRHyfMuqKWXqYnA3i254Wiszxe8FoY",
+  "version": "26.10.4",
+  "family": "Firedancer 26.10.3-4 (treap ties)",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "streamed",
+  "ingress": "86.54.152.246",
+  "ingressShared": 1,
+  "clockSource": "firstShred",
+  "reconnected": false,
+  "marginMs": -403,
+  "observedOrder": "ADBECF",
+  "slots": [
+   462108321
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 0.42857142857142855,
+   "priorityPerCost": 0.5714285714285714,
+   "cuPrice": 0.16666666666666666,
+   "totalFee": 0.3333333333333333,
+   "sentFirst": 1,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-27T14-39-05Z",
+  "trial": 26,
+  "campaign": "main",
+  "client": "HarmonicAgave",
+  "leader": "H9ENbtmy2tWFtAJNmpC8xQtbcr1NTp4FXLdphRaG8L2T",
+  "version": "4.3.2",
+  "family": "pipelines (order set outside the client)",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "buffered",
+  "ingress": "198.13.140.105",
+  "ingressShared": 38,
+  "clockSource": "firstShred",
+  "reconnected": false,
+  "marginMs": 426,
+  "observedOrder": "EADBCF",
+  "slots": [
+   462108348
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 0.7142857142857143,
+   "priorityPerCost": 0.8571428571428571,
+   "cuPrice": 0.5,
+   "totalFee": 0,
+   "sentFirst": 0.06666666666666667,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-27T14-39-05Z",
+  "trial": 27,
+  "campaign": "main",
+  "client": "HarmonicFiredancer",
+  "leader": "JUPiTERrZqgf1jUyR7dSkhMx4Kn2qJyekWsg3LT1h4b",
+  "version": "26.10.4",
+  "family": "pipelines (order set outside the client)",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "buffered",
+  "ingress": "198.13.140.105",
+  "ingressShared": 38,
+  "clockSource": "firstShred",
+  "reconnected": false,
+  "marginMs": 439,
+  "observedOrder": "EADBCF",
+  "slots": [
+   462108384
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 0.7142857142857143,
+   "priorityPerCost": 0.8571428571428571,
+   "cuPrice": 0.5,
+   "totalFee": 0,
+   "sentFirst": 0.4666666666666667,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-27T14-39-05Z",
+  "trial": 28,
+  "campaign": "main",
+  "client": "HarmonicFiredancer",
+  "leader": "97jbhVBYcSmwGXjrx5PPWXucDsVBqwyoQ6rzP3B6eeMt",
+  "version": "26.10.4",
+  "family": "pipelines (order set outside the client)",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "streamed",
+  "ingress": "198.13.140.105",
+  "ingressShared": 38,
+  "clockSource": "firstShred",
+  "reconnected": false,
+  "marginMs": -418,
+  "observedOrder": "AEDCBF",
+  "slots": [
+   462108413,
+   462108414
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 0.8571428571428571,
+   "priorityPerCost": 0.7142857142857143,
+   "cuPrice": 0.3333333333333333,
+   "totalFee": -0.16666666666666666,
+   "sentFirst": 1,
+   "rpcReleasedFirst": null
+  }
+ },
+ {
+  "run": "2026-10-27T14-39-05Z",
+  "trial": 29,
+  "campaign": "main",
+  "client": "FireBAM",
+  "leader": "74Xkp2iLXm315h69sFRiCFjmKnaWkMV8W2LgJwPRSgN5",
+  "version": "26.10.4",
+  "family": "pipelines (order set outside the client)",
+  "path": "tpu",
+  "mode": "shared",
+  "delivery": "buffered",
+  "ingress": "88.216.192.50",
+  "ingressShared": 26,
+  "clockSource": "firstShred",
+  "reconnected": true,
+  "marginMs": null,
+  "observedOrder": "EADCFB",
+  "slots": [
+   462108452
+  ],
+  "spill": 0,
+  "gamma": {
+   "rewardPerCost": 1,
+   "priorityPerCost": 0.5714285714285714,
+   "cuPrice": 0.5,
+   "totalFee": -0.3333333333333333,
+   "sentFirst": 0.06666666666666667,
+   "rpcReleasedFirst": null
+  }
  }
 ]

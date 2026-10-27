@@ -1,0 +1,40 @@
+2026-10-27T14:39:06.562Z epoch 1069, 3908 gossip nodes, 664 current + 21 delinquent vote accounts
+2026-10-27T14:39:06.567Z LIVE on mainnet-beta via tpu, campaign "main": up to 360 more landed trials, at most 0.000061 SOL each (0.021960 SOL)
+2026-10-27T14:39:06.568Z spend cap 0.050000 SOL (of which 0.000100 SOL kept for sweeping), committed 0.003140 SOL; reads via https://mainnet.helius-rpc.com/ (credentials hidden)
+2026-10-27T14:39:06.568Z   role A: limit 1000 CU, price 4000000 µL/CU, loaded-data limit 16384 B, reward/cost 2.783
+2026-10-27T14:39:06.568Z   role B: limit 40000 CU, price 250000 µL/CU, loaded-data limit 16384 B, reward/cost 0.302
+2026-10-27T14:39:06.568Z   role C: limit 1000 CU, price 0 µL/CU, loaded-data limit 16384 B, reward/cost 1.070
+2026-10-27T14:39:06.569Z   role D: limit 6000 CU, price 1500000 µL/CU, loaded-data limit 16384 B, reward/cost 1.568
+2026-10-27T14:39:06.569Z   role E: limit 1000 CU, price 4000000 µL/CU, loaded-data limit 16384 B, reward/cost 2.783
+2026-10-27T14:39:06.569Z   role F: limit 1000 CU, price 4000000 µL/CU, loaded-data limit 67108864 B, reward/cost 0.347
+2026-10-27T14:39:06.660Z main wallet 6v8Wy9TEhfZXzdXVspXYs7bh42N7B7z9jALkz83yxKoC: 0.017128 SOL
+2026-10-27T14:39:08.831Z trial 0: HarmonicAgave Hz5aLvpK window 462107436 shared/buffered order DAFBEC
+2026-10-27T14:39:13.075Z trial 1: JitoLabs 99rG5Ahk window 462107456 shared/buffered order BFDCEA
+2026-10-27T14:39:17.239Z trial 2: HarmonicAgave DrifTrN9 window 462107476 independent/buffered order CEBDFA
+2026-10-27T14:39:21.639Z trial 3: AgaveBam DRpbCBMx window 462107496 shared/buffered order DEBCAF
+2026-10-27T14:39:26.941Z trial 4: FireBAM SSmBEooM window 462107520 shared/buffered order FBAEDC
+2026-10-27T14:39:42.403Z trial 5: Firedancer JD549Hsb window 462107592 shared/buffered order FBCAED
+2026-10-27T14:39:47.631Z trial 6: Agave 5Us18hLZ window 462107616 shared/buffered order AFBCDE
+2026-10-27T14:39:57.556Z trial 7: Agave 7QQGNm3p window 462107664 independent/buffered order ECADFB
+2026-10-27T14:40:04.214Z trial 8: HarmonicFiredancer JUPiTERr window 462107696 shared/buffered order ADCFBE
+2026-10-27T14:40:10.188Z trial 9: HarmonicFiredancer JUPiTERr window 462107724 independent/buffered order CEBAFD
+2026-10-27T14:40:14.255Z trial 10: JitoLabs privaEdS window 462107744 independent/buffered order BADFEC
+2026-10-27T14:40:19.265Z trial 11: JitoLabs 3SkE34PV window 462107768 shared/buffered order AFCDEB
+2026-10-27T14:40:35.452Z trial 12: Firedancer VQwCCSfW window 462107844 independent/buffered order FAECDB
+2026-10-27T14:40:45.858Z trial 13: Rakurai 2dfgsiSa window 462107892 shared/buffered order DBCAFE
+2026-10-27T14:40:50.326Z trial 14: AgaveBam 5EhGYUyQ window 462107912 independent/buffered order FDAECB
+2026-10-27T14:40:54.654Z trial 15: AgaveBam CfgRXmp1 window 462107932 shared/buffered order EAFDBC
+2026-10-27T14:41:02.631Z trial 16: AgaveBam FNTPSUuR window 462107960 shared/burst order CBEFAD, 6 not acknowledged
+2026-10-27T14:41:14.206Z trial 17: FireBAM PRGNnb8D window 462108024 independent/buffered order CBFDEA
+2026-10-27T14:41:19.390Z trial 18: Firedancer 4VRs6A9z window 462108048 shared/buffered order FBADEC
+2026-10-27T14:41:26.494Z trial 19: JitoLabs bitHUmbK window 462108076 independent/streamed order ADBCEF
+2026-10-27T14:41:33.131Z trial 20: JitoLabs 7cVfgArC window 462108112 shared/buffered order EFCDAB
+2026-10-27T14:41:49.458Z trial 21: Rakurai ana2y2Yv window 462108188 independent/buffered order ACFBDE
+2026-10-27T14:41:54.694Z trial 22: Rakurai ana2y2Yv window 462108212 shared/buffered order BDFECA
+2026-10-27T14:42:04.819Z trial 23: Agave 7QQGNm3p window 462108260 shared/buffered order DEFCAB
+2026-10-27T14:42:09.509Z trial 24: Firedancer BFmqBsaG window 462108280 shared/burst order FBEACD
+2026-10-27T14:42:18.333Z trial 25: Firedancer 9eGrDohd window 462108320 shared/streamed order ADBECF
+2026-10-27T14:42:23.565Z trial 26: HarmonicAgave H9ENbtmy window 462108348 shared/buffered order ACBDEF
+2026-10-27T14:42:31.698Z trial 27: HarmonicFiredancer JUPiTERr window 462108384 shared/buffered order EAFBDC
+2026-10-27T14:42:38.505Z trial 28: HarmonicFiredancer 97jbhVBY window 462108412 shared/streamed order AEDCBF
+2026-10-27T14:42:46.483Z trial 29: FireBAM 74Xkp2iL window 462108452 shared/buffered order ABEFDC

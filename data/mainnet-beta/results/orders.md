@@ -38,3 +38,32 @@ Roles in landing order within the targeted window (slot, then index). Reward/cos
 | rehearsal | 2026-10-25T22-02-17Z | 14 | Agave | 7QQGNm3p | 4.3.2 | buffered/independent | FADBCE | EADCFB | 461420264 |
 | rehearsal | 2026-10-25T22-02-17Z | 15 | FireBAM | 9jxgosAf | 26.10.4 | streamed/shared | CFBEDA | CFBEDA | 461420295 |
 | rehearsal | 2026-10-25T22-05-59Z | 0 | Rakurai | ana2y2Yv | 4.3.2 | buffered/shared | FEDBCA | EADCFB | 461420912 |
+| main | 2026-10-27T14-39-05Z | 0 | HarmonicAgave | Hz5aLvpK | 4.3.2 | buffered/shared | DAFBEC | EADBCF | 462107436 |
+| main | 2026-10-27T14-39-05Z | 1 | JitoLabs | 99rG5Ahk | 4.3.2 | buffered/shared | BFDCEA | AEDCFB | 462107456 |
+| main | 2026-10-27T14-39-05Z | 2 | HarmonicAgave | DrifTrN9 | 4.3.2 | buffered/independent | CEBDFA | FEDCBA | 462107476 |
+| main | 2026-10-27T14-39-05Z | 3 | AgaveBam | DRpbCBMx | 4.3.2 | buffered/shared | DEBCAF | AEDCFB | 462107496 |
+| main | 2026-10-27T14-39-05Z | 4 | FireBAM | SSmBEooM | 26.10.4 | buffered/shared | FBAEDC | EADCFB | 462107520 |
+| main | 2026-10-27T14-39-05Z | 5 | Firedancer | JD549Hsb | 26.10.4 | buffered/shared | FBCAED | EADCBF | 462107592 |
+| main | 2026-10-27T14-39-05Z | 6 | Agave | 5Us18hLZ | 4.3.2 | buffered/shared | AFBCDE | EADCFB | 462107616 |
+| main | 2026-10-27T14-39-05Z | 7 | Agave | 7QQGNm3p | 4.3.2 | buffered/independent | ECADFB | DFAECB | 462107664 |
+| main | 2026-10-27T14-39-05Z | 8 | HarmonicFiredancer | JUPiTERr | 26.10.4 | buffered/shared | ADCFBE | EADBCF | 462107696 |
+| main | 2026-10-27T14-39-05Z | 9 | HarmonicFiredancer | JUPiTERr | 26.10.4 | buffered/independent | CEBAFD | EADBCF | 462107724 |
+| main | 2026-10-27T14-39-05Z | 10 | JitoLabs | privaEdS | 4.3.2 | buffered/independent | BADFEC | DCEAFB | 462107744 |
+| main | 2026-10-27T14-39-05Z | 11 | JitoLabs | 3SkE34PV | 4.3.2 | buffered/shared | AFCDEB | EADCFB | 462107768 |
+| main | 2026-10-27T14-39-05Z | 12 | Firedancer | VQwCCSfW | 26.10.4 | buffered/independent | FAECDB | EADCFB | 462107844 |
+| main | 2026-10-27T14-39-05Z | 13 | Rakurai | 2dfgsiSa | 4.3.2 | buffered/shared | DBCAFE | EADCFB | 462107892 |
+| main | 2026-10-27T14-39-05Z | 14 | AgaveBam | 5EhGYUyQ | 4.3.2 | buffered/independent | FDAECB | EADCFB | 462107912 |
+| main | 2026-10-27T14-39-05Z | 15 | AgaveBam | CfgRXmp1 | 4.3.2 | buffered/shared | EAFDBC | AEDCFB | 462107932 |
+| main | 2026-10-27T14-39-05Z | 17 | FireBAM | PRGNnb8D | 26.10.4 | buffered/independent | CBFDEA | AEDCFB | 462108024 |
+| main | 2026-10-27T14-39-05Z | 18 | Firedancer | 4VRs6A9z | 26.10.4 | buffered/shared | FBADEC | EADCFB | 462108048 |
+| main | 2026-10-27T14-39-05Z | 19 | JitoLabs | bitHUmbK | 4.3.2 | streamed/independent | ADBCEF | ADBCEF | 462108078, 462108079 |
+| main | 2026-10-27T14-39-05Z | 20 | JitoLabs | 7cVfgArC | 4.3.2 | buffered/shared | EFCDAB | BDFEAC | 462108112 |
+| main | 2026-10-27T14-39-05Z | 21 | Rakurai | ana2y2Yv | 4.3.2 | buffered/independent | ACFBDE | AEDCBF | 462108188 |
+| main | 2026-10-27T14-39-05Z | 22 | Rakurai | ana2y2Yv | 4.3.2 | buffered/shared | BDFECA | EADCFB | 462108212 |
+| main | 2026-10-27T14-39-05Z | 23 | Agave | 7QQGNm3p | 4.3.2 | buffered/shared | DEFCAB | EADCFB | 462108260 |
+| main | 2026-10-27T14-39-05Z | 24 | Firedancer | BFmqBsaG | 26.10.4 | burst/shared | FBEACD | FBEADC | 462108281 |
+| main | 2026-10-27T14-39-05Z | 25 | Firedancer | 9eGrDohd | 26.10.4 | streamed/shared | ADBECF | ADBECF | 462108321 |
+| main | 2026-10-27T14-39-05Z | 26 | HarmonicAgave | H9ENbtmy | 4.3.2 | buffered/shared | ACBDEF | EADBCF | 462108348 |
+| main | 2026-10-27T14-39-05Z | 27 | HarmonicFiredancer | JUPiTERr | 26.10.4 | buffered/shared | EAFBDC | EADBCF | 462108384 |
+| main | 2026-10-27T14-39-05Z | 28 | HarmonicFiredancer | 97jbhVBY | 26.10.4 | streamed/shared | AEDCBF | AEDCBF | 462108413, 462108414 |
+| main | 2026-10-27T14-39-05Z | 29 | FireBAM | 74Xkp2iL | 26.10.4 | buffered/shared | ABEFDC | EADCFB | 462108452 |

@@ -1,0 +1,25 @@
+{
+ "verifiedAt": "2026-10-27T15:32:43.524Z",
+ "endpoints": [
+  "https://api.mainnet-beta.solana.com/",
+  "https://solana-rpc.publicnode.com/"
+ ],
+ "runs": [
+  "2026-10-27T14-39-05Z"
+ ],
+ "blocks": 31,
+ "blocksInData": 31,
+ "transactions": 174,
+ "leadersBySchedule": 31,
+ "leadersByFeeCollector": 0,
+ "leadersUnverifiable": [],
+ "unavailableBlocks": [],
+ "sampleChecked": 60,
+ "rowBlocksChecked": 3,
+ "rowsChecked": 1227,
+ "unlandedChecked": 6,
+ "unlandedUnchecked": 0,
+ "probesChecked": 0,
+ "probesUnchecked": 0,
+ "problems": []
+}
