@@ -107,3 +107,13 @@ The confirmatory trials change none of the main run's tables or verdicts. They a
    - `node src/cli.ts analyze`;
    - `node src/cli.ts sweep --live` (run by the wallet's owner), then `status`;
    - commit `results/`. REPORT quotes the section "Confirmatory run".
+
+## After the run
+
+Written after the data; everything above is as tagged.
+- **Run.** 2026-10-28 17:25–17:48 UTC, one session, every quota met: 53 trials dispatched, 50 counted.
+- **Outcome.** H1 confirmed (B before C in 29 of 30, Holm p < 0.001); H2 not confirmed (14 of 20 exact, Holm
+  p = 0.196). REPORT, "The confirmatory run".
+- **One change to the command.** It ran with `--sub-target 0.00142`: the main wallet could not fund twelve sub-payers
+  at the main run's 0.0033 SOL each, and two starts sent no trial. The flag (commit `4978fc4`) sets only how much a
+  sub-payer is funded with, and was pushed before the start that made the trials.

@@ -6230,3 +6230,9 @@
 {"t":"2026-10-28T17:48:33.037Z","kind":"settle","signature":"5ZtvCmurJCuwngxPmZSoMqEMhE6r6WZggEA3jm3KjnmVYPegrKUd6QQWTUzkKrrfbtQWr2L7BbvK5Aqiahi3Vtra","lamports":"14000"}
 {"t":"2026-10-28T17:48:33.037Z","kind":"settle","signature":"4EJ1uQxtSFRukWsiKFuuaLsjGV9cuPXwbzNkj3t6AXy4gxbfuyk2h3CACVZHAsUS3HRPvGiFmyekUVfVEhfb1rWm","lamports":"9000"}
 {"t":"2026-10-28T17:48:33.037Z","kind":"settle","signature":"5GCWYnMWP1PKQ8HVVEFBE9E7CxjpesRGkVeJgc5QMywrydRYr59mFCgzgs9dBEtrBQQXVN81e66g6mJ6HN2VrsWc","lamports":"9000"}
+{"t":"2026-10-28T20:31:03.733Z","kind":"reserve","signature":"3xW9FK4t8CBaUe2Rf6g4u7SCXUWvB4Md8ARguPtVWrsrw6iyUEjziBcxZyMi7ZCdBpZJDFJcgpmpU9BiL1ELBsxp","lamports":"25000","what":"sweep"}
+{"t":"2026-10-28T20:31:05.926Z","kind":"settle","signature":"3xW9FK4t8CBaUe2Rf6g4u7SCXUWvB4Md8ARguPtVWrsrw6iyUEjziBcxZyMi7ZCdBpZJDFJcgpmpU9BiL1ELBsxp","lamports":"25000"}
+{"t":"2026-10-28T20:31:06.078Z","kind":"reserve","signature":"45d124kFppd7Z2zH3osmFhE38yfqKsr4Y55T1jmAxhr9cUDc9g7MBfL7csBdobA7VBVH4j1uux7S15HUsZq1Hw9V","lamports":"25000","what":"sweep"}
+{"t":"2026-10-28T20:31:08.235Z","kind":"settle","signature":"45d124kFppd7Z2zH3osmFhE38yfqKsr4Y55T1jmAxhr9cUDc9g7MBfL7csBdobA7VBVH4j1uux7S15HUsZq1Hw9V","lamports":"25000"}
+{"t":"2026-10-28T20:31:08.360Z","kind":"reserve","signature":"4PMKv79G5tE2cEBeQB4Eg8UQ9BbaFKm6Df6PuRP89BV4RgyaavXAKVHb4M2gQUzSLpdqsU3YmB15HZmmJ7fwp5E7","lamports":"25000","what":"sweep"}
+{"t":"2026-10-28T20:31:10.541Z","kind":"settle","signature":"4PMKv79G5tE2cEBeQB4Eg8UQ9BbaFKm6Df6PuRP89BV4RgyaavXAKVHb4M2gQUzSLpdqsU3YmB15HZmmJ7fwp5E7","lamports":"25000"}

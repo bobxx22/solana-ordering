@@ -8,14 +8,24 @@ analysis plan was frozen at the git tag `prereg-main` before the first trial:
 - the campaign's first run started at 14:39:06 UTC ("Runs"). Its first transactions landed in slot 462 107 436, whose
   block time on chain is 14:39:08 UTC.
 
+A confirmatory run, campaign `confirm`, tested two findings of the main run again on new trials, on 2026-10-28 in
+epoch 1070 ("The confirmatory run"). Its plan, [`docs/CONFIRM.md`](docs/CONFIRM.md), was frozen the same way, at the
+git tag `prereg-confirm`:
+- commit `e0dc4a0`, dated 2026-10-28 17:22:35 UTC by its author;
+- GitHub started CI for that commit at 17:22:39 UTC
+  ([run](https://github.com/bobxx22/solana-ordering/actions/runs/40735122453));
+- the run that made the trials started at 17:25:00 UTC ("Runs"). Its first transactions landed in slot 462 560 008,
+  whose block time on chain is 17:25:13 UTC. Two earlier starts sent no trial ("What went wrong").
+
 **Where the numbers come from.**
 - Results are copied from [`results.md`](data/mainnet-beta/results/results.md), and trial by trial from
   [`orders.md`](data/mainnet-beta/results/orders.md). `node src/cli.ts analyze` regenerates both from the committed raw
   data. The section a number comes from is quoted in double quotes.
 - Spend comes from [`ledger.jsonl`](data/mainnet-beta/ledger.jsonl). Wallet balances come from transactions on chain,
   named where they are used.
-- The chain checks come from [`verify.json`](data/mainnet-beta/verify.json), [`verify/`](data/mainnet-beta/verify/)
-  and [`verify-every-transaction.json`](data/mainnet-beta/verify-every-transaction.json).
+- The chain checks come from [`verify.json`](data/mainnet-beta/verify.json), [`verify/`](data/mainnet-beta/verify/),
+  [`verify-every-transaction.json`](data/mainnet-beta/verify-every-transaction.json) and
+  [`verify-every-transaction-confirm.json`](data/mainnet-beta/verify-every-transaction-confirm.json).
 - A few numbers add up rows of one table, and show the sum.
 - Sections of `results.md` added after the data are marked "exploratory" there and here. "The plan" lists every
   addition.
@@ -81,7 +91,8 @@ The table reads as follows:
 
 ### Found after the data (exploratory)
 
-These come from tables added after the main run ("The plan"). They locate and describe; they test nothing.
+These come from tables added after the main run ("The plan"). They locate and describe; they test nothing. The
+first two were then tested on new trials (next subsection).
 - **Three JitoLabs validators order by total fee.** All 7 trials (2 + 4 + 1) of 7cVfgArC, EvnRmnMr and C8Bey3LK
   landed in the exact total-fee order. The other 13 JitoLabs validators we reached: 23 of 23 in the reward/cost order.
 - **One Firedancer validator departs.** JD549Hsb: 4 of 10 trials in the exact order. The other 9: 20 of 20.
@@ -95,6 +106,24 @@ These come from tables added after the main run ("The plan"). They locate and de
     Agave 4.3.2 showed no preference.
 
 ![Pairs that landed in the order they were sent, local schedulers, by cell: buffered/shared 49%, buffered/independent 48%, burst/shared 76%, streamed/shared 97%, streamed/independent 99%; 50% is chance](data/mainnet-beta/results/send-order.svg)
+
+### Tested again on new trials (confirmatory)
+
+A pattern found in the data cannot be tested on the same data. The confirmatory run sent 53 new buffered/shared trials
+to the validators of the first two findings, under a plan frozen before its first trial ("The confirmatory run").
+7cVfgArC had stopped voting and had no leader slots in epochs 1070 and 1071, so the total-fee test rests on the other
+two.
+
+| | prediction | trials | result | Holm p | verdict |
+|---|---|---:|---|---:|---|
+| H1 | JitoLabs EvnRmnMr and C8Bey3LK put B before C, as total fee does | 30 | B before C in 97% [90–100%] | < 0.001 | **confirmed** |
+| H2 | Firedancer JD549Hsb lands fewer than 80% of its trials in the exact reward/cost order | 20 | exact in 70% [48–85%] | 0.196 | **not confirmed** |
+
+- **Total fee: confirmed.** 29 of the 30 new trials landed in the exact total-fee order: EvnRmnMr 15 of 15,
+  C8Bey3LK 14 of 15. Both report JitoLabs 4.3.2, like the 13 JitoLabs validators that followed reward/cost, yet a
+  different rule orders their blocks (for EvnRmnMr, possibly in a relayer in front of it).
+- **JD549Hsb: not confirmed.** It departed from the exact order again, in 6 of 20 trials, but 14 exact of 20 is not
+  significantly below the 80% reference.
 
 ## How to check
 
@@ -111,9 +140,11 @@ It needs no keys and sends nothing. GitHub Actions runs it on every push
 ([runs on `main`](https://github.com/bobxx22/solana-ordering/actions/workflows/ci.yml?query=branch%3Amain)): the job
 `docker` runs the offline part in the image, and the job `reproduce-online` runs the whole command.
 
-- `node src/cli.ts verify all --sample all` checks every landed transaction whole. Its committed result is
-  `verify-every-transaction.json`.
-- `git log prereg-main` shows the plan as frozen. The run directories are named by their UTC start.
+- `node src/cli.ts verify all --sample all` checks every landed transaction whole. The committed results are
+  `verify-every-transaction.json` for the runs up to the main run and `verify-every-transaction-confirm.json` for
+  the confirmatory run.
+- `git log prereg-main` and `git log prereg-confirm` show the two plans as frozen. The run directories are named by
+  their UTC start.
 
 **One trial by hand.** Trial 249 of session 2 went to the Agave 4.3.2 validator 5Us18hLZ, for its window from slot
 462 133 072 (`orders.md`). It was sent in the order D A E C B F. The six landed as the first six transactions of that
@@ -155,17 +186,26 @@ All times UTC. Every slot is after Alpenglow's activation (slot 459 653 000, 202
 | 2026-10-27 14:39–14:42 | **main run, session 1:** 30 trials × 6, ended by a power loss | direct QUIC | `runs/2026-10-27T14-39-05Z/` | 462 107 436 – 462 108 452 | 0.001769 |
 | 2026-10-27 15:32–17:28 | **main run, session 2:** 373 trials × 6, continuing session 1 until every quota was met | direct QUIC | `runs/2026-10-27T15-32-51Z/` | 462 122 629 – 462 154 412 | 0.020821 |
 | 2026-10-27 19:45 | sweep: the sub-payers' balances returned to the main wallet | RPC | `ledger.jsonl` | – | 0.000075 |
-| | **total** | | | | **0.025805** |
+| 2026-10-28 17:22–17:24 | two starts of the confirmatory run that sent no trial: funding the sub-payers failed | RPC | `runs/2026-10-28T17-22-47Z/`, `runs/2026-10-28T17-24-30Z/` | – | 0.000015 |
+| 2026-10-28 17:25–17:48 | **confirmatory run:** 53 trials × 6, until every quota was met | direct QUIC | `runs/2026-10-28T17-24-59Z/` | 462 560 008 – 462 566 560 | 0.003177 |
+| 2026-10-28 20:31 | sweep | RPC | `ledger.jsonl` | – | 0.000075 |
+| | **total** | | | | **0.029072** |
 
 **Wallets.** The ledger and the chain agree to the lamport:
 - the main wallet (`mainWallet` in every `run.json`) received a single transfer of 0.058892 SOL, on 2026-10-24 at
   17:25 UTC
   ([3Vo8NW5j…](https://explorer.solana.com/tx/3Vo8NW5jEpuGfd4LaZgN1vCv7B5Y1Q99Cu8PCewECoPCeT4ReKtATLGnib6x132xeLWsVAkPQHhGjwAHraepqZhg));
-- after the last sweep transaction
+- after the main run's last sweep transaction
   ([2jZGDs4H…](https://explorer.solana.com/tx/2jZGDs4HgMYcnQ8duxVrvoN3XmvKssvgzYH99RF8WN3kNmRPnFyhgEDGS353CLq6XyXpg8o3GxyRCiqt4Ev4ppJf),
-  2026-10-27 19:45 UTC, in the ledger) it held 0.033087 SOL: the 0.058892 SOL less the ledger's 0.025805 SOL. Both
+  2026-10-27 19:45 UTC, in the ledger) it held 0.033087 SOL: the 0.058892 SOL less the 0.025805 SOL the ledger had
+  committed by then;
+- after the confirmatory run's last sweep transaction
+  ([4PMKv79G…](https://explorer.solana.com/tx/4PMKv79G5tE2cEBeQB4Eg8UQ9BbaFKm6Df6PuRP89BV4RgyaavXAKVHb4M2gQUzSLpdqsU3YmB15HZmmJ7fwp5E7),
+  2026-10-28 20:31 UTC) it held 0.029820 SOL: the 0.058892 SOL less the ledger's total of 0.029072 SOL. All three
   balances are in those transactions' metadata on chain;
-- the main run cost 0.022665 SOL (0.001769 + 0.020821 + 0.000075), sweep included, under the 0.05 SOL cap in code.
+- the main run cost 0.022665 SOL (0.001769 + 0.020821 + 0.000075), sweep included, under the 0.05 SOL cap in code;
+- the confirmatory run cost 0.003267 SOL (0.000015 + 0.003177 + 0.000075), the two starts without trials and the
+  sweep included, under the 0.0092 SOL its plan allowed.
 
 **Chain checks.** All went through `api.mainnet-beta.solana.com`, which keeps the whole history, with PublicNode as a
 fallback. 0 problems in each.
@@ -176,17 +216,21 @@ fallback. 0 problems in each.
 | `verify/2026-10-27T15-32-51Z.json` | 2026-10-27 18:50 | 1 | 2 048 | 406 | 406 | 60 (sample) | 1 438 (3 blocks) | 190 of 190 | – |
 | `verify.json` | 2026-10-27 21:05 | 7 | 2 501 | 507 | 507 | 60 (sample) | 1 160 (3 blocks) | 220 of 220 | 30 of 30 |
 | `verify-every-transaction.json` | 2026-10-28 15:12 | 7 | 2 501 | 507 | 507 | 2 501 (all) | 15 509 (30 blocks) | 220 of 220 | 30 of 30 |
+| `verify/2026-10-28T17-24-59Z.json` (confirmatory run) | 2026-10-28 17:53 | 1 | 312 | 52 | 52 | 60 (sample) | 1 220 (3 blocks) | 6 of 6 | – |
+| `verify-every-transaction-confirm.json` | 2026-10-28 20:51 | 1 | 312 | 52 | 52 | 312 (all) | 12 365 (30 blocks) | 6 of 6 | – |
 
 What each check verifies:
 - every landed transaction sits at its recorded index in its recorded block;
 - each block's leader against the schedule, where an endpoint still serves it, otherwise against the block's
   fee-reward recipient;
-- whole transactions for payer, fee, anchor and role parameters: a sample of 60 in the first three checks, every
-  landed transaction in the last;
+- whole transactions for payer, fee, anchor and role parameters: a sample of 60, or every landed transaction in the
+  two `verify-every-transaction` files;
 - the recorded rows of everyone else's transactions in a sample of whole blocks;
 - every unlanded transaction is unknown to the chain.
 
-The per-session files were made while epoch 1069's leader schedule was still served (`docs/RUNBOOK.md`, step 7).
+`verify.json` and `verify-every-transaction.json` cover the seven runs up to the main run; the confirmatory run has
+its own two files. The per-session files were made while their epoch's leader schedule was still served
+(`docs/RUNBOOK.md`, step 7; `docs/CONFIRM.md`, step 3).
 
 ## Results of the main run
 
@@ -367,10 +411,14 @@ QUIC port". They are outside the pre-registered plan and test nothing, but they 
     total-fee order: BDAFEC (`orders.md`).
   - Within one client label and version, some operators order their blocks differently. Gossip cannot tell which
     code they run.
+  - **Tested again** on 30 new trials of EvnRmnMr and C8Bey3LK: B before C in 29, confirmed ("The confirmatory
+    run").
 - **Firedancer.** One validator, JD549Hsb (26.10.4): 4 of its 10 trials in the exact order.
   - In the other 6, B came before F, and in 3 of those also before C.
   - Those six orders are also reward/cost orders, for a base-fee share below 0.19, like Harmonic's (next item).
   - The other 9 Firedancer validators we reached: 20 of 20 exact.
+  - **Tested again** on 20 new trials: 14 exact, not significantly below 80%, so not confirmed ("The confirmatory
+    run").
 - **Harmonic.** All 30 trials, on 19 validators, landed in one of four orders: AEDBCF, AEDCBF, EADBCF, EADCBF.
   - A, E and D always came first, then B and C either way round, then F **last**. The same validator produced both
     B–C orders.
@@ -511,12 +559,97 @@ under-100 ms arrival margin, or ran on a clock other than `firstShred`.
 - **Validators we did not reach.** The validators reached hold 22.2% of mainnet's leader slots through the local
   labels and 22.8% through the pipelines; AgaveBam is the least covered (19% of its slots). Agave and Rakurai are
   small, concentrated labels.
-- **Other times.** One day, one epoch (1069). Schedulers change with releases; the pre-releases already break ties
-  differently.
+- **Other times.** One day, one epoch (1069); the confirmatory run adds the next day and epoch for three validators
+  only. Schedulers change with releases; the pre-releases already break ties differently.
 - **Arrival inside the leader.** The QUIC acknowledgement proves delivery, not when each transaction reached the
   scheduler.
 
+## The confirmatory run
+
+Planned in [`docs/CONFIRM.md`](docs/CONFIRM.md) and frozen at the git tag `prereg-confirm` before its first trial (top
+of this report). Results are copied from `results.md`, "Confirmatory run", and trial by trial from `orders.md`
+(campaign `confirm`). Its trials change none of the main run's tables.
+
+**Why.** Section 6 found two deviations only after looking at the data: three JitoLabs validators that ordered by
+total fee, and the Firedancer validator JD549Hsb, which left the exact reward/cost order in 6 of 10 trials.
+
+**Design.**
+- The main run's code, roles, fees, delivery and path, in the one cell where both deviations were seen,
+  buffered/shared. Counted trials per validator: EvnRmnMr 15, C8Bey3LK 15, JD549Hsb 20.
+- 7cVfgArC is left out. It stopped voting at slot 462 239 999, the last slot of epoch 1069, and has no leader slots
+  in epochs 1070 and 1071. The other three reported the main run's version and QUIC address.
+- **H1.** EvnRmnMr and C8Bey3LK put B before C. Total fee puts B first; reward/cost, with a base-fee share above 0.12,
+  puts C first. Pooled over both validators, one-sided against chance by its exact null distribution, like the
+  primary contrasts.
+- **H2.** JD549Hsb lands fewer than 80% of its trials with all six in the window in the exact reward/cost order
+  (A and E either way), by the exact lower binomial tail. The reference lies below 84%, the lower end of the Wilson
+  interval of the other nine Firedancer validators' 20 of 20.
+- **Verdicts.** The two p values are Holm-adjusted together. Fewer than 10 trials: insufficient data; otherwise a
+  Holm p below 0.05 confirms.
+
+**The run.** 2026-10-28 17:25–17:48 UTC, one session in epoch 1070, every trial on the `firstShred` clock. It
+dispatched 53 trials and stopped when every quota was met: 50 counted (EvnRmnMr needed 18 for its 15), and 312 of
+their 318 transactions landed.
+
+| hypothesis | validators | measure | trials | share [95% interval] | p | Holm p | verdict |
+|---|---|---|---:|---|---:|---:|---|
+| H1: orders by total fee | JitoLabs EvnRmnMr, C8Bey3LK | B before C (by chance 50%) | 30 | 97% [90–100%] | < 0.001 | < 0.001 | **confirmed** |
+| H2: departs from the exact reward/cost order | Firedancer JD549Hsb | trials with all six in the exact reward/cost order (reference 80%) | 20 | 70% [48–85%] | 0.196 | 0.196 | **not confirmed** |
+
+Per validator (descriptive; B before C of the trials with both in the window):
+
+| validator | version, QUIC port | trials | exact total-fee order | exact reward/cost order | other orders | B before C | kept by the sensitivity filter |
+|---|---|---:|---:|---:|---|---:|---:|
+| JitoLabs EvnRmnMr | 4.3.2, 11228 | 15 | 15 | 0 | – | 15 of 15 | 0 |
+| JitoLabs C8Bey3LK | 4.3.2, 8022 | 15 | 14 | 0 | DEACFB | 14 of 15 | 15 |
+| Firedancer JD549Hsb | 26.10.4, 9007 | 20 | 0 | 14 | AEDBFC ×3, AEDCBF, AEDFBC, EADBFC | 5 of 20 | 20 |
+
+**H1: confirmed.**
+- A day and an epoch after the main run, both validators again landed nearly every trial in the exact total-fee
+  order: B (10 000 lamports) first, D (9 000) second, A, E and F (4 000 each) in any order, C (0) last.
+- C8Bey3LK's one other trial, DEACFB, put B last.
+- **Not late delivery.** All 18 trials sent to EvnRmnMr found the connection closed and reconnected before sending,
+  as all four did in the main run. The sensitivity filter therefore keeps none of its 15, although each was
+  acknowledged 150–389 ms before the window. C8Bey3LK's 15 trials, all kept, give B before C in 93%, p < 0.001
+  (unadjusted).
+- Both report JitoLabs 4.3.2 in gossip, like the 13 JitoLabs validators that followed reward/cost in the main run.
+  Some rule other than reward/cost orders their blocks. For EvnRmnMr it may run in a relayer in front of the
+  validator (port 11228, section 6).
+
+**H2: not confirmed.**
+- 14 of 20 trials exact. 70% is not significantly below the 80% reference (p = 0.196); confirming would have taken
+  12 or fewer (p = 0.032).
+- As in the main run, B moved up in the 6 that departed: before F in 5 of them, before C in 5. Five are reward/cost
+  orders for a smaller base-fee share (`docs/schedulers.md`, "What the contrasts identify"): AEDBFC ×3 and EADBFC
+  below 0.114, AEDCBF between 0.120 and 0.193. The sixth, AEDFBC, fits no single share.
+- JD549Hsb does leave the order in some trials. That it leaves it more often than the reference allows is not
+  established.
+
+**Checks and cost.**
+- `verify/2026-10-28T17-24-59Z.json`, made at 17:53 UTC: every landed transaction at its recorded index, all 52
+  leaders confirmed by the schedule, 60 whole transactions, 1 220 rows of 3 whole blocks, the 6 unlanded transactions
+  unknown to the chain; 0 problems.
+- `verify-every-transaction-confirm.json`, made at 20:51 UTC: the same with all 312 landed transactions whole and
+  12 365 rows of 30 whole blocks; 0 problems.
+- 0.003267 SOL, the two starts without trials and the sweep included ("Measurements").
+
+**Deviations from the plan.**
+- The command added `--sub-target 0.00142`: the four sub-payers not yet funded got 0.00142 SOL each instead of the
+  main run's 0.0033, which the main wallet could no longer cover ("What went wrong"). It sets only how much a
+  sub-payer is funded with (`git diff prereg-confirm 4978fc4 -- src`: 11 lines added, 6 removed). The commit
+  `4978fc4` came after the tag; GitHub started CI for it at 17:24:27 UTC
+  ([run](https://github.com/bobxx22/solana-ordering/actions/runs/40735416543)), before the start that made the
+  trials.
+- Nothing in the analysis changed after the tag.
+
 ## What went wrong
+
+### During the confirmatory run
+
+| what | how we found it | what we did |
+|---|---|---|
+| The first start (17:22:47 UTC) funded 8 of the 12 sub-payers to the main run's 0.0033 SOL each. The transfer to the other 4 then failed: the main wallet held 0.033087 SOL, less than 12 × 0.0033. No trial was sent. | The start stopped with the chain's error (`InstructionError [2, Custom 1]`, insufficient funds). | The funding target became a flag, `--sub-target` (commit `4978fc4`, "The confirmatory run"). |
+| The second start (17:24:30 UTC), at 0.0016 SOL per sub-payer, would have left the main wallet below its rent-exempt minimum of 0.00089088 SOL, and the chain refused the transfer. No trial was sent. | The start stopped with the chain's error (`InsufficientFundsForRent`). | 0.00142 SOL per sub-payer; the third start made every trial. The two starts' three funding transactions, two of them failed, cost 0.000015 SOL in fees. |
 
 ### During the main run
 
@@ -626,3 +759,11 @@ Nothing in the plan changed after the data. Added, and marked as such:
   - `--sample all` and `--out`, for the check of every landed transaction.
 
   They change no result.
+
+### The confirmatory run
+
+Its plan, `docs/CONFIRM.md`, and the code it needed (`run --validators` and `--cells`, the section "Confirmatory run"
+of `analyze`) were frozen at `prereg-confirm` before its first trial. Changed after the tag:
+- `--sub-target`, the only code change (commit `4978fc4`), pushed before the start that made the trials ("The
+  confirmatory run", deviations);
+- this report, README, and a closing section of `docs/CONFIRM.md` marked as written after the run.
