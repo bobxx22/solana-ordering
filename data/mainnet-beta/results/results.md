@@ -13,6 +13,7 @@ The analysis plan is pre-registered in README ("Noise versus rule") and in the h
 | 2026-10-25T22:06:01.269Z | rehearsal | tpu | 1 | 461420912–461420912 | 1068 | yes |
 | 2026-10-27T14:39:06.569Z | main | tpu | 30 | 462107436–462108452 | 1069 | yes |
 | 2026-10-27T15:32:52.637Z | main | tpu | 373 | 462122629–462154412 | 1069 | yes |
+| 2026-10-28T17:25:00.314Z | confirm | tpu | 53 | 462560008–462566560 | 1070 | yes |
 
 ## Primary: buffered/shared, local schedulers (campaign "main")
 
@@ -258,7 +259,22 @@ Added after the main run, outside the pre-registered plan. Campaign "main", ever
 
 New buffered/shared trials aimed at three of the four validators whose main-run trials departed from the reward/cost order ("Deviations from the reward/cost order, validator by validator"; the fourth, 7cVfgArC, has had no leader slots since epoch 1070), planned and tagged before the first of them. Two tests, Holm-adjusted together: H1 one-sided against chance by its exact null distribution, like the primary contrasts; H2 by the exact lower binomial tail against the reference rate. Fewer than 10 trials: insufficient data; otherwise confirmed when the Holm p < 0.05, else not confirmed. These trials appear only in this section, the run list and orders.md.
 
-No trials of the confirmatory campaign yet.
+| hypothesis | validators | measure | trials | share [95% interval] | p | Holm p | verdict |
+|---|---|---|---:|---|---:|---:|---|
+| H1: orders by total fee | JitoLabs EvnRmnMr, C8Bey3LK | B before C (by chance 50%) | 30 | 97% [90%–100%] | <0.001 | <0.001 | **confirmed** |
+| H2: departs from the exact reward/cost order | Firedancer JD549Hsb | trials with all six in the exact reward/cost order (reference 80%) | 20 | 70% [48%–85%] | 0.196 | 0.196 | **not confirmed** |
+
+Per validator (descriptive). B before C: of the trials with both in the window.
+
+| client | validator | versions | QUIC port | trials | trials with all six | exact reward/cost | exact total fee | other orders | B before C | kept by the sensitivity filter |
+|---|---|---|---|---:|---:|---:|---:|---|---:|---:|
+| JitoLabs | EvnRmnMr | 4.3.2 | 11228 | 15 | 15 | 0 | 15 | – | 15 of 15 | 0 |
+| JitoLabs | C8Bey3LK | 4.3.2 | 8022 | 15 | 15 | 0 | 14 | DEACFB ×1 | 14 of 15 | 15 |
+| Firedancer | JD549Hsb | 26.10.4 | 9007 | 20 | 20 | 14 | 0 | AEDBFC ×3, AEDCBF ×1, AEDFBC ×1, EADBFC ×1 | 5 of 20 | 20 |
+
+Sensitivity (descriptive; the filter of the primary, unadjusted p): H1 93% of 15, p=<0.001; H2 70% of 20, p=0.196.
+
+Delivery: 53 trials dispatched, 312 of 318 transactions landed, 50 trials with B, C, D, F and A or E in the window, 50 trials used.
 
 ## Rule agreement: buffered/shared (campaign "main")
 

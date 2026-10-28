@@ -1,0 +1,15 @@
+2026-10-28T17:24:31.571Z epoch 1070, 3919 gossip nodes, 661 current + 30 delinquent vote accounts
+2026-10-28T17:24:31.574Z   EvnRmnMr: EvnRmnMrd69kFdbLMxWkTn1icZ7DCceRhvmb2SJXqDo4 (JitoLabs 4.3.2, 7664 leader slots this epoch, QUIC 198.13.140.73:11228)
+2026-10-28T17:24:31.574Z   C8Bey3LK: C8Bey3LKVJHVqN6xPTeW8WJfUgFQAeGNBpT4Rp99JP1k (JitoLabs 4.3.2, 9248 leader slots this epoch, QUIC 185.26.10.33:8022)
+2026-10-28T17:24:31.574Z   JD549Hsb: JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB (Firedancer 26.10.4, 5884 leader slots this epoch, QUIC 86.54.153.246:9007)
+2026-10-28T17:24:31.578Z LIVE on mainnet-beta via tpu, campaign "confirm": up to 50 more landed trials, at most 0.000061 SOL each (0.003050 SOL)
+2026-10-28T17:24:31.579Z continuing from 1 earlier run(s): landed {}, 0 excluded addresses
+2026-10-28T17:24:31.581Z spend cap 0.050000 SOL (of which 0.000100 SOL kept for sweeping), committed 0.025815 SOL; reads via https://mainnet.helius-rpc.com/ (credentials hidden)
+2026-10-28T17:24:31.581Z   role A: limit 1000 CU, price 4000000 µL/CU, loaded-data limit 16384 B, reward/cost 2.783
+2026-10-28T17:24:31.581Z   role B: limit 40000 CU, price 250000 µL/CU, loaded-data limit 16384 B, reward/cost 0.302
+2026-10-28T17:24:31.581Z   role C: limit 1000 CU, price 0 µL/CU, loaded-data limit 16384 B, reward/cost 1.070
+2026-10-28T17:24:31.581Z   role D: limit 6000 CU, price 1500000 µL/CU, loaded-data limit 16384 B, reward/cost 1.568
+2026-10-28T17:24:31.581Z   role E: limit 1000 CU, price 4000000 µL/CU, loaded-data limit 16384 B, reward/cost 2.783
+2026-10-28T17:24:31.581Z   role F: limit 1000 CU, price 4000000 µL/CU, loaded-data limit 67108864 B, reward/cost 0.347
+2026-10-28T17:24:31.635Z main wallet 6v8Wy9TEhfZXzdXVspXYs7bh42N7B7z9jALkz83yxKoC: 0.006677 SOL
+2026-10-28T17:24:31.757Z top-up: 4 sub-payers, 0.006400 SOL from the main wallet
