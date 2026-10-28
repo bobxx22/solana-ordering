@@ -185,6 +185,38 @@ Share of trials with all six in the window in exact reward/cost order (A/E eithe
 | HarmonicAgave | 15 | 0 (0%) | F<B reversed in 15 |
 | HarmonicFiredancer | 15 | 0 (0%) | F<B reversed in 15 |
 
+## Deviations from the reward/cost order, validator by validator (exploratory)
+
+Added after the main run, outside the pre-registered plan. Buffered/shared trials of the main campaign with all six in the window, for every validator with at least one trial not in the exact reward/cost order (A/E either way, D C F B): how many were in that order, how many in the exact total-fee order (B D, then A, E, F in any order, C last), and the other orders seen. Labels without a row had every trial in the exact reward/cost order.
+
+| client | validator | version | trials with all six | exact reward/cost | exact total fee | other orders |
+|---|---|---|---:|---:|---:|---|
+| JitoLabs | 7cVfgArC | 4.3.2 | 2 | 0 | 2 | – |
+| JitoLabs | EvnRmnMr | 4.3.2 | 4 | 0 | 4 | – |
+| JitoLabs | C8Bey3LK | 4.3.2 | 1 | 0 | 1 | – |
+| JitoLabs | all 13 others | | 23 | 23 | 0 | – |
+| Firedancer | JD549Hsb | 26.10.4 | 10 | 4 | 0 | AEDBFC ×1, AEDCBF ×1, EADBCF ×2, EADCBF ×2 |
+| Firedancer | all 9 others | | 20 | 20 | 0 | – |
+| HarmonicAgave | Hz5aLvpK | 4.3.2 | 1 | 0 | 0 | EADBCF ×1 |
+| HarmonicAgave | H9ENbtmy | 4.3.2 | 1 | 0 | 0 | EADBCF ×1 |
+| HarmonicAgave | 9W3QTgBh | 4.3.2 | 2 | 0 | 0 | EADBCF ×2 |
+| HarmonicAgave | BtsmiEEv | 4.3.2 | 1 | 0 | 0 | AEDCBF ×1 |
+| HarmonicAgave | 5RvfTSow | 4.3.2 | 1 | 0 | 0 | AEDBCF ×1 |
+| HarmonicAgave | G3a3iYZK | 4.3.2 | 1 | 0 | 0 | AEDBCF ×1 |
+| HarmonicAgave | GoeW4aFK | 4.3.2 | 2 | 0 | 0 | AEDBCF ×1, AEDCBF ×1 |
+| HarmonicAgave | Fd7btgyS | 4.3.2 | 2 | 0 | 0 | AEDBCF ×1, EADCBF ×1 |
+| HarmonicAgave | GYx8kpp7 | 4.3.2 | 1 | 0 | 0 | EADCBF ×1 |
+| HarmonicAgave | 5ZqveVff | 4.3.2 | 2 | 0 | 0 | EADBCF ×1, EADCBF ×1 |
+| HarmonicAgave | FNKgX9dY | 4.3.2 | 1 | 0 | 0 | EADBCF ×1 |
+| HarmonicFiredancer | JUPiTERr | 26.10.4 | 4 | 0 | 0 | EADBCF ×3, EADCBF ×1 |
+| HarmonicFiredancer | ALp2GdA1 | 26.10.4 | 1 | 0 | 0 | EADBCF ×1 |
+| HarmonicFiredancer | 3iSQtPgk | 26.10.4 | 2 | 0 | 0 | AEDBCF ×1, AEDCBF ×1 |
+| HarmonicFiredancer | GZ4U21pY | 26.10.4 | 2 | 0 | 0 | AEDCBF ×1, EADBCF ×1 |
+| HarmonicFiredancer | EJsJx7Sm | 26.10.4 | 1 | 0 | 0 | EADCBF ×1 |
+| HarmonicFiredancer | 87CcUxpy | 26.10.4 | 3 | 0 | 0 | AEDCBF ×1, EADBCF ×1, EADCBF ×1 |
+| HarmonicFiredancer | EXckihF3 | 26.10.4 | 1 | 0 | 0 | AEDBCF ×1 |
+| HarmonicFiredancer | Awes4Tr6 | 26.10.4 | 1 | 0 | 0 | EADBCF ×1 |
+
 ## Rule agreement: buffered/shared (campaign "main")
 
 Mean gamma per trial (+1: every pair the rule ranks differently landed in its order; 0: unrelated). The rules agree on most pairs by design: read the contrasts first. [95% interval resampling ingress hosts; – with fewer than 3], sign-flip p over host means, Holm-adjusted within the table.

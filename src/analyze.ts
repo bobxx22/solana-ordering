@@ -30,6 +30,8 @@
 //              clock other than firstShred.
 //   secondary  descriptive: independent mode, burst per label, streamed, the twins by version family, rule agreement
 //              (gamma), calibration runs.
+// Added after the main run, outside the plan and marked exploratory in results.md: the deviations from the exact
+// reward/cost order, validator by validator.
 // The block producer is the scheduled leader of the landing slot; the client is that leader's gossip client id in
 // the run's snapshot.
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
@@ -712,6 +714,35 @@ export function analyze(dataDir: string, cluster: string): string {
     out.push(`| ${c} | ${full.length} | ${exact} (${pct(exact / full.length)}) | ${top ? `${top[0]} reversed in ${top[1]}` : '–'} |`)
   }
   out.push('')
+
+  // ---------- exploratory: added after the main run, not pre-registered ----------
+  const deviations: string[] = []
+  for (const c of [...LOCAL_CLIENTS, ...PIPELINE_CLIENTS]) {
+    const full = bufShared(main).filter((u) => u.client === c && u.observedOrder.length === 6)
+    const exactOnly = { validators: 0, trials: 0 }
+    for (const v of new Set(full.map((u) => u.leader))) {
+      const vu = full.filter((u) => u.leader === v)
+      const rewardCost = vu.filter((u) => /^(AE|EA)DCFB$/.test(u.observedOrder)).length
+      if (rewardCost === vu.length) {
+        exactOnly.validators++
+        exactOnly.trials += vu.length
+        continue
+      }
+      // the total-fee rule: B (10 000), D (9 000), then A, E and F (4 000 each) in any order, C (0) last
+      const totalFee = vu.filter((u) => /^BD[AEF]{3}C$/.test(u.observedOrder)).length
+      const others = new Map<string, number>()
+      for (const u of vu) if (!/^(AE|EA)DCFB$/.test(u.observedOrder) && !/^BD[AEF]{3}C$/.test(u.observedOrder)) others.set(u.observedOrder, (others.get(u.observedOrder) ?? 0) + 1)
+      deviations.push(`| ${c} | ${v.slice(0, 8)} | ${vu[0].version ?? '?'} | ${vu.length} | ${rewardCost} | ${totalFee} | ${[...others.entries()].sort().map(([o, n]) => `${o} ×${n}`).join(', ') || '–'} |`)
+    }
+    if (exactOnly.validators && exactOnly.trials < full.length) deviations.push(`| ${c} | all ${exactOnly.validators} others | | ${exactOnly.trials} | ${exactOnly.trials} | 0 | – |`)
+  }
+  if (deviations.length) {
+    out.push('## Deviations from the reward/cost order, validator by validator (exploratory)', '')
+    out.push('Added after the main run, outside the pre-registered plan. Buffered/shared trials of the main campaign with all six in the window, for every validator with at least one trial not in the exact reward/cost order (A/E either way, D C F B): how many were in that order, how many in the exact total-fee order (B D, then A, E, F in any order, C last), and the other orders seen. Labels without a row had every trial in the exact reward/cost order.', '')
+    out.push('| client | validator | version | trials with all six | exact reward/cost | exact total fee | other orders |')
+    out.push('|---|---|---|---:|---:|---:|---|')
+    out.push(...deviations, '')
+  }
 
   // ---------- rule agreement ----------
   const ruleTable = (title: string, groups: { label: string; units: Unit[] }[], rules: Rule[]) => {

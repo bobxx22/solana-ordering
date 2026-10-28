@@ -9,7 +9,7 @@ table of `results.md` is generated from the main run's own snapshots).
 
 | label | versions | source read |
 |---|---|---|
-| Agave | 4.3.2 80%, 4.4.0-rc.0 9%, 4.5.0-alpha.2 8%, 4.4.0-beta.1 2% | `anza-xyz/agave` tags v4.3.2, v4.4.0-beta.1, v4.4.0-rc.0, v4.5.0-alpha.2 |
+| Agave | 4.3.2 80%, 4.4.0-rc.0 9%, 4.5.0-alpha.2 8%, 4.4.0-beta.1 2% | `anza-xyz/agave` tags v4.3.2, v4.4.0-beta.1, v4.4.0-rc.0, v4.5.0-alpha.2; v4.4.0-rc.1 after the main run (see below) |
 | JitoLabs | 4.3.2 99.9%; 4.3.0 and 4.3.0-rc.1 under 0.1% | `jito-foundation/jito-solana` tag v4.3.2-jito |
 | AgaveBam, HarmonicAgave, Rakurai | report 4.3.2 | Agave v4.3.2 for the base scheduler; the BAM sequencer, Harmonic block building and Rakurai's scheduler are not in these repositories |
 | Firedancer | 26.10.4 92%, 26.10.3 6%, "0.1.1" 1% | `firedancer-io/firedancer` tags v26.10.4, v26.10.3 (pack's cost header and comparison identical to v26.10.4) |
@@ -71,7 +71,7 @@ numbers (priority fees A 4 000, B 10 000, C 0, D 9 000 lamports; costs 2 335, 41
 |---|---|---|
 | Agave v4.3.2, Jito v4.3.2-jito | the internal `id`: the transaction's key in the container's slab, assigned at insertion and reused after removal (not arrival order) | `TransactionPriorityId { priority, id }` with derived ordering, [transaction_priority_id.rs:4-8](https://github.com/anza-xyz/agave/blob/v4.3.2/core/src/banking_stage/transaction_scheduler/transaction_priority_id.rs#L4-L8); `insert_map_only` takes the slab's vacant key, [transaction_state_container.rs:268-273, 292-295](https://github.com/anza-xyz/agave/blob/v4.3.2/core/src/banking_stage/transaction_scheduler/transaction_state_container.rs#L268-L295) |
 | Agave v4.4.0-beta.1, v4.4.0-rc.0, v4.5.0-alpha.2 | **arrival order, oldest first**, then `id` | `TransactionPriorityId { priority, arrival_order, id }` ([v4.5.0-alpha.2](https://github.com/anza-xyz/agave/blob/v4.5.0-alpha.2/core/src/banking_stage/transaction_scheduler/transaction_priority_id.rs)) |
-| Firedancer v26.10.4, v26.10.3 | the treap's structure; `COMPARE_WORSE` defines no secondary key | fd_pack.c:227-249 (the same lines in both tags) |
+| Firedancer v26.10.4, v26.10.3 | **arrival order, newest first**: `COMPARE_WORSE` defines no secondary key; the treap places a newly inserted element that compares equal after the existing equal ones, and pack schedules from the best end (read after the main run, see below) | fd_pack.c:227-249 (the same lines in both tags); [fd_treap.c:255-260](https://github.com/firedancer-io/firedancer/blob/v26.10.4/src/util/tmpl/fd_treap.c#L255-L260); [fd_pack.c:2044](https://github.com/firedancer-io/firedancer/blob/v26.10.4/src/disco/pack/fd_pack.c#L2044) |
 
 **What this means for the design**
 - Our twins A and E have identical priority. Only the Agave pre-releases (about a fifth of the Agave label's slots) are
@@ -79,6 +79,22 @@ numbers (priority fees A 4 000, B 10 000, C 0, D 9 000 lamports; costs 2 335, 41
 - The twin column is therefore reported **by version family**: Agave 4.3.2 (Jito included), the Agave 4.4/4.5
   pre-releases, Firedancer 26.10.3-4. Versions whose source was not read, Rakurai's own scheduler and the pipelines
   are kept apart. It measures ingress plus tie-breaking, and FIFO only for the pre-releases.
+
+**Read after the main run.** These two sources were read on 2026-10-28, after the data, to explain what the twins
+table and the versions table showed. They change no test and no family: the twins table keeps the families frozen at
+`prereg-main`.
+- **Firedancer ties come out newest first.** In the treap template, an element that compares equal to existing ones
+  is inserted "as if being epsilon larger than all existing equal elements"
+  ([fd_treap.c:255-260](https://github.com/firedancer-io/firedancer/blob/v26.10.4/src/util/tmpl/fd_treap.c#L255-L260)).
+  Pack's scheduling loop walks the pending treap from its largest end
+  ([fd_pack.c:2044](https://github.com/firedancer-io/firedancer/blob/v26.10.4/src/disco/pack/fd_pack.c#L2044), in
+  `fd_pack_schedule_impl`, called on `pack->pending` at L2781). Of two transactions with equal priority, the one that
+  arrived later is therefore scheduled first.
+- **Agave v4.4.0-rc.1.** It appeared in the main run's snapshot (7% of the Agave label's slots, 2 primary trials).
+  Its `core/src/transaction_priority.rs` is byte-identical to v4.3.2's, so the primary contrasts mean the same for it.
+  It breaks ties by arrival order, oldest first, like the other pre-releases
+  ([transaction_priority_id.rs](https://github.com/anza-xyz/agave/blob/v4.4.0-rc.1/core/src/banking_stage/transaction_scheduler/transaction_priority_id.rs)).
+  The twins table, frozen before it was read, lists it under "other versions".
 - Agave's primary includes the pre-releases: their priority formula is identical, so the three primary contrasts
   mean the same for every Agave version.
 

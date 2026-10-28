@@ -14,11 +14,16 @@ and whether the rule differs between validator clients.
   - Twelve exact one-sided tests with Holm adjustment for the four local-scheduler labels, and the same twelve for
     the four BAM and Harmonic pipelines.
   - Verdicts fixed before the main run (git tag `prereg-main`).
-- **So far** (calibration and rehearsal runs, descriptive, no test):
-  - bursts that wait in the leader's buffer land in the order the deployed source code predicts, by reward per
-    requested cost unit;
-  - transactions streamed 30 ms apart keep their send order.
-- **Results.** The main run's results are in [`REPORT.md`](REPORT.md); the generated tables are in
+- **Result** (main run, 2026-10-27, 403 trials):
+  - Agave, JitoLabs, Firedancer and Rakurai order the transactions waiting in the leader's buffer by **reward per
+    requested cost unit**, as their deployed source does. All twelve primary tests hold, and 107 of 120 trials
+    landed in the exact predicted order.
+  - The exceptions are specific validators: three JitoLabs validators ordered by total priority fee.
+  - The BAM pipelines order the same way. The Harmonic pipelines rank by a rule of their own: the transaction with a
+    64 MiB loaded-data request always came last.
+  - Arrival order decides only what the scheduler cannot rank: transactions streamed into a block being built, and
+    ties. Firedancer puts the later of two equal transactions first.
+- **Details.** [`REPORT.md`](REPORT.md); the generated tables are in
   [`data/mainnet-beta/results/results.md`](data/mainnet-beta/results/results.md).
 - **Check it.** `docker compose up` needs no keys and sends nothing.
 
@@ -278,6 +283,7 @@ name: the quotas, the per-validator counts and the excluded addresses carry over
 The analysis is fixed before the first trial of the main run. This section, the header of `src/analyze.ts`, the quota
 rule in `src/design.ts` and [`docs/RUNBOOK.md`](docs/RUNBOOK.md) are the plan. They are frozen at the git tag
 `prereg-main`, which is older than every trial of campaign `main` (the run directories are named by their UTC start).
+Anything added after the data is marked exploratory (REPORT, "The plan").
 
 - **Unit.** One trial.
   - Its transactions that landed in the targeted leader's 4-slot window are ordered by (slot, index): a
