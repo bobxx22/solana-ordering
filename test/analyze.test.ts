@@ -3,7 +3,8 @@ import { mkdtempSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { test } from 'node:test'
-import { type ContrastStat, interpret, MIN_TRIALS, verdict, versionFamily } from '../src/analyze.ts'
+import { type ContrastStat, interpret, keptBySensitivity, MIN_TRIALS, type Unit, verdict, versionFamily } from '../src/analyze.ts'
+import { barChart } from '../src/charts.ts'
 import { parseArgs } from '../src/config.ts'
 import { countsTowardsQuota } from '../src/design.ts'
 import { signFlipUpperP } from '../src/stats.ts'
@@ -69,4 +70,28 @@ test('--live takes no ambiguous value', () => {
   assert.throws(() => parseArgs(['run', '--live=yes']), /takes no value/)
   assert.equal(parseArgs(['run', '--live=1']).flags.get('live'), true)
   assert.equal(parseArgs(['run', '--live=0']).flags.has('live'), false)
+})
+
+test('the sensitivity filter: no reconnect, an arrival margin of at least 100 ms, the firstShred clock', () => {
+  const unit = (o: Partial<Unit>) => ({ reconnected: false, marginMs: 300, clockSource: 'firstShred', ...o }) as Unit
+  assert.equal(keptBySensitivity(unit({})), true)
+  assert.equal(keptBySensitivity(unit({ clockSource: null })), true)
+  assert.equal(keptBySensitivity(unit({ reconnected: true })), false)
+  assert.equal(keptBySensitivity(unit({ marginMs: 99 })), false)
+  assert.equal(keptBySensitivity(unit({ marginMs: null })), false)
+  assert.equal(keptBySensitivity(unit({ clockSource: 'slotSubscribe' })), false)
+})
+
+test('charts: text is escaped, bars are clamped, a zero draws no bar but keeps its label', () => {
+  const svg = barChart({
+    title: 'A <b> & "c"',
+    subtitle: ['one line'],
+    groups: [{ heading: 'g', bars: [{ label: 'zero', value: 0, text: '0 of 15' }, { label: 'over', value: 1.5, text: 'x' }] }],
+    reference: { value: 0.5, label: 'chance' },
+  })
+  assert.match(svg, /A &lt;b&gt; &amp; &quot;c&quot;/)
+  assert.equal((svg.match(/class="bar"/g) ?? []).length, 1)
+  assert.match(svg, />0 of 15</)
+  // clamped to the full plot width (400 px from x = 176), with the 4 px rounded end
+  assert.match(svg, /H572A4 4 0 0 1 576 /)
 })

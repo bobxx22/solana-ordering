@@ -14,15 +14,16 @@ and whether the rule differs between validator clients.
   - Twelve exact one-sided tests with Holm adjustment for the four local-scheduler labels, and the same twelve for
     the four BAM and Harmonic pipelines.
   - Verdicts fixed before the main run (git tag `prereg-main`).
-- **Result** (main run, 2026-10-27, 403 trials):
-  - Agave, JitoLabs, Firedancer and Rakurai order the transactions waiting in the leader's buffer by **reward per
-    requested cost unit**, as their deployed source does. All twelve primary tests hold, and 107 of 120 trials
-    landed in the exact predicted order.
-  - The exceptions are specific validators: three JitoLabs validators ordered by total priority fee.
-  - The BAM pipelines order the same way. The Harmonic pipelines rank by a rule of their own: the transaction with a
-    64 MiB loaded-data request always came last.
-  - Arrival order decides only what the scheduler cannot rank: transactions streamed into a block being built, and
-    ties. Firedancer puts the later of two equal transactions first.
+- **Result** (main run, 2026-10-27, 403 trials).
+  - **Pre-registered.** Agave, JitoLabs, Firedancer and Rakurai order the transactions waiting in the leader's buffer
+    by **reward per requested cost unit**, as their deployed source does. All twelve primary tests hold: each
+    contrast landed in the predicted order more often than chance. 107 of 120 trials landed in the exact predicted
+    order. The BAM pipelines order the same way; for Harmonic, C before B is "no stable order".
+  - **Found after the data** (exploratory, REPORT sections 6 and 7). Three JitoLabs validators ordered by total
+    priority fee. Harmonic put the transaction with a 64 MiB loaded-data request last in every trial, as reward/cost
+    does with a smaller base-fee share. Arrival order decides when the leader does not hold the transactions
+    together (streamed 30 ms apart, 97–99% of pairs landed in send order), and between equal priorities, where
+    Firedancer more often put the later one first.
 - **Details.** [`REPORT.md`](REPORT.md); the generated tables are in
   [`data/mainnet-beta/results/results.md`](data/mainnet-beta/results/results.md).
 - **Check it.** `docker compose up` needs no keys and sends nothing.
@@ -49,8 +50,8 @@ docker compose up
 
 This runs `reproduce`, which needs no keys and sends nothing. It does three things:
 
-1. **Regenerates every table** from the committed raw data, and checks that the four result files are byte-identical
-   to the committed ones.
+1. **Regenerates every table** from the committed raw data, and checks that the six result files (four tables and
+   the two charts of REPORT) are byte-identical to the committed ones.
 2. **Checks the raw data against the chain** (`verify`). It uses public endpoints other than the one used to
    collect: `api.mainnet-beta.solana.com`, which keeps the whole history, then PublicNode.
    - Every landed transaction: its signature is at the recorded index of the recorded slot, and the slot is after
@@ -60,7 +61,8 @@ This runs `reproduce`, which needs no keys and sends nothing. It does three thin
      against the block's fee-reward recipient.
    - A sample of whole transactions from every role: fee, fee payer (one of the run's own wallets), anchor, and the
      ComputeBudget instructions against the recorded role parameters. This is what tells A, E and F apart, since
-     they pay the same fee.
+     they pay the same fee. `verify all --sample all` checks every landed transaction this way; its result is
+     committed as `data/mainnet-beta/verify-every-transaction.json`.
    - A sample of whole blocks: every recorded row of everyone else's transactions (fees, requested limits,
      scheduled cost), rebuilt from the chain.
    - Every transaction recorded as not landed is unknown to the chain. It is asked only of an endpoint whose history
@@ -197,10 +199,10 @@ name: the quotas, the per-validator counts and the excluded addresses carry over
 
   A result for a label describes that whole pipeline as it treats ordinary transactions, not a scheduler in
   isolation.
-- **Few operators per label.** Some labels rest on very few validators. By leader slots in epoch 1068, Agave and
-  Rakurai each have about four effective validators, and Firedancer about six. A verdict is therefore stated for the
-  validators of the label that we reached. `results.md` gives each label's validators, slot share, effective number,
-  reachable share and validators reached ("Coverage per label").
+- **Few operators per label.** Some labels rest on very few validators. By leader slots in the main run's snapshot
+  (epoch 1069), Agave and Rakurai each have about four effective validators, and Firedancer about five. A verdict is
+  therefore stated for the validators of the label that we reached. `results.md` gives each label's validators, slot
+  share, effective number, reachable share and validators reached ("Coverage per label").
 - **Shared gateways.** BAM and Harmonic validators advertise QUIC addresses on shared gateway hosts.
   - In epoch 1067, the 364 AgaveBam validators advertised 17 addresses, one of them for 102 validators.
   - FireBAM had 94% of its slots behind shared addresses.
@@ -249,8 +251,8 @@ name: the quotas, the per-validator counts and the excluded addresses carry over
 
 ### Competition inside the block
 
-- **The market around us.** Our six transactions land among 150–1 100 others per block (`results.md`). We cannot
-  control those.
+- **The market around us.** Our six transactions land in blocks of 110–1 429 transactions (median 458.5 in the main
+  run, `results.md`). We cannot control the others.
 - **Where we stand.** In lamports our priority fees are small (0 to 10 000), but per scheduled compute unit even our
   weakest roles out-rank most of the block: the typical transaction requests far more compute than it pays for.
   The experiment therefore measures how a scheduler ranks transactions **near the head of its queue**. It does not
@@ -268,7 +270,8 @@ name: the quotas, the per-validator counts and the excluded addresses carry over
   (`docs/schedulers.md`):
   - Agave and Jito 4.3.2 use an internal container id;
   - the Agave 4.4/4.5 pre-releases use arrival order;
-  - Firedancer uses its treap structure.
+  - Firedancer uses its treap structure, which schedules the newer of two equal transactions first (read after the
+    main run).
 
   The twin column is therefore reported by version family. It measures ingress plus tie-breaking, and FIFO only for
   the pre-releases.
@@ -277,6 +280,9 @@ name: the quotas, the per-validator counts and the excluded addresses carry over
     available together.
   - `burst` asks the same while the block is already being produced.
   - `streamed` (30 ms apart) checks that arrival order is preserved when nothing is held back.
+
+  `results.md`, "Send order against landing order, by cell" (exploratory, added after the main run), shows how much
+  of the send order survives in each cell.
 
 ### Noise versus rule
 
@@ -368,7 +374,8 @@ Anything added after the data is marked exploratory (REPORT, "The plan").
 - **Lock contention vs parallel execution.** Parallel banking threads or bank tiles record non-conflicting
   transactions in completion order. The `shared` vs `independent` contrast shows the combined effect.
 - **External sequencers and builders vs the client scheduler.** For BAM and Harmonic, the label covers the whole
-  pipeline.
+  pipeline. For Harmonic, a smaller base-fee share and a cost formula of its own predict the same orders.
+- **A relayer vs the validator behind it**, for JitoLabs validators that advertise port 11228.
 - **Operator configuration within a client label**, and the label itself: the client id and version are what the
   validator reports in gossip, and the chain cannot confirm them.
 - **Staked vs unstaked delivery.** We are unstaked; a staked sender may be treated differently.
@@ -422,7 +429,8 @@ Anything added after the data is marked exploratory (REPORT, "The plan").
   `archive/quic-feasibility.ts`, which is kept as a record, was written against an earlier API and does not run.
 - `ledger.jsonl`: every reservation and settlement.
 - `verify.json`: the last check of all runs against the chain; `verify/<run>.json`: the check of each main-run
-  session, made while its leader schedule was still served.
+  session, made while its leader schedule was still served; `verify-every-transaction.json`: every landed
+  transaction checked whole.
 - `results/`: generated by `analyze`.
 
 ## Commands
@@ -438,6 +446,6 @@ The main run follows [`docs/RUNBOOK.md`](docs/RUNBOOK.md).
 | `run [--live --campaign NAME]` | the experiment. Options: `--quota Agave=60,...`, `--path tpu\|rpc`, `--per-validator`, `--seed`, `--minutes` |
 | `collect [run\|all] [--refresh]` | landing slot, in-block position and slot leader; settles the ledger |
 | `analyze` | all tables, offline |
-| `verify [run\|all] [--write] [--verify-rpc URL]` | the check against the chain |
+| `verify [run\|all] [--write] [--sample N\|all] [--row-blocks N] [--out FILE] [--verify-rpc URL]` | the check against the chain: `--sample` whole transactions (default 60), `--row-blocks` whole blocks rebuilt (default 3) |
 | `paths [--live]` | delivery-path probe |
 | `keygen`, `address`, `status`, `fund`, `sweep` | wallet and budget |

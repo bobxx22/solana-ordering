@@ -16,7 +16,7 @@ The analysis plan is pre-registered in README ("Noise versus rule") and in the h
 
 ## Primary: buffered/shared, local schedulers (campaign "main")
 
-Per-trial share of pairs in the named order; 95% bootstrap interval over trials; one-sided exact p against 0.5, Holm-adjusted over the twelve tests of this table. Verdicts: insufficient data (fewer than 10 trials), holds (Holm p < 0.05), reversed (upper bound < 0.5), no stable order (upper bound < 0.75), inconclusive. The control is outside the family: unadjusted p.
+Per-trial share of pairs in the named order; 95% bootstrap interval over trials (the Wilson interval on trials when every trial has the same share); one-sided exact p against 0.5, Holm-adjusted over the twelve tests of this table. Verdicts: insufficient data (fewer than 10 trials), holds (Holm p < 0.05), reversed (upper bound < 0.5), no stable order (upper bound < 0.75), inconclusive. The control is outside the family: unadjusted p.
 
 | label | trials | validators | top validator's share | hosts | control: A,E before C | A,E before F | C before B | D before C |
 |---|---:|---:|---:|---:|---|---|---|---|
@@ -40,7 +40,7 @@ Per-trial share of pairs in the named order; 95% bootstrap interval over trials;
 
 ## Pipelines: BAM and Harmonic labels, buffered/shared (campaign "main"; secondary family)
 
-Per-trial share of pairs in the named order; 95% bootstrap interval over trials; one-sided exact p against 0.5, Holm-adjusted over the twelve tests of this table. Verdicts: insufficient data (fewer than 10 trials), holds (Holm p < 0.05), reversed (upper bound < 0.5), no stable order (upper bound < 0.75), inconclusive. The control is outside the family: unadjusted p.
+Per-trial share of pairs in the named order; 95% bootstrap interval over trials (the Wilson interval on trials when every trial has the same share); one-sided exact p against 0.5, Holm-adjusted over the twelve tests of this table. Verdicts: insufficient data (fewer than 10 trials), holds (Holm p < 0.05), reversed (upper bound < 0.5), no stable order (upper bound < 0.75), inconclusive. The control is outside the family: unadjusted p.
 
 | pipeline | trials | validators | top validator's share | hosts | control: A,E before C | A,E before F | C before B | D before C |
 |---|---:|---:|---:|---:|---|---|---|---|
@@ -172,7 +172,7 @@ Descriptive: per-trial shares with 95% intervals, no test.
 
 ## Exact orders (buffered/shared, campaign "main")
 
-Share of trials with all six in the window in exact reward/cost order (A/E either way; 2 in 720 by chance), and the pair of the reward/cost order most often reversed.
+Share of trials with all six in the window in exact reward/cost order (A/E either way; 2 in 720 by chance), and the pair of the reward/cost order most often reversed. The last three rows, added after the main run, pool the labels above.
 
 | client | trials with all six | exact | most often reversed |
 |---|---:|---:|---|
@@ -184,38 +184,75 @@ Share of trials with all six in the window in exact reward/cost order (A/E eithe
 | FireBAM | 16 | 16 (100%) | – |
 | HarmonicAgave | 15 | 0 (0%) | F<B reversed in 15 |
 | HarmonicFiredancer | 15 | 0 (0%) | F<B reversed in 15 |
+| local schedulers | 120 | 107 (89%) | F<B reversed in 13 |
+| BAM pipelines | 31 | 31 (100%) | – |
+| Harmonic pipelines | 30 | 0 (0%) | F<B reversed in 30 |
 
 ## Deviations from the reward/cost order, validator by validator (exploratory)
 
-Added after the main run, outside the pre-registered plan. Buffered/shared trials of the main campaign with all six in the window, for every validator with at least one trial not in the exact reward/cost order (A/E either way, D C F B): how many were in that order, how many in the exact total-fee order (B D, then A, E, F in any order, C last), and the other orders seen. Labels without a row had every trial in the exact reward/cost order.
+Added after the main run, outside the pre-registered plan. Buffered/shared trials of the main campaign with all six in the window, for every validator with at least one trial not in the exact reward/cost order (A/E either way, D C F B): the port of its advertised QUIC address, how many trials were in that order, how many in the exact total-fee order (B D, then A, E, F in any order, C last), the other orders seen, and how many trials the sensitivity filter of the primary keeps (no reconnect before sending, an arrival margin of at least 100 ms, the firstShred clock). Labels without a row had every trial in the exact reward/cost order.
 
-| client | validator | version | trials with all six | exact reward/cost | exact total fee | other orders |
-|---|---|---|---:|---:|---:|---|
-| JitoLabs | 7cVfgArC | 4.3.2 | 2 | 0 | 2 | – |
-| JitoLabs | EvnRmnMr | 4.3.2 | 4 | 0 | 4 | – |
-| JitoLabs | C8Bey3LK | 4.3.2 | 1 | 0 | 1 | – |
-| JitoLabs | all 13 others | | 23 | 23 | 0 | – |
-| Firedancer | JD549Hsb | 26.10.4 | 10 | 4 | 0 | AEDBFC ×1, AEDCBF ×1, EADBCF ×2, EADCBF ×2 |
-| Firedancer | all 9 others | | 20 | 20 | 0 | – |
-| HarmonicAgave | Hz5aLvpK | 4.3.2 | 1 | 0 | 0 | EADBCF ×1 |
-| HarmonicAgave | H9ENbtmy | 4.3.2 | 1 | 0 | 0 | EADBCF ×1 |
-| HarmonicAgave | 9W3QTgBh | 4.3.2 | 2 | 0 | 0 | EADBCF ×2 |
-| HarmonicAgave | BtsmiEEv | 4.3.2 | 1 | 0 | 0 | AEDCBF ×1 |
-| HarmonicAgave | 5RvfTSow | 4.3.2 | 1 | 0 | 0 | AEDBCF ×1 |
-| HarmonicAgave | G3a3iYZK | 4.3.2 | 1 | 0 | 0 | AEDBCF ×1 |
-| HarmonicAgave | GoeW4aFK | 4.3.2 | 2 | 0 | 0 | AEDBCF ×1, AEDCBF ×1 |
-| HarmonicAgave | Fd7btgyS | 4.3.2 | 2 | 0 | 0 | AEDBCF ×1, EADCBF ×1 |
-| HarmonicAgave | GYx8kpp7 | 4.3.2 | 1 | 0 | 0 | EADCBF ×1 |
-| HarmonicAgave | 5ZqveVff | 4.3.2 | 2 | 0 | 0 | EADBCF ×1, EADCBF ×1 |
-| HarmonicAgave | FNKgX9dY | 4.3.2 | 1 | 0 | 0 | EADBCF ×1 |
-| HarmonicFiredancer | JUPiTERr | 26.10.4 | 4 | 0 | 0 | EADBCF ×3, EADCBF ×1 |
-| HarmonicFiredancer | ALp2GdA1 | 26.10.4 | 1 | 0 | 0 | EADBCF ×1 |
-| HarmonicFiredancer | 3iSQtPgk | 26.10.4 | 2 | 0 | 0 | AEDBCF ×1, AEDCBF ×1 |
-| HarmonicFiredancer | GZ4U21pY | 26.10.4 | 2 | 0 | 0 | AEDCBF ×1, EADBCF ×1 |
-| HarmonicFiredancer | EJsJx7Sm | 26.10.4 | 1 | 0 | 0 | EADCBF ×1 |
-| HarmonicFiredancer | 87CcUxpy | 26.10.4 | 3 | 0 | 0 | AEDCBF ×1, EADBCF ×1, EADCBF ×1 |
-| HarmonicFiredancer | EXckihF3 | 26.10.4 | 1 | 0 | 0 | AEDBCF ×1 |
-| HarmonicFiredancer | Awes4Tr6 | 26.10.4 | 1 | 0 | 0 | EADBCF ×1 |
+| client | validator | version | QUIC port | trials with all six | exact reward/cost | exact total fee | other orders | kept by the sensitivity filter |
+|---|---|---|---|---:|---:|---:|---|---:|
+| JitoLabs | 7cVfgArC | 4.3.2 | 8002 | 2 | 0 | 2 | – | 2 |
+| JitoLabs | EvnRmnMr | 4.3.2 | 11228 | 4 | 0 | 4 | – | 0 |
+| JitoLabs | C8Bey3LK | 4.3.2 | 8022 | 1 | 0 | 1 | – | 1 |
+| JitoLabs | all 13 others | | | 23 | 23 | 0 | – | 17 |
+| Firedancer | JD549Hsb | 26.10.4 | 9007 | 10 | 4 | 0 | AEDBFC ×1, AEDCBF ×1, EADBCF ×2, EADCBF ×2 | 10 |
+| Firedancer | all 9 others | | | 20 | 20 | 0 | – | 20 |
+| HarmonicAgave | Hz5aLvpK | 4.3.2 | 12337 | 1 | 0 | 0 | EADBCF ×1 | 1 |
+| HarmonicAgave | H9ENbtmy | 4.3.2 | 9007 | 1 | 0 | 0 | EADBCF ×1 | 1 |
+| HarmonicAgave | 9W3QTgBh | 4.3.2 | 12312 | 2 | 0 | 0 | EADBCF ×2 | 2 |
+| HarmonicAgave | BtsmiEEv | 4.3.2 | 12315 | 1 | 0 | 0 | AEDCBF ×1 | 1 |
+| HarmonicAgave | 5RvfTSow | 4.3.2 | 12301 | 1 | 0 | 0 | AEDBCF ×1 | 1 |
+| HarmonicAgave | G3a3iYZK | 4.3.2 | 9007 | 1 | 0 | 0 | AEDBCF ×1 | 1 |
+| HarmonicAgave | GoeW4aFK | 4.3.2 | 9007 | 2 | 0 | 0 | AEDBCF ×1, AEDCBF ×1 | 2 |
+| HarmonicAgave | Fd7btgyS | 4.3.2 | 12341 | 2 | 0 | 0 | AEDBCF ×1, EADCBF ×1 | 2 |
+| HarmonicAgave | GYx8kpp7 | 4.3.2 | 9007 | 1 | 0 | 0 | EADCBF ×1 | 1 |
+| HarmonicAgave | 5ZqveVff | 4.3.2 | 12302 | 2 | 0 | 0 | EADBCF ×1, EADCBF ×1 | 2 |
+| HarmonicAgave | FNKgX9dY | 4.3.2 | 12327 | 1 | 0 | 0 | EADBCF ×1 | 1 |
+| HarmonicFiredancer | JUPiTERr | 26.10.4 | 12349 | 4 | 0 | 0 | EADBCF ×3, EADCBF ×1 | 4 |
+| HarmonicFiredancer | ALp2GdA1 | 26.10.4 | 9007 | 1 | 0 | 0 | EADBCF ×1 | 1 |
+| HarmonicFiredancer | 3iSQtPgk | 26.10.4 | 9007 | 2 | 0 | 0 | AEDBCF ×1, AEDCBF ×1 | 2 |
+| HarmonicFiredancer | GZ4U21pY | 26.10.4 | 9007 | 2 | 0 | 0 | AEDCBF ×1, EADBCF ×1 | 2 |
+| HarmonicFiredancer | EJsJx7Sm | 26.10.4 | 12289 | 1 | 0 | 0 | EADCBF ×1 | 1 |
+| HarmonicFiredancer | 87CcUxpy | 26.10.4 | 9007 | 3 | 0 | 0 | AEDCBF ×1, EADBCF ×1, EADCBF ×1 | 3 |
+| HarmonicFiredancer | EXckihF3 | 26.10.4 | 12288 | 1 | 0 | 0 | AEDBCF ×1 | 1 |
+| HarmonicFiredancer | Awes4Tr6 | 26.10.4 | 12351 | 1 | 0 | 0 | EADBCF ×1 | 1 |
+
+## JitoLabs by advertised QUIC port (exploratory)
+
+Added after the main run, outside the pre-registered plan. The same JitoLabs trials, grouped by the port of the QUIC address the validator advertised. Port 11228 is most likely a Jito relayer in front of the validator (README, "Shared gateways").
+
+| port | validators | trials with all six | exact reward/cost | exact total fee | other orders |
+|---|---:|---:|---:|---:|---:|
+| 8002 | 6 | 14 | 12 | 2 | 0 |
+| 11228 | 6 | 11 | 7 | 4 | 0 |
+| 12002 | 2 | 3 | 3 | 0 | 0 |
+| 8022 | 1 | 1 | 0 | 1 | 0 |
+| 9002 | 1 | 1 | 1 | 0 | 0 |
+
+## Send order against landing order, by cell (exploratory)
+
+Added after the main run, outside the pre-registered plan. Campaign "main", every cell: of all pairs of a trial's transactions in the targeted window, how many landed in the order they were sent; how many trials landed entirely in send order; and the mean gamma of the send order (the "sent first" rule of the rule-agreement tables). The send order is a fresh random permutation in every trial, so 50% of pairs is what an order unrelated to sending gives.
+
+| group | cell | trials | pairs in send order | trials entirely in send order | mean gamma, sent first |
+|---|---|---:|---:|---:|---:|
+| local schedulers | buffered/shared | 120 | 890 of 1800 (49%) | 0 of 120 | -0.01 |
+| local schedulers | buffered/independent | 48 | 349 of 720 (48%) | 0 of 48 | -0.03 |
+| local schedulers | burst/shared | 24 | 274 of 360 (76%) | 1 of 24 | 0.52 |
+| local schedulers | streamed/shared | 25 | 350 of 361 (97%) | 21 of 25 | 0.94 |
+| local schedulers | streamed/independent | 24 | 356 of 360 (99%) | 22 of 24 | 0.98 |
+| BAM pipelines | buffered/shared | 31 | 212 of 465 (46%) | 0 of 31 | -0.09 |
+| BAM pipelines | buffered/independent | 12 | 87 of 180 (48%) | 0 of 12 | -0.03 |
+| BAM pipelines | burst/shared | 6 | 42 of 90 (47%) | 0 of 6 | -0.07 |
+| BAM pipelines | streamed/shared | 6 | 89 of 90 (99%) | 5 of 6 | 0.98 |
+| BAM pipelines | streamed/independent | 6 | 86 of 90 (96%) | 4 of 6 | 0.91 |
+| Harmonic pipelines | buffered/shared | 30 | 214 of 450 (48%) | 0 of 30 | -0.05 |
+| Harmonic pipelines | buffered/independent | 12 | 87 of 180 (48%) | 0 of 12 | -0.03 |
+| Harmonic pipelines | burst/shared | 6 | 35 of 90 (39%) | 0 of 6 | -0.22 |
+| Harmonic pipelines | streamed/shared | 6 | 90 of 90 (100%) | 6 of 6 | 1.00 |
+| Harmonic pipelines | streamed/independent | 6 | 87 of 90 (97%) | 3 of 6 | 0.93 |
 
 ## Rule agreement: buffered/shared (campaign "main")
 
@@ -252,7 +289,7 @@ Pilot path: median RPC response to sendTransaction 1302 ms (range 176–3340); P
 
 ## Delivery
 
-In the targeted window: landed in a slot of the targeted leader's window. Complete: trials with B, C, D, F and A or E in the window (what the quota counts). Trials used: trials with two or more transactions in the ordered group, which for the pilot (rpc) is everything that landed, wherever: the public RPC rarely hit the targeted window.
+In the targeted window: landed in a slot of the targeted leader's window. Complete: trials with B, C, D, F and A or E in the window (what the quota counts). Trials used: trials with two or more transactions in the ordered group, which for the pilot (rpc) is everything that landed, wherever: the public RPC rarely hit the targeted window. The last row, added after the main run, pools the main campaign's three deliveries.
 
 | campaign / path / delivery | trials | sent | acknowledged by the leader's QUIC (of those with acknowledgement data) | landed | in the targeted window | spill-over | complete trials | trials used | median slots from dispatch to landing | median gap between sends, ms | arrival margin before the window, ms (median, min) | reconnected before sending |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|---:|
@@ -268,6 +305,7 @@ In the targeted window: landed in a slot of the targeted leader's window. Comple
 | main / tpu / buffered | 288 | 1728 | 1679/1728 | 1566 (91%) | 1518 | 48 | 253 | 253 | 2 | 0 | 403, -1111 | 41 |
 | main / tpu / burst | 38 | 228 | 216/228 | 216 (95%) | 216 | 0 | 36 | 36 | 0 | 0 | -221, -569 | 6 |
 | main / tpu / streamed | 77 | 462 | 462/462 | 440 (95%) | 434 | 6 | 72 | 73 | 0 | 32 | -418, -1342 | 8 |
+| main / tpu / all deliveries | 403 | 2418 | 2357/2418 | 2222 (92%) | 2168 | 54 | 361 | 362 | 2 | 0 | 384, -1342 | 55 |
 
 ## Versions
 
@@ -286,33 +324,35 @@ Share of each label's leader slots by version string, from the snapshots of the 
 
 ## Coverage per label
 
-From the latest snapshot of the main campaign (of all runs while there is none). Effective number: (sum of slots)^2 / sum of squares, over the label's validators by leader slots, and over the validators reached by trials. Reachable: share of the label's slots whose validator advertises a QUIC address that no run of the main campaign excluded. Reached: validators in buffered/shared trials of the main campaign.
+From the latest snapshot of the main campaign (of all runs while there is none). Effective number: (sum of slots)^2 / sum of squares, over the label's validators by leader slots, and over the validators reached by trials. Reachable: share of the label's slots whose validator advertises a QUIC address that no run of the main campaign excluded. Reached: validators in buffered/shared trials of the main campaign. Added after the main run: the last two columns, the leader slots held by the validators reached, as a share of all slots and of the label's (exploratory); and the two total rows.
 
-| client | validators | share of all leader slots | effective number | reachable share of its slots | validators reached | effective number reached |
-|---|---:|---:|---:|---:|---:|---:|
-| Agave | 20 | 1.1% | 4.4 | 96% | 10 | 4.2 |
-| JitoLabs | 134 | 24.9% | 17.8 | 95% | 16 | 11.5 |
-| Firedancer | 26 | 5.5% | 5.2 | 100% | 10 | 6.0 |
-| Rakurai | 9 | 1.2% | 4.0 | 94% | 7 | 3.5 |
-| AgaveBam | 353 | 34.6% | 60.3 | 100% | 13 | 11.8 |
-| FireBAM | 20 | 1.9% | 3.3 | 100% | 10 | 4.4 |
-| HarmonicAgave | 48 | 21.9% | 15.5 | 100% | 11 | 9.8 |
-| HarmonicFiredancer | 38 | 8.7% | 8.4 | 100% | 8 | 6.1 |
+| client | validators | share of all leader slots | effective number | reachable share of its slots | validators reached | effective number reached | validators reached: share of all leader slots | validators reached: share of the label's slots |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Agave | 20 | 1.1% | 4.4 | 96% | 10 | 4.2 | 0.9% | 81% |
+| JitoLabs | 134 | 24.9% | 17.8 | 95% | 16 | 11.5 | 15.4% | 62% |
+| Firedancer | 26 | 5.5% | 5.2 | 100% | 10 | 6.0 | 4.9% | 88% |
+| Rakurai | 9 | 1.2% | 4.0 | 94% | 7 | 3.5 | 1.1% | 93% |
+| AgaveBam | 353 | 34.6% | 60.3 | 100% | 13 | 11.8 | 6.4% | 19% |
+| FireBAM | 20 | 1.9% | 3.3 | 100% | 10 | 4.4 | 1.5% | 77% |
+| HarmonicAgave | 48 | 21.9% | 15.5 | 100% | 11 | 9.8 | 9.4% | 43% |
+| HarmonicFiredancer | 38 | 8.7% | 8.4 | 100% | 8 | 6.1 | 5.5% | 64% |
+| local schedulers | 189 | 32.7% | 25.9 | 96% | 43 | 20.7 | 22.2% | 68% |
+| pipelines | 459 | 67.1% | 73.8 | 100% | 42 | 27.2 | 22.8% | 34% |
 
-## Ingress: where the direct path delivered
+## Ingress: where the direct path delivered (campaign "main")
 
-BAM and Harmonic validators advertise QUIC addresses on shared gateway hosts; for them the measurement starts at the gateway, not at the validator. The pipeline family's group-level test groups their trials by these hosts, and rule-agreement intervals resample hosts.
+BAM and Harmonic validators advertise QUIC addresses on shared gateway hosts; for them the measurement starts at the gateway, not at the validator. The pipeline family's group-level test groups their trials by these hosts, and rule-agreement intervals resample hosts. (Restricted to campaign "main" after the main run; it had counted the calibration and rehearsal trials too.)
 
 | client | trials used | validators | distinct ingress hosts | trials via a shared host | most validators behind one used host |
 |---|---:|---:|---:|---:|---:|
-| Agave | 66 | 16 | 16 | 0 | 1 |
-| AgaveBam | 35 | 28 | 13 | 35 | 99 |
-| FireBAM | 34 | 14 | 7 | 33 | 100 |
-| Firedancer | 64 | 15 | 14 | 7 | 5 |
-| HarmonicAgave | 35 | 19 | 5 | 35 | 38 |
-| HarmonicFiredancer | 34 | 16 | 4 | 34 | 38 |
-| JitoLabs | 64 | 24 | 24 | 0 | 1 |
-| Rakurai | 64 | 8 | 8 | 0 | 1 |
+| Agave | 61 | 16 | 16 | 0 | 1 |
+| AgaveBam | 30 | 24 | 12 | 30 | 99 |
+| FireBAM | 31 | 14 | 7 | 30 | 99 |
+| Firedancer | 60 | 14 | 13 | 7 | 5 |
+| HarmonicAgave | 30 | 16 | 5 | 30 | 38 |
+| HarmonicFiredancer | 30 | 15 | 4 | 30 | 38 |
+| JitoLabs | 60 | 24 | 24 | 0 | 1 |
+| Rakurai | 60 | 8 | 8 | 0 | 1 |
 
 ## Where our transactions stand in their blocks (direct path)
 

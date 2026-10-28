@@ -1,47 +1,62 @@
 # Report: how Solana validators order transactions inside a block
 
 **Status: final.** The main run was campaign `main`, on 2026-10-27 in epoch 1069, six days after Alpenglow. Its
-analysis plan was frozen at the git tag `prereg-main`:
-- commit `9221dc9`, 2026-10-27 14:34:07 UTC;
-- five minutes before the first trial of the campaign (14:39:06 UTC).
+analysis plan was frozen at the git tag `prereg-main` before the first trial:
+- commit `9221dc9`, dated 2026-10-27 14:34:07 UTC by its author;
+- GitHub started CI for that commit at 14:34:11 UTC
+  ([run](https://github.com/bobxx22/solana-ordering/actions/runs/40522357305)), a time the author does not set;
+- the campaign's first run started at 14:39:06 UTC ("Runs"). Its first transactions landed in slot 462 107 436, whose
+  block time on chain is 14:39:08 UTC.
 
 **Where the numbers come from.**
-- Every result is copied from [`data/mainnet-beta/results/results.md`](data/mainnet-beta/results/results.md), which
-  `node src/cli.ts analyze` regenerates from the committed raw data. The section it comes from is quoted in double
-  quotes.
-- Spend comes from [`ledger.jsonl`](data/mainnet-beta/ledger.jsonl).
-- The chain checks come from [`verify.json`](data/mainnet-beta/verify.json) and
-  [`verify/`](data/mainnet-beta/verify/).
-- One section of `results.md` was added after the data, and is marked "exploratory" there and here.
+- Results are copied from [`results.md`](data/mainnet-beta/results/results.md), and trial by trial from
+  [`orders.md`](data/mainnet-beta/results/orders.md). `node src/cli.ts analyze` regenerates both from the committed raw
+  data. The section a number comes from is quoted in double quotes.
+- Spend comes from [`ledger.jsonl`](data/mainnet-beta/ledger.jsonl). Wallet balances come from transactions on chain,
+  named where they are used.
+- The chain checks come from [`verify.json`](data/mainnet-beta/verify.json), [`verify/`](data/mainnet-beta/verify/)
+  and [`verify-every-transaction.json`](data/mainnet-beta/verify-every-transaction.json).
+- A few numbers add up rows of one table, and show the sum.
+- Sections of `results.md` added after the data are marked "exploratory" there and here. "The plan" lists every
+  addition.
 
 ## The answer
 
-**Local schedulers.** These are Agave, JitoLabs (Jito-Agave), Firedancer and Rakurai, together 32.7% of mainnet's
-leader slots ("Coverage per label").
-- Transactions that wait in the leader's buffer are ordered by **reward per requested cost unit**.
-  - Reward is the priority fee plus half of the base fee.
-  - Cost is the scheduling cost computed from the *requested* compute-unit limit and the *requested*
-    loaded-accounts-data limit.
-- This is the formula in the deployed source of Agave 4.3.2 and Firedancer 26.10 (`docs/schedulers.md`).
-- All twelve pre-registered tests hold. 107 of their 120 trials landed in the exact predicted order of all six
-  transactions.
+**The six roles** (terms: README, "Terms"). Each trial sends six transactions whose fees make the candidate rules
+disagree:
+- A and E, identical twins: 4 000 lamports of priority fee for a 1 000 compute-unit limit;
+- B: 10 000 lamports for 40 000 compute units;
+- C: no priority fee;
+- D: 9 000 lamports for 6 000 compute units;
+- F: A with a 64 MiB loaded-data limit.
 
-**Validators that order differently.** The exceptions are specific validators, not noise.
-- Three of the 16 JitoLabs validators we reached ordered all 7 of their trials by **total priority fee** instead.
-- One of the 10 Firedancer validators we reached departed from the order in 6 of its 10 trials.
+By **reward per requested cost unit**, the formula in the deployed source of Agave 4.3.2 and Firedancer 26.10
+(`docs/schedulers.md`), they rank A = E, D, C, F, B.
+- Reward is the priority fee plus half of the base fee.
+- Cost is the scheduling cost computed from the *requested* compute-unit limit and the *requested*
+  loaded-accounts-data limit.
+- By total priority fee they would rank B, D, A = E = F, C.
 
-**Pipelines.** These are the BAM and Harmonic labels, 67.1% of the slots.
-- BAM (AgaveBam, FireBAM) ordered our transactions exactly like the clients' schedulers: 31 of 31 trials in exact
-  order.
-- Harmonic (HarmonicAgave, HarmonicFiredancer) ranks by a rule of its own:
-  - the high-fee roles came first and D came before C, as reward per cost predicts;
-  - but F, the transaction that requests a 64 MiB loaded-data limit, came **last in all 30 trials**;
-  - and C and B came in no stable order.
+Three contrasts each isolate one term of that formula:
+- **C before B** and **D before C** together place the share of the base fee counted as reward between 0.12 and
+  0.84. The source uses 0.5.
+- **A,E before F** shows that the requested loaded-data limit enters the cost.
+- **A,E before C** is the positive control.
 
-**Arrival order.** It decides only what the scheduler cannot rank.
-- Transactions streamed 30 ms apart into a block being built land in send order, whatever their fees.
-- Between two transactions of equal priority, Agave 4.3.2 is indifferent to arrival. Firedancer puts the **later**
-  arrival first, which its source code explains.
+### Tested as pre-registered
+
+**Local schedulers.** Agave, JitoLabs (Jito-Agave), Firedancer and Rakurai: 32.7% of mainnet's leader slots, of which
+the validators we reached hold 22.2% ("Coverage per label").
+- Transactions that wait in the leader's buffer are ordered by reward per requested cost unit.
+- All twelve pre-registered tests hold: in every label, each contrast landed in the predicted order more often than
+  chance allows, at Holm p ≤ 0.003.
+- 107 of the 120 trials landed in the exact predicted order of all six ("Exact orders", local schedulers).
+- Agave and Rakurai each rest on about four effective validators. Every conclusion is about the validators reached.
+
+**Pipelines.** The BAM and Harmonic labels: 67.1% of the slots, of which the validators reached hold 22.8%.
+- BAM (AgaveBam, FireBAM) ordered our transactions like the clients' schedulers: 31 of 31 trials in the exact order.
+- Harmonic (HarmonicAgave, HarmonicFiredancer): A,E before F and D before C hold, C before B is "no stable order",
+  and no trial landed in the exact order.
 
 | label | share of leader slots | primary trials | control: A,E before C | A,E before F | C before B | D before C | exact order of all six |
 |---|---:|---:|---|---|---|---|---:|
@@ -58,18 +73,28 @@ The table reads as follows:
 - **Shares.** The per-trial share of the contrast's pairs that landed in the named order, averaged over trials, from
   "Primary" and "Pipelines".
 - **Verdicts.** By the pre-registered rule: a one-sided exact test against chance, Holm-adjusted within each family
-  of twelve.
+  of twelve. "Holds" means more often than chance; the last column shows how often the whole order held.
 - **Slot shares.** From "Coverage per label".
 - **Exact order.** From "Exact orders".
 
-The predicted order is A E D C F B, with A and E either way round.
+![Trials in the exact predicted order of all six, by label: Agave 30 of 30, JitoLabs 23 of 30, Firedancer 24 of 30, Rakurai 30 of 30, AgaveBam 15 of 15, FireBAM 16 of 16, HarmonicAgave 0 of 15, HarmonicFiredancer 0 of 15](data/mainnet-beta/results/exact-orders.svg)
 
-**What the roles test.** A and E pay 4 000 lamports of priority fee; B 10 000; C nothing; D 9 000; F the same as A
-but with a 64 MiB loaded-data limit (README, "The question and the experiment"). From that:
-- **C before B** and **D before C** together place the share of the base fee counted as reward between 0.12 and
-  0.84. The source uses 0.5.
-- **A,E before F** shows that the requested loaded-data limit enters the cost.
-- **A,E before C** is the positive control.
+### Found after the data (exploratory)
+
+These come from tables added after the main run ("The plan"). They locate and describe; they test nothing.
+- **Three JitoLabs validators order by total fee.** All 7 trials (2 + 4 + 1) of 7cVfgArC, EvnRmnMr and C8Bey3LK
+  landed in the exact total-fee order. The other 13 JitoLabs validators we reached: 23 of 23 in the reward/cost order.
+- **One Firedancer validator departs.** JD549Hsb: 4 of 10 trials in the exact order. The other 9: 20 of 20.
+- **Harmonic.** F came last in all 30 trials, and B and C either way round. Each of these orders is the reward/cost
+  order for a base-fee share between 0.11 and 0.19 instead of 0.5. The design cannot tell that from a cost formula
+  of Harmonic's own (section 6).
+- **Arrival order** decides when the leader does not hold the transactions together, and between equal priorities.
+  - Streamed 30 ms apart into a block being built, transactions landed in send order: 97–99% of pairs, against
+    48–49% when buffered ("Send order against landing order").
+  - Of two equal priorities, Firedancer put the later arrival first in 85% of trials, consistent with its source.
+    Agave 4.3.2 showed no preference.
+
+![Pairs that landed in the order they were sent, local schedulers, by cell: buffered/shared 49%, buffered/independent 48%, burst/shared 76%, streamed/shared 97%, streamed/independent 99%; 50% is chance](data/mainnet-beta/results/send-order.svg)
 
 ## How to check
 
@@ -82,10 +107,35 @@ This command:
 - checks a sample of 120 blocks against the chain through public endpoints;
 - makes one dry-run trial.
 
-It needs no keys and sends nothing.
+It needs no keys and sends nothing. GitHub Actions runs it on every push
+([runs on `main`](https://github.com/bobxx22/solana-ordering/actions/workflows/ci.yml?query=branch%3Amain)): the job
+`docker` runs the offline part in the image, and the job `reproduce-online` runs the whole command.
 
-`node src/cli.ts verify` checks every block. `git log prereg-main` shows the plan as frozen; the run directories are
-named by their UTC start.
+- `node src/cli.ts verify all --sample all` checks every landed transaction whole. Its committed result is
+  `verify-every-transaction.json`.
+- `git log prereg-main` shows the plan as frozen. The run directories are named by their UTC start.
+
+**One trial by hand.** Trial 249 of session 2 went to the Agave 4.3.2 validator 5Us18hLZ, for its window from slot
+462 133 072 (`orders.md`). It was sent in the order D A E C B F. The six landed as the first six transactions of that
+slot's block:
+
+| index | role | priority fee, lamports | signature |
+|---:|---|---:|---|
+| 0 | E | 4 000 | [4uHMPzNZ…](https://explorer.solana.com/tx/4uHMPzNZf6RLdBrCewC5u16iLsedCA1YHAX3p62aKrFpQxh7PW4JchVSaHJJwgmy5BCeosUX1nD6EhL4vbR2ia9Y) |
+| 1 | A | 4 000 | [3VQBhCSe…](https://explorer.solana.com/tx/3VQBhCSeQkrsN8wYvwMC8BGBqgtgDkuKgBfSxVU7DznnfzoCtFWGZzW76TMEYEgYmSDMx71YZoPEV4c2M2eW2vrf) |
+| 2 | D | 9 000 | [4CkmLSe4…](https://explorer.solana.com/tx/4CkmLSe4NyfNiZBqm38FWp2xMTzcocpxohoWXBSmFE6znX6foUa24WtUdfRAD7MLaT6UBzrrQs8tMLB1EfdthvWK) |
+| 3 | C | 0 | [2qa4pgik…](https://explorer.solana.com/tx/2qa4pgiknj68vZiB5fvGAXzLkjXpfxp5TBXVhqMvnTkVoTMGKgkPCmYeqJ8yApHNNAEQ2GDgJLekDpbTHK2mC3ct) |
+| 4 | F | 4 000 | [48QFUnnB…](https://explorer.solana.com/tx/48QFUnnB9j6zMPkekJY1Ww5Gi6NRiYpfAkZHP2V8C3X6mD1Hq12JBaAzLTdXoKxXNVNHoFaWB6NPVVhicVukNmka) |
+| 5 | B | 10 000 | [52C1m8zN…](https://explorer.solana.com/tx/52C1m8zN344QNGQTXNQkt1rwrdPv1NW1dJ78q6Cx9f2Uj44Q9GvvRhgeaYtqzZjG93E1HXvK8EwxYd6YzUKdzDS5) |
+
+The block's signatures, in order, from a public endpoint:
+
+```bash
+curl -s https://api.mainnet-beta.solana.com -H 'content-type: application/json' -d '{"jsonrpc":"2.0","id":1,"method":"getBlock","params":[462133072,{"transactionDetails":"signatures","rewards":false,"maxSupportedTransactionVersion":1}]}'
+```
+
+On each transaction's explorer page the ComputeBudget instructions show its role. A and E have the same instructions;
+F differs from them only in `SetLoadedAccountsDataSizeLimit`.
 
 ## Measurements
 
@@ -107,25 +157,32 @@ All times UTC. Every slot is after Alpenglow's activation (slot 459 653 000, 202
 | 2026-10-27 19:45 | sweep: the sub-payers' balances returned to the main wallet | RPC | `ledger.jsonl` | – | 0.000075 |
 | | **total** | | | | **0.025805** |
 
-**Wallets.** The ledger and the chain agree to the lamport (`node src/cli.ts status` after the sweep):
-- the main wallet holds 0.033087 SOL and the sub-payers nothing;
-- this is the 0.058892 SOL the wallets received, less the ledger's 0.025805 SOL;
-- the main run cost 0.022665 SOL, sweep included, under the 0.05 SOL cap in code.
+**Wallets.** The ledger and the chain agree to the lamport:
+- the main wallet (`mainWallet` in every `run.json`) received a single transfer of 0.058892 SOL, on 2026-10-24 at
+  17:25 UTC
+  ([3Vo8NW5j…](https://explorer.solana.com/tx/3Vo8NW5jEpuGfd4LaZgN1vCv7B5Y1Q99Cu8PCewECoPCeT4ReKtATLGnib6x132xeLWsVAkPQHhGjwAHraepqZhg));
+- after the last sweep transaction
+  ([2jZGDs4H…](https://explorer.solana.com/tx/2jZGDs4HgMYcnQ8duxVrvoN3XmvKssvgzYH99RF8WN3kNmRPnFyhgEDGS353CLq6XyXpg8o3GxyRCiqt4Ev4ppJf),
+  2026-10-27 19:45 UTC, in the ledger) it held 0.033087 SOL: the 0.058892 SOL less the ledger's 0.025805 SOL. Both
+  balances are in those transactions' metadata on chain;
+- the main run cost 0.022665 SOL (0.001769 + 0.020821 + 0.000075), sweep included, under the 0.05 SOL cap in code.
 
 **Chain checks.** All went through `api.mainnet-beta.solana.com`, which keeps the whole history, with PublicNode as a
 fallback. 0 problems in each.
 
 | check | when | runs | landed transactions | blocks | leader confirmed by the schedule | whole transactions | rows of whole blocks rebuilt | unlanded, absent from the chain | probes |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|
-| `verify/2026-10-27T14-39-05Z.json` | 2026-10-27 15:32 | 1 | 174 | 31 | 31 | 60 | 1 227 | 6 of 6 | – |
-| `verify/2026-10-27T15-32-51Z.json` | 2026-10-27 18:50 | 1 | 2 048 | 406 | 406 | 60 | 1 438 | 190 of 190 | – |
-| `verify.json` | 2026-10-27 21:05 | 7 | 2 501 | 507 | 507 | 60 | 1 160 | 220 of 220 | 30 of 30 |
+| `verify/2026-10-27T14-39-05Z.json` | 2026-10-27 15:32 | 1 | 174 | 31 | 31 | 60 (sample) | 1 227 (3 blocks) | 6 of 6 | – |
+| `verify/2026-10-27T15-32-51Z.json` | 2026-10-27 18:50 | 1 | 2 048 | 406 | 406 | 60 (sample) | 1 438 (3 blocks) | 190 of 190 | – |
+| `verify.json` | 2026-10-27 21:05 | 7 | 2 501 | 507 | 507 | 60 (sample) | 1 160 (3 blocks) | 220 of 220 | 30 of 30 |
 
 What each check verifies:
 - every landed transaction sits at its recorded index in its recorded block;
-- each block's leader against the schedule;
-- whole transactions for payer, fee, anchor and role parameters;
-- the recorded rows of everyone else's transactions against the chain;
+- each block's leader against the schedule, where an endpoint still serves it, otherwise against the block's
+  fee-reward recipient;
+- whole transactions for payer, fee, anchor and role parameters: a sample of 60 in the first three checks, every
+  landed transaction in the last;
+- the recorded rows of everyone else's transactions in a sample of whole blocks;
 - every unlanded transaction is unknown to the chain.
 
 The per-session files were made while epoch 1069's leader schedule was still served (`docs/RUNBOOK.md`, step 7).
@@ -143,36 +200,42 @@ The per-session files were made while epoch 1069's leader schedule was still ser
   - a JitoLabs and a Rakurai validator behind port 11228;
   - an Agave validator.
 
-**Coverage.** "Coverage per label", from the main run's snapshot:
+**Coverage.** "Coverage per label", from the main run's snapshot. The last two columns are exploratory:
 
-| label | validators | share of all leader slots | effective number | reachable share of its slots | validators reached | effective number reached |
-|---|---:|---:|---:|---:|---:|---:|
-| Agave | 20 | 1.1% | 4.4 | 96% | 10 | 4.2 |
-| JitoLabs | 134 | 24.9% | 17.8 | 95% | 16 | 11.5 |
-| Firedancer | 26 | 5.5% | 5.2 | 100% | 10 | 6.0 |
-| Rakurai | 9 | 1.2% | 4.0 | 94% | 7 | 3.5 |
-| AgaveBam | 353 | 34.6% | 60.3 | 100% | 13 | 11.8 |
-| FireBAM | 20 | 1.9% | 3.3 | 100% | 10 | 4.4 |
-| HarmonicAgave | 48 | 21.9% | 15.5 | 100% | 11 | 9.8 |
-| HarmonicFiredancer | 38 | 8.7% | 8.4 | 100% | 8 | 6.1 |
+| label | validators | share of all leader slots | effective number | reachable share of its slots | validators reached | effective number reached | reached: share of all slots | reached: share of the label's slots |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Agave | 20 | 1.1% | 4.4 | 96% | 10 | 4.2 | 0.9% | 81% |
+| JitoLabs | 134 | 24.9% | 17.8 | 95% | 16 | 11.5 | 15.4% | 62% |
+| Firedancer | 26 | 5.5% | 5.2 | 100% | 10 | 6.0 | 4.9% | 88% |
+| Rakurai | 9 | 1.2% | 4.0 | 94% | 7 | 3.5 | 1.1% | 93% |
+| AgaveBam | 353 | 34.6% | 60.3 | 100% | 13 | 11.8 | 6.4% | 19% |
+| FireBAM | 20 | 1.9% | 3.3 | 100% | 10 | 4.4 | 1.5% | 77% |
+| HarmonicAgave | 48 | 21.9% | 15.5 | 100% | 11 | 9.8 | 9.4% | 43% |
+| HarmonicFiredancer | 38 | 8.7% | 8.4 | 100% | 8 | 6.1 | 5.5% | 64% |
+| local schedulers | 189 | 32.7% | 25.9 | 96% | 43 | 20.7 | 22.2% | 68% |
+| pipelines | 459 | 67.1% | 73.8 | 100% | 42 | 27.2 | 22.8% | 34% |
 
 Small labels are concentrated in few operators.
-- **Agave.** About four effective validators. We reached 10, with about the same concentration (4.2).
-- **Rakurai.** We reached 7 of its 9 validators.
+- **Agave.** About four effective validators. We reached 10, with about the same concentration (4.2), holding 81% of
+  the label's slots.
+- **Rakurai.** We reached 7 of its 9 validators, with 93% of its slots. One of them took 40% of the primary trials
+  ("Primary").
+- **The large labels.** The validators reached hold 62% of JitoLabs' slots, but only 19% of AgaveBam's.
 
 Every conclusion below is about the validators reached.
 
 **Versions in the primary trials** ("Versions"):
 - Agave: 4.3.2 ×23, 4.5.0-alpha.2 ×5, 4.4.0-rc.1 ×2. All three versions have the same priority formula; v4.4.0-rc.1
   was read after the run (`docs/schedulers.md`).
-- Firedancer: 26.10.4 ×27, and ×3 for the unidentified build "0.1.1".
+- Firedancer: 26.10.4 ×27, and ×3 for the unidentified build "0.1.1" (9% of the label's slots). All three of those
+  trials went to one validator, FBbqKvwL (`orders.md`).
 - Every other label: a single version (4.3.2 or 26.10.4).
 
-**Ingress** ("Ingress"):
-- Every Agave, JitoLabs and Rakurai trial went to the validator's own address. 7 of the 64 Firedancer trials went
+**Ingress** ("Ingress", campaign `main`):
+- Every Agave, JitoLabs and Rakurai trial went to the validator's own address. 7 of the 60 Firedancer trials went
   through a host shared by up to 5 validators.
-- The pipelines' trials went through shared gateway hosts: up to 99 AgaveBam and 100 FireBAM validators behind one
-  host, and 4–5 hosts for all Harmonic trials.
+- The pipelines' trials went through shared gateway hosts: up to 99 AgaveBam or FireBAM validators behind one host,
+  and 4–5 hosts for all Harmonic trials.
 
 ### 2. Delivery and attrition
 
@@ -183,6 +246,7 @@ Every conclusion below is about the validators reached.
 | buffered | 288 | 1 728 | 1 679 | 1 566 (91%) | 1 518 | 48 | 253 | 403, −1 111 | 41 |
 | burst | 38 | 228 | 216 | 216 (95%) | 216 | 0 | 36 | −221, −569 | 6 |
 | streamed | 77 | 462 | 462 | 440 (95%) | 434 | 6 | 72 | −418, −1 342 | 8 |
+| all deliveries | 403 | 2 418 | 2 357 | 2 222 (92%) | 2 168 | 54 | 361 | 384, −1 342 | 55 |
 
 - **Complete trials.** 361 of 403 trials were complete.
   - The run counted 360. The trial in flight at the first power loss was never checked by the run, but it is in the
@@ -210,9 +274,13 @@ each local label, 15 or 16 for each pipeline. Every label we tested orders by fe
 | Firedancer | 100% [89–100%], p < 0.001 | 90% [77–100%], p < 0.001 | 100% [89–100%], p < 0.001 |
 | Rakurai | 100% [89–100%], p < 0.001 | 100% [89–100%], p < 0.001 | 100% [89–100%], p < 0.001 |
 
-**All twelve hold.** The pre-registered reading for each of the four labels:
+**All twelve hold**: each contrast landed in the predicted order more often than chance. The pre-registered reading
+for each of the four labels:
 - consistent with reward per requested cost, the requested loaded-data limit included;
 - with a base-fee share between 0.12 and 0.84, which contains the deployed source's 0.5.
+
+"Holds" is a statement about the trials, not about every validator: JitoLabs holds C before B at 77%, while three of
+its validators order the other way (section 6).
 
 **What this establishes.**
 - **The cost.** It is computed from what a transaction *requests*, not what it uses.
@@ -223,8 +291,8 @@ each local label, 15 or 16 for each pipeline. Every label we tested orders by fe
 - **The base fee.**
   - C pays no priority fee, yet it ranked above B, which pays 10 000 lamports for 40 000 compute units: in 77–100% of
     trials, depending on the label.
-  - That happens only if the leader's half of the base fee counts as reward.
-  - D before C caps that share below the whole base fee.
+  - That happens only if more than 12% of the base fee counts as reward. The source counts half.
+  - D before C caps that share below 84%.
 - **The rules this rejects as the rule of these labels** (section 6 shows three JitoLabs validators that follow one of
   them):
   - priority fee per compute unit (price);
@@ -232,7 +300,8 @@ each local label, 15 or 16 for each pipeline. Every label we tested orders by fe
   - total priority fee;
   - "no order".
 
-  Each of them predicts the opposite of at least one contrast that held.
+  Each of the first three predicts the opposite of at least one contrast that held. "No order" predicts chance level
+  for all of them.
 
 ### 5. Pipelines: BAM and Harmonic
 
@@ -248,14 +317,14 @@ each local label, 15 or 16 for each pipeline. Every label we tested orders by fe
 **BAM.** The order our transactions got through the BAM pipelines is the clients' reward/cost order, in every one of
 31 trials.
 
-**Harmonic.** C before B is "no stable order", not "reversed": both intervals reach above 0.5. The pre-registered
-reading names no rule for it. Beyond the test, descriptively:
-- "Exact orders": B landed before F in all 15 trials of each Harmonic label ("F<B reversed in 15"). No reward/cost
-  scheduler does that, since F out-ranks B by reward per cost.
-- "Rule agreement: buffered/shared": for both Harmonic labels the priority fee per cost (gamma 0.81 and 0.80) agrees
-  better than reward/cost (0.76 and 0.77).
+**Harmonic.**
+- C before B is "no stable order", not "reversed": both intervals reach above 0.5. The pre-registered reading names
+  no rule for it.
+- A,E before F and D before C hold, as for BAM.
+- "Rule agreement: buffered/shared" does not separate the rules here. Reward/cost gives a mean gamma of 0.76 and 0.77,
+  priority fee per cost 0.81 and 0.80, with overlapping intervals.
 
-Section 6 shows the orders themselves.
+Section 6 reads the orders themselves.
 
 ### 6. Exact orders, and where the deviations are (exploratory)
 
@@ -272,39 +341,71 @@ that is 2 in 720.
 | FireBAM | 16 of 16 |
 | HarmonicAgave | 0 of 15 |
 | HarmonicFiredancer | 0 of 15 |
+| local schedulers | 107 of 120 |
+| BAM pipelines | 31 of 31 |
+| Harmonic pipelines | 0 of 30 |
 
-The section "Deviations from the reward/cost order, validator by validator (exploratory)" was added to `analyze` after
-the main run, once the table above showed how few deviations there were. It is outside the pre-registered plan and
-tests nothing, but it locates every deviation:
+The rest of this section reads two tables added to `analyze` after the main run, once the table above showed how few
+deviations there were: "Deviations from the reward/cost order, validator by validator" and "JitoLabs by advertised
+QUIC port". They are outside the pre-registered plan and test nothing, but they locate every deviation.
 
-- **JitoLabs.** The deviations are three validators: 7cVfgArC, EvnRmnMr and C8Bey3LK, all reporting JitoLabs 4.3.2.
-  - All 7 of their trials landed in the exact **total-fee** order: B (10 000 lamports), D (9 000), then A, E and F
-    (4 000 each) in any order, C (0) last.
+- **JitoLabs.** The deviations are three validators, all reporting JitoLabs 4.3.2.
+  - All 7 of their trials (7cVfgArC 2, EvnRmnMr 4, C8Bey3LK 1) landed in the exact **total-fee** order: B (10 000
+    lamports), D (9 000), then A, E and F (4 000 each) in any order, C (0) last.
   - That is the order the "total priority fee" candidate predicts, and the source does not.
   - The other 13 JitoLabs validators we reached: 23 of 23 trials in the exact reward/cost order.
+  - **The relayer port.** EvnRmnMr advertises port 11228, which most likely belongs to a Jito relayer in front of the
+    validator (README, "Shared gateways"). For EvnRmnMr the design does not separate the validator from a relayer.
+    But the other 5 validators reached on that port landed their 7 trials in the reward/cost order (port 11228: 6
+    validators, 11 trials, 7 reward/cost, 4 total fee). 7cVfgArC (port 8002) and C8Bey3LK (port 8022) advertise
+    ordinary ports.
+  - **Not late delivery.** The sensitivity filter of section 8 keeps 3 of the 7 trials (2 + 0 + 1). All 4 of
+    EvnRmnMr's reconnected before sending (`orders.md`). The 3 that remain did not, were acknowledged at least
+    100 ms before the window, and still came out in total-fee order.
+  - C8Bey3LK's burst trial, the only other trial of the three with all six in one shared burst, also landed in
+    total-fee order: BDAFEC (`orders.md`).
   - Within one client label and version, some operators order their blocks differently. Gossip cannot tell which
     code they run.
-  - The order is not an effect of late delivery: 3 of the 7 trials pass the sensitivity filter of section 8.
 - **Firedancer.** One validator, JD549Hsb (26.10.4): 4 of its 10 trials in the exact order.
   - In the other 6, B came before F, and in 3 of those also before C.
+  - Those six orders are also reward/cost orders, for a base-fee share below 0.19, like Harmonic's (next item).
   - The other 9 Firedancer validators we reached: 20 of 20 exact.
 - **Harmonic.** All 30 trials, on 19 validators, landed in one of four orders: AEDBCF, AEDCBF, EADBCF, EADCBF.
-  - The high-fee roles A, E and D always came first, then B and C either way round, then F **last**.
-  - The same validator produced both B-C orders, so the alternation is not a per-operator setting.
-  - F, with its 64 MiB loaded-data request, is pushed below everything else, far more than the clients' cost formula
-    does.
-  - One reading, untested: Harmonic blocks come from external builders, which may rank by their own formulas from
-    slot to slot, and all of them penalize the requested loaded-data limit heavily.
+  - A, E and D always came first, then B and C either way round, then F **last**. The same validator produced both
+    B–C orders.
+  - Each of the four is the reward/cost order for a base-fee share below the source's 0.5. B before C needs a share
+    between 0.114 and 0.120; C before B, a share between 0.120 and 0.193 (`docs/schedulers.md`, "What the contrasts
+    identify").
+  - A heavier penalty on F's loaded-data request alone, at a share of 0.5, would put C before B in every trial
+    (reward/cost 1.07 against 0.30). Harmonic did that in 33% and 40% of trials.
+  - So Harmonic ranks like reward/cost with a smaller base-fee share that changes from block to block, or by a cost
+    formula of its own. F's position alone does not show a heavier penalty, and the design does not separate the two.
+  - One reading, untested: Harmonic blocks come from external builders, which may each count fees their own way.
 
-### 7. Arrival order: the other cells and the twins
+### 7. Arrival order: the cells and the twins
 
-**Streamed 30 ms apart** ("Secondary: streamed", local labels):
+**Send order, cell by cell** ("Send order against landing order, by cell", exploratory). The send order is a fresh
+random permutation in every trial, so an order unrelated to sending puts half the pairs in send order:
+
+| cell | local schedulers: pairs in send order | local schedulers: trials entirely in send order | BAM, Harmonic: pairs in send order |
+|---|---:|---:|---:|
+| buffered/shared | 49% | 0 of 120 | 46%, 48% |
+| buffered/independent | 48% | 0 of 48 | 48%, 48% |
+| burst/shared | 76% | 1 of 24 | 47%, 39% |
+| streamed/shared | 97% | 21 of 25 | 99%, 100% |
+| streamed/independent | 99% | 22 of 24 | 96%, 97% |
+
+- **Buffered.** The send order leaves no trace: the scheduler ranks.
+- **Streamed 30 ms apart** into a block being built: nearly every pair lands in send order, for every label. A leader
+  that is already producing schedules each transaction as it arrives.
+- **A burst one slot into the window** sits in between for the local schedulers (76%). The pipelines rank it (47% and
+  39%, 6 trials each).
+
+**Streamed, the contrasts** ("Secondary: streamed", local labels):
 - The twin sent first landed first in 96% of trials (23 of 24 in each mode).
 - The fee contrasts sit at chance level: 32% to 71%.
-- A leader that is already producing schedules each transaction as it arrives. In that regime arrival order, not fee,
-  sets the order.
 
-**Burst one slot into the window** ("Secondary: burst", local labels, 24 trials):
+**Burst, the contrasts** ("Secondary: burst", local labels, 24 trials):
 - A,E before F 56%, C before B 58%.
 - The twin sent first landed first in 83%.
 - Six transactions arriving together while the block is being produced are ranked only partly. Some are scheduled
@@ -327,14 +428,16 @@ breaks ties", buffered/shared). The share is how often the twin sent first lande
 | Firedancer 26.10.3-4 | 27 | **15% [6–32%]** | newest first (read after the run) |
 | Rakurai | 30 | 53% [36–70%] | source not read |
 
-**Firedancer ties.**
+**Firedancer ties** (the source was read after the run).
 - Before the run we expected no particular order between Firedancer twins.
-- The data showed the twin sent second landing first in 85% of trials. Reading the source afterwards explains it
-  (`docs/schedulers.md`, "Read after the main run"):
-  - Firedancer's treap places a newly inserted transaction of equal priority after the existing ones;
-  - pack schedules from the best end.
-- Of two equally ranked transactions, the newer one goes first. In independent mode the same share is 8% of 12
-  ("Secondary: buffered/independent").
+- The data showed the twin sent second landing first in 85% of trials.
+- That is consistent with Firedancer's source (`docs/schedulers.md`, "Read after the main run"). Its treap places a
+  newly inserted transaction of equal priority after the existing ones, and pack schedules from the best end, so the
+  newer one goes first.
+- The rule is about the order in which transactions enter pack. Between QUIC and pack sit the signature-verification
+  and dedup stages, so that order need not be the send order. That may be why 4 of the 27 trials went the other way,
+  on four different validators, none of which had reconnected (`orders.md`). We did not test it.
+- In independent mode the same share is 8% of 12 ("Secondary: buffered/independent").
 
 ### 8. Robustness
 
@@ -358,8 +461,7 @@ breaks ties", buffered/shared). The share is how often the twin sent first lande
 under-100 ms arrival margin, or ran on a clock other than `firstShred`.
 - Agave keeps 29 trials, JitoLabs 20, Firedancer and Rakurai 30. Every contrast keeps p ≤ 0.001.
 - JitoLabs rises to 88% (A,E before F) and 85% (C before B), because the filter drops 4 of the 7 total-fee trials of
-  section 6. The arithmetic: 77% of 30 trials is 23 with C first, so 7 with B first, all of them total-fee trials;
-  85% of the 20 kept is 17, so 3 remain.
+  section 6, all of them EvnRmnMr's ("Deviations", kept by the sensitivity filter).
 - The 3 that remain reconnected nowhere and were acknowledged at least 100 ms before the window, yet still came out
   in total-fee order. That order is the validators' own, not an effect of late delivery.
 
@@ -399,10 +501,15 @@ under-100 ms arrival margin, or ran on a clock other than `firstShred`.
   a different order. We did not measure it.
 - **Inside the pipelines.** For BAM and Harmonic, we cannot tell the sequencer or builder from the validator. Only the
   pipeline as a whole is measured.
+- **Harmonic's rule.** Its orders fit reward/cost with a smaller base-fee share; we cannot tell that from a cost
+  formula of its own.
 - **The exact base-fee share.** The contrasts bracket it (0.12–0.84); they do not pin it to 0.5.
 - **Why some validators differ.** The three total-fee JitoLabs validators, Firedancer JD549Hsb and the "0.1.1" build:
-  we see what they do, not what code they run. Client labels and versions are what validators report in gossip.
-- **Validators we did not reach.** Coverage is in section 1. Agave and Rakurai are small, concentrated labels.
+  we see what they do, not what code they run. Client labels and versions are what validators report in gossip. For
+  EvnRmnMr we cannot tell the validator from a relayer in front of it.
+- **Validators we did not reach.** The validators reached hold 22.2% of mainnet's leader slots through the local
+  labels and 22.8% through the pipelines; AgaveBam is the least covered (19% of its slots). Agave and Rakurai are
+  small, concentrated labels.
 - **Other times.** One day, one epoch (1069). Schedulers change with releases; the pre-releases already break ties
   differently.
 - **Arrival inside the leader.** The QUIC acknowledgement proves delivery, not when each transaction reached the
@@ -415,8 +522,9 @@ under-100 ms arrival margin, or ran on a clock other than `firstShred`.
 | what | how we found it | what we did |
 |---|---|---|
 | The operator's computer lost power after the 30th trial of session 1 (the last line of its `run.log` is 14:42:46). The last trial was never landing-checked, 6 reservations stayed open, the ledger lock stayed in place, and collection did not run. | The run stopped. | `collect all` at 15:29 settled the 6 open reservations, and found the stale lock on the same host and took it over. Session 2 continued the campaign at 15:32. The unchecked trial is in the data but was never counted towards its quota, so FireBAM has 16 primary trials. |
-| The chain check of session 2 was interrupted twice: by an operator time limit and by a second power loss. | Its file was missing. | Rerun at 18:28–18:50, still inside epoch 1069: all 406 leaders were confirmed by the schedule. |
-| The full check first reported 196 of 220 unlanded transactions as checked. A history search for a signature the chain does not know takes about 1.6 s on the public endpoint, so a request for all 220 overran the client's 30 s timeout. `verify` counted the rest as unchecked, as designed, not as absent. | `verify` summary. | Requests of 10 signatures. The rerun checked 220 of 220. |
+| The runbook (step 7) commits each session's data before the next session starts. Session 1's data were collected and checked first (15:29–15:32), but committed at 15:49 (`2f230f3`), after session 2 had started at 15:32. | `git log` against "Runs". | Reported here. Session 2 started from what `collect` had written; nothing was edited by hand. |
+| The chain check of session 2 was interrupted twice: by an operator time limit and by a second power loss. | Its file was missing. | Rerun, finished at 18:50, still inside epoch 1069: all 406 leaders were confirmed by the schedule. |
+| The full check first left part of the 220 unlanded transactions unchecked. A history search for a signature the chain does not know is slow on the public endpoint, so one request for all 220 overran the client's 30 s timeout. `verify` counted them as unchecked, as designed, not as absent. | `verify` summary. | Requests of 10 signatures (`src/verify.ts`). The rerun checked 220 of 220. |
 | Three addresses never landed anything and were excluded, each after two failures in a row: a JitoLabs and a Rakurai validator behind port 11228, and an Agave validator. | `events.jsonl`, `exclude`. | Reported as the reachable share of each label: Agave 96%, JitoLabs 95%, Rakurai 94%. |
 | 41 of 288 buffered trials reconnected to the leader just before sending; some bursts were acknowledged after the window had opened. | "Delivery". | The pre-registered sensitivity analysis leaves them out (section 8). |
 | Agave 4.4.0-rc.1, a version whose source had not been read, appeared in the snapshot (2 primary trials). | "Versions". | Read after the run: same priority formula, oldest-first ties. The twins table, frozen earlier, lists it under "other versions". |
@@ -439,8 +547,8 @@ under-100 ms arrival margin, or ran on a clock other than `firstShred`.
 | The live loop stopped on any transient error, could not be continued, and exclusion memory was per campaign, so one unlucky start could exclude a 100-validator gateway. | Round-3 and round-4 reviews. | Per-iteration recovery; campaigns that continue a stopped run; address history from every live run. |
 | REPORT quoted pilot numbers that `analyze` did not produce. | Round-4 review. | `analyze` emits them; this report copies `results.md` only. |
 | Free Helius plan: 1 sendTransaction/s, no staked connections; free dRPC does not serve mainnet. | Provider documentation; probe. | Helius is used for reads only. |
-| Docker Desktop cannot run on the author's Windows build. | Installer error. | The image is built in GitHub Actions on every push, and the tests and the offline `reproduce` run in it. The full online `reproduce` runs in a separate job that does not fail the build, because public endpoints rate-limit shared runners; it passed for the `prereg-main` commit ([run](https://github.com/bobxx22/solana-ordering/actions/runs/40522361323)). |
-| The recorded rows of other transactions in 18 blocks of the pilot and calibration runs had a stale scheduled cost: 2 280 CU per Ed25519 precompile signature instead of the deployed 2 400. The code had been corrected, but those blocks were collected before the fix. | The new comparison of whole blocks with the chain (the round-5 review asked for it). | The three runs recollected (`collect --refresh`): 24 rows changed, only in that field. |
+| Docker Desktop cannot run on the author's Windows build. | Installer error. | The image is built in GitHub Actions on every push, and the tests and the offline `reproduce` run in it. The full online `reproduce` runs in a separate job that does not fail the build, because public endpoints rate-limit shared runners ([runs on `main`](https://github.com/bobxx22/solana-ordering/actions/workflows/ci.yml?query=branch%3Amain)). |
+| The recorded rows of other transactions in 18 blocks of the pilot and calibration runs had a stale scheduled cost: 2 280 CU per Ed25519 precompile signature instead of the deployed 2 400. The code had been corrected, but those blocks were collected before the fix. | The new comparison of whole blocks with the chain (the round-5 review asked for it). | The three runs recollected (`collect --refresh`): 24 rows of 18 blocks changed, only in that field (`git diff 9221dc9^ 9221dc9 -- data/mainnet-beta/runs`). |
 | `verify` reported unlanded transactions as checked when no endpoint answered. It took an empty answer from the first endpoint as final, and would have accepted "unknown" from an endpoint whose history does not reach the send slot. | Round-5 review; one block came back empty from the public endpoint while re-checking. | Unlanded transactions are asked only of endpoints whose history reaches their send slot, and count as checked only when one answered. An empty answer passes the request on to the next endpoint. |
 | `results.md` gave the pilot 75 transactions "in the targeted window" in one table and 19 in the next line. | Round-5 review. | The window is now the targeted leader's window for every path; the pilot rows show 19 and a spill-over of 56. |
 | Four statements in README and REPORT did not match the code: a spend "at most 0.022 SOL" (the bound is the 0.05 SOL cap), "no wallet key is read" (true of `run`, not of `fund`, `sweep` or `status`), the online `reproduce` in CI (it does not block the build), and "statistics resample hosts". | Round-5 review. | Corrected. |
@@ -454,7 +562,7 @@ under-100 ms arrival margin, or ran on a clock other than `firstShred`.
 - The "Pilot path" line: the RPC answered after a median 1 302 ms (176–3 340). That response time correlates with the
   landing delay at r = 0.91. Only 19 of 75 transactions (25%) landed in the targeted window.
 - Straight to the leader over QUIC, the main run landed 2 168 of its 2 222 landed transactions in the targeted window
-  ("Delivery").
+  ("Delivery", all deliveries).
 
 **The calibration and the rehearsal** ("Calibration and rehearsal runs") were descriptive and never entered a test.
 They already showed the main run's pattern:
@@ -477,7 +585,7 @@ have misread the data. It was amended before any trial of campaign `main`, and t
   This is the verdict the Harmonic C-before-B results received.
 - **Minimum.** Fewer than 10 trials is "insufficient data", not "no fee ordering detected".
 - **Quota.** A trial counted when any two of its transactions landed, so 30 primary trials could leave a contrast with
-  about 24 pairs (power 0.62 instead of 0.76 at an 80% share). It now counts only with B, C, D, F and A or E in the
+  about 25 pairs (power 0.62 instead of 0.76 at an 80% share). It now counts only with B, C, D, F and A or E in the
   targeted window.
 - **Pipelines.** The four BAM and Harmonic labels hold about two thirds of mainnet's leader slots. They get their own
   family of twelve tests, read as statements about the pipeline.
@@ -488,12 +596,32 @@ have misread the data. It was amended before any trial of campaign `main`, and t
 - **Sensitivity.** Trials with an unknown arrival margin are left out, not kept.
 - **Twins.** Only versions whose source was read enter a version family.
 
+**What we had seen.** The amendments were written after the calibration and rehearsal runs, whose data were already
+committed. They include 6 buffered Harmonic trials (`orders.md`, campaigns `calibration` and `rehearsal`): F came last
+in 5, and B and C came in both orders. The verdict the Harmonic C-before-B results then received, "no stable order",
+names no rule, so it favours no hypothesis. The pipelines' own family follows from the shared gateways found in round
+2.
+
 ### Added after the main run
 
 Nothing in the plan changed after the data. Added, and marked as such:
-- **The exploratory table** of deviations by validator (section 6). It reads the same trials and tests nothing.
-- **Two sources read to explain what the data showed** (`docs/schedulers.md`, "Read after the main run"):
-  - Firedancer's tie rule;
-  - Agave v4.4.0-rc.1's priority formula.
-- **A `verify` fix**: smaller requests, so that the history search fits the public endpoint's timeout. It changes no
-  result.
+- **Exploratory tables** (sections 1, 6 and 7). They read the same trials and test nothing:
+  - deviations from the reward/cost order by validator, with each validator's port and how many of its trials the
+    sensitivity filter keeps;
+  - JitoLabs by advertised QUIC port;
+  - send order against landing order, by cell;
+  - the share of leader slots held by the validators reached.
+- **Presentation.**
+  - Rows that pool labels or deliveries in "Exact orders", "Delivery" and "Coverage per label".
+  - The "Ingress" table restricted to campaign `main`; it had counted the calibration and rehearsal trials too.
+  - Each trial's port, reconnect and arrival margin in `orders.md`.
+  - The note that an interval falls back to Wilson's when every trial has the same share.
+  - The two charts, drawn by `analyze` from "Exact orders" and from the send-order table.
+- **Sources read to explain what the data showed** (`docs/schedulers.md`):
+  - Firedancer's tie rule and Agave v4.4.0-rc.1's priority formula ("Read after the main run");
+  - the order of the six for every base-fee share ("What the contrasts identify"), used to read the Harmonic orders.
+- **`verify`.**
+  - Smaller status requests, so that the history search fits the public endpoint's timeout.
+  - `--sample all` and `--out`, for the check of every landed transaction.
+
+  They change no result.

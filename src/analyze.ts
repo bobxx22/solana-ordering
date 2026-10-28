@@ -30,13 +30,18 @@
 //              clock other than firstShred.
 //   secondary  descriptive: independent mode, burst per label, streamed, the twins by version family, rule agreement
 //              (gamma), calibration runs.
-// Added after the main run, outside the plan and marked exploratory in results.md: the deviations from the exact
-// reward/cost order, validator by validator.
+// Added after the main run, outside the plan, and marked so in results.md:
+//   exploratory  the deviations from the exact reward/cost order, validator by validator; JitoLabs by advertised
+//                QUIC port; send order against landing order, by cell; the slot share of the validators reached.
+//   presentation total rows in the exact-order, delivery and coverage tables; the ingress table restricted to
+//                campaign "main"; port, reconnect and arrival margin per trial in orders.md; the two charts of
+//                REPORT.md (src/charts.ts).
 // The block producer is the scheduled leader of the landing slot; the client is that leader's gossip client id in
 // the run's snapshot.
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import type { BlockRow, BlockSummary } from './block.ts'
+import { barChart } from './charts.ts'
 import type { Landed } from './collect.ts'
 import { BASE_FEE_PER_SIGNATURE, countsTowardsQuota, FIRE_OFFSET, LOCAL_CLIENTS, loadedDataCost, PIPELINE_CLIENTS, WINDOW_SLOTS } from './design.ts'
 import type { Snapshot } from './discover.ts'
@@ -57,6 +62,17 @@ const ALPHA = 0.05
 export const MIN_TRIALS = 10
 /** below this upper bound a contrast is not the near-deterministic order the source predicts */
 const NEAR_DETERMINISTIC = 0.75
+/** labels pooled for the total rows and the send-order table */
+const GROUPS: [string, string[]][] = [
+  ['local schedulers', LOCAL_CLIENTS],
+  ['BAM pipelines', ['AgaveBam', 'FireBAM']],
+  ['Harmonic pipelines', ['HarmonicAgave', 'HarmonicFiredancer']],
+]
+const CELLS = ['buffered/shared', 'buffered/independent', 'burst/shared', 'streamed/shared', 'streamed/independent']
+/** the exact reward/cost order, A and E either way */
+const REWARD_COST = /^(AE|EA)DCFB$/
+/** the exact total-fee order: B (10 000), D (9 000), then A, E and F (4 000 each) in any order, C (0) last */
+const TOTAL_FEE = /^BD[AEF]{3}C$/
 
 export const RULES = ['rewardPerCost', 'priorityPerCost', 'cuPrice', 'totalFee', 'sentFirst', 'rpcReleasedFirst'] as const
 export type Rule = (typeof RULES)[number]
@@ -104,6 +120,8 @@ export interface Trial {
   delivery: string
   ingress: string
   ingressShared: number
+  /** the port of the advertised QUIC address (null for the rpc pilot) */
+  port: string | null
   clockSource: string | null
   reconnected: boolean
   startedAt: string
@@ -124,6 +142,7 @@ export interface Unit {
   delivery: string
   ingress: string
   ingressShared: number
+  port: string | null
   clockSource: string | null
   reconnected: boolean
   marginMs: number | null
@@ -248,6 +267,7 @@ export function loadRuns(runsRoot: string): Loaded {
           delivery: off !== undefined && off !== (FIRE_OFFSET as Record<string, number>)[delivery] ? `${delivery}@${off}` : delivery,
           ingress: t.tpuQuic ? host(t.tpuQuic) : t.leader,
           ingressShared: t.tpuQuic ? (behind.get(host(t.tpuQuic)) ?? 1) : 1,
+          port: t.tpuQuic ? t.tpuQuic.replace(/^.*:/, '') : null,
           clockSource: t.clockSource ?? null,
           reconnected: !!t.reconnected,
           startedAt: meta.startedAt,
@@ -322,6 +342,7 @@ export function loadRuns(runsRoot: string): Loaded {
         delivery: t.delivery,
         ingress: t.path === 'rpc' ? leader : t.ingress,
         ingressShared: t.ingressShared,
+        port: t.port,
         clockSource: t.clockSource,
         reconnected: t.reconnected,
         marginMs: t.marginMs,
@@ -463,6 +484,9 @@ export function verdict(s: ContrastStat): Verdict {
   return 'inconclusive'
 }
 
+/** The sensitivity filter: no reconnect before sending, an arrival margin of at least 100 ms, the firstShred clock. */
+export const keptBySensitivity = (u: Unit) => !u.reconnected && u.marginMs !== null && u.marginMs >= 100 && (u.clockSource ?? 'firstShred') === 'firstShred'
+
 /** The A/E twins differ only in send order: did the one sent first land first? */
 export function twinStat(units: Unit[], ordered: Map<string, Tx[]>): ContrastStat {
   let n = 0
@@ -578,7 +602,7 @@ export function analyze(dataDir: string, cluster: string): string {
       return rows
     }
     out.push(
-      `Per-trial share of pairs in the named order; 95% bootstrap interval over trials; one-sided exact p against 0.5, Holm-adjusted over the twelve tests of this table. Verdicts: insufficient data (fewer than ${MIN_TRIALS} trials), holds (Holm p < ${ALPHA}), reversed (upper bound < 0.5), no stable order (upper bound < ${NEAR_DETERMINISTIC}), inconclusive. The control is outside the family: unadjusted p.`,
+      `Per-trial share of pairs in the named order; 95% bootstrap interval over trials (the Wilson interval on trials when every trial has the same share); one-sided exact p against 0.5, Holm-adjusted over the twelve tests of this table. Verdicts: insufficient data (fewer than ${MIN_TRIALS} trials), holds (Holm p < ${ALPHA}), reversed (upper bound < 0.5), no stable order (upper bound < ${NEAR_DETERMINISTIC}), inconclusive. The control is outside the family: unadjusted p.`,
       '',
     )
     out.push(`| ${subject} | trials | validators | top validator's share | hosts | control: ${CONTROL.name} | ${PRIMARY.map((c) => c.name).join(' | ')} |`)
@@ -637,7 +661,7 @@ export function analyze(dataDir: string, cluster: string): string {
     out.push('Sensitivity: the same contrasts without trials that reconnected before sending, had an unknown arrival margin (not all six acknowledged) or one under 100 ms, or ran on a clock other than firstShred (unadjusted p).', '')
     out.push(`| client | trials kept | ${CONTROL.name} | ${PRIMARY.map((c) => c.name).join(' | ')} |`)
     out.push(`|---|---:|---|${PRIMARY.map(() => '---').join('|')}|`)
-    const clean = primaryUnits.filter((u) => !u.reconnected && u.marginMs !== null && u.marginMs >= 100 && (u.clockSource ?? 'firstShred') === 'firstShred')
+    const clean = primaryUnits.filter(keptBySensitivity)
     for (const c of LOCAL_CLIENTS) {
       const cu = clean.filter((u) => u.client === c)
       out.push(`| ${c} | ${cu.length} | ${[CONTROL, ...PRIMARY].map((k) => cellText(contrastStat(cu, ordered, k))).join(' | ')} |`)
@@ -695,14 +719,16 @@ export function analyze(dataDir: string, cluster: string): string {
 
   // ---------- exact orders ----------
   out.push('## Exact orders (buffered/shared, campaign "main")', '')
-  out.push('Share of trials with all six in the window in exact reward/cost order (A/E either way; 2 in 720 by chance), and the pair of the reward/cost order most often reversed.', '')
+  out.push('Share of trials with all six in the window in exact reward/cost order (A/E either way; 2 in 720 by chance), and the pair of the reward/cost order most often reversed. The last three rows, added after the main run, pool the labels above.', '')
   out.push('| client | trials with all six | exact | most often reversed |')
   out.push('|---|---:|---:|---|')
   const ideal = ['A', 'E', 'D', 'C', 'F', 'B']
-  for (const c of [...LOCAL_CLIENTS, ...PIPELINE_CLIENTS]) {
-    const full = bufShared(main).filter((u) => u.client === c && u.observedOrder.length === 6)
-    if (!full.length) continue
-    const exact = full.filter((u) => /^(AE|EA)DCFB$/.test(u.observedOrder)).length
+  const exactBars: { label: string; trials: number; exact: number }[] = []
+  const exactRow = (label: string, labels: string[]) => {
+    const full = bufShared(main).filter((u) => labels.includes(u.client) && u.observedOrder.length === 6)
+    if (!full.length) return
+    const exact = full.filter((u) => REWARD_COST.test(u.observedOrder)).length
+    if (labels.length === 1) exactBars.push({ label, trials: full.length, exact })
     const flips = new Map<string, number>()
     for (const u of full)
       for (let i = 0; i < ideal.length; i++)
@@ -711,37 +737,86 @@ export function analyze(dataDir: string, cluster: string): string {
           if (u.observedOrder.indexOf(ideal[i]) > u.observedOrder.indexOf(ideal[j])) flips.set(`${ideal[i]}<${ideal[j]}`, (flips.get(`${ideal[i]}<${ideal[j]}`) ?? 0) + 1)
         }
     const top = [...flips.entries()].sort((a, b) => b[1] - a[1])[0]
-    out.push(`| ${c} | ${full.length} | ${exact} (${pct(exact / full.length)}) | ${top ? `${top[0]} reversed in ${top[1]}` : '–'} |`)
+    out.push(`| ${label} | ${full.length} | ${exact} (${pct(exact / full.length)}) | ${top ? `${top[0]} reversed in ${top[1]}` : '–'} |`)
   }
+  for (const c of [...LOCAL_CLIENTS, ...PIPELINE_CLIENTS]) exactRow(c, [c])
+  for (const [label, labels] of GROUPS) exactRow(label, labels)
   out.push('')
 
   // ---------- exploratory: added after the main run, not pre-registered ----------
+  const ports = (us: Unit[]) => [...new Set(us.map((u) => u.port ?? '–'))].join(', ')
   const deviations: string[] = []
   for (const c of [...LOCAL_CLIENTS, ...PIPELINE_CLIENTS]) {
     const full = bufShared(main).filter((u) => u.client === c && u.observedOrder.length === 6)
-    const exactOnly = { validators: 0, trials: 0 }
+    const exactOnly: Unit[] = []
+    let exactValidators = 0
     for (const v of new Set(full.map((u) => u.leader))) {
       const vu = full.filter((u) => u.leader === v)
-      const rewardCost = vu.filter((u) => /^(AE|EA)DCFB$/.test(u.observedOrder)).length
+      const rewardCost = vu.filter((u) => REWARD_COST.test(u.observedOrder)).length
       if (rewardCost === vu.length) {
-        exactOnly.validators++
-        exactOnly.trials += vu.length
+        exactValidators++
+        exactOnly.push(...vu)
         continue
       }
-      // the total-fee rule: B (10 000), D (9 000), then A, E and F (4 000 each) in any order, C (0) last
-      const totalFee = vu.filter((u) => /^BD[AEF]{3}C$/.test(u.observedOrder)).length
+      const totalFee = vu.filter((u) => TOTAL_FEE.test(u.observedOrder)).length
       const others = new Map<string, number>()
-      for (const u of vu) if (!/^(AE|EA)DCFB$/.test(u.observedOrder) && !/^BD[AEF]{3}C$/.test(u.observedOrder)) others.set(u.observedOrder, (others.get(u.observedOrder) ?? 0) + 1)
-      deviations.push(`| ${c} | ${v.slice(0, 8)} | ${vu[0].version ?? '?'} | ${vu.length} | ${rewardCost} | ${totalFee} | ${[...others.entries()].sort().map(([o, n]) => `${o} ×${n}`).join(', ') || '–'} |`)
+      for (const u of vu) if (!REWARD_COST.test(u.observedOrder) && !TOTAL_FEE.test(u.observedOrder)) others.set(u.observedOrder, (others.get(u.observedOrder) ?? 0) + 1)
+      deviations.push(
+        `| ${c} | ${v.slice(0, 8)} | ${vu[0].version ?? '?'} | ${ports(vu)} | ${vu.length} | ${rewardCost} | ${totalFee} | ${[...others.entries()].sort().map(([o, n]) => `${o} ×${n}`).join(', ') || '–'} | ${vu.filter(keptBySensitivity).length} |`,
+      )
     }
-    if (exactOnly.validators && exactOnly.trials < full.length) deviations.push(`| ${c} | all ${exactOnly.validators} others | | ${exactOnly.trials} | ${exactOnly.trials} | 0 | – |`)
+    if (exactValidators && exactOnly.length < full.length) deviations.push(`| ${c} | all ${exactValidators} others | | | ${exactOnly.length} | ${exactOnly.length} | 0 | – | ${exactOnly.filter(keptBySensitivity).length} |`)
   }
   if (deviations.length) {
     out.push('## Deviations from the reward/cost order, validator by validator (exploratory)', '')
-    out.push('Added after the main run, outside the pre-registered plan. Buffered/shared trials of the main campaign with all six in the window, for every validator with at least one trial not in the exact reward/cost order (A/E either way, D C F B): how many were in that order, how many in the exact total-fee order (B D, then A, E, F in any order, C last), and the other orders seen. Labels without a row had every trial in the exact reward/cost order.', '')
-    out.push('| client | validator | version | trials with all six | exact reward/cost | exact total fee | other orders |')
-    out.push('|---|---|---|---:|---:|---:|---|')
+    out.push('Added after the main run, outside the pre-registered plan. Buffered/shared trials of the main campaign with all six in the window, for every validator with at least one trial not in the exact reward/cost order (A/E either way, D C F B): the port of its advertised QUIC address, how many trials were in that order, how many in the exact total-fee order (B D, then A, E, F in any order, C last), the other orders seen, and how many trials the sensitivity filter of the primary keeps (no reconnect before sending, an arrival margin of at least 100 ms, the firstShred clock). Labels without a row had every trial in the exact reward/cost order.', '')
+    out.push('| client | validator | version | QUIC port | trials with all six | exact reward/cost | exact total fee | other orders | kept by the sensitivity filter |')
+    out.push('|---|---|---|---|---:|---:|---:|---|---:|')
     out.push(...deviations, '')
+  }
+  const jito = bufShared(main).filter((u) => u.client === 'JitoLabs' && u.observedOrder.length === 6)
+  if (jito.length) {
+    out.push('## JitoLabs by advertised QUIC port (exploratory)', '')
+    out.push('Added after the main run, outside the pre-registered plan. The same JitoLabs trials, grouped by the port of the QUIC address the validator advertised. Port 11228 is most likely a Jito relayer in front of the validator (README, "Shared gateways").', '')
+    out.push('| port | validators | trials with all six | exact reward/cost | exact total fee | other orders |')
+    out.push('|---|---:|---:|---:|---:|---:|')
+    const byPort = new Map<string, Unit[]>()
+    for (const u of jito) byPort.set(u.port ?? '–', [...(byPort.get(u.port ?? '–') ?? []), u])
+    for (const [p, us] of [...byPort.entries()].sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0]))) {
+      const rewardCost = us.filter((u) => REWARD_COST.test(u.observedOrder)).length
+      const totalFee = us.filter((u) => TOTAL_FEE.test(u.observedOrder)).length
+      out.push(`| ${p} | ${new Set(us.map((u) => u.leader)).size} | ${us.length} | ${rewardCost} | ${totalFee} | ${us.length - rewardCost - totalFee} |`)
+    }
+    out.push('')
+  }
+  const sendRows: string[] = []
+  const sendBars: { cell: string; pairs: number; inOrder: number }[] = []
+  for (const [group, labels] of GROUPS)
+    for (const cell of CELLS) {
+      const us = main.filter((u) => labels.includes(u.client) && `${u.delivery}/${u.mode}` === cell)
+      if (!us.length) continue
+      let pairs = 0
+      let inOrder = 0
+      let whole = 0
+      for (const u of us) {
+        const g = ordered.get(key(u)) ?? []
+        for (let i = 0; i < g.length; i++)
+          for (let j = i + 1; j < g.length; j++) {
+            pairs++
+            if (g[i].sendIndex < g[j].sendIndex) inOrder++
+          }
+        if (g.every((t, i) => i === 0 || g[i - 1].sendIndex < t.sendIndex)) whole++
+      }
+      const gammas = us.map((u) => u.gamma.sentFirst).filter((x): x is number => x !== null)
+      if (labels === LOCAL_CLIENTS) sendBars.push({ cell, pairs, inOrder })
+      sendRows.push(`| ${group} | ${cell} | ${us.length} | ${inOrder} of ${pairs} (${pct(inOrder / pairs)}) | ${whole} of ${us.length} | ${f2(mean(gammas))} |`)
+    }
+  if (sendRows.length) {
+    out.push('## Send order against landing order, by cell (exploratory)', '')
+    out.push('Added after the main run, outside the pre-registered plan. Campaign "main", every cell: of all pairs of a trial\'s transactions in the targeted window, how many landed in the order they were sent; how many trials landed entirely in send order; and the mean gamma of the send order (the "sent first" rule of the rule-agreement tables). The send order is a fresh random permutation in every trial, so 50% of pairs is what an order unrelated to sending gives.', '')
+    out.push('| group | cell | trials | pairs in send order | trials entirely in send order | mean gamma, sent first |')
+    out.push('|---|---|---:|---:|---:|---:|')
+    out.push(...sendRows, '')
   }
 
   // ---------- rule agreement ----------
@@ -779,15 +854,14 @@ export function analyze(dataDir: string, cluster: string): string {
 
   // ---------- delivery and context ----------
   out.push('## Delivery', '')
-  out.push("In the targeted window: landed in a slot of the targeted leader's window. Complete: trials with B, C, D, F and A or E in the window (what the quota counts). Trials used: trials with two or more transactions in the ordered group, which for the pilot (rpc) is everything that landed, wherever: the public RPC rarely hit the targeted window.", '')
+  out.push("In the targeted window: landed in a slot of the targeted leader's window. Complete: trials with B, C, D, F and A or E in the window (what the quota counts). Trials used: trials with two or more transactions in the ordered group, which for the pilot (rpc) is everything that landed, wherever: the public RPC rarely hit the targeted window. The last row, added after the main run, pools the main campaign's three deliveries.", '')
   out.push("| campaign / path / delivery | trials | sent | acknowledged by the leader's QUIC (of those with acknowledgement data) | landed | in the targeted window | spill-over | complete trials | trials used | median slots from dispatch to landing | median gap between sends, ms | arrival margin before the window, ms (median, min) | reconnected before sending |")
   out.push('|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|---:|')
   const margins = (ts: Trial[]) => {
     const m = ts.map((t) => t.marginMs).filter((x): x is number => typeof x === 'number')
     return m.length ? `${Math.round(median(m))}, ${Math.round(Math.min(...m))}` : '–'
   }
-  for (const c of [...new Set(trials.map((t) => `${t.campaign} / ${t.path} / ${t.delivery}`))]) {
-    const ts = trials.filter((t) => `${t.campaign} / ${t.path} / ${t.delivery}` === c)
+  const deliveryRow = (c: string, ts: Trial[]) => {
     const keys = new Set(ts.map(key))
     const xs = txs.filter((t) => keys.has(key(t)))
     const landed = xs.filter((t) => t.slot !== null)
@@ -806,6 +880,9 @@ export function analyze(dataDir: string, cluster: string): string {
       `| ${c} | ${ts.length} | ${xs.length} | ${withAck.length ? `${withAck.filter((x) => x.acked).length}/${withAck.length}` : '–'} | ${landed.length} (${pct(landed.length / xs.length)}) | ${inWindow} | ${landed.length - inWindow} | ${ts[0].path === 'tpu' ? complete : '–'} | ${used.length} | ${median(delays)} | ${median(gaps)} | ${margins(ts)} | ${ts.filter((t) => t.reconnected).length} |`,
     )
   }
+  for (const c of [...new Set(trials.map((t) => `${t.campaign} / ${t.path} / ${t.delivery}`))]) deliveryRow(c, trials.filter((t) => `${t.campaign} / ${t.path} / ${t.delivery}` === c))
+  const mainTrials = trials.filter((t) => t.campaign === MAIN_CAMPAIGN && t.path === 'tpu')
+  if (mainTrials.length) deliveryRow(`${MAIN_CAMPAIGN} / tpu / all deliveries`, mainTrials)
   out.push('')
 
   out.push('## Versions', '')
@@ -828,29 +905,35 @@ export function analyze(dataDir: string, cluster: string): string {
   out.push('')
 
   out.push('## Coverage per label', '')
-  out.push("From the latest snapshot of the main campaign (of all runs while there is none). Effective number: (sum of slots)^2 / sum of squares, over the label's validators by leader slots, and over the validators reached by trials. Reachable: share of the label's slots whose validator advertises a QUIC address that no run of the main campaign excluded. Reached: validators in buffered/shared trials of the main campaign.", '')
-  out.push('| client | validators | share of all leader slots | effective number | reachable share of its slots | validators reached | effective number reached |')
-  out.push('|---|---:|---:|---:|---:|---:|---:|')
+  out.push("From the latest snapshot of the main campaign (of all runs while there is none). Effective number: (sum of slots)^2 / sum of squares, over the label's validators by leader slots, and over the validators reached by trials. Reachable: share of the label's slots whose validator advertises a QUIC address that no run of the main campaign excluded. Reached: validators in buffered/shared trials of the main campaign. Added after the main run: the last two columns, the leader slots held by the validators reached, as a share of all slots and of the label's (exploratory); and the two total rows.", '')
+  out.push("| client | validators | share of all leader slots | effective number | reachable share of its slots | validators reached | effective number reached | validators reached: share of all leader slots | validators reached: share of the label's slots |")
+  out.push('|---|---:|---:|---:|---:|---:|---:|---:|---:|')
   const effective = (xs: number[]) => (xs.length ? xs.reduce((a, b) => a + b, 0) ** 2 / xs.reduce((a, b) => a + b * b, 0) : NaN)
   const active = (latest?.validators ?? []).filter((v) => !v.delinquent && v.leaderSlots > 0)
   const allSlots = active.reduce((s, v) => s + v.leaderSlots, 0)
   const blocked = new Set(excluded.filter((e) => e.campaign === MAIN_CAMPAIGN).map((e) => e.ingress))
-  for (const c of [...LOCAL_CLIENTS, ...PIPELINE_CLIENTS]) {
-    const vs = active.filter((v) => v.client === c)
+  const coverageRow = (label: string, labels: string[]) => {
+    const vs = active.filter((v) => labels.includes(v.client))
     const slots = vs.reduce((s, v) => s + v.leaderSlots, 0)
     const reachable = vs.filter((v) => v.tpuQuic && !blocked.has(v.tpuQuic)).reduce((s, v) => s + v.leaderSlots, 0)
     const perValidator = new Map<string, number>()
-    for (const u of bufShared(main).filter((u) => u.client === c)) perValidator.set(u.leader, (perValidator.get(u.leader) ?? 0) + 1)
-    out.push(`| ${c} | ${vs.length} | ${pct1(slots / allSlots)} | ${f1(effective(vs.map((v) => v.leaderSlots)))} | ${pct(reachable / slots)} | ${perValidator.size || '–'} | ${f1(effective([...perValidator.values()]))} |`)
+    for (const u of bufShared(main).filter((u) => labels.includes(u.client))) perValidator.set(u.leader, (perValidator.get(u.leader) ?? 0) + 1)
+    const reachedSlots = vs.filter((v) => perValidator.has(v.identity)).reduce((s, v) => s + v.leaderSlots, 0)
+    out.push(
+      `| ${label} | ${vs.length} | ${pct1(slots / allSlots)} | ${f1(effective(vs.map((v) => v.leaderSlots)))} | ${pct(reachable / slots)} | ${perValidator.size || '–'} | ${f1(effective([...perValidator.values()]))} | ${perValidator.size ? pct1(reachedSlots / allSlots) : '–'} | ${perValidator.size ? pct(reachedSlots / slots) : '–'} |`,
+    )
   }
+  for (const c of [...LOCAL_CLIENTS, ...PIPELINE_CLIENTS]) coverageRow(c, [c])
+  coverageRow('local schedulers', LOCAL_CLIENTS)
+  coverageRow('pipelines', PIPELINE_CLIENTS)
   out.push('')
 
-  out.push('## Ingress: where the direct path delivered', '')
-  out.push('BAM and Harmonic validators advertise QUIC addresses on shared gateway hosts; for them the measurement starts at the gateway, not at the validator. The pipeline family\'s group-level test groups their trials by these hosts, and rule-agreement intervals resample hosts.', '')
+  out.push('## Ingress: where the direct path delivered (campaign "main")', '')
+  out.push('BAM and Harmonic validators advertise QUIC addresses on shared gateway hosts; for them the measurement starts at the gateway, not at the validator. The pipeline family\'s group-level test groups their trials by these hosts, and rule-agreement intervals resample hosts. (Restricted to campaign "main" after the main run; it had counted the calibration and rehearsal trials too.)', '')
   out.push('| client | trials used | validators | distinct ingress hosts | trials via a shared host | most validators behind one used host |')
   out.push('|---|---:|---:|---:|---:|---:|')
-  for (const c of [...new Set(tpu.map((u) => u.client))].sort()) {
-    const cu = tpu.filter((u) => u.client === c)
+  for (const c of [...new Set(main.map((u) => u.client))].sort()) {
+    const cu = main.filter((u) => u.client === c)
     out.push(`| ${c} | ${cu.length} | ${new Set(cu.map((u) => u.leader)).size} | ${new Set(cu.map((u) => u.ingress)).size} | ${cu.filter((u) => u.ingressShared > 1).length} | ${Math.max(...cu.map((u) => u.ingressShared))} |`)
   }
   out.push('')
@@ -897,16 +980,22 @@ export function analyze(dataDir: string, cluster: string): string {
 
   // ---------- appendix: every trial's observed order ----------
   orders.push('# Observed orders, trial by trial (generated by `analyze`)', '')
-  orders.push('Roles in landing order within the targeted window (slot, then index). Reward/cost order: A E D C F B (A and E tie). Send order: the order the burst was dispatched in.', '')
-  orders.push('| campaign | run | trial | client | validator | version | cell | send order | observed order | slots |')
-  orders.push('|---|---|---:|---|---|---|---|---|---|---|')
+  orders.push(
+    'Roles in landing order within the targeted window (slot, then index). Reward/cost order: A E D C F B (A and E tie). Send order: the order the burst was dispatched in. Added after the main run: the port of the QUIC address the trial was sent to, whether the connection was re-established just before sending, and the arrival margin (ms between the leader acknowledging the last transaction and our clock seeing the window start; negative: after it).',
+    '',
+  )
+  orders.push('| campaign | run | trial | client | validator | version | cell | send order | observed order | slots | QUIC port | reconnected | arrival margin, ms |')
+  orders.push('|---|---|---:|---|---|---|---|---|---|---|---|---|---:|')
   const sendOrderOf = (u: Unit) =>
     txs
       .filter((t) => t.run === u.run && t.trial === u.trial)
       .sort((a, b) => a.sendIndex - b.sendIndex)
       .map((t) => t.role)
       .join('')
-  for (const u of tpu) orders.push(`| ${u.campaign} | ${u.run} | ${u.trial} | ${u.client} | ${u.leader.slice(0, 8)} | ${u.version ?? '?'} | ${u.delivery}/${u.mode} | ${sendOrderOf(u)} | ${u.observedOrder} | ${u.slots.join(', ')} |`)
+  for (const u of tpu)
+    orders.push(
+      `| ${u.campaign} | ${u.run} | ${u.trial} | ${u.client} | ${u.leader.slice(0, 8)} | ${u.version ?? '?'} | ${u.delivery}/${u.mode} | ${sendOrderOf(u)} | ${u.observedOrder} | ${u.slots.join(', ')} | ${u.port ?? '–'} | ${u.reconnected ? 'yes' : '–'} | ${u.marginMs === null ? '–' : Math.round(u.marginMs)} |`,
+    )
 
   const resultsDir = join(dataDir, cluster, 'results')
   mkdirSync(resultsDir, { recursive: true })
@@ -915,5 +1004,30 @@ export function analyze(dataDir: string, cluster: string): string {
   writeFileSync(join(resultsDir, 'orders.md'), orders.join('\n') + '\n')
   writeFileSync(join(resultsDir, 'units.json'), toJson(units, 1))
   writeFileSync(join(resultsDir, 'summary.json'), toJson({ runs, units: units.length, uncollected }, 1))
+  // the two charts REPORT.md shows: the exact-order rates, and the exploratory send-order table
+  const thousands = (x: number) => String(x).replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+  const exactBar = (b: (typeof exactBars)[number]) => ({ label: b.label, value: b.exact / b.trials, text: `${b.exact} of ${b.trials}` })
+  if (exactBars.length)
+    writeFileSync(
+      join(resultsDir, 'exact-orders.svg'),
+      barChart({
+        title: 'Trials in the exact predicted order of all six',
+        subtitle: ['Main run, buffered/shared trials with all six in the window ("Exact orders").', 'The order A E D C F B, A and E either way; by chance, 2 trials in 720.'],
+        groups: [
+          { heading: 'Local schedulers', bars: exactBars.filter((b) => LOCAL_CLIENTS.includes(b.label)).map(exactBar) },
+          { heading: 'Pipelines', bars: exactBars.filter((b) => PIPELINE_CLIENTS.includes(b.label)).map(exactBar) },
+        ],
+      }),
+    )
+  if (sendBars.length)
+    writeFileSync(
+      join(resultsDir, 'send-order.svg'),
+      barChart({
+        title: 'Pairs that landed in the order they were sent (exploratory)',
+        subtitle: ['Local schedulers, main run, by cell ("Send order against landing order, by cell").', 'The send order is random in every trial, so 50% means unrelated to sending.'],
+        groups: [{ heading: '', bars: sendBars.map((b) => ({ label: b.cell, value: b.inOrder / b.pairs, text: `${pct(b.inOrder / b.pairs)} of ${thousands(b.pairs)} pairs` })) }],
+        reference: { value: 0.5, label: 'chance' },
+      }),
+    )
   return md
 }

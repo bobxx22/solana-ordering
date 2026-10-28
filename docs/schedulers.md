@@ -17,9 +17,10 @@ table of `results.md` is generated from the main run's own snapshots).
 
 Sources were read on 2026-10-26, through the Helius `svm` skill (`readSolanaSourceFile`) and raw GitHub files.
 Statements about `master` are marked as such: earlier claims (ours and reviewers') that came from `master` do not all
-hold for the deployed versions. "0.1.1" is reported by two small Firedancer-label validators; we did not identify that
-build. It is kept in the label, but the twins table, which depends on the version, puts it, like any version whose
-source was not read, under "other versions".
+hold for the deployed versions. "0.1.1" was reported by two small Firedancer-label validators in epoch 1068, and by
+three, with 9% of the label's slots, in the main run's snapshot; we did not identify that build. It is kept in the
+label, but the twins table, which depends on the version, puts it, like any version whose source was not read, under
+"other versions".
 
 ## What both clients sort by
 
@@ -65,6 +66,17 @@ numbers (priority fees A 4 000, B 10 000, C 0, D 9 000 lamports; costs 2 335, 41
 - **Together** they bracket *k* in (0.12, 0.84), which contains the source's 0.5, rather than proving exactly 0.5.
 - **A,E before C** holds for every fee-aware rule (same cost, strictly higher fee): it is the positive control.
 
+The whole order of the six under reward/cost, for every *k* (added after the main run, to read the Harmonic orders;
+the boundaries are where two roles tie: C = F at 0.114, B = C at 0.120, F = B at 0.193, D = C at 0.841):
+
+| base-fee share *k* | order |
+|---|---|
+| below 0.114 | A E D B F C (at *k* = 0 this is priority fee per cost) |
+| 0.114 to 0.120 | A E D B C F |
+| 0.120 to 0.193 | A E D C B F |
+| 0.193 to 0.841 | A E D C F B (the source: *k* = 0.5) |
+| above 0.841 | A E C D F B |
+
 ## Ties
 
 | deployed version | equal priorities are broken by | source |
@@ -88,8 +100,11 @@ table and the versions table showed. They change no test and no family: the twin
   ([fd_treap.c:255-260](https://github.com/firedancer-io/firedancer/blob/v26.10.4/src/util/tmpl/fd_treap.c#L255-L260)).
   Pack's scheduling loop walks the pending treap from its largest end
   ([fd_pack.c:2044](https://github.com/firedancer-io/firedancer/blob/v26.10.4/src/disco/pack/fd_pack.c#L2044), in
-  `fd_pack_schedule_impl`, called on `pack->pending` at L2781). Of two transactions with equal priority, the one that
-  arrived later is therefore scheduled first.
+  `fd_pack_schedule_impl`, called on `pack->pending` at L2781). Of two transactions with equal priority, the one
+  inserted later is therefore scheduled first.
+  - This is consistent with the twins (the one sent second landed first in 85% of trials), but it concerns the order
+    of insertion into pack. Between QUIC and pack sit the signature-verification and dedup stages, so insertion order
+    need not be send order; that may be why 4 of 27 trials, on four validators, went the other way. Not tested.
 - **Agave v4.4.0-rc.1.** It appeared in the main run's snapshot (7% of the Agave label's slots, 2 primary trials).
   Its `core/src/transaction_priority.rs` is byte-identical to v4.3.2's, so the primary contrasts mean the same for it.
   It breaks ties by arrival order, oldest first, like the other pre-releases
@@ -118,8 +133,9 @@ delivery fires at −2 slots; `results.md` reports the measured arrival margin.
 **Ingress floor (Agave v4.3.2).** When the scheduler's buffer is saturated, it publishes a priority floor, and
 signature verification then drops arriving packets at or below it
 ([scheduler_controller.rs:69-113, 281](https://github.com/anza-xyz/agave/blob/v4.3.2/core/src/banking_stage/transaction_scheduler/scheduler_controller.rs#L69-L113)).
-Our lowest roles, B and F, out-rank about three quarters of their blocks, so this should rarely touch them. If it did,
-B and F would go missing more often than other roles: `results.md` reports landing per role.
+Our lowest roles, B and F, out-rank about four fifths of their blocks (79% and 80% in the main run), so this should
+rarely touch them. If it did, B and F would go missing more often than other roles: `results.md` reports landing per
+role.
 
 ## How a block is filled (Agave v4.3.2)
 
@@ -135,7 +151,8 @@ B and F would go missing more often than other roles: `results.md` reports landi
     the threads' batches complete. This is our `independent` mode.
 - **Pacing.** The schedulable budget grows linearly over `slot time − 50 ms` (150 ms at 200 ms slots)
   ([scheduler_controller.rs:64-65, 520-545](https://github.com/anza-xyz/agave/blob/v4.3.2/core/src/banking_stage/transaction_scheduler/scheduler_controller.rs#L520-L545)).
-  Our six transactions, about 60 000 CU in all, fit in the first millisecond's allowance.
+  Our six transactions, 50 000 CU of limits and about 74 400 CU of scheduling cost in all, fit in the first
+  millisecond's allowance.
 
 **Jito-Solana** adds one rule to the same greedy scheduler: a transaction is unschedulable while a bundle holds a
 conflicting lock

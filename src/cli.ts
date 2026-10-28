@@ -39,9 +39,11 @@ commands
   analyze    statistics of all live runs -> data/<cluster>/results/ (offline, from the committed raw data)
   verify     check the raw data against the chain (default endpoints: api.mainnet-beta.solana.com, then PublicNode);
              exit code 1 on mismatches (blocks no endpoint can serve are reported, not failed)
-               [run id | all, default all]   --verify-rpc URL,URL   --sample 60 (whole transactions checked)
+               [run id | all, default all]   --verify-rpc URL,URL
+               --sample 60 (whole transactions checked, every role represented; all: every landed transaction)
                --row-blocks 3 (whole blocks whose rows are rebuilt)
                --write (all: data/<cluster>/verify.json; one run: data/<cluster>/verify/<run id>.json)
+               --out FILE (write the report to FILE instead)
   paths      delivery-path probe: one transaction per endpoint per round -> data/<cluster>/paths/
                --endpoints URL,read,tpu   ('read' = the read RPC, keeping its key out of the command line;
                                            'tpu' = QUIC straight to the next leader)   --rounds 8
@@ -143,7 +145,7 @@ async function main(): Promise<void> {
       return
     case 'reproduce': {
       // every file analyze writes is compared with the committed one
-      const files = ['results.md', 'orders.md', 'units.json', 'summary.json'].map((f) => join(cfg.dataDir, cfg.cluster, 'results', f))
+      const files = ['results.md', 'orders.md', 'units.json', 'summary.json', 'exact-orders.svg', 'send-order.svg'].map((f) => join(cfg.dataDir, cfg.cluster, 'results', f))
       const before = files.map((f) => (existsSync(f) ? readFileSync(f, 'utf8') : null))
       analyze(cfg.dataDir, cfg.cluster)
       const differ = files.filter((f, i) => before[i] !== null && before[i] !== readFileSync(f, 'utf8'))
@@ -166,10 +168,12 @@ async function main(): Promise<void> {
       return
     }
     case 'verify': {
-      // one run: the per-session check of the runbook, written next to the others; all runs: verify.json
+      // one run: the per-session check of the runbook, written next to the others; all runs: verify.json; --out: any file
       const one = args.positional[0] && args.positional[0] !== 'all' ? args.positional[0] : undefined
-      const writeTo = args.flags.get('write') === true ? join(cfg.dataDir, cfg.cluster, ...(one ? ['verify', `${one}.json`] : ['verify.json'])) : undefined
-      const r = await verify(verifyRpcs(cfg, args), runsDir(cfg), log, { run: one, writeTo, sample: Number(args.flags.get('sample') ?? 60), rowBlocks: Number(args.flags.get('row-blocks') ?? 3) })
+      const out = args.flags.get('out')
+      const writeTo = typeof out === 'string' ? out : args.flags.get('write') === true ? join(cfg.dataDir, cfg.cluster, ...(one ? ['verify', `${one}.json`] : ['verify.json'])) : undefined
+      const sample = args.flags.get('sample') === 'all' ? Infinity : Number(args.flags.get('sample') ?? 60)
+      const r = await verify(verifyRpcs(cfg, args), runsDir(cfg), log, { run: one, writeTo, sample, rowBlocks: Number(args.flags.get('row-blocks') ?? 3) })
       if (r.problems.length) process.exitCode = 1
       return
     }

@@ -1,7 +1,7 @@
 # Main run: operator checklist
 
-Committed before the first trial of campaign `main` (git tag `prereg-main`), and followed as written. Every step's
-output is committed with the data.
+Committed before the first trial of campaign `main` (git tag `prereg-main`), and followed as written, except for the
+timing of one commit in step 7 (REPORT, "What went wrong"). Every step's output is committed with the data.
 
 ## Before
 

@@ -51,7 +51,7 @@ export interface VerifyReport {
 }
 
 export interface VerifyOptions {
-  /** whole transactions checked */
+  /** whole transactions checked, spread over the roles (Infinity: every landed transaction) */
   sample?: number
   /** whole blocks whose rows are rebuilt */
   rowBlocks?: number
