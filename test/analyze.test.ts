@@ -3,11 +3,11 @@ import { mkdtempSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { test } from 'node:test'
-import { type ContrastStat, interpret, keptBySensitivity, MIN_TRIALS, type Unit, verdict, versionFamily } from '../src/analyze.ts'
+import { confirmVerdict, type ContrastStat, interpret, keptBySensitivity, MIN_TRIALS, type Unit, verdict, versionFamily } from '../src/analyze.ts'
 import { barChart } from '../src/charts.ts'
 import { parseArgs } from '../src/config.ts'
 import { countsTowardsQuota } from '../src/design.ts'
-import { signFlipUpperP } from '../src/stats.ts'
+import { binomialLowerTail, signFlipUpperP } from '../src/stats.ts'
 import { readJsonl } from '../src/util.ts'
 
 const stat = (n: number, share: number, ci: [number, number], p: number): ContrastStat => ({ n, share, ci, p, pHolm: p })
@@ -94,4 +94,14 @@ test('charts: text is escaped, bars are clamped, a zero draws no bar but keeps i
   assert.match(svg, />0 of 15</)
   // clamped to the full plot width (400 px from x = 176), with the 4 px rounded end
   assert.match(svg, /H572A4 4 0 0 1 576 /)
+})
+
+test('the confirmatory tests: an exact lower binomial tail, and a verdict only from 10 trials on', () => {
+  assert.ok(Math.abs(binomialLowerTail(0, 3, 0.5) - 0.125) < 1e-12)
+  assert.ok(Math.abs(binomialLowerTail(4, 10, 0.8) - 0.00637) < 1e-5)
+  assert.ok(Math.abs(binomialLowerTail(11, 20, 0.8) - 0.00998) < 1e-5)
+  assert.equal(binomialLowerTail(20, 20, 0.8), 1)
+  assert.equal(confirmVerdict({ n: MIN_TRIALS - 1, p: 1e-6, pHolm: 1e-6 }), 'insufficient data')
+  assert.equal(confirmVerdict({ n: 20, p: 0.01, pHolm: 0.02 }), 'confirmed')
+  assert.equal(confirmVerdict({ n: 20, p: 0.03, pHolm: 0.06 }), 'not confirmed')
 })

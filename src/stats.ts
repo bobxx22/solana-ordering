@@ -157,6 +157,13 @@ export function binomialP(k: number, n: number): number {
   return Math.min(1, p)
 }
 
+/** Exact lower tail P(X <= k) of X ~ Binomial(n, p). */
+export function binomialLowerTail(k: number, n: number, p: number): number {
+  let s = 0
+  for (let i = 0; i <= Math.min(k, n); i++) s += Math.exp(lnChoose(n, i) + i * Math.log(p) + (n - i) * Math.log(1 - p))
+  return Math.min(1, s)
+}
+
 function lnChoose(n: number, k: number): number {
   let s = 0
   for (let i = 1; i <= k; i++) s += Math.log((n - k + i) / i)

@@ -4,7 +4,7 @@ import { join } from 'node:path'
 import { analyze } from './analyze.ts'
 import { collect } from './collect.ts'
 import { type Args, checkCluster, type Config, fmtSol, loadConfig, parseArgs } from './config.ts'
-import { CELL_BLOCK, DEFAULT_QUOTAS } from './design.ts'
+import { type Cell, CELL_BLOCK, DEFAULT_QUOTAS } from './design.ts'
 import { discover } from './discover.ts'
 import { createKeypairFile, loadKeypair } from './keys.ts'
 import { Ledger } from './ledger.ts'
@@ -33,6 +33,9 @@ commands
                --quota Agave=60,...  trials per client that count: B, C, D, F and A or E landed in the window
                                      (default: 60 per local scheduler, 30 per pipeline)
                --per-validator N     at least N trials allowed per validator (default 4; more for small clients)
+               --validators 7cVfgArC=10,...  instead of --quota: only these validators (identity prefixes), each with
+                                     its own quota of counted trials
+               --cells buffered/shared,...   deal only these cells (delivery/mode; default the block of ten)
                --spacing-ms 4000   --seed N   --dry-trials 3   --minutes 240
   collect    landing slot, in-block position and slot leader of a run's transactions; settles the ledger
                [run id | all, default: the latest run]   --refresh refetches every block
@@ -60,6 +63,13 @@ common flags
 
 Nothing is ever sent to mainnet without --live; the spend cap (env SPEND_CAP_SOL, at most 0.05) always applies.
 `
+
+/** "buffered/shared" -> a cell of the block of ten */
+function parseCell(text: string): Cell {
+  const cell = CELL_BLOCK.find((c) => `${c.delivery}/${c.mode}` === text)
+  if (!cell) throw new Error(`--cells ${text}: not one of ${[...new Set(CELL_BLOCK.map((c) => `${c.delivery}/${c.mode}`))].join(', ')}`)
+  return cell
+}
 
 async function main(): Promise<void> {
   const args = parseArgs(process.argv.slice(2))
@@ -102,17 +112,19 @@ async function main(): Promise<void> {
       const num = (k: string, d: number) => (args.flags.has(k) ? Number(args.flags.get(k)) : d)
       const campaign = typeof args.flags.get('campaign') === 'string' ? (args.flags.get('campaign') as string) : null
       if (cfg.live && !campaign) throw new Error('a live run needs --campaign NAME (the same name continues a stopped run)')
-      const quotas =
-        typeof args.flags.get('quota') === 'string'
-          ? Object.fromEntries((args.flags.get('quota') as string).split(',').map((kv) => [kv.split('=')[0], Number(kv.split('=')[1])]))
-          : DEFAULT_QUOTAS
+      const pairs = (flag: string) => Object.fromEntries((args.flags.get(flag) as string).split(',').map((kv) => [kv.split('=')[0], Number(kv.split('=')[1])]))
+      const byValidator = typeof args.flags.get('validators') === 'string'
+      if (byValidator && args.flags.has('quota')) throw new Error('--validators and --quota exclude each other')
+      const quotas = byValidator ? pairs('validators') : typeof args.flags.get('quota') === 'string' ? pairs('quota') : DEFAULT_QUOTAS
+      const cells = typeof args.flags.get('cells') === 'string' ? (args.flags.get('cells') as string).split(',').map(parseCell) : CELL_BLOCK
       await run(
         cfg,
         rpc,
         {
           quotas,
+          byValidator,
           perValidator: num('per-validator', 4),
-          cells: CELL_BLOCK,
+          cells,
           campaign: campaign ?? 'dry',
           path: (args.flags.get('path') as SendPath) || 'tpu',
           spacingMs: num('spacing-ms', 4000),
@@ -159,7 +171,7 @@ async function main(): Promise<void> {
       // a seeded sample of 120 blocks keeps this within minutes on the public endpoint; `verify` checks every block
       const r = await verify(verifyRpcs(cfg, args), runsDir(cfg), log, { maxBlocks: 120, sample: 30, rowBlocks: 2 })
       if (r.problems.length) process.exitCode = 1
-      await run({ ...cfg, live: false }, rpc, { quotas: DEFAULT_QUOTAS, perValidator: 4, cells: CELL_BLOCK, campaign: 'dry', path: 'tpu', spacingMs: 4000, seed: 1, dryTrials: 1, maxMinutes: 5 }, log)
+      await run({ ...cfg, live: false }, rpc, { quotas: DEFAULT_QUOTAS, byValidator: false, perValidator: 4, cells: CELL_BLOCK, campaign: 'dry', path: 'tpu', spacingMs: 4000, seed: 1, dryTrials: 1, maxMinutes: 5 }, log)
       return
     }
     case 'paths': {

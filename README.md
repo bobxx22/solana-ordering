@@ -289,7 +289,9 @@ name: the quotas, the per-validator counts and the excluded addresses carry over
 The analysis is fixed before the first trial of the main run. This section, the header of `src/analyze.ts`, the quota
 rule in `src/design.ts` and [`docs/RUNBOOK.md`](docs/RUNBOOK.md) are the plan. They are frozen at the git tag
 `prereg-main`, which is older than every trial of campaign `main` (the run directories are named by their UTC start).
-Anything added after the data is marked exploratory (REPORT, "The plan").
+Anything added after the data is marked exploratory (REPORT, "The plan"). Two of those findings are tested again
+on new trials by a confirmatory run, planned in [`docs/CONFIRM.md`](docs/CONFIRM.md) and frozen at the git tag
+`prereg-confirm` before its first trial.
 
 - **Unit.** One trial.
   - Its transactions that landed in the targeted leader's 4-slot window are ordered by (slot, index): a
@@ -435,7 +437,7 @@ Anything added after the data is marked exploratory (REPORT, "The plan").
 
 ## Commands
 
-The main run follows [`docs/RUNBOOK.md`](docs/RUNBOOK.md).
+The main run follows [`docs/RUNBOOK.md`](docs/RUNBOOK.md), the confirmatory run [`docs/CONFIRM.md`](docs/CONFIRM.md).
 
 `node src/cli.ts help` lists them all.
 

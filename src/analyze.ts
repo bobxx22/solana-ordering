@@ -36,6 +36,16 @@
 //   presentation total rows in the exact-order, delivery and coverage tables; the ingress table restricted to
 //                campaign "main"; port, reconnect and arrival margin per trial in orders.md; the two charts of
 //                REPORT.md (src/charts.ts).
+// Confirmatory run (docs/CONFIRM.md; frozen before the first trial of campaign "confirm", git tag prereg-confirm):
+//   unit       as above; campaign "confirm", buffered/shared, three of the four validators the exploratory deviations
+//              table named (the fourth, 7cVfgArC, has had no leader slots since epoch 1070). Its trials enter only
+//              their own section, the run list and orders.md.
+//   H1         the JitoLabs validators EvnRmnMr and C8Bey3LK order by total fee: B before C, pooled, one-sided against
+//              chance by its exact null distribution, like the primary contrasts.
+//   H2         Firedancer JD549Hsb departs from the exact reward/cost order: the share of its trials with all six in
+//              the window that are in that order (A/E either way), by the exact lower binomial tail against 80%.
+//   verdict    Holm over the two tests. Fewer than 10 trials: insufficient data; otherwise confirmed when the Holm
+//              p < 0.05, else not confirmed. Descriptive: the same per validator, and on the sensitivity filter.
 // The block producer is the scheduled leader of the landing slot; the client is that leader's gossip client id in
 // the run's snapshot.
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
@@ -45,7 +55,7 @@ import { barChart } from './charts.ts'
 import type { Landed } from './collect.ts'
 import { BASE_FEE_PER_SIGNATURE, countsTowardsQuota, FIRE_OFFSET, LOCAL_CLIENTS, loadedDataCost, PIPELINE_CLIENTS, WINDOW_SLOTS } from './design.ts'
 import type { Snapshot } from './discover.ts'
-import { bootstrapMeanCi, exactUpperTail, mean, median, pearson, signFlipP, signFlipUpperP, spearman, wilson } from './stats.ts'
+import { binomialLowerTail, bootstrapMeanCi, exactUpperTail, mean, median, pearson, signFlipP, signFlipUpperP, spearman, wilson } from './stats.ts'
 import { readJsonl, rng, toJson } from './util.ts'
 
 /**
@@ -57,6 +67,17 @@ import { readJsonl, rng, toJson } from './util.ts'
 export const ALPENGLOW_SLOT = 459_653_000
 /** the campaign whose buffered/shared trials carry the confirmatory tests */
 export const MAIN_CAMPAIGN = 'main'
+/** the campaign of the confirmatory run after the main run (docs/CONFIRM.md, git tag prereg-confirm) */
+export const CONFIRM_CAMPAIGN = 'confirm'
+/**
+ * H1: JitoLabs validators whose main-run trials were all in the exact total-fee order. The third, 7cVfgArC, stopped
+ * voting at slot 462 239 999 and has no leader slots in epochs 1070 and 1071, so it cannot be reached.
+ */
+export const CONFIRM_TOTAL_FEE = ['EvnRmnMr', 'C8Bey3LK']
+/** H2: the Firedancer validator with 4 of 10 main-run trials in the exact reward/cost order */
+export const CONFIRM_DEPARTS = 'JD549Hsb'
+/** H2's reference rate: below 84%, the lower end of the Wilson interval of the other Firedancer validators' 20 of 20 */
+export const CONFIRM_REFERENCE = 0.8
 const ALPHA = 0.05
 /** fewer trials than this give no verdict */
 export const MIN_TRIALS = 10
@@ -394,6 +415,43 @@ export function ruleStat(units: Unit[], rule: Rule, seed = 1): RuleStat {
   return { rule, trials: v.length, clusters: clusters.length, meanGamma: mean(v), ci, p: signFlipP(clusters.map(mean), seed) }
 }
 
+export interface ConfirmTest {
+  hypothesis: string
+  validators: string
+  measure: string
+  n: number
+  share: number
+  ci: [number, number]
+  p: number
+  pHolm?: number
+  verdict?: string
+}
+
+export const confirmVerdict = (t: { n: number; p: number; pHolm?: number }) => (t.n < MIN_TRIALS ? 'insufficient data' : (t.pHolm ?? t.p) < ALPHA ? 'confirmed' : 'not confirmed')
+
+/** The two pre-registered tests of the confirmatory run (docs/CONFIRM.md) on buffered/shared trials. */
+export function confirmTests(units: Unit[], ordered: Map<string, Tx[]>): ConfirmTest[] {
+  const trio = units.filter((u) => CONFIRM_TOTAL_FEE.some((v) => u.leader.startsWith(v)))
+  const six = units.filter((u) => u.leader.startsWith(CONFIRM_DEPARTS) && u.observedOrder.length === 6)
+  const exact = six.filter((u) => REWARD_COST.test(u.observedOrder)).length
+  const tests: ConfirmTest[] = [
+    { hypothesis: 'H1: orders by total fee', validators: `JitoLabs ${CONFIRM_TOTAL_FEE.join(', ')}`, measure: 'B before C (by chance 50%)', ...contrastStat(trio, ordered, B_BEFORE_C) },
+    {
+      hypothesis: 'H2: departs from the exact reward/cost order',
+      validators: `Firedancer ${CONFIRM_DEPARTS}`,
+      measure: `trials with all six in the exact reward/cost order (reference ${pct(CONFIRM_REFERENCE)})`,
+      n: six.length,
+      share: six.length ? exact / six.length : NaN,
+      ci: wilson(exact, six.length),
+      p: six.length ? binomialLowerTail(exact, six.length, CONFIRM_REFERENCE) : NaN,
+    },
+  ]
+  for (const t of tests) if (!Number.isFinite(t.p)) t.p = 1
+  holm(tests)
+  for (const t of tests) t.verdict = confirmVerdict(t)
+  return tests
+}
+
 /** Holm step-down adjustment, in place. A test without data enters the family with p = 1. */
 export function holm(stats: { p: number; pHolm?: number }[]): void {
   const all = stats.map((s) => ({ s, p: Number.isFinite(s.p) ? s.p : 1 })).sort((a, b) => a.p - b.p)
@@ -417,6 +475,8 @@ export const PRIMARY: Contrast[] = [
   { name: 'D before C', pairs: [['D', 'C']], meaning: 'reward/cost with k < 0.84 puts D first; the whole base fee (k = 1) or cost alone would put C first' },
 ]
 export const SECONDARY: Contrast[] = [{ name: 'A before B', pairs: [['A', 'B']], meaning: 'every per-unit rule puts A first; total fee puts B first' }]
+/** H1 of the confirmatory run: the opposite of the primary "C before B" */
+export const B_BEFORE_C: Contrast = { name: 'B before C', pairs: [['B', 'C']], meaning: 'total fee puts B first; reward/cost with k > 0.12 puts C first' }
 
 export interface ContrastStat {
   n: number
@@ -574,7 +634,16 @@ function testFamily(us: Unit[], ordered: Map<string, Tx[]>, labels: string[] = L
 }
 
 export function analyze(dataDir: string, cluster: string): string {
-  const { units, txs, trials, blocks, ordered, runs, uncollected, snapshots, onTarget, excluded } = loadRuns(join(dataDir, cluster, 'runs'))
+  const loaded = loadRuns(join(dataDir, cluster, 'runs'))
+  const { blocks, ordered, runs, uncollected, snapshots, onTarget, excluded } = loaded
+  // the confirmatory campaign has its own section and rows in the run list and orders.md; every other table covers the
+  // main campaign and the runs before it, as when the main run was analysed
+  const isConfirm = (t: { campaign: string }) => t.campaign === CONFIRM_CAMPAIGN
+  const confirmRuns = new Set(loaded.trials.filter(isConfirm).map((t) => t.run))
+  const units = loaded.units.filter((u) => !isConfirm(u))
+  const trials = loaded.trials.filter((t) => !isConfirm(t))
+  const txs = loaded.txs.filter((t) => !confirmRuns.has(t.run))
+  const confirmAll = loaded.units.filter((u) => isConfirm(u) && u.path === 'tpu')
   const out: string[] = []
   const orders: string[] = []
   out.push('# Results (generated by `analyze` from the committed raw data; do not edit by hand)', '')
@@ -819,6 +888,41 @@ export function analyze(dataDir: string, cluster: string): string {
     out.push(...sendRows, '')
   }
 
+  // ---------- the confirmatory run, pre-registered after the main run ----------
+  out.push('## Confirmatory run (campaign "confirm"; pre-registered in docs/CONFIRM.md, git tag prereg-confirm)', '')
+  out.push('New buffered/shared trials aimed at three of the four validators whose main-run trials departed from the reward/cost order ("Deviations from the reward/cost order, validator by validator"; the fourth, 7cVfgArC, has had no leader slots since epoch 1070), planned and tagged before the first of them. Two tests, Holm-adjusted together: H1 one-sided against chance by its exact null distribution, like the primary contrasts; H2 by the exact lower binomial tail against the reference rate. Fewer than 10 trials: insufficient data; otherwise confirmed when the Holm p < 0.05, else not confirmed. These trials appear only in this section, the run list and orders.md.', '')
+  const confirm = bufShared(confirmAll)
+  if (!confirm.length) out.push('No trials of the confirmatory campaign yet.', '')
+  else {
+    out.push('| hypothesis | validators | measure | trials | share [95% interval] | p | Holm p | verdict |')
+    out.push('|---|---|---|---:|---|---:|---:|---|')
+    for (const t of confirmTests(confirm, ordered)) out.push(`| ${t.hypothesis} | ${t.validators} | ${t.measure} | ${t.n} | ${t.n ? `${pct(t.share)} [${pct(t.ci[0])}–${pct(t.ci[1])}]` : '–'} | ${fp(t.p)} | ${fp(t.pHolm)} | **${t.verdict}** |`)
+    out.push('', 'Per validator (descriptive). B before C: of the trials with both in the window.', '')
+    out.push('| client | validator | versions | QUIC port | trials | trials with all six | exact reward/cost | exact total fee | other orders | B before C | kept by the sensitivity filter |')
+    out.push('|---|---|---|---|---:|---:|---:|---:|---|---:|---:|')
+    for (const v of [...CONFIRM_TOTAL_FEE, CONFIRM_DEPARTS]) {
+      const us = confirm.filter((u) => u.leader.startsWith(v))
+      if (!us.length) {
+        out.push(`| | ${v} | | | 0 | | | | | | |`)
+        continue
+      }
+      const six = us.filter((u) => u.observedOrder.length === 6)
+      const others = new Map<string, number>()
+      for (const u of six) if (!REWARD_COST.test(u.observedOrder) && !TOTAL_FEE.test(u.observedOrder)) others.set(u.observedOrder, (others.get(u.observedOrder) ?? 0) + 1)
+      const bc = trialValues(us, ordered, B_BEFORE_C)
+      out.push(
+        `| ${us[0].client} | ${v} | ${[...new Set(us.map((u) => u.version ?? '?'))].join(', ')} | ${[...new Set(us.map((u) => u.port ?? '–'))].join(', ')} | ${us.length} | ${six.length} | ${six.filter((u) => REWARD_COST.test(u.observedOrder)).length} | ${six.filter((u) => TOTAL_FEE.test(u.observedOrder)).length} | ${[...others.entries()].sort().map(([o, n]) => `${o} ×${n}`).join(', ') || '–'} | ${bc.filter((x) => x.value === 1).length} of ${bc.length} | ${us.filter(keptBySensitivity).length} |`,
+      )
+    }
+    const kept = confirmTests(confirm.filter(keptBySensitivity), ordered)
+    out.push('', `Sensitivity (descriptive; the filter of the primary, unadjusted p): ${kept.map((t) => `${t.hypothesis.split(':')[0]} ${t.n ? `${pct(t.share)} of ${t.n}, p=${fp(t.p)}` : 'no trials'}`).join('; ')}.`)
+    const keys = new Set(confirmAll.map(key))
+    const sent = loaded.trials.filter(isConfirm)
+    const landed = loaded.txs.filter((t) => confirmRuns.has(t.run) && t.slot !== null).length
+    const complete = sent.filter((t) => countsTowardsQuota(onTarget.get(key(t)) ?? [])).length
+    out.push('', `Delivery: ${sent.length} trials dispatched, ${landed} of ${6 * sent.length} transactions landed, ${complete} trials with B, C, D, F and A or E in the window, ${keys.size} trials used.`, '')
+  }
+
   // ---------- rule agreement ----------
   const ruleTable = (title: string, groups: { label: string; units: Unit[] }[], rules: Rule[]) => {
     if (!groups.some((g) => g.units.length)) return
@@ -987,12 +1091,12 @@ export function analyze(dataDir: string, cluster: string): string {
   orders.push('| campaign | run | trial | client | validator | version | cell | send order | observed order | slots | QUIC port | reconnected | arrival margin, ms |')
   orders.push('|---|---|---:|---|---|---|---|---|---|---|---|---|---:|')
   const sendOrderOf = (u: Unit) =>
-    txs
+    loaded.txs
       .filter((t) => t.run === u.run && t.trial === u.trial)
       .sort((a, b) => a.sendIndex - b.sendIndex)
       .map((t) => t.role)
       .join('')
-  for (const u of tpu)
+  for (const u of [...tpu, ...confirmAll])
     orders.push(
       `| ${u.campaign} | ${u.run} | ${u.trial} | ${u.client} | ${u.leader.slice(0, 8)} | ${u.version ?? '?'} | ${u.delivery}/${u.mode} | ${sendOrderOf(u)} | ${u.observedOrder} | ${u.slots.join(', ')} | ${u.port ?? '–'} | ${u.reconnected ? 'yes' : '–'} | ${u.marginMs === null ? '–' : Math.round(u.marginMs)} |`,
     )
@@ -1002,8 +1106,8 @@ export function analyze(dataDir: string, cluster: string): string {
   const md = out.join('\n')
   writeFileSync(join(resultsDir, 'results.md'), md + '\n')
   writeFileSync(join(resultsDir, 'orders.md'), orders.join('\n') + '\n')
-  writeFileSync(join(resultsDir, 'units.json'), toJson(units, 1))
-  writeFileSync(join(resultsDir, 'summary.json'), toJson({ runs, units: units.length, uncollected }, 1))
+  writeFileSync(join(resultsDir, 'units.json'), toJson(loaded.units, 1))
+  writeFileSync(join(resultsDir, 'summary.json'), toJson({ runs, units: loaded.units.length, uncollected }, 1))
   // the two charts REPORT.md shows: the exact-order rates, and the exploratory send-order table
   const thousands = (x: number) => String(x).replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
   const exactBar = (b: (typeof exactBars)[number]) => ({ label: b.label, value: b.exact / b.trials, text: `${b.exact} of ${b.trials}` })

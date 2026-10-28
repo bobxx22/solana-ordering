@@ -15,6 +15,9 @@
 //
 // Runs belong to a campaign (`--campaign`). Quotas, per-validator counts and excluded addresses are seeded from the
 // earlier live runs of the same campaign, so a run that stopped can be continued instead of started over.
+//
+// Quotas are per client label, or, with `byValidator` (`--validators`), per validator: the quota keys are then
+// identity prefixes, only those validators are targeted, and the records keep the validator's client as usual.
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { BlockhashCache, SlotClock } from './clock.ts'
@@ -38,6 +41,8 @@ export type SendPath = 'tpu' | 'rpc'
 export interface RunOptions {
   /** counted trials wanted per client label (countsTowardsQuota; the labels not listed are not targeted) */
   quotas: Record<string, number>
+  /** the keys of `quotas` are identity prefixes of single validators instead of client labels */
+  byValidator: boolean
   /** trials per validator; raised for clients whose leader slots sit with few validators */
   perValidator: number
   /** the block of cells dealt per client */
@@ -102,7 +107,7 @@ async function executionPayer(cfg: Config, rpc: Rpc): Promise<Signer | null> {
  * per-validator counts (refused handshakes included) and excluded addresses. Whether an address takes unstaked
  * traffic is a fact about the address, not the campaign, so `everLanded` is built from every live run.
  */
-function campaignState(cfg: Config, campaign: string) {
+function campaignState(cfg: Config, campaign: string, labelOf: (leader: string, client: string) => string | null = (_, client) => client) {
   const perClient = new Map<string, number>()
   const perValidator = new Map<string, number>()
   const dispatched = new Map<string, number>()
@@ -129,15 +134,18 @@ function campaignState(cfg: Config, campaign: string) {
     runs.push(id)
     const byTrial = new Map(trials.map((t) => [t.trial, t]))
     for (const t of trials) {
-      dispatched.set(t.client, (dispatched.get(t.client) ?? 0) + 1)
+      const label = labelOf(t.leader, t.client)
+      if (label) dispatched.set(label, (dispatched.get(label) ?? 0) + 1)
       perValidator.set(t.leader, (perValidator.get(t.leader) ?? 0) + 1)
     }
     for (const e of events) {
       // runs before the quota rule of countsTowardsQuota recorded only how many landed
       if (e.type === 'landing-check' && (e.counts ?? e.landed >= 2)) {
-        perClient.set(e.client, (perClient.get(e.client) ?? 0) + 1)
         const t = byTrial.get(e.trial)
-        if (t) cells.push({ client: e.client, cell: { mode: t.mode, delivery: t.delivery } })
+        const label = t ? labelOf(t.leader, t.client) : e.client
+        if (!label) continue
+        perClient.set(label, (perClient.get(label) ?? 0) + 1)
+        if (t) cells.push({ client: label, cell: { mode: t.mode, delivery: t.delivery } })
       }
       if (e.type === 'refused') perValidator.set(e.leader, (perValidator.get(e.leader) ?? 0) + 1)
       if (e.type === 'exclude') excluded.add(e.ingress)
@@ -185,9 +193,20 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
     const s = slotsOf.get(client) ?? [1]
     return s.reduce((a, b) => a + b, 0) ** 2 / s.reduce((a, b) => a + b * b, 0)
   }
-  const capPerValidator = (client: string) => Math.max(opts.perValidator, Math.ceil((1.5 * quota(client)) / effective(client)))
+  // the label a leader's trials are counted under: its client, or with byValidator the prefix it matches (else none)
+  const prefixOf = new Map<string, string>()
+  if (opts.byValidator)
+    for (const p of clients) {
+      const m = snapshot.validators.filter((v) => v.identity.startsWith(p))
+      if (m.length !== 1) throw new Error(`--validators ${p}: ${m.length} validators in the snapshot start with it`)
+      prefixOf.set(m[0].identity, p)
+      log.info(`  ${p}: ${m[0].identity} (${m[0].client} ${m[0].version ?? '?'}, ${m[0].leaderSlots} leader slots this epoch, QUIC ${m[0].tpuQuic ?? 'none'})`)
+    }
+  const labelOf = (leader: string, client: string) => (opts.byValidator ? (prefixOf.get(leader) ?? null) : client)
+  // with a quota per validator the quota itself is the cap
+  const capPerValidator = (label: string) => (opts.byValidator ? Infinity : Math.max(opts.perValidator, Math.ceil((1.5 * quota(label)) / effective(label))))
 
-  const carried = live ? campaignState(cfg, opts.campaign) : campaignState(cfg, '\u0000none')
+  const carried = live ? campaignState(cfg, opts.campaign, labelOf) : campaignState(cfg, '\u0000none')
   const { perClient, perValidator, dispatched, excluded, everLanded } = carried
   const perTrial = trialCost()
   const remainingTrials = live ? clients.reduce((s, c) => s + Math.max(0, quota(c) - (perClient.get(c) ?? 0)), 0) : opts.dryTrials
@@ -263,7 +282,7 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
   // a row (two empty bursts, or refused handshakes) is no longer targeted; an address that landed before is never
   // excluded. A client stops being targeted after three times its quota of dispatches.
   const dropped = new Map<string, number>()
-  type Check = { trial: number; client: string; ingress: string; cell: Cell; txs: { signature: string; role: Role; maxFee: bigint }[]; at: number; windowStart: number; lastAckMs: number | null }
+  type Check = { trial: number; client: string; label: string; ingress: string; cell: Cell; txs: { signature: string; role: Role; maxFee: bigint }[]; at: number; windowStart: number; lastAckMs: number | null }
   const checks: Check[] = []
   const failed = (ingress: string, client: string, why: string) => {
     dropped.set(ingress, (dropped.get(ingress) ?? 0) + 1)
@@ -295,17 +314,17 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
         everLanded.add(c.ingress)
         dropped.set(c.ingress, 0)
       }
-      if (counts) perClient.set(c.client, (perClient.get(c.client) ?? 0) + 1)
+      if (counts) perClient.set(c.label, (perClient.get(c.label) ?? 0) + 1)
       else {
         // the cell was counted at dispatch; a trial that does not count towards the quota gives it back
-        dealer.add(c.client, c.cell, -1)
+        dealer.add(c.label, c.cell, -1)
         if (landed === 0) failed(c.ingress, c.client, 'empty burst')
       }
     }
   }
   // trials still awaiting their landing check count as landed until the check says otherwise, so a client is not
   // targeted again in the seconds before its last trial is confirmed
-  const pendingFor = (c: string) => checks.filter((x) => x.client === c).length
+  const pendingFor = (c: string) => checks.filter((x) => x.label === c).length
   const needed = (c: string) => quota(c) > 0 && (perClient.get(c) ?? 0) + pendingFor(c) < quota(c) && (!live || (dispatched.get(c) ?? 0) < 3 * quota(c))
   let trial = 0
   let attempt = 0
@@ -344,22 +363,23 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
 
       // among the windows of the next few seconds, the one whose client is furthest from its quota
       const minFire = Math.max(clock.slot + CONNECT_AHEAD + 2, lastFire + Math.ceil(opts.spacingMs / SLOT_MS))
-      let target: { start: number; leader: string; client: string; fire: number; tpuQuic: string | null } | undefined
+      let target: { start: number; leader: string; client: string; label: string; fire: number; tpuQuic: string | null } | undefined
       let best = Infinity
       for (let i = Math.max(1, minFire - leadersFrom - 1); i < leaders.length && i < minFire - leadersFrom + LOOKAHEAD_SLOTS; i++) {
         const leader = leaders[i]
         if (leader === leaders[i - 1]) continue
         const v = byIdentity.get(leader)
         const client = v?.client ?? 'unknown'
-        if (!needed(client) || (perValidator.get(leader) ?? 0) >= capPerValidator(client)) continue
+        const label = labelOf(leader, client)
+        if (!label || !needed(label) || (perValidator.get(leader) ?? 0) >= capPerValidator(label)) continue
         if (opts.path === 'tpu' && (!v?.tpuQuic || excluded.has(v.tpuQuic))) continue
         const start = leadersFrom + i
-        const fire = start + FIRE_OFFSET[dealer.peek(client).delivery]
+        const fire = start + FIRE_OFFSET[dealer.peek(label).delivery]
         if (fire < minFire) continue
-        const need = (perClient.get(client) ?? 0) / quota(client)
+        const need = (perClient.get(label) ?? 0) / quota(label)
         if (need < best) {
           best = need
-          target = { start, leader, client, fire, tpuQuic: v?.tpuQuic ?? null }
+          target = { start, leader, client, label, fire, tpuQuic: v?.tpuQuic ?? null }
         }
       }
       if (!target) {
@@ -369,7 +389,7 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
         continue
       }
       attempt++
-      const cell = dealer.peek(target.client)
+      const cell = dealer.peek(target.label)
       const payers = shuffle(setPayers, random)
       const order = shuffle(
         ROLES.map((r) => r.role),
@@ -471,15 +491,15 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
         )
       }
       if (tpu) tpu.closeLater(target.tpuQuic!)
-      dealer.add(target.client, cell)
+      dealer.add(target.label, cell)
       lastFire = target.fire
-      dispatched.set(target.client, (dispatched.get(target.client) ?? 0) + 1)
+      dispatched.set(target.label, (dispatched.get(target.label) ?? 0) + 1)
       perValidator.set(target.leader, (perValidator.get(target.leader) ?? 0) + 1)
       const ingress = target.tpuQuic ?? target.leader
       const acks = sent.map((s) => (s.ackAt ? Date.parse(s.ackAt) : NaN)).filter(Number.isFinite)
       const lastAckMs = acks.length === sent.length ? Math.max(...acks) : null
-      if (live) checks.push({ trial, client: target.client, ingress, cell, txs: txs.map((t) => ({ signature: t.signature, role: t.role, maxFee: t.maxFee })), at: Date.now() + CHECK_AFTER_MS, windowStart: target.start, lastAckMs })
-      else perClient.set(target.client, (perClient.get(target.client) ?? 0) + 1)
+      if (live) checks.push({ trial, client: target.client, label: target.label, ingress, cell, txs: txs.map((t) => ({ signature: t.signature, role: t.role, maxFee: t.maxFee })), at: Date.now() + CHECK_AFTER_MS, windowStart: target.start, lastAckMs })
+      else perClient.set(target.label, (perClient.get(target.label) ?? 0) + 1)
       const v = byIdentity.get(target.leader)
       appendJsonl(join(dir, 'trials.jsonl'), {
         trial,

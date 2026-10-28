@@ -254,6 +254,12 @@ Added after the main run, outside the pre-registered plan. Campaign "main", ever
 | Harmonic pipelines | streamed/shared | 6 | 90 of 90 (100%) | 6 of 6 | 1.00 |
 | Harmonic pipelines | streamed/independent | 6 | 87 of 90 (97%) | 3 of 6 | 0.93 |
 
+## Confirmatory run (campaign "confirm"; pre-registered in docs/CONFIRM.md, git tag prereg-confirm)
+
+New buffered/shared trials aimed at three of the four validators whose main-run trials departed from the reward/cost order ("Deviations from the reward/cost order, validator by validator"; the fourth, 7cVfgArC, has had no leader slots since epoch 1070), planned and tagged before the first of them. Two tests, Holm-adjusted together: H1 one-sided against chance by its exact null distribution, like the primary contrasts; H2 by the exact lower binomial tail against the reference rate. Fewer than 10 trials: insufficient data; otherwise confirmed when the Holm p < 0.05, else not confirmed. These trials appear only in this section, the run list and orders.md.
+
+No trials of the confirmatory campaign yet.
+
 ## Rule agreement: buffered/shared (campaign "main")
 
 Mean gamma per trial (+1: every pair the rule ranks differently landed in its order; 0: unrelated). The rules agree on most pairs by design: read the contrasts first. [95% interval resampling ingress hosts; – with fewer than 3], sign-flip p over host means, Holm-adjusted within the table.
