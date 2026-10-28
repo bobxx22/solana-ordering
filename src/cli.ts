@@ -36,6 +36,7 @@ commands
                --validators 7cVfgArC=10,...  instead of --quota: only these validators (identity prefixes), each with
                                      its own quota of counted trials
                --cells buffered/shared,...   deal only these cells (delivery/mode; default the block of ten)
+               --sub-target SOL      fund each sub-payer to this balance (default 0.0033, sized for the main run)
                --spacing-ms 4000   --seed N   --dry-trials 3   --minutes 240
   collect    landing slot, in-block position and slot leader of a run's transactions; settles the ledger
                [run id | all, default: the latest run]   --refresh refetches every block
@@ -131,6 +132,7 @@ async function main(): Promise<void> {
           seed: num('seed', Date.now() % 2 ** 31),
           dryTrials: num('dry-trials', 3),
           maxMinutes: num('minutes', 240),
+          subTarget: args.flags.has('sub-target') ? BigInt(Math.round(num('sub-target', 0) * 1e9)) : undefined,
         },
         log,
       )

@@ -34,7 +34,7 @@ import { Rpc } from './rpc.ts'
 import { settleOpen } from './settle.ts'
 import { TpuSender } from './tpu.ts'
 import { appendJsonl, readJsonl, rng, shuffle, sleep, toJson } from './util.ts'
-import { balances, fundSubPayers, loadSubPayers, SUB_PAYERS, SUB_TARGET } from './wallets.ts'
+import { balances, fundSubPayers, loadSubPayers, SUB_LOW, SUB_PAYERS, SUB_TARGET } from './wallets.ts'
 
 export type SendPath = 'tpu' | 'rpc'
 
@@ -55,6 +55,8 @@ export interface RunOptions {
   /** in a dry run, how many trials to simulate */
   dryTrials: number
   maxMinutes: number
+  /** lamports each sub-payer is funded to (default SUB_TARGET, sized for the main run) */
+  subTarget?: bigint
 }
 
 export const DEFAULT_CLIENTS = Object.keys(DEFAULT_QUOTAS)
@@ -174,6 +176,7 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
   const unsignedPayer = live ? null : await executionPayer(cfg, rpc)
   if (!live) log.info(unsignedPayer ? `execution check: unsigned copies paid by ${unsignedPayer.address} (a public wallet of the latest live run)` : 'execution check skipped: no funded wallet of a live run')
   const ledger = new Ledger(ledgerFile(cfg), cfg.spendCapLamports)
+  const subTarget = opts.subTarget ?? SUB_TARGET
   if (live) {
     await checkCluster(cfg, rpc, sendRpc)
     ledger.lock()
@@ -246,7 +249,7 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
     const [mainBal] = await balances(rpc, [main.address])
     log.info(`main wallet ${main.address}: ${fmtSol(mainBal)}`)
     // fund every payer for the whole run up front, so that a mid-run top-up is the exception
-    await fundSubPayers(rpc, rpc, ledger, log, main, subs, true, (SUB_TARGET * 9n) / 10n)
+    await fundSubPayers(rpc, rpc, ledger, log, main, subs, true, (subTarget * 9n) / 10n, subTarget)
   }
 
   const tpu = opts.path === 'tpu' ? new TpuSender() : null
@@ -345,7 +348,7 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
         const need = RENT_EXEMPT + ROLES.reduce((m, r) => (maxFee(r) > m ? maxFee(r) : m), 0n) + PAYER_MARGIN
         if (bal.some((b) => b < need)) {
           try {
-            await fundSubPayers(rpc, rpc, ledger, log, main, setPayers, true)
+            await fundSubPayers(rpc, rpc, ledger, log, main, setPayers, true, subTarget < SUB_LOW ? subTarget : SUB_LOW, subTarget)
           } catch (e) {
             // not fatal: the payers are re-checked before this set's next trial
             log.info(`top-up failed (${(e as Error).message}); retrying before the next trial of this set`)

@@ -100,10 +100,10 @@ async function transferBatch(
   log.info(`${what}: confirmed ${tx.signature}`)
 }
 
-/** Brings every sub-payer below `low` (default SUB_LOW) up to SUB_TARGET. Without `live` only prints the plan. */
-export async function fundSubPayers(rpc: Rpc, sendRpc: Rpc, ledger: Ledger, log: Log, main: Signer, subs: Signer[], live: boolean, low = SUB_LOW): Promise<void> {
+/** Brings every sub-payer below `low` (default SUB_LOW) up to `target`. Without `live` only prints the plan. */
+export async function fundSubPayers(rpc: Rpc, sendRpc: Rpc, ledger: Ledger, log: Log, main: Signer, subs: Signer[], live: boolean, low = SUB_LOW, target = SUB_TARGET): Promise<void> {
   const bal = await balances(rpc, subs.map((s) => s.address))
-  const moves = subs.flatMap((s, i) => (bal[i] < low ? [{ from: main, to: s.address, lamports: SUB_TARGET - bal[i] }] : []))
+  const moves = subs.flatMap((s, i) => (bal[i] < low ? [{ from: main, to: s.address, lamports: target - bal[i] }] : []))
   if (moves.length === 0) return
   const total = moves.reduce((s, m) => s + m.lamports, 0n)
   log.info(`top-up: ${moves.length} sub-payers, ${fmtSol(total)} from the main wallet`)
