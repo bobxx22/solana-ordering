@@ -175,6 +175,7 @@ fallback. 0 problems in each.
 | `verify/2026-10-27T14-39-05Z.json` | 2026-10-27 15:32 | 1 | 174 | 31 | 31 | 60 (sample) | 1 227 (3 blocks) | 6 of 6 | – |
 | `verify/2026-10-27T15-32-51Z.json` | 2026-10-27 18:50 | 1 | 2 048 | 406 | 406 | 60 (sample) | 1 438 (3 blocks) | 190 of 190 | – |
 | `verify.json` | 2026-10-27 21:05 | 7 | 2 501 | 507 | 507 | 60 (sample) | 1 160 (3 blocks) | 220 of 220 | 30 of 30 |
+| `verify-every-transaction.json` | 2026-10-28 15:12 | 7 | 2 501 | 507 | 507 | 2 501 (all) | 15 509 (30 blocks) | 220 of 220 | 30 of 30 |
 
 What each check verifies:
 - every landed transaction sits at its recorded index in its recorded block;
