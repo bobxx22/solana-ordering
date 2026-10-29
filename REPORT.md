@@ -701,7 +701,9 @@ pilot through the public RPC", row "all pilot trials"). The block order followed
 our transactions: gamma 0.87 [0.71, 0.97], Holm p = 0.005; reward/cost gave 0.23, p = 1.000. The RPC answered after a
 median 1 302 ms (176–3 340), a response time that correlates with the landing delay at r = 0.91, and only 19 of 75
 transactions (25%) landed in the targeted window ("Pilot path"). Straight to the leader over QUIC, the main run landed
-2 168 of its 2 222 landed transactions in the targeted window ("Delivery", all deliveries).
+2 168 of its 2 222 landed transactions in the targeted window ("Delivery", all deliveries). A measurement sent through
+an RPC therefore reads the RPC's release order, which is unrelated to the fees, and so finds "no stable rule" even at
+a leader that ranks by fee.
 
 **The calibration and the rehearsal** ("Calibration and rehearsal runs") were descriptive and never entered a test.
 They already showed the main run's pattern. In the rehearsal's buffered/shared trials, A,E before C, A,E before F and
