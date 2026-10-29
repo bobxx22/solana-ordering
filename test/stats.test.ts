@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
-import { binomialP, kendallTau, signFlipP, spearman, wilson } from '../src/stats.ts'
+import { binomialP, kendallTau, median, quantile, signFlipP, spearman, wilson } from '../src/stats.ts'
 
 test('kendall tau-b', () => {
   assert.equal(kendallTau([1, 2, 3, 4], [1, 2, 3, 4]), 1)
@@ -13,6 +13,13 @@ test('kendall tau-b', () => {
 test('spearman', () => {
   assert.ok(Math.abs(spearman([1, 2, 3, 4], [10, 20, 30, 40])! - 1) < 1e-12)
   assert.ok(Math.abs(spearman([1, 2, 3, 4], [4, 3, 2, 1])! + 1) < 1e-12)
+})
+
+test('quantiles', () => {
+  assert.equal(quantile([4, 1, 3, 2], 0.5), median([4, 1, 3, 2]))
+  assert.equal(quantile([1, 2, 3, 4, 5], 0.25), 2)
+  assert.equal(quantile([1, 2, 3, 4], 0.25), 1.75)
+  assert.ok(Number.isNaN(quantile([], 0.5)))
 })
 
 test('wilson interval contains the estimate', () => {

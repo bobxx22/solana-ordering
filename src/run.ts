@@ -18,6 +18,7 @@
 //
 // Quotas are per client label, or, with `byValidator` (`--validators`), per validator: the quota keys are then
 // identity prefixes, only those validators are targeted, and the records keep the validator's client as usual.
+import { execFileSync } from 'node:child_process'
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { BlockhashCache, SlotClock } from './clock.ts'
@@ -37,6 +38,19 @@ import { appendJsonl, readJsonl, rng, shuffle, sleep, toJson } from './util.ts'
 import { balances, fundSubPayers, loadSubPayers, SUB_LOW, SUB_PAYERS, SUB_TARGET } from './wallets.ts'
 
 export type SendPath = 'tpu' | 'rpc'
+
+/**
+ * The commit of the code making a run, and whether `src` or `py` differ from it; null outside a git checkout (the
+ * Docker image has none). Added after the confirmatory run: earlier runs tie to their code by time only.
+ */
+export function codeVersion(): { commit: string; dirty: boolean } | null {
+  try {
+    const git = (...args: string[]) => execFileSync('git', args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim()
+    return { commit: git('rev-parse', 'HEAD'), dirty: git('status', '--porcelain', '--', 'src', 'py') !== '' }
+  } catch {
+    return null
+  }
+}
 
 export interface RunOptions {
   /** counted trials wanted per client label (countsTowardsQuota; the labels not listed are not targeted) */
@@ -228,6 +242,7 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
         continues: carried.runs,
         cluster: cfg.cluster,
         startedAt: new Date().toISOString(),
+        code: codeVersion(),
         options: opts,
         roles: ROLES,
         gapMs: GAP_MS,

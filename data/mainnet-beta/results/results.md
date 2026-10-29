@@ -223,15 +223,15 @@ Added after the main run, outside the pre-registered plan. Buffered/shared trial
 
 ## JitoLabs by advertised QUIC port (exploratory)
 
-Added after the main run, outside the pre-registered plan. The same JitoLabs trials, grouped by the port of the QUIC address the validator advertised. Port 11228 is most likely a Jito relayer in front of the validator (README, "Shared gateways").
+Added after the main run, outside the pre-registered plan. The same JitoLabs trials, grouped by the port of the QUIC address the validator advertised. Port 11228 is most likely a Jito relayer in front of the validator (README, "Shared gateways"). Added after the confirmatory run: the last two columns, how many trials reconnected before sending and how many the sensitivity filter of the primary keeps.
 
-| port | validators | trials with all six | exact reward/cost | exact total fee | other orders |
-|---|---:|---:|---:|---:|---:|
-| 8002 | 6 | 14 | 12 | 2 | 0 |
-| 11228 | 6 | 11 | 7 | 4 | 0 |
-| 12002 | 2 | 3 | 3 | 0 | 0 |
-| 8022 | 1 | 1 | 0 | 1 | 0 |
-| 9002 | 1 | 1 | 1 | 0 | 0 |
+| port | validators | trials with all six | exact reward/cost | exact total fee | other orders | reconnected before sending | kept by the sensitivity filter |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| 8002 | 6 | 14 | 12 | 2 | 0 | 0 | 14 |
+| 11228 | 6 | 11 | 7 | 4 | 0 | 10 | 1 |
+| 12002 | 2 | 3 | 3 | 0 | 0 | 0 | 3 |
+| 8022 | 1 | 1 | 0 | 1 | 0 | 0 | 1 |
+| 9002 | 1 | 1 | 1 | 0 | 0 | 0 | 1 |
 
 ## Send order against landing order, by cell (exploratory)
 
@@ -275,6 +275,29 @@ Per validator (descriptive). B before C: of the trials with both in the window.
 Sensitivity (descriptive; the filter of the primary, unadjusted p): H1 93% of 15, p=<0.001; H2 70% of 20, p=0.196.
 
 Delivery: 53 trials dispatched, 312 of 318 transactions landed, 50 trials with B, C, D, F and A or E in the window, 50 trials used.
+
+## The validators that departed: leader slots and background (exploratory)
+
+Added after the confirmatory run, outside both plans. The local-scheduler validators listed in "Deviations from the reward/cost order, validator by validator", by leader slots: their share of all leader slots and their rank among the 651 validators with leader slots in the main run's snapshot (epoch 1069); their share of the label's slots and of the slots of the label's validators reached ("Coverage per label"); and the same share and rank in the confirmatory run's snapshot (epoch 1070, 649 validators).
+
+| client | validator | epoch 1069: share of all leader slots (rank) | share of the label's slots | share of the slots of the label's validators reached | epoch 1070: share of all leader slots (rank) |
+|---|---|---:|---:|---:|---:|
+| JitoLabs | 7cVfgArC | 0.27% (93) | 1.1% | 1.7% | no leader slots |
+| JitoLabs | EvnRmnMr | 1.78% (8) | 7.2% | 11.6% | 1.77% (8) |
+| JitoLabs | C8Bey3LK | 2.12% (7) | 8.5% | 13.8% | 2.14% (7) |
+| JitoLabs | these 3 together | 4.17% | 16.8% | 27.1% | |
+| Firedancer | JD549Hsb | 1.60% (10) | 29.0% | 32.9% | 1.36% (12) |
+
+Background at their blocks: the statistic of "Background" (Spearman rho between position and reward per scheduled cost unit over everyone else in the block; negative = higher reward/cost earlier), over the blocks that hold our trials of the listed validators and of the label's other validators in campaign "main" (every cell), and of the listed validators in campaign "confirm". Median over blocks, with quartiles for the first 10%. Descriptive: the other transactions' arrival times are unknown, and blocks hold bundles.
+
+| client | leaders | campaign | validators | blocks | median rho, whole block | median rho, first 10% [quartiles] | blocks with rho < 0 in the first 10% |
+|---|---|---|---:|---:|---:|---|---:|
+| JitoLabs | 7cVfgArC, EvnRmnMr, C8Bey3LK | main | 3 | 17 | -0.16 | -0.13 [-0.27, -0.03] | 13 of 17 |
+| JitoLabs | the others | main | 21 | 53 | -0.07 | -0.60 [-0.73, -0.30] | 47 of 53 |
+| JitoLabs | EvnRmnMr, C8Bey3LK | confirm | 2 | 30 | -0.07 | -0.03 [-0.18, 0.20] | 17 of 30 |
+| Firedancer | JD549Hsb | main | 1 | 23 | -0.42 | -0.11 [-0.31, 0.00] | 17 of 23 |
+| Firedancer | the others | main | 13 | 46 | -0.23 | -0.74 [-0.85, -0.24] | 44 of 46 |
+| Firedancer | JD549Hsb | confirm | 1 | 20 | -0.46 | -0.07 [-0.23, -0.03] | 16 of 20 |
 
 ## Rule agreement: buffered/shared (campaign "main")
 

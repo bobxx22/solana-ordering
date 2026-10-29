@@ -36,6 +36,9 @@
 //   presentation total rows in the exact-order, delivery and coverage tables; the ingress table restricted to
 //                campaign "main"; port, reconnect and arrival margin per trial in orders.md; the two charts of
 //                REPORT.md (src/charts.ts).
+// Added after the confirmatory run, outside both plans, and marked so in results.md:
+//   exploratory  the local-scheduler validators of the deviations table: their leader slots, and the background
+//                statistic at their blocks against the label's other validators.
 // Confirmatory run (docs/CONFIRM.md; frozen before the first trial of campaign "confirm", git tag prereg-confirm):
 //   unit       as above; campaign "confirm", buffered/shared, three of the four validators the exploratory deviations
 //              table named (the fourth, 7cVfgArC, has had no leader slots since epoch 1070). Its trials enter only
@@ -55,7 +58,7 @@ import { barChart } from './charts.ts'
 import type { Landed } from './collect.ts'
 import { BASE_FEE_PER_SIGNATURE, countsTowardsQuota, FIRE_OFFSET, LOCAL_CLIENTS, loadedDataCost, PIPELINE_CLIENTS, WINDOW_SLOTS } from './design.ts'
 import type { Snapshot } from './discover.ts'
-import { binomialLowerTail, bootstrapMeanCi, exactUpperTail, mean, median, pearson, signFlipP, signFlipUpperP, spearman, wilson } from './stats.ts'
+import { binomialLowerTail, bootstrapMeanCi, exactUpperTail, mean, median, pearson, quantile, signFlipP, signFlipUpperP, spearman, wilson } from './stats.ts'
 import { readJsonl, rng, toJson } from './util.ts'
 
 /**
@@ -65,7 +68,7 @@ import { readJsonl, rng, toJson } from './util.ts'
  * 2026-10-21 13:53:59 UTC.
  */
 export const ALPENGLOW_SLOT = 459_653_000
-/** the campaign whose buffered/shared trials carry the confirmatory tests */
+/** the campaign whose buffered/shared trials carry the pre-registered tests of the main run */
 export const MAIN_CAMPAIGN = 'main'
 /** the campaign of the confirmatory run after the main run (docs/CONFIRM.md, git tag prereg-confirm) */
 export const CONFIRM_CAMPAIGN = 'confirm'
@@ -618,7 +621,7 @@ export function interpret(control: ContrastStat, v: Verdict[]): string {
 
 const pct = (x: number) => (Number.isFinite(x) ? `${(100 * x).toFixed(0)}%` : '–')
 const pct1 = (x: number) => (Number.isFinite(x) ? `${(100 * x).toFixed(1)}%` : '–')
-const f2 = (x: number) => (Number.isFinite(x) ? x.toFixed(2) : '–')
+const f2 = (x: number) => (Number.isFinite(x) ? x.toFixed(2).replace(/^-(0\.00)$/, '$1') : '–')
 const f1 = (x: number) => (Number.isFinite(x) ? x.toFixed(1) : '–')
 const fp = (p: number | undefined) => (p === undefined || !Number.isFinite(p) ? '–' : p < 0.001 ? '<0.001' : p.toFixed(3))
 const cellText = (s: ContrastStat, withP = true) => (s.n ? `${pct(s.share)} of ${s.n} [${pct(s.ci[0])}–${pct(s.ci[1])}]${withP ? ` p=${fp(s.pHolm ?? s.p)}` : ''}` : '–')
@@ -661,6 +664,9 @@ export function analyze(dataDir: string, cluster: string): string {
   const main = tpu.filter((u) => u.campaign === MAIN_CAMPAIGN)
   const local = (us: Unit[]) => us.filter((u) => LOCAL_CLIENTS.includes(u.client))
   const bufShared = (us: Unit[]) => us.filter((u) => u.delivery === 'buffered' && u.mode === 'shared')
+  // the snapshot the label tables use: the main campaign's latest (of all runs while there is none)
+  const snaps = snapshots.filter((s) => s.campaign === MAIN_CAMPAIGN).length ? snapshots.filter((s) => s.campaign === MAIN_CAMPAIGN) : snapshots
+  const latest = snaps.at(-1)?.snapshot
 
   // ---------- primary, and the pipelines tested the same way ----------
   const family = (title: string, us: Unit[], labels: string[], subject: string) => {
@@ -846,15 +852,15 @@ export function analyze(dataDir: string, cluster: string): string {
   const jito = bufShared(main).filter((u) => u.client === 'JitoLabs' && u.observedOrder.length === 6)
   if (jito.length) {
     out.push('## JitoLabs by advertised QUIC port (exploratory)', '')
-    out.push('Added after the main run, outside the pre-registered plan. The same JitoLabs trials, grouped by the port of the QUIC address the validator advertised. Port 11228 is most likely a Jito relayer in front of the validator (README, "Shared gateways").', '')
-    out.push('| port | validators | trials with all six | exact reward/cost | exact total fee | other orders |')
-    out.push('|---|---:|---:|---:|---:|---:|')
+    out.push('Added after the main run, outside the pre-registered plan. The same JitoLabs trials, grouped by the port of the QUIC address the validator advertised. Port 11228 is most likely a Jito relayer in front of the validator (README, "Shared gateways"). Added after the confirmatory run: the last two columns, how many trials reconnected before sending and how many the sensitivity filter of the primary keeps.', '')
+    out.push('| port | validators | trials with all six | exact reward/cost | exact total fee | other orders | reconnected before sending | kept by the sensitivity filter |')
+    out.push('|---|---:|---:|---:|---:|---:|---:|---:|')
     const byPort = new Map<string, Unit[]>()
     for (const u of jito) byPort.set(u.port ?? '–', [...(byPort.get(u.port ?? '–') ?? []), u])
     for (const [p, us] of [...byPort.entries()].sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0]))) {
       const rewardCost = us.filter((u) => REWARD_COST.test(u.observedOrder)).length
       const totalFee = us.filter((u) => TOTAL_FEE.test(u.observedOrder)).length
-      out.push(`| ${p} | ${new Set(us.map((u) => u.leader)).size} | ${us.length} | ${rewardCost} | ${totalFee} | ${us.length - rewardCost - totalFee} |`)
+      out.push(`| ${p} | ${new Set(us.map((u) => u.leader)).size} | ${us.length} | ${rewardCost} | ${totalFee} | ${us.length - rewardCost - totalFee} | ${us.filter((u) => u.reconnected).length} | ${us.filter(keptBySensitivity).length} |`)
     }
     out.push('')
   }
@@ -921,6 +927,73 @@ export function analyze(dataDir: string, cluster: string): string {
     const landed = loaded.txs.filter((t) => confirmRuns.has(t.run) && t.slot !== null).length
     const complete = sent.filter((t) => countsTowardsQuota(onTarget.get(key(t)) ?? [])).length
     out.push('', `Delivery: ${sent.length} trials dispatched, ${landed} of ${6 * sent.length} transactions landed, ${complete} trials with B, C, D, F and A or E in the window, ${keys.size} trials used.`, '')
+  }
+
+  // ---------- exploratory: added after the confirmatory run ----------
+  // the local-scheduler validators listed in "Deviations" (at least one trial with all six not in the exact
+  // reward/cost order): how many leader slots they hold, and how everyone else's transactions sit in their blocks
+  const departed = new Map<string, string[]>()
+  for (const c of LOCAL_CLIENTS) {
+    const full = bufShared(main).filter((u) => u.client === c && u.observedOrder.length === 6)
+    const listed = [...new Set(full.map((u) => u.leader))].filter((v) => full.some((u) => u.leader === v && !REWARD_COST.test(u.observedOrder)))
+    if (listed.length) departed.set(c, listed)
+  }
+  if (departed.size) {
+    const slotsIn = (s: Snapshot | undefined) => {
+      const act = (s?.validators ?? []).filter((v) => !v.delinquent && v.leaderSlots > 0)
+      const of = (id: string) => act.find((v) => v.identity === id)?.leaderSlots ?? 0
+      return { act, epoch: s?.epoch.epoch ?? '?', total: act.reduce((n, v) => n + v.leaderSlots, 0), of, rank: (id: string) => 1 + act.filter((v) => v.leaderSlots > of(id)).length }
+    }
+    const before = slotsIn(latest)
+    const after = slotsIn(snapshots.filter(isConfirm).at(-1)?.snapshot)
+    const share = (n: number, total: number) => `${((100 * n) / total).toFixed(2)}%`
+    out.push('## The validators that departed: leader slots and background (exploratory)', '')
+    out.push(
+      `Added after the confirmatory run, outside both plans. The local-scheduler validators listed in "Deviations from the reward/cost order, validator by validator", by leader slots: their share of all leader slots and their rank among the ${before.act.length} validators with leader slots in the main run's snapshot (epoch ${before.epoch}); their share of the label's slots and of the slots of the label's validators reached ("Coverage per label"); and the same share and rank in the confirmatory run's snapshot (epoch ${after.epoch}, ${after.act.length} validators).`,
+      '',
+    )
+    out.push(`| client | validator | epoch ${before.epoch}: share of all leader slots (rank) | share of the label's slots | share of the slots of the label's validators reached | epoch ${after.epoch}: share of all leader slots (rank) |`)
+    out.push('|---|---|---:|---:|---:|---:|')
+    for (const [c, listed] of departed) {
+      const labelSlots = before.act.filter((v) => v.client === c).reduce((n, v) => n + v.leaderSlots, 0)
+      const reached = new Set(bufShared(main).filter((u) => u.client === c).map((u) => u.leader))
+      const reachedSlots = [...reached].reduce((n, id) => n + before.of(id), 0)
+      for (const id of listed)
+        out.push(
+          `| ${c} | ${id.slice(0, 8)} | ${share(before.of(id), before.total)} (${before.rank(id)}) | ${pct1(before.of(id) / labelSlots)} | ${pct1(before.of(id) / reachedSlots)} | ${after.of(id) ? `${share(after.of(id), after.total)} (${after.rank(id)})` : 'no leader slots'} |`,
+        )
+      if (listed.length > 1) {
+        const sum = listed.reduce((n, id) => n + before.of(id), 0)
+        out.push(`| ${c} | these ${listed.length} together | ${share(sum, before.total)} | ${pct1(sum / labelSlots)} | ${pct1(sum / reachedSlots)} | |`)
+      }
+    }
+    out.push('')
+    out.push(
+      'Background at their blocks: the statistic of "Background" (Spearman rho between position and reward per scheduled cost unit over everyone else in the block; negative = higher reward/cost earlier), over the blocks that hold our trials of the listed validators and of the label\'s other validators in campaign "main" (every cell), and of the listed validators in campaign "confirm". Median over blocks, with quartiles for the first 10%. Descriptive: the other transactions\' arrival times are unknown, and blocks hold bundles.',
+      '',
+    )
+    out.push('| client | leaders | campaign | validators | blocks | median rho, whole block | median rho, first 10% [quartiles] | blocks with rho < 0 in the first 10% |')
+    out.push('|---|---|---|---:|---:|---:|---|---:|')
+    const own = new Map<number, Set<number>>()
+    for (const t of loaded.txs) if (t.slot !== null && t.index !== null) own.set(t.slot, (own.get(t.slot) ?? new Set()).add(t.index))
+    const backgroundRow = (c: string, who: string, campaign: string, us: Unit[]) => {
+      const rs = [...new Set(us.flatMap((u) => u.slots))].filter((s) => blocks.has(s)).map((s) => backgroundRho(blocks.get(s)!, own.get(s) ?? new Set()))
+      if (!rs.length) return
+      const all = rs.map((r) => r.all).filter((x): x is number => x !== null)
+      const head = rs.map((r) => r.head).filter((x): x is number => x !== null)
+      out.push(
+        `| ${c} | ${who} | ${campaign} | ${new Set(us.map((u) => u.leader)).size} | ${rs.length} | ${f2(median(all))} | ${f2(median(head))} [${f2(quantile(head, 0.25))}, ${f2(quantile(head, 0.75))}] | ${head.filter((x) => x < 0).length} of ${head.length} |`,
+      )
+    }
+    const names = (us: Unit[]) => [...new Set(us.map((u) => u.leader.slice(0, 8)))].join(', ')
+    for (const [c, listed] of departed) {
+      const theirs = main.filter((u) => listed.includes(u.leader))
+      backgroundRow(c, names(theirs), MAIN_CAMPAIGN, theirs)
+      backgroundRow(c, 'the others', MAIN_CAMPAIGN, main.filter((u) => u.client === c && !listed.includes(u.leader)))
+      const again = confirmAll.filter((u) => listed.includes(u.leader))
+      backgroundRow(c, names(again), CONFIRM_CAMPAIGN, again)
+    }
+    out.push('')
   }
 
   // ---------- rule agreement ----------
@@ -993,8 +1066,6 @@ export function analyze(dataDir: string, cluster: string): string {
   out.push('Share of each label\'s leader slots by version string, from the snapshots of the main campaign (of all runs while there is none), and the versions of the validators actually used in buffered/shared trials of the main campaign.', '')
   out.push('| client | versions by leader slots | versions in primary trials |')
   out.push('|---|---|---|')
-  const snaps = snapshots.filter((s) => s.campaign === MAIN_CAMPAIGN).length ? snapshots.filter((s) => s.campaign === MAIN_CAMPAIGN) : snapshots
-  const latest = snaps.at(-1)?.snapshot
   for (const c of [...LOCAL_CLIENTS, ...PIPELINE_CLIENTS]) {
     const vs = (latest?.validators ?? []).filter((v) => v.client === c && !v.delinquent && v.leaderSlots > 0)
     const total = vs.reduce((s, v) => s + v.leaderSlots, 0)

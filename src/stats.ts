@@ -61,6 +61,15 @@ export function median(v: number[]): number {
   return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2
 }
 
+/** The q-quantile, interpolating linearly between order statistics; quantile(v, 0.5) is the median. */
+export function quantile(v: number[], q: number): number {
+  if (!v.length) return NaN
+  const s = [...v].sort((a, b) => a - b)
+  const i = (s.length - 1) * q
+  const lo = Math.floor(i)
+  return s[lo] + (s[Math.ceil(i)] - s[lo]) * (i - lo)
+}
+
 /** Wilson score interval for k successes out of n (95 %). */
 export function wilson(k: number, n: number, z = 1.96): [number, number] {
   if (n === 0) return [NaN, NaN]

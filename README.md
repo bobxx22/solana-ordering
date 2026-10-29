@@ -7,8 +7,9 @@ and whether the rule differs between validator clients.
 
 - **Evidence.** Our own transactions: bursts of six, with fees chosen so that the candidate ordering rules (reward per
   cost, priority fee per cost, price per compute unit, total fee, arrival order) predict different orders.
-- **Delivery.** Each burst goes over QUIC straight to the address the targeted leader advertises, two slots before
-  its window, in a random send order. Positions are read back from the chain.
+- **Delivery.** Each burst goes over QUIC straight to the address the targeted leader advertises, in a random send
+  order: in the primary cell all six two slots before its window, in the control cells one slot into it, at once or
+  30 ms apart. Positions are read back from the chain.
 - **Tests.**
   - Three contrasts per client label, each isolating one term of the rule, plus a positive control.
   - Twelve exact one-sided tests with Holm adjustment for the four local-scheduler labels, and the same twelve for
@@ -16,18 +17,20 @@ and whether the rule differs between validator clients.
   - Verdicts fixed before the main run (git tag `prereg-main`).
 - **Result** (main run, 2026-10-27, 403 trials).
   - **Pre-registered.** Agave, JitoLabs, Firedancer and Rakurai order the transactions waiting in the leader's buffer
-    by **reward per requested cost unit**, as their deployed source does. All twelve primary tests hold: each
-    contrast landed in the predicted order more often than chance. 107 of 120 trials landed in the exact predicted
-    order. The BAM pipelines order the same way; for Harmonic, C before B is "no stable order".
+    by **reward per requested cost unit**, the formula of the Agave, Jito and Firedancer source (Rakurai's was not
+    read). All twelve primary tests hold: each contrast landed in the predicted order more often than chance. 107 of
+    120 trials landed in the exact predicted order. The BAM pipelines order the same way; for Harmonic, C before B
+    is "no stable order".
   - **Found after the data** (exploratory, REPORT sections 6 and 7). Three JitoLabs validators ordered by total
-    priority fee. Harmonic put the transaction with a 64 MiB loaded-data request last in every trial, as reward/cost
-    does with a smaller base-fee share. Arrival order decides when the leader does not hold the transactions
-    together (streamed 30 ms apart, 97–99% of pairs landed in send order), and between equal priorities, where
-    Firedancer more often put the later one first.
+    priority fee; two of them are the 7th and 8th largest validators by leader slots. Harmonic put the transaction
+    with a 64 MiB loaded-data request last in every trial, as reward/cost does with a smaller base-fee share.
+    Arrival order decides when the leader does not hold the transactions together (streamed 30 ms apart, 97–99% of
+    pairs landed in send order), and between equal priorities, where Firedancer more often landed the one sent
+    second first.
   - **Tested again** (confirmatory run, 2026-10-28, 53 new trials, plan frozen at the git tag `prereg-confirm`).
-    Two of the three total-fee JitoLabs validators put B before C in 29 of 30 new trials: confirmed, Holm
-    p < 0.001. The Firedancer validator JD549Hsb, which had departed from the reward/cost order, landed 14 of 20 new
-    trials in the exact order, not significantly below 80%: not confirmed.
+    Those two JitoLabs validators put B before C in 29 of 30 new trials: confirmed, Holm p < 0.001, and 29 of the 30
+    landed in the exact total-fee order. The Firedancer validator JD549Hsb, which had departed from the reward/cost
+    order, landed 14 of 20 new trials in the exact order, not significantly below 80%: not confirmed.
 - **Details.** [`REPORT.md`](REPORT.md); the generated tables are in
   [`data/mainnet-beta/results/results.md`](data/mainnet-beta/results/results.md).
 - **Check it.** `docker compose up` needs no keys and sends nothing.
@@ -97,7 +100,7 @@ node src/cli.ts reproduce
 npm test
 ```
 
-On Windows the pip in the second line is `.venv\Scripts\pip`.
+On Windows the pip in the first line is `.venv\Scripts\pip`.
 
 ## The question and the experiment
 
@@ -213,9 +216,10 @@ name: the quotas, the per-validator counts and the excluded addresses carry over
   - In epoch 1067, the 364 AgaveBam validators advertised 17 addresses, one of them for 102 validators.
   - FireBAM had 94% of its slots behind shared addresses.
   - The 86 Harmonic validators sat on 6 hosts, with a separate port each.
-  - Every JitoLabs, Firedancer, Rakurai and Agave validator had its own address. But 37 JitoLabs validators (about a
-    quarter of JitoLabs slots) advertise port 11228, most likely a Jito relayer in front of the validator. Both
-    JitoLabs bursts that landed nothing in calibration went to that port. The run excludes such addresses once they
+  - Every JitoLabs, Firedancer, Rakurai and Agave validator had its own address. But in the main run's snapshot
+    (epoch 1069), 36 JitoLabs validators, with a third of JitoLabs' leader slots, advertised port 11228, most likely
+    a Jito relayer in front of the validator. Both JitoLabs bursts that landed nothing in calibration went to that
+    port. The run excludes such addresses once they
     have failed twice without ever landing; the reachable share in `results.md` shows what that leaves.
 
   For BAM and Harmonic labels our timing control therefore ends at the gateway, and two labels behind one gateway
@@ -257,8 +261,8 @@ name: the quotas, the per-validator counts and the excluded addresses carry over
 
 ### Competition inside the block
 
-- **The market around us.** Our six transactions land in blocks of 110–1 429 transactions (median 458.5 in the main
-  run, `results.md`). We cannot control the others.
+- **The market around us.** Our six transactions land in blocks of 110–1 429 transactions (median 458.5 over the
+  direct-path runs, `results.md`). We cannot control the others.
 - **Where we stand.** In lamports our priority fees are small (0 to 10 000), but per scheduled compute unit even our
   weakest roles out-rank most of the block: the typical transaction requests far more compute than it pays for.
   The experiment therefore measures how a scheduler ranks transactions **near the head of its queue**. It does not
@@ -411,7 +415,8 @@ on new trials by a confirmatory run, planned in [`docs/CONFIRM.md`](docs/CONFIRM
   - `keygen` prints only the address.
   - The QUIC sender receives only signed transactions.
   - Logged RPC URLs keep only scheme and host.
-- **Logging.** Every run writes `run.json` (options, roles, wallets, cap) and JSONL files:
+- **Logging.** Every run writes `run.json` (options, roles, wallets, cap, and for runs after the confirmatory run
+  the code commit) and JSONL files:
   - `planned`: signatures, written before reserving;
   - `trials`, `txs`: dispatch slot and time, send results;
   - `events`: landing checks, skips, simulations, errors;
@@ -452,7 +457,7 @@ The main run follows [`docs/RUNBOOK.md`](docs/RUNBOOK.md), the confirmatory run 
 |---|---|
 | `reproduce` | the one-command check described above |
 | `discover` | snapshot validators by client |
-| `run [--live --campaign NAME]` | the experiment. Options: `--quota Agave=60,...`, `--path tpu\|rpc`, `--per-validator`, `--seed`, `--minutes` |
+| `run [--live --campaign NAME]` | the experiment. Options: `--quota Agave=60,...` or `--validators PREFIX=N,...`, `--cells buffered/shared,...`, `--sub-target SOL`, `--path tpu\|rpc`, `--per-validator`, `--seed`, `--minutes` |
 | `collect [run\|all] [--refresh]` | landing slot, in-block position and slot leader; settles the ledger |
 | `analyze` | all tables, offline |
 | `verify [run\|all] [--write] [--sample N\|all] [--row-blocks N] [--out FILE] [--verify-rpc URL]` | the check against the chain: `--sample` whole transactions (default 60), `--row-blocks` whole blocks rebuilt (default 3) |

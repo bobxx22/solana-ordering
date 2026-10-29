@@ -133,9 +133,9 @@ delivery fires at −2 slots; `results.md` reports the measured arrival margin.
 **Ingress floor (Agave v4.3.2).** When the scheduler's buffer is saturated, it publishes a priority floor, and
 signature verification then drops arriving packets at or below it
 ([scheduler_controller.rs:69-113, 281](https://github.com/anza-xyz/agave/blob/v4.3.2/core/src/banking_stage/transaction_scheduler/scheduler_controller.rs#L69-L113)).
-Our lowest roles, B and F, out-rank about four fifths of their blocks (79% and 80% in the main run), so this should
-rarely touch them. If it did, B and F would go missing more often than other roles: `results.md` reports landing per
-role.
+Our lowest roles, B and F, out-rank about four fifths of their blocks (79% and 80% over the direct-path runs), so this
+should rarely touch them. If it did, B and F would go missing more often than other roles: `results.md` reports
+landing per role.
 
 ## How a block is filled (Agave v4.3.2)
 

@@ -17,6 +17,12 @@ test('RPC labels never contain credentials', () => {
   assert.equal(new Rpc('https://api.mainnet-beta.solana.com').label, 'https://api.mainnet-beta.solana.com/')
 })
 
+test('a run records its code commit, or null outside a git checkout', async () => {
+  const { codeVersion } = await import('../src/run.ts')
+  const v = codeVersion()
+  assert.ok(v === null || (/^[0-9a-f]{40}$/.test(v.commit) && typeof v.dirty === 'boolean'))
+})
+
 test('boolean flags never swallow the command', () => {
   const a = parseArgs(['--live', 'run', '--per-client', '3'])
   assert.equal(a.command, 'run')

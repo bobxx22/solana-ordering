@@ -117,3 +117,6 @@ Written after the data; everything above is as tagged.
 - **One change to the command.** It ran with `--sub-target 0.00142`: the main wallet could not fund twelve sub-payers
   at the main run's 0.0033 SOL each, and two starts sent no trial. The flag (commit `4978fc4`) sets only how much a
   sub-payer is funded with, and was pushed before the start that made the trials.
+- **The power note's threshold.** "Power" above says H2 confirms at 11 exact trials or fewer, the threshold of Holm's
+  first step (0.025). With H1's p below 0.001, Holm compares H2 with 0.05, so the threshold was 12 (P(X ≤ 12) = 0.032
+  for X ~ Binomial(20, 0.8)). The outcome, 14, is above both.
