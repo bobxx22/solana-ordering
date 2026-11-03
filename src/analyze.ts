@@ -39,6 +39,10 @@
 // Added after the confirmatory run, outside both plans, and marked so in results.md:
 //   exploratory  the local-scheduler validators of the deviations table: their leader slots, and the background
 //                statistic at their blocks against the label's other validators.
+// Added after both runs, outside both plans, and marked so in results.md (src/validators.ts):
+//   exploratory  validator by validator, over both campaigns; the reported client over time; how far the total-fee
+//                reading goes (the order of the six, ties, everyone else at the head of the block, Rakurai's on-chain
+//                switch).
 // Confirmatory run (docs/CONFIRM.md; frozen before the first trial of campaign "confirm", git tag prereg-confirm):
 //   unit       as above; campaign "confirm", buffered/shared, three of the four validators the exploratory deviations
 //              table named (the fourth, 7cVfgArC, has had no leader slots since epoch 1070). Its trials enter only
@@ -60,6 +64,7 @@ import { BASE_FEE_PER_SIGNATURE, countsTowardsQuota, FIRE_OFFSET, LOCAL_CLIENTS,
 import type { Snapshot } from './discover.ts'
 import { binomialLowerTail, bootstrapMeanCi, exactUpperTail, mean, median, pearson, quantile, signFlipP, signFlipUpperP, spearman, wilson } from './stats.ts'
 import { readJsonl, rng, toJson } from './util.ts'
+import { ORDERS, validatorSections } from './validators.ts'
 
 /**
  * First slot with Alpenglow active on mainnet; every measurement must be at or after it. It is the slot announced for
@@ -94,9 +99,9 @@ const GROUPS: [string, string[]][] = [
 ]
 const CELLS = ['buffered/shared', 'buffered/independent', 'burst/shared', 'streamed/shared', 'streamed/independent']
 /** the exact reward/cost order, A and E either way */
-const REWARD_COST = /^(AE|EA)DCFB$/
+const REWARD_COST = ORDERS.rewardCost
 /** the exact total-fee order: B (10 000), D (9 000), then A, E and F (4 000 each) in any order, C (0) last */
-const TOTAL_FEE = /^BD[AEF]{3}C$/
+const TOTAL_FEE = ORDERS.totalFee
 
 export const RULES = ['rewardPerCost', 'priorityPerCost', 'cuPrice', 'totalFee', 'sentFirst', 'rpcReleasedFirst'] as const
 export type Rule = (typeof RULES)[number]
@@ -852,7 +857,7 @@ export function analyze(dataDir: string, cluster: string): string {
   const jito = bufShared(main).filter((u) => u.client === 'JitoLabs' && u.observedOrder.length === 6)
   if (jito.length) {
     out.push('## JitoLabs by advertised QUIC port (exploratory)', '')
-    out.push('Added after the main run, outside the pre-registered plan. The same JitoLabs trials, grouped by the port of the QUIC address the validator advertised. Port 11228 is most likely a Jito relayer in front of the validator (README, "Shared gateways"). Added after the confirmatory run: the last two columns, how many trials reconnected before sending and how many the sensitivity filter of the primary keeps.', '')
+    out.push('Added after the main run, outside the pre-registered plan. The same JitoLabs trials, grouped by the port of the QUIC address the validator advertised. Port 11228 is the default TPU-QUIC port of the Jito relayer, so most likely a relayer in front of the validator (README, "Shared gateways"). Added after the confirmatory run: the last two columns, how many trials reconnected before sending and how many the sensitivity filter of the primary keeps.', '')
     out.push('| port | validators | trials with all six | exact reward/cost | exact total fee | other orders | reconnected before sending | kept by the sensitivity filter |')
     out.push('|---|---:|---:|---:|---:|---:|---:|---:|')
     const byPort = new Map<string, Unit[]>()
@@ -995,6 +1000,7 @@ export function analyze(dataDir: string, cluster: string): string {
     }
     out.push('')
   }
+  out.push(...validatorSections({ loaded, dataDir, cluster, latest, departs: CONFIRM_DEPARTS }))
 
   // ---------- rule agreement ----------
   const ruleTable = (title: string, groups: { label: string; units: Unit[] }[], rules: Rule[]) => {

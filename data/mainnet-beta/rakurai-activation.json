@@ -1,0 +1,531 @@
+{
+ "takenAt": "2026-11-03T22:14:06.382Z",
+ "source": "getProgramAccounts rAKACC6Qw8HYa87ntGPRbfYEMnK2D9JVLsmZaKPpMmi, base64, RakuraiActivationAccount layout of Rakurai's published IDL",
+ "accounts": [
+  {
+   "account": "HyUHaDNoxspPSzMCTHJ3m2tebKa4in4Xk7DVPWwHj9cA",
+   "authority": "2Df1aLCRYi3J1X24GXmASL4hjrZLHnvEF32KFWGJfR9E",
+   "isEnabled": true
+  },
+  {
+   "account": "ArTEyZCKsGpr9G9ktZJ18zMXLDe27QezmUJkbfPzLbkG",
+   "authority": "2dfgsiSaZ51QYPsECMYMG247PXxyKdwkV9wTHoQb8YEC",
+   "isEnabled": true
+  },
+  {
+   "account": "AT1gLhiMMpkNgmAP93obZi7VXiy8AggEpoSDdiuxwgBb",
+   "authority": "2J7aC2MUHiGF72DXTW1UywTVkcdtjoiDDhY1ubKGVctJ",
+   "isEnabled": true
+  },
+  {
+   "account": "8GD1JNacyx1EFPZp75XnosMDHqFvRzq7eqYwo1hfX2cX",
+   "authority": "2mDrrmhSzpSyaF12izGk8hnFjtKCGeCFPwQHpRiJDby2",
+   "isEnabled": true
+  },
+  {
+   "account": "CUfXofKGNYtcsM9BbbymfFbDmjGidTKecA4vErze8qDK",
+   "authority": "2N7v8pDKDYhtBUJBQUgxvysUjgM9s4ULPCmeEiPWTf6Z",
+   "isEnabled": true
+  },
+  {
+   "account": "6i3QeoNEnYFjbiTkvaXXPZxD5LrBx4fBWuhrWJW9jFG8",
+   "authority": "2uxEHizFmmnLekKG2LZJwxNabhpymEYfdVCpgDxjt87m",
+   "isEnabled": true
+  },
+  {
+   "account": "3Z7x2rQ54uLMXccLKDnR8oy5yZ1Pd9MUbWGTze4GDuFH",
+   "authority": "3B2mGaZoFwzAnWCoZ4EAKdps4FbYbDKQ48jo8u1XWynU",
+   "isEnabled": true
+  },
+  {
+   "account": "7rDVJhiLxhhtPHfdbzDjgxkFm5hWirQ17mwQvBrCQ3Gt",
+   "authority": "3BeharBd3j4sKQp7Qze27JLQLd9AEEwGTX9TC7dXYSNw",
+   "isEnabled": true
+  },
+  {
+   "account": "HJtmmobEUiHLQWqrNeRyGCq9NodLZ4CusC6R66BFgUZi",
+   "authority": "3Rv6ZVGUuRczP76322LyhTTYw2iM4avV4B5xFJocQJer",
+   "isEnabled": true
+  },
+  {
+   "account": "CgagjcEFR1Rhz8zX4pAyMouHSYNCESxtdxN5SAASwqim",
+   "authority": "3vVCEQSVeCjGuW1XKx5k9FCT9N7ivPyCqRqYBuaJbtKf",
+   "isEnabled": true
+  },
+  {
+   "account": "HnoNHLBYVRYyU97P96CVKPzNd2ou13wtApnpS63zSHSR",
+   "authority": "3x9nibnhgBHWKMRiGnsXJELRBjviQpKyigfrXtKW27KJ",
+   "isEnabled": true
+  },
+  {
+   "account": "8tr635mguC3d5BZx2pHntn5VBBNxCCSLLFniNXTAyJL4",
+   "authority": "44VSCibTpr8Fn1Hk8fazhkuSrrSTYZX2f76b2xqKPwmt",
+   "isEnabled": true
+  },
+  {
+   "account": "E7Jg8hz6r6oSqysuvjo6J34fcVNoXFVefsPUfWNkznYT",
+   "authority": "47kUXC4YqDwNuChBCJFc36NKL7QdeooR94vevyP6PPvu",
+   "isEnabled": true
+  },
+  {
+   "account": "4z7GTLsx5vkSNZphxw8THU8QV1S2BJj6UU71PZKyUhva",
+   "authority": "4GEEKSwuiBHWTff9WaqrDcToZjbX6KYdyB4c578Zxse2",
+   "isEnabled": true
+  },
+  {
+   "account": "8ChbLgYfctmvcsvYVVkt2srNk7o5HqFCpQBoHb1NnnUA",
+   "authority": "4k6wgP5WPBKQpsFGtzuXNrjcTE2fKWLj17nDvFeG5zSF",
+   "isEnabled": true
+  },
+  {
+   "account": "4hJGTLpTun1RJBMEmvtL76cvgEf1fDmUH1Fjw9Sfxumi",
+   "authority": "4W3jdXyqhLCjzA3Liu8ZNjViwrc6N9YjSB7obbxfjcKE",
+   "isEnabled": true
+  },
+  {
+   "account": "CZntcYmwXcanHiqb7iSRJE7oKE1abS2PshDmwKmohHRy",
+   "authority": "4YqH6h9gcYBYPkPxRh3JcESozcXtYDhypkGgoDfCed7v",
+   "isEnabled": true
+  },
+  {
+   "account": "XtERDkzAjSH2DXED6GtrEnTCik79QywVeA1EMqepBiQ",
+   "authority": "52NeZFygigUVg8usBAV4nkWLHbnUmkG6uBKMSxHxJs6W",
+   "isEnabled": true
+  },
+  {
+   "account": "7KubC1wiqb4Sm5TfCQdhLVcuJyhB2V9YFUJ3YN8nu2vg",
+   "authority": "5ghoFEVrsXeAPB6SUmBpZ2xq3KvHEjNMeSaBnxEBXkHV",
+   "isEnabled": true
+  },
+  {
+   "account": "BebddVT9981uYk6qxwFbMRPerXpTVvrm3J5KnxGHyp2G",
+   "authority": "5HYjArGt81naevDdwMaEx8yeGNw9jYBSDJa8YavT9Mp4",
+   "isEnabled": true
+  },
+  {
+   "account": "F4UdHzpjoUmfEmgHnXtyrBQskpa8vt7Bo9g6T7xXstLj",
+   "authority": "5VrW7YNBccVnhnZVmooCePdLFcs2UjfxRT3hoY9mN8Ec",
+   "isEnabled": true
+  },
+  {
+   "account": "G4bwn8qptBGcG89U5BS8aVC27A2vaVmBk8DdA7koVUYp",
+   "authority": "5zm9g3zgAPWzX3wmUB2JtTkcwCqe74NWsTmt5wLFwCKK",
+   "isEnabled": true
+  },
+  {
+   "account": "3kgZSSDBRwzcGRxtt3CbysNyyn1hgUwPbzJUi3eCrMPq",
+   "authority": "65pHd5P2VrehonT1cdJ2JUnq5wi3WUgfL3A8RhYH7Kg7",
+   "isEnabled": true
+  },
+  {
+   "account": "Ex7r9QU41WEYs3fb19bLKYtqFW3UhcYKiKqfJx9vyyN7",
+   "authority": "6JKwz43wDTgk5n8eNCJrtsnNtkDdKd1XUZAvB9WkiEQ4",
+   "isEnabled": true
+  },
+  {
+   "account": "5q2SVxPFHoRS4o4hU1yddQbA5jjE1g8gLtsRpBDnY1nc",
+   "authority": "6M53yM6dsE6hiaHgxWvYa4fsfzQTGyAZn7rM6JrzbqJV",
+   "isEnabled": true
+  },
+  {
+   "account": "2EHkTzTK7raAoCBdeLReXDakX9N59A4zCCGF8VaiFWfp",
+   "authority": "6Rk694kh1QTyQkirdb1uDZmS5xqG9bNaYtxx8d311Mr7",
+   "isEnabled": true
+  },
+  {
+   "account": "57BvM7GpsypAATgtNodXYAN9eVXjxaZL3f4rPzAAqmCh",
+   "authority": "7AKxVRJWF8N9VxTQYHFtxD8oxXncJcx1A4UxDgz494Wt",
+   "isEnabled": true
+  },
+  {
+   "account": "HHTrDMfErxeKRXcNBDf4Am6DcLbKcxDQM4A54upwSofu",
+   "authority": "7CjSxih1ffdjPmtqUidEwwB6LLLs4PmquXza7J8Y6GCb",
+   "isEnabled": true
+  },
+  {
+   "account": "6EE5M3yFbnYLEzsBMjcJ9GCFwHypeYXKX5Exmfd7cWuJ",
+   "authority": "7cVfgArCheMR6Cs4t6vz5rfnqd56vZq4ndaBrY5xkxXy",
+   "isEnabled": true
+  },
+  {
+   "account": "5gf8qF53idUWnWkmEJaV54WJU4Zk33s5zffwpNCf2aoC",
+   "authority": "7Nn8qBJey7vXtVFMNBbbuN8UkujU8Y6nWzbHVGuf49yV",
+   "isEnabled": true
+  },
+  {
+   "account": "BHtcH2Ktt9NtVVF4cSKph8tjzJqycDmuY6yHjmQmvkKq",
+   "authority": "7Nu9ckgtjobZ3MkbadGFKEvRymYuah9HmcxiUJKMM9NB",
+   "isEnabled": true
+  },
+  {
+   "account": "4hzVhPKaw5ow6sL6XLv53h4Jn5oAqKYTg49DkwTJhMNb",
+   "authority": "7PdKhpKz7T39vZHFL1UfcYNDsLvay6hp4KPQq1aUckFf",
+   "isEnabled": true
+  },
+  {
+   "account": "9hPiXtNo9GPFkCKxyizUioqW4vpJEGwZjRhDWU5rzUrC",
+   "authority": "7y5VhV4fkz6r4zUmH2UiwPjLwXzPL1PcV28or5NWkWRL",
+   "isEnabled": true
+  },
+  {
+   "account": "33KvqTZF7bXoSAgUVPPD5ZdHqQNK8MDC57CsJNrgdixx",
+   "authority": "85Sdw5ULMbXaZATGiNz99DAK5V1e9xjz5pAhwxZDbTJd",
+   "isEnabled": true
+  },
+  {
+   "account": "CunWwtqxHQjSrZmLFLNrzbjVRKWiQH2oS9nqTQZv5cVx",
+   "authority": "8AbG9oL3VUv3kQRUmcPQcfjx32q4CVStxyDTe31XMkVK",
+   "isEnabled": true
+  },
+  {
+   "account": "EU61snAgRRmzigSMfuRDmXyqg4vrGPCuhVq4n3wwrbhB",
+   "authority": "8hAYbagNt7CMBooFfqVJhBgLqLffpjXTWJMk8yybjJsN",
+   "isEnabled": true
+  },
+  {
+   "account": "5DFTmMKEpy5wTKHKEYicUL1v79BgGpbhDH4FECaXrAUB",
+   "authority": "8j7RdaofeR9jaXWqYTubqooHpcajP7EfhWbR4UKUB4fF",
+   "isEnabled": true
+  },
+  {
+   "account": "6qLToC6BiumsT993DbdFPN2Kp34dGEZphafkvmDr9xP5",
+   "authority": "8T8AJfUCXwPFwEMmjca8gCRSktPrqbUBVa6ggNyhLhFJ",
+   "isEnabled": true
+  },
+  {
+   "account": "HAdQ8a2YVumrZYDFMgZQtby6M2PWrZ9UcjALTAVMNeE4",
+   "authority": "8tjFeSApQ85ThoQXT28acfF2KUfQr3TvTdirSkzNnYC7",
+   "isEnabled": true
+  },
+  {
+   "account": "9P7HnLb2JwdPiuXx3XZcWy1p1sJrXUBkC5ZJfxyDVJxq",
+   "authority": "8ZQg3K1V1Z2BVJkjmnxpi43WKhjPGXphzu5QmBkJibSP",
+   "isEnabled": true
+  },
+  {
+   "account": "H8yRuH1Tm5P28k97EvSvp2gecYHEhosHdZJ5jvU82DYr",
+   "authority": "9gFxqsXbFyrKXUkqpAatonn47uYZ7sEZSnMxhzQoXrUJ",
+   "isEnabled": true
+  },
+  {
+   "account": "7TwqDssRuFUpiH5HPMQfaTet1cQMDUJZShhPCJktUg7K",
+   "authority": "9PRr9k87HjjdLMRkxtxygidjxVta9VQ1kAsqgLBWXKdQ",
+   "isEnabled": true
+  },
+  {
+   "account": "AkfdLXNNUx5aHGTqBoi957w53bb48pQbX5wFXL6CZdqS",
+   "authority": "9qcNBe2Ht1VmZY2aW1Rz8zN7QX7wEWmoQNQL685oFYf4",
+   "isEnabled": true
+  },
+  {
+   "account": "48f1bwpNt2mHHaBpaamybAdYrCw2XxURK7M5cr9itAo9",
+   "authority": "A9mvukTd77EbRoBX4ydSCFQHdu5bsRFkNXTTRstA8FAC",
+   "isEnabled": true
+  },
+  {
+   "account": "9dhTdiBqMVe962n1XyYB3zdN1MdKdH52sUWjmiHqcH1f",
+   "authority": "ALp2GdA1eJV8vZHMHazCtTxNXe3BLUSco9LDASgjDs8R",
+   "isEnabled": true
+  },
+  {
+   "account": "6S9k2wyHj9s5rjZLG5hv5DfJ9XZkeytxSTxY6MG5gt6e",
+   "authority": "AmjX7CerZbHrU814UeBp2gJC7gANNG3KrP4c3RyD7TSD",
+   "isEnabled": true
+  },
+  {
+   "account": "G7kRLbctj7gWKoE7TytsMbtexusRwdvHSxXUN1USUmSC",
+   "authority": "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY",
+   "isEnabled": true
+  },
+  {
+   "account": "BsFrZKcaJY8Di7Z4eMh9BSUaTHwKBkN4sFnNeXVcgHtN",
+   "authority": "ARKk6RgiFq4MJCD2JX9fYWQJsW2U5JDgpEV3cwvmfju",
+   "isEnabled": true
+  },
+  {
+   "account": "CowW6xG5ApW1xDdJ7DVPqJAXrTw98JAe9WdPMjoqXc7N",
+   "authority": "AwcMVMvmT1aCETVYV42WE1cSMCyNp4vZqVjLsvs6dM4o",
+   "isEnabled": true
+  },
+  {
+   "account": "56fjLShcSS9uDDsNaLhWESGVgqHtTnKAD33ShaxZsA4z",
+   "authority": "AWZhUiQjrjtxL8MEMWsCFbMausFQKkdTnDsFW2i411hN",
+   "isEnabled": true
+  },
+  {
+   "account": "DeTHi6mwDnzu7v7FZFxieYY1ATyqbzwbKXdyA57K9WEZ",
+   "authority": "BCeczqpTRPigndHVJu1KEzno1Uhb4hjrE7ttmAndrV1p",
+   "isEnabled": true
+  },
+  {
+   "account": "GXY2qXb6qS86LHR65KabJyqn12ESUScpSiw8YVRnjcBp",
+   "authority": "BiU1DNow77wGwSXW1bLmkcQe2cuySpkbz7xtbitD9Fmk",
+   "isEnabled": true
+  },
+  {
+   "account": "NJggrKLuWa7zr9Fyh4orgNdsTWLdsDZ5Cns3hmHeqM8",
+   "authority": "BMJwGJza1r3FnKP5cHGqw2RZAxhHVih4sAPwe3C6xp6m",
+   "isEnabled": true
+  },
+  {
+   "account": "4F684DLtuhkYkeRofT3EJ42W33KTcrh5Hi1YxUc5rwGo",
+   "authority": "Bs19Z9SokV1s46jutN9tqqaCgYf1GsVyyytVfkzwn9qK",
+   "isEnabled": true
+  },
+  {
+   "account": "EuCDwXwCWUoffr5ufQeDWgi4GsT5L1afB1G3yrB7TLxm",
+   "authority": "bxrAptB5ZpZBhoLedJpoGWY5hBjjt3zvVBr2323Rrq6",
+   "isEnabled": true
+  },
+  {
+   "account": "A1nfyYp7YN9aubFE5p6gng8Fup7rBTR65vAEboPZXWCd",
+   "authority": "c3rtoMCHSbFrLRTAdw4iRowKSn4BrDtvSPbuyJwkHwx",
+   "isEnabled": true
+  },
+  {
+   "account": "CgW1ZLft5mLEX6mtSVcjY55eRXE7BLPqWNBHPFAskSo6",
+   "authority": "C8Bey3LKVJHVqN6xPTeW8WJfUgFQAeGNBpT4Rp99JP1k",
+   "isEnabled": true
+  },
+  {
+   "account": "Ez4ENvqt8eyUKsVPMPuWhHWDJgxevS17e2w2DMec5VMD",
+   "authority": "CLsFr1KZVbAyz16iFpwg2e4hiekR1unpwyxfNdjBMaoE",
+   "isEnabled": true
+  },
+  {
+   "account": "EY9u3ZNU2MCHMTEMTwuamPYytMqVcEg5GEDubyRi46hX",
+   "authority": "CtvdyHYt8cMuGVHFarV2RADfoCdnrbd8e9jAsB225uMW",
+   "isEnabled": true
+  },
+  {
+   "account": "AinwRyHBvhJij4BrCvSTTxmhetyR4F7zKiMXm5jLAGrB",
+   "authority": "Cu9Ls6dsTL6cxFHZdStHwVSh1uy2ynXz8qPJMS5FRq86",
+   "isEnabled": true
+  },
+  {
+   "account": "AU4wBLPU5KbN2S7MK31xF4nAimRVo45GvUphiBCA1Vyw",
+   "authority": "CVgwMrWo9chKEuEPCe6Za9KJe8jamnAcoeWzaMeNubr6",
+   "isEnabled": true
+  },
+  {
+   "account": "GTpmpVQdtasVNPcmkPGsLJFx1o6jJfWPM5wwyCrPtQcx",
+   "authority": "D1Vbgkrhp1TmLGhfUD1urRMx5Ntz9AqQpgdX8DR8QMC1",
+   "isEnabled": true
+  },
+  {
+   "account": "FQC2VeS9g3Nq8FjJFvqPsttaG7AQHu31khY9S9gi9diN",
+   "authority": "DCdTPyDbXNHrmdv4ZyPPzEfY4mPAqH4hDPtowAteoNgv",
+   "isEnabled": true
+  },
+  {
+   "account": "FFmFDU49YhWbKvTAjpijDf7BZfxHF5i81LjFHE1XK6dd",
+   "authority": "DHK7tbYJTzbfZWD7BFEY1fCmwfi22XB77pPtMoJMDhAG",
+   "isEnabled": true
+  },
+  {
+   "account": "GWaz9Hb9eeevQqoWA3NsGTQBuYyjrKrE5oW6YSsL6nFi",
+   "authority": "E3mDbFMr8yZcCAZx5wPUFCRmLX31u8Nnj4jPoPc54h3F",
+   "isEnabled": true
+  },
+  {
+   "account": "98MQaZNLHdxsyQ9d25oNCkhwLfsNtxJGmYKEXpAK6TWH",
+   "authority": "E9hD3ikumJx1GVswDjnpCt6Uu4WG5mz1PDWCqdE5uhmo",
+   "isEnabled": true
+  },
+  {
+   "account": "FaeBpwpd6BKJ59Lb1g9jQmcbcXFdReQHh7dGwz4hetfa",
+   "authority": "Ed9WjPnZfAXsPttcqxMwj94qsuXVRyBsyXnDkxFva2Zv",
+   "isEnabled": true
+  },
+  {
+   "account": "5bypaYpC3Q66G8RCUJLgZSmWUpvebijDKYsvp5eNBdoT",
+   "authority": "EEzjwyzgJVmf9YQcgDkpsderBMMxnNd9kncdbep29iLk",
+   "isEnabled": true
+  },
+  {
+   "account": "61Eb8nz9D3xNAHz1DPAmU7mV9sKseYfE1pzjKHg5SLUM",
+   "authority": "ETuPS3kRfLufz5VSYN2ZrePoEVSZSpgVPKz3MUZpYe3x",
+   "isEnabled": true
+  },
+  {
+   "account": "3urAMrb7mpRbzvgagSkd61evcokUeyBR5TXC3ysJHyi8",
+   "authority": "Fd7btgySsrjuo25CJCj7oE7VPMyezDhnx7pZkj2v69Nk",
+   "isEnabled": true
+  },
+  {
+   "account": "5YrmNimkkZNU4z84a3pqwywBPkVraEFuSdqv7f8ZTtU3",
+   "authority": "fishfishrD9BwrQQiAcG6YeYZVUYVJf3tb9QGQPMJqF",
+   "isEnabled": true
+  },
+  {
+   "account": "GGppX9CmUKrVyzB6rXKq7Zn3ZPm6kPDDwbkXRk3fHQxu",
+   "authority": "FjYEr2UCeFzNfAKiFrbhG34Zv8LxbmfHYAFhAfc7SLQL",
+   "isEnabled": true
+  },
+  {
+   "account": "FLxkrGujCHSZjbSjEE14y4rornLZYMTjAdQLbVWYQUdM",
+   "authority": "FnRqe316RrxVBv85EzMgcuWaVLZYYuyEq9znJnSZAu55",
+   "isEnabled": true
+  },
+  {
+   "account": "6V4rF5vUr3nidYXapyToN65pvrjwfDwcS13ABsaNFQtH",
+   "authority": "forb5u56XgvzxiKfRt4FVNFQKJrd2LWAfNCsCqL6P7q",
+   "isEnabled": true
+  },
+  {
+   "account": "CydjACgvNUigyV1TWujhsoqSBCDyooUuLAaGApwZq2QV",
+   "authority": "FyrwfMaomErzqrFUXMjCJ7mA4u81DsiDdrzC3MJD6d4j",
+   "isEnabled": true
+  },
+  {
+   "account": "AW4FtYZ2Ss93TkZVvQzbTZwfHeLfKuJ3JnoX8EBcchCQ",
+   "authority": "G1bLKfyNm7zsmmYEL9dyxBvMtxpFcwy2s84bHDj2ZFUY",
+   "isEnabled": true
+  },
+  {
+   "account": "G5LEBysHDERedgEp8YGhUZXtAoVhgbiJu5TQ5wyxrggJ",
+   "authority": "GGX3BEoZDqjxcw4AbCdu62ZTMrkpSgmPt81oP2mVuZNS",
+   "isEnabled": true
+  },
+  {
+   "account": "DWndtp55AZzhtWkE9nmaP8n2TsZ98crWVnGxqMZzPpzR",
+   "authority": "GiYSnFRrXrmkJMC54A1j3K4xT6ZMfx1NSThEe5X2WpDe",
+   "isEnabled": true
+  },
+  {
+   "account": "ApJVmDkkDQgeZ442wwC117ibQSvg39rPBjS87QbBHzt3",
+   "authority": "GQiWnDYrzHMALWG9avt5FCu1wisAQHjGY5ve7GMBiPEe",
+   "isEnabled": true
+  },
+  {
+   "account": "3Je2rhieY5zvkkZf9erXBpjwHmQ8LAY5qB88maYTu4gu",
+   "authority": "gUvo3g5LfH4Pd8qnG7T6MPEFa5bPr8LhDdxDahwYqis",
+   "isEnabled": true
+  },
+  {
+   "account": "2qURHtnxymkg2CrEG4wteReZQYsEZXLaK4gvKpJrzgY7",
+   "authority": "gVALrRd3xq4D62KJNGDCpMMGz976w2x1Vo79mSNn4bh",
+   "isEnabled": true
+  },
+  {
+   "account": "FboqFFWro5t3LJCNyzG9MMs2gbTVc8fous2xr4LuoCFV",
+   "authority": "GWJyUxzcVwRRtpLuLiu1mpiUQsZ4onYFAYfCjQnuLmz5",
+   "isEnabled": true
+  },
+  {
+   "account": "CcCxLbHFsqy41MX6RV3aUEe273theiALc9qm8irnvV5f",
+   "authority": "H8fHToVcZPi5bupGZohGPX2SWs8NHzgFKQ31wi5n6oux",
+   "isEnabled": true
+  },
+  {
+   "account": "GBPhobf681PDBQYH3yci3BQL92zWLun245G45JviYgCB",
+   "authority": "Ha1iade1AH3B12K9SccfWoPdFtQKKQsj2ZyWwxcjqJJU",
+   "isEnabled": true
+  },
+  {
+   "account": "Ckxx9mPgT1nrnbY7ig6y8GJAaQNFsnnx6W61atWggj3Y",
+   "authority": "HDxxzxzHnkGTQLGN1DpVvByiNapmrjztt7C7xzhnrqTn",
+   "isEnabled": true
+  },
+  {
+   "account": "12zhaKy1HRHxE2H1DD1Tx42jevjRRXg4YBtyx4a9yapw",
+   "authority": "Hhn4usDjnktbPURJHbi4YrPdKudBD5Qq35mTcaQ3Uu6",
+   "isEnabled": true
+  },
+  {
+   "account": "EZa7rKwQhYf2UP51jWgQewHhQz2ZNyYsDqUhQx1shtn2",
+   "authority": "HPJ2KUVgRnG889NyfEcUyZkGD1abrZxjZVmsYAjLZU1N",
+   "isEnabled": true
+  },
+  {
+   "account": "5WhYuPk624gRXbdbe6FV6K4HCfWmRBZNHWxkitaRctoi",
+   "authority": "HsJ9PcfH2nMeTKqozvH5Y4SRfUCknTpEBE9E1c8eBs8j",
+   "isEnabled": true
+  },
+  {
+   "account": "BwqHzvy2E9yyYddh9PzopqDztxtqt2wjr2C6aWTGrhdV",
+   "authority": "HW4zorvt6xDwhU36RqjcWNwU8YMj9tiqnAafBKW4cqV",
+   "isEnabled": true
+  },
+  {
+   "account": "4NufT5jWMwNyjmgMvDiiZxWbCGb81jtDTQMcczQNSS6y",
+   "authority": "HwRia5HUmQcvundpC6iFqwfK4iVNKRSmYm1NKsrMkZBC",
+   "isEnabled": true
+  },
+  {
+   "account": "F9xNnx8zfkXENVxca1xrEQaKBjoUdieUMd2KnpLhhbhC",
+   "authority": "icex1C6pnZxznQWiHZZANjGU8nZ8kNquFnjyY7XXrXE",
+   "isEnabled": true
+  },
+  {
+   "account": "FBWDv3aD1sB1AbbkuZxSxtpYmnUQGyQxBNERsWCQtr2s",
+   "authority": "jagBNeXYncnn1hzwSq1JJ16XhWTgQ7DCFVqndSJZ6vT",
+   "isEnabled": true
+  },
+  {
+   "account": "DGGWkWBNQyAvfq7x2F1kTpR5fXYDGgsX5axAPk26oPmP",
+   "authority": "JC7bH7HSZoDhwggBXtRF31cVt71WiizY2J6YDDQfG5er",
+   "isEnabled": true
+  },
+  {
+   "account": "4RgruHwWkDNV81JynVzbR6UTPbgLU4mDKDMAKKfHMeR3",
+   "authority": "juigBT2qetpYpf1iwgjaiWTjryKkY3uUTVAnRFKkqY6",
+   "isEnabled": true
+  },
+  {
+   "account": "7Dedj63y5F5WeGdC5KVJvyRRV7Ci72bxudHH768vRraG",
+   "authority": "MBVyz9s72WSfUmbr1S8fgHjDJQkPs1Q4Wxi6A2Mees9",
+   "isEnabled": true
+  },
+  {
+   "account": "5Ng4mdjYbcoaD6rXweBu6CGshJTuxfisuKFJe2BoXdXE",
+   "authority": "Pid6HQnMCFb9izqX9i7X6ePdUPieGmjHoPxC1Jfooix",
+   "isEnabled": true
+  },
+  {
+   "account": "2XymEUwN978GpJca6bT3VgwLqfxg4jD336YfRYH8wsVv",
+   "authority": "q9XWcZ7T1wP4bW9SB4XgNNwjnFEJ982nE8aVbbNuwot",
+   "isEnabled": true
+  },
+  {
+   "account": "JAr2BZ33XwNFdnZ4bCJnggvfJGDrV1TSFGJiVTbbUquX",
+   "authority": "siidBVew9gpXxjM1y5spQiAyx1dyFrg9m6YjoxrYWbi",
+   "isEnabled": true
+  },
+  {
+   "account": "8n9VppnitwdmWvWfUjQ8hv7pa2UzGMP4UFsBZSewzbG4",
+   "authority": "simpRo1FrQYGa1moicfgnPDp6KyE38d4gYrZzhjXYJb",
+   "isEnabled": true
+  },
+  {
+   "account": "4uDffdYjVSpijutYXATiML8188LhpN69DJjirFV6ksXu",
+   "authority": "SLAY6uN1zZpXBTfbuDDCesNmM5D288xrz8uYvfS3n41",
+   "isEnabled": true
+  },
+  {
+   "account": "GyNCA9Y3TxQ5VT3qbPUYPkUvBvHeFUdyXLTYciJvo6it",
+   "authority": "Stakex4B2tpDHPWGvV1dninfiaYCGdakgTknpzPitLh",
+   "isEnabled": true
+  },
+  {
+   "account": "7Wp87QUN9LxV1CW6KnZGDrTsckiSnkqHwWSD6J88ZvyD",
+   "authority": "SWnetabTLirPWqEK1V1T7HkVLC5vGvfjEsb89wiqrGh",
+   "isEnabled": true
+  },
+  {
+   "account": "2jUBjGeP4KHPat7jXGkvN3nY9rfccyNNurnU1HotXS4S",
+   "authority": "TopjgY7N1fJdnW89S9fX6t7LF61nspgXGL1NpgAKhDG",
+   "isEnabled": true
+  },
+  {
+   "account": "8WYxup5GTSkGgnQscFVXp2w6ns6Sobvo4DaSHDAAnTyV",
+   "authority": "VALiDcyCpujxjJAZDK2av2TpMAigpSodzj2ApqgR4e6",
+   "isEnabled": true
+  },
+  {
+   "account": "7YKhkC1bPyJHPVYwqqXibv1X11PtyBRZtGworF3EMJtg",
+   "authority": "WUNoB9YQXmXXRcJsjY1G8PfVag5aAfnyGmFd6YwJVwp",
+   "isEnabled": true
+  }
+ ]
+}

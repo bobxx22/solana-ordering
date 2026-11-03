@@ -173,6 +173,15 @@ export function binomialLowerTail(k: number, n: number, p: number): number {
   return Math.min(1, s)
 }
 
+/** Two-sided Fisher exact test of the table [[a, b], [c, d]]: every table with these margins at most as likely. */
+export function fisherExact(a: number, b: number, c: number, d: number): number {
+  const table = (x: number) => Math.exp(lnChoose(a + b, x) + lnChoose(c + d, a + c - x) - lnChoose(a + b + c + d, a + c))
+  const observed = table(a)
+  let sum = 0
+  for (let x = Math.max(0, a - d); x <= Math.min(a + b, a + c); x++) if (table(x) <= observed * (1 + 1e-9)) sum += table(x)
+  return Math.min(1, sum)
+}
+
 function lnChoose(n: number, k: number): number {
   let s = 0
   for (let i = 1; i <= k; i++) s += Math.log((n - k + i) / i)

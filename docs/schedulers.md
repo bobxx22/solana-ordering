@@ -11,7 +11,7 @@ table of `results.md` is generated from the main run's own snapshots).
 |---|---|---|
 | Agave | 4.3.2 80%, 4.4.0-rc.0 9%, 4.5.0-alpha.2 8%, 4.4.0-beta.1 2% | `anza-xyz/agave` tags v4.3.2, v4.4.0-beta.1, v4.4.0-rc.0, v4.5.0-alpha.2; v4.4.0-rc.1 after the main run (see below) |
 | JitoLabs | 4.3.2 99.9%; 4.3.0 and 4.3.0-rc.1 under 0.1% | `jito-foundation/jito-solana` tag v4.3.2-jito |
-| AgaveBam, HarmonicAgave, Rakurai | report 4.3.2 | Agave v4.3.2 for the base scheduler; the BAM sequencer, Harmonic block building and Rakurai's scheduler are not in these repositories |
+| AgaveBam, HarmonicAgave, Rakurai | report 4.3.2 | Agave v4.3.2 for the base scheduler; the BAM sequencer, Harmonic block building and Rakurai's scheduler are not in these repositories ("Outside these sources") |
 | Firedancer | 26.10.4 92%, 26.10.3 6%, "0.1.1" 1% | `firedancer-io/firedancer` tags v26.10.4, v26.10.3 (pack's cost header and comparison identical to v26.10.4) |
 | FireBAM, HarmonicFiredancer | report 26.10.4 | Firedancer v26.10.4 for pack |
 
@@ -76,6 +76,13 @@ the boundaries are where two roles tie: C = F at 0.114, B = C at 0.120, F = B at
 | 0.120 to 0.193 | A E D C B F |
 | 0.193 to 0.841 | A E D C F B (the source: *k* = 0.5) |
 | above 0.841 | A E C D F B |
+
+The order of the six also leaves two pairs of rules unseparated (added after both runs; `test/design.test.ts` checks
+both):
+- **Total fee** and "the larger requested compute-unit limit first, the larger fee between equal limits" both give
+  B D, then A, E, F, C. A pair with the higher fee on the smaller limit would separate them, such as 1 000 CU for
+  10 000 lamports against 40 000 CU for 9 000.
+- **Reward/cost** and a linear key reward − λ·cost give the same order for every λ between 1 and 1.8.
 
 ## Ties
 
@@ -158,6 +165,49 @@ landing per role.
 conflicting lock
 ([jito-solana greedy_scheduler.rs](https://github.com/jito-foundation/jito-solana/blob/v4.3.2-jito/core/src/banking_stage/transaction_scheduler/greedy_scheduler.rs)).
 Our fresh anchors never appear in bundles.
+
+## Outside these sources
+
+Read on 2026-11-03, after both runs, to say what is public about the forks and pipelines the tagged sources do not
+cover. None of it changes a test or a family.
+
+**Rakurai** ([client, branch v4.3.2-rakurai.1](https://github.com/rakurai-io/rakurai-validator/tree/c74a67fb32032dbab66ddd89cef78dc4d6ecbc1c))
+- The client is a fork of jito-solana that runs a separate scheduler library, which its README describes as selecting
+  high-value transactions
+  ([README.md:19-20](https://github.com/rakurai-io/rakurai-validator/blob/c74a67fb32032dbab66ddd89cef78dc4d6ecbc1c/README.md#L19-L20)).
+- The library is closed: operators install it prebuilt and authenticate to download it
+  ([setup_and_build.md:5, 92](https://github.com/rakurai-io/rakurai-validator/blob/c74a67fb32032dbab66ddd89cef78dc4d6ecbc1c/rakurai_docs/validators/setup_and_build.md#L92)),
+  and we found no public source in the `rakurai-io` organization.
+- It has selectable scheduling modes and strategies, `Mode1` and `Mode2`, `Strategy1` and `Strategy2`
+  ([banking_stage.rs:166-170, 200-204](https://github.com/rakurai-io/rakurai-validator/blob/c74a67fb32032dbab66ddd89cef78dc4d6ecbc1c/core/src/banking_stage.rs#L166-L170)).
+  We found no description of what they do, and a validator's setting is not visible to us.
+- The published client reports `Rakurai` in gossip
+  ([client_ids.rs:93-96](https://github.com/rakurai-io/rakurai-validator/blob/c74a67fb32032dbab66ddd89cef78dc4d6ecbc1c/version/src/client_ids.rs#L93-L96)).
+- An on-chain program holds one activation account per validator. Enabling the scheduler takes both the validator and
+  Rakurai, disabling it either one
+  ([rakurai_activation/README.md:41-42](https://github.com/rakurai-io/rakurai-validator/blob/c74a67fb32032dbab66ddd89cef78dc4d6ecbc1c/rakurai_docs/rakurai_programs/programs/rakurai_activation/README.md#L41-L42)).
+  `node src/cli.ts rakurai` reads all of them from the mainnet program
+  ([`rAKACC6Q…`](https://github.com/rakurai-io/rakurai-validator/blob/157701888934e8780db7482bb079ad7eb356110c/rakurai_docs/validators/setup_and_build.md#L79)),
+  by the layout in its published
+  [IDL](https://github.com/rakurai-io/rakurai-validator/blob/157701888934e8780db7482bb079ad7eb356110c/rakurai_docs/rakurai_programs/programs/rakurai_activation/idl/rakurai_activation.json).
+  The flag says what was approved, not what runs. `results.md`, "How far the total-fee reading goes", sets the accounts
+  against the orders we saw.
+- The twins table keeps the label frozen at `prereg-main`, "Rakurai (own scheduler, source not read)".
+
+**Harmonic** ([scheduling strategies](https://docs.harmonic.gg/concepts/scheduling-strategies),
+[streaming mode](https://docs.harmonic.gg/concepts/streaming-mode),
+[architecture](https://docs.harmonic.gg/concepts/harmonic-architecture))
+- The validator chooses a strategy, and is bound to one builder at a time that runs it. The builder sends sequenced
+  microbatches, and the validator executes them as they land. If that builder fails, another with the same strategy
+  takes over; with none reachable, the validator builds with its own scheduler.
+- FBA, the default, sorts 50 ms batches by priority fees and tips. FIFO goes by arrival at the builder. MREV is
+  proprietary. Custom strategies are built by Harmonic.
+- The pages do not say whether FBA counts the priority fee in total or per compute unit, nor how a block shows its
+  builder or strategy. REPORT, section 6, sets this against the orders we saw.
+
+**The Jito relayer.** The default of `tpu_quic_port` is 11228
+([transaction-relayer/src/main.rs:78-79](https://github.com/jito-foundation/jito-relayer/blob/318cc95f22466d129150797a0de26398dd588ac4/transaction-relayer/src/main.rs#L78-L79)).
+A validator advertising that port most likely has a relayer in front of it, though an operator can choose any port.
 
 ## Reading the results against this (pre-registered)
 

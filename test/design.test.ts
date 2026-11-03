@@ -3,7 +3,7 @@ import { mkdtempSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { test } from 'node:test'
-import { buildTrialTxs, CellDealer, expectedCost, expectedPriority, priorityFee, priorityPerCost, ROLES, type Role, type RoleSpec, trialCost } from '../src/design.ts'
+import { buildTrialTxs, CellDealer, expectedCost, expectedPriority, expectedReward, priorityFee, priorityPerCost, ROLES, type Role, type RoleSpec, trialCost } from '../src/design.ts'
 import { generateKeypairBytes, signerFromBytes } from '../src/keys.ts'
 import { CapExceeded, Ledger, SWEEP_ALLOWANCE } from '../src/ledger.ts'
 import { rng } from '../src/util.ts'
@@ -21,6 +21,15 @@ test('the candidate rules order the roles differently', () => {
   assert.equal(rank(priorityPerCost), 'AEDBFC')
   assert.equal(rank((s) => Number(s.cuPrice)), 'AEFDBC')
   assert.equal(rank((s) => Number(priorityFee(s))), 'BDAEFC')
+})
+
+test('what the order of the six cannot separate', () => {
+  // the larger requested CU limit first, the larger fee between equal limits: the same order as total fee
+  assert.equal(rank((s) => s.cuLimit * 1e6 + Number(priorityFee(s))), rank((s) => Number(priorityFee(s))))
+  // a linear key reward - lambda * cost gives the reward/cost order for every lambda strictly between 1 and 1.8
+  const linear = (lambda: number) => rank((s) => Number(expectedReward(s)) - lambda * expectedCost(s))
+  for (const lambda of [1.01, 1.4, 1.79]) assert.equal(linear(lambda), rank(expectedPriority))
+  for (const lambda of [0.99, 1.81]) assert.notEqual(linear(lambda), rank(expectedPriority))
 })
 
 test('F differs from A only in scheduling cost', () => {

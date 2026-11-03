@@ -1,0 +1,386 @@
+{
+ "takenAt": "2026-11-03T22:07:41.023Z",
+ "source": "getProgramAccounts Config1111111111111111111111111111111111111, jsonParsed, validatorInfo accounts signed by the identity; self-declared",
+ "names": {
+  "11AMA4mnNbsrPQeuoNN7uiZVJZtqEzQHrTfa5vnbcjk": {
+   "name": "11ama Validator",
+   "infoAccount": "Adkohp1MFbVTgDGhD9Cd48ibu3yBaamR2wBCo3Lg4Gdr"
+  },
+  "2dfgsiSaZ51QYPsECMYMG247PXxyKdwkV9wTHoQb8YEC": {
+   "name": "Astraeus",
+   "infoAccount": "FUx9TUAgbHJMg8GLkSniKNGVN2SAqzAVBsDAbgCrgXWe"
+  },
+  "2mMGsb5uy1Q4Dvezr8HK2E8SJoChcb2X7b61tJPaVHHd": {
+   "name": "Chainflow",
+   "infoAccount": "EJCxFoqeGXPt3uKPyRdjTbvK5ETcEHJBddVYA8Ei3Z61"
+  },
+  "3B2mGaZoFwzAnWCoZ4EAKdps4FbYbDKQ48jo8u1XWynU": {
+   "name": "Low Fee Validation TOP API 🔥",
+   "infoAccount": "2RXqQb7YmvcFV2BNoiCJgCdzX3gPNduFNZgnuDS4nCSn"
+  },
+  "3psxMyr7rQzywVp1MXKd1XFmFz33NjydzCoJx9t2sMQW": {
+   "name": "OtterSec",
+   "infoAccount": "5AhvgK9XApd2APv5hPHRgeXAipcdrkrViRkacN83kNac"
+  },
+  "58KprHKFNHgH1Cvo4QwxWkDeJNaSQVteCoAAFUWjtESn": {
+   "name": "Flash",
+   "infoAccount": "rxBiPfBLesU5wZyTm6sKgvbsCcmjURHTiioVkQiKDKB"
+  },
+  "5FbKKGdEaFcxGxxaLKVvBes2JxiKbreh8w2ZpMcSQ2a5": {
+   "name": "Table Rock Jungle Lodge",
+   "infoAccount": "DjAUHba8fKneS3gtoCXcAULdcNngqCWzV7hVdgu8A8uF"
+  },
+  "5ghoFEVrsXeAPB6SUmBpZ2xq3KvHEjNMeSaBnxEBXkHV": {
+   "name": "DarkTower",
+   "infoAccount": "2kaunpkJBjCTL2tfyWSxNX2uMcL95nitw85aaiHmB6R2"
+  },
+  "5pPRHniefFjkiaArbGX3Y8NUysJmQ9tMZg3FrFGwHzSm": {
+   "name": "Kiln1",
+   "infoAccount": "6nKPLCszFM14FR666hZnphXi5geiXs1owejKWnk9PYBf"
+  },
+  "5zuNci3TV79w6zLoJZzbZujMvkVZb2FcSPhgv9aT24AK": {
+   "name": "Solana Japan Validator🇯🇵",
+   "infoAccount": "7SJ5asqeEVtXHJz5ppt9Nc1nJwQYqxLfiAmgBhs5ynRw"
+  },
+  "6k1YkmTKwPRUhChnxA9ryJmbtuQMbro4xFTL6mL9jycB": {
+   "name": "Sign Labs 🤟",
+   "infoAccount": "DvVMM56xUieadnos3rRrMzv4xRCRyCzV2Js5oRYWpb7c"
+  },
+  "6XKqyUVUcpe3CNucjF6gk5zonJDqNGvob6kaTy4Ps1U": {
+   "name": "Solana Mobile Validator",
+   "infoAccount": "HmyN7sSswytJfEGGjf2XM6PTqVkc2nP83gUwq8ZXmykb"
+  },
+  "6yFGGAgYpBxgYPuHW4rv7hJmhKrUiXKyHkpVGaYtKrwE": {
+   "name": "Watchtower",
+   "infoAccount": "6DnHMuZVjETuSeEzQLBhLv9A6aBF7bCeyTndLnoPwQMG"
+  },
+  "722RdWmHC5TGXBjTejzNjbc8xEiduVDLqZvoUGz6Xzbp": {
+   "name": "Solflare",
+   "infoAccount": "AndRHHBBaiXQuhyZ1tAqUVz2AURUR5mMET6rfxXbkQK9"
+  },
+  "73hojLdq1vZDSxeVQEqVFJ4iwLngdvEJPEpEHkSdv6BZ": {
+   "name": "SuperteamDE x Staking Facilities | Public Goods Validator",
+   "infoAccount": "AopJqTKjiTEaLDneAEr5mcRR8gYvo4rtY961DnoKeGKw"
+  },
+  "74MzXStH8pLPZjbNxZKdtDGJehur2JgjZNeTPqSn37nE": {
+   "name": "Uphold",
+   "infoAccount": "9xbcL9VJG1hsADFkZBGHMoYqHRWZpspQy6ntvwXnUM2Z"
+  },
+  "7cVfgArCheMR6Cs4t6vz5rfnqd56vZq4ndaBrY5xkxXy": {
+   "name": "Blockdaemon 🧱👿 Validator",
+   "infoAccount": "DfMmYTj3k8mwGVDCUhzsBAZoF7qqYy8PeAk2dRLjYeNf"
+  },
+  "7EzbSahSfSjeRexHcNDLDpzHBAGBLjLKtjbmuoQnEtjE": {
+   "name": "Gate Earn",
+   "infoAccount": "DFUABK5c6vDMsN69Pnf2fTye3qsukG2yDW3veCKhyhAC"
+  },
+  "7HMHSdQkjDwz9Q5zAhEy83uzW3XHJchjdpMYapKXcKt5": {
+   "name": "GERSIA",
+   "infoAccount": "Eu15djVmYVi8fE1CfCYktJKAU9w7nPNCJv54W7x7H6MT"
+  },
+  "7PdKhpKz7T39vZHFL1UfcYNDsLvay6hp4KPQq1aUckFf": {
+   "name": "Alpha Pro | High APY🚀 100% Reliable ⭐ VIP Services",
+   "infoAccount": "HdEaL3kdbyEkUQ7zS7RjhWmTQS9X4ibY3nXN3jtCnrjJ"
+  },
+  "7zAHbRxEQaNjKnQMjFm7j8LebHSGfzsQDdm2ZpUNPa7G": {
+   "name": "Bitprim SOL Validator",
+   "infoAccount": "J9RX4zvwFGkTbcTNGwMtNm3twg4FCzLzQC4jVj5XLzh2"
+  },
+  "8AkVj5aAtJ27tYXeq89cnSf68V43NarFHMx2iSDjZv7c": {
+   "name": "Theta",
+   "infoAccount": "EERUAKEsELEuLTTzE6o7R3v8uvC6TTu9b2wLQ4XvYfz3"
+  },
+  "8NpDWRcKHkBjn8mbHMYgDm2Z2DRvXXuDiSScPsGSdSgr": {
+   "name": "P2P.org Labs",
+   "infoAccount": "6E9Vp26mshdUmqFwFc6XjGujfcGDSxpkbe3eNoa5TSyn"
+  },
+  "8o8wWCYNwPRSCAasp8rYvWuo3Ku1R1i6SEo9j9B6fe5i": {
+   "name": "Sygnum Validators",
+   "infoAccount": "AgcT3jAT4DVvhvrMYUwy6Vpia4rZoxPZgaJyvZ5GtPy7"
+  },
+  "8vk6QpG93JSaQCSgnycBsv5qmfQBk4qC9FjNA35E5JhU": {
+   "name": "Tinydancer",
+   "infoAccount": "CD8XZKVrWeY5S3uTjKTv4QTyziYL5HZAZj9ktDD29xsc"
+  },
+  "93Q99nhdKjuSe6WNXgMBbC3s8QVQEAoHKt91PNRkUkMn": {
+   "name": "STEALTH",
+   "infoAccount": "Gc8tjFH2GK3VHzkXnzesaSX9QQ49T6f2pmDFqoPLwBv1"
+  },
+  "97jbhVBYcSmwGXjrx5PPWXucDsVBqwyoQ6rzP3B6eeMt": {
+   "name": "anarcheuz",
+   "infoAccount": "D1vZ4pcchgSGeH67Pj5TdVXLDxYnRF6TU81xRXUcM63o"
+  },
+  "9eGrDohdNTAo61DRHyfMuqKWXqYnA3i254Wiszxe8FoY": {
+   "name": "Galaxy",
+   "infoAccount": "4R64GELpQ84BE1BSxc2e8cEQNyZvKzdA4Hb2ENDnf22L"
+  },
+  "9hQqNe3DQTiwhspatewA8EXhz12e6sq5UJVJ2qNRwnTf": {
+   "name": "Stake Shark",
+   "infoAccount": "EvG2d83qtT6oyPqxUs1ciNVsacUf89bcWVfFjhWgtiRH"
+  },
+  "9pBHfuE19q7PRbupJf8CZAMwv6RHjasdyMN9U9du7Nx2": {
+   "name": "H2O Nodes💧",
+   "infoAccount": "7r8pzmrkVWtm2tUt5abaVGU45nsNTRYyECcdtGFmyGBY"
+  },
+  "9W3QTgBhkU4Bwg6cwnDJo6eGZ9BtZafSdu1Lo9JmWws7": {
+   "name": "Coinbase 03",
+   "infoAccount": "7W5VqjSnyP47vC5iKGH2ZEVYA1jyudpdMdAAgsoY48mp"
+  },
+  "A4hyMd3FyvUJSRafDUSwtLLaQcxRP4r1BRC9w2AJ1to2": {
+   "name": "Jito2 (Experimental)",
+   "infoAccount": "E36ugk7yFzzSGhqWUEobkTiFzsP72eM8utJNsCjsSXpJ"
+  },
+  "ALp2GdA1eJV8vZHMHazCtTxNXe3BLUSco9LDASgjDs8R": {
+   "name": "🌸 SOLGirl MEV ⚡️👩‍💻",
+   "infoAccount": "AtQF6RRJSipTkgHKM3KJ45bM2wCQys7S1hNqgCB6VEmY"
+  },
+  "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY": {
+   "name": "Anagram Staking",
+   "infoAccount": "D6idvvLxo1c91owdgDXxMc2etnaapiGTjBuPduh4wNv7"
+  },
+  "ANC1u9sY36q3mi2MyVhtz71un8yLgTsFBUuyLcSPzKsk": {
+   "name": "Anchorage Digital",
+   "infoAccount": "4Ej22CTWv2b8vPR4SSVkbwfNmbc6ZYddiTYTgygY8WxX"
+  },
+  "Awes4Tr6TX8JDzEhCZY2QVNimT6iD1zWHzf1vNyGvpLM": {
+   "name": "Staking Facilities 🔥",
+   "infoAccount": "5zQLTBqhR6cinu6xyjBB6B8ADBS63nRm5XQWDL3Mg9Ub"
+  },
+  "BCeczqpTRPigndHVJu1KEzno1Uhb4hjrE7ttmAndrV1p": {
+   "name": "GlobalStake [Bare Metal]",
+   "infoAccount": "DtnDZWCwyuNvirs6qTKXSwxrZswGLCKP1cy93hDMXcHo"
+  },
+  "C8Bey3LKVJHVqN6xPTeW8WJfUgFQAeGNBpT4Rp99JP1k": {
+   "name": "Ledger by Figment",
+   "infoAccount": "BgtZbcsYEDKLN7Ds5tUUXooeDAFeontxBqm1VZy7kM6u"
+  },
+  "CAo1dCGYrB6NhHh5xb1cGjUiu86iyCfMTENxgHumSve4": {
+   "name": "Kraken 2",
+   "infoAccount": "5sPjrJSDXMFCrfsyGLaeSrDV6e6A8MGcn8tgTWuV93dK"
+  },
+  "CfgRXmp1LEYr97EaT2RyoL2cSvtWgJh52Bes89RxVSoW": {
+   "name": "Blockman",
+   "infoAccount": "2QKey1ExDdbxJdNZWFbSt1g4LBYaTyE7vG423Undxek5"
+  },
+  "ChorusmmK7i1AxXeiTtQgQZhQNiXYU84ULeaYF1EH15n": {
+   "name": "Bitwise Onchain Solutions 02",
+   "infoAccount": "2rVD9kW34bfKPABnHsQcMDQsA2odpwU2e7c4fN2nhVCs"
+  },
+  "CMPSSdrTnRQBiBGTyFpdCc3VMNuLWYWaSkE8Zh5z6gbd": {
+   "name": "Solana Compass 🧭 Solana For The People",
+   "infoAccount": "9F88KkZBLYHxkCUxXy9WfrnPeC7KpzKzxhcwLn2XNsin"
+  },
+  "D2RV1q6FgePVVjrMa7AMzVbvvAeg5oS7TAV7qdNKSDsX": {
+   "name": "Validatore",
+   "infoAccount": "A2LsoGjMD5t44r1CNAXkH9LtaKkacq9Akzufh1F7RuHg"
+  },
+  "dcntruDNP5SEcGV4RxnsqXFURdDZGT3DTQv68Q8H7Vu": {
+   "name": "Decentra",
+   "infoAccount": "6PbNFSfqUNDcB8J1EQycMJiZTKTkEE7Fh8mYbTknJySA"
+  },
+  "DcTPJqPNrTLv3te1c9ctA9H194x6DsaPA4ChuSEv7KPZ": {
+   "name": "Temporal Emerald",
+   "infoAccount": "FB9x6RAckmo9RHwufNsgrQfkYXhuZN5DmgPX3VDoCsUA"
+  },
+  "Df16xM2XWzTXEGYxFBXtwXRhCdE6hwBbxS162TyS4r65": {
+   "name": "Bybit Staking",
+   "infoAccount": "6mAPBffPnEk1UKq926MTibMfojEMwjWnh2UAG3Ng1KsY"
+  },
+  "DiFeTctQSaNczJNmZ5121kYqLaBe9wDpM9sjCzTELJLE": {
+   "name": "Serhio911",
+   "infoAccount": "G8XsRahVVzVdLsHNfoT1dmezMcVwD3AvdXVcVgKvZaiS"
+  },
+  "DNVZMSqeRH18Xa4MCTrb1MndNf3Npg4MEwqswo23eWkf": {
+   "name": "Firedancer Development",
+   "infoAccount": "AyBsww4P7ZHiM3KqKothXaFCmG9bC4wUhRMA9snvFpEd"
+  },
+  "DrifTrN923QaouP89UxkQzFGbumKPCnfkNYQRwmZxatz": {
+   "name": "Drift",
+   "infoAccount": "As1nSjaut9KkMsmU9VFQSdwzRuJ4T1nSMXS7B8f49jFo"
+  },
+  "DRpbCBMxVnDK7maPM5tGv6MvB3v1sRMC86PZ8okm21hy": {
+   "name": "binance staking",
+   "infoAccount": "3UvAxdHfTfNju4GAQFDe1HXTZr16UNp5BcFqHhWZaphZ"
+  },
+  "dxa6QFqLcByyHykLCAW5tv1VYNVQFV3v6oovM2h8inH": {
+   "name": "Fidelity Center for Applied Technology (FCAT®)",
+   "infoAccount": "Eaqd79aGWGQod3WrYXgnpav4yP8X5qPJCNJcf89TEQmC"
+  },
+  "dzBhD4wikyy7xqwiJvT49gdrKqWVjfs9M6cTssmRX8Y": {
+   "name": "IBRL",
+   "infoAccount": "G6WtjBRKbXSvss9zV6XhcVbyj7Vr8UMptyLX5iCaZMkU"
+  },
+  "E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL": {
+   "name": "Bitwise Onchain Solutions",
+   "infoAccount": "5Kdp2U3Ya98XNbYfGywh4tkwr3FMM1N5oDe8KPumtouj"
+  },
+  "E3mDbFMr8yZcCAZx5wPUFCRmLX31u8Nnj4jPoPc54h3F": {
+   "name": "MAVAN",
+   "infoAccount": "7jpksFhy7vVVVtq2m47uhU49Gxx8wSKoXqLTEycFWvV4"
+  },
+  "ECZx4Dfyn2o55KTYbM9r3Dt4VZRcrdfdrst7sUbWgrdU": {
+   "name": "Orca",
+   "infoAccount": "Hpgp3HamigUCGQtcA8baJYe6cmp3qGfxe97Phv7shxC1"
+  },
+  "Ed9WjPnZfAXsPttcqxMwj94qsuXVRyBsyXnDkxFva2Zv": {
+   "name": "Rakurai | High TPS | High rewards",
+   "infoAccount": "5TW5BYHMY3vvtahMzsggDWGZDa5wuUmFMpA9GVsoSvcS"
+  },
+  "EUcJwf7jXskRE6NZBtFPVH2EedNvNYko8LL2WT62XctB": {
+   "name": "StakeBowl",
+   "infoAccount": "94HapiyYRUbpFXadjssxoGdBAFsnuZ9JPSefJEsx5KYf"
+  },
+  "EvnRmnMrd69kFdbLMxWkTn1icZ7DCceRhvmb2SJXqDo4": {
+   "name": "Everstake",
+   "infoAccount": "DYCamEUBWGfvxBEZTQXLbBmJYsRdxSDt4EMFkQJJwvSY"
+  },
+  "Ey3DkEVbfBxfWmkTsG7Hqj7jshYf5Zx9H8462Zjjkykf": {
+   "name": "SolBrothers",
+   "infoAccount": "CRcNWQvVjnrpp9n1VcBNTYUwF8S7pthmPx4q4vPTcpgh"
+  },
+  "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD": {
+   "name": "OKX Earn",
+   "infoAccount": "GK56FPSjwsLMGN7Ns91xLFMMkne4sY3NrecC2aSGxmPK"
+  },
+  "Fd7btgySsrjuo25CJCj7oE7VPMyezDhnx7pZkj2v69Nk": {
+   "name": "Figment",
+   "infoAccount": "DQftryTzdr8WQQhzJVsnt7y7oUR5hSp58EoL5hRWqr1M"
+  },
+  "FNKgX9dYUhYQFRTM9bkeKoRpsyEtZGNMxbdQLDzfqB8a": {
+   "name": "Coinbase 04",
+   "infoAccount": "9Lei3hAwWjQ1oBNrQ2swEgFTyy9SZdsNj56iwnLwVymp"
+  },
+  "FNTPSUuRpDoJx1hwFmB5ncNLLMX42aE83P4hsFYUfNRL": {
+   "name": "Nodz",
+   "infoAccount": "ETjnvy5ztoxGaKnBL8wPejpRU5FEfAgcjtmocv9BKT3y"
+  },
+  "GBQ2GvTzmjXMu97dr7WUnLKYTNim1aoZsYS53KYXAAAA": {
+   "name": "Bitwise Onchain Solutions | Jito BAM",
+   "infoAccount": "815NjKdHqvR4Y5DJtDafHATYLdmjTkLaAA54HmConNUx"
+  },
+  "GEM1N1UE3C8BB8EaaEPrcFvT3iLMVrurknjW5AYjUReR": {
+   "name": "Gemini",
+   "infoAccount": "EAFdyAVGXgdH8iwbBrLMb7nzDpyos3WqVexx9U9zsNCr"
+  },
+  "GkFT5nmcFVmJiLwuE98PjdF3LReMeq4WbejFHfwrnsgw": {
+   "name": "KAST",
+   "infoAccount": "8ZP6zSgiyGJfabumm2FvK4EMchU8tffiP5T9zFNpsND3"
+  },
+  "GnC339vkyXRm1jRX69dt9mapPPu2LbzXfSDoxc91qta6": {
+   "name": "P2P.org",
+   "infoAccount": "Gdzn1rD1k9SnTCcxsqkWmTcjW8byxXZ8zzW4t4JJyRgo"
+  },
+  "GoeW4aFK4dGoekJySgUynWDxBZiQJqm8GDAF4H53tDK9": {
+   "name": "Twinstake",
+   "infoAccount": "8wREuUYXkuWoe5Ph4pBoadjQ25aNVyLdsTWyM5MyLSSp"
+  },
+  "gridqZmeBcsUKT2Mv4M9YFHFN3tVLFb2TCtTcLD1cAd": {
+   "name": "Grid Systems",
+   "infoAccount": "AMmngd2y3HSPWKxAPDFntR4kAMnaemUTD3FnAsswA6rt"
+  },
+  "grptonHnt7YSmJokGK9TJJTBXDT8ca4LSWMHCCfzzPa": {
+   "name": "gripto",
+   "infoAccount": "F8dZfVLtEu4qkR3hJZREp7WgrpjEGAnEo7EizGfNmkxw"
+  },
+  "H9ENbtmy2tWFtAJNmpC8xQtbcr1NTp4FXLdphRaG8L2T": {
+   "name": "Bubbles",
+   "infoAccount": "AUegTUA3sjvK7UCXj8fcaqPvZnL1VhgkjdaxBYuRab2m"
+  },
+  "HEL1USMZKAL2odpNBj2oCjffnFGaYwmbGmyewGv1e2TU": {
+   "name": "Helius",
+   "infoAccount": "81oBNskxtpzRYArvgr9mu45dRN46ps4L2JwjGz638ER5"
+  },
+  "HLnodbYkL5PFA8hjAZDkm5pGzV7eLTvcs671AW2L6St9": {
+   "name": "PoH PoS",
+   "infoAccount": "9T7he46KuDBaxESWXhjS61HiYXnAoTifPG8KNKP8aVse"
+  },
+  "HLXxkmjb47spcmbbKi3UCfZ2qmFY29t8MN562AEmh2Qh": {
+   "name": "🧬 HelixNode 0% fee 🧬",
+   "infoAccount": "SBD5DJUmJeBNqgnqxsdvJGzKZGbheY4ZmL9e3tGyiSY"
+  },
+  "HW4zorvt6xDwhU36RqjcWNwU8YMj9tiqnAafBKW4cqV": {
+   "name": "Moise",
+   "infoAccount": "4ZLbmCNh2VUJeMLUiyiX6EGBBbKbWUJPsCPNDRBGxHrp"
+  },
+  "idCE5k2BtTpwXdwAC7Var1enT9reut9fWECcxQP7LY7": {
+   "name": "CeriumXYZ 🔥💃",
+   "infoAccount": "8zF83ZMEki452KD7ga6VZaUXuxERZ2bS2enzTg3akYJy"
+  },
+  "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB": {
+   "name": "Forward Industries",
+   "infoAccount": "3LmrmVpSq2hYzsa19Z6Arztf1PPtAvKi4sX3MPCyp5Dt"
+  },
+  "JUPiTERrZqgf1jUyR7dSkhMx4Kn2qJyekWsg3LT1h4b": {
+   "name": "Jupiter",
+   "infoAccount": "BSJEZxjKFv4mR7RCayzRok9AimiH2e64duEgkZv7KjXB"
+  },
+  "LA1NEzryoih6CQW3gwQqJQffK2mKgnXcjSQZSRpM3wc": {
+   "name": "Laine ❤️  by SOL Strategies",
+   "infoAccount": "5MkmDq7kAQ6da2hSubAyiZMQKm1ywzf49MV9WxLTcbbr"
+  },
+  "mXv18ov8qCiQGs3ieoen981LdgZzYJjJak6reK6fpNC": {
+   "name": "MX Validator",
+   "infoAccount": "DCaF52cTimi9LWdSG3C9jBF9SkhwCZwY27mv5DHiBBSR"
+  },
+  "nodeEgRVkbYLAQePtMx2zCN7CGw7qRgzKMCBtjMfN1D": {
+   "name": "Node Integration",
+   "infoAccount": "42eHmfcag9eRsJsmtNuH4b9vCYAgE8DYm4dAwgnxRsr8"
+  },
+  "nymsGg7ZXcYBwGYKZL8qEHk9PQ8sAkKvnXgUNLPyGDV": {
+   "name": "Hypo Nyms",
+   "infoAccount": "3KtrFtkwJRVGvJ8HmdLvVwvLnN7QfipeZsapYi3Wv7ZN"
+  },
+  "peNgUgnzs1jGogUPW8SThXMvzNpzKSNf3om78xVPAYx": {
+   "name": "PENGU Validator",
+   "infoAccount": "HwojW2xwZHd3rH5upYdJFyeNyYruJ63FmGcsn839NscA"
+  },
+  "PRGNnb8DxVcP2WjSHfVRGgc8SkA5u6dbMwoTVV1BGKN": {
+   "name": "Paragon",
+   "infoAccount": "HFA6AKBLYzS7Ep7DuxpsSAZGwcbSUSx7J2d5teDHDMz7"
+  },
+  "RBFiUqjYuy4mupzZaU96ctXJBy23sRBRsL3KivDAsFM": {
+   "name": "RockawayX Infra",
+   "infoAccount": "GUPHmYu6G8BkeuV1oEwE2kXe1sPpTWoAEDrHAy842yHi"
+  },
+  "RNXnAJV1DeBt6Lytjz4wYzvS3d6bhsfidS5Np4ovwZz": {
+   "name": "RockawayX Firedancer",
+   "infoAccount": "qGw4F51Wndvn2s8jE64VMRpKew9bdhg6Fz5JUUnmgu9"
+  },
+  "rsbp8zMHbGCpLoRktmsjspYv77VcjxAzH1KxPCD9BiU": {
+   "name": "Albert is Great",
+   "infoAccount": "9Mx3g5CGMBzMtwHoF1Fh4L4aL7fXSFU4Ep4bAJ1j8yAe"
+  },
+  "shftkxnsXmqAkmLgz9Mn7bNB5Fr6mKgFc58kFHfVikj": {
+   "name": "blueshift",
+   "infoAccount": "EUhiuU5Hc7aboBYYomPFjch3Zbece6FhmTUSyYpc5Aqy"
+  },
+  "SLAY6uN1zZpXBTfbuDDCesNmM5D288xrz8uYvfS3n41": {
+   "name": "Solayer Validator [5% Commission + 100% MEV Kickback]",
+   "infoAccount": "4Jr3GBkaxLQA3Uv39aMMytfjsjNQBVdVYfjSmwexy8PA"
+  },
+  "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY": {
+   "name": "SOL Strategies",
+   "infoAccount": "5aojsDQ3oWdAA6aUcn6w3izA4pxQ38Wu3u7k8Hj863Qj"
+  },
+  "SyndicAgdEphcy5xhAKZAomTYhcF8xhC7za2UD9xeug": {
+   "name": "Syndica",
+   "infoAccount": "EmtTWdLqWq3HvZVS1Wa27QPYyHZzXZEVQ2bnkyqyD5ZF"
+  },
+  "tkmaiSoZ3F8MofkQBVWG6JYSCzyN6ioe7ReYXohx3WJ": {
+   "name": "Tokamai",
+   "infoAccount": "EZ45PzqTmBiRnMf644aVrXgPh1BRQZCKEhYqBcZE7RXR"
+  },
+  "Tri1F8B6YtjkBztGCwBNSLEZib1EAqMUEUM7dTT7ZG3": {
+   "name": "Trillium",
+   "infoAccount": "r5gNUqdJB87TS8bfFqwTw4DJsyC8jod1snQi3srBSAQ"
+  },
+  "vu1sGn2f1Xim6voHNLt4nLn38zNkYdLasU7hEr1TC2D": {
+   "name": "Allnodes ⚡️ 0% fee",
+   "infoAccount": "HNrA5MqfJMvGa1uQNV5AZcBDU3AijxCGCVgjPFA1hUEr"
+  },
+  "WUNoB9YQXmXXRcJsjY1G8PfVag5aAfnyGmFd6YwJVwp": {
+   "name": "StakeCraft",
+   "infoAccount": "6j6UDLSHLesV4peaxmfB1v4bwr56TxqpTsS3YkotHDUz"
+  }
+ }
+}

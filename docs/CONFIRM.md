@@ -120,3 +120,6 @@ Written after the data; everything above is as tagged.
 - **The power note's threshold.** "Power" above says H2 confirms at 11 exact trials or fewer, the threshold of Holm's
   first step (0.025). With H1's p below 0.001, Holm compares H2 with 0.05, so the threshold was 12 (P(X ≤ 12) = 0.032
   for X ~ Binomial(20, 0.8)). The outcome, 14, is above both.
+- **EvnRmnMr's label** (written on 2026-11-04). "The other three are unchanged" above compares with the main run only.
+  Our snapshots have EvnRmnMr reporting Firedancer 26.10.4 up to two days before the main run, and HarmonicFiredancer
+  26.10.5 on 2026-11-03 (REPORT, section 6). H1 names the identity, so its test does not depend on the label.

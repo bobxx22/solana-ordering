@@ -14,30 +14,57 @@ BAM and Harmonic pipelines. Its analysis was frozen beforehand (git tag `prereg-
 **Findings.**
 1. **Reward per requested cost.** At Agave, JitoLabs, Firedancer and Rakurai, the transactions waiting in the leader's
    buffer were ordered by reward per unit of cost computed from the *requested* limits: the formula of the Agave, Jito
-   and Firedancer source (Rakurai's was not read). All 12 tests of the primary family hold, 107 of 120 trials landed
-   in the exact predicted order, and the contrasts put the share of the base fee counted as reward between 0.12 and
-   0.84 (the source: 0.5). The BAM pipelines ordered the same way (31 of 31). Harmonic ranked by fee too, but put the
-   transaction with a 64 MiB loaded-data request last in all 30 trials, and B and C either way round.
+   and Firedancer source (Rakurai's scheduler is a closed library). All 12 tests of the primary family hold, 107 of
+   120 trials landed in the exact predicted order, and the contrasts put the share of the base fee counted as reward
+   between 0.12 and 0.84 (the source: 0.5). The BAM pipelines ordered the same way (31 of 31). Harmonic ranked by fee
+   too, but put the transaction with a 64 MiB loaded-data request last in all 30 trials, and B and C either way round.
 2. **Some large validators differ within one client** (found after the main run). Three JitoLabs validators ordered
-   by total priority fee instead. Two of them, the 7th and 8th largest by leader slots (3.90% of all leader slots
-   together), were tested again on 30 new trials under a second plan frozen beforehand (git tag `prereg-confirm`):
-   B before C, which total fee predicts and reward/cost does not, confirmed (29 of 30, Holm p < 0.001), and 29 of 30
-   in the exact total-fee order. A Firedancer validator that had left the exact order in 6 of 10 trials left it in
-   6 of 20 new ones: not confirmed.
+   by total priority fee instead. Two of them, Ledger by Figment and Everstake, the 7th and 8th largest by leader
+   slots (3.90% of all leader slots together), were tested again on 30 new trials under a second plan frozen
+   beforehand (git tag `prereg-confirm`): B before C, which total fee predicts and reward/cost does not, confirmed
+   (29 of 30, Holm p < 0.001), and 29 of 30 in the exact total-fee order. Found later, exploratory: these orders do
+   not separate total fee from "the larger requested compute-unit limit first"; Everstake's identity reported three
+   different clients within ten days; and two of the three hold enabled accounts of Rakurai's activation program on
+   chain, while none of the 13 JitoLabs validators that followed reward/cost does (section 6). A Firedancer validator
+   that had left the exact order in 6 of 10 trials left it in 6 of 20 new ones: not confirmed.
 3. **Arrival order decides when nothing is held back** (found after the main run). Streamed 30 ms apart into a block
    being built, 97–99% of pairs at the local schedulers landed in send order. Between equal priorities, Firedancer
    landed the twin sent second first in 85% of 27 trials.
 
-**Limits.** One unstaked sender. BAM and Harmonic are measured from their shared gateways, as whole pipelines. Our six
-out-rank 79–99% of their blocks, so this is how the head of the queue is ranked. The validators reached hold about 22%
-of the leader slots of each family. One day in epoch 1069, and a confirmatory day for three validators.
+**Validator by validator** (exploratory; over both runs, `results.md`, "Validator by validator"). The 10 of our 85
+validators with at least 5 trials with all six in the window, by rank in leader slots. A reading needs one order in at
+least 80% of them. Names are what each identity publishes on chain, self-declared.
+
+| rank | validator | name on chain | label | trials | reward/cost | total fee | other orders | most frequent order [95%] | reading |
+|---:|---|---|---|---:|---:|---:|---:|---|---|
+| 2 | `HEL1USMZ` | Helius | JitoLabs 4.3.2 | 5 | 5 | 0 | 0 | 100% [57–100%] | reward/cost |
+| 7 | `C8Bey3LK` | Ledger by Figment | JitoLabs 4.3.2 | 16 | 0 | 15 | 1 | 94% [72–99%] | total fee |
+| 8 | `EvnRmnMr` | Everstake | JitoLabs 4.3.2 | 19 | 0 | 19 | 0 | 100% [83–100%] | total fee |
+| 10 | `JD549Hsb` | Forward Industries | Firedancer 26.10.4 | 30 | 18 | 0 | 12 | 60% [42–75%] | mixed |
+| 16 | `9jxgosAf` | – | FireBAM 26.10.4 | 7 | 7 | 0 | 0 | 100% [65–100%] | reward/cost |
+| 48 | `ana2y2Yv` | Anagram Staking | Rakurai 4.3.2 | 12 | 12 | 0 | 0 | 100% [76–100%] | reward/cost |
+| 56 | `7QQGNm3p` | – | Agave 4.3.2 | 10 | 10 | 0 | 0 | 100% [72–100%] | reward/cost |
+| 90 | `5Us18hLZ` | – | Agave 4.3.2 | 10 | 10 | 0 | 0 | 100% [72–100%] | reward/cost |
+| 110 | `E3mDbFMr` | MAVAN | Rakurai 4.3.2 | 5 | 5 | 0 | 0 | 100% [57–100%] | reward/cost |
+| 117 | `7PdKhpKz` | Alpha Pro High APY… | Rakurai 4.3.2 | 9 | 9 | 0 | 0 | 100% [70–100%] | reward/cost |
+
+The other 75 have 1 to 4 such trials each: too few for a reading of their own, and `results.md` lists every one. Pooled,
+the 56 of the local labels and BAM landed 76 of 78 trials in the reward/cost order and 2 in the total-fee order; the 19
+of Harmonic landed 30 of 30 with A, E, D first and F last. The verdicts per label below rest on such pooled trials.
+
+**Limits.** One unstaked sender. Most validators have too few trials for a reading of their own (above). BAM and
+Harmonic are measured from their shared gateways, as whole pipelines. Our six out-rank 79–99% of their blocks, so this
+is how the head of the queue is ranked. The validators reached hold about 22% of the leader slots of each family. One
+day in epoch 1069, and a confirmatory day for three validators. Versions have moved on: by a snapshot of 2026-11-03,
+most validators report Agave 4.4 or Firedancer 26.10.5, which we did not measure.
 
 **How to check.** `docker compose up` regenerates every table from the committed raw data, checks a sample of blocks
 against the chain, and needs no keys. Every landed transaction of every run was checked against the chain whole, with
 no problems. Total spend: 0.029072 SOL, under the 0.05 SOL cap in code.
 
-**Status: final.** The main run was campaign `main`, on 2026-10-27 in epoch 1069, six days after Alpenglow. Its
-analysis plan was frozen at the git tag `prereg-main` before the first trial:
+**Status: final, revised 2026-11-04.** The revision adds exploratory tables, names and sources ("The plan", "Added
+after both runs"); it adds no trial and changes no test or verdict. The main run was campaign `main`, on 2026-10-27 in
+epoch 1069, six days after Alpenglow. Its analysis plan was frozen at the git tag `prereg-main` before the first trial:
 - commit `9221dc9`, dated 2026-10-27 14:34:07 UTC by its author;
 - GitHub started CI for that commit at 14:34:11 UTC, on the push of `main`
   ([run](https://github.com/bobxx22/solana-ordering/actions/runs/40522357305)), and at 14:34:13 UTC on the push of the
@@ -64,6 +91,10 @@ git tag `prereg-confirm`:
 - The chain checks come from [`verify.json`](data/mainnet-beta/verify.json), [`verify/`](data/mainnet-beta/verify/),
   [`verify-every-transaction.json`](data/mainnet-beta/verify-every-transaction.json) and
   [`verify-every-transaction-confirm.json`](data/mainnet-beta/verify-every-transaction-confirm.json).
+- Names and Rakurai's activation accounts come from
+  [`validator-names.json`](data/mainnet-beta/validator-names.json) and
+  [`rakurai-activation.json`](data/mainnet-beta/rakurai-activation.json), read from the chain on 2026-11-03, after the
+  runs.
 - A few numbers add up rows of one table, and show the sum. Power figures are exact binomial computations, with the
   formula shown.
 - Sections of `results.md` added after the data are marked "exploratory" there and here. "The plan" lists every
@@ -123,9 +154,11 @@ from "Exact orders".
 
 These come from tables added after the main run ("The plan"). They locate and describe; they test nothing.
 - **Three JitoLabs validators order by total fee** (section 6). All 7 of their trials landed in the exact total-fee
-  order; the other 13 JitoLabs validators we reached, 23 of 23 in the reward/cost order. Two of the three are the 7th
-  and 8th largest validators by leader slots.
-- **One Firedancer validator departs** (section 6). JD549Hsb: 4 of 10 trials in the exact order; the other 9, 20 of 20.
+  order; the other 13 JitoLabs validators we reached, 23 of 23 in the reward/cost order. Two of the three, Ledger by
+  Figment and Everstake, are the 7th and 8th largest validators by leader slots. The same orders fit a rule that puts
+  the larger requested compute-unit limit first; section 6 says how far the reading goes.
+- **One Firedancer validator departs** (section 6). JD549Hsb (Forward Industries): 4 of 10 trials in the exact order;
+  the other 9, 20 of 20.
 - **Harmonic** put F last in all 30 trials, and B and C either way round (section 6). These are the reward/cost orders
   for a base-fee share between 0.11 and 0.19 instead of 0.5; the design cannot tell that from a cost formula of
   Harmonic's own.
@@ -144,8 +177,9 @@ rests on the other two.
 | H1 | JitoLabs EvnRmnMr and C8Bey3LK put B before C, as total fee does | 30 | B before C in 97% [90–100%] | < 0.001 | **confirmed** |
 | H2 | Firedancer JD549Hsb lands fewer than 80% of its trials in the exact reward/cost order | 20 | exact in 70% [48–85%] | 0.196 | **not confirmed** |
 
-- **H1.** B before C is what total fee predicts and reward/cost does not. Among the rules that put B before C, the
-  whole order singles out total fee: 29 of the 30 trials landed in the exact total-fee order.
+- **H1.** B before C is what total fee predicts and reward/cost does not. Among the candidate rules that put B before
+  C, the whole order picks total fee: 29 of the 30 trials landed in the exact total-fee order. It does not separate
+  total fee from the larger requested compute-unit limit first (section 6).
 - **H2.** JD549Hsb departed again, in 6 of 20 trials, but not significantly more often than the reference allows.
   Against that rate the test had little power: not confirmed is not refuted.
 
@@ -214,6 +248,8 @@ All times UTC. Every slot is after Alpenglow's activation (slot 459 653 000, 202
 | 2026-10-28 17:22–17:24 | two starts of the confirmatory run that sent no trial: funding the sub-payers failed | RPC | `runs/2026-10-28T17-22-47Z/`, `runs/2026-10-28T17-24-30Z/` | – | 0.000015 |
 | 2026-10-28 17:25–17:48 | **confirmatory run:** 53 trials × 6, until every quota was met | direct QUIC | `runs/2026-10-28T17-24-59Z/` | 462 560 008 – 462 566 560 | 0.003177 |
 | 2026-10-28 20:31 | sweep | RPC | `ledger.jsonl` | – | 0.000075 |
+| 2026-11-03 22:01 | validator snapshot by client | – | `snapshots/2026-11-03T22-01-35Z-epoch1076.json` | epoch 1076 | 0 |
+| 2026-11-03 22:07, 22:14 | names and Rakurai's activation accounts, read from the chain | – | `validator-names.json`, `rakurai-activation.json` | – | 0 |
 | | **total** | | | | **0.029072** |
 
 **Wallets.** The ledger and the chain agree to the lamport:
@@ -394,8 +430,9 @@ that is 2 in 720.
 
 The rest of this section reads tables added to `analyze` after the main run, once the table above showed how few
 deviations there were: "Deviations from the reward/cost order, validator by validator", "JitoLabs by advertised QUIC
-port" and, after the confirmatory run, "The validators that departed: leader slots and background". They are outside
-the pre-registered plan and test nothing, but they locate every deviation.
+port"; after the confirmatory run, "The validators that departed: leader slots and background"; and after both runs,
+"Reported client over time" and "How far the total-fee reading goes". They are outside the pre-registered plan and test
+nothing, but they locate every deviation.
 
 - **JitoLabs.** The deviations are three validators, all reporting JitoLabs 4.3.2.
   - All 7 of their trials (7cVfgArC 2, EvnRmnMr 4, C8Bey3LK 1) landed in the exact **total-fee** order: B (10 000
@@ -406,10 +443,30 @@ the pre-registered plan and test nothing, but they locate every deviation.
     with 2.12% and 1.78% of all leader slots; 7cVfgArC ranks 93rd. The three together hold 4.17% of mainnet's leader
     slots, and 27.1% of those of the JitoLabs validators we reached. "Holds" counts trials: by slots, about a quarter
     of the reached JitoLabs blocks come from validators that order by total fee.
-  - **The relayer port.** EvnRmnMr advertises port 11228, which most likely belongs to a Jito relayer in front of the
-    validator (README, "Shared gateways"). For EvnRmnMr the design does not separate the validator from a relayer. The
-    other 5 validators reached on that port landed their 7 trials in the reward/cost order (port 11228: 6
-    validators, 11 trials, 7 reward/cost, 4 total fee).
+  - **Who they are.** By the name each identity publishes on chain, self-declared: C8Bey3LK is Ledger by Figment,
+    EvnRmnMr is Everstake, 7cVfgArC is Blockdaemon. All of this describes these trials on these days. We did not ask
+    the operators.
+  - **EvnRmnMr's label moved** ("Reported client over time").
+    - Our snapshots have it reporting Firedancer 26.10.4 at 104.204.143.114:9007 up to 2026-10-25 22:06 UTC, JitoLabs
+      4.3.2 at 198.13.140.73:11228 during both runs (2026-10-27 14:39 to 2026-10-28 17:25), and HarmonicFiredancer
+      26.10.5 at 198.13.140.105:12566 on 2026-11-03.
+    - Its one trial from the Firedancer days, a burst on 2026-10-25, landed in the exact reward/cost order (EADCFB). All
+      19 of its buffered trials with all six under the JitoLabs label landed in the total-fee order.
+    - Other public measurements for this bounty recorded the same identity as Firedancer on 2026-10-24 to 26
+      ([eternally-black](https://github.com/eternally-black/alpenglow-validator-ordering/blob/06814afa3ab3d89dd72e505bc90967c3e0806ca4/REPORT.md)),
+      as JitoLabs and then Firedancer within an hour on 2026-10-30
+      ([khrisdidukh](https://github.com/khrisdidukh/solana-tx-ordering/blob/510b75bf08f4ff35ea82ea478631a6e92e914c61/REPORT.md)),
+      and as HarmonicFiredancer on 2026-11-03
+      ([Betanumber9](https://github.com/Betanumber9/solana-inside-the-block/blob/1c00d0a8963b77dc552ea5f1bd3c8fbcdacd1a1f/REPORT.md)).
+      We did not check those.
+    - So for EvnRmnMr, "a JitoLabs validator" describes those days only. Labels are not that stable in general: 13 of
+      our 85 validators changed reported client between 2026-10-24 and 2026-11-03 (2 of them by leaving gossip), 5 of
+      them in the two days before the main run, none between its two sessions.
+  - **The relayer port.** During both runs EvnRmnMr advertised port 11228, the
+    [default TPU-QUIC port of the Jito relayer](https://github.com/jito-foundation/jito-relayer/blob/318cc95f22466d129150797a0de26398dd588ac4/transaction-relayer/src/main.rs#L78-L79),
+    so most likely a relayer in front of the validator (README, "Shared gateways"). For EvnRmnMr the design does not
+    separate the validator from a relayer. The other 5 validators reached on that port landed their 7 trials in the
+    reward/cost order (port 11228: 6 validators, 11 trials, 7 reward/cost, 4 total fee).
   - **Not a delivery effect.**
     - Reconnecting goes with the port, not with the order. On port 11228 the connection was reopened before sending
       in 10 of the 11 trials, 6 of the 7 reward/cost ones included; on the other JitoLabs ports, in none ("JitoLabs
@@ -422,12 +479,37 @@ the pre-registered plan and test nothing, but they locate every deviation.
   - **Their blocks.** In the first 10% of the block, everyone else's transactions follow reward/cost in the other
     JitoLabs validators' blocks (median rho −0.60), but hardly in these three's (−0.13). Over the whole block the
     difference does not show. This second trace is independent of our transactions, but only descriptive: the other
-    transactions' arrival is unknown, and blocks hold bundles.
+    transactions' arrival is unknown, and blocks hold bundles. Nor do they follow the total fee: among those that pay a
+    priority fee, median rho against that fee is −0.02 at C8Bey3LK and −0.21 at EvnRmnMr, over a median 9 and 11
+    transactions per block. The total-fee order shows in our six, which wait together and contend for one lock; it
+    hardly shows in the rest of the block.
+  - **What the order does not separate** ("How far the total-fee reading goes").
+    - B D, then A, E, F, C is also what "the larger requested compute-unit limit first, the larger fee between equal
+      limits" predicts: 40 000, 6 000, then 1 000 for the other four (`test/design.test.ts`).
+    - A, E and F pay the same total fee, yet F, which costs the scheduler the most, came first among them in 20 of the
+      36 total-fee trials, against 12 by chance (exact binomial p = 0.005, chosen after seeing the data). Only 42% of
+      the pairs among the three landed in send order. There may be a second key.
+  - **An on-chain trace** ("How far the total-fee reading goes", "Rakurai's on-chain switch"). C8Bey3LK and 7cVfgArC
+    hold enabled accounts of Rakurai's activation program, read on 2026-11-03, though they report JitoLabs. EvnRmnMr
+    holds none, and neither does any of the 13 JitoLabs validators that followed reward/cost: 2 of 3 against 0 of 13,
+    Fisher's exact test p = 0.025, chosen after seeing the data. Rakurai describes its library as selecting high-value
+    transactions (`docs/schedulers.md`), which would fit. This is a lead, not an explanation:
+    - an account says what was approved, not what runs: 69 of the 651 validators with leader slots hold an enabled
+      one, 31 of them reporting AgaveBam;
+    - Rakurai's client as published reports `Rakurai` in gossip, not JitoLabs;
+    - the 7 validators we reached that do report Rakurai hold accounts too, and ordered by reward/cost in 30 of 30
+      trials, though that client has selectable scheduling modes whose settings we cannot see.
+
+    14 more JitoLabs validators hold enabled accounts. Aiming trials at them would test the lead; we did not.
+  - **Another untested reading.** Harmonic's documentation can be read as sorting batches by total priority fee
+    ("Harmonic", below), and EvnRmnMr reports a Harmonic client now. During both runs its address, 198.13.140.73, was in
+    the same /24 as Harmonic's gateways 198.13.140.105 and .111, and it was the only JitoLabs validator in that range.
+    But the validators that reported Harmonic during our runs did not order by total fee, so this explains nothing yet.
   - Within one client label and version, some operators order their blocks differently. Gossip cannot tell which
     code they run.
   - **Tested again** on 30 new trials of EvnRmnMr and C8Bey3LK: B before C in 29, confirmed ("The confirmatory
     run").
-- **Firedancer.** One validator, JD549Hsb (26.10.4): 4 of its 10 trials in the exact order.
+- **Firedancer.** One validator, JD549Hsb (Forward Industries, 26.10.4): 4 of its 10 trials in the exact order.
   - In the other 6, B came before F, and in 3 of those also before C. Those six orders are also reward/cost orders,
     for a base-fee share below 0.19, like Harmonic's (next item).
   - The other 9 Firedancer validators we reached: 20 of 20 exact.
@@ -435,7 +517,7 @@ the pre-registered plan and test nothing, but they locate every deviation.
     10% of its blocks, everyone else's transactions follow reward/cost less than in the other Firedancer validators'
     blocks (median rho −0.11 against −0.74); over the whole block, not less (−0.42 against −0.23).
   - **Tested again** on 20 new trials: 14 exact, not significantly below 80%, so not confirmed ("The confirmatory
-    run").
+    run"). Over both runs, 18 of 30 exact, 60% [42–75%]: the reading in "Validator by validator" is "mixed".
 - **Harmonic.** All 30 trials, on 19 validators, landed in one of four orders: AEDBCF, AEDCBF, EADBCF, EADCBF. A, E
   and D always came first, then B and C either way round (the same validator produced both), then F **last**.
   - Each of the four is the reward/cost order for a base-fee share below the source's 0.5: B before C needs a share
@@ -446,6 +528,20 @@ the pre-registered plan and test nothing, but they locate every deviation.
   - So Harmonic ranks like reward/cost with a smaller base-fee share that changes from block to block, or by a cost
     formula of its own, and the design does not separate the two. One reading, untested: Harmonic blocks come from
     external builders, which may each count fees their own way.
+  - **What Harmonic documents** (read after both runs). The validator chooses a
+    [scheduling strategy](https://docs.harmonic.gg/concepts/scheduling-strategies): FBA, the default, which ranks 50 ms
+    batches by priority fees and tips; FIFO, by arrival; MREV, proprietary; or a custom one. It is
+    [bound to one builder at a time](https://docs.harmonic.gg/concepts/streaming-mode) that runs the strategy, and
+    [falls back to its own scheduler](https://docs.harmonic.gg/concepts/harmonic-architecture) when none is reachable.
+    The pages do not say whether the priority fee counts in total or per compute unit, nor how a block shows its
+    builder. Against our 30 trials:
+    - D came before B in all 30, though B pays more: not the total priority fee;
+    - C came before F in all 30, though F pays 4 000 lamports and C nothing: not the priority fee alone, in total or
+      per compute unit;
+    - the send order leaves no trace in this cell (48% of pairs): not FIFO in the order we sent.
+
+    So the validators we reached do not follow the plain reading of FBA or FIFO. MREV and custom strategies are not
+    specified, and we cannot tell which strategy or builder made each block.
 
 ### 7. Arrival order: the cells and the twins
 
@@ -481,7 +577,7 @@ breaks ties", buffered/shared). The share is how often the twin sent first lande
 | Agave 4.3.2, Jito included | 53 | 42% [29–55%] | container id, not arrival: chance level expected |
 | Agave 4.4/4.5 pre-releases | 5 | 80% [38–96%] | oldest first |
 | Firedancer 26.10.3-4 | 27 | **15% [6–32%]** | newest first (read after the run) |
-| Rakurai | 30 | 53% [36–70%] | source not read |
+| Rakurai | 30 | 53% [36–70%] | closed library |
 
 **Firedancer ties** (the source was read after the run). Before the run we expected no particular order between
 Firedancer twins; the twin sent second landed first in 85% of trials. In independent mode the twin sent first landed
@@ -553,12 +649,24 @@ The first two items cover every direct-path run: the calibration and rehearsal r
 - **The exact base-fee share.** The contrasts bracket it (0.12–0.84); they do not pin it to 0.5.
 - **Why some validators differ.** The three total-fee JitoLabs validators, Firedancer JD549Hsb and the "0.1.1" build:
   we see what they do, not what code they run. Client labels and versions are what validators report in gossip. For
-  EvnRmnMr we cannot tell the validator from a relayer in front of it.
+  EvnRmnMr we cannot tell the validator from a relayer in front of it. An enabled Rakurai activation account says what
+  was approved, not what runs.
+- **The label during a run.** A trial's label comes from the snapshot at the start of its run, and a run of up to two
+  hours does not recheck it. Between the main run's two sessions, 53 minutes apart, none of our 85 validators changed
+  client; over ten days 13 did, 2 of them by leaving gossip ("Reported client over time").
+- **Most validators one at a time.** 75 of the 85 have 1 to 4 trials with all six. For them a verdict is about their
+  label, not about them.
+- **Rules outside the candidates.** Reward/cost is not separated from a linear key reward − λ·cost with λ between 1 and
+  1.8, which ranks the six the same. Total fee is not separated from the larger requested compute-unit limit first
+  (`docs/schedulers.md`, "What the contrasts identify").
+- **Rakurai's scheduler.** It is a closed library with selectable modes, so "reward/cost" at the Rakurai validators we
+  reached describes those seven with whatever setting each ran. We cannot see the settings.
 - **Validators we did not reach.** The validators reached hold 22.2% of mainnet's leader slots through the local
   labels and 22.8% through the pipelines; AgaveBam is the least covered (19% of its slots). Agave and Rakurai are
   small, concentrated labels.
 - **Other times.** One day, one epoch (1069); the confirmatory run adds the next day and epoch for three validators
-  only. Schedulers change with releases; the pre-releases already break ties differently.
+  only. Schedulers change with releases; the pre-releases already break ties differently. By the snapshot of
+  2026-11-03, most validators report Agave 4.4 or Firedancer 26.10.5, which we did not measure.
 - **A control on the confirmatory day.** The confirmatory run measured only its three validators. That the other
   JitoLabs and Firedancer validators still ranked by reward/cost rests on the main run, a day and an epoch earlier;
   a change common to all of them between epochs 1069 and 1070 would look the same.
@@ -612,16 +720,19 @@ Per validator (descriptive; B before C of the trials with both in the window):
   other trial, DEACFB, put B last.
 - **What the test shows, and what the order adds.** B before C is what total fee predicts and reward/cost does not,
   but so does any rule that counts less than 12% of the base fee, such as priority fee per cost or price (README,
-  "The question and the experiment"). The whole order singles out total fee: 29 of the 30 trials (15 + 14) landed in
-  the exact total-fee order, which an order unrelated to the fees gives in 6 cases of 720.
+  "The question and the experiment"). Among those candidates the whole order picks total fee: 29 of the 30 trials
+  (15 + 14) landed in the exact total-fee order, which an order unrelated to the fees gives in 6 cases of 720. It does
+  not separate total fee from the larger requested compute-unit limit first (section 6).
 - **Not a delivery effect.** All 18 trials sent to EvnRmnMr found the connection closed and reconnected before
   sending, as on port 11228 in general (section 6). The sensitivity filter therefore keeps none of its 15, and their
   acknowledgements, 150–389 ms before the window, come from whoever holds that address, most likely the relayer. The
   case rests on C8Bey3LK: an address of its own, no reconnect, acknowledgements 381–436 ms before the window
   (`orders.md`), and B before C in 14 of 15, p < 0.001 (sensitivity filter, unadjusted).
-- Both report JitoLabs 4.3.2 in gossip, like the 13 JitoLabs validators that followed reward/cost in the main run.
-  Some rule other than reward/cost orders their blocks. For EvnRmnMr it may run in a relayer in front of the
-  validator (port 11228, section 6).
+- Both reported JitoLabs 4.3.2 in gossip during the two runs, like the 13 JitoLabs validators that followed reward/cost
+  in the main run. EvnRmnMr had reported Firedancer up to two days before the main run and reports a Harmonic client
+  now (section 6). H1 names the identity, so its test does not depend on the label. Some rule other than reward/cost
+  ordered our transactions there. For EvnRmnMr it may run in a relayer in front of the validator (port 11228,
+  section 6).
 - In the first 10% of their blocks in this run, everyone else's transactions hardly follow reward/cost either (median
   rho −0.03; "The validators that departed", exploratory).
 
@@ -660,6 +771,14 @@ transaction at its recorded index, all 52 leaders confirmed by the schedule, all
 - Nothing in the analysis changed after the tag.
 
 ## What went wrong
+
+### Found after both runs
+
+| what | how we found it | what we did |
+|---|---|---|
+| The report called EvnRmnMr a JitoLabs validator without saying that our own snapshots had it reporting Firedancer up to two days before the main run. `docs/CONFIRM.md` compared its label only with the main run's. | A review on 2026-11-03 compared the snapshots, after seeing the same identity listed as Firedancer in another participant's report. | "Reported client over time", section 6. No test changes: H1 names the identity, not the label. |
+| The report said the whole order "singles out" total fee. That holds among the candidates it named; a rule that puts the larger requested compute-unit limit first predicts the same order. | The same review. | Reworded, here and in README. `test/design.test.ts` checks that the two orders are equal. |
+| The report said Rakurai's source "was not read", when it is not public, and that port 11228 was "most likely" a relayer, without a source. Harmonic's and Rakurai's public documentation had not been read. | The same review. | `docs/schedulers.md`, "Outside these sources". The table label "source not read" in `results.md` is frozen and stays. |
 
 ### During the confirmatory run
 
@@ -773,3 +892,19 @@ Nothing in either plan changed. Added, and marked as such:
 - **Engineering.** `run.json` records the commit of the code that makes a run (`codeVersion` in `src/run.ts`); the
   runs above predate it and tie to their code by time.
 - **This report.** The summary, and the development history before the main run moved to `docs/HISTORY.md`.
+
+### Added after both runs
+
+Nothing in either plan changed, no trial was added, and no test or verdict changed. Run on the committed trials, the
+code at the tag `prereg-main` still gives the same numbers and verdicts in both families; only one explanatory sentence
+differs, the one listed above. Added on 2026-11-03 and 04, and marked as such:
+- **Exploratory tables** in `results.md`, generated by `src/validators.ts`: "Validator by validator", "Reported client
+  over time" and "How far the total-fee reading goes". They test nothing that decides a verdict; the two p values they
+  print were chosen after seeing the data, and say so.
+- **Data read from the chain after the runs**, at no cost: a validator snapshot of epoch 1076 (`discover`),
+  `validator-names.json` (`names`) and `rakurai-activation.json` (`rakurai`).
+- **Sources** (`docs/schedulers.md`, "Outside these sources"): Rakurai's client and documentation, Harmonic's
+  documentation, the Jito relayer's default port. What the six roles cannot separate ("What the contrasts identify").
+- **Tests** for the new tables and for those two cases (`test/validators.test.ts`, `test/design.test.ts`).
+- **This report and README.** Validator names, the table in the summary, the sections above that cite these tables, and
+  a closing note in `docs/CONFIRM.md`.

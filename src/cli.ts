@@ -8,6 +8,7 @@ import { type Cell, CELL_BLOCK, DEFAULT_QUOTAS } from './design.ts'
 import { discover } from './discover.ts'
 import { createKeypairFile, loadKeypair } from './keys.ts'
 import { Ledger } from './ledger.ts'
+import { writeRakuraiActivation, writeValidatorNames } from './names.ts'
 import { probePaths } from './paths.ts'
 import { settleOpen } from './settle.ts'
 import { Log, stamp } from './log.ts'
@@ -26,6 +27,8 @@ commands
   address    print the wallet address and balance
   airdrop    request test SOL (devnet / localnet only)
   discover   snapshot validators by client and stake into data/<cluster>/snapshots/
+  names      the names the validators of our trials publish on chain -> data/<cluster>/validator-names.json
+  rakurai    the activation accounts of Rakurai's on-chain program -> data/<cluster>/rakurai-activation.json
   run        the experiment; a dry run (simulation only, written to data/<cluster>/dry-runs/) unless --live
                --path tpu|rpc        direct QUIC to the leader (default) or sendTransaction via --send-rpc
                --campaign NAME       required with --live: runs of one campaign share quotas and exclusions, so a
@@ -108,6 +111,12 @@ async function main(): Promise<void> {
     }
     case 'discover':
       await discover(cfg, rpc, log)
+      return
+    case 'names':
+      await writeValidatorNames(cfg, rpc, log)
+      return
+    case 'rakurai':
+      await writeRakuraiActivation(cfg, rpc, log)
       return
     case 'run': {
       const num = (k: string, d: number) => (args.flags.has(k) ? Number(args.flags.get(k)) : d)

@@ -17,20 +17,25 @@ and whether the rule differs between validator clients.
   - Verdicts fixed before the main run (git tag `prereg-main`).
 - **Result** (main run, 2026-10-27, 403 trials).
   - **Pre-registered.** Agave, JitoLabs, Firedancer and Rakurai order the transactions waiting in the leader's buffer
-    by **reward per requested cost unit**, the formula of the Agave, Jito and Firedancer source (Rakurai's was not
-    read). All twelve primary tests hold: each contrast landed in the predicted order more often than chance. 107 of
-    120 trials landed in the exact predicted order. The BAM pipelines order the same way; for Harmonic, C before B
-    is "no stable order".
+    by **reward per requested cost unit**, the formula of the Agave, Jito and Firedancer source (Rakurai's scheduler
+    is a closed library). All twelve primary tests hold: each contrast landed in the predicted order more often than
+    chance. 107 of 120 trials landed in the exact predicted order. The BAM pipelines order the same way; for Harmonic,
+    C before B is "no stable order".
   - **Found after the data** (exploratory, REPORT sections 6 and 7). Three JitoLabs validators ordered by total
-    priority fee; two of them are the 7th and 8th largest validators by leader slots. Harmonic put the transaction
-    with a 64 MiB loaded-data request last in every trial, as reward/cost does with a smaller base-fee share.
-    Arrival order decides when the leader does not hold the transactions together (streamed 30 ms apart, 97–99% of
-    pairs landed in send order), and between equal priorities, where Firedancer more often landed the one sent
-    second first.
+    priority fee, or by a rule these six transactions do not tell from it; two of them, Ledger by Figment and
+    Everstake, are the 7th and 8th largest validators by leader slots. Harmonic put the transaction with a 64 MiB
+    loaded-data request last in every trial, as reward/cost does with a smaller base-fee share. Arrival order decides
+    when the leader does not hold the transactions together (streamed 30 ms apart, 97–99% of pairs landed in send
+    order), and between equal priorities, where Firedancer more often landed the one sent second first.
   - **Tested again** (confirmatory run, 2026-10-28, 53 new trials, plan frozen at the git tag `prereg-confirm`).
     Those two JitoLabs validators put B before C in 29 of 30 new trials: confirmed, Holm p < 0.001, and 29 of the 30
     landed in the exact total-fee order. The Firedancer validator JD549Hsb, which had departed from the reward/cost
     order, landed 14 of 20 new trials in the exact order, not significantly below 80%: not confirmed.
+  - **Validator by validator** (exploratory). 10 of the 85 validators have at least 5 trials with all six in the
+    window, and get a reading of their own; the other 75 have 1 to 4. REPORT lists the 10, `results.md` all 85.
+  - **Read from the chain after the runs** (exploratory, REPORT section 6). Two of the three total-fee validators hold
+    enabled accounts of Rakurai's activation program, and none of the 13 JitoLabs validators that followed reward/cost
+    does: a lead, not an explanation. Everstake's identity reported three different clients within ten days.
 - **Details.** [`REPORT.md`](REPORT.md); the generated tables are in
   [`data/mainnet-beta/results/results.md`](data/mainnet-beta/results/results.md).
 - **Check it.** `docker compose up` needs no keys and sends nothing.
@@ -194,17 +199,20 @@ name: the quotas, the per-validator counts and the excluded addresses carry over
 ### Leader schedule and leader types
 
 - **Targeting.** The run reads the leader schedule (`getSlotLeaders`) and the client of every validator (gossip
-  `clientId` and version, snapshotted at the start of each run, because operators switch). It aims each trial at
-  one upcoming window. Among the windows of the next ~12 s it takes the one whose client is furthest from its quota.
+  `clientId` and version, snapshotted at the start of each run, because operators switch; a run does not recheck it,
+  REPORT section 10). It aims each trial at one upcoming window. Among the windows of the next ~12 s it takes the one
+  whose client is furthest from its quota.
 - **Per-validator cap.** Trials per validator are capped. The cap is raised for clients whose leader slots sit with
   few validators (it uses the effective number of validators by slot share), so that every quota stays reachable.
 - **Attribution.** A block is attributed to the *scheduled leader of its slot*, not to the recipient of the block's
   fee reward. We found that some validators send their block revenue to a separate collector account.
 - **Producer types.** The client labels (gossip `clientId`) are not equivalent kinds of block producer:
-  - Agave, Firedancer and Rakurai schedule locally;
+  - Agave, Firedancer and Rakurai schedule locally; Rakurai's client is a Jito fork that runs a closed scheduler library
+    (`docs/schedulers.md`, "Outside these sources");
   - JitoLabs (Jito-Agave) adds a bundle stage;
   - BAM validators (AgaveBam, FireBAM) take the order from an external sequencer;
-  - Harmonic validators (HarmonicAgave, HarmonicFiredancer) accept blocks from external builders.
+  - Harmonic validators (HarmonicAgave, HarmonicFiredancer) execute what a builder sequences, by a
+    [strategy the validator chooses](https://docs.harmonic.gg/concepts/scheduling-strategies).
 
   A result for a label describes that whole pipeline as it treats ordinary transactions, not a scheduler in
   isolation.
@@ -217,9 +225,10 @@ name: the quotas, the per-validator counts and the excluded addresses carry over
   - FireBAM had 94% of its slots behind shared addresses.
   - The 86 Harmonic validators sat on 6 hosts, with a separate port each.
   - Every JitoLabs, Firedancer, Rakurai and Agave validator had its own address. But in the main run's snapshot
-    (epoch 1069), 36 JitoLabs validators, with a third of JitoLabs' leader slots, advertised port 11228, most likely
-    a Jito relayer in front of the validator. Both JitoLabs bursts that landed nothing in calibration went to that
-    port. The run excludes such addresses once they
+    (epoch 1069), 36 JitoLabs validators, with a third of JitoLabs' leader slots, advertised port 11228, the
+    [default TPU-QUIC port of the Jito relayer](https://github.com/jito-foundation/jito-relayer/blob/318cc95f22466d129150797a0de26398dd588ac4/transaction-relayer/src/main.rs#L78-L79),
+    so most likely a relayer in front of the validator. Both JitoLabs bursts that landed nothing in calibration went to
+    that port. The run excludes such addresses once they
     have failed twice without ever landing; the reachable share in `results.md` shows what that leaves.
 
   For BAM and Harmonic labels our timing control therefore ends at the gateway, and two labels behind one gateway
@@ -388,8 +397,15 @@ on new trials by a confirmatory run, planned in [`docs/CONFIRM.md`](docs/CONFIRM
 - **External sequencers and builders vs the client scheduler.** For BAM and Harmonic, the label covers the whole
   pipeline. For Harmonic, a smaller base-fee share and a cost formula of its own predict the same orders.
 - **A relayer vs the validator behind it**, for JitoLabs validators that advertise port 11228.
+- **Total fee vs the larger requested compute-unit limit first.** B D, then A, E, F, C is what both predict
+  (`test/design.test.ts`).
+- **Reward/cost vs a linear key.** reward − λ·cost, with λ between 1 and 1.8, ranks the six the same.
 - **Operator configuration within a client label**, and the label itself: the client id and version are what the
-  validator reports in gossip, and the chain cannot confirm them.
+  validator reports in gossip, and the chain cannot confirm them. A run takes the label from a snapshot at its start,
+  and 13 of our 85 validators changed reported client within ten days, 2 of them by leaving gossip (`results.md`,
+  "Reported client over time").
+- **One validator's rule, for most validators.** 75 of the 85 have 1 to 4 trials with all six; the comparison of clients
+  pools them.
 - **Staked vs unstaked delivery.** We are unstaked; a staked sender may be treated differently.
 - **Bundles.** Jito bundles and tips are out of scope; they occupy positions in the same blocks.
 
@@ -436,7 +452,9 @@ on new trials by a confirmatory run, planned in [`docs/CONFIRM.md`](docs/CONFIRM
 
 `data/mainnet-beta/`:
 
-- `snapshots/`: validators by client.
+- `snapshots/`: validators by client, taken apart from the runs (2026-10-24 and 2026-11-03).
+- `validator-names.json`: the name each validator of our trials publishes on chain, self-declared.
+  `rakurai-activation.json`: the accounts of Rakurai's activation program. Both read from the chain on 2026-11-03.
 - `runs/<UTC start>/`: one live run, with the raw files listed above.
 - `paths/`, `quic-test/`: delivery-path measurements. The QUIC feasibility data was produced once by
   `archive/quic-feasibility.ts`, which is kept as a record, was written against an earlier API and does not run.
@@ -457,6 +475,7 @@ The main run follows [`docs/RUNBOOK.md`](docs/RUNBOOK.md), the confirmatory run 
 |---|---|
 | `reproduce` | the one-command check described above |
 | `discover` | snapshot validators by client |
+| `names`, `rakurai` | read from the chain the names of the validators of our trials and the accounts of Rakurai's activation program; they send nothing |
 | `run [--live --campaign NAME]` | the experiment. Options: `--quota Agave=60,...` or `--validators PREFIX=N,...`, `--cells buffered/shared,...`, `--sub-target SOL`, `--path tpu\|rpc`, `--per-validator`, `--seed`, `--minutes` |
 | `collect [run\|all] [--refresh]` | landing slot, in-block position and slot leader; settles the ledger |
 | `analyze` | all tables, offline |
