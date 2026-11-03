@@ -529,6 +529,12 @@ Added after both runs, outside both plans. **The order of the six.** B D, then A
 
 JitoLabs: 2 of the 3 validators with a total-fee trial hold an enabled account, and 0 of the other 13; Fisher's exact test, two-sided, p = 0.025. The comparison was chosen after seeing the data.
 
+## Targeted run (campaigns "rakurai" and "rakurai-swap"; pre-registered in docs/RAKURAI.md, git tag prereg-rakurai)
+
+New buffered/shared trials, planned and tagged before the first of them. H1: the holders of an enabled Rakurai activation account among new JitoLabs validators put B before C more than matched JitoLabs validators without one (per validator the share of its trials with B before C, for validators with at least 5 such trials; exact one-sided permutation test of the difference of group means over validators; fewer than 3 validators in either group: insufficient data). H2: with B paying 10 000 lamports for 1 000 CU and D 9 000 for 40 000, C8Bey3LK puts B before D. H3: at the matched validators, which report Jito 4.4.0, the twin sent first lands first. H2 and H3: one-sided exact binomial against chance; fewer than 10 trials: insufficient data. All three Holm-adjusted together; confirmed when the Holm p < 0.05, else not confirmed. These trials appear only in this section, the run list, "Reported client over time" and orders.md.
+
+No trials of the targeted campaigns yet.
+
 ## Rule agreement: buffered/shared (campaign "main")
 
 Mean gamma per trial (+1: every pair the rule ranks differently landed in its order; 0: unrelated). The rules agree on most pairs by design: read the contrasts first. [95% interval resampling ingress hosts; – with fewer than 3], sign-flip p over host means, Holm-adjusted within the table.

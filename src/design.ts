@@ -55,6 +55,17 @@ export const ROLES: RoleSpec[] = [
   { role: 'F', cuLimit: 1_000, cuPrice: 4_000_000n, loadedLimit: MAX_LOADED },
 ]
 
+/**
+ * The targeted run's second campaign (docs/RAKURAI.md): the six with the higher fee on the smaller limit, so that total
+ * fee and "the larger requested compute-unit limit first" disagree. B pays 10 000 lamports for 1 000 CU, D 9 000 for
+ * 40 000. The other four roles and the cost of a trial are unchanged.
+ */
+export const SWAPPED_ROLES: RoleSpec[] = ROLES.map((r) => {
+  if (r.role === 'B') return { ...r, cuLimit: 1_000, cuPrice: 10_000_000n }
+  if (r.role === 'D') return { ...r, cuLimit: 40_000, cuPrice: 225_000n }
+  return r
+})
+
 export const BASE_FEE_PER_SIGNATURE = 5_000n
 /** measured on mainnet by simulation: the transaction consumes 600 CU and loads 235 bytes */
 export const MEASURED_CU = 600
@@ -105,10 +116,10 @@ export interface PlannedTx {
   wire: string
 }
 
-export function buildTrialTxs(mode: Mode, sendOrder: Role[], payers: Signer[], blockhash: string): PlannedTx[] {
-  if (payers.length !== ROLES.length) throw new Error(`a trial needs ${ROLES.length} payers`)
+export function buildTrialTxs(mode: Mode, sendOrder: Role[], payers: Signer[], blockhash: string, roles: RoleSpec[] = ROLES): PlannedTx[] {
+  if (payers.length !== roles.length) throw new Error(`a trial needs ${roles.length} payers`)
   const sharedAnchor = encode(randomBytes(32))
-  return ROLES.map((spec, i) => {
+  return roles.map((spec, i) => {
     const payer = payers[i]
     const anchor = mode === 'shared' ? sharedAnchor : encode(randomBytes(32))
     const tx = signTransaction(

@@ -4,7 +4,7 @@ import { join } from 'node:path'
 import { analyze } from './analyze.ts'
 import { collect } from './collect.ts'
 import { type Args, checkCluster, type Config, fmtSol, loadConfig, parseArgs } from './config.ts'
-import { type Cell, CELL_BLOCK, DEFAULT_QUOTAS } from './design.ts'
+import { type Cell, CELL_BLOCK, DEFAULT_QUOTAS, SWAPPED_ROLES } from './design.ts'
 import { discover } from './discover.ts'
 import { createKeypairFile, loadKeypair } from './keys.ts'
 import { Ledger } from './ledger.ts'
@@ -40,6 +40,7 @@ commands
                                      its own quota of counted trials
                --cells buffered/shared,...   deal only these cells (delivery/mode; default the block of ten)
                --sub-target SOL      fund each sub-payer to this balance (default 0.0033, sized for the main run)
+               --roles swap          B 10 000 lamports for 1 000 CU, D 9 000 for 40 000 (docs/RAKURAI.md)
                --spacing-ms 4000   --seed N   --dry-trials 3   --minutes 240
   collect    landing slot, in-block position and slot leader of a run's transactions; settles the ledger
                [run id | all, default: the latest run]   --refresh refetches every block
@@ -127,6 +128,7 @@ async function main(): Promise<void> {
       if (byValidator && args.flags.has('quota')) throw new Error('--validators and --quota exclude each other')
       const quotas = byValidator ? pairs('validators') : typeof args.flags.get('quota') === 'string' ? pairs('quota') : DEFAULT_QUOTAS
       const cells = typeof args.flags.get('cells') === 'string' ? (args.flags.get('cells') as string).split(',').map(parseCell) : CELL_BLOCK
+      if (args.flags.has('roles') && args.flags.get('roles') !== 'swap') throw new Error('--roles takes only: swap')
       await run(
         cfg,
         rpc,
@@ -142,6 +144,7 @@ async function main(): Promise<void> {
           dryTrials: num('dry-trials', 3),
           maxMinutes: num('minutes', 240),
           subTarget: args.flags.has('sub-target') ? BigInt(Math.round(num('sub-target', 0) * 1e9)) : undefined,
+          roles: args.flags.has('roles') ? SWAPPED_ROLES : undefined,
         },
         log,
       )

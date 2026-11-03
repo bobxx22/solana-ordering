@@ -24,7 +24,7 @@ import { join } from 'node:path'
 import { BlockhashCache, SlotClock } from './clock.ts'
 import { collect } from './collect.ts'
 import { checkCluster, type Config, fmtSol } from './config.ts'
-import { type Cell, CELL_BLOCK, CellDealer, countsTowardsQuota, DEFAULT_QUOTAS, FIRE_OFFSET, GAP_MS, MEASURED_CU, ROLES, type Role, buildTrialTxs, expectedPriority, maxFee, trialCost, WINDOW_SLOTS } from './design.ts'
+import { type Cell, CELL_BLOCK, CellDealer, countsTowardsQuota, DEFAULT_QUOTAS, FIRE_OFFSET, GAP_MS, MEASURED_CU, ROLES, type Role, type RoleSpec, buildTrialTxs, expectedPriority, maxFee, trialCost, WINDOW_SLOTS } from './design.ts'
 import { takeSnapshot } from './discover.ts'
 import { decode32 } from './base58.ts'
 import { generateKeypairBytes, loadKeypair, type Signer, signerFromBytes } from './keys.ts'
@@ -71,6 +71,8 @@ export interface RunOptions {
   maxMinutes: number
   /** lamports each sub-payer is funded to (default SUB_TARGET, sized for the main run) */
   subTarget?: bigint
+  /** the six transactions' parameters (default ROLES) */
+  roles?: RoleSpec[]
 }
 
 export const DEFAULT_CLIENTS = Object.keys(DEFAULT_QUOTAS)
@@ -181,6 +183,7 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
   const sendRpc = new Rpc(cfg.sendRpcUrl, { minGapMs: 0, retries: 0, timeoutMs: 10_000 })
   const clients = Object.keys(opts.quotas)
   const quota = (c: string) => opts.quotas[c] ?? 0
+  const roles = opts.roles ?? ROLES
 
   // a dry run never touches a funded key: a simulated transaction signed by one could still be relayed and land
   const throwaway = () => signerFromBytes(generateKeypairBytes())
@@ -230,7 +233,7 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
   log.info(`${live ? 'LIVE' : 'dry run'} on ${cfg.cluster} via ${opts.path}, campaign "${opts.campaign}": up to ${remainingTrials} more landed trials, at most ${fmtSol(perTrial)} each (${fmtSol(perTrial * BigInt(remainingTrials))})`)
   if (carried.runs.length) log.info(`continuing from ${carried.runs.length} earlier run(s): landed ${toJson(Object.fromEntries(perClient))}, ${excluded.size} excluded addresses`)
   log.info(`spend cap ${fmtSol(ledger.cap)} (of which ${fmtSol(SWEEP_ALLOWANCE)} kept for sweeping), committed ${fmtSol(ledger.committed())}; reads via ${rpc.label}`)
-  for (const r of ROLES) log.info(`  role ${r.role}: limit ${r.cuLimit} CU, price ${r.cuPrice} µL/CU, loaded-data limit ${r.loadedLimit} B, reward/cost ${expectedPriority(r).toFixed(3)}`)
+  for (const r of roles) log.info(`  role ${r.role}: limit ${r.cuLimit} CU, price ${r.cuPrice} µL/CU, loaded-data limit ${r.loadedLimit} B, reward/cost ${expectedPriority(r).toFixed(3)}`)
 
   writeFileSync(
     join(dir, 'run.json'),
@@ -244,7 +247,7 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
         startedAt: new Date().toISOString(),
         code: codeVersion(),
         options: opts,
-        roles: ROLES,
+        roles,
         gapMs: GAP_MS,
         fireOffset: FIRE_OFFSET,
         readRpc: rpc.label,
@@ -356,11 +359,11 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
       if (live ? !clients.some(needed) && checks.length === 0 : trial >= opts.dryTrials) break
       if (clock.slot - leadersFrom > 1500) await refreshLeaders()
       const set = trial % 2
-      const setPayers = subs.slice(set * ROLES.length, (set + 1) * ROLES.length)
+      const setPayers = subs.slice(set * roles.length, (set + 1) * roles.length)
       if (live) {
         // the set about to be used: idle since two trials, so a top-up cannot touch a transaction in flight
         const bal = await balances(rpc, setPayers.map((s) => s.address))
-        const need = RENT_EXEMPT + ROLES.reduce((m, r) => (maxFee(r) > m ? maxFee(r) : m), 0n) + PAYER_MARGIN
+        const need = RENT_EXEMPT + roles.reduce((m, r) => (maxFee(r) > m ? maxFee(r) : m), 0n) + PAYER_MARGIN
         if (bal.some((b) => b < need)) {
           try {
             await fundSubPayers(rpc, rpc, ledger, log, main, setPayers, true, subTarget < SUB_LOW ? subTarget : SUB_LOW, subTarget)
@@ -410,7 +413,7 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
       const cell = dealer.peek(target.label)
       const payers = shuffle(setPayers, random)
       const order = shuffle(
-        ROLES.map((r) => r.role),
+        roles.map((r) => r.role),
         random,
       ) as Role[]
       const gapMs = GAP_MS[cell.delivery]
@@ -444,7 +447,7 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
         skip(`blockhash is ${blockhashAgeMs} ms old (read RPC not refreshing)`)
         continue
       }
-      const txs = buildTrialTxs(cell.mode, order, payers, blockhash)
+      const txs = buildTrialTxs(cell.mode, order, payers, blockhash, roles)
       if (clock.slot > target.fire) {
         skip(`dispatch slot ${target.fire} already passed (now ${clock.slot})`)
         continue
@@ -562,7 +565,7 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
           log.info(`  simulated ${t.role}: ${r.value.err ? JSON.stringify(r.value.err) : 'ok'}, ${r.value.unitsConsumed} CU`)
         }
         if (unsignedPayer) {
-          const copies = buildTrialTxs(cell.mode, order, Array(ROLES.length).fill(unsignedPayer), blockhash)
+          const copies = buildTrialTxs(cell.mode, order, Array(roles.length).fill(unsignedPayer), blockhash, roles)
           for (const t of copies) {
             const r = await rpc.call('simulateTransaction', [t.wire, { encoding: 'base64', sigVerify: false, replaceRecentBlockhash: true, commitment: 'confirmed' }])
             const fine = !r.value.err && r.value.unitsConsumed === MEASURED_CU

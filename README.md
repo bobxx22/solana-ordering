@@ -310,7 +310,8 @@ rule in `src/design.ts` and [`docs/RUNBOOK.md`](docs/RUNBOOK.md) are the plan. T
 `prereg-main`, which is older than every trial of campaign `main` (the run directories are named by their UTC start).
 Anything added after the data is marked exploratory (REPORT, "The plan"). Two of those findings are tested again
 on new trials by a confirmatory run, planned in [`docs/CONFIRM.md`](docs/CONFIRM.md) and frozen at the git tag
-`prereg-confirm` before its first trial.
+`prereg-confirm` before its first trial. A targeted run on validators chosen by their Rakurai activation account is
+planned in [`docs/RAKURAI.md`](docs/RAKURAI.md) and frozen at the git tag `prereg-rakurai` before its first trial.
 
 - **Unit.** One trial.
   - Its transactions that landed in the targeted leader's 4-slot window are ordered by (slot, index): a
@@ -467,7 +468,8 @@ on new trials by a confirmatory run, planned in [`docs/CONFIRM.md`](docs/CONFIRM
 
 ## Commands
 
-The main run follows [`docs/RUNBOOK.md`](docs/RUNBOOK.md), the confirmatory run [`docs/CONFIRM.md`](docs/CONFIRM.md).
+The main run follows [`docs/RUNBOOK.md`](docs/RUNBOOK.md), the confirmatory run [`docs/CONFIRM.md`](docs/CONFIRM.md), the
+targeted run [`docs/RAKURAI.md`](docs/RAKURAI.md).
 
 `node src/cli.ts help` lists them all.
 
@@ -476,7 +478,7 @@ The main run follows [`docs/RUNBOOK.md`](docs/RUNBOOK.md), the confirmatory run 
 | `reproduce` | the one-command check described above |
 | `discover` | snapshot validators by client |
 | `names`, `rakurai` | read from the chain the names of the validators of our trials and the accounts of Rakurai's activation program; they send nothing |
-| `run [--live --campaign NAME]` | the experiment. Options: `--quota Agave=60,...` or `--validators PREFIX=N,...`, `--cells buffered/shared,...`, `--sub-target SOL`, `--path tpu\|rpc`, `--per-validator`, `--seed`, `--minutes` |
+| `run [--live --campaign NAME]` | the experiment. Options: `--quota Agave=60,...` or `--validators PREFIX=N,...`, `--cells buffered/shared,...`, `--sub-target SOL`, `--roles swap`, `--path tpu\|rpc`, `--per-validator`, `--seed`, `--minutes` |
 | `collect [run\|all] [--refresh]` | landing slot, in-block position and slot leader; settles the ledger |
 | `analyze` | all tables, offline |
 | `verify [run\|all] [--write] [--sample N\|all] [--row-blocks N] [--out FILE] [--verify-rpc URL]` | the check against the chain: `--sample` whole transactions (default 60), `--row-blocks` whole blocks rebuilt (default 3) |

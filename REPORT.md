@@ -63,7 +63,8 @@ against the chain, and needs no keys. Every landed transaction of every run was 
 no problems. Total spend: 0.029072 SOL, under the 0.05 SOL cap in code.
 
 **Status: final, revised 2026-11-04.** The revision adds exploratory tables, names and sources ("The plan", "Added
-after both runs"); it adds no trial and changes no test or verdict. The main run was campaign `main`, on 2026-10-27 in
+after both runs"); it adds no trial and changes no test or verdict. A targeted run is planned in
+[`docs/RAKURAI.md`](docs/RAKURAI.md), frozen at the git tag `prereg-rakurai` before its first trial. The main run was campaign `main`, on 2026-10-27 in
 epoch 1069, six days after Alpenglow. Its analysis plan was frozen at the git tag `prereg-main` before the first trial:
 - commit `9221dc9`, dated 2026-10-27 14:34:07 UTC by its author;
 - GitHub started CI for that commit at 14:34:11 UTC, on the push of `main`
