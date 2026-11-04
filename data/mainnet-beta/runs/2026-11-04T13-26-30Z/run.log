@@ -1,0 +1,251 @@
+2026-11-04T13:26:33.017Z epoch 1077, 3847 gossip nodes, 662 current + 31 delinquent vote accounts
+2026-11-04T13:26:33.020Z   A9mvukTd: A9mvukTd77EbRoBX4ydSCFQHdu5bsRFkNXTTRstA8FAC (JitoLabs 4.4.0, 1364 leader slots this epoch, QUIC 57.129.90.120:8022)
+2026-11-04T13:26:33.021Z   8tjFeSAp: 8tjFeSApQ85ThoQXT28acfF2KUfQr3TvTdirSkzNnYC7 (JitoLabs 4.4.0, 1064 leader slots this epoch, QUIC 148.113.199.156:11228)
+2026-11-04T13:26:33.021Z   Ha1iade1: Ha1iade1AH3B12K9SccfWoPdFtQKKQsj2ZyWwxcjqJJU (JitoLabs 4.4.0-rc.1, 984 leader slots this epoch, QUIC 109.109.165.39:8002)
+2026-11-04T13:26:33.021Z   siidBVew: siidBVew9gpXxjM1y5spQiAyx1dyFrg9m6YjoxrYWbi (JitoLabs 4.4.0, 828 leader slots this epoch, QUIC 67.213.121.29:11228)
+2026-11-04T13:26:33.021Z   2Df1aLCR: 2Df1aLCRYi3J1X24GXmASL4hjrZLHnvEF32KFWGJfR9E (JitoLabs 4.4.0, 604 leader slots this epoch, QUIC 170.23.153.201:11228)
+2026-11-04T13:26:33.022Z   fishfish: fishfishrD9BwrQQiAcG6YeYZVUYVJf3tb9QGQPMJqF (HarmonicAgave 4.4.0, 540 leader slots this epoch, QUIC 64.130.45.196:12481)
+2026-11-04T13:26:33.022Z   bitHUmbK: bitHUmbKSQDTGoyoiW3BeqaGWdyV5sS3nYt5SduUHfb (JitoLabs 4.4.0, 1732 leader slots this epoch, QUIC 116.126.141.28:9002)
+2026-11-04T13:26:33.022Z   vu1sGn2f: vu1sGn2f1Xim6voHNLt4nLn38zNkYdLasU7hEr1TC2D (JitoLabs 4.4.0, 724 leader slots this epoch, QUIC 169.155.44.26:11228)
+2026-11-04T13:26:33.022Z   HM19KBHD: HM19KBHDJy93DYEJv4iFayMmCbJ1QVAk2EDG6XDgmnJS (JitoLabs 4.4.0, 760 leader slots this epoch, QUIC 70.40.185.183:8002)
+2026-11-04T13:26:33.022Z   8o8wWCYN: 8o8wWCYNwPRSCAasp8rYvWuo3Ku1R1i6SEo9j9B6fe5i (JitoLabs 4.4.0, 748 leader slots this epoch, QUIC 23.111.240.207:11228)
+2026-11-04T13:26:33.022Z   32ke3uf1: 32ke3uf1qL3xLqbwzU76T2sbG2XaJrGuSCNdUnien3zm (JitoLabs 4.4.0, 304 leader slots this epoch, QUIC 72.251.3.57:11228)
+2026-11-04T13:26:33.022Z   Cogent51: Cogent51kHgGLHr7zpkpRjGYFXM57LgjHjDdqXd4ypdA (JitoLabs 4.4.0, 508 leader slots this epoch, QUIC 64.130.43.202:8002)
+2026-11-04T13:26:33.022Z   C8Bey3LK: C8Bey3LKVJHVqN6xPTeW8WJfUgFQAeGNBpT4Rp99JP1k (JitoLabs 4.4.0, 9168 leader slots this epoch, QUIC 185.26.10.33:8022)
+2026-11-04T13:26:33.022Z   HEL1USMZ: HEL1USMZKAL2odpNBj2oCjffnFGaYwmbGmyewGv1e2TU (JitoLabs 4.4.0, 16564 leader slots this epoch, QUIC 64.130.57.215:8002)
+2026-11-04T13:26:33.022Z   EvnRmnMr: EvnRmnMrd69kFdbLMxWkTn1icZ7DCceRhvmb2SJXqDo4 (HarmonicFiredancer 26.10.5, 7960 leader slots this epoch, QUIC 198.13.140.105:12566)
+2026-11-04T13:26:33.029Z LIVE on mainnet-beta via tpu, campaign "rakurai": up to 126 more landed trials, at most 0.000061 SOL each (0.007686 SOL)
+2026-11-04T13:26:33.030Z spend cap 0.050000 SOL (of which 0.000100 SOL kept for sweeping), committed 0.029814 SOL; reads via https://mainnet.helius-rpc.com/ (credentials hidden)
+2026-11-04T13:26:33.030Z   role A: limit 1000 CU, price 4000000 µL/CU, loaded-data limit 16384 B, reward/cost 2.783
+2026-11-04T13:26:33.030Z   role B: limit 40000 CU, price 250000 µL/CU, loaded-data limit 16384 B, reward/cost 0.302
+2026-11-04T13:26:33.030Z   role C: limit 1000 CU, price 0 µL/CU, loaded-data limit 16384 B, reward/cost 1.070
+2026-11-04T13:26:33.030Z   role D: limit 6000 CU, price 1500000 µL/CU, loaded-data limit 16384 B, reward/cost 1.568
+2026-11-04T13:26:33.030Z   role E: limit 1000 CU, price 4000000 µL/CU, loaded-data limit 16384 B, reward/cost 2.783
+2026-11-04T13:26:33.030Z   role F: limit 1000 CU, price 4000000 µL/CU, loaded-data limit 67108864 B, reward/cost 0.347
+2026-11-04T13:26:33.214Z main wallet 6v8Wy9TEhfZXzdXVspXYs7bh42N7B7z9jALkz83yxKoC: 0.005810 SOL
+2026-11-04T13:26:34.930Z trial 0: JitoLabs HEL1USMZ window 465318244 shared/buffered order ABDFEC
+2026-11-04T13:26:47.021Z trial 1: JitoLabs siidBVew window 465318292 shared/buffered order FCBAED
+2026-11-04T13:26:49.837Z trial 2: JitoLabs HEL1USMZ window 465318312 shared/buffered order DBEACF
+2026-11-04T13:27:19.688Z trial 3: JitoLabs C8Bey3LK window 465318452 shared/buffered order BFCAED
+2026-11-04T13:27:32.328Z trial 4: JitoLabs HEL1USMZ window 465318512 shared/buffered order ACEBDF
+2026-11-04T13:27:42.797Z trial 5: JitoLabs 8tjFeSAp window 465318552 shared/buffered order CABDFE, 6 not acknowledged
+2026-11-04T13:27:53.805Z trial 6: JitoLabs HEL1USMZ window 465318616 shared/buffered order FDBCAE
+2026-11-04T13:28:18.857Z trial 7: HarmonicFiredancer EvnRmnMr window 465318736 shared/buffered order AEBDFC
+2026-11-04T13:28:35.326Z trial 8: JitoLabs HEL1USMZ window 465318812 shared/buffered order FCEABD
+2026-11-04T13:28:40.435Z trial 9: JitoLabs bitHUmbK window 465318836 shared/buffered order CEDFAB
+2026-11-04T13:28:45.427Z trial 10: JitoLabs A9mvukTd window 465318860 shared/buffered order BCAEDF
+2026-11-04T13:28:50.455Z trial 11: JitoLabs HEL1USMZ window 465318884 shared/buffered order AFDEBC
+2026-11-04T13:29:13.311Z trial 12: JitoLabs 8tjFeSAp window 465318980 shared/buffered order BDEFCA, 6 not acknowledged
+2026-11-04T13:29:23.473Z trial 13: JitoLabs HEL1USMZ window 465319036 shared/buffered order DCFBEA
+2026-11-04T13:29:23.563Z 148.113.199.156:11228 (1 validators, last JitoLabs) never landed and failed twice in a row (empty burst); no longer targeted
+2026-11-04T13:29:31.906Z trial 14: JitoLabs A9mvukTd window 465319076 shared/buffered order EADCBF
+2026-11-04T13:29:48.166Z trial 15: JitoLabs A9mvukTd window 465319152 shared/buffered order DBFCAE
+2026-11-04T13:29:56.067Z trial 16: JitoLabs C8Bey3LK window 465319188 shared/buffered order BCEFAD
+2026-11-04T13:30:13.728Z trial 17: HarmonicFiredancer EvnRmnMr window 465319268 shared/buffered order DFEBAC
+2026-11-04T13:30:25.711Z trial 18: JitoLabs C8Bey3LK window 465319324 shared/buffered order BCAFED
+2026-11-04T13:30:39.086Z trial 19: JitoLabs C8Bey3LK window 465319384 shared/buffered order AFBDEC
+2026-11-04T13:30:49.477Z trial 20: JitoLabs vu1sGn2f window 465319428 shared/buffered order BFDAEC, 6 not acknowledged
+2026-11-04T13:30:59.222Z trial 21: JitoLabs A9mvukTd window 465319480 shared/buffered order DFCBEA
+2026-11-04T13:31:32.971Z trial 22: JitoLabs HEL1USMZ window 465319640 shared/buffered order ACBFDE
+2026-11-04T13:31:40.084Z trial 23: JitoLabs C8Bey3LK window 465319672 shared/buffered order AEFCDB
+2026-11-04T13:32:02.152Z trial 24: JitoLabs C8Bey3LK window 465319776 shared/buffered order BFACDE
+2026-11-04T13:32:32.893Z trial 25: JitoLabs HEL1USMZ window 465319920 shared/buffered order FBAECD
+2026-11-04T13:32:38.599Z trial 26: JitoLabs bitHUmbK window 465319944 shared/buffered order ACFBED
+2026-11-04T13:32:53.944Z trial 27: JitoLabs A9mvukTd window 465320016 shared/buffered order BACDFE
+2026-11-04T13:33:00.560Z trial 28: JitoLabs C8Bey3LK window 465320048 shared/buffered order DEBFCA
+2026-11-04T13:33:14.843Z trial 29: JitoLabs HEL1USMZ window 465320116 shared/buffered order CEFBAD
+2026-11-04T13:33:34.153Z trial 30: HarmonicFiredancer EvnRmnMr window 465320208 shared/buffered order AECBDF
+2026-11-04T13:33:50.087Z trial 31: HarmonicAgave fishfish window 465320284 shared/buffered order FADCBE
+2026-11-04T13:34:21.306Z trial 32: HarmonicFiredancer EvnRmnMr window 465320428 shared/buffered order FBACED
+2026-11-04T13:34:37.455Z trial 33: JitoLabs vu1sGn2f window 465320504 shared/buffered order CBEDFA
+2026-11-04T13:35:09.423Z trial 34: JitoLabs A9mvukTd window 465320656 shared/buffered order CFADBE
+2026-11-04T13:35:13.882Z trial 35: JitoLabs bitHUmbK window 465320676 shared/buffered order BFDECA
+2026-11-04T13:35:39.309Z trial 36: JitoLabs C8Bey3LK window 465320796 shared/buffered order ACBFED
+2026-11-04T13:36:25.187Z trial 37: HarmonicFiredancer EvnRmnMr window 465321012 shared/buffered order EABDFC
+2026-11-04T13:36:57.475Z trial 38: HarmonicFiredancer EvnRmnMr window 465321160 shared/buffered order FEADCB
+2026-11-04T13:37:08.792Z trial 39: JitoLabs bitHUmbK window 465321212 shared/buffered order BEDAFC
+2026-11-04T13:37:13.038Z trial 40: JitoLabs C8Bey3LK window 465321232 shared/buffered order DECBFA
+2026-11-04T13:37:31.027Z trial 41: JitoLabs HM19KBHD window 465321316 shared/buffered order DEBFCA
+2026-11-04T13:37:57.651Z trial 42: HarmonicFiredancer EvnRmnMr window 465321440 shared/buffered order FAEBCD
+2026-11-04T13:38:05.613Z trial 43: JitoLabs bitHUmbK window 465321476 shared/buffered order DBECAF
+2026-11-04T13:38:45.630Z trial 44: JitoLabs C8Bey3LK window 465321656 shared/buffered order ADBCFE
+2026-11-04T13:39:38.232Z trial 45: HarmonicFiredancer EvnRmnMr window 465321904 shared/buffered order FEBACD
+2026-11-04T13:39:54.320Z trial 46: JitoLabs A9mvukTd window 465321980 shared/buffered order BCDFAE
+2026-11-04T13:40:09.533Z trial 47: HarmonicFiredancer EvnRmnMr window 465322052 shared/buffered order AFCBDE
+2026-11-04T13:40:22.895Z trial 48: JitoLabs A9mvukTd window 465322116 shared/buffered order FDAEBC
+2026-11-04T13:40:52.058Z trial 49: JitoLabs Cogent51 window 465322256 shared/buffered order CAFEDB
+2026-11-04T13:41:15.415Z trial 50: HarmonicFiredancer EvnRmnMr window 465322368 shared/buffered order ECFBAD
+2026-11-04T13:42:01.561Z trial 51: HarmonicFiredancer EvnRmnMr window 465322584 shared/buffered order BAFEDC
+2026-11-04T13:42:41.774Z trial 52: JitoLabs HM19KBHD window 465322764 shared/buffered order AFBDCE
+2026-11-04T13:45:13.725Z trial 53: JitoLabs vu1sGn2f window 465323460 shared/buffered order EABDCF
+2026-11-04T13:45:22.250Z trial 54: JitoLabs vu1sGn2f window 465323500 shared/buffered order EDAFCB
+2026-11-04T13:46:03.765Z trial 55: JitoLabs vu1sGn2f window 465323700 shared/buffered order ECDAFB
+2026-11-04T13:47:33.478Z trial 56: JitoLabs HM19KBHD window 465324112 shared/buffered order CBDAEF
+2026-11-04T13:48:11.995Z trial 57: HarmonicAgave fishfish window 465324292 shared/buffered order EDFACB
+2026-11-04T13:48:25.232Z trial 58: JitoLabs vu1sGn2f window 465324352 shared/buffered order FCEDBA
+2026-11-04T13:48:39.779Z trial 59: JitoLabs HM19KBHD window 465324420 shared/buffered order ACBDFE
+2026-11-04T13:49:34.659Z trial 60: JitoLabs bitHUmbK window 465324668 shared/buffered order DEABFC
+2026-11-04T13:51:14.146Z trial 61: JitoLabs bitHUmbK window 465325128 shared/buffered order ABDFCE
+2026-11-04T13:51:20.249Z trial 62: JitoLabs bitHUmbK window 465325156 shared/buffered order FDABCE
+2026-11-04T13:56:18.494Z trial 63: JitoLabs 8o8wWCYN window 465326524 shared/buffered order CAEFDB, 6 not acknowledged
+2026-11-04T13:57:39.414Z trial 64: JitoLabs 2Df1aLCR window 465326916 shared/buffered order FCBEDA
+2026-11-04T13:59:19.869Z trial 65: JitoLabs siidBVew window 465327368 shared/buffered order FCBADE, 6 not acknowledged
+2026-11-04T13:59:25.734Z 67.213.121.29:11228 (1 validators, last JitoLabs) never landed and failed twice in a row (empty burst); no longer targeted
+2026-11-04T14:00:29.457Z trial 66: JitoLabs 2Df1aLCR window 465327700 shared/buffered order ECDFAB
+2026-11-04T14:03:34.668Z trial 67: JitoLabs 8o8wWCYN window 465328556 shared/buffered order AECDFB, 6 not acknowledged
+2026-11-04T14:03:40.412Z 23.111.240.207:11228 (1 validators, last JitoLabs) never landed and failed twice in a row (empty burst); no longer targeted
+2026-11-04T14:05:54.120Z trial 68: JitoLabs Cogent51 window 465329208 shared/buffered order ECFBDA
+2026-11-04T14:07:41.867Z trial 69: JitoLabs Cogent51 window 465329708 shared/buffered order FBDCAE
+2026-11-04T14:09:05.343Z trial 70: JitoLabs Ha1iade1 window 465330100 shared/buffered order BCEFDA
+2026-11-04T14:11:15.323Z trial 71: JitoLabs HM19KBHD window 465330712 shared/buffered order ACBEDF
+2026-11-04T14:12:41.322Z trial 72: JitoLabs vu1sGn2f window 465331108 shared/buffered order ACBFDE
+2026-11-04T14:16:17.358Z trial 73: JitoLabs HM19KBHD window 465332120 shared/buffered order BADCEF
+2026-11-04T14:20:06.430Z trial 74: JitoLabs HM19KBHD window 465333188 shared/buffered order AEFCBD
+2026-11-04T14:20:31.977Z trial 75: HarmonicAgave fishfish window 465333308 shared/buffered order ADCFBE
+2026-11-04T14:23:38.151Z trial 76: JitoLabs 2Df1aLCR window 465334176 shared/buffered order BADFEC
+2026-11-04T14:29:20.498Z trial 77: JitoLabs vu1sGn2f window 465335780 shared/buffered order BDCAFE
+2026-11-04T14:29:52.661Z trial 78: JitoLabs Cogent51 window 465335932 shared/buffered order DFCEAB
+2026-11-04T14:30:08.052Z trial 79: JitoLabs 2Df1aLCR window 465336004 shared/buffered order DABCEF
+2026-11-04T14:30:49.575Z trial 80: JitoLabs HM19KBHD window 465336196 shared/buffered order ECFBDA
+2026-11-04T14:36:17.892Z trial 81: JitoLabs 2Df1aLCR window 465337728 shared/buffered order FABEDC
+2026-11-04T14:39:44.421Z trial 82: JitoLabs Ha1iade1 window 465338688 shared/buffered order AECDFB
+2026-11-04T14:42:39.772Z trial 83: JitoLabs vu1sGn2f window 465339504 shared/buffered order CFDABE
+2026-11-04T14:44:29.071Z trial 84: JitoLabs Ha1iade1 window 465340020 shared/buffered order ADCBFE
+2026-11-04T14:47:21.749Z trial 85: HarmonicAgave fishfish window 465340828 shared/buffered order CAFDEB
+2026-11-04T14:49:13.672Z trial 86: JitoLabs Cogent51 window 465341352 shared/buffered order DFEACB
+2026-11-04T14:49:19.153Z trial 87: JitoLabs 2Df1aLCR window 465341376 shared/buffered order EAFBCD
+2026-11-04T14:50:46.803Z trial 88: HarmonicAgave fishfish window 465341788 shared/buffered order EFACDB
+2026-11-04T14:51:53.088Z trial 89: JitoLabs Cogent51 window 465342096 shared/buffered order ADCEFB
+2026-11-04T14:52:05.461Z trial 90: JitoLabs 2Df1aLCR window 465342148 shared/buffered order DABFCE, 6 not acknowledged
+2026-11-04T14:54:06.862Z trial 91: HarmonicAgave fishfish window 465342724 shared/buffered order EBCFDA
+2026-11-04T14:56:18.255Z trial 92: JitoLabs Ha1iade1 window 465343332 shared/buffered order FBDCAE
+2026-11-04T14:56:28.550Z trial 93: JitoLabs 32ke3uf1 window 465343372 shared/buffered order EBACDF, 6 not acknowledged
+2026-11-04T14:58:49.569Z trial 94: JitoLabs 2Df1aLCR window 465344036 shared/buffered order DABCFE, 6 not acknowledged
+2026-11-04T14:59:09.031Z trial 95: JitoLabs Ha1iade1 window 465344128 shared/buffered order DECABF
+2026-11-04T15:02:42.474Z trial 96: JitoLabs Ha1iade1 window 465345124 shared/buffered order BEFCDA
+2026-11-04T15:03:03.960Z trial 97: JitoLabs 2Df1aLCR window 465345212 shared/buffered order AFDBCE, 6 not acknowledged
+2026-11-04T15:04:29.270Z trial 98: JitoLabs Ha1iade1 window 465345620 shared/buffered order BDFCEA
+2026-11-04T15:05:39.380Z attempt 100: dispatch slot 465345938 already passed (now 465345941); skipping
+2026-11-04T15:05:55.421Z attempt 101: clock jumped past dispatch slot 465346014 to 465346015; skipping
+2026-11-04T15:06:30.809Z trial 99: JitoLabs 2Df1aLCR window 465346172 shared/buffered order AFECDB, 6 not acknowledged
+2026-11-04T15:06:37.686Z trial 100: JitoLabs Cogent51 window 465346216 shared/buffered order CFDEBA
+2026-11-04T15:08:01.970Z trial 101: JitoLabs Ha1iade1 window 465346600 shared/buffered order DBAEFC
+2026-11-04T15:13:06.914Z trial 102: JitoLabs 2Df1aLCR window 465348024 shared/buffered order ADBFEC, 6 not acknowledged
+2026-11-04T15:14:19.534Z trial 103: JitoLabs Cogent51 window 465348372 shared/buffered order EAFBDC
+2026-11-04T15:22:25.318Z trial 104: JitoLabs 32ke3uf1 window 465350628 shared/buffered order CDBAEF, 6 not acknowledged
+2026-11-04T15:22:30.979Z 72.251.3.57:11228 (1 validators, last JitoLabs) never landed and failed twice in a row (empty burst); no longer targeted
+2026-11-04T15:22:56.340Z trial 105: JitoLabs Ha1iade1 window 465350780 shared/buffered order FEDCAB
+2026-11-04T15:31:55.279Z trial 106: JitoLabs 2Df1aLCR window 465353288 shared/buffered order DCABFE, 6 not acknowledged
+2026-11-04T15:32:47.628Z trial 107: JitoLabs 2Df1aLCR window 465353540 shared/buffered order BFCAED
+2026-11-04T15:36:50.396Z trial 108: JitoLabs 2Df1aLCR window 465354656 shared/buffered order DCABEF, 6 not acknowledged
+2026-11-04T15:38:51.478Z trial 109: HarmonicAgave fishfish window 465355220 shared/buffered order EFADBC
+2026-11-04T15:45:49.618Z trial 110: JitoLabs 2Df1aLCR window 465357136 shared/buffered order DEABCF
+2026-11-04T15:47:00.848Z trial 111: HarmonicAgave fishfish window 465357468 shared/buffered order FBEACD
+2026-11-04T16:21:22.066Z attempt 115: clock jumped past dispatch slot 465367034 to 465367037; skipping
+2026-11-04T16:25:53.047Z attempt 116: clock jumped past dispatch slot 465368302 to 465368305; skipping
+2026-11-04T16:32:20.765Z attempt 117: dispatch slot 465370090 already passed (now 465370094); skipping
+2026-11-04T16:53:52.001Z trial 112: JitoLabs 2Df1aLCR window 465376036 shared/buffered order DACEBF, 6 not acknowledged
+2026-11-04T16:55:48.817Z attempt 119: dispatch slot 465376598 already passed (now 465376602); skipping
+2026-11-04T17:00:57.266Z attempt 120: QUIC connect to JitoLabs failed: ConnectionError: ; skipping
+2026-11-04T17:06:44.537Z attempt 121: clock jumped past dispatch slot 465379674 to 465379677; skipping
+2026-11-04T17:15:07.327Z trial 113: JitoLabs 2Df1aLCR window 465382012 shared/buffered order BFCEAD
+2026-11-04T17:26:34.601Z run 2026-11-04T13-26-30Z: 114 trials in 122 attempts; trials counting towards the quotas in the campaign {"HEL1USMZ":10,"C8Bey3LK":10,"EvnRmnMr":10,"bitHUmbK":8,"A9mvukTd":8,"fishfish":8,"vu1sGn2f":8,"HM19KBHD":8,"Cogent51":8,"2Df1aLCR":8,"Ha1iade1":8}; dispatched {"HEL1USMZ":10,"siidBVew":2,"C8Bey3LK":10,"8tjFeSAp":2,"EvnRmnMr":11,"bitHUmbK":8,"A9mvukTd":8,"vu1sGn2f":9,"fishfish":8,"HM19KBHD":8,"Cogent51":8,"8o8wWCYN":2,"2Df1aLCR":17,"Ha1iade1":9,"32ke3uf1":2}
+2026-11-04T17:26:55.315Z block 465318244: 334 transactions
+2026-11-04T17:26:55.581Z block 465318312: 322 transactions
+2026-11-04T17:26:55.991Z block 465318452: 195 transactions
+2026-11-04T17:26:56.391Z block 465318512: 874 transactions
+2026-11-04T17:26:56.733Z block 465318616: 385 transactions
+2026-11-04T17:26:57.294Z block 465318736: 757 transactions
+2026-11-04T17:26:57.465Z block 465318812: 246 transactions
+2026-11-04T17:26:57.670Z block 465318836: 373 transactions
+2026-11-04T17:26:58.029Z block 465318860: 448 transactions
+2026-11-04T17:26:58.268Z block 465318884: 331 transactions
+2026-11-04T17:26:58.482Z block 465319036: 212 transactions
+2026-11-04T17:26:58.693Z block 465319076: 324 transactions
+2026-11-04T17:26:59.013Z block 465319152: 406 transactions
+2026-11-04T17:26:59.201Z block 465319188: 299 transactions
+2026-11-04T17:26:59.458Z block 465319268: 501 transactions
+2026-11-04T17:26:59.699Z block 465319324: 395 transactions
+2026-11-04T17:26:59.865Z block 465319384: 209 transactions
+2026-11-04T17:27:00.171Z block 465319480: 305 transactions
+2026-11-04T17:27:00.348Z block 465319640: 339 transactions
+2026-11-04T17:27:00.560Z block 465319672: 392 transactions
+2026-11-04T17:27:00.799Z block 465319776: 489 transactions
+2026-11-04T17:27:01.325Z block 465319920: 344 transactions
+2026-11-04T17:27:01.618Z block 465319944: 368 transactions
+2026-11-04T17:27:01.939Z block 465320016: 575 transactions
+2026-11-04T17:27:02.218Z block 465320048: 685 transactions
+2026-11-04T17:27:02.398Z block 465320116: 305 transactions
+2026-11-04T17:27:02.757Z block 465320208: 529 transactions
+2026-11-04T17:27:03.017Z block 465320284: 383 transactions
+2026-11-04T17:27:03.558Z block 465320426: 411 transactions
+2026-11-04T17:27:03.747Z block 465320504: 283 transactions
+2026-11-04T17:27:04.131Z block 465320656: 442 transactions
+2026-11-04T17:27:04.415Z block 465320676: 481 transactions
+2026-11-04T17:27:04.659Z block 465320796: 295 transactions
+2026-11-04T17:27:04.878Z block 465321012: 464 transactions
+2026-11-04T17:27:05.251Z block 465321160: 805 transactions
+2026-11-04T17:27:05.439Z block 465321212: 330 transactions
+2026-11-04T17:27:05.919Z block 465321232: 420 transactions
+2026-11-04T17:27:06.171Z block 465321316: 166 transactions
+2026-11-04T17:27:06.419Z block 465321440: 404 transactions
+2026-11-04T17:27:06.655Z block 465321476: 273 transactions
+2026-11-04T17:27:06.932Z block 465321656: 389 transactions
+2026-11-04T17:27:07.181Z block 465321904: 268 transactions
+2026-11-04T17:27:07.435Z block 465321980: 281 transactions
+2026-11-04T17:27:07.781Z block 465322052: 584 transactions
+2026-11-04T17:27:08.038Z block 465322116: 369 transactions
+2026-11-04T17:27:08.254Z block 465322256: 152 transactions
+2026-11-04T17:27:08.452Z block 465322368: 324 transactions
+2026-11-04T17:27:08.799Z block 465322584: 690 transactions
+2026-11-04T17:27:09.136Z block 465322764: 279 transactions
+2026-11-04T17:27:09.571Z block 465323460: 258 transactions
+2026-11-04T17:27:09.763Z block 465323500: 183 transactions
+2026-11-04T17:27:10.163Z block 465323700: 359 transactions
+2026-11-04T17:27:10.346Z block 465324112: 224 transactions
+2026-11-04T17:27:10.604Z block 465324292: 416 transactions
+2026-11-04T17:27:10.790Z block 465324352: 278 transactions
+2026-11-04T17:27:11.013Z block 465324420: 262 transactions
+2026-11-04T17:27:11.308Z block 465324668: 494 transactions
+2026-11-04T17:27:11.611Z block 465325128: 609 transactions
+2026-11-04T17:27:12.128Z block 465325156: 438 transactions
+2026-11-04T17:27:12.348Z block 465326916: 180 transactions
+2026-11-04T17:27:12.568Z block 465327700: 438 transactions
+2026-11-04T17:27:13.019Z block 465329208: 215 transactions
+2026-11-04T17:27:13.251Z block 465329708: 218 transactions
+2026-11-04T17:27:13.403Z block 465330100: 103 transactions
+2026-11-04T17:27:13.615Z block 465330712: 220 transactions
+2026-11-04T17:27:13.810Z block 465331108: 448 transactions
+2026-11-04T17:27:14.042Z block 465332120: 489 transactions
+2026-11-04T17:27:14.462Z block 465333188: 243 transactions
+2026-11-04T17:27:14.684Z block 465333308: 293 transactions
+2026-11-04T17:27:15.144Z block 465334176: 235 transactions
+2026-11-04T17:27:15.617Z block 465335780: 246 transactions
+2026-11-04T17:27:15.779Z block 465335932: 211 transactions
+2026-11-04T17:27:16.118Z block 465336004: 728 transactions
+2026-11-04T17:27:16.374Z block 465336196: 606 transactions
+2026-11-04T17:27:16.562Z block 465337728: 286 transactions
+2026-11-04T17:27:16.898Z block 465338688: 297 transactions
+2026-11-04T17:27:17.274Z block 465339504: 759 transactions
+2026-11-04T17:27:17.497Z block 465340020: 471 transactions
+2026-11-04T17:27:17.915Z block 465340828: 1469 transactions
+2026-11-04T17:27:18.168Z block 465341352: 256 transactions
+2026-11-04T17:27:18.659Z block 465341376: 1779 transactions
+2026-11-04T17:27:18.970Z block 465341788: 571 transactions
+2026-11-04T17:27:19.441Z block 465342096: 320 transactions
+2026-11-04T17:27:19.777Z block 465342724: 868 transactions
+2026-11-04T17:27:19.949Z block 465343332: 234 transactions
+2026-11-04T17:27:20.195Z block 465344128: 478 transactions
+2026-11-04T17:27:20.548Z block 465345125: 1100 transactions
+2026-11-04T17:27:20.768Z block 465346216: 206 transactions
+2026-11-04T17:27:21.197Z block 465346217: 667 transactions
+2026-11-04T17:27:21.465Z block 465346601: 519 transactions
+2026-11-04T17:27:21.781Z block 465346602: 643 transactions
+2026-11-04T17:27:22.077Z block 465348372: 613 transactions
+2026-11-04T17:27:22.328Z block 465350780: 561 transactions
+2026-11-04T17:27:22.764Z block 465353540: 516 transactions
+2026-11-04T17:27:23.126Z block 465355220: 987 transactions
+2026-11-04T17:27:23.835Z block 465357468: 1326 transactions
+2026-11-04T17:27:24.094Z block 465382012: 559 transactions
+2026-11-04T17:27:25.085Z data\mainnet-beta\runs\2026-11-04T13-26-30Z: 570/684 transactions landed in 97 blocks
+2026-11-04T17:27:25.085Z spend committed so far: 0.035609 SOL of 0.050000 SOL

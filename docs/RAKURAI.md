@@ -151,3 +151,22 @@ in the run list, in "Reported client over time" and in `orders.md`.
    - `node src/cli.ts analyze`;
    - `node src/cli.ts sweep --live` (run by the wallet's owner), then `status`;
    - commit `results/`. REPORT quotes the section "Targeted run".
+
+## After the run
+
+Written after the data. Everything above is as tagged. Full account: REPORT, "The targeted run".
+
+- **Run.** 2026-11-04, epoch 1077. `rakurai-swap` 13:19–13:26 UTC, 12 trials; `rakurai` 13:26–17:26 UTC, 114 trials dispatched.
+  Started by the wallet's owner with the two commands above, on the tagged commit. Every trial on the `firstShred` clock.
+- **Outcome.** H1 not confirmed (holders 22%, matched 22%, four a side, Holm p = 0.643). H2 confirmed (12 of 12, Holm
+  p < 0.001). H3 confirmed (25 of 32, Holm p = 0.002).
+- **Who fell out.** `8tjFeSAp`, `siidBVew`, `8o8wWCYN` and `32ke3uf1`, all on port 11228, never landed and stopped being
+  targeted after two failures each. So "Power" above, written for six a side, did not apply: with four a side the
+  smallest possible p is 1/70, and three holders always putting B before C give 5/70, which does not confirm.
+- **`fishfish`.** It reported HarmonicAgave by the first run, though the snapshot under "Who" has JitoLabs. No validator is
+  replaced, so it stayed in H1. Without it, p = 25/35: the same verdict.
+- **The stop.** The four quotas could not be reached: excluded addresses stay excluded within a campaign. We did not wait
+  for 2026-11-05 12:00 UTC, because the same command would target nobody.
+- **"6 matched".** The H3 row of `results.md` prints the length of the list. Four of the six gave trials.
+- **Cost.** 0.006612 SOL, the sweep included, against the estimate of about 0.009 SOL, with 32 more trials that count. In all,
+  0.035684 SOL of the 0.05 SOL cap.

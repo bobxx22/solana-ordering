@@ -1,10 +1,14 @@
 {
- "takenAt": "2026-11-03T22:07:41.023Z",
+ "takenAt": "2026-11-04T18:28:59.372Z",
  "source": "getProgramAccounts Config1111111111111111111111111111111111111, jsonParsed, validatorInfo accounts signed by the identity; self-declared",
  "names": {
   "11AMA4mnNbsrPQeuoNN7uiZVJZtqEzQHrTfa5vnbcjk": {
    "name": "11ama Validator",
    "infoAccount": "Adkohp1MFbVTgDGhD9Cd48ibu3yBaamR2wBCo3Lg4Gdr"
+  },
+  "2Df1aLCRYi3J1X24GXmASL4hjrZLHnvEF32KFWGJfR9E": {
+   "name": "P2P.org Turbo",
+   "infoAccount": "FmoowvBwV2XiwkS4SiAR411jx5mZWWXmgLhGnW63JCty"
   },
   "2dfgsiSaZ51QYPsECMYMG247PXxyKdwkV9wTHoQb8YEC": {
    "name": "Astraeus",
@@ -13,6 +17,10 @@
   "2mMGsb5uy1Q4Dvezr8HK2E8SJoChcb2X7b61tJPaVHHd": {
    "name": "Chainflow",
    "infoAccount": "EJCxFoqeGXPt3uKPyRdjTbvK5ETcEHJBddVYA8Ei3Z61"
+  },
+  "32ke3uf1qL3xLqbwzU76T2sbG2XaJrGuSCNdUnien3zm": {
+   "name": "FalconX",
+   "infoAccount": "6Bp847LwPTRLj9nUvsoyUnFrCETRKt5aveMTo82f3u8w"
   },
   "3B2mGaZoFwzAnWCoZ4EAKdps4FbYbDKQ48jo8u1XWynU": {
    "name": "Low Fee Validation TOP API 🔥",
@@ -170,6 +178,10 @@
    "name": "Solana Compass 🧭 Solana For The People",
    "infoAccount": "9F88KkZBLYHxkCUxXy9WfrnPeC7KpzKzxhcwLn2XNsin"
   },
+  "Cogent51kHgGLHr7zpkpRjGYFXM57LgjHjDdqXd4ypdA": {
+   "name": "Cogent ⚙️  by SOL Strategies",
+   "infoAccount": "1aEDZU9Q8kaq9Jri5qosbhgK2wUaYn4FovSLc1oTx4c"
+  },
   "D2RV1q6FgePVVjrMa7AMzVbvvAeg5oS7TAV7qdNKSDsX": {
    "name": "Validatore",
    "infoAccount": "A2LsoGjMD5t44r1CNAXkH9LtaKkacq9Akzufh1F7RuHg"
@@ -246,6 +258,10 @@
    "name": "Figment",
    "infoAccount": "DQftryTzdr8WQQhzJVsnt7y7oUR5hSp58EoL5hRWqr1M"
   },
+  "fishfishrD9BwrQQiAcG6YeYZVUYVJf3tb9QGQPMJqF": {
+   "name": "stakefish 🐟",
+   "infoAccount": "GfnF9YHnDsFRgqScuwxGVR1Vkp5m2vY9hboxotCMiZV4"
+  },
   "FNKgX9dYUhYQFRTM9bkeKoRpsyEtZGNMxbdQLDzfqB8a": {
    "name": "Coinbase 04",
    "infoAccount": "9Lei3hAwWjQ1oBNrQ2swEgFTyy9SZdsNj56iwnLwVymp"
@@ -286,6 +302,10 @@
    "name": "Bubbles",
    "infoAccount": "AUegTUA3sjvK7UCXj8fcaqPvZnL1VhgkjdaxBYuRab2m"
   },
+  "Ha1iade1AH3B12K9SccfWoPdFtQKKQsj2ZyWwxcjqJJU": {
+   "name": "Ha1iad3",
+   "infoAccount": "2db6Bp3SW3Mytv3uRb3GczZBaMYv6pD6ar88Bj93y4F4"
+  },
   "HEL1USMZKAL2odpNBj2oCjffnFGaYwmbGmyewGv1e2TU": {
    "name": "Helius",
    "infoAccount": "81oBNskxtpzRYArvgr9mu45dRN46ps4L2JwjGz638ER5"
@@ -297,6 +317,10 @@
   "HLXxkmjb47spcmbbKi3UCfZ2qmFY29t8MN562AEmh2Qh": {
    "name": "🧬 HelixNode 0% fee 🧬",
    "infoAccount": "SBD5DJUmJeBNqgnqxsdvJGzKZGbheY4ZmL9e3tGyiSY"
+  },
+  "HM19KBHDJy93DYEJv4iFayMmCbJ1QVAk2EDG6XDgmnJS": {
+   "name": "Hello Moon",
+   "infoAccount": "B1Y2MeHyQCmqsHuzqhVRFgQF6ASWWPVD2Kd3zPZktnkx"
   },
   "HW4zorvt6xDwhU36RqjcWNwU8YMj9tiqnAafBKW4cqV": {
    "name": "Moise",

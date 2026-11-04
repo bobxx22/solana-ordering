@@ -25,13 +25,27 @@ BAM and Harmonic pipelines. Its analysis was frozen beforehand (git tag `prereg-
    (29 of 30, Holm p < 0.001), and 29 of 30 in the exact total-fee order. Found later, exploratory: these orders do
    not separate total fee from "the larger requested compute-unit limit first"; Everstake's identity reported three
    different clients within ten days; and two of the three hold enabled accounts of Rakurai's activation program on
-   chain, while none of the 13 JitoLabs validators that followed reward/cost does (section 6). A Firedancer validator
-   that had left the exact order in 6 of 10 trials left it in 6 of 20 new ones: not confirmed.
+   chain, while none of the 13 JitoLabs validators that followed reward/cost does (section 6). Finding 4 tests that
+   lead and the larger limit. A Firedancer validator that had left the exact order in 6 of 10 trials left it in 6 of 20
+   new ones: not confirmed.
 3. **Arrival order decides when nothing is held back** (found after the main run). Streamed 30 ms apart into a block
    being built, 97–99% of pairs at the local schedulers landed in send order. Between equal priorities, Firedancer
    landed the twin sent second first in 85% of 27 trials.
+4. **A targeted run tested what finding 2 left open** (2026-11-04, epoch 1077, 126 new trials, a third plan frozen beforehand,
+   git tag `prereg-rakurai`; "The targeted run").
+   - **The Rakurai lead did not hold.** On new validators chosen by the account alone, holders and matched validators
+     without one both put B before C in 22% of trials (four a side, Holm p = 0.643): not confirmed. Cogent, which holds no
+     account, ordered by total fee in 7 of 8 trials.
+   - **Total fee, not the larger limit, at Ledger by Figment.** With the parameters of B and D swapped, it put B, the larger
+     fee on the smaller limit, before D in 12 of 12 trials (Holm p < 0.001): confirmed.
+   - **The method sees a change of code predicted from the source.** At Jito 4.4.0 the twin sent first landed first in 78%
+     [61–89%] of 32 trials (Holm p = 0.002), against 42% [29–55%] at 4.3.2: confirmed.
+   - **Exploratory.** In the same 12 minutes, on the same reported client and version, Helius followed reward/cost in 10 of
+     10 trials and Ledger by Figment total fee in 9 of 10, so this is not a day effect. Everstake, now reporting a Harmonic
+     client, landed 10 of 10 with F last, as Harmonic does. One validator, `Ha1iade1`, went through all three orders in
+     73 minutes, reporting one client in the snapshots before and after.
 
-**Validator by validator** (exploratory; over both runs, `results.md`, "Validator by validator"). The 10 of our 85
+**Validator by validator** (exploratory; over the main and confirmatory runs, `results.md`, "Validator by validator"). The 10 of our 85
 validators with at least 5 trials with all six in the window, by rank in leader slots. A reading needs one order in at
 least 80% of them. Names are what each identity publishes on chain, self-declared.
 
@@ -50,22 +64,24 @@ least 80% of them. Names are what each identity publishes on chain, self-declare
 
 The other 75 have 1 to 4 such trials each: too few for a reading of their own, and `results.md` lists every one. Pooled,
 the 56 of the local labels and BAM landed 76 of 78 trials in the reward/cost order and 2 in the total-fee order; the 19
-of Harmonic landed 30 of 30 with A, E, D first and F last. The verdicts per label below rest on such pooled trials.
+of Harmonic landed 30 of 30 with A, E, D first and F last. The verdicts per label below rest on such pooled trials. The
+targeted run gives eight more validators a reading of their own ("The targeted run").
 
 **Limits.** One unstaked sender. Most validators have too few trials for a reading of their own (above). BAM and
 Harmonic are measured from their shared gateways, as whole pipelines. Our six out-rank 79–99% of their blocks, so this
 is how the head of the queue is ranked. The validators reached hold about 22% of the leader slots of each family. One
-day in epoch 1069, and a confirmatory day for three validators. Versions have moved on: by a snapshot of 2026-11-03,
-most validators report Agave 4.4 or Firedancer 26.10.5, which we did not measure.
+day in epoch 1069, a confirmatory day for three validators, and a targeted day in epoch 1077 for 11. Versions have moved
+on: by a snapshot of 2026-11-03, most validators report Agave 4.4 or Firedancer 26.10.5. The comparison of clients rests
+on the older versions; the targeted run covers those 11 only, nine of them JitoLabs.
 
 **How to check.** `docker compose up` regenerates every table from the committed raw data, checks a sample of blocks
 against the chain, and needs no keys. Every landed transaction of every run was checked against the chain whole, with
-no problems. Total spend: 0.029072 SOL, under the 0.05 SOL cap in code.
+no problems. Total spend: 0.035684 SOL, under the 0.05 SOL cap in code.
 
 **Status: final, revised 2026-11-04.** The revision adds exploratory tables, names and sources ("The plan", "Added
-after both runs"); it adds no trial and changes no test or verdict. A targeted run is planned in
-[`docs/RAKURAI.md`](docs/RAKURAI.md), frozen at the git tag `prereg-rakurai` before its first trial. The main run was campaign `main`, on 2026-10-27 in
-epoch 1069, six days after Alpenglow. Its analysis plan was frozen at the git tag `prereg-main` before the first trial:
+after both runs"), and a targeted run ("The targeted run"). Neither changes an earlier test or verdict. Below, "both
+runs" means the main and the confirmatory run. The main run was campaign `main`, on 2026-10-27 in epoch 1069, six days
+after Alpenglow. Its analysis plan was frozen at the git tag `prereg-main` before the first trial:
 - commit `9221dc9`, dated 2026-10-27 14:34:07 UTC by its author;
 - GitHub started CI for that commit at 14:34:11 UTC, on the push of `main`
   ([run](https://github.com/bobxx22/solana-ordering/actions/runs/40522357305)), and at 14:34:13 UTC on the push of the
@@ -83,6 +99,16 @@ git tag `prereg-confirm`:
 - the run that made the trials started at 17:25:00 UTC ("Runs"). Its first transactions landed in slot 462 560 008,
   whose block time on chain is 17:25:13 UTC. Two earlier starts sent no trial ("What went wrong").
 
+A targeted run, campaigns `rakurai` and `rakurai-swap`, tested on new trials what section 6 had left open, on 2026-11-04
+in epoch 1077 ("The targeted run"). Its plan, [`docs/RAKURAI.md`](docs/RAKURAI.md), was frozen the same way, at the git
+tag `prereg-rakurai`:
+- commit `0dadd59`, dated 2026-11-03 22:40:33 UTC by its author;
+- GitHub started CI for that commit at 22:40:39 UTC, on the push of `main`
+  ([run](https://github.com/bobxx22/solana-ordering/actions/runs/41732866389)), and at 22:40:41 UTC on the push of the
+  tag ([run](https://github.com/bobxx22/solana-ordering/actions/runs/41732872600));
+- its first run started at 13:19:56 UTC on 2026-11-04 ("Runs"). Its first transactions landed in slot 465 316 632, whose
+  block time on chain is 13:20:51 UTC.
+
 **Where the numbers come from.**
 - Results are copied from [`results.md`](data/mainnet-beta/results/results.md), and trial by trial from
   [`orders.md`](data/mainnet-beta/results/orders.md). `node src/cli.ts analyze` regenerates both from the committed raw
@@ -90,12 +116,14 @@ git tag `prereg-confirm`:
 - Spend comes from [`ledger.jsonl`](data/mainnet-beta/ledger.jsonl). Wallet balances come from transactions on chain,
   named where they are used.
 - The chain checks come from [`verify.json`](data/mainnet-beta/verify.json), [`verify/`](data/mainnet-beta/verify/),
-  [`verify-every-transaction.json`](data/mainnet-beta/verify-every-transaction.json) and
-  [`verify-every-transaction-confirm.json`](data/mainnet-beta/verify-every-transaction-confirm.json).
+  [`verify-every-transaction.json`](data/mainnet-beta/verify-every-transaction.json),
+  [`verify-every-transaction-confirm.json`](data/mainnet-beta/verify-every-transaction-confirm.json),
+  [`verify-every-transaction-rakurai-swap.json`](data/mainnet-beta/verify-every-transaction-rakurai-swap.json) and
+  [`verify-every-transaction-rakurai.json`](data/mainnet-beta/verify-every-transaction-rakurai.json).
 - Names and Rakurai's activation accounts come from
   [`validator-names.json`](data/mainnet-beta/validator-names.json) and
   [`rakurai-activation.json`](data/mainnet-beta/rakurai-activation.json), read from the chain on 2026-11-03, after the
-  runs.
+  main and confirmatory runs; the names again on 2026-11-04, after the targeted run, to cover its validators.
 - A few numbers add up rows of one table, and show the sum. Power figures are exact binomial computations, with the
   formula shown.
 - Sections of `results.md` added after the data are marked "exploratory" there and here. "The plan" lists every
@@ -157,7 +185,8 @@ These come from tables added after the main run ("The plan"). They locate and de
 - **Three JitoLabs validators order by total fee** (section 6). All 7 of their trials landed in the exact total-fee
   order; the other 13 JitoLabs validators we reached, 23 of 23 in the reward/cost order. Two of the three, Ledger by
   Figment and Everstake, are the 7th and 8th largest validators by leader slots. The same orders fit a rule that puts
-  the larger requested compute-unit limit first; section 6 says how far the reading goes.
+  the larger requested compute-unit limit first; section 6 says how far the reading goes, and the targeted run
+  separated the two at Ledger by Figment, for total fee.
 - **One Firedancer validator departs** (section 6). JD549Hsb (Forward Industries): 4 of 10 trials in the exact order;
   the other 9, 20 of 20.
 - **Harmonic** put F last in all 30 trials, and B and C either way round (section 6). These are the reward/cost orders
@@ -180,9 +209,18 @@ rests on the other two.
 
 - **H1.** B before C is what total fee predicts and reward/cost does not. Among the candidate rules that put B before
   C, the whole order picks total fee: 29 of the 30 trials landed in the exact total-fee order. It does not separate
-  total fee from the larger requested compute-unit limit first (section 6).
+  total fee from the larger requested compute-unit limit first (section 6); the targeted run does, at C8Bey3LK.
 - **H2.** JD549Hsb departed again, in 6 of 20 trials, but not significantly more often than the reference allows.
   Against that rate the test had little power: not confirmed is not refuted.
+
+Then three predictions about what section 6 had left open, on 126 new trials under a third frozen plan ("The targeted
+run"):
+
+| | prediction | trials | result | Holm p | verdict |
+|---|---|---:|---|---:|---|
+| H1 | on new JitoLabs validators, holders of a Rakurai activation account put B before C more than matched validators without one | 64 | holders 22%, matched 22% (four a side) | 0.643 | **not confirmed** |
+| H2 | with the parameters of B and D swapped, C8Bey3LK puts B before D, as total fee does and the larger limit first does not | 12 | 100% [76–100%] | < 0.001 | **confirmed** |
+| H3 | at Jito 4.4.0, unlike 4.3.2, the twin sent first lands first, as the source says | 32 | 78% [61–89%] | 0.002 | **confirmed** |
 
 ## How to check
 
@@ -201,10 +239,11 @@ newest is for the commit you are reading): the job `docker` runs the offline par
 `reproduce-online` runs the whole command.
 
 - `node src/cli.ts verify all --sample all` checks every landed transaction whole. The committed results are
-  `verify-every-transaction.json` for the runs up to the main run and `verify-every-transaction-confirm.json` for
-  the confirmatory run.
-- `git log prereg-main` and `git log prereg-confirm` show the two plans as frozen. The run directories are named by
-  their UTC start.
+  `verify-every-transaction.json` for the runs up to the main run, `verify-every-transaction-confirm.json` for the
+  confirmatory run, and `verify-every-transaction-rakurai-swap.json` and `verify-every-transaction-rakurai.json` for
+  the targeted run.
+- `git log prereg-main`, `git log prereg-confirm` and `git log prereg-rakurai` show the three plans as frozen. The run
+  directories are named by their UTC start.
 
 **One trial by hand.** Trial 249 of session 2 went to the Agave 4.3.2 validator 5Us18hLZ, for its window from slot
 462 133 072 (`orders.md`). It was sent in the order D A E C B F. The six landed as the first six transactions of that
@@ -251,7 +290,11 @@ All times UTC. Every slot is after Alpenglow's activation (slot 459 653 000, 202
 | 2026-10-28 20:31 | sweep | RPC | `ledger.jsonl` | – | 0.000075 |
 | 2026-11-03 22:01 | validator snapshot by client | – | `snapshots/2026-11-03T22-01-35Z-epoch1076.json` | epoch 1076 | 0 |
 | 2026-11-03 22:07, 22:14 | names and Rakurai's activation accounts, read from the chain | – | `validator-names.json`, `rakurai-activation.json` | – | 0 |
-| | **total** | | | | **0.029072** |
+| 2026-11-04 13:19–13:26 | **targeted run, swapped parameters:** 12 trials × 6, and the funding of its sub-payers | direct QUIC | `runs/2026-11-04T13-19-54Z/` | 465 316 632 – 465 318 088 | 0.000742 |
+| 2026-11-04 13:26–17:26 | **targeted run:** 114 trials × 6, ended by its 240-minute limit | direct QUIC | `runs/2026-11-04T13-26-30Z/` | 465 318 244 – 465 382 012 | 0.005795 |
+| 2026-11-04 18:26, 18:28 | validator snapshot by client; names read again | – | `snapshots/2026-11-04T18-26-32Z-epoch1077.json`, `validator-names.json` | epoch 1077 | 0 |
+| 2026-11-04 18:48 | sweep | RPC | `ledger.jsonl` | – | 0.000075 |
+| | **total** | | | | **0.035684** |
 
 **Wallets.** The ledger and the chain agree to the lamport:
 - the main wallet (`mainWallet` in every `run.json`) received a single transfer of 0.058892 SOL, on 2026-10-24 at
@@ -263,11 +306,16 @@ All times UTC. Every slot is after Alpenglow's activation (slot 459 653 000, 202
   committed by then;
 - after the confirmatory run's last sweep transaction
   ([4PMKv79G…](https://explorer.solana.com/tx/4PMKv79G5tE2cEBeQB4Eg8UQ9BbaFKm6Df6PuRP89BV4RgyaavXAKVHb4M2gQUzSLpdqsU3YmB15HZmmJ7fwp5E7),
-  2026-10-28 20:31 UTC) it held 0.029820 SOL: the 0.058892 SOL less the ledger's total of 0.029072 SOL. All three
+  2026-10-28 20:31 UTC) it held 0.029820 SOL: the 0.058892 SOL less the 0.029072 SOL the ledger had committed by then;
+- after the targeted run's last sweep transaction
+  ([31kVu4BL…](https://explorer.solana.com/tx/31kVu4BLJ7BBRKmCiHmJpxbxUavg9Seq6FnL92ou2GoFHdGWh314yjSH26H7qxv4oaXoznGbgFkDEjg5HnfLEV9E),
+  2026-11-04 18:48 UTC) it held 0.023208 SOL: the 0.058892 SOL less the ledger's total of 0.035684 SOL. All four
   balances are in those transactions' metadata on chain;
 - the main run cost 0.022665 SOL (0.001769 + 0.020821 + 0.000075), sweep included, under the 0.05 SOL cap in code;
 - the confirmatory run cost 0.003267 SOL (0.000015 + 0.003177 + 0.000075), the two starts without trials and the
-  sweep included, under the 0.0092 SOL its plan allowed.
+  sweep included, under the 0.0092 SOL its plan allowed;
+- the targeted run cost 0.006612 SOL (0.000742 + 0.005795 + 0.000075), sweep included, against the about 0.009 SOL its
+  plan estimated.
 
 **Chain checks.** All went through `api.mainnet-beta.solana.com`, which keeps the whole history, with PublicNode as a
 fallback. 0 problems in each.
@@ -280,11 +328,16 @@ fallback. 0 problems in each.
 | `verify-every-transaction.json` | 10-28 15:12 | the same | 2 501 in 507 | all | 30 (15 509) | 220 of 220 |
 | `verify/2026-10-28T17-24-59Z.json` | 10-28 17:53 | the confirmatory run | 312 in 52 | 60 | 3 (1 220) | 6 of 6 |
 | `verify-every-transaction-confirm.json` | 10-28 20:51 | the same | 312 in 52 | all | 30 (12 365) | 6 of 6 |
+| `verify/2026-11-04T13-19-54Z.json` | 11-04 18:16 | targeted run, swapped parameters | 72 in 12 | 60 | 3 (465) | 0 of 0 |
+| `verify/2026-11-04T13-26-30Z.json` | 11-04 18:24 | targeted run | 570 in 97 | 60 | 3 (1 093) | 114 of 114 |
+| `verify-every-transaction-rakurai-swap.json` | 11-04 18:28 | the first of those two | 72 in 12 | all | 3 (465) | 0 of 0 |
+| `verify-every-transaction-rakurai.json` | 11-04 18:46 | the second | 570 in 97 | all | 3 (1 093) | 114 of 114 |
 
 What each check verifies:
 - every landed transaction sits at its recorded index in its recorded block;
 - each block's leader against the leader schedule: confirmed for every block in every file (the per-session files
-  were made while their epoch's schedule was served: `docs/RUNBOOK.md`, step 7; `docs/CONFIRM.md`, step 3);
+  were made while their epoch's schedule was served: `docs/RUNBOOK.md`, step 7; `docs/CONFIRM.md`, step 3;
+  `docs/RAKURAI.md`, checklist);
 - whole transactions for payer, fee, anchor and role parameters: a sample of 60, or every landed transaction;
 - the recorded rows of everyone else's transactions in whole blocks;
 - every unlanded transaction is unknown to the chain;
@@ -450,7 +503,7 @@ nothing, but they locate every deviation.
   - **EvnRmnMr's label moved** ("Reported client over time").
     - Our snapshots have it reporting Firedancer 26.10.4 at 104.204.143.114:9007 up to 2026-10-25 22:06 UTC, JitoLabs
       4.3.2 at 198.13.140.73:11228 during both runs (2026-10-27 14:39 to 2026-10-28 17:25), and HarmonicFiredancer
-      26.10.5 at 198.13.140.105:12566 on 2026-11-03.
+      26.10.5 at 198.13.140.105:12566 on 2026-11-03 and 04.
     - Its one trial from the Firedancer days, a burst on 2026-10-25, landed in the exact reward/cost order (EADCFB). All
       19 of its buffered trials with all six under the JitoLabs label landed in the total-fee order.
     - Other public measurements for this bounty recorded the same identity as Firedancer on 2026-10-24 to 26
@@ -460,8 +513,9 @@ nothing, but they locate every deviation.
       and as HarmonicFiredancer on 2026-11-03
       ([Betanumber9](https://github.com/Betanumber9/solana-inside-the-block/blob/1c00d0a8963b77dc552ea5f1bd3c8fbcdacd1a1f/REPORT.md)).
       We did not check those.
-    - So for EvnRmnMr, "a JitoLabs validator" describes those days only. Labels are not that stable in general: 13 of
-      our 85 validators changed reported client between 2026-10-24 and 2026-11-03 (2 of them by leaving gossip), 5 of
+    - Under the Harmonic label its order moved too: 10 of 10 trials with F last ("The targeted run").
+    - So for EvnRmnMr, "a JitoLabs validator" describes those days only. Labels are not that stable in general: 14 of
+      our 85 validators changed reported client between 2026-10-24 and 2026-11-04 (2 of them by leaving gossip), 5 of
       them in the two days before the main run, none between its two sessions.
   - **The relayer port.** During both runs EvnRmnMr advertised port 11228, the
     [default TPU-QUIC port of the Jito relayer](https://github.com/jito-foundation/jito-relayer/blob/318cc95f22466d129150797a0de26398dd588ac4/transaction-relayer/src/main.rs#L78-L79),
@@ -486,10 +540,12 @@ nothing, but they locate every deviation.
     hardly shows in the rest of the block.
   - **What the order does not separate** ("How far the total-fee reading goes").
     - B D, then A, E, F, C is also what "the larger requested compute-unit limit first, the larger fee between equal
-      limits" predicts: 40 000, 6 000, then 1 000 for the other four (`test/design.test.ts`).
+      limits" predicts: 40 000, 6 000, then 1 000 for the other four (`test/design.test.ts`). The targeted run separated
+      the two at C8Bey3LK, for total fee, and only there.
     - A, E and F pay the same total fee, yet F, which costs the scheduler the most, came first among them in 20 of the
       36 total-fee trials, against 12 by chance (exact binomial p = 0.005, chosen after seeing the data). Only 42% of
-      the pairs among the three landed in send order. There may be a second key.
+      the pairs among the three landed in send order. There may be a second key. On the targeted run's trials, at 4.4.0,
+      it did not repeat: F first in 7 of 29, and 52% of the pairs in send order.
   - **An on-chain trace** ("How far the total-fee reading goes", "Rakurai's on-chain switch"). C8Bey3LK and 7cVfgArC
     hold enabled accounts of Rakurai's activation program, read on 2026-11-03, though they report JitoLabs. EvnRmnMr
     holds none, and neither does any of the 13 JitoLabs validators that followed reward/cost: 2 of 3 against 0 of 13,
@@ -501,7 +557,9 @@ nothing, but they locate every deviation.
     - the 7 validators we reached that do report Rakurai hold accounts too, and ordered by reward/cost in 30 of 30
       trials, though that client has selectable scheduling modes whose settings we cannot see.
 
-    14 more JitoLabs validators hold enabled accounts. Aiming trials at them would test the lead; we did not.
+    14 more JitoLabs validators held enabled accounts. The targeted run aimed at six of them, and at matched validators
+    without one, and **the lead did not hold**: 22% against 22%, not confirmed. Cogent, with no account, ordered by total
+    fee in 7 of 8 trials ("The targeted run").
   - **Another untested reading.** Harmonic's documentation can be read as sorting batches by total priority fee
     ("Harmonic", below), and EvnRmnMr reports a Harmonic client now. During both runs its address, 198.13.140.73, was in
     the same /24 as Harmonic's gateways 198.13.140.105 and .111, and it was the only JitoLabs validator in that range.
@@ -509,7 +567,7 @@ nothing, but they locate every deviation.
   - Within one client label and version, some operators order their blocks differently. Gossip cannot tell which
     code they run.
   - **Tested again** on 30 new trials of EvnRmnMr and C8Bey3LK: B before C in 29, confirmed ("The confirmatory
-    run").
+    run"). C8Bey3LK did it again a week later at 4.4.0, in 9 of 10 ("The targeted run").
 - **Firedancer.** One validator, JD549Hsb (Forward Industries, 26.10.4): 4 of its 10 trials in the exact order.
   - In the other 6, B came before F, and in 3 of those also before C. Those six orders are also reward/cost orders,
     for a base-fee share below 0.19, like Harmonic's (next item).
@@ -648,29 +706,33 @@ The first two items cover every direct-path run: the calibration and rehearsal r
 - **Harmonic's rule.** Its orders fit reward/cost with a smaller base-fee share; we cannot tell that from a cost
   formula of its own.
 - **The exact base-fee share.** The contrasts bracket it (0.12–0.84); they do not pin it to 0.5.
-- **Why some validators differ.** The three total-fee JitoLabs validators, Firedancer JD549Hsb and the "0.1.1" build:
-  we see what they do, not what code they run. Client labels and versions are what validators report in gossip. For
-  EvnRmnMr we cannot tell the validator from a relayer in front of it. An enabled Rakurai activation account says what
-  was approved, not what runs.
+- **Why some validators differ.** The total-fee JitoLabs validators, Firedancer JD549Hsb and the "0.1.1" build: we see
+  what they do, not what code they run. Client labels and versions are what validators report in gossip. For EvnRmnMr we
+  cannot tell the validator from a relayer in front of it. An enabled Rakurai activation account says what was approved,
+  not what runs. The one explanation we tested, that account, was not confirmed ("The targeted run"), and `Ha1iade1`
+  changed its order within an hour, reporting one client in the snapshots before and after.
 - **The label during a run.** A trial's label comes from the snapshot at the start of its run, and a run of up to two
   hours does not recheck it. Between the main run's two sessions, 53 minutes apart, none of our 85 validators changed
-  client; over ten days 13 did, 2 of them by leaving gossip ("Reported client over time").
+  client; over eleven days 14 did, 2 of them by leaving gossip ("Reported client over time"). One holder chosen for the
+  targeted run changed within 15 hours, before its first trial.
 - **Most validators one at a time.** 75 of the 85 have 1 to 4 trials with all six. For them a verdict is about their
   label, not about them.
 - **Rules outside the candidates.** Reward/cost is not separated from a linear key reward − λ·cost with λ between 1 and
-  1.8, which ranks the six the same. Total fee is not separated from the larger requested compute-unit limit first
-  (`docs/schedulers.md`, "What the contrasts identify").
+  1.8, which ranks the six the same. Total fee is separated from the larger requested compute-unit limit first at
+  C8Bey3LK only (`docs/schedulers.md`, "What the contrasts identify").
 - **Rakurai's scheduler.** It is a closed library with selectable modes, so "reward/cost" at the Rakurai validators we
   reached describes those seven with whatever setting each ran. We cannot see the settings.
 - **Validators we did not reach.** The validators reached hold 22.2% of mainnet's leader slots through the local
   labels and 22.8% through the pipelines; AgaveBam is the least covered (19% of its slots). Agave and Rakurai are
   small, concentrated labels.
 - **Other times.** One day, one epoch (1069); the confirmatory run adds the next day and epoch for three validators
-  only. Schedulers change with releases; the pre-releases already break ties differently. By the snapshot of
-  2026-11-03, most validators report Agave 4.4 or Firedancer 26.10.5, which we did not measure.
+  only, and the targeted run a day in epoch 1077 for 11. Schedulers change with releases: the targeted run shows it for
+  ties at Jito 4.4.0. By the snapshot of 2026-11-03, most validators report Agave 4.4 or Firedancer 26.10.5, and beyond
+  those 11 we did not measure them.
 - **A control on the confirmatory day.** The confirmatory run measured only its three validators. That the other
   JitoLabs and Firedancer validators still ranked by reward/cost rests on the main run, a day and an epoch earlier;
-  a change common to all of them between epochs 1069 and 1070 would look the same.
+  a change common to all of them between epochs 1069 and 1070 would look the same. The targeted run has that comparison
+  on its own day: Helius and Ledger by Figment in the same 12 minutes.
 - **Arrival inside the leader.** The QUIC acknowledgement proves delivery, not when each transaction reached the
   scheduler.
 
@@ -756,7 +818,7 @@ Per validator (descriptive; B before C of the trials with both in the window):
   established.
 
 **What it does not control.** It measured only its three validators, so a change common to every validator between
-epochs 1069 and 1070 would look the same (section 10).
+epochs 1069 and 1070 would look the same (section 10). The targeted run compares validators on one day.
 
 **Checks and cost.** Both chain checks of the run found 0 problems ("Measurements", "Chain checks"): every landed
 transaction at its recorded index, all 52 leaders confirmed by the schedule, all 312 landed transactions whole, the
@@ -771,7 +833,140 @@ transaction at its recorded index, all 52 leaders confirmed by the schedule, all
   trials.
 - Nothing in the analysis changed after the tag.
 
+## The targeted run
+
+Planned in [`docs/RAKURAI.md`](docs/RAKURAI.md) and frozen at the git tag `prereg-rakurai` before its first trial (top
+of this report). Results are copied from `results.md`, "Targeted run", and trial by trial from `orders.md` (campaigns
+`rakurai` and `rakurai-swap`). Its trials change no earlier test or verdict: they appear only in their own sections
+of `results.md`, the run list, "Reported client over time" and `orders.md`.
+
+**Why.** Section 6 left a lead and two open points:
+- among the 16 JitoLabs validators reached, two of the three that ordered by total fee hold an enabled account of
+  Rakurai's activation program, and none of the 13 that followed reward/cost does. That pattern was found in the data,
+  so it could not be tested on them;
+- B D, then A, E, F, C fits total fee, and fits "the larger requested compute-unit limit first";
+- we had not seen whether the method notices a change of code. Jito-Solana v4.4.0-jito keeps the priority formula of
+  v4.3.2 but breaks ties oldest first.
+
+**Design.** The same code, delivery and path as the earlier runs, in the one cell buffered/shared.
+- **Who.** Chosen by a rule from committed data before any trial (`selectPanel` in `src/targeted.ts`, checked by a test):
+  six JitoLabs holders of an enabled account, new to the buffered/shared cell, with at least 0.1% of leader slots; for
+  each, the JitoLabs 4.4.0 validator without an account closest in leader slots, on the same side of port 11228. Three
+  more, described and not tested: `C8Bey3LK`, `HEL1USMZ` and `EvnRmnMr`.
+- **Campaign `rakurai`.** The six roles of the main run; quota 8 for the panel, 10 for the other three.
+- **Campaign `rakurai-swap`.** `C8Bey3LK` only, quota 12, with the parameters of B and D swapped round: B pays 10 000
+  lamports for 1 000 CU, D 9 000 for 40 000. Total fee now predicts B before D; the larger limit first, D before B.
+- **Verdicts.** The three p values are Holm-adjusted together; a Holm p below 0.05 confirms.
+
+**The run.** 2026-11-04, epoch 1077, every trial on the `firstShred` clock, code at the tag (`code` in each `run.json`).
+- `rakurai-swap`, 13:19–13:26 UTC: 12 trials dispatched, 72 of 72 transactions landed.
+- `rakurai`, 13:26–17:26 UTC: 114 trials dispatched, 570 of 684 transactions landed, 94 trials with all six.
+- Every validator that landed anything met its quota. Four of the 12 panel validators never did ("Deviations", below).
+
+| hypothesis | validators | measure | trials | result | p | Holm p | verdict |
+|---|---|---|---:|---|---:|---:|---|
+| H1: holders put B before C more than matched validators | 4 holders, 4 matched | mean over validators of the share of trials with B before C | 64 | holders 22%, matched 22% | 0.643 | 0.643 | **not confirmed** |
+| H2: total fee, not the larger limit | `C8Bey3LK`, swapped parameters | B before D (by chance 50%) | 12 | 100% [76–100%] | < 0.001 | < 0.001 | **confirmed** |
+| H3: oldest first at Jito 4.4.0 | 4 matched | twin sent first landed first (by chance 50%) | 32 | 78% [61–89%] | 0.001 | 0.002 | **confirmed** |
+
+Per validator (descriptive). A reading needs one order in at least 80% of the trials with all six:
+
+| group | validator | name on chain | reported | QUIC port | dispatched | with all six | reward/cost | total fee | F last | other orders | B before C | kept by the sensitivity filter | reading |
+|---|---|---|---|---|---:|---:|---:|---:|---:|---|---:|---:|---|
+| holder | `A9mvukTd` | – | JitoLabs 4.4.0 | 8022 | 8 | 8 | 8 | 0 | 0 | – | 0 of 8 | 8 | reward/cost |
+| holder | `8tjFeSAp` | – | JitoLabs 4.4.0 | 11228 | 2 | 0 | 0 | 0 | 0 | – | 0 of 0 | 0 | no trial with all six |
+| holder | `Ha1iade1` | Ha1iad3 | JitoLabs 4.4.0-rc.1 | 8002 | 9 | 8 | 1 | 3 | 4 | – | 3 of 8 | 8 | mixed |
+| holder | `siidBVew` | – | JitoLabs 4.4.0 | 11228 | 2 | 0 | 0 | 0 | 0 | – | 0 of 0 | 0 | no trial with all six |
+| holder | `2Df1aLCR` | P2P.org Turbo | JitoLabs 4.4.0 | 11228 | 17 | 8 | 8 | 0 | 0 | – | 0 of 8 | 0 | reward/cost |
+| holder | `fishfish` | stakefish 🐟 | HarmonicAgave 4.4.0 | 12481 | 8 | 8 | 0 | 0 | 8 | – | 4 of 8 | 7 | F last |
+| matched | `bitHUmbK` | – | JitoLabs 4.4.0 | 9002 | 8 | 8 | 8 | 0 | 0 | – | 0 of 8 | 8 | reward/cost |
+| matched | `vu1sGn2f` | Allnodes ⚡️ 0% fee | JitoLabs 4.4.0 | 11228 | 9 | 8 | 7 | 0 | 0 | DEACFB | 0 of 8 | 0 | reward/cost |
+| matched | `HM19KBHD` | Hello Moon | JitoLabs 4.4.0 | 8002 | 8 | 8 | 8 | 0 | 0 | – | 0 of 8 | 8 | reward/cost |
+| matched | `8o8wWCYN` | Sygnum Validators | JitoLabs 4.4.0 | 11228 | 2 | 0 | 0 | 0 | 0 | – | 0 of 0 | 0 | no trial with all six |
+| matched | `32ke3uf1` | FalconX | JitoLabs 4.4.0 | 11228 | 2 | 0 | 0 | 0 | 0 | – | 0 of 0 | 0 | no trial with all six |
+| matched | `Cogent51` | Cogent ⚙️ by SOL Strategies | JitoLabs 4.4.0 | 8002 | 8 | 8 | 0 | 7 | 0 | DAECFB | 7 of 8 | 8 | total fee |
+| known total fee | `C8Bey3LK` | Ledger by Figment | JitoLabs 4.4.0 | 8022 | 10 | 10 | 0 | 9 | 1 | – | 9 of 10 | 10 | total fee |
+| known reward/cost | `HEL1USMZ` | Helius | JitoLabs 4.4.0 | 8002 | 10 | 10 | 10 | 0 | 0 | – | 0 of 10 | 10 | reward/cost |
+| label moved | `EvnRmnMr` | Everstake | HarmonicFiredancer 26.10.5 | 12566 | 11 | 10 | 0 | 0 | 10 | – | 5 of 10 | 10 | F last |
+
+**H1: not confirmed. The lead did not hold on new validators.**
+- Holders and matched validators put B before C in 22% of trials on average, an exact p of 45/70.
+- The account does not go with the order. Two holders followed reward/cost in all 16 of their trials. Among the matched
+  validators, which hold no account, Cogent landed 7 of 8 trials in the exact total-fee order. It advertises an address
+  of its own, did not reconnect, and all 8 trials pass the sensitivity filter.
+- We read the activation accounts again on 2026-11-04 at 18:27 UTC: the same 105, all enabled, and none for Cogent (not
+  committed; `node src/cli.ts rakurai` repeats it).
+- **What the test could see.** With four validators a side the smallest possible p is 1/70, when every holder is above
+  every matched validator. Three holders always putting B before C, and nobody else ever, give 5/70, which does not
+  confirm. So the test would miss a weak link. Nothing here points to one: the two means are equal.
+- This does not show that no Rakurai code runs on these validators, `C8Bey3LK` included. An enabled account, on its own,
+  does not tell who orders by total fee.
+
+**H2: confirmed.** With B paying more for the smaller limit, `C8Bey3LK` put B before D in 12 of 12 trials, p = 1/4096.
+10 of the 12 landed in the exact total-fee order (B D, then A, E, F, C), none in the exact order of the larger limit first
+or of reward/cost; the other two, BEACDF and BFEACD, also start with B. At this validator the fee decides, not the requested
+limit. We did not swap the parameters at Cogent or any other validator, so for them the two rules stay unseparated.
+
+**H3: confirmed.** At the matched validators, the twin sent first landed first in 25 of 32 trials, against 42% [29–55%]
+at Agave and Jito 4.3.2 in the main run (section 7). That is the direction the source predicted before the run: the method
+sees this change of code. Four of the six matched validators gave trials; the row in `results.md` prints "6 matched"
+because it prints the length of the list. The comparison with 42% is across days and validators.
+
+**Read after the data (exploratory;** `results.md`, "Targeted run: read after the data"**).** They test nothing.
+- **The same hours, the same reported client and version.** Between 13:26 and 13:38 UTC, Helius landed 10 of 10 trials in
+  the reward/cost order and Ledger by Figment 9 of 10 in the total-fee order, both reporting JitoLabs 4.4.0, both on an
+  address of their own, none reconnecting. So the difference is neither a day effect nor an epoch effect, which the
+  confirmatory run could not rule out. Ledger by Figment also kept the order across its move from 4.3.2 to 4.4.0.
+- **The order moved with the label.** Everstake landed 19 of 19 trials in the total-fee order while it reported JitoLabs,
+  and now, reporting HarmonicFiredancer, 10 of 10 with A, E, D first and F last, the Harmonic orders of section 6. stakefish,
+  chosen while it reported JitoLabs and reporting HarmonicAgave by the first trial, landed 8 of 8 the same way.
+- **One validator, three orders in 73 minutes.** `Ha1iade1` reported JitoLabs 4.4.0-rc.1 at one address in the snapshots
+  before and after the run. Its 8 trials: total fee at 14:09 and 14:39 UTC, reward/cost at 14:44, F last at 14:56, 14:59, 15:02
+  and 15:08, total fee at 15:22. `C8Bey3LK`'s one exception, at 13:35, was also an F-last order. We have no snapshot
+  between those two, so we cannot exclude a change of client and back. We do not know what changed the order.
+- **The twins follow the reading.** The twin sent first landed first in 43 of 50 trials (86% [74–93%]) at the six validators
+  that read reward/cost, and in 14 of 30 (47% [30–64%]) at the two that read total fee, the swapped trials included. The
+  second share is what an order unrelated to sending gives, which would fit a scheduler other than Jito 4.4.0's there. We
+  did not test that.
+- **A second key did not repeat.** Section 6 found F first among A, E, F in 20 of 36 total-fee trials, p = 0.005, chosen
+  after seeing the data. Here it was first in 7 of 29, against 9.7 by chance. That excess may have been noise, or may
+  belong to 4.3.2.
+
+**What it does not show.** Four validators a side; 8 to 12 trials per validator. Our panel is not a sample of JitoLabs: of its
+nine JitoLabs validators with a reading here, six read reward/cost, two total fee and one mixed, and these counts do not
+estimate a share of the label. All four that never landed were on port 11228, so holders and matched validators behind a relayer
+are under-represented. What code runs remains unseen. One day.
+
+**Checks and cost.** All chain checks of the run found 0 problems ("Measurements", "Chain checks"): every landed
+transaction at its recorded index, all 109 leaders confirmed by the schedule (12 + 97), all 642 landed transactions whole
+(72 + 570), the 114 unlanded ones unknown to the chain. The run cost 0.006612 SOL, the sweep included. The plan estimated about
+0.009 SOL, with 32 more trials that count.
+
+**Deviations from the plan.**
+- **Four validators never landed:** `8tjFeSAp`, `siidBVew`, `8o8wWCYN` and `32ke3uf1`, two from each group, all on port
+  11228. Each stopped being targeted after two empty bursts, as the plan says. The plan's power figures assumed six a side
+  for H1 and 48 trials for H3.
+- **`fishfish` left the plan's condition.** It reported JitoLabs 4.4.0-rc.1 at 91.242.214.243:8002 in the snapshot of
+  2026-11-03, and HarmonicAgave 4.4.0 at 64.130.45.196:12481 by the first run, 15 hours later. The plan replaces no
+  validator, so it stayed in H1. Without it (exploratory), p = 25/35 = 0.714: no change of verdict.
+- **The stop.** The plan stops when every quota is reached, or on 2026-11-05 at 12:00 UTC. The four quotas above could not be
+  reached: `run` keeps excluded addresses excluded within a campaign, so running the command again would target nobody.
+  We stopped at the end of the second session. It sent its last trial at 17:15 and waited for its 240 minutes because those
+  quotas stayed open.
+- Nothing in the tests changed after the tag. The only code added since then is the section read after the data; the code at the
+  tag gives the same section "Targeted run" on these data.
+
 ## What went wrong
+
+### During the targeted run
+
+| what | how we found it | what we did |
+|---|---|---|
+| Four of the 12 panel validators, all behind port 11228, never landed a transaction and were excluded after two failures each. H1 fell from six validators a side to four. | `events.jsonl`, `exclude`. | Reported, and no validator replaced, as the plan says ("The targeted run", deviations). |
+| A holder, `fishfish`, had moved to a Harmonic label and another address between the freeze and the first trial. | Each run's snapshot against the snapshot of 2026-11-03. | Kept in H1, as the plan says. Its share of B before C is the highest among the holders; without it the verdict is the same. |
+| `2Df1aLCR` landed nothing in 9 of its 17 dispatches, between 14:52 and 16:53 UTC, after having landed before. Unlanded transactions cost nothing. | "Delivery"; `events.jsonl`. | Its quota was met at 17:15. 8 counted trials, none kept by the sensitivity filter, like all trials on port 11228. |
+| The second session waited 11 minutes after its last trial, for its 240-minute limit, because the excluded validators' quotas stayed open. | `run.log`. | No effect on the data. Reported as how the run stopped. |
+| "Targeted run" prints "6 matched" for H3, though four gave trials. | Reading the table. | Left as frozen, and said here. |
 
 ### Found after both runs
 
@@ -909,3 +1104,13 @@ differs, the one listed above. Added on 2026-11-03 and 04, and marked as such:
 - **Tests** for the new tables and for those two cases (`test/validators.test.ts`, `test/design.test.ts`).
 - **This report and README.** Validator names, the table in the summary, the sections above that cite these tables, and
   a closing note in `docs/CONFIRM.md`.
+
+### The targeted run
+
+Its plan, `docs/RAKURAI.md`, and the code it needed (`--roles swap`, `src/targeted.ts`, the section "Targeted run" of
+`analyze`) were frozen at `prereg-rakurai` before its first trial. Changed after the tag:
+- the section "Targeted run: read after the data" of `analyze`, exploratory and marked as such, with a test. Run on the same
+  data, the code at the tag gives the same section "Targeted run";
+- this report, README, `docs/schedulers.md`, and a closing section of `docs/RAKURAI.md` marked as written after the run;
+- `validator-names.json`, read again to cover the new validators (no earlier name changed), and a snapshot of 2026-11-04
+  18:26 UTC, taken to see whether `Ha1iade1` still reported the same client.

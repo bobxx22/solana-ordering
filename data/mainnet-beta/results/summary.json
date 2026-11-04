@@ -95,8 +95,32 @@
    "epochs": [
     1070
    ]
+  },
+  {
+   "id": "2026-11-04T13-19-54Z",
+   "campaign": "rakurai-swap",
+   "startedAt": "2026-11-04T13:19:56.523Z",
+   "path": "tpu",
+   "trials": 12,
+   "minSlot": 465316632,
+   "maxSlot": 465318088,
+   "epochs": [
+    1077
+   ]
+  },
+  {
+   "id": "2026-11-04T13-26-30Z",
+   "campaign": "rakurai",
+   "startedAt": "2026-11-04T13:26:33.030Z",
+   "path": "tpu",
+   "trials": 114,
+   "minSlot": 465318244,
+   "maxSlot": 465382012,
+   "epochs": [
+    1077
+   ]
   }
  ],
- "units": 461,
+ "units": 567,
  "uncollected": []
 }

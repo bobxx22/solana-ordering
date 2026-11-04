@@ -36,6 +36,16 @@ and whether the rule differs between validator clients.
   - **Read from the chain after the runs** (exploratory, REPORT section 6). Two of the three total-fee validators hold
     enabled accounts of Rakurai's activation program, and none of the 13 JitoLabs validators that followed reward/cost
     does: a lead, not an explanation. Everstake's identity reported three different clients within ten days.
+  - **The targeted run** (2026-11-04, 126 new trials, plan frozen at the git tag `prereg-rakurai`).
+    - That lead did not hold on new validators: holders of an account and matched validators without one put B before
+      C in 22% of trials each, not confirmed. Cogent, without an account, ordered by total fee in 7 of 8.
+    - With the parameters of B and D swapped, Ledger by Figment put B before D in 12 of 12 trials: total fee, not the
+      larger limit, confirmed for that validator.
+    - At Jito 4.4.0 the twin sent first landed first in 78% of 32 trials, against 42% at 4.3.2: a change of code the
+      source predicted, confirmed.
+    - Exploratory: on one reported client and version, in the same 12 minutes, Helius followed reward/cost and Ledger by
+      Figment total fee; one validator went through three orders in 73 minutes, reporting one client in the snapshots
+      before and after.
 - **Details.** [`REPORT.md`](REPORT.md); the generated tables are in
   [`data/mainnet-beta/results/results.md`](data/mainnet-beta/results/results.md).
 - **Check it.** `docker compose up` needs no keys and sends nothing.
@@ -74,8 +84,9 @@ This runs `reproduce`, which needs no keys and sends nothing. It does three thin
    - A sample of whole transactions from every role: fee, fee payer (one of the run's own wallets), anchor, and the
      ComputeBudget instructions against the recorded role parameters. This is what tells A, E and F apart, since
      they pay the same fee. `verify <run | all> --sample all` checks every landed transaction this way; the
-     results are committed as `data/mainnet-beta/verify-every-transaction.json` (the runs up to the main run) and
-     `verify-every-transaction-confirm.json` (the confirmatory run).
+     results are committed as `data/mainnet-beta/verify-every-transaction.json` (the runs up to the main run),
+     `verify-every-transaction-confirm.json` (the confirmatory run), and `verify-every-transaction-rakurai-swap.json`
+     and `verify-every-transaction-rakurai.json` (the targeted run).
    - A sample of whole blocks: every recorded row of everyone else's transactions (fees, requested limits,
      scheduled cost), rebuilt from the chain.
    - Every transaction recorded as not landed is unknown to the chain. It is asked only of an endpoint whose history
@@ -310,7 +321,7 @@ rule in `src/design.ts` and [`docs/RUNBOOK.md`](docs/RUNBOOK.md) are the plan. T
 `prereg-main`, which is older than every trial of campaign `main` (the run directories are named by their UTC start).
 Anything added after the data is marked exploratory (REPORT, "The plan"). Two of those findings are tested again
 on new trials by a confirmatory run, planned in [`docs/CONFIRM.md`](docs/CONFIRM.md) and frozen at the git tag
-`prereg-confirm` before its first trial. A targeted run on validators chosen by their Rakurai activation account is
+`prereg-confirm` before its first trial. A targeted run on validators chosen by their Rakurai activation account was
 planned in [`docs/RAKURAI.md`](docs/RAKURAI.md) and frozen at the git tag `prereg-rakurai` before its first trial.
 
 - **Unit.** One trial.
@@ -399,11 +410,12 @@ planned in [`docs/RAKURAI.md`](docs/RAKURAI.md) and frozen at the git tag `prere
   pipeline. For Harmonic, a smaller base-fee share and a cost formula of its own predict the same orders.
 - **A relayer vs the validator behind it**, for JitoLabs validators that advertise port 11228.
 - **Total fee vs the larger requested compute-unit limit first.** B D, then A, E, F, C is what both predict
-  (`test/design.test.ts`).
+  (`test/design.test.ts`). Swapped parameters separate them, and we swapped them at one validator only (REPORT, "The
+  targeted run").
 - **Reward/cost vs a linear key.** reward − λ·cost, with λ between 1 and 1.8, ranks the six the same.
 - **Operator configuration within a client label**, and the label itself: the client id and version are what the
   validator reports in gossip, and the chain cannot confirm them. A run takes the label from a snapshot at its start,
-  and 13 of our 85 validators changed reported client within ten days, 2 of them by leaving gossip (`results.md`,
+  and 14 of our 85 validators changed reported client within eleven days, 2 of them by leaving gossip (`results.md`,
   "Reported client over time").
 - **One validator's rule, for most validators.** 75 of the 85 have 1 to 4 trials with all six; the comparison of clients
   pools them.
@@ -453,17 +465,19 @@ planned in [`docs/RAKURAI.md`](docs/RAKURAI.md) and frozen at the git tag `prere
 
 `data/mainnet-beta/`:
 
-- `snapshots/`: validators by client, taken apart from the runs (2026-10-24 and 2026-11-03).
+- `snapshots/`: validators by client, taken apart from the runs (2026-10-24, 2026-11-03 and 2026-11-04).
 - `validator-names.json`: the name each validator of our trials publishes on chain, self-declared.
-  `rakurai-activation.json`: the accounts of Rakurai's activation program. Both read from the chain on 2026-11-03.
+  `rakurai-activation.json`: the accounts of Rakurai's activation program, read from the chain on 2026-11-03; the
+  names read again on 2026-11-04.
 - `runs/<UTC start>/`: one live run, with the raw files listed above.
 - `paths/`, `quic-test/`: delivery-path measurements. The QUIC feasibility data was produced once by
   `archive/quic-feasibility.ts`, which is kept as a record, was written against an earlier API and does not run.
 - `ledger.jsonl`: every reservation and settlement.
 - `verify.json`: the check of the runs up to the main run against the chain; `verify/<run>.json`: the check of each
-  main-run session and of the confirmatory run, made while its leader schedule was still served;
-  `verify-every-transaction.json` and `verify-every-transaction-confirm.json`: every landed transaction checked whole,
-  for the runs up to the main run and for the confirmatory run.
+  main-run session, of the confirmatory run and of the targeted run, made while its leader schedule was still served;
+  `verify-every-transaction.json`, `verify-every-transaction-confirm.json`,
+  `verify-every-transaction-rakurai-swap.json` and `verify-every-transaction-rakurai.json`: every landed transaction
+  checked whole, for the runs up to the main run, the confirmatory run and the two campaigns of the targeted run.
 - `results/`: generated by `analyze`.
 
 ## Commands

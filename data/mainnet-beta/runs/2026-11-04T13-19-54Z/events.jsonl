@@ -1,0 +1,12 @@
+{"t":"2026-11-04T13:20:56.849Z","type":"landing-check","trial":0,"client":"JitoLabs","ingress":"185.26.10.33:8022","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":313}
+{"t":"2026-11-04T13:21:43.967Z","type":"landing-check","trial":1,"client":"JitoLabs","ingress":"185.26.10.33:8022","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":403}
+{"t":"2026-11-04T13:21:49.940Z","type":"landing-check","trial":2,"client":"JitoLabs","ingress":"185.26.10.33:8022","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":386}
+{"t":"2026-11-04T13:22:30.002Z","type":"landing-check","trial":3,"client":"JitoLabs","ingress":"185.26.10.33:8022","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":360}
+{"t":"2026-11-04T13:22:35.776Z","type":"landing-check","trial":4,"client":"JitoLabs","ingress":"185.26.10.33:8022","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":481}
+{"t":"2026-11-04T13:23:04.413Z","type":"landing-check","trial":5,"client":"JitoLabs","ingress":"185.26.10.33:8022","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":378}
+{"t":"2026-11-04T13:23:32.560Z","type":"landing-check","trial":6,"client":"JitoLabs","ingress":"185.26.10.33:8022","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":358}
+{"t":"2026-11-04T13:23:54.390Z","type":"landing-check","trial":7,"client":"JitoLabs","ingress":"185.26.10.33:8022","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":535}
+{"t":"2026-11-04T13:24:35.510Z","type":"landing-check","trial":8,"client":"JitoLabs","ingress":"185.26.10.33:8022","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":421}
+{"t":"2026-11-04T13:24:41.117Z","type":"landing-check","trial":9,"client":"JitoLabs","ingress":"185.26.10.33:8022","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":409}
+{"t":"2026-11-04T13:25:43.928Z","type":"landing-check","trial":10,"client":"JitoLabs","ingress":"185.26.10.33:8022","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":438}
+{"t":"2026-11-04T13:26:07.233Z","type":"landing-check","trial":11,"client":"JitoLabs","ingress":"185.26.10.33:8022","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":385}

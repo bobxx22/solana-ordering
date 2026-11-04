@@ -78,7 +78,7 @@ import { BASE_FEE_PER_SIGNATURE, countsTowardsQuota, FIRE_OFFSET, LOCAL_CLIENTS,
 import type { Snapshot } from './discover.ts'
 import { binomialLowerTail, bootstrapMeanCi, exactUpperTail, mean, median, pearson, quantile, signFlipP, signFlipUpperP, spearman, wilson } from './stats.ts'
 import { readJsonl, rng, toJson } from './util.ts'
-import { TARGETED_CAMPAIGNS, targetedSection } from './targeted.ts'
+import { TARGETED_CAMPAIGNS, targetedAfterData, targetedSection } from './targeted.ts'
 import { ORDERS, validatorSections } from './validators.ts'
 
 /**
@@ -1021,6 +1021,8 @@ export function analyze(dataDir: string, cluster: string): string {
   }
   out.push(...validatorSections({ loaded, dataDir, cluster, latest, departs: CONFIRM_DEPARTS }))
   out.push(...targetedSection({ loaded, dataDir, cluster, kept: keptBySensitivity }))
+  // added after the targeted run
+  out.push(...targetedAfterData({ loaded, dataDir, cluster }))
 
   // ---------- rule agreement ----------
   const ruleTable = (title: string, groups: { label: string; units: Unit[] }[], rules: Rule[]) => {

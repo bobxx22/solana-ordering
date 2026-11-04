@@ -1,0 +1,127 @@
+{"t":"2026-11-04T13:26:47.175Z","type":"landing-check","trial":0,"client":"JitoLabs","ingress":"64.130.57.215:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":358}
+{"t":"2026-11-04T13:26:52.269Z","type":"landing-check","trial":1,"client":"JitoLabs","ingress":"67.213.121.29:11228","landed":0,"inWindow":"","counts":false,"marginMs":-1155}
+{"t":"2026-11-04T13:26:55.863Z","type":"landing-check","trial":2,"client":"JitoLabs","ingress":"64.130.57.215:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":367}
+{"t":"2026-11-04T13:27:32.437Z","type":"landing-check","trial":3,"client":"JitoLabs","ingress":"185.26.10.33:8022","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":422}
+{"t":"2026-11-04T13:27:42.951Z","type":"landing-check","trial":4,"client":"JitoLabs","ingress":"64.130.57.215:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":434}
+{"t":"2026-11-04T13:27:53.973Z","type":"landing-check","trial":5,"client":"JitoLabs","ingress":"148.113.199.156:11228","landed":0,"inWindow":"","counts":false,"marginMs":null}
+{"t":"2026-11-04T13:27:59.795Z","type":"landing-check","trial":6,"client":"JitoLabs","ingress":"64.130.57.215:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":446}
+{"t":"2026-11-04T13:28:35.499Z","type":"landing-check","trial":7,"client":"HarmonicFiredancer","ingress":"198.13.140.105:12566","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":354}
+{"t":"2026-11-04T13:28:40.594Z","type":"landing-check","trial":8,"client":"JitoLabs","ingress":"64.130.57.215:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":403}
+{"t":"2026-11-04T13:28:50.608Z","type":"landing-check","trial":9,"client":"JitoLabs","ingress":"116.126.141.28:9002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":327}
+{"t":"2026-11-04T13:28:50.737Z","type":"landing-check","trial":10,"client":"JitoLabs","ingress":"57.129.90.120:8022","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":373}
+{"t":"2026-11-04T13:28:56.373Z","type":"landing-check","trial":11,"client":"JitoLabs","ingress":"64.130.57.215:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":358}
+{"t":"2026-11-04T13:29:23.562Z","type":"landing-check","trial":12,"client":"JitoLabs","ingress":"148.113.199.156:11228","landed":0,"inWindow":"","counts":false,"marginMs":null}
+{"t":"2026-11-04T13:29:23.563Z","type":"exclude","ingress":"148.113.199.156:11228","validatorsBehind":1,"client":"JitoLabs","why":"empty burst"}
+{"t":"2026-11-04T13:29:32.063Z","type":"landing-check","trial":13,"client":"JitoLabs","ingress":"64.130.57.215:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":390}
+{"t":"2026-11-04T13:29:48.277Z","type":"landing-check","trial":14,"client":"JitoLabs","ingress":"57.129.90.120:8022","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":405}
+{"t":"2026-11-04T13:29:56.348Z","type":"landing-check","trial":15,"client":"JitoLabs","ingress":"57.129.90.120:8022","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":424}
+{"t":"2026-11-04T13:30:13.824Z","type":"landing-check","trial":16,"client":"JitoLabs","ingress":"185.26.10.33:8022","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":404}
+{"t":"2026-11-04T13:30:25.823Z","type":"landing-check","trial":17,"client":"HarmonicFiredancer","ingress":"198.13.140.105:12566","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":380}
+{"t":"2026-11-04T13:30:39.143Z","type":"landing-check","trial":18,"client":"JitoLabs","ingress":"185.26.10.33:8022","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":577}
+{"t":"2026-11-04T13:30:49.648Z","type":"landing-check","trial":19,"client":"JitoLabs","ingress":"185.26.10.33:8022","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":403}
+{"t":"2026-11-04T13:30:59.438Z","type":"landing-check","trial":20,"client":"JitoLabs","ingress":"169.155.44.26:11228","landed":0,"inWindow":"","counts":false,"marginMs":null}
+{"t":"2026-11-04T13:31:05.227Z","type":"landing-check","trial":21,"client":"JitoLabs","ingress":"57.129.90.120:8022","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":420}
+{"t":"2026-11-04T13:31:40.255Z","type":"landing-check","trial":22,"client":"JitoLabs","ingress":"64.130.57.215:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":497}
+{"t":"2026-11-04T13:31:45.980Z","type":"landing-check","trial":23,"client":"JitoLabs","ingress":"185.26.10.33:8022","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":367}
+{"t":"2026-11-04T13:32:08.135Z","type":"landing-check","trial":24,"client":"JitoLabs","ingress":"185.26.10.33:8022","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":403}
+{"t":"2026-11-04T13:32:38.755Z","type":"landing-check","trial":25,"client":"JitoLabs","ingress":"64.130.57.215:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":454}
+{"t":"2026-11-04T13:32:53.996Z","type":"landing-check","trial":26,"client":"JitoLabs","ingress":"116.126.141.28:9002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":327}
+{"t":"2026-11-04T13:33:00.667Z","type":"landing-check","trial":27,"client":"JitoLabs","ingress":"57.129.90.120:8022","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":355}
+{"t":"2026-11-04T13:33:14.985Z","type":"landing-check","trial":28,"client":"JitoLabs","ingress":"185.26.10.33:8022","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":371}
+{"t":"2026-11-04T13:33:20.101Z","type":"landing-check","trial":29,"client":"JitoLabs","ingress":"64.130.57.215:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":433}
+{"t":"2026-11-04T13:33:50.135Z","type":"landing-check","trial":30,"client":"HarmonicFiredancer","ingress":"198.13.140.105:12566","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":351}
+{"t":"2026-11-04T13:33:56.015Z","type":"landing-check","trial":31,"client":"HarmonicAgave","ingress":"64.130.45.196:12481","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":419}
+{"t":"2026-11-04T13:34:37.580Z","type":"landing-check","trial":32,"client":"HarmonicFiredancer","ingress":"198.13.140.105:12566","landed":6,"inWindow":"","counts":false,"marginMs":579}
+{"t":"2026-11-04T13:34:43.472Z","type":"landing-check","trial":33,"client":"JitoLabs","ingress":"169.155.44.26:11228","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":324}
+{"t":"2026-11-04T13:35:15.217Z","type":"landing-check","trial":34,"client":"JitoLabs","ingress":"57.129.90.120:8022","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":340}
+{"t":"2026-11-04T13:35:19.891Z","type":"landing-check","trial":35,"client":"JitoLabs","ingress":"116.126.141.28:9002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":322}
+{"t":"2026-11-04T13:35:45.058Z","type":"landing-check","trial":36,"client":"JitoLabs","ingress":"185.26.10.33:8022","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":384}
+{"t":"2026-11-04T13:36:31.573Z","type":"landing-check","trial":37,"client":"HarmonicFiredancer","ingress":"198.13.140.105:12566","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":393}
+{"t":"2026-11-04T13:37:08.960Z","type":"landing-check","trial":38,"client":"HarmonicFiredancer","ingress":"198.13.140.105:12566","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":434}
+{"t":"2026-11-04T13:37:14.253Z","type":"landing-check","trial":39,"client":"JitoLabs","ingress":"116.126.141.28:9002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":373}
+{"t":"2026-11-04T13:37:31.136Z","type":"landing-check","trial":40,"client":"JitoLabs","ingress":"185.26.10.33:8022","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":523}
+{"t":"2026-11-04T13:37:36.272Z","type":"landing-check","trial":41,"client":"JitoLabs","ingress":"70.40.185.183:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":420}
+{"t":"2026-11-04T13:38:05.737Z","type":"landing-check","trial":42,"client":"HarmonicFiredancer","ingress":"198.13.140.105:12566","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":371}
+{"t":"2026-11-04T13:38:11.411Z","type":"landing-check","trial":43,"client":"JitoLabs","ingress":"116.126.141.28:9002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":312}
+{"t":"2026-11-04T13:38:51.649Z","type":"landing-check","trial":44,"client":"JitoLabs","ingress":"185.26.10.33:8022","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":387}
+{"t":"2026-11-04T13:39:54.443Z","type":"landing-check","trial":45,"client":"HarmonicFiredancer","ingress":"198.13.140.105:12566","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":424}
+{"t":"2026-11-04T13:40:09.752Z","type":"landing-check","trial":46,"client":"JitoLabs","ingress":"57.129.90.120:8022","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":432}
+{"t":"2026-11-04T13:40:22.995Z","type":"landing-check","trial":47,"client":"HarmonicFiredancer","ingress":"198.13.140.105:12566","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":431}
+{"t":"2026-11-04T13:40:28.852Z","type":"landing-check","trial":48,"client":"JitoLabs","ingress":"57.129.90.120:8022","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":351}
+{"t":"2026-11-04T13:40:57.902Z","type":"landing-check","trial":49,"client":"JitoLabs","ingress":"64.130.43.202:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":370}
+{"t":"2026-11-04T13:41:21.185Z","type":"landing-check","trial":50,"client":"HarmonicFiredancer","ingress":"198.13.140.105:12566","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":381}
+{"t":"2026-11-04T13:42:07.671Z","type":"landing-check","trial":51,"client":"HarmonicFiredancer","ingress":"198.13.140.105:12566","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":471}
+{"t":"2026-11-04T13:42:47.412Z","type":"landing-check","trial":52,"client":"JitoLabs","ingress":"70.40.185.183:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":373}
+{"t":"2026-11-04T13:45:22.359Z","type":"landing-check","trial":53,"client":"JitoLabs","ingress":"169.155.44.26:11228","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":316}
+{"t":"2026-11-04T13:45:28.195Z","type":"landing-check","trial":54,"client":"JitoLabs","ingress":"169.155.44.26:11228","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":48}
+{"t":"2026-11-04T13:46:09.542Z","type":"landing-check","trial":55,"client":"JitoLabs","ingress":"169.155.44.26:11228","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":347}
+{"t":"2026-11-04T13:47:39.201Z","type":"landing-check","trial":56,"client":"JitoLabs","ingress":"70.40.185.183:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":406}
+{"t":"2026-11-04T13:48:25.322Z","type":"landing-check","trial":57,"client":"HarmonicAgave","ingress":"64.130.45.196:12481","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":428}
+{"t":"2026-11-04T13:48:39.872Z","type":"landing-check","trial":58,"client":"JitoLabs","ingress":"169.155.44.26:11228","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":311}
+{"t":"2026-11-04T13:48:45.641Z","type":"landing-check","trial":59,"client":"JitoLabs","ingress":"70.40.185.183:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":429}
+{"t":"2026-11-04T13:49:40.452Z","type":"landing-check","trial":60,"client":"JitoLabs","ingress":"116.126.141.28:9002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":335}
+{"t":"2026-11-04T13:51:20.296Z","type":"landing-check","trial":61,"client":"JitoLabs","ingress":"116.126.141.28:9002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":392}
+{"t":"2026-11-04T13:51:26.068Z","type":"landing-check","trial":62,"client":"JitoLabs","ingress":"116.126.141.28:9002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":360}
+{"t":"2026-11-04T13:56:24.407Z","type":"landing-check","trial":63,"client":"JitoLabs","ingress":"23.111.240.207:11228","landed":0,"inWindow":"","counts":false,"marginMs":null}
+{"t":"2026-11-04T13:57:44.912Z","type":"landing-check","trial":64,"client":"JitoLabs","ingress":"170.23.153.201:11228","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":279}
+{"t":"2026-11-04T13:59:25.734Z","type":"landing-check","trial":65,"client":"JitoLabs","ingress":"67.213.121.29:11228","landed":0,"inWindow":"","counts":false,"marginMs":null}
+{"t":"2026-11-04T13:59:25.734Z","type":"exclude","ingress":"67.213.121.29:11228","validatorsBehind":1,"client":"JitoLabs","why":"empty burst"}
+{"t":"2026-11-04T14:00:35.071Z","type":"landing-check","trial":66,"client":"JitoLabs","ingress":"170.23.153.201:11228","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":117}
+{"t":"2026-11-04T14:03:40.411Z","type":"landing-check","trial":67,"client":"JitoLabs","ingress":"23.111.240.207:11228","landed":0,"inWindow":"","counts":false,"marginMs":null}
+{"t":"2026-11-04T14:03:40.412Z","type":"exclude","ingress":"23.111.240.207:11228","validatorsBehind":1,"client":"JitoLabs","why":"empty burst"}
+{"t":"2026-11-04T14:06:00.186Z","type":"landing-check","trial":68,"client":"JitoLabs","ingress":"64.130.43.202:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":401}
+{"t":"2026-11-04T14:07:47.285Z","type":"landing-check","trial":69,"client":"JitoLabs","ingress":"64.130.43.202:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":523}
+{"t":"2026-11-04T14:09:11.326Z","type":"landing-check","trial":70,"client":"JitoLabs","ingress":"109.109.165.39:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":312}
+{"t":"2026-11-04T14:11:21.260Z","type":"landing-check","trial":71,"client":"JitoLabs","ingress":"70.40.185.183:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":438}
+{"t":"2026-11-04T14:12:47.054Z","type":"landing-check","trial":72,"client":"JitoLabs","ingress":"169.155.44.26:11228","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":155}
+{"t":"2026-11-04T14:16:23.188Z","type":"landing-check","trial":73,"client":"JitoLabs","ingress":"70.40.185.183:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":417}
+{"t":"2026-11-04T14:20:12.420Z","type":"landing-check","trial":74,"client":"JitoLabs","ingress":"70.40.185.183:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":384}
+{"t":"2026-11-04T14:20:37.918Z","type":"landing-check","trial":75,"client":"HarmonicAgave","ingress":"64.130.45.196:12481","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":379}
+{"t":"2026-11-04T14:23:44.168Z","type":"landing-check","trial":76,"client":"JitoLabs","ingress":"170.23.153.201:11228","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":266}
+{"t":"2026-11-04T14:29:26.144Z","type":"landing-check","trial":77,"client":"JitoLabs","ingress":"169.155.44.26:11228","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":306}
+{"t":"2026-11-04T14:30:08.208Z","type":"landing-check","trial":78,"client":"JitoLabs","ingress":"64.130.43.202:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":426}
+{"t":"2026-11-04T14:30:14.023Z","type":"landing-check","trial":79,"client":"JitoLabs","ingress":"170.23.153.201:11228","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":307}
+{"t":"2026-11-04T14:30:55.435Z","type":"landing-check","trial":80,"client":"JitoLabs","ingress":"70.40.185.183:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":369}
+{"t":"2026-11-04T14:36:23.506Z","type":"landing-check","trial":81,"client":"JitoLabs","ingress":"170.23.153.201:11228","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":285}
+{"t":"2026-11-04T14:39:50.045Z","type":"landing-check","trial":82,"client":"JitoLabs","ingress":"109.109.165.39:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":373}
+{"t":"2026-11-04T14:42:45.718Z","type":"landing-check","trial":83,"client":"JitoLabs","ingress":"169.155.44.26:11228","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":109}
+{"t":"2026-11-04T14:44:34.704Z","type":"landing-check","trial":84,"client":"JitoLabs","ingress":"109.109.165.39:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":376}
+{"t":"2026-11-04T14:47:27.500Z","type":"landing-check","trial":85,"client":"HarmonicAgave","ingress":"64.130.45.196:12481","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":350}
+{"t":"2026-11-04T14:49:19.206Z","type":"landing-check","trial":86,"client":"JitoLabs","ingress":"64.130.43.202:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":401}
+{"t":"2026-11-04T14:49:24.860Z","type":"landing-check","trial":87,"client":"JitoLabs","ingress":"170.23.153.201:11228","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":76}
+{"t":"2026-11-04T14:50:52.421Z","type":"landing-check","trial":88,"client":"HarmonicAgave","ingress":"64.130.45.196:12481","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":370}
+{"t":"2026-11-04T14:52:05.632Z","type":"landing-check","trial":89,"client":"JitoLabs","ingress":"64.130.43.202:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":388}
+{"t":"2026-11-04T14:52:10.880Z","type":"landing-check","trial":90,"client":"JitoLabs","ingress":"170.23.153.201:11228","landed":0,"inWindow":"","counts":false,"marginMs":null}
+{"t":"2026-11-04T14:54:12.258Z","type":"landing-check","trial":91,"client":"HarmonicAgave","ingress":"64.130.45.196:12481","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":436}
+{"t":"2026-11-04T14:56:28.659Z","type":"landing-check","trial":92,"client":"JitoLabs","ingress":"109.109.165.39:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":360}
+{"t":"2026-11-04T14:56:34.822Z","type":"landing-check","trial":93,"client":"JitoLabs","ingress":"72.251.3.57:11228","landed":0,"inWindow":"","counts":false,"marginMs":null}
+{"t":"2026-11-04T14:58:55.305Z","type":"landing-check","trial":94,"client":"JitoLabs","ingress":"170.23.153.201:11228","landed":0,"inWindow":"","counts":false,"marginMs":null}
+{"t":"2026-11-04T14:59:14.850Z","type":"landing-check","trial":95,"client":"JitoLabs","ingress":"109.109.165.39:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":338}
+{"t":"2026-11-04T15:02:48.683Z","type":"landing-check","trial":96,"client":"JitoLabs","ingress":"109.109.165.39:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":361}
+{"t":"2026-11-04T15:03:09.312Z","type":"landing-check","trial":97,"client":"JitoLabs","ingress":"170.23.153.201:11228","landed":0,"inWindow":"","counts":false,"marginMs":null}
+{"t":"2026-11-04T15:04:36.145Z","type":"landing-check","trial":98,"client":"JitoLabs","ingress":"109.109.165.39:8002","landed":0,"inWindow":"","counts":false,"marginMs":185}
+{"t":"2026-11-04T15:05:39.380Z","type":"skip","attempt":100,"reason":"dispatch slot 465345938 already passed (now 465345941)","windowStart":465345940,"fireSlot":465345938,"client":"JitoLabs","slot":465345941}
+{"t":"2026-11-04T15:05:55.421Z","type":"skip","attempt":101,"reason":"clock jumped past dispatch slot 465346014 to 465346015","windowStart":465346016,"fireSlot":465346014,"client":"JitoLabs","slot":465346015}
+{"t":"2026-11-04T15:06:37.845Z","type":"landing-check","trial":99,"client":"JitoLabs","ingress":"170.23.153.201:11228","landed":0,"inWindow":"","counts":false,"marginMs":null}
+{"t":"2026-11-04T15:06:42.959Z","type":"landing-check","trial":100,"client":"JitoLabs","ingress":"64.130.43.202:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":350}
+{"t":"2026-11-04T15:08:08.747Z","type":"landing-check","trial":101,"client":"JitoLabs","ingress":"109.109.165.39:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":926}
+{"t":"2026-11-04T15:13:12.691Z","type":"landing-check","trial":102,"client":"JitoLabs","ingress":"170.23.153.201:11228","landed":0,"inWindow":"","counts":false,"marginMs":null}
+{"t":"2026-11-04T15:14:26.059Z","type":"landing-check","trial":103,"client":"JitoLabs","ingress":"64.130.43.202:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":274}
+{"t":"2026-11-04T15:22:30.978Z","type":"landing-check","trial":104,"client":"JitoLabs","ingress":"72.251.3.57:11228","landed":0,"inWindow":"","counts":false,"marginMs":null}
+{"t":"2026-11-04T15:22:30.979Z","type":"exclude","ingress":"72.251.3.57:11228","validatorsBehind":1,"client":"JitoLabs","why":"empty burst"}
+{"t":"2026-11-04T15:23:02.449Z","type":"landing-check","trial":105,"client":"JitoLabs","ingress":"109.109.165.39:8002","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":391}
+{"t":"2026-11-04T15:32:01.550Z","type":"landing-check","trial":106,"client":"JitoLabs","ingress":"170.23.153.201:11228","landed":0,"inWindow":"","counts":false,"marginMs":null}
+{"t":"2026-11-04T15:32:53.235Z","type":"landing-check","trial":107,"client":"JitoLabs","ingress":"170.23.153.201:11228","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":229}
+{"t":"2026-11-04T15:36:56.617Z","type":"landing-check","trial":108,"client":"JitoLabs","ingress":"170.23.153.201:11228","landed":0,"inWindow":"","counts":false,"marginMs":null}
+{"t":"2026-11-04T15:38:57.176Z","type":"landing-check","trial":109,"client":"HarmonicAgave","ingress":"64.130.45.196:12481","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":643}
+{"t":"2026-11-04T15:45:56.786Z","type":"landing-check","trial":110,"client":"JitoLabs","ingress":"170.23.153.201:11228","landed":0,"inWindow":"","counts":false,"marginMs":-1224}
+{"t":"2026-11-04T15:47:13.168Z","type":"landing-check","trial":111,"client":"HarmonicAgave","ingress":"64.130.45.196:12481","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":91}
+{"t":"2026-11-04T16:21:22.067Z","type":"skip","attempt":115,"reason":"clock jumped past dispatch slot 465367034 to 465367037","windowStart":465367036,"fireSlot":465367034,"client":"JitoLabs","slot":465367037}
+{"t":"2026-11-04T16:25:53.047Z","type":"skip","attempt":116,"reason":"clock jumped past dispatch slot 465368302 to 465368305","windowStart":465368304,"fireSlot":465368302,"client":"JitoLabs","slot":465368305}
+{"t":"2026-11-04T16:32:20.765Z","type":"skip","attempt":117,"reason":"dispatch slot 465370090 already passed (now 465370094)","windowStart":465370092,"fireSlot":465370090,"client":"JitoLabs","slot":465370094}
+{"t":"2026-11-04T16:54:01.178Z","type":"landing-check","trial":112,"client":"JitoLabs","ingress":"170.23.153.201:11228","landed":0,"inWindow":"","counts":false,"marginMs":null}
+{"t":"2026-11-04T16:55:48.817Z","type":"skip","attempt":119,"reason":"dispatch slot 465376598 already passed (now 465376602)","windowStart":465376600,"fireSlot":465376598,"client":"JitoLabs","slot":465376602}
+{"t":"2026-11-04T17:00:57.266Z","type":"skip","attempt":120,"reason":"QUIC connect to JitoLabs failed: ConnectionError: ","windowStart":465378036,"fireSlot":465378034,"client":"JitoLabs","slot":465378044}
+{"t":"2026-11-04T17:00:57.266Z","type":"refused","leader":"2Df1aLCRYi3J1X24GXmASL4hjrZLHnvEF32KFWGJfR9E","client":"JitoLabs","ingress":"170.23.153.201:11228"}
+{"t":"2026-11-04T17:06:44.537Z","type":"skip","attempt":121,"reason":"clock jumped past dispatch slot 465379674 to 465379677","windowStart":465379676,"fireSlot":465379674,"client":"JitoLabs","slot":465379677}
+{"t":"2026-11-04T17:15:12.939Z","type":"landing-check","trial":113,"client":"JitoLabs","ingress":"170.23.153.201:11228","landed":6,"inWindow":"ABCDEF","counts":true,"marginMs":417}

@@ -8,7 +8,7 @@ import type { Loaded, Trial, Tx, Unit } from './analyze.ts'
 import type { Snapshot } from './discover.ts'
 import type { NamesFile } from './names.ts'
 import { binomialLowerTail, mean, wilson } from './stats.ts'
-import { cellSafe, classifyOrder, validatorReading } from './validators.ts'
+import { cellSafe, classifyOrder, ORDER_LABEL, tieStat, validatorReading } from './validators.ts'
 
 export const RAKURAI_CAMPAIGN = 'rakurai'
 /** the same design with the parameters of B and D swapped round (design.ts, SWAPPED_ROLES) */
@@ -249,5 +249,83 @@ export function targetedSection({ loaded, dataDir, cluster, kept }: TargetedInpu
     return `${ts.length} trials dispatched, ${xs.filter((t) => t.slot !== null).length} of ${xs.length} transactions landed, ${ts.filter((t) => t.reconnected).length} reconnected before sending`
   }
   out.push(`Delivery: "${RAKURAI_CAMPAIGN}": ${deliveryOf(trials)}; "${SWAP_CAMPAIGN}": ${deliveryOf(swapTrials)}.`, '')
+  return out
+}
+
+/** Of the trials with A and E in the group, in how many the twin sent first landed first. */
+export function twinFirst(units: Pick<Unit, 'run' | 'trial'>[], ordered: Map<string, Pick<Tx, 'role' | 'sendIndex'>[]>): { k: number; n: number } {
+  let k = 0
+  let n = 0
+  for (const u of units) {
+    const g = ordered.get(`${u.run}#${u.trial}`) ?? []
+    const a = g.findIndex((t) => t.role === 'A')
+    const e = g.findIndex((t) => t.role === 'E')
+    if (a < 0 || e < 0) continue
+    n++
+    if (g[a].sendIndex < g[e].sendIndex === a < e) k++
+  }
+  return { k, n }
+}
+
+/**
+ * Added after the targeted run, on its trials, and frozen by nothing: it tests no hypothesis. The section "Targeted run"
+ * above is the one tagged prereg-rakurai.
+ */
+export function targetedAfterData({ loaded, dataDir, cluster }: Omit<TargetedInput, 'kept'>): string[] {
+  const inCell = (u: Unit) => u.path === 'tpu' && u.delivery === 'buffered' && u.mode === 'shared'
+  const units = loaded.units.filter((u) => TARGETED_CAMPAIGNS.includes(u.campaign) && inCell(u))
+  if (!units.length) return []
+  const main = units.filter((u) => u.campaign === RAKURAI_CAMPAIGN)
+  const swap = units.filter((u) => u.campaign === SWAP_CAMPAIGN)
+  const namesFile = join(dataDir, cluster, 'validator-names.json')
+  const names: NamesFile['names'] = existsSync(namesFile) ? (JSON.parse(readFileSync(namesFile, 'utf8')) as NamesFile).names : {}
+  const nameOf = (prefix: string) => {
+    const id = Object.keys(names).find((k) => k.startsWith(prefix))
+    return id ? cellSafe(names[id].name) : '–'
+  }
+  const ids = [...HOLDERS, ...MATCHED, KNOWN_TOTAL_FEE, KNOWN_REWARD_COST, LABEL_MOVED]
+  const mine = (us: Unit[], id: string) => us.filter((u) => u.leader.startsWith(id))
+  const sixOf = (us: Unit[]) => us.filter((u) => u.observedOrder.length === 6)
+  const readingOf = (id: string) => validatorReading(sixOf(mine(main, id)).map((u) => u.observedOrder)).reading
+  const share = (x: { k: number; n: number }) => (x.n ? `${x.k} of ${x.n} (${pct(x.k / x.n)} [${wilson(x.k, x.n).map(pct).join('–')}])` : '–')
+
+  const out: string[] = ['## Targeted run: read after the data (exploratory)', '']
+  out.push('Added after the targeted run, on the same trials. It tests nothing; the plan names none of this.', '')
+
+  out.push('**The twins by reading.** The twin sent first landed first, per validator of campaign "rakurai" with a reading in the section above. C8Bey3LK\'s trials with the swapped parameters count with its reading. H3 takes the matched validators alone.', '')
+  out.push('| reading | validators | twin sent first landed first |')
+  out.push('|---|---|---:|')
+  const readings = [...new Set(ids.map(readingOf))].filter((r) => !['no trial with all six', 'too few trials'].includes(r)).sort(byText)
+  for (const r of readings) {
+    const group = ids.filter((id) => readingOf(id) === r)
+    const us = group.flatMap((id) => [...mine(main, id), ...mine(swap, id)])
+    const each = group.map((id) => {
+      const t = twinFirst([...mine(main, id), ...mine(swap, id)], loaded.ordered)
+      return `${id} ${t.k} of ${t.n}`
+    })
+    out.push(`| ${r} | ${each.join(', ')} | ${share(twinFirst(us, loaded.ordered))} |`)
+  }
+  out.push('')
+
+  const ties = tieStat(units, loaded.ordered)
+  out.push(
+    `**Ties.** A, E and F pay the same total fee. In the ${ties.trials} targeted trials in the exact total-fee order, both campaigns: F first, middle, last among the three in ${ties.fPosition.join(', ')} (by chance a third each; the chance of F first at least that often: ${fp(ties.p)}), and ${ties.pairsInSendOrder} of the ${ties.pairs} pairs among the three in send order (${pct(ties.pairsInSendOrder / ties.pairs)}). Compare "How far the total-fee reading goes", on the earlier runs.`,
+    '',
+  )
+
+  out.push('**Orders in time.** The validators of campaign "rakurai" whose trials with all six fall under more than one name, in the order of their trials, with the UTC time of sending.', '')
+  out.push('| validator | name | orders |')
+  out.push('|---|---|---|')
+  for (const id of ids) {
+    const us = sixOf(mine(main, id)).sort((a, b) => a.trial - b.trial)
+    if (new Set(us.map((u) => classifyOrder(u.observedOrder))).size < 2) continue
+    const cells = us.map((u) => {
+      const sent = loaded.ordered.get(`${u.run}#${u.trial}`)?.[0]?.sentMs
+      const kind = classifyOrder(u.observedOrder)
+      return `${sent ? new Date(sent).toISOString().slice(11, 16) : '–'} ${kind === 'other' ? u.observedOrder : ORDER_LABEL[kind]}`
+    })
+    out.push(`| ${id} | ${nameOf(id)} | ${cells.join(', ')} |`)
+  }
+  out.push('')
   return out
 }

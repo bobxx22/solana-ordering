@@ -21,7 +21,7 @@ export const ORDERS = {
 }
 export type OrderName = keyof typeof ORDERS
 const ORDER_NAMES = Object.keys(ORDERS) as OrderName[]
-const ORDER_LABEL: Record<OrderName, string> = { rewardCost: 'reward/cost', totalFee: 'total fee', fLast: 'F last' }
+export const ORDER_LABEL: Record<OrderName, string> = { rewardCost: 'reward/cost', totalFee: 'total fee', fLast: 'F last' }
 
 /** below this many trials with all six there is no reading: the floor of "Per validator" in the robustness section */
 export const MIN_VALIDATOR_TRIALS = 5

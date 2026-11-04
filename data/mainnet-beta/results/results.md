@@ -14,6 +14,8 @@ The analysis plan is pre-registered in README ("Noise versus rule") and in the h
 | 2026-10-27T14:39:06.569Z | main | tpu | 30 | 462107436–462108452 | 1069 | yes |
 | 2026-10-27T15:32:52.637Z | main | tpu | 373 | 462122629–462154412 | 1069 | yes |
 | 2026-10-28T17:25:00.314Z | confirm | tpu | 53 | 462560008–462566560 | 1070 | yes |
+| 2026-11-04T13:19:56.523Z | rakurai-swap | tpu | 12 | 465316632–465318088 | 1077 | yes |
+| 2026-11-04T13:26:33.030Z | rakurai | tpu | 114 | 465318244–465382012 | 1077 | yes |
 
 ## Primary: buffered/shared, local schedulers (campaign "main")
 
@@ -434,24 +436,28 @@ Added after both runs, outside both plans. A trial's label is what the validator
 | 10-28 17:22 | 10-28 17:24 | 85 | 0 | 0 | 0 |
 | 10-28 17:24 | 10-28 17:25 | 85 | 0 | 0 | 0 |
 | 10-28 17:25 | 11-03 22:01 | 84 | 9 | 60 | 14 |
+| 11-03 22:01 | 11-04 13:19 | 84 | 1 | 0 | 7 |
+| 11-04 13:19 | 11-04 13:26 | 84 | 0 | 0 | 0 |
+| 11-04 13:26 | 11-04 18:26 | 83 | 0 | 0 | 0 |
 
-Validators whose reported client changed: 13 of 85, 2 of them by leaving gossip.
+Validators whose reported client changed: 14 of 85, 2 of them by leaving gossip.
 
 | rank | validator | name | reported, with the first and last snapshot of each state |
 |---:|---|---|---|
-| 8 | EvnRmnMr | Everstake | Firedancer 26.10.4 at 104.204.143.114:9007 (10-24 16:59 – 10-25 22:06); JitoLabs 4.3.2 at 198.13.140.73:11228 (10-27 14:39 – 10-28 17:25); HarmonicFiredancer 26.10.5 at 198.13.140.105:12566 (11-03 22:01) |
-| 15 | 9rkJMARq | – | JitoLabs 4.3.2 at 64.34.88.249:8002 (10-24 16:59 – 10-28 17:25); AgaveBam 4.4.0 at 64.130.58.117:5010 (11-03 22:01) |
-| 20 | BtsmiEEv | – | HarmonicAgave 4.3.2 at 64.130.46.242:12315 (10-24 16:59 – 10-27 15:32); JitoLabs 4.3.2 at 64.130.47.154:8002 (10-28 17:22 – 10-28 17:25); HarmonicAgave 4.4.0 at 64.130.46.242:12315 (11-03 22:01) |
-| 62 | 8gDfqHXZ | – | JitoLabs 4.3.2 at 67.213.121.155:8002 (10-24 16:59 – 10-25 22:06); JitoLabs 4.3.2 at 67.213.121.155:11228 (10-27 14:39 – 10-27 15:32); JitoLabs 4.3.2 at 67.213.121.155:8002 (10-28 17:22 – 10-28 17:25); AgaveBam 4.3.2 at 198.13.140.227:5010 (11-03 22:01) |
-| 87 | EXckihF3 | – | HarmonicFiredancer 26.10.4 at 198.13.140.111:12288 (10-24 16:59 – 10-28 17:25); HarmonicAgave 4.4.0 at 198.13.140.111:12288 (11-03 22:01) |
-| 93 | 7cVfgArC | Blockdaemon 🧱👿 Validator | JitoLabs 4.3.2 at 64.130.42.70:8002 (10-24 16:59 – 10-28 17:25); NotInGossip (11-03 22:01) |
-| 152 | HW4zorvt | Moise | Firedancer 26.10.4 (10-24 16:59); HarmonicAgave 4.3.2 (10-24 19:08); Firedancer 26.10.4 at 84.32.103.226:9007 (10-24 23:35 – 11-03 22:01) |
-| 163 | ALp2GdA1 | 🌸 SOLGirl MEV ⚡️👩‍💻 | HarmonicFiredancer 26.10.4 at 63.254.166.232:9007 (10-24 16:59 – 10-27 15:32); HarmonicFiredancer 26.10.4 at 63.254.166.232:12424 (10-28 17:22 – 10-28 17:25); Firedancer 26.10.4 at 84.32.103.226:9007 (11-03 22:01) |
-| 168 | BbCQMWnf | – | HarmonicAgave 4.3.2 at 63.254.166.232:9007 (10-24 16:59 – 10-25 22:06); Firedancer 26.10.4 at 84.32.103.226:9007 (10-27 14:39 – 11-03 22:01) |
-| 239 | 2dfgsiSa | Astraeus | Rakurai 4.3.2 at 64.130.42.87:8002 (10-24 16:59 – 10-28 17:25); NotInGossip (11-03 22:01) |
-| 253 | Tri1F8B6 | Trillium | AgaveBam 4.3.2 at 63.254.167.199:5010 (10-24 16:59 – 10-25 22:06); FireBAM 26.10.4 at 63.254.167.199:5010 (10-27 14:39 – 10-27 15:32); FireBAM 26.10.4 at 63.254.167.197:5010 (10-28 17:22 – 10-28 17:25); FireBAM 26.10.5 at 63.254.167.197:5010 (11-03 22:01) |
-| 468 | peNgUgnz | PENGU Validator | AgaveBam 4.3.2 at 64.130.51.255:5010 (10-24 16:59 – 10-25 22:06); FireBAM 26.10.4 at 64.130.54.221:5010 (10-27 14:39 – 10-27 15:32); FireBAM 26.10.5 at 64.130.54.147:5010 (10-28 17:22 – 11-03 22:01) |
-| 497 | nodeEgRV | Node Integration | AgaveBam 4.3.2 at 88.216.192.50:5010 (10-24 16:59 – 10-25 22:06); FireBAM 26.10.4 at 88.216.192.50:5010 (10-27 14:39 – 10-27 15:32); FireBAM 26.10.4 at 88.216.192.51:5010 (10-28 17:22 – 10-28 17:25); Firedancer 26.10.5 at 37.72.171.78:9007 (11-03 22:01) |
+| 8 | EvnRmnMr | Everstake | Firedancer 26.10.4 at 104.204.143.114:9007 (10-24 16:59 – 10-25 22:06); JitoLabs 4.3.2 at 198.13.140.73:11228 (10-27 14:39 – 10-28 17:25); HarmonicFiredancer 26.10.5 at 198.13.140.105:12566 (11-03 22:01 – 11-04 18:26) |
+| 11 | Awes4Tr6 | Staking Facilities 🔥 | HarmonicFiredancer 26.10.4 at 198.13.140.105:12351 (10-24 16:59 – 10-28 17:25); HarmonicFiredancer 26.10.5 at 198.13.140.105:12351 (11-03 22:01); HarmonicAgave 4.4.0 at 198.13.140.105:12351 (11-04 13:19 – 11-04 18:26) |
+| 15 | 9rkJMARq | – | JitoLabs 4.3.2 at 64.34.88.249:8002 (10-24 16:59 – 10-28 17:25); AgaveBam 4.4.0 at 64.130.58.117:5010 (11-03 22:01 – 11-04 18:26) |
+| 20 | BtsmiEEv | – | HarmonicAgave 4.3.2 at 64.130.46.242:12315 (10-24 16:59 – 10-27 15:32); JitoLabs 4.3.2 at 64.130.47.154:8002 (10-28 17:22 – 10-28 17:25); HarmonicAgave 4.4.0 at 64.130.46.242:12315 (11-03 22:01 – 11-04 18:26) |
+| 62 | 8gDfqHXZ | – | JitoLabs 4.3.2 at 67.213.121.155:8002 (10-24 16:59 – 10-25 22:06); JitoLabs 4.3.2 at 67.213.121.155:11228 (10-27 14:39 – 10-27 15:32); JitoLabs 4.3.2 at 67.213.121.155:8002 (10-28 17:22 – 10-28 17:25); AgaveBam 4.3.2 at 198.13.140.227:5010 (11-03 22:01 – 11-04 18:26) |
+| 87 | EXckihF3 | – | HarmonicFiredancer 26.10.4 at 198.13.140.111:12288 (10-24 16:59 – 10-28 17:25); HarmonicAgave 4.4.0 at 198.13.140.111:12288 (11-03 22:01 – 11-04 18:26) |
+| 93 | 7cVfgArC | Blockdaemon 🧱👿 Validator | JitoLabs 4.3.2 at 64.130.42.70:8002 (10-24 16:59 – 10-28 17:25); NotInGossip (11-03 22:01 – 11-04 18:26) |
+| 152 | HW4zorvt | Moise | Firedancer 26.10.4 (10-24 16:59); HarmonicAgave 4.3.2 (10-24 19:08); Firedancer 26.10.4 at 84.32.103.226:9007 (10-24 23:35 – 11-04 18:26) |
+| 163 | ALp2GdA1 | 🌸 SOLGirl MEV ⚡️👩‍💻 | HarmonicFiredancer 26.10.4 at 63.254.166.232:9007 (10-24 16:59 – 10-27 15:32); HarmonicFiredancer 26.10.4 at 63.254.166.232:12424 (10-28 17:22 – 10-28 17:25); Firedancer 26.10.4 at 84.32.103.226:9007 (11-03 22:01 – 11-04 18:26) |
+| 168 | BbCQMWnf | – | HarmonicAgave 4.3.2 at 63.254.166.232:9007 (10-24 16:59 – 10-25 22:06); Firedancer 26.10.4 at 84.32.103.226:9007 (10-27 14:39 – 11-04 18:26) |
+| 239 | 2dfgsiSa | Astraeus | Rakurai 4.3.2 at 64.130.42.87:8002 (10-24 16:59 – 10-28 17:25); NotInGossip (11-03 22:01 – 11-04 18:26) |
+| 253 | Tri1F8B6 | Trillium | AgaveBam 4.3.2 at 63.254.167.199:5010 (10-24 16:59 – 10-25 22:06); FireBAM 26.10.4 at 63.254.167.199:5010 (10-27 14:39 – 10-27 15:32); FireBAM 26.10.4 at 63.254.167.197:5010 (10-28 17:22 – 10-28 17:25); FireBAM 26.10.5 at 63.254.167.197:5010 (11-03 22:01 – 11-04 18:26) |
+| 468 | peNgUgnz | PENGU Validator | AgaveBam 4.3.2 at 64.130.51.255:5010 (10-24 16:59 – 10-25 22:06); FireBAM 26.10.4 at 64.130.54.221:5010 (10-27 14:39 – 10-27 15:32); FireBAM 26.10.5 at 64.130.54.147:5010 (10-28 17:22 – 11-04 18:26) |
+| 497 | nodeEgRV | Node Integration | AgaveBam 4.3.2 at 88.216.192.50:5010 (10-24 16:59 – 10-25 22:06); FireBAM 26.10.4 at 88.216.192.50:5010 (10-27 14:39 – 10-27 15:32); FireBAM 26.10.4 at 88.216.192.51:5010 (10-28 17:22 – 10-28 17:25); Firedancer 26.10.5 at 37.72.171.78:9007 (11-03 22:01 – 11-04 18:26) |
 
 Every direct-path trial of these validators with at least two transactions in the window, by what the validator reported in that run's snapshot:
 
@@ -460,6 +466,11 @@ Every direct-path trial of these validators with at least two transactions in th
 | EvnRmnMr | Firedancer 26.10.4 | calibration | burst/shared | 1 | EADCFB |
 | EvnRmnMr | JitoLabs 4.3.2 | main | buffered/shared | 4 | BDAEFC ×2, BDEFAC, BDFAEC |
 | EvnRmnMr | JitoLabs 4.3.2 | confirm | buffered/shared | 15 | BDAEFC, BDAFEC ×3, BDEFAC, BDFAEC ×3, BDFEAC ×7 |
+| EvnRmnMr | HarmonicFiredancer 26.10.5 | rakurai | buffered/shared | 10 | AEDBCF ×2, AEDCBF ×2, EADBCF ×3, EADCBF ×3 |
+| Awes4Tr6 | HarmonicFiredancer 26.10.4 | rehearsal | buffered/shared | 1 | AEDCBF |
+| Awes4Tr6 | HarmonicFiredancer 26.10.4 | main | buffered/independent | 1 | EADCBF |
+| Awes4Tr6 | HarmonicFiredancer 26.10.4 | main | buffered/shared | 1 | EADBCF |
+| Awes4Tr6 | HarmonicFiredancer 26.10.4 | main | burst/shared | 1 | EADBCF |
 | 9rkJMARq | JitoLabs 4.3.2 | calibration | buffered/independent | 1 | DCFEBA |
 | 9rkJMARq | JitoLabs 4.3.2 | main | buffered/shared | 2 | EADCFB ×2 |
 | 9rkJMARq | JitoLabs 4.3.2 | main | streamed/independent | 1 | FCEDBA |
@@ -533,7 +544,59 @@ JitoLabs: 2 of the 3 validators with a total-fee trial hold an enabled account, 
 
 New buffered/shared trials, planned and tagged before the first of them. H1: the holders of an enabled Rakurai activation account among new JitoLabs validators put B before C more than matched JitoLabs validators without one (per validator the share of its trials with B before C, for validators with at least 5 such trials; exact one-sided permutation test of the difference of group means over validators; fewer than 3 validators in either group: insufficient data). H2: with B paying 10 000 lamports for 1 000 CU and D 9 000 for 40 000, C8Bey3LK puts B before D. H3: at the matched validators, which report Jito 4.4.0, the twin sent first lands first. H2 and H3: one-sided exact binomial against chance; fewer than 10 trials: insufficient data. All three Holm-adjusted together; confirmed when the Holm p < 0.05, else not confirmed. These trials appear only in this section, the run list, "Reported client over time" and orders.md.
 
-No trials of the targeted campaigns yet.
+| hypothesis | validators | measure | result | p | Holm p | verdict |
+|---|---|---|---|---:|---:|---|
+| H1: holders put B before C more than matched validators | 4 holders, 4 matched | mean over validators of the share of trials with B before C | holders 22%, matched 22% | 0.643 | 0.643 | **not confirmed** |
+| H2: total fee, not the larger limit | C8Bey3LK, swapped parameters | B before D (by chance 50%) | 100% of 12 [76%–100%] | <0.001 | <0.001 | **confirmed** |
+| H3: oldest first at Jito 4.4.0 | 6 matched | twin sent first landed first (by chance 50%) | 78% of 32 [61%–89%] | 0.001 | 0.002 | **confirmed** |
+
+Per validator (descriptive). A reading follows the rule of "Validator by validator". B before C: of the trials with both in the window.
+
+| group | validator | name | reported | QUIC port | dispatched | with all six | reward/cost | total fee | F last | other orders | B before C | kept by the sensitivity filter | reading |
+|---|---|---|---|---|---:|---:|---:|---:|---:|---|---:|---:|---|
+| holder | A9mvukTd | – | JitoLabs 4.4.0 | 8022 | 8 | 8 | 8 | 0 | 0 | – | 0 of 8 | 8 | reward/cost |
+| holder | 8tjFeSAp | – | JitoLabs 4.4.0 | 11228 | 2 | 0 | 0 | 0 | 0 | – | 0 of 0 | 0 | no trial with all six |
+| holder | Ha1iade1 | Ha1iad3 | JitoLabs 4.4.0-rc.1 | 8002 | 9 | 8 | 1 | 3 | 4 | – | 3 of 8 | 8 | mixed |
+| holder | siidBVew | – | JitoLabs 4.4.0 | 11228 | 2 | 0 | 0 | 0 | 0 | – | 0 of 0 | 0 | no trial with all six |
+| holder | 2Df1aLCR | P2P.org Turbo | JitoLabs 4.4.0 | 11228 | 17 | 8 | 8 | 0 | 0 | – | 0 of 8 | 0 | reward/cost |
+| holder | fishfish | stakefish 🐟 | HarmonicAgave 4.4.0 | 12481 | 8 | 8 | 0 | 0 | 8 | – | 4 of 8 | 7 | F last |
+| matched | bitHUmbK | – | JitoLabs 4.4.0 | 9002 | 8 | 8 | 8 | 0 | 0 | – | 0 of 8 | 8 | reward/cost |
+| matched | vu1sGn2f | Allnodes ⚡️ 0% fee | JitoLabs 4.4.0 | 11228 | 9 | 8 | 7 | 0 | 0 | DEACFB | 0 of 8 | 0 | reward/cost |
+| matched | HM19KBHD | Hello Moon | JitoLabs 4.4.0 | 8002 | 8 | 8 | 8 | 0 | 0 | – | 0 of 8 | 8 | reward/cost |
+| matched | 8o8wWCYN | Sygnum Validators | JitoLabs 4.4.0 | 11228 | 2 | 0 | 0 | 0 | 0 | – | 0 of 0 | 0 | no trial with all six |
+| matched | 32ke3uf1 | FalconX | JitoLabs 4.4.0 | 11228 | 2 | 0 | 0 | 0 | 0 | – | 0 of 0 | 0 | no trial with all six |
+| matched | Cogent51 | Cogent ⚙️ by SOL Strategies | JitoLabs 4.4.0 | 8002 | 8 | 8 | 0 | 7 | 0 | DAECFB | 7 of 8 | 8 | total fee |
+| known total fee | C8Bey3LK | Ledger by Figment | JitoLabs 4.4.0 | 8022 | 10 | 10 | 0 | 9 | 1 | – | 9 of 10 | 10 | total fee |
+| known reward/cost | HEL1USMZ | Helius | JitoLabs 4.4.0 | 8002 | 10 | 10 | 10 | 0 | 0 | – | 0 of 10 | 10 | reward/cost |
+| label moved | EvnRmnMr | Everstake | HarmonicFiredancer 26.10.5 | 12566 | 11 | 10 | 0 | 0 | 10 | – | 5 of 10 | 10 | F last |
+
+The swapped parameters, C8Bey3LK: of 12 trials with all six, 10 in the exact total-fee order (B D, then A, E, F in any order, C), 0 in the exact order of the larger limit first (D B, then A, E, F, C), 0 in the exact reward/cost order (B, A and E either way, C, F, D); other orders: BEACDF, BFEACD.
+
+Delivery: "rakurai": 114 trials dispatched, 570 of 684 transactions landed, 32 reconnected before sending; "rakurai-swap": 12 trials dispatched, 72 of 72 transactions landed, 0 reconnected before sending.
+
+## Targeted run: read after the data (exploratory)
+
+Added after the targeted run, on the same trials. It tests nothing; the plan names none of this.
+
+**The twins by reading.** The twin sent first landed first, per validator of campaign "rakurai" with a reading in the section above. C8Bey3LK's trials with the swapped parameters count with its reading. H3 takes the matched validators alone.
+
+| reading | validators | twin sent first landed first |
+|---|---|---:|
+| F last | fishfish 5 of 8, EvnRmnMr 7 of 10 | 12 of 18 (67% [44%–84%]) |
+| mixed | Ha1iade1 5 of 8 | 5 of 8 (63% [31%–86%]) |
+| reward/cost | A9mvukTd 6 of 8, 2Df1aLCR 8 of 8, bitHUmbK 8 of 8, vu1sGn2f 6 of 8, HM19KBHD 7 of 8, HEL1USMZ 8 of 10 | 43 of 50 (86% [74%–93%]) |
+| total fee | Cogent51 4 of 8, C8Bey3LK 10 of 22 | 14 of 30 (47% [30%–64%]) |
+
+**Ties.** A, E and F pay the same total fee. In the 29 targeted trials in the exact total-fee order, both campaigns: F first, middle, last among the three in 7, 12, 10 (by chance a third each; the chance of F first at least that often: 0.897), and 45 of the 87 pairs among the three in send order (52%). Compare "How far the total-fee reading goes", on the earlier runs.
+
+**Orders in time.** The validators of campaign "rakurai" whose trials with all six fall under more than one name, in the order of their trials, with the UTC time of sending.
+
+| validator | name | orders |
+|---|---|---|
+| Ha1iade1 | Ha1iad3 | 14:09 total fee, 14:39 total fee, 14:44 reward/cost, 14:56 F last, 14:59 F last, 15:02 F last, 15:08 F last, 15:22 total fee |
+| vu1sGn2f | Allnodes ⚡️ 0% fee | 13:34 reward/cost, 13:45 reward/cost, 13:45 DEACFB, 13:46 reward/cost, 13:48 reward/cost, 14:12 reward/cost, 14:29 reward/cost, 14:42 reward/cost |
+| Cogent51 | Cogent ⚙️ by SOL Strategies | 13:40 total fee, 14:05 total fee, 14:07 total fee, 14:29 total fee, 14:49 DAECFB, 14:51 total fee, 15:06 total fee, 15:14 total fee |
+| C8Bey3LK | Ledger by Figment | 13:27 total fee, 13:29 total fee, 13:30 total fee, 13:30 total fee, 13:31 total fee, 13:32 total fee, 13:33 total fee, 13:35 F last, 13:37 total fee, 13:38 total fee |
 
 ## Rule agreement: buffered/shared (campaign "main")
 

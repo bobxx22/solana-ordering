@@ -81,7 +81,8 @@ The order of the six also leaves two pairs of rules unseparated (added after bot
 both):
 - **Total fee** and "the larger requested compute-unit limit first, the larger fee between equal limits" both give
   B D, then A, E, F, C. A pair with the higher fee on the smaller limit would separate them, such as 1 000 CU for
-  10 000 lamports against 40 000 CU for 9 000.
+  10 000 lamports against 40 000 CU for 9 000. The targeted run did that at one validator, C8Bey3LK, and the fee
+  decided (REPORT, "The targeted run").
 - **Reward/cost** and a linear key reward − λ·cost give the same order for every λ between 1 and 1.8.
 
 ## Ties
@@ -191,7 +192,7 @@ cover. None of it changes a test or a family.
   by the layout in its published
   [IDL](https://github.com/rakurai-io/rakurai-validator/blob/157701888934e8780db7482bb079ad7eb356110c/rakurai_docs/rakurai_programs/programs/rakurai_activation/idl/rakurai_activation.json).
   The flag says what was approved, not what runs. `results.md`, "How far the total-fee reading goes", sets the accounts
-  against the orders we saw.
+  against the orders we saw. On new validators the account did not go with the order (REPORT, "The targeted run").
 - The twins table keeps the label frozen at `prereg-main`, "Rakurai (own scheduler, source not read)".
 
 **Harmonic** ([scheduling strategies](https://docs.harmonic.gg/concepts/scheduling-strategies),

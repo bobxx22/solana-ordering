@@ -1,0 +1,41 @@
+2026-11-04T13:19:56.499Z epoch 1077, 3847 gossip nodes, 662 current + 31 delinquent vote accounts
+2026-11-04T13:19:56.503Z   C8Bey3LK: C8Bey3LKVJHVqN6xPTeW8WJfUgFQAeGNBpT4Rp99JP1k (JitoLabs 4.4.0, 9168 leader slots this epoch, QUIC 185.26.10.33:8022)
+2026-11-04T13:19:56.521Z LIVE on mainnet-beta via tpu, campaign "rakurai-swap": up to 12 more landed trials, at most 0.000061 SOL each (0.000732 SOL)
+2026-11-04T13:19:56.522Z spend cap 0.050000 SOL (of which 0.000100 SOL kept for sweeping), committed 0.029072 SOL; reads via https://mainnet.helius-rpc.com/ (credentials hidden)
+2026-11-04T13:19:56.522Z   role A: limit 1000 CU, price 4000000 µL/CU, loaded-data limit 16384 B, reward/cost 2.783
+2026-11-04T13:19:56.522Z   role B: limit 1000 CU, price 10000000 µL/CU, loaded-data limit 16384 B, reward/cost 5.351
+2026-11-04T13:19:56.522Z   role C: limit 1000 CU, price 0 µL/CU, loaded-data limit 16384 B, reward/cost 1.070
+2026-11-04T13:19:56.522Z   role D: limit 40000 CU, price 225000 µL/CU, loaded-data limit 16384 B, reward/cost 0.278
+2026-11-04T13:19:56.522Z   role E: limit 1000 CU, price 4000000 µL/CU, loaded-data limit 16384 B, reward/cost 2.783
+2026-11-04T13:19:56.522Z   role F: limit 1000 CU, price 4000000 µL/CU, loaded-data limit 67108864 B, reward/cost 0.347
+2026-11-04T13:19:56.674Z main wallet 6v8Wy9TEhfZXzdXVspXYs7bh42N7B7z9jALkz83yxKoC: 0.029820 SOL
+2026-11-04T13:19:56.859Z top-up: 12 sub-payers, 0.024000 SOL from the main wallet
+2026-11-04T13:20:04.101Z fund: confirmed 42NbwBFX9JtwcKUgqG4CsymkfQ473PC7u7zSY483yyrvJUpYM1yJwNCrCuSREFrmsAa361ssThQv3j1uvXT4qP11
+2026-11-04T13:20:06.417Z fund: confirmed ENmLrLf718EVei93psfnxrL7ZhdnpUjPGD2hseYMeEaNdA8vdFk4KKfrmUj4mcqo8mPd3ow8cvvK95RkzcGQKrx
+2026-11-04T13:20:50.943Z trial 0: JitoLabs C8Bey3LK window 465316632 shared/buffered order EBDFCA
+2026-11-04T13:21:31.997Z trial 1: JitoLabs C8Bey3LK window 465316824 shared/buffered order AECBFD
+2026-11-04T13:21:43.911Z trial 2: JitoLabs C8Bey3LK window 465316880 shared/buffered order CEAFDB
+2026-11-04T13:22:22.355Z trial 3: JitoLabs C8Bey3LK window 465317056 shared/buffered order EFCBDA
+2026-11-04T13:22:29.955Z trial 4: JitoLabs C8Bey3LK window 465317092 shared/buffered order EDBFAC
+2026-11-04T13:22:58.658Z trial 5: JitoLabs C8Bey3LK window 465317224 shared/buffered order FEDCBA
+2026-11-04T13:23:26.854Z trial 6: JitoLabs C8Bey3LK window 465317356 shared/buffered order ECADFB
+2026-11-04T13:23:48.613Z trial 7: JitoLabs C8Bey3LK window 465317460 shared/buffered order ECFBDA
+2026-11-04T13:24:24.964Z trial 8: JitoLabs C8Bey3LK window 465317632 shared/buffered order BFADEC
+2026-11-04T13:24:35.338Z trial 9: JitoLabs C8Bey3LK window 465317680 shared/buffered order FECBDA
+2026-11-04T13:25:37.935Z trial 10: JitoLabs C8Bey3LK window 465317976 shared/buffered order BDACFE
+2026-11-04T13:26:01.530Z trial 11: JitoLabs C8Bey3LK window 465318088 shared/buffered order DCBEAF
+2026-11-04T13:26:07.234Z run 2026-11-04T13-19-54Z: 12 trials in 12 attempts; trials counting towards the quotas in the campaign {"C8Bey3LK":12}; dispatched {"C8Bey3LK":12}
+2026-11-04T13:26:27.689Z block 465316632: 218 transactions
+2026-11-04T13:26:27.972Z block 465316824: 281 transactions
+2026-11-04T13:26:28.192Z block 465316880: 145 transactions
+2026-11-04T13:26:28.458Z block 465317056: 238 transactions
+2026-11-04T13:26:28.633Z block 465317092: 183 transactions
+2026-11-04T13:26:28.788Z block 465317224: 109 transactions
+2026-11-04T13:26:28.979Z block 465317356: 254 transactions
+2026-11-04T13:26:29.270Z block 465317460: 404 transactions
+2026-11-04T13:26:29.556Z block 465317632: 169 transactions
+2026-11-04T13:26:29.768Z block 465317680: 153 transactions
+2026-11-04T13:26:30.030Z block 465317976: 173 transactions
+2026-11-04T13:26:30.683Z block 465318088: 179 transactions
+2026-11-04T13:26:30.737Z data\mainnet-beta\runs\2026-11-04T13-19-54Z: 72/72 transactions landed in 12 blocks
+2026-11-04T13:26:30.737Z spend committed so far: 0.029814 SOL of 0.050000 SOL

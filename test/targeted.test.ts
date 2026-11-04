@@ -6,7 +6,7 @@ import { buildTrialTxs, expectedCost, expectedPriority, expectedReward, priority
 import type { Snapshot } from '../src/discover.ts'
 import { generateKeypairBytes, signerFromBytes } from '../src/keys.ts'
 import type { ActivationFile } from '../src/names.ts'
-import { before, HOLDERS, holmAdjust, MATCHED, permutationP, selectPanel, SWAP_ORDERS, targetedVerdict, testH1, upperTail } from '../src/targeted.ts'
+import { before, HOLDERS, holmAdjust, MATCHED, permutationP, selectPanel, SWAP_ORDERS, targetedVerdict, testH1, twinFirst, upperTail } from '../src/targeted.ts'
 
 const rank = (key: (s: RoleSpec) => number) =>
   [...SWAPPED_ROLES]
@@ -104,4 +104,16 @@ test('pairs, tails, Holm and verdicts of the targeted run', () => {
   assert.deepEqual(holmAdjust([0.01, 0.04, 0.03]), [0.03, 0.06, 0.06])
   assert.equal(targetedVerdict(true, 0.049), 'confirmed')
   assert.equal(targetedVerdict(true, 0.05), 'not confirmed')
+})
+
+test('the twin sent first landed first: counted either way round, and only with both twins', () => {
+  const group = (...xs: [string, number][]) => xs.map(([role, sendIndex]) => ({ role, sendIndex }))
+  const ordered = new Map([
+    ['r#0', group(['A', 0], ['E', 1], ['B', 2])], // A sent first, landed first
+    ['r#1', group(['E', 0], ['A', 1])], // E sent first, landed first
+    ['r#2', group(['A', 1], ['E', 0])], // E sent first, A landed first
+    ['r#3', group(['A', 0], ['B', 1])], // no E
+  ])
+  const units = [0, 1, 2, 3, 4].map((trial) => ({ run: 'r', trial }))
+  assert.deepEqual(twinFirst(units, ordered), { k: 2, n: 3 })
 })
