@@ -498,3 +498,7 @@ targeted run [`docs/RAKURAI.md`](docs/RAKURAI.md).
 | `verify [run\|all] [--write] [--sample N\|all] [--row-blocks N] [--out FILE] [--verify-rpc URL]` | the check against the chain: `--sample` whole transactions (default 60), `--row-blocks` whole blocks rebuilt (default 3) |
 | `paths [--live]` | delivery-path probe |
 | `keygen`, `address`, `status`, `fund`, `sweep` | wallet and budget |
+
+## License
+
+MIT: [`LICENSE`](LICENSE).

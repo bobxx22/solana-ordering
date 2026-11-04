@@ -244,6 +244,7 @@ newest is for the commit you are reading): the job `docker` runs the offline par
   the targeted run.
 - `git log prereg-main`, `git log prereg-confirm` and `git log prereg-rakurai` show the three plans as frozen. The run
   directories are named by their UTC start.
+- The git tag `submission` marks the version handed in for the bounty.
 
 **One trial by hand.** Trial 249 of session 2 went to the Agave 4.3.2 validator 5Us18hLZ, for its window from slot
 462 133 072 (`orders.md`). It was sent in the order D A E C B F. The six landed as the first six transactions of that
