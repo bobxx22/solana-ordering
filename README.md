@@ -117,7 +117,7 @@ command, [`docker compose up`](#reproduce-one-command).
 | Noise versus rule | [A plan frozen before the trials](#noise-versus-rule); [does the method read a rule it is given?](#does-the-method-read-a-rule-it-is-given) |
 | One command, Docker Compose | [`docker compose up`](#reproduce-one-command): no keys, nothing sent, ends with PASS or FAIL |
 | Keys only through a volume or env, never in the repository | [`keys/`, mounted only into the `live` service](#safety-and-engineering) |
-| Dry run by default; real sending behind a flag and a cap | [`run` sends nothing without `--live`](#safety-and-engineering) |
+| Dry run by default; real sending behind a flag and a cap | [`run` sends nothing without `--live`](#safety-and-engineering); [run it yourself on mainnet](#run-it-yourself-on-mainnet) |
 | All raw data, with signatures and slots | [`data/mainnet-beta/runs/`](#data), every landed transaction checked against the chain |
 | README: why this design, the points above, what it does not separate | [Why this design](#why-this-design); [what it does not separate](#what-this-design-does-not-separate) |
 | Report: the date of every measurement, and what went wrong | [Measurements](REPORT.md#measurements); [What went wrong](REPORT.md#what-went-wrong) |
@@ -237,6 +237,39 @@ npm test
 ```
 
 On Windows the pip in the first line is `.venv\Scripts\pip`.
+
+### Run it yourself on mainnet
+
+The check above sends nothing. To send real transactions from your own wallet, first make one:
+
+```bash
+docker compose run --rm live keygen
+```
+
+It writes `keys/payer.json`, which stays on your machine, and prints the address. Send that address 0.02 SOL. Nearly all of
+it comes back at the end: this run costs under 0.001 SOL in fees. Reads work on the public endpoint, but a read endpoint
+that serves `slotsUpdatesSubscribe` (`HELIUS_API_KEY` in `.env`) gives the slot clock our runs used; otherwise the run
+falls back to a coarser clock and records which (`clockSource`).
+
+```bash
+docker compose run --rm live run --live --campaign main --validators C8Bey3LK=5,HEL1USMZ=5 --cells buffered/shared --sub-target 0.00142 --minutes 30
+docker compose run --rm live collect all
+docker compose run --rm live verify
+docker compose run --rm live analyze > /dev/null
+docker compose run --rm live sweep --live
+```
+
+This aims the primary cell at a validator that ordered by total fee and at one that followed reward/cost, until each has 5
+trials with B, C, D, F and A or E in the window. The results are in `data/replication/mainnet-beta/results/results.md`:
+"Every validator with a reading, all runs" has their rows, and `orders.md` every trial. Validators change what they run
+(REPORT, "The targeted run"), so a different order today is a finding, not a failed check. The same command with the same
+campaign continues a run that stopped.
+
+The `live` service works in `data/replication/`, with its own runs and its own spend ledger, under its own 0.05 SOL cap, so
+`--campaign main` starts fresh there and the published data in `data/mainnet-beta/` stay as they are. Without Docker, add
+`--data data/replication` to each command. The whole main run is `run --live --campaign main --minutes 240`, which takes about
+0.06 SOL in the wallet, about 0.023 SOL of it in fees. In a directory where a campaign has met every quota, `run` stops
+before moving any money.
 
 ## The question and the experiment
 
@@ -591,7 +624,7 @@ Added on 2026-11-05, after every trial. It changes no test and no verdict.
   - The chain is identified by its genesis hash, not by a flag.
 - **Keys.**
   - Wallets are files mounted from the host: `keys/`, git-ignored and Docker-ignored.
-  - In Docker only the `live` service mounts them (`docker compose run --rm live run --live --campaign main`). The
+  - In Docker only the `live` service mounts them ([Run it yourself on mainnet](#run-it-yourself-on-mainnet)). The
     default service, which reproduces, never sees them.
   - `keygen` prints only the address.
   - The QUIC sender receives only signed transactions.

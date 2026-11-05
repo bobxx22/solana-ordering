@@ -34,6 +34,8 @@ jobs:
       - run: docker compose build
       - name: reproduce (offline part) in the container
         run: docker compose run --rm ordering reproduce --offline
+      - name: the live service keeps to its own directory, and the published data stay as they are
+        run: docker compose run --rm live status | tee /dev/stderr | grep -q 'data/replication' && git diff --exit-code data/
       - name: tests in the container, the QUIC loopback test included
         run: docker compose run --rm --entrypoint node ordering --test 'test/*.test.ts'
 

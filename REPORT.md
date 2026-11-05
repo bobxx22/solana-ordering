@@ -263,6 +263,7 @@ newest is for the commit you are reading): the job `docker` runs the offline par
   recorded (`orders.md` lists them): slot, position, fee, limits and leader come from public RPC, and only the send
   order and the names of the roles from our log. For example `show 2026-11-04T13-19-54Z 0`, a trial at Ledger by Figment
   with the swapped parameters, or `show 2026-10-27T15-32-51Z 249`, the trial below.
+- To send real transactions from your own wallet, into a directory of their own: README, "Run it yourself on mainnet".
 - `git log prereg-main`, `git log prereg-confirm` and `git log prereg-rakurai` show the three plans as frozen. The run
   directories are named by their UTC start.
 - The git tag `submission` marks the version first handed in for the bounty, `submission-final` the last one before its
@@ -1041,6 +1042,7 @@ label, three contrasts, Holm over the twelve. All 14 rules with a prediction wer
 |---|---|---|
 | README said the one-command check takes "a few minutes". Its CI job takes 7 to 21 minutes, and for most of it `verify` printed nothing, about nine minutes in the run of the handed-in version, so a judge could take it for hung. It also ended on the dry run's last line, with no verdict. | Reading the CI log as a judge would (2026-11-04). | `verify` reports where it is every 20 s, `reproduce` ends with PASS or FAIL and what was checked, and README gives the time. |
 | The job `reproduce-online` ran `docker compose run --rm ordering reproduce`, not the `docker compose up` that README gives. | The same reading. | It now runs `docker compose up --exit-code-from ordering`. |
+| README's only live command for Docker, `run --live --campaign main`, could not repeat anything. On the committed data every quota of that campaign is met, so it funded the sub-payers and stopped without a trial, and it wrote into the published data, where 0.0143 SOL of the cap was left. | Reading the code (`run.ts`) as a judge would use it. No one ran it: our runs did not go through Docker. | The `live` service works in `data/replication/`, README gives a run that fits in 0.02 SOL, and `run` stops before funding when no quota is open. |
 | README and REPORT did not say whether a trial can lose single transactions, which decides whether requiring all six can select on the order. | The same review, by a count from the raw data. | "What a trial loses": none of the 467 buffered trials was split (section 2). |
 
 ### During the targeted run
@@ -1210,5 +1212,7 @@ below, and every earlier line of it is unchanged. Added, and marked as such:
   tests as it is; `testFamily` only became exported.
 - **Checking.** The command `show`; progress lines in `verify`; the PASS or FAIL at the end of `reproduce`, which now also
   compares `known-answers.md`; the job `reproduce-online` running `docker compose up`.
+- **Running it again.** The `live` service keeps to `data/replication/`, and `run` stops before funding when a campaign has
+  no quota open. Neither touches a recorded run.
 - **This report and README.** The first screen of README, why this design, and a table from the brief's requirements to where
   each is met. Here, the contents, the other measurements of `JD549Hsb`, and the sections above.

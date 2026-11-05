@@ -19,7 +19,7 @@
 // Quotas are per client label, or, with `byValidator` (`--validators`), per validator: the quota keys are then
 // identity prefixes, only those validators are targeted, and the records keep the validator's client as usual.
 import { execFileSync } from 'node:child_process'
-import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { BlockhashCache, SlotClock } from './clock.ts'
 import { collect } from './collect.ts'
@@ -232,6 +232,11 @@ export async function run(cfg: Config, rpc: Rpc, opts: RunOptions, log: Log): Pr
   const remainingTrials = live ? clients.reduce((s, c) => s + Math.max(0, quota(c) - (perClient.get(c) ?? 0)), 0) : opts.dryTrials
   log.info(`${live ? 'LIVE' : 'dry run'} on ${cfg.cluster} via ${opts.path}, campaign "${opts.campaign}": up to ${remainingTrials} more landed trials, at most ${fmtSol(perTrial)} each (${fmtSol(perTrial * BigInt(remainingTrials))})`)
   if (carried.runs.length) log.info(`continuing from ${carried.runs.length} earlier run(s): landed ${toJson(Object.fromEntries(perClient))}, ${excluded.size} excluded addresses`)
+  // before any funding: a campaign with nothing left to do must not move money and then stop
+  if (live && remainingTrials === 0) {
+    rmSync(dir, { recursive: true, force: true })
+    throw new Error(`campaign "${opts.campaign}" has met every quota in ${runsDir(cfg)}, so nothing was sent. To measure again, use a data directory of its own (README, "Run it yourself on mainnet").`)
+  }
   log.info(`spend cap ${fmtSol(ledger.cap)} (of which ${fmtSol(SWEEP_ALLOWANCE)} kept for sweeping), committed ${fmtSol(ledger.committed())}; reads via ${rpc.label}`)
   for (const r of roles) log.info(`  role ${r.role}: limit ${r.cuLimit} CU, price ${r.cuPrice} µL/CU, loaded-data limit ${r.loadedLimit} B, reward/cost ${expectedPriority(r).toFixed(3)}`)
 

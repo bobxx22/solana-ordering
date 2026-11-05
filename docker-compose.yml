@@ -13,9 +13,9 @@ services:
       - ./data:/app/data
     command: ['reproduce']
 
-  # the only service that sees the wallet files, and only when asked for by name:
-  #   docker compose run --rm live run --live --campaign main
-  # wallet files never enter the image; they are mounted from the host
+  # the only service that sees the wallet files, and only when asked for by name (README, "Run it yourself on
+  # mainnet"). Wallet files never enter the image; they are mounted from the host. A live run here keeps its own runs
+  # and spend ledger in data/replication, apart from the published data in data/mainnet-beta.
   live:
     profiles: ['live']
     build: .
@@ -23,6 +23,8 @@ services:
     env_file:
       - path: .env
         required: false
+    environment:
+      DATA_DIR: data/replication
     volumes:
       - ./data:/app/data
       - ./keys:/app/keys

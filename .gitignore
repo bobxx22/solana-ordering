@@ -3,6 +3,7 @@ keys/
 node_modules/
 dist/
 data/logs/
+data/replication/
 data/devnet/
 data/localnet/
 .venv/

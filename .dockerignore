@@ -5,4 +5,5 @@ keys/
 .venv/
 node_modules/
 data/logs/
+data/replication/
 data/*/dry-runs/
