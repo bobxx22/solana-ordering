@@ -266,8 +266,9 @@ newest is for the commit you are reading): the job `docker` runs the offline par
 - To send real transactions from your own wallet, into a directory of their own: README, "Run it yourself on mainnet".
 - `git log prereg-main`, `git log prereg-confirm` and `git log prereg-rakurai` show the three plans as frozen. The run
   directories are named by their UTC start.
-- The git tag `submission` marks the version first handed in for the bounty, `submission-final` the last one before its
-  deadline. Nothing between them adds a trial or changes a test ("The plan", "Added on 2026-11-05").
+- The git tag `submission` marks the version first handed in for the bounty, `submission-final-2` the last one before
+  its deadline (`submission-final` is an earlier version of the same day). Nothing between them adds a trial or changes a
+  test ("The plan", "Added on 2026-11-05").
 
 **One trial by hand.** Trial 249 of session 2 went to the Agave 4.3.2 validator 5Us18hLZ, for its window from slot
 462 133 072 (`orders.md`). It was sent in the order D A E C B F. The six landed as the first six transactions of that
