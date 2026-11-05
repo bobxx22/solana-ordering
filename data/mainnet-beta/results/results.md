@@ -598,6 +598,57 @@ Added after the targeted run, on the same trials. It tests nothing; the plan nam
 | Cogent51 | Cogent ⚙️ by SOL Strategies | 13:40 total fee, 14:05 total fee, 14:07 total fee, 14:29 total fee, 14:49 DAECFB, 14:51 total fee, 15:06 total fee, 15:14 total fee |
 | C8Bey3LK | Ledger by Figment | 13:27 total fee, 13:29 total fee, 13:30 total fee, 13:30 total fee, 13:31 total fee, 13:32 total fee, 13:33 total fee, 13:35 F last, 13:37 total fee, 13:38 total fee |
 
+## Every validator with a reading, all runs (exploratory)
+
+Added on 2026-11-05, after every trial, outside all three plans; README copies this table. The assignment's question, asked of each validator: the buffered/shared trials with all six in the window of campaigns "main", "confirm", "rakurai", which send the same six roles, one row per validator and reported client. The rule of "Validator by validator" gives the reading: at least 5 such trials, and one named order in at least 80% of them. Rank: by leader slots in the main run's snapshot (epoch 1069). Interval: Wilson 95% on that share. It pools days and versions, and describes these trials, not the validator in general.
+
+| rank | validator | name on chain | reported client | order of the six | trials in that order | 95% |
+|---:|---|---|---|---|---|---|
+| 7 | `C8Bey3LK` | Ledger by Figment | JitoLabs 4.3.2, 4.4.0 | **total fee** | 24 of 26 | 76–98% |
+| 8 | `EvnRmnMr` | Everstake | JitoLabs 4.3.2 | **total fee** | 19 of 19 | 83–100% |
+| 139 | `Cogent51` | Cogent ⚙️ by SOL Strategies | JitoLabs 4.4.0 | **total fee** | 7 of 8 | 53–98% |
+| 8 | `EvnRmnMr` | Everstake | HarmonicFiredancer 26.10.5 | **F last** | 10 of 10 | 72–100% |
+| 155 | `fishfish` | stakefish 🐟 | HarmonicAgave 4.4.0 | **F last** | 8 of 8 | 68–100% |
+| 10 | `JD549Hsb` | Forward Industries | Firedancer 26.10.4 | **no single order** | 18 reward/cost, 0 total fee, 6 F last, 6 other, of 30 | – |
+| 108 | `Ha1iade1` | Ha1iad3 | JitoLabs 4.4.0-rc.1 | **no single order** | 1 reward/cost, 3 total fee, 4 F last, 0 other, of 8 | – |
+| 2 | `HEL1USMZ` | Helius | JitoLabs 4.3.2, 4.4.0 | **reward/cost** | 15 of 15 | 80–100% |
+| 16 | `9jxgosAf` | – | FireBAM 26.10.4 | **reward/cost** | 7 of 7 | 65–100% |
+| 48 | `ana2y2Yv` | Anagram Staking | Rakurai 4.3.2 | **reward/cost** | 12 of 12 | 76–100% |
+| 56 | `7QQGNm3p` | – | Agave 4.3.2 | **reward/cost** | 10 of 10 | 72–100% |
+| 80 | `A9mvukTd` | – | JitoLabs 4.4.0 | **reward/cost** | 8 of 8 | 68–100% |
+| 82 | `bitHUmbK` | – | JitoLabs 4.3.2, 4.4.0 | **reward/cost** | 9 of 9 | 70–100% |
+| 90 | `5Us18hLZ` | – | Agave 4.3.2 | **reward/cost** | 10 of 10 | 72–100% |
+| 110 | `E3mDbFMr` | MAVAN | Rakurai 4.3.2 | **reward/cost** | 5 of 5 | 57–100% |
+| 117 | `7PdKhpKz` | Alpha Pro High APY🚀 100% Rel… | Rakurai 4.3.2 | **reward/cost** | 9 of 9 | 70–100% |
+| 126 | `HM19KBHD` | Hello Moon | JitoLabs 4.4.0 | **reward/cost** | 8 of 8 | 68–100% |
+| 129 | `vu1sGn2f` | Allnodes ⚡️ 0% fee | JitoLabs 4.3.2, 4.4.0 | **reward/cost** | 8 of 9 | 56–98% |
+| 135 | `2Df1aLCR` | P2P.org Turbo | JitoLabs 4.4.0 | **reward/cost** | 8 of 8 | 68–100% |
+
+Rows: 19, for 18 validators (a validator that changed reported client has a row for each). By reading: total fee 3, F last 2, no single order 2, reward/cost 12. Labels among them: 7.
+
+The other 73 validators (73 rows) have 1 to 4 such trials each, too few for a reading of their own. Pooled, their 106 trials: 74 reward/cost, 2 total fee, 30 F last, 0 other.
+
+Not in the table: campaign "rakurai-swap", the same trials with the parameters of B and D swapped, C8Bey3LK only: B before D in 12 of 12, 10 of 12 in the exact total-fee order.
+
+Scale: 620 trials on the direct path over all campaigns, aimed at 161 validators.
+
+## What a trial loses: single transactions or whole bursts (exploratory)
+
+Added on 2026-11-05, after every trial, outside all three plans. Trials count only with their roles in the window, so a loss that depends on the role could select on the order. What became of each burst, by campaign and cell: all six in the targeted window; none in it, all six landed in other slots; none of the six landed; or split, some in the window and the rest elsewhere or lost.
+
+| campaign | cell | trials | all six in the window | all six outside it | none landed | split |
+|---|---|---:|---:|---:|---:|---:|
+| main | buffered/independent | 81 | 72 | 3 | 6 | 0 |
+| main | buffered/shared | 207 | 181 | 5 | 21 | 0 |
+| main | burst/shared | 38 | 36 | 0 | 2 | 0 |
+| main | streamed/independent | 37 | 36 | 0 | 1 | 0 |
+| main | streamed/shared | 40 | 36 | 1 | 2 | 1 |
+| confirm | buffered/shared | 53 | 50 | 2 | 1 | 0 |
+| rakurai | buffered/shared | 114 | 94 | 1 | 19 | 0 |
+| rakurai-swap | buffered/shared | 12 | 12 | 0 | 0 | 0 |
+
+Every buffered trial of these campaigns: 467, of which 0 split. Main run, buffered/shared: 181 of 207 with all six in the window, 5 all outside it, 21 with none landed, 0 split. A burst that is not split has no role that was lost and others that were not, so in the cells without split trials, requiring all six cannot select on the order among the six. It can still select between bursts and validators. Buffered trials with none landed, by the port of the address aimed at: port 11228, 26 of 73; other ports, 21 of 394.
+
 ## Rule agreement: buffered/shared (campaign "main")
 
 Mean gamma per trial (+1: every pair the rule ranks differently landed in its order; 0: unrelated). The rules agree on most pairs by design: read the contrasts first. [95% interval resampling ingress hosts; – with fewer than 3], sign-flip p over host means, Holm-adjusted within the table.

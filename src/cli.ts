@@ -7,6 +7,7 @@ import { type Args, checkCluster, type Config, fmtSol, loadConfig, parseArgs } f
 import { type Cell, CELL_BLOCK, DEFAULT_QUOTAS, SWAPPED_ROLES } from './design.ts'
 import { discover } from './discover.ts'
 import { createKeypairFile, loadKeypair } from './keys.ts'
+import { KNOWN_ANSWERS_FILE, writeKnownAnswers } from './knownanswers.ts'
 import { Ledger } from './ledger.ts'
 import { writeRakuraiActivation, writeValidatorNames } from './names.ts'
 import { probePaths } from './paths.ts'
@@ -14,15 +15,18 @@ import { settleOpen } from './settle.ts'
 import { Log, stamp } from './log.ts'
 import { Rpc } from './rpc.ts'
 import { ledgerFile, run, runsDir, type SendPath } from './run.ts'
-import { verify } from './verify.ts'
+import { showTrial } from './show.ts'
+import { verify, type VerifyReport } from './verify.ts'
 import { balances, fundSubPayers, loadSubPayers, sweepSubPayers } from './wallets.ts'
 
 const HELP = `usage: node src/cli.ts <command> [flags]
 
 commands
   reproduce  what a judge runs (the Docker Compose default): regenerate the results from the committed raw data and
-             compare them with the committed ones, verify every recorded transaction against the chain, and make
-             one dry-run trial over the direct path (no keys, nothing sent)   --offline: only the first step
+             compare them with the committed ones, verify a sample of the recorded transactions against the chain, and
+             make one dry-run trial over the direct path (no keys, nothing sent); it ends with PASS or FAIL
+               --offline: only the first step
+  show       one trial read from the chain: show <run> <trial>   (data/mainnet-beta/results/orders.md lists them)
   keygen     create a new wallet file (default keys/payer.json); prints only its address
   address    print the wallet address and balance
   airdrop    request test SOL (devnet / localnet only)
@@ -45,6 +49,7 @@ commands
   collect    landing slot, in-block position and slot leader of a run's transactions; settles the ledger
                [run id | all, default: the latest run]   --refresh refetches every block
   analyze    statistics of all live runs -> data/<cluster>/results/ (offline, from the committed raw data)
+  known-answers  the same analysis on simulated leaders with a known rule -> data/<cluster>/results/known-answers.md
   verify     check the raw data against the chain (default endpoints: api.mainnet-beta.solana.com, then PublicNode);
              exit code 1 on mismatches (blocks no endpoint can serve are reported, not failed)
                [run id | all, default all]   --verify-rpc URL,URL
@@ -169,23 +174,57 @@ async function main(): Promise<void> {
     case 'analyze':
       console.log(analyze(cfg.dataDir, cfg.cluster))
       return
+    case 'known-answers':
+      writeKnownAnswers(cfg.dataDir, cfg.cluster)
+      log.info(`wrote ${join(cfg.dataDir, cfg.cluster, 'results', KNOWN_ANSWERS_FILE)}`)
+      return
+    case 'show': {
+      const [id, trial] = args.positional
+      if (!id || trial === undefined || !/^\d+$/.test(trial)) throw new Error('usage: show <run> <trial>, for example: show 2026-10-27T15-32-51Z 249 (data/mainnet-beta/results/orders.md lists the trials)')
+      const shown = await showTrial(verifyRpcs(cfg, args), runsDir(cfg), id, Number(trial))
+      console.log(shown.lines.join('\n'))
+      if (shown.problems.length) process.exitCode = 1
+      return
+    }
     case 'reproduce': {
+      const offline = args.flags.has('offline')
+      log.info(offline ? 'reproduce, offline part: regenerating the results from the committed raw data' : 'reproduce: three steps, about 10 minutes on the rate-limited public endpoints; no keys, and nothing is sent')
       // every file analyze writes is compared with the committed one
-      const files = ['results.md', 'orders.md', 'units.json', 'summary.json', 'exact-orders.svg', 'send-order.svg'].map((f) => join(cfg.dataDir, cfg.cluster, 'results', f))
+      const files = ['results.md', 'orders.md', 'units.json', 'summary.json', 'exact-orders.svg', 'send-order.svg', KNOWN_ANSWERS_FILE].map((f) => join(cfg.dataDir, cfg.cluster, 'results', f))
       const before = files.map((f) => (existsSync(f) ? readFileSync(f, 'utf8') : null))
+      log.info('step 1 of 3: regenerating every table, and the known answers')
       analyze(cfg.dataDir, cfg.cluster)
+      writeKnownAnswers(cfg.dataDir, cfg.cluster)
       const differ = files.filter((f, i) => before[i] !== null && before[i] !== readFileSync(f, 'utf8'))
-      if (before.every((b) => b === null)) log.info('reproduce: results generated (none were committed to compare with)')
-      else if (!differ.length) log.info(`reproduce: the ${files.length} result files regenerated from the raw data are identical to the committed ones`)
-      else {
-        log.info(`reproduce: regenerated results DIFFER from the committed ones: ${differ.join(', ')} (see git diff data/)`)
-        process.exitCode = 1
+      const generated = before.every((b) => b === null)
+      const results = generated ? 'generated (none were committed to compare with)' : !differ.length ? `the ${files.length} generated files are identical to the committed ones` : `DIFFER from the committed ones: ${differ.join(', ')} (see git diff data/)`
+      log.info(`reproduce: results ${results}`)
+      let chain: VerifyReport | null = null
+      let dryRun = ''
+      if (!offline) {
+        log.info('step 2 of 3: checking a sample of the raw data against the chain')
+        // a seeded sample of 120 blocks keeps this within minutes on the public endpoint; `verify` checks every block
+        chain = await verify(verifyRpcs(cfg, args), runsDir(cfg), log, { maxBlocks: 120, sample: 30, rowBlocks: 2 })
+        log.info('step 3 of 3: one dry-run trial over the direct path')
+        try {
+          await run({ ...cfg, live: false }, rpc, { quotas: DEFAULT_QUOTAS, byValidator: false, perValidator: 4, cells: CELL_BLOCK, campaign: 'dry', path: 'tpu', spacingMs: 4000, seed: 1, dryTrials: 1, maxMinutes: 5 }, log)
+          dryRun = 'one trial simulated, nothing sent'
+        } catch (e) {
+          dryRun = `FAILED: ${(e as Error).message}`
+        }
       }
-      if (args.flags.has('offline')) return
-      // a seeded sample of 120 blocks keeps this within minutes on the public endpoint; `verify` checks every block
-      const r = await verify(verifyRpcs(cfg, args), runsDir(cfg), log, { maxBlocks: 120, sample: 30, rowBlocks: 2 })
-      if (r.problems.length) process.exitCode = 1
-      await run({ ...cfg, live: false }, rpc, { quotas: DEFAULT_QUOTAS, byValidator: false, perValidator: 4, cells: CELL_BLOCK, campaign: 'dry', path: 'tpu', spacingMs: 4000, seed: 1, dryTrials: 1, maxMinutes: 5 }, log)
+      const failed = differ.length > 0 || (chain?.problems.length ?? 0) > 0 || dryRun.startsWith('FAILED')
+      if (failed) process.exitCode = 1
+      log.info('')
+      log.info(`reproduce: ${failed ? 'FAIL' : 'PASS'}${offline ? ' (offline part only)' : ''}`)
+      log.info(`  results: ${results}`)
+      if (chain) {
+        const unavailable = chain.unavailableBlocks.length ? `; ${chain.unavailableBlocks.length} blocks no endpoint served, reported and not failed` : ''
+        log.info(`  chain:   ${chain.transactions} landed transactions at their recorded index in ${chain.blocks} of ${chain.blocksInData} blocks, ${chain.sampleChecked} whole transactions, ${chain.rowsChecked} rows of ${chain.rowBlocksChecked} whole blocks, ${chain.unlandedChecked} unlanded unknown to the chain: ${chain.problems.length} problems${unavailable}`)
+        log.info(`  dry run: ${dryRun}`)
+        log.info('  every transaction: node src/cli.ts verify all --sample all (the committed results are data/mainnet-beta/verify*.json)')
+        log.info('  one trial from the chain: show 2026-11-04T13-19-54Z 0')
+      }
       return
     }
     case 'paths': {

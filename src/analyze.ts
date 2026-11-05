@@ -67,6 +67,9 @@
 //              lands first. One-sided exact binomial against chance.
 //   verdict    Holm over the three. H2 and H3 with fewer than 10 trials: insufficient data. Otherwise confirmed when
 //              the Holm p < 0.05, else not confirmed.
+// Added on 2026-11-05, after every trial, outside all three plans, and marked so in results.md (src/answers.ts):
+//   exploratory  every validator with a reading, over the main, confirmatory and targeted runs; what a trial loses,
+//                single transactions or whole bursts. src/knownanswers.ts runs this analysis on simulated leaders.
 // The block producer is the scheduled leader of the landing slot; the client is that leader's gossip client id in
 // the run's snapshot.
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
@@ -78,6 +81,7 @@ import { BASE_FEE_PER_SIGNATURE, countsTowardsQuota, FIRE_OFFSET, LOCAL_CLIENTS,
 import type { Snapshot } from './discover.ts'
 import { binomialLowerTail, bootstrapMeanCi, exactUpperTail, mean, median, pearson, quantile, signFlipP, signFlipUpperP, spearman, wilson } from './stats.ts'
 import { readJsonl, rng, toJson } from './util.ts'
+import { answerSection, attritionSection } from './answers.ts'
 import { TARGETED_CAMPAIGNS, targetedAfterData, targetedSection } from './targeted.ts'
 import { ORDERS, validatorSections } from './validators.ts'
 
@@ -647,7 +651,7 @@ const fp = (p: number | undefined) => (p === undefined || !Number.isFinite(p) ? 
 const cellText = (s: ContrastStat, withP = true) => (s.n ? `${pct(s.share)} of ${s.n} [${pct(s.ci[0])}–${pct(s.ci[1])}]${withP ? ` p=${fp(s.pHolm ?? s.p)}` : ''}` : '–')
 
 /** A family of twelve tests (four labels, three contrasts) on a set of trials, Holm-adjusted together. */
-function testFamily(us: Unit[], ordered: Map<string, Tx[]>, labels: string[] = LOCAL_CLIENTS) {
+export function testFamily(us: Unit[], ordered: Map<string, Tx[]>, labels: string[] = LOCAL_CLIENTS) {
   const rows = labels.map((c) => {
     const cu = us.filter((u) => u.client === c)
     return { c, cu, control: contrastStat(cu, ordered, CONTROL), stats: PRIMARY.map((p) => contrastStat(cu, ordered, p)) }
@@ -1023,6 +1027,9 @@ export function analyze(dataDir: string, cluster: string): string {
   out.push(...targetedSection({ loaded, dataDir, cluster, kept: keptBySensitivity }))
   // added after the targeted run
   out.push(...targetedAfterData({ loaded, dataDir, cluster }))
+  // added on 2026-11-05
+  out.push(...answerSection({ loaded, dataDir, cluster, latest }))
+  out.push(...attritionSection(loaded))
 
   // ---------- rule agreement ----------
   const ruleTable = (title: string, groups: { label: string; units: Unit[] }[], rules: Rule[]) => {

@@ -25,7 +25,7 @@ jobs:
       - name: type check (TypeScript is fetched for this step only; the project has no dependencies)
         run: npm install --no-save --no-package-lock typescript@5.9.3 @types/node@24 && npx tsc -p tsconfig.json
       - name: results regenerate byte for byte from the raw data
-        run: node src/cli.ts analyze > /dev/null && git diff --exit-code data/
+        run: node src/cli.ts analyze > /dev/null && node src/cli.ts known-answers && git diff --exit-code data/
 
   docker:
     runs-on: ubuntu-latest
@@ -45,4 +45,5 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - run: docker compose build
-      - run: docker compose run --rm ordering reproduce
+      # the very command README gives; --exit-code-from makes a FAIL fail this job
+      - run: docker compose up --exit-code-from ordering

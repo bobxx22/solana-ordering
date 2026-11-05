@@ -26,6 +26,9 @@ import type { Rpc } from './rpc.ts'
 import { COMPUTE_BUDGET_PROGRAM } from './tx.ts'
 import { chunk, readJsonl, rng, shuffle, toJson } from './util.ts'
 
+/** at most one progress line this often */
+const PROGRESS_MS = 20_000
+
 export interface VerifyReport {
   verifiedAt: string
   endpoints: string[]
@@ -67,7 +70,7 @@ export interface VerifyOptions {
  * The first endpoint that answers with a value wins; an error or an empty answer passes the request on to the next.
  * Null when none can (e.g. the block is past every node's retention).
  */
-async function first<T>(rpcs: Rpc[], method: string, params: unknown[]): Promise<{ value: T | null; error: string | null }> {
+export async function first<T>(rpcs: Rpc[], method: string, params: unknown[]): Promise<{ value: T | null; error: string | null }> {
   let error: string | null = null
   for (const r of rpcs) {
     try {
@@ -81,11 +84,25 @@ async function first<T>(rpcs: Rpc[], method: string, params: unknown[]): Promise
   return { value: null, error }
 }
 
+/** The ComputeBudget instructions of a transaction as `getTransaction` returns it. */
+export function computeBudgetOf(msg: { accountKeys: string[]; instructions: { programIdIndex: number; data: string }[] }): { cuLimit?: number; cuPrice?: number; loadedLimit?: number } {
+  const found: { cuLimit?: number; cuPrice?: number; loadedLimit?: number } = {}
+  for (const ix of msg.instructions) {
+    if (msg.accountKeys[ix.programIdIndex] !== COMPUTE_BUDGET_PROGRAM) continue
+    const d = decode(ix.data)
+    const view = new DataView(d.buffer, d.byteOffset)
+    if (d[0] === 2) found.cuLimit = view.getUint32(1, true)
+    if (d[0] === 3) found.cuPrice = Number(view.getBigUint64(1, true))
+    if (d[0] === 4) found.loadedLimit = view.getUint32(1, true)
+  }
+  return found
+}
+
 /**
  * Statuses of signatures, each sent at a known slot. Only an endpoint whose history (getFirstAvailableBlock) reaches
  * back to a signature's send slot is asked about it, so that "unknown" means absent from the chain.
  */
-async function statusesWithHistory(rpcs: Rpc[], items: { signature: string; sentSlot: number }[]): Promise<Map<string, { slot: number } | null>> {
+async function statusesWithHistory(rpcs: Rpc[], items: { signature: string; sentSlot: number }[], onProgress: (asked: number) => void = () => {}): Promise<Map<string, { slot: number } | null>> {
   const out = new Map<string, { slot: number } | null>()
   const firstBlock: (number | null)[] = []
   for (const r of rpcs) firstBlock.push(await r.call<number>('getFirstAvailableBlock').catch(() => null))
@@ -100,6 +117,7 @@ async function statusesWithHistory(rpcs: Rpc[], items: { signature: string; sent
       const res = await rpcs[i].call<any>('getSignatureStatuses', [part.map((x) => x.signature), { searchTransactionHistory: true }]).catch(() => null)
       if (!res) continue
       part.forEach((x, k) => out.set(x.signature, res.value[k] ? { slot: res.value[k].slot } : null))
+      onProgress(out.size)
     }
     pending = pending.filter((x) => !out.has(x.signature))
   }
@@ -148,6 +166,14 @@ export async function verify(rpcs: Rpc[], runsRoot: string, log: Log, opts: Veri
   // every block, or a seeded random sample of them (the one-command check keeps the public endpoint's rate limit in mind)
   const allSlots = [...new Set(landed.map((l) => l.slot!))].sort((a, b) => a - b)
   const slots = opts.maxBlocks && allSlots.length > opts.maxBlocks ? shuffle(allSlots, rng(11)).slice(0, opts.maxBlocks).sort((a, b) => a - b) : allSlots
+  // the public endpoints are rate-limited, so this takes minutes: say where it is, or it looks hung
+  let lastNote = Date.now()
+  const progress = (stage: string, done: number, total: number) => {
+    if (done < total && Date.now() - lastNote < PROGRESS_MS) return
+    lastNote = Date.now()
+    log.info(`verify: ${stage}: ${done} of ${total}, ${problems.length} problems so far`)
+  }
+  log.info(`verify: ${runs.length} runs, ${landed.length} landed transactions; reading ${slots.length} of ${allSlots.length} blocks from ${rpcs.map((r) => r.label).join(', ')}`)
   // the leader schedule, from whichever endpoint still serves each epoch
   const schedule = new Map<number, string | null>()
   for (const r of rpcs) {
@@ -160,8 +186,10 @@ export async function verify(rpcs: Rpc[], runsRoot: string, log: Log, opts: Veri
   let bySchedule = 0
   let byCollector = 0
   let checked = 0
+  let blocksRead = 0
   for (const slot of slots) {
     const { value: b, error } = await first<any>(rpcs, 'getBlock', [slot, { transactionDetails: 'signatures', rewards: true, maxSupportedTransactionVersion: 1, commitment: 'finalized' }])
+    progress('blocks', ++blocksRead, slots.length)
     if (!b) {
       unavailable.push(slot)
       log.info(`block ${slot} unavailable: ${error}`)
@@ -193,9 +221,11 @@ export async function verify(rpcs: Rpc[], runsRoot: string, log: Log, opts: Veri
   const perRole = Math.max(1, Math.ceil((opts.sample ?? 60) / Math.max(1, byRole.size)))
   const sample = [...byRole.values()].flatMap((ls) => shuffle(ls, random).slice(0, perRole))
   let sampleChecked = 0
+  let sampleRead = 0
   for (const l of sample) {
     const r = recorded.get(l.signature)
     const { value: tx } = await first<any>(rpcs, 'getTransaction', [l.signature, { encoding: 'json', maxSupportedTransactionVersion: 1, commitment: 'finalized' }])
+    progress('whole transactions', ++sampleRead, sample.length)
     if (!tx || !r) {
       unavailable.push(l.slot!)
       continue
@@ -207,15 +237,7 @@ export async function verify(rpcs: Rpc[], runsRoot: string, log: Log, opts: Veri
     if (!wallets.get(l.run)!.has(msg.accountKeys[0])) fail('fee payer is not one of the run wallets', { payer: msg.accountKeys[0] })
     if (l.fee !== null && tx.meta.fee !== l.fee) fail('fee', { recorded: l.fee, chain: tx.meta.fee })
     if (r.anchor && !msg.accountKeys.includes(r.anchor)) fail('recorded anchor not in the transaction')
-    const found: Record<string, number> = {}
-    for (const ix of msg.instructions) {
-      if (msg.accountKeys[ix.programIdIndex] !== COMPUTE_BUDGET_PROGRAM) continue
-      const d = decode(ix.data)
-      const view = new DataView(d.buffer, d.byteOffset)
-      if (d[0] === 2) found.cuLimit = view.getUint32(1, true)
-      if (d[0] === 3) found.cuPrice = Number(view.getBigUint64(1, true))
-      if (d[0] === 4) found.loadedLimit = view.getUint32(1, true)
-    }
+    const found = computeBudgetOf(msg)
     const want = { cuLimit: r.cuLimit, cuPrice: Number(r.cuPrice), loadedLimit: r.loadedLimit ?? 16_384 }
     if (found.cuLimit !== want.cuLimit || found.cuPrice !== want.cuPrice || found.loadedLimit !== want.loadedLimit) fail('role parameters', { recorded: want, chain: found })
   }
@@ -227,8 +249,10 @@ export async function verify(rpcs: Rpc[], runsRoot: string, log: Log, opts: Veri
     slots.filter((s) => recordedBlocks.has(s)),
     rng(13),
   ).slice(0, opts.rowBlocks ?? 3)
+  let rowBlocksRead = 0
   for (const slot of rowSlots) {
     const { value: b } = await first<any>(rpcs, 'getBlock', [slot, { ...BLOCK_REQUEST, commitment: 'finalized' }])
+    progress('whole blocks rebuilt', ++rowBlocksRead, rowSlots.length)
     if (!b) {
       unavailable.push(slot)
       continue
@@ -242,7 +266,8 @@ export async function verify(rpcs: Rpc[], runsRoot: string, log: Log, opts: Veri
   }
 
   // recorded as not landed: the chain must not know them (asked only where history reaches back to the send slot)
-  const unlandedStatus = await statusesWithHistory(rpcs, unlanded)
+  log.info(`verify: asking about the ${unlanded.length} transactions recorded as not landed (the slowest step: the endpoint searches its whole history)`)
+  const unlandedStatus = await statusesWithHistory(rpcs, unlanded, (asked) => progress('transactions recorded as not landed', asked, unlanded.length))
   for (const u of unlanded) {
     const st = unlandedStatus.get(u.signature)
     if (st) problems.push({ run: u.run, signature: u.signature, problem: 'recorded as not landed but found on chain', slot: st.slot })
@@ -257,7 +282,7 @@ export async function verify(rpcs: Rpc[], runsRoot: string, log: Log, opts: Veri
         const sentSlot = new Map(readJsonl(join(dir, f.replace('-landed', ''))).map((x) => [x.signature, x.slotAtSend ?? 0]))
         for (const l of readJsonl(join(dir, f))) probes.push({ file: f, signature: l.signature, slot: l.slot ?? null, sentSlot: sentSlot.get(l.signature) ?? 0 })
       }
-  const probeStatus = await statusesWithHistory(rpcs, probes)
+  const probeStatus = await statusesWithHistory(rpcs, probes, (asked) => progress('delivery-path probes', asked, probes.length))
   for (const p of probes) {
     if (!probeStatus.has(p.signature)) continue
     const st = probeStatus.get(p.signature)

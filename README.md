@@ -1,9 +1,128 @@
 # Inside the block: how Solana validators order transactions
 
-This repository measures, on Solana mainnet after Alpenglow, how block producers order transactions inside a block,
-and whether the rule differs between validator clients.
+What decides which transaction lands earlier in a Solana block, validator by validator, measured on mainnet after
+Alpenglow with our own transactions: 635 trials and 3 455 landed transactions between 2026-10-24 and 2026-11-04, for
+0.035684 SOL under a spend cap of 0.05 in code. The written analysis, the date of every measurement and "what went
+wrong" are in [`REPORT.md`](REPORT.md).
 
-## In short
+## The answer
+
+Each trial sends six of our transactions together, with fees chosen so that every candidate rule predicts a different
+order of the six ([roles A to F](#the-experiment)).
+
+- **Transactions waiting together are ranked by reward per requested cost unit at most validators.** That is the
+  formula of the Agave, Jito and Firedancer source. All twelve pre-registered tests hold, and 107 of 120 trials at the
+  local schedulers and 31 of 31 at BAM landed in the exact predicted order, which chance gives in 2 of 720.
+- **Some large validators rank by total priority fee instead, on the same reported client.** Ledger by Figment and
+  Everstake put B, the largest fee on the largest limit, before C, which pays no priority fee, in 29 of 30 new trials
+  under a plan frozen beforehand, all 29 in the exact total-fee order. With the fees swapped against the limits, Ledger
+  by Figment put the larger fee first in 12 of 12: the fee, not the larger limit. In the same 12 minutes, on the same
+  client and version, Helius followed reward/cost in 10 of 10.
+- **Harmonic validators rank by fee too, but put the transaction with a 64 MiB loaded-data request last**, in 30 of 30
+  trials. That fits reward/cost with a smaller base-fee share, or a cost formula of its own; the design cannot tell
+  which.
+- **Arriving one at a time, transactions land as they arrive.** Sent 30 ms apart into a block being built, 97–99% of
+  pairs at the local schedulers landed in send order, whatever they paid. Our pilot through a public RPC measured the
+  like: the block followed the order in which the RPC released our transactions.
+- **Two leads did not hold.** Holders of Rakurai's activation account ordered no differently from matched validators
+  (22% against 22%, not confirmed). Firedancer `JD549Hsb` left the exact order in 6 of 20 new trials, not significantly
+  more than the reference allows (not confirmed), and over both runs follows no single order.
+
+For each validator, its rule, how strictly it holds, and whether there is one:
+
+| rank | validator | name on chain | reported client | order of the six | trials in that order | 95% |
+|---:|---|---|---|---|---|---|
+| 7 | `C8Bey3LK` | Ledger by Figment | JitoLabs 4.3.2, 4.4.0 | **total fee** | 24 of 26 | 76–98% |
+| 8 | `EvnRmnMr` | Everstake | JitoLabs 4.3.2 | **total fee** | 19 of 19 | 83–100% |
+| 139 | `Cogent51` | Cogent ⚙️ by SOL Strategies | JitoLabs 4.4.0 | **total fee** | 7 of 8 | 53–98% |
+| 8 | `EvnRmnMr` | Everstake | HarmonicFiredancer 26.10.5 | **F last** | 10 of 10 | 72–100% |
+| 155 | `fishfish` | stakefish 🐟 | HarmonicAgave 4.4.0 | **F last** | 8 of 8 | 68–100% |
+| 10 | `JD549Hsb` | Forward Industries | Firedancer 26.10.4 | **no single order** | 18 reward/cost, 0 total fee, 6 F last, 6 other, of 30 | – |
+| 108 | `Ha1iade1` | Ha1iad3 | JitoLabs 4.4.0-rc.1 | **no single order** | 1 reward/cost, 3 total fee, 4 F last, 0 other, of 8 | – |
+| 2 | `HEL1USMZ` | Helius | JitoLabs 4.3.2, 4.4.0 | **reward/cost** | 15 of 15 | 80–100% |
+| 16 | `9jxgosAf` | – | FireBAM 26.10.4 | **reward/cost** | 7 of 7 | 65–100% |
+| 48 | `ana2y2Yv` | Anagram Staking | Rakurai 4.3.2 | **reward/cost** | 12 of 12 | 76–100% |
+| 56 | `7QQGNm3p` | – | Agave 4.3.2 | **reward/cost** | 10 of 10 | 72–100% |
+| 80 | `A9mvukTd` | – | JitoLabs 4.4.0 | **reward/cost** | 8 of 8 | 68–100% |
+| 82 | `bitHUmbK` | – | JitoLabs 4.3.2, 4.4.0 | **reward/cost** | 9 of 9 | 70–100% |
+| 90 | `5Us18hLZ` | – | Agave 4.3.2 | **reward/cost** | 10 of 10 | 72–100% |
+| 110 | `E3mDbFMr` | MAVAN | Rakurai 4.3.2 | **reward/cost** | 5 of 5 | 57–100% |
+| 117 | `7PdKhpKz` | Alpha Pro High APY🚀 100% Rel… | Rakurai 4.3.2 | **reward/cost** | 9 of 9 | 70–100% |
+| 126 | `HM19KBHD` | Hello Moon | JitoLabs 4.4.0 | **reward/cost** | 8 of 8 | 68–100% |
+| 129 | `vu1sGn2f` | Allnodes ⚡️ 0% fee | JitoLabs 4.3.2, 4.4.0 | **reward/cost** | 8 of 9 | 56–98% |
+| 135 | `2Df1aLCR` | P2P.org Turbo | JitoLabs 4.4.0 | **reward/cost** | 8 of 8 | 68–100% |
+
+Buffered/shared trials with all six in the targeted window, main, confirmatory and targeted runs, one row per validator
+and reported client (exploratory; generated in `results.md`, "Every validator with a reading, all runs"). A reading
+needs at least 5 such trials and one named order in at least 80% of them. **Total fee:** B D, then A, E, F in any order,
+C. **F last:** A E D, then B and C either way, then F, which is A with a 64 MiB loaded-data request. **Reward/cost:** A E D
+C F B, A and E either way. Rank: by leader slots. Names: what each identity publishes on chain, self-declared. The other
+73 validators have 1 to 4 such trials each: pooled, 74 reward/cost, 2 total fee, 30 F last, none other. "Total fee" is
+separated from "the larger limit first" at `C8Bey3LK` only.
+
+![Trials in the exact predicted order of all six, by label: Agave 30 of 30, JitoLabs 23 of 30, Firedancer 24 of 30, Rakurai 30 of 30, AgaveBam 15 of 15, FireBAM 16 of 16, HarmonicAgave 0 of 15, HarmonicFiredancer 0 of 15](data/mainnet-beta/results/exact-orders.svg)
+
+**Read this before quoting a number.** One unstaked sender. Our six out-rank 79–99% of their blocks, so this is how the
+head of the queue is ranked, not how ordinary traffic is deferred. BAM and Harmonic are measured from their shared
+gateways, as whole pipelines. Client labels are what validators report in gossip, and 14 of our 85 changed within eleven
+days. A reading describes these trials on these days. The full list: [What this design does not
+separate](#what-this-design-does-not-separate).
+
+## Check it in a minute
+
+The first six transactions of block 462 133 072, from a public endpoint, without our code:
+
+```bash
+curl -s https://api.mainnet-beta.solana.com -H 'content-type: application/json' -d '{"jsonrpc":"2.0","id":1,"method":"getBlock","params":[462133072,{"transactionDetails":"signatures","rewards":false,"maxSupportedTransactionVersion":1}]}' | python3 -c "import json,sys; print([s[:8] for s in json.load(sys.stdin)['result']['signatures'][:6]])"
+```
+
+It prints `['4uHMPzNZ', '3VQBhCSe', '4CkmLSe4', '2qa4pgik', '48QFUnnB', '52C1m8zN']`: our roles E A D C F B, the reward/cost
+order, though they were sent D A E C B F ([REPORT, "One trial by
+hand"](REPORT.md#how-to-check)).
+
+Any trial, read from the chain and compared with what we recorded. Only the send order and the names of the roles come
+from our log; slot, position, fee, limits and leader come from public RPC:
+
+```bash
+docker compose run --rm ordering show 2026-11-04T13-19-54Z 0
+```
+
+That is a trial at Ledger by Figment with the parameters of B and D swapped. It ends:
+
+```text
+In the window, in landing order: B D A E F C
+  matches         total fee: B, D, then A, E, F in any order, C
+  does not match  the larger limit first: D, B, then A, E, F, C
+  does not match  reward/cost: B, A and E either way, C, F, D
+The recorded run agrees with the chain.
+```
+
+[`orders.md`](data/mainnet-beta/results/orders.md) lists every trial with its run and number. The whole check is one
+command, [`docker compose up`](#reproduce-one-command).
+
+## What the brief asks, and where it is
+
+| the brief asks | here |
+|---|---|
+| Mainnet; every measurement on one side of Alpenglow | All after it. `analyze` and `verify` check every slot against `ALPENGLOW_SLOT` ([What Alpenglow changes](#what-alpenglow-changes-for-this-experiment)) |
+| At least 6 validators, at least 3 clients or versions | 18 validators with a reading of their own on 7 reported clients (above); trials at 161 validators on 8 |
+| A fee spend limit in code, about 0.05 SOL | Every send reserves its maximum fee in a ledger first ([`src/ledger.ts`](src/ledger.ts)); 0.035684 SOL spent ([Measurements](REPORT.md#measurements)) |
+| Jito validators in scope, bundles and tips not | Ordinary transactions, no bundle and no tip; JitoLabs is one of the labels |
+| Our own transactions as the primary evidence | Every test reads only our six; other transactions are context ([Competition inside the block](#competition-inside-the-block)) |
+| Leader schedule and leader types | [How the design handles it](#leader-schedule-and-leader-types) |
+| The path from the backend to the node | [Direct QUIC to the leader, and why](#path-from-our-backend-to-the-node) |
+| Our transactions' interaction with each other | [Separate payers, fresh anchors, shared and independent modes](#interaction-of-our-own-transactions) |
+| Competition inside the block | [Where our transactions stand in their blocks](#competition-inside-the-block) |
+| Send order | [Randomized per trial; twins; three deliveries](#send-order) |
+| Noise versus rule | [A plan frozen before the trials](#noise-versus-rule); [does the method read a rule it is given?](#does-the-method-read-a-rule-it-is-given) |
+| One command, Docker Compose | [`docker compose up`](#reproduce-one-command): no keys, nothing sent, ends with PASS or FAIL |
+| Keys only through a volume or env, never in the repository | [`keys/`, mounted only into the `live` service](#safety-and-engineering) |
+| Dry run by default; real sending behind a flag and a cap | [`run` sends nothing without `--live`](#safety-and-engineering) |
+| All raw data, with signatures and slots | [`data/mainnet-beta/runs/`](#data), every landed transaction checked against the chain |
+| README: why this design, the points above, what it does not separate | [Why this design](#why-this-design); [what it does not separate](#what-this-design-does-not-separate) |
+| Report: the date of every measurement, and what went wrong | [Measurements](REPORT.md#measurements); [What went wrong](REPORT.md#what-went-wrong) |
+
+## How it was measured, and what each run found
 
 - **Evidence.** Our own transactions: bursts of six, with fees chosen so that the candidate ordering rules (reward per
   cost, priority fee per cost, price per compute unit, total fee, arrival order) predict different orders.
@@ -70,10 +189,12 @@ and whether the rule differs between validator clients.
 docker compose up
 ```
 
-This runs `reproduce`, which needs no keys and sends nothing. It does three things:
+This runs `reproduce`, which needs no keys and sends nothing. It takes about 10 minutes on the rate-limited public
+endpoints (7 to 21 in CI), says where it is as it goes, and ends with PASS or FAIL and what was checked. It does three
+things:
 
-1. **Regenerates every table** from the committed raw data, and checks that the six result files (four tables and
-   the two charts of REPORT) are byte-identical to the committed ones.
+1. **Regenerates every table** from the committed raw data, and checks that the seven result files (four tables, the
+   two charts of REPORT and the known answers) are byte-identical to the committed ones.
 2. **Checks the raw data against the chain** (`verify`). It uses public endpoints other than the one used to
    collect: `api.mainnet-beta.solana.com`, which keeps the whole history, then PublicNode.
    - Every landed transaction: its signature is at the recorded index of the recorded slot, and the slot is after
@@ -95,8 +216,7 @@ This runs `reproduce`, which needs no keys and sends nothing. It does three thin
    - Every sent transaction was planned before sending and reserved in the spend ledger.
 
    It exits with an error on any mismatch. A block that no endpoint serves any more is reported, not failed. The
-   one-command check covers a seeded sample of 120 blocks, a few minutes on the rate-limited public endpoint.
-   `node src/cli.ts verify` checks every block. The committed checks are `data/mainnet-beta/verify.json` (the runs
+   one-command check covers a seeded sample of 120 blocks. `node src/cli.ts verify` checks every block. The committed checks are `data/mainnet-beta/verify.json` (the runs
    up to the main run) and `data/mainnet-beta/verify/<run>.json` (each main-run session and the confirmatory run,
    each made while its leader schedule was served).
 3. **Makes one dry-run trial** against mainnet.
@@ -119,6 +239,20 @@ npm test
 On Windows the pip in the first line is `.venv\Scripts\pip`.
 
 ## The question and the experiment
+
+### Why this design
+
+- **Six in one burst, not pairs.** A pair tells two rules apart. Six transactions whose fees make every candidate rule
+  predict a different order read as a fingerprint: one trial in the exact order is 2 in 720 by chance, and each pair of
+  roles still gives a contrast that isolates one term of the rule.
+- **Straight to the leader.** Our pilot through a public RPC measured the RPC: it held bursts about 1.3 s and released
+  them in its own order, and the block followed that order. An RPC-based measurement reads "no stable rule" at a leader
+  that ranks by fee.
+- **Two slots ahead.** A leader can only rank what it holds together, so the primary cell delivers all six before the
+  window. The burst and streamed cells then show what happens when they arrive during the block.
+- **Plans frozen first.** What the first run found was tested on new trials, under plans frozen before those trials.
+
+### The experiment
 
 When a leader builds a block, which transaction goes first? Candidate rules:
 
@@ -395,6 +529,24 @@ planned in [`docs/RAKURAI.md`](docs/RAKURAI.md) and frozen at the git tag `prere
 
   `results/orders.md` lists every trial's send order and observed order.
 
+### Does the method read a rule it is given?
+
+Added on 2026-11-05, after every trial. It changes no test and no verdict.
+
+- **In simulation** ([`known-answers.md`](data/mainnet-beta/results/known-answers.md), regenerated by `reproduce`).
+  Simulated leaders follow a stated rule, with a fresh random send order in every trial, and their orders go through the
+  code that reads the real trials. All 14 rules with a prediction were read as predicted. Under orders unrelated to the
+  fees, 7 of 180 simulated families had a false "holds" (3.9%, at a level of 5%), and 0 of 48 000 simulated validators got
+  the reading of a named order. The table also shows the limits: a look-alike reads as the rule it imitates, and readings
+  at 5 trials are the weakest. This tests the analysis, not the path to the leader.
+- **On chain.** The source of Agave 4.3.2 predicts one order: 30 of 30 trials landed in it. The source of Jito 4.4.0
+  predicts a change of ties, written down before those trials: the twin sent first landed first in 78% [61–89%] of them,
+  against 42% [29–55%] at 4.3.2. Trials sent 30 ms apart must land in send order at a leader that does not hold them
+  back: 97–99% of pairs did.
+- **Selection.** Trials count only with their roles in the window, so a loss that depended on the role could select on
+  the order. None does: of the 467 buffered trials of the main, confirmatory and targeted runs, every burst landed
+  whole or not at all in the window, and none was split (`results.md`, "What a trial loses").
+
 ### What this design does not separate
 
 - **Ingress inside the leader vs its scheduler.** The order in which the leader's QUIC, signature-verification and
@@ -458,8 +610,8 @@ planned in [`docs/RAKURAI.md`](docs/RAKURAI.md) and frozen at the git tag `prere
   - the results regenerated byte for byte;
   - the same checks inside the Docker image.
 
-  The full online `reproduce` runs as a separate job that does not fail the build, because public endpoints
-  rate-limit shared runners. REPORT links its latest result.
+  The full online check, `docker compose up` itself, runs as a separate job that does not fail the build, because
+  public endpoints rate-limit shared runners. REPORT links its latest result.
 
 ## Data
 
@@ -478,7 +630,7 @@ planned in [`docs/RAKURAI.md`](docs/RAKURAI.md) and frozen at the git tag `prere
   `verify-every-transaction.json`, `verify-every-transaction-confirm.json`,
   `verify-every-transaction-rakurai-swap.json` and `verify-every-transaction-rakurai.json`: every landed transaction
   checked whole, for the runs up to the main run, the confirmatory run and the two campaigns of the targeted run.
-- `results/`: generated by `analyze`.
+- `results/`: generated by `analyze`; `results/known-answers.md` by `known-answers`.
 
 ## Commands
 
@@ -490,11 +642,13 @@ targeted run [`docs/RAKURAI.md`](docs/RAKURAI.md).
 | command | what it does |
 |---|---|
 | `reproduce` | the one-command check described above |
+| `show <run> <trial>` | one trial read from the chain, compared with what we recorded; sends nothing |
 | `discover` | snapshot validators by client |
 | `names`, `rakurai` | read from the chain the names of the validators of our trials and the accounts of Rakurai's activation program; they send nothing |
 | `run [--live --campaign NAME]` | the experiment. Options: `--quota Agave=60,...` or `--validators PREFIX=N,...`, `--cells buffered/shared,...`, `--sub-target SOL`, `--roles swap`, `--path tpu\|rpc`, `--per-validator`, `--seed`, `--minutes` |
 | `collect [run\|all] [--refresh]` | landing slot, in-block position and slot leader; settles the ledger |
 | `analyze` | all tables, offline |
+| `known-answers` | the same analysis on simulated leaders with a known rule, offline |
 | `verify [run\|all] [--write] [--sample N\|all] [--row-blocks N] [--out FILE] [--verify-rpc URL]` | the check against the chain: `--sample` whole transactions (default 60), `--row-blocks` whole blocks rebuilt (default 3) |
 | `paths [--live]` | delivery-path probe |
 | `keygen`, `address`, `status`, `fund`, `sweep` | wallet and budget |
